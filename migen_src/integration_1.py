@@ -3,9 +3,9 @@ from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
 from constants import *
-import predictor, difference, normalize, encode, merge, lj92_pipeline, signals, register_file
+import predictor, difference, normalize, encode, merge, signals, register_file
 
-class LJ92Pipeline(Elaboratable):
+class Integration1(Elaboratable):
 
 	def __init__(self):
 
@@ -14,7 +14,6 @@ class LJ92Pipeline(Elaboratable):
 		self.pixel_in2 = Signal(16)
 		self.pixel_in3 = Signal(16)
 		self.pixel_in4 = Signal(16)
-
 
 		self.enc_out = Signal(124)
 		self.enc_out_ctr = Signal(7)
@@ -124,5 +123,5 @@ class LJ92Pipeline(Elaboratable):
 
 
 if __name__ == "__main__":
-	d = LJ92Pipeline()
+	d = Integration1()
 	main(d, ports=d.ios)
