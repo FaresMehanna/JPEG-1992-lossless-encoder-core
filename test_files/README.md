@@ -62,6 +62,7 @@ Four pixels count of (60Bits) : 10 times.
 Four pixels count of (76Bits) : 1 time.
 ```
 
+
 ## random.raw12:
 - IMG: Width  -> 4096
 - IMG: Height -> 10
@@ -130,4 +131,81 @@ Four pixels count of (78Bits) : 868 times.
 Four pixels count of (80Bits) : 564 times.
 Four pixels count of (82Bits) : 226 times.
 Four pixels count of (84Bits) : 30 times.
+```
+
+
+## IT8Chart15ms.raw12:
+- IMG: Width  -> 4096
+- IMG: Height -> 10
+- LJ92: Huffman used to compress -> {0b1110, 0b000,0b001,0b010,0b011,0b100,0b101,0b110,0b11110,0b111110,0b1111110,0b11111110,0b111111110,0b1111111110,0b11111111110,0b111111111110,0b1111111111110}
+- LJ92: 4 components.
+- LJ92: predictor 1 is used.
+- LJ92: normal height and width.
+- LJ92: compression ratio: 0.690039.
+- LJ92: pixel size: 8.280469 bits.
+- LJ92: SSSS analyses ->
+```
+  25.22%   |                                  |                                                                    
+  22.70%   |                                  |     |                                                              
+  20.17%   |                                  |     |                                                              
+  17.65%   |                                  |     |                                                              
+  15.13%   |                            |     |     |                                                              
+  12.61%   |                            |     |     |     |                                                        
+  10.09%   |                      |     |     |     |     |                                                        
+   7.57%   |                      |     |     |     |     |                                                        
+   5.04%   |                |     |     |     |     |     |     |                                                  
+   2.52%   |          |     |     |     |     |     |     |     |     |                                            
+   ssss    |    0     1     2     3     4     5     6     7     8     9     10    11    12    13    14    15    16
+ frequency | .0122 .0235 .0444 .0911 .1598 .2522 .2190 .1269 .0543 .0146 .0020 .0002 .0000 .0000 .0000 .0000 .0000 
+   code    |    e     0     1     2     3     4     5     6    1e    3e    7e    fe    1fe   3fe   7fe   ffe  1ffe 
+code Length|    4     3     3     3     3     3     3     3     5     6     7     8     9    10    11    12    13  
+Encode Bits|    4     4     5     6     7     8     9    10    13    15    17    19    21    23    25    27    29
+```
+- LJ92: four pixels sums ->
+```
+Four pixels count of (20Bits) : 9 times.
+Four pixels count of (21Bits) : 13 times.
+Four pixels count of (22Bits) : 22 times.
+Four pixels count of (23Bits) : 64 times.
+Four pixels count of (24Bits) : 138 times.
+Four pixels count of (25Bits) : 217 times.
+Four pixels count of (26Bits) : 305 times.
+Four pixels count of (27Bits) : 409 times.
+Four pixels count of (28Bits) : 553 times.
+Four pixels count of (29Bits) : 714 times.
+Four pixels count of (30Bits) : 889 times.
+Four pixels count of (31Bits) : 987 times.
+Four pixels count of (32Bits) : 933 times.
+Four pixels count of (33Bits) : 912 times.
+Four pixels count of (34Bits) : 768 times.
+Four pixels count of (35Bits) : 710 times.
+Four pixels count of (36Bits) : 562 times.
+Four pixels count of (37Bits) : 441 times.
+Four pixels count of (38Bits) : 329 times.
+Four pixels count of (39Bits) : 277 times.
+Four pixels count of (40Bits) : 241 times.
+Four pixels count of (41Bits) : 177 times.
+Four pixels count of (42Bits) : 133 times.
+Four pixels count of (43Bits) : 93 times.
+Four pixels count of (44Bits) : 58 times.
+Four pixels count of (45Bits) : 56 times.
+Four pixels count of (46Bits) : 43 times.
+Four pixels count of (47Bits) : 24 times.
+Four pixels count of (48Bits) : 25 times.
+Four pixels count of (49Bits) : 23 times.
+Four pixels count of (50Bits) : 8 times.
+Four pixels count of (51Bits) : 16 times.
+Four pixels count of (52Bits) : 11 times.
+Four pixels count of (53Bits) : 5 times.
+Four pixels count of (54Bits) : 6 times.
+Four pixels count of (55Bits) : 7 times.
+Four pixels count of (56Bits) : 17 times.
+Four pixels count of (57Bits) : 1 times.
+Four pixels count of (58Bits) : 12 times.
+Four pixels count of (60Bits) : 8 times.
+Four pixels count of (62Bits) : 2 times.
+Four pixels count of (64Bits) : 8 times.
+Four pixels count of (66Bits) : 5 times.
+Four pixels count of (68Bits) : 5 times.
+Four pixels count of (70Bits) : 4 times.
 ```
