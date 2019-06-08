@@ -8,7 +8,7 @@ module buff_pick(zeros, in_signal, out_signal, buff_consum);
   (* src = "./migen_src/vbits_to_cbits.py:17" *)
   input [7:0] buff_consum;
   (* src = "./migen_src/vbits_to_cbits.py:15" *)
-  input [127:0] in_signal;
+  input [143:0] in_signal;
   (* src = "./migen_src/vbits_to_cbits.py:16" *)
   output [31:0] out_signal;
   (* src = "./migen_src/vbits_to_cbits.py:24" *)
@@ -272,6 +272,38 @@ module buff_pick(zeros, in_signal, out_signal, buff_consum);
           \$next\out_signal  = in_signal[126:95];
       8'h80:
           \$next\out_signal  = in_signal[127:96];
+      8'h81:
+          \$next\out_signal  = in_signal[128:97];
+      8'h82:
+          \$next\out_signal  = in_signal[129:98];
+      8'h83:
+          \$next\out_signal  = in_signal[130:99];
+      8'h84:
+          \$next\out_signal  = in_signal[131:100];
+      8'h85:
+          \$next\out_signal  = in_signal[132:101];
+      8'h86:
+          \$next\out_signal  = in_signal[133:102];
+      8'h87:
+          \$next\out_signal  = in_signal[134:103];
+      8'h88:
+          \$next\out_signal  = in_signal[135:104];
+      8'h89:
+          \$next\out_signal  = in_signal[136:105];
+      8'h8a:
+          \$next\out_signal  = in_signal[137:106];
+      8'h8b:
+          \$next\out_signal  = in_signal[138:107];
+      8'h8c:
+          \$next\out_signal  = in_signal[139:108];
+      8'h8d:
+          \$next\out_signal  = in_signal[140:109];
+      8'h8e:
+          \$next\out_signal  = in_signal[141:110];
+      8'h8f:
+          \$next\out_signal  = in_signal[142:111];
+      8'h90:
+          \$next\out_signal  = in_signal[143:112];
     endcase
   end
   assign out_signal = \$next\out_signal ;
@@ -280,19 +312,19 @@ endmodule
 (* \nmigen.hierarchy  = "top.buff_set" *)
 (* generator = "nMigen" *)
 module buff_set(enc_in_ctr, enc_in, rst, clk, buff, latch);
-  wire [190:0] \$1 ;
-  wire [190:0] \$2 ;
-  wire [190:0] \$4 ;
+  wire [206:0] \$1 ;
+  wire [206:0] \$2 ;
+  wire [206:0] \$4 ;
   (* src = "./migen_src/vbits_to_cbits.py:49" *)
-  reg [127:0] \$next\buff ;
-  (* init = 128'h00000000000000000000000000000000 *)
+  reg [143:0] \$next\buff ;
+  (* init = 144'h000000000000000000000000000000000000 *)
   (* src = "./migen_src/vbits_to_cbits.py:49" *)
-  output [127:0] buff;
-  reg [127:0] buff = 128'h00000000000000000000000000000000;
+  output [143:0] buff;
+  reg [143:0] buff = 144'h000000000000000000000000000000000000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
   (* src = "./migen_src/vbits_to_cbits.py:47" *)
-  input [35:0] enc_in;
+  input [47:0] enc_in;
   (* src = "./migen_src/vbits_to_cbits.py:48" *)
   input [5:0] enc_in_ctr;
   (* src = "./migen_src/vbits_to_cbits.py:50" *)
@@ -307,11 +339,11 @@ module buff_set(enc_in_ctr, enc_in, rst, clk, buff, latch);
     \$next\buff  = buff;
     casez (latch)
       1'h1:
-          \$next\buff  = \$1 [127:0];
+          \$next\buff  = \$1 [143:0];
     endcase
     casez (rst)
       1'h1:
-          \$next\buff  = 128'h00000000000000000000000000000000;
+          \$next\buff  = 144'h000000000000000000000000000000000000;
     endcase
   end
   assign \$1  = \$4 ;
@@ -320,16 +352,15 @@ endmodule
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, valid_out, latch_input, end_out, enc_in);
+module top(enc_in_ctr, busy_in, valid_in, in_end, rst, clk, zeros, data_out, valid_out, latch_input, end_out, enc_in);
   wire \$1 ;
-  wire [9:0] \$101 ;
+  wire [9:0] \$100 ;
   wire [8:0] \$102 ;
-  wire [9:0] \$104 ;
+  wire [8:0] \$103 ;
+  wire [8:0] \$105 ;
   wire [8:0] \$106 ;
-  wire [8:0] \$107 ;
-  wire [8:0] \$109 ;
+  wire \$108 ;
   wire \$11 ;
-  wire [8:0] \$110 ;
   wire \$13 ;
   wire \$15 ;
   wire \$17 ;
@@ -367,26 +398,26 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
   wire \$75 ;
   wire \$77 ;
   wire \$79 ;
-  wire [8:0] \$81 ;
+  wire \$81 ;
   wire \$83 ;
-  wire [8:0] \$85 ;
+  wire \$85 ;
   wire \$87 ;
   wire \$89 ;
-  wire [8:0] \$91 ;
+  wire \$91 ;
   wire \$93 ;
-  wire [8:0] \$95 ;
-  wire \$97 ;
-  wire \$99 ;
+  wire \$95 ;
+  wire [9:0] \$97 ;
+  wire [8:0] \$98 ;
   (* src = "./migen_src/vbits_to_cbits.py:99" *)
-  reg [127:0] \$next\buff ;
+  reg [143:0] \$next\buff ;
   (* src = "./migen_src/vbits_to_cbits.py:100" *)
   reg [7:0] \$next\buff_consum ;
   (* src = "./migen_src/vbits_to_cbits.py:17" *)
   reg [7:0] \$next\buff_pick_buff_consum ;
   (* src = "./migen_src/vbits_to_cbits.py:15" *)
-  reg [127:0] \$next\buff_pick_in_signal ;
+  reg [143:0] \$next\buff_pick_in_signal ;
   (* src = "./migen_src/vbits_to_cbits.py:47" *)
-  reg [35:0] \$next\buff_set_enc_in ;
+  reg [47:0] \$next\buff_set_enc_in ;
   (* src = "./migen_src/vbits_to_cbits.py:48" *)
   reg [5:0] \$next\buff_set_enc_in_ctr ;
   (* src = "./migen_src/vbits_to_cbits.py:50" *)
@@ -395,6 +426,8 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
   reg \$next\buff_set_latch$9 ;
   (* src = "./migen_src/vbits_to_cbits.py:103" *)
   reg [31:0] \$next\buffered_output ;
+  (* src = "./migen_src/vbits_to_cbits.py:132" *)
+  reg \$next\current_end ;
   (* src = "./migen_src/vbits_to_cbits.py:81" *)
   reg [31:0] \$next\data_out ;
   (* src = "./migen_src/vbits_to_cbits.py:83" *)
@@ -405,6 +438,8 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
   reg [1:0] \$next\fsm_state$10 ;
   (* src = "./migen_src/vbits_to_cbits.py:75" *)
   reg \$next\latch_input ;
+  (* src = "./migen_src/vbits_to_cbits.py:175" *)
+  reg [7:0] \$next\new_consum ;
   (* src = "./migen_src/vbits_to_cbits.py:102" *)
   reg [31:0] \$next\output ;
   (* src = "./migen_src/vbits_to_cbits.py:124" *)
@@ -414,20 +449,20 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
   (* src = "./migen_src/vbits_to_cbits.py:82" *)
   reg \$next\valid_out ;
   (* src = "./migen_src/vbits_to_cbits.py:99" *)
-  wire [127:0] buff;
+  wire [143:0] buff;
   (* init = 8'h00 *)
   (* src = "./migen_src/vbits_to_cbits.py:100" *)
   reg [7:0] buff_consum = 8'h00;
   (* src = "./migen_src/vbits_to_cbits.py:17" *)
   wire [7:0] buff_pick_buff_consum;
   (* src = "./migen_src/vbits_to_cbits.py:15" *)
-  wire [127:0] buff_pick_in_signal;
+  wire [143:0] buff_pick_in_signal;
   (* src = "./migen_src/vbits_to_cbits.py:16" *)
   wire [31:0] buff_pick_out_signal;
   (* src = "./migen_src/vbits_to_cbits.py:49" *)
-  wire [127:0] buff_set_buff;
+  wire [143:0] buff_set_buff;
   (* src = "./migen_src/vbits_to_cbits.py:47" *)
-  wire [35:0] buff_set_enc_in;
+  wire [47:0] buff_set_enc_in;
   (* src = "./migen_src/vbits_to_cbits.py:48" *)
   wire [5:0] buff_set_enc_in_ctr;
   (* src = "./migen_src/vbits_to_cbits.py:50" *)
@@ -441,12 +476,15 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
   input busy_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/vbits_to_cbits.py:132" *)
+  reg current_end = 1'h0;
   (* init = 32'd0 *)
   (* src = "./migen_src/vbits_to_cbits.py:81" *)
   output [31:0] data_out;
   reg [31:0] data_out = 32'd0;
   (* src = "./migen_src/vbits_to_cbits.py:76" *)
-  input [35:0] enc_in;
+  input [47:0] enc_in;
   (* src = "./migen_src/vbits_to_cbits.py:77" *)
   input [5:0] enc_in_ctr;
   (* init = 1'h0 *)
@@ -465,6 +503,8 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
   (* src = "./migen_src/vbits_to_cbits.py:75" *)
   output latch_input;
   reg latch_input = 1'h0;
+  (* src = "./migen_src/vbits_to_cbits.py:175" *)
+  wire [7:0] new_consum;
   (* src = "./migen_src/vbits_to_cbits.py:102" *)
   wire [31:0] \output ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
@@ -481,61 +521,62 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
   reg valid_out = 1'h0;
   (* src = "./migen_src/vbits_to_cbits.py:24" *)
   input [31:0] zeros;
-  assign \$99  = sig1 & (* src = "./migen_src/vbits_to_cbits.py:207" *) sig2;
-  assign \$102  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:209" *) 6'h20;
-  assign \$104  = \$102  + (* src = "./migen_src/vbits_to_cbits.py:209" *) enc_in_ctr;
-  assign \$107  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:213" *) 6'h20;
-  assign \$110  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:217" *) enc_in_ctr;
-  assign \$11  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:137" *) 6'h20;
-  assign \$13  = buff_consum < (* src = "./migen_src/vbits_to_cbits.py:137" *) 6'h20;
-  assign \$15  = \$13  & (* src = "./migen_src/vbits_to_cbits.py:137" *) in_end;
-  assign \$17  = \$11  | (* src = "./migen_src/vbits_to_cbits.py:137" *) \$15 ;
-  assign \$1  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:152" *) 1'h0;
-  assign \$19  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:152" *) 1'h0;
-  assign \$21  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:152" *) 6'h20;
-  assign \$23  = \$19  & (* src = "./migen_src/vbits_to_cbits.py:152" *) \$21 ;
-  assign \$25  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:159" *) 1'h0;
-  assign \$27  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:137" *) 6'h20;
-  assign \$29  = buff_consum < (* src = "./migen_src/vbits_to_cbits.py:137" *) 6'h20;
-  assign \$31  = \$29  & (* src = "./migen_src/vbits_to_cbits.py:137" *) in_end;
-  assign \$33  = \$27  | (* src = "./migen_src/vbits_to_cbits.py:137" *) \$31 ;
-  assign \$35  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:152" *) 1'h0;
-  assign \$37  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:152" *) 6'h20;
-  assign \$3  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:152" *) 6'h20;
-  assign \$39  = \$35  & (* src = "./migen_src/vbits_to_cbits.py:152" *) \$37 ;
-  assign \$41  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:159" *) 1'h0;
-  assign \$43  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:137" *) 6'h20;
-  assign \$45  = buff_consum < (* src = "./migen_src/vbits_to_cbits.py:137" *) 6'h20;
-  assign \$47  = \$45  & (* src = "./migen_src/vbits_to_cbits.py:137" *) in_end;
-  assign \$49  = \$43  | (* src = "./migen_src/vbits_to_cbits.py:137" *) \$47 ;
-  assign \$51  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:152" *) 1'h0;
-  assign \$53  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:152" *) 6'h20;
-  assign \$55  = \$51  & (* src = "./migen_src/vbits_to_cbits.py:152" *) \$53 ;
-  assign \$57  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:159" *) 1'h0;
-  assign \$5  = \$1  & (* src = "./migen_src/vbits_to_cbits.py:152" *) \$3 ;
-  assign \$59  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:137" *) 6'h20;
-  assign \$61  = buff_consum < (* src = "./migen_src/vbits_to_cbits.py:137" *) 6'h20;
-  assign \$63  = \$61  & (* src = "./migen_src/vbits_to_cbits.py:137" *) in_end;
-  assign \$65  = \$59  | (* src = "./migen_src/vbits_to_cbits.py:137" *) \$63 ;
-  assign \$67  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:152" *) 1'h0;
-  assign \$69  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:152" *) 6'h20;
-  assign \$71  = \$67  & (* src = "./migen_src/vbits_to_cbits.py:152" *) \$69 ;
-  assign \$73  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:159" *) 1'h0;
-  assign \$75  = buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:145" *) 6'h20;
-  assign \$77  = \$75  & (* src = "./migen_src/vbits_to_cbits.py:145" *) in_end;
-  assign \$7  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:159" *) 1'h0;
-  assign \$79  = buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:171" *) 7'h5c;
-  assign \$81  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:183" *) enc_in_ctr;
-  assign \$83  = \$81  <= (* src = "./migen_src/vbits_to_cbits.py:183" *) 7'h5c;
-  assign \$85  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:197" *) enc_in_ctr;
-  assign \$87  = \$85  <= (* src = "./migen_src/vbits_to_cbits.py:197" *) 7'h5c;
-  assign \$89  = buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:171" *) 7'h5c;
-  assign \$91  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:183" *) enc_in_ctr;
-  assign \$93  = \$91  <= (* src = "./migen_src/vbits_to_cbits.py:183" *) 7'h5c;
-  assign \$95  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:197" *) enc_in_ctr;
-  assign \$97  = \$95  <= (* src = "./migen_src/vbits_to_cbits.py:197" *) 7'h5c;
+  assign \$100  = \$98  + (* src = "./migen_src/vbits_to_cbits.py:218" *) enc_in_ctr;
+  assign \$103  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:220" *) 6'h20;
+  assign \$106  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:222" *) enc_in_ctr;
+  assign \$108  = sig1 | (* src = "./migen_src/vbits_to_cbits.py:224" *) sig2;
+  assign \$11  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:139" *) 6'h20;
+  assign \$13  = buff_consum < (* src = "./migen_src/vbits_to_cbits.py:139" *) 6'h20;
+  assign \$15  = \$13  & (* src = "./migen_src/vbits_to_cbits.py:139" *) current_end;
+  assign \$17  = \$11  | (* src = "./migen_src/vbits_to_cbits.py:139" *) \$15 ;
+  assign \$1  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:154" *) 1'h0;
+  assign \$19  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:154" *) 1'h0;
+  assign \$21  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:154" *) 6'h20;
+  assign \$23  = \$19  & (* src = "./migen_src/vbits_to_cbits.py:154" *) \$21 ;
+  assign \$25  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:161" *) 1'h0;
+  assign \$27  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:139" *) 6'h20;
+  assign \$29  = buff_consum < (* src = "./migen_src/vbits_to_cbits.py:139" *) 6'h20;
+  assign \$31  = \$29  & (* src = "./migen_src/vbits_to_cbits.py:139" *) current_end;
+  assign \$33  = \$27  | (* src = "./migen_src/vbits_to_cbits.py:139" *) \$31 ;
+  assign \$35  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:154" *) 1'h0;
+  assign \$37  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:154" *) 6'h20;
+  assign \$3  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:154" *) 6'h20;
+  assign \$39  = \$35  & (* src = "./migen_src/vbits_to_cbits.py:154" *) \$37 ;
+  assign \$41  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:161" *) 1'h0;
+  assign \$43  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:139" *) 6'h20;
+  assign \$45  = buff_consum < (* src = "./migen_src/vbits_to_cbits.py:139" *) 6'h20;
+  assign \$47  = \$45  & (* src = "./migen_src/vbits_to_cbits.py:139" *) current_end;
+  assign \$49  = \$43  | (* src = "./migen_src/vbits_to_cbits.py:139" *) \$47 ;
+  assign \$51  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:154" *) 1'h0;
+  assign \$53  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:154" *) 6'h20;
+  assign \$55  = \$51  & (* src = "./migen_src/vbits_to_cbits.py:154" *) \$53 ;
+  assign \$57  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:161" *) 1'h0;
+  assign \$5  = \$1  & (* src = "./migen_src/vbits_to_cbits.py:154" *) \$3 ;
+  assign \$59  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:139" *) 6'h20;
+  assign \$61  = buff_consum < (* src = "./migen_src/vbits_to_cbits.py:139" *) 6'h20;
+  assign \$63  = \$61  & (* src = "./migen_src/vbits_to_cbits.py:139" *) current_end;
+  assign \$65  = \$59  | (* src = "./migen_src/vbits_to_cbits.py:139" *) \$63 ;
+  assign \$67  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:154" *) 1'h0;
+  assign \$69  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:154" *) 6'h20;
+  assign \$71  = \$67  & (* src = "./migen_src/vbits_to_cbits.py:154" *) \$69 ;
+  assign \$73  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:161" *) 1'h0;
+  assign \$75  = buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:147" *) 6'h20;
+  assign \$77  = \$75  & (* src = "./migen_src/vbits_to_cbits.py:147" *) current_end;
+  assign \$7  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:161" *) 1'h0;
+  assign \$79  = buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:170" *) 6'h20;
+  assign \$81  = \$79  & (* src = "./migen_src/vbits_to_cbits.py:170" *) current_end;
+  assign \$83  = buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:179" *) 7'h60;
+  assign \$85  = new_consum <= (* src = "./migen_src/vbits_to_cbits.py:192" *) 7'h60;
+  assign \$87  = new_consum <= (* src = "./migen_src/vbits_to_cbits.py:207" *) 7'h60;
+  assign \$89  = buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:179" *) 7'h60;
+  assign \$91  = new_consum <= (* src = "./migen_src/vbits_to_cbits.py:192" *) 7'h60;
+  assign \$93  = new_consum <= (* src = "./migen_src/vbits_to_cbits.py:207" *) 7'h60;
+  assign \$95  = sig1 & (* src = "./migen_src/vbits_to_cbits.py:217" *) sig2;
+  assign \$98  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:218" *) 6'h20;
   always @(posedge clk)
       buff_consum <= \$next\buff_consum ;
+  always @(posedge clk)
+      current_end <= \$next\current_end ;
   always @(posedge clk)
       \fsm_state$10  <= \$next\fsm_state$10 ;
   always @(posedge clk)
@@ -584,7 +625,7 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
     endcase
   end
   always @* begin
-    \$next\buff_pick_in_signal  = 128'h00000000000000000000000000000000;
+    \$next\buff_pick_in_signal  = 144'h000000000000000000000000000000000000;
     \$next\buff_pick_in_signal  = buff;
   end
   always @* begin
@@ -660,6 +701,11 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
             1'h1:
                 \$next\end_out  = 1'h1;
           endcase
+      1'h1:
+          casez (\$81 )
+            1'h1:
+                \$next\end_out  = 1'h1;
+          endcase
     endcase
     casez (rst)
       1'h1:
@@ -670,7 +716,7 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
     \$next\latch_input  = latch_input;
     casez (\fsm_state$10 )
       2'h0:
-          casez (\$79 )
+          casez (\$83 )
             1'h1:
                 casez (valid_in)
                   1'h1:
@@ -680,7 +726,7 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
       2'h1:
           casez (valid_in)
             1'h1:
-                casez (\$83 )
+                casez (\$85 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -717,7 +763,7 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
       2'h1:
           casez (valid_in)
             1'h1:
-                casez (\$93 )
+                casez (\$91 )
                   1'h1:
                       \$next\fsm_state$10  = 2'h2;
                   1'hz:
@@ -729,7 +775,7 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
       2'h2:
           casez (valid_in)
             1'h1:
-                casez (\$97 )
+                casez (\$93 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -743,14 +789,40 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
     endcase
   end
   always @* begin
-    \$next\buff_consum  = buff_consum;
-    casez ({ sig2, sig1, \$99  })
+    \$next\current_end  = current_end;
+    casez (\fsm_state$10 )
+      2'h1:
+          casez (valid_in)
+            1'h1:
+                \$next\current_end  = in_end;
+          endcase
+      2'h2:
+          casez (valid_in)
+            1'h1:
+                \$next\current_end  = in_end;
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\current_end  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\new_consum  = 8'h00;
+    casez ({ sig2, sig1, \$95  })
       3'bzz1:
-          \$next\buff_consum  = \$101 [7:0];
+          \$next\new_consum  = \$97 [7:0];
       3'bz1z:
-          \$next\buff_consum  = \$106 [7:0];
+          \$next\new_consum  = \$102 [7:0];
       3'b1zz:
-          \$next\buff_consum  = \$109 [7:0];
+          \$next\new_consum  = \$105 [7:0];
+    endcase
+  end
+  always @* begin
+    \$next\buff_consum  = buff_consum;
+    casez (\$108 )
+      1'h1:
+          \$next\buff_consum  = new_consum;
     endcase
     casez (rst)
       1'h1:
@@ -782,11 +854,11 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
     endcase
   end
   always @* begin
-    \$next\buff  = 128'h00000000000000000000000000000000;
+    \$next\buff  = 144'h000000000000000000000000000000000000;
     \$next\buff  = buff_set_buff;
   end
   always @* begin
-    \$next\buff_set_enc_in  = 36'h000000000;
+    \$next\buff_set_enc_in  = 48'h000000000000;
     \$next\buff_set_enc_in  = enc_in;
   end
   always @* begin
@@ -813,9 +885,10 @@ module top(enc_in_ctr, in_end, busy_in, valid_in, rst, clk, zeros, data_out, val
           endcase
     endcase
   end
-  assign \$101  = \$104 ;
-  assign \$106  = \$107 ;
-  assign \$109  = \$110 ;
+  assign \$97  = \$100 ;
+  assign \$102  = \$103 ;
+  assign \$105  = \$106 ;
+  assign new_consum = \$next\new_consum ;
   assign sig2 = \$next\sig2 ;
   assign sig1 = \$next\sig1 ;
   assign buff_set_latch = \$next\buff_set_latch ;

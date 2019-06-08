@@ -23,7 +23,7 @@ class RegisterFile(Elaboratable):
 
 		m.d.sync += [
 			width_reg.eq(4096),
-			height_reg.eq(10),
+			height_reg.eq(3072),
 		]
 
 		m.d.comb += [

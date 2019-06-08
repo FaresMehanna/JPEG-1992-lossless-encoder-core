@@ -117,3 +117,5 @@ if __name__ == "__main__":
 	integration_2_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 30, 15)
 	print("-----")
 	integration_2_test_1(m, "/../test_files/random.raw12", 2, 15, 30)
+	print("-----")
+	integration_2_test_1(m, "/../test_files/IT8Chart15ms.raw12", 3, 1, 1)

@@ -9,32 +9,28 @@ module converter(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, val
   wire \$15 ;
   wire \$17 ;
   wire \$19 ;
-  wire [32:0] \$21 ;
-  wire [32:0] \$22 ;
-  wire \$24 ;
-  wire \$26 ;
-  wire \$28 ;
+  wire \$21 ;
+  wire \$23 ;
+  wire \$25 ;
+  wire \$27 ;
+  wire [35:0] \$29 ;
   wire \$3 ;
-  wire \$30 ;
-  wire [35:0] \$32 ;
-  wire \$34 ;
-  wire \$36 ;
-  wire \$38 ;
-  wire \$40 ;
+  wire \$31 ;
+  wire \$33 ;
+  wire \$35 ;
+  wire \$37 ;
+  wire [7:0] \$39 ;
+  wire [7:0] \$40 ;
   wire [7:0] \$42 ;
   wire [7:0] \$43 ;
   wire [7:0] \$45 ;
   wire [7:0] \$46 ;
-  wire [7:0] \$48 ;
-  wire [7:0] \$49 ;
+  wire \$48 ;
   wire \$5 ;
-  wire \$51 ;
-  wire \$53 ;
-  wire \$55 ;
+  wire \$50 ;
+  wire \$52 ;
   wire \$7 ;
   wire \$9 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:36" *)
-  reg [31:0] \$next\debug_counter ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:19" *)
   reg [35:0] \$next\enc_in ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:20" *)
@@ -55,9 +51,6 @@ module converter(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, val
   input clk;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:23" *)
   input close_full;
-  (* init = 32'd0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:36" *)
-  reg [31:0] debug_counter = 32'd0;
   (* init = 36'h000000000 *)
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:19" *)
   output [35:0] enc_in;
@@ -97,38 +90,35 @@ module converter(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, val
   reg valid_in = 1'h0;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:16" *)
   input valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:38" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:37" *)
   input [15:0] zeros;
-  assign \$9  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:47" *) 1'h0;
-  assign \$11  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:47" *) \$9 ;
-  assign \$13  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:58" *) 6'h24;
-  assign \$15  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:81" *) 7'h48;
-  assign \$17  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:87" *) 7'h6c;
-  assign \$1  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:58" *) 6'h24;
-  assign \$19  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:93" *) 7'h7f;
-  assign \$22  = debug_counter + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:56" *) enc_out_ctr;
-  assign \$24  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:58" *) 6'h24;
-  assign \$26  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:81" *) 7'h48;
-  assign \$28  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:87" *) 7'h6c;
-  assign \$30  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:93" *) 7'h7f;
-  assign \$32  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:95" *) { zeros, enc_out[123:108] };
-  assign \$34  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:58" *) 6'h24;
-  assign \$36  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:81" *) 7'h48;
-  assign \$38  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:87" *) 7'h6c;
-  assign \$3  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:47" *) 1'h0;
-  assign \$40  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:93" *) 7'h7f;
-  assign \$43  = enc_out_ctr - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:84" *) 6'h24;
-  assign \$46  = enc_out_ctr - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:90" *) 7'h48;
-  assign \$49  = enc_out_ctr - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:96" *) 7'h6c;
-  assign \$51  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:58" *) 6'h24;
-  assign \$53  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:58" *) 6'h24;
-  assign \$55  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:58" *) 6'h24;
-  assign \$5  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:47" *) \$3 ;
-  assign \$7  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:58" *) 6'h24;
+  assign \$9  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:46" *) 1'h0;
+  assign \$11  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:46" *) \$9 ;
+  assign \$13  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:56" *) 6'h24;
+  assign \$15  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:79" *) 7'h48;
+  assign \$17  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:85" *) 7'h6c;
+  assign \$1  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:56" *) 6'h24;
+  assign \$19  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:91" *) 7'h7f;
+  assign \$21  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:56" *) 6'h24;
+  assign \$23  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:79" *) 7'h48;
+  assign \$25  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:85" *) 7'h6c;
+  assign \$27  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:91" *) 7'h7f;
+  assign \$29  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:93" *) { zeros, enc_out[123:108] };
+  assign \$31  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:56" *) 6'h24;
+  assign \$33  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:79" *) 7'h48;
+  assign \$35  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:85" *) 7'h6c;
+  assign \$37  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:91" *) 7'h7f;
+  assign \$3  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:46" *) 1'h0;
+  assign \$40  = enc_out_ctr - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:82" *) 6'h24;
+  assign \$43  = enc_out_ctr - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:88" *) 7'h48;
+  assign \$46  = enc_out_ctr - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:94" *) 7'h6c;
+  assign \$48  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:56" *) 6'h24;
+  assign \$50  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:56" *) 6'h24;
+  assign \$52  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:56" *) 6'h24;
+  assign \$5  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:46" *) \$3 ;
+  assign \$7  = enc_out_ctr <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:56" *) 6'h24;
   always @(posedge clk)
       enc_in <= \$next\enc_in ;
-  always @(posedge clk)
-      debug_counter <= \$next\debug_counter ;
   always @(posedge clk)
       fsm_state <= \$next\fsm_state ;
   always @(posedge clk)
@@ -243,36 +233,22 @@ module converter(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, val
     endcase
   end
   always @* begin
-    \$next\debug_counter  = debug_counter;
-    casez (fsm_state)
-      3'h1:
-          casez (valid_out)
-            1'h1:
-                \$next\debug_counter  = \$21 [31:0];
-          endcase
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\debug_counter  = 32'd0;
-    endcase
-  end
-  always @* begin
     \$next\enc_in  = enc_in;
     casez (fsm_state)
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$24 )
+                casez (\$21 )
                   1'h1:
                       \$next\enc_in  = enc_out[35:0];
                   1'hz:
-                      casez ({ \$30 , \$28 , \$26  })
+                      casez ({ \$27 , \$25 , \$23  })
                         3'bzz1:
                             \$next\enc_in  = enc_out[71:36];
                         3'bz1z:
                             \$next\enc_in  = enc_out[107:72];
                         3'b1zz:
-                            \$next\enc_in  = \$32 ;
+                            \$next\enc_in  = \$29 ;
                       endcase
                 endcase
           endcase
@@ -294,19 +270,19 @@ module converter(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, val
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$34 )
+                casez (\$31 )
                   1'h1:
                       \$next\enc_in_ctr  = enc_out_ctr[5:0];
                   1'hz:
                     begin
                       \$next\enc_in_ctr  = 6'h24;
-                      casez ({ \$40 , \$38 , \$36  })
+                      casez ({ \$37 , \$35 , \$33  })
                         3'bzz1:
-                            \$next\enc_in_ctr  = \$42 [5:0];
+                            \$next\enc_in_ctr  = \$39 [5:0];
                         3'bz1z:
-                            \$next\enc_in_ctr  = \$45 [5:0];
+                            \$next\enc_in_ctr  = \$42 [5:0];
                         3'b1zz:
-                            \$next\enc_in_ctr  = \$48 [5:0];
+                            \$next\enc_in_ctr  = \$45 [5:0];
                       endcase
                     end
                 endcase
@@ -329,7 +305,7 @@ module converter(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, val
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$51 )
+                casez (\$48 )
                   1'h1:
                       \$next\in_end  = out_end;
                   1'hz:
@@ -354,7 +330,7 @@ module converter(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, val
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$53 )
+                casez (\$50 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -373,7 +349,7 @@ module converter(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, val
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$55 )
+                casez (\$52 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -386,10 +362,9 @@ module converter(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, val
           \$next\out_end_latch  = 1'h0;
     endcase
   end
-  assign \$21  = \$22 ;
+  assign \$39  = \$40 ;
   assign \$42  = \$43 ;
   assign \$45  = \$46 ;
-  assign \$48  = \$49 ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.converter_fifo" *)
@@ -399,11 +374,11 @@ module converter_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:23" *)
   reg \$next\close_full ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:27" *)
-  reg [35:0] \$next\enc_out ;
+  reg [47:0] \$next\enc_out ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:28" *)
   reg [5:0] \$next\enc_out_ctr ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  reg [42:0] \$next\fifo_din ;
+  reg [54:0] \$next\fifo_din ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
   reg \$next\fifo_re ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
@@ -421,17 +396,17 @@ module converter_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_
   output close_full;
   reg close_full = 1'h0;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:18" *)
-  input [35:0] enc_in;
+  input [47:0] enc_in;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:19" *)
   input [5:0] enc_in_ctr;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:27" *)
-  output [35:0] enc_out;
+  output [47:0] enc_out;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:28" *)
   output [5:0] enc_out_ctr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  wire [42:0] fifo_din;
+  wire [54:0] fifo_din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  wire [42:0] fifo_dout;
+  wire [54:0] fifo_dout;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:238" *)
   wire [8:0] fifo_level;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -475,7 +450,7 @@ module converter_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_
     \$next\fifo_we  = valid_in;
   end
   always @* begin
-    \$next\fifo_din  = 43'h00000000000;
+    \$next\fifo_din  = 55'h00000000000000;
     \$next\fifo_din  = { in_end, enc_in_ctr, enc_in };
   end
   always @* begin
@@ -487,16 +462,16 @@ module converter_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_
     \$next\valid_out  = fifo_readable;
   end
   always @* begin
-    \$next\enc_out  = 36'h000000000;
-    \$next\enc_out  = fifo_dout[35:0];
+    \$next\enc_out  = 48'h000000000000;
+    \$next\enc_out  = fifo_dout[47:0];
   end
   always @* begin
     \$next\enc_out_ctr  = 6'h00;
-    \$next\enc_out_ctr  = fifo_dout[41:36];
+    \$next\enc_out_ctr  = fifo_dout[53:48];
   end
   always @* begin
     \$next\out_end  = 1'h0;
-    \$next\out_end  = fifo_dout[42];
+    \$next\out_end  = fifo_dout[54];
   end
   always @* begin
     \$next\fifo_re  = 1'h0;
@@ -1075,13 +1050,13 @@ module \fifo$5 (we, re, rst, clk, writable, dout, readable, level, din);
   wire \$5 ;
   wire [8:0] \$7 ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  reg [42:0] \$next\dout ;
+  reg [54:0] \$next\dout ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:238" *)
   reg [8:0] \$next\level ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:70" *)
   reg \$next\readable ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  reg [42:0] \$next\unbuffered_din ;
+  reg [54:0] \$next\unbuffered_din ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
   reg \$next\unbuffered_re ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:139" *)
@@ -1095,9 +1070,9 @@ module \fifo$5 (we, re, rst, clk, writable, dout, readable, level, din);
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  input [42:0] din;
+  input [54:0] din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  output [42:0] dout;
+  output [54:0] dout;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:238" *)
   output [8:0] level;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -1109,9 +1084,9 @@ module \fifo$5 (we, re, rst, clk, writable, dout, readable, level, din);
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  wire [42:0] unbuffered_din;
+  wire [54:0] unbuffered_din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  wire [42:0] unbuffered_dout;
+  wire [54:0] unbuffered_dout;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
   wire [7:0] unbuffered_level;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -1147,7 +1122,7 @@ module \fifo$5 (we, re, rst, clk, writable, dout, readable, level, din);
     .writable(unbuffered_writable)
   );
   always @* begin
-    \$next\unbuffered_din  = 43'h00000000000;
+    \$next\unbuffered_din  = 55'h00000000000000;
     \$next\unbuffered_din  = din;
   end
   always @* begin
@@ -1164,7 +1139,7 @@ module \fifo$5 (we, re, rst, clk, writable, dout, readable, level, din);
     \$verilog_initial_trigger  = \$verilog_initial_trigger ;
   end
   always @* begin
-    \$next\dout  = 43'h00000000000;
+    \$next\dout  = 55'h00000000000000;
     \$next\dout  = unbuffered_dout;
   end
   always @* begin
@@ -4358,7 +4333,7 @@ module register_file(clk, width, height, rst);
   end
   always @* begin
     \$next\height_reg  = height_reg;
-    \$next\height_reg  = 16'h000a;
+    \$next\height_reg  = 16'h0c00;
     casez (rst)
       1'h1:
           \$next\height_reg  = 16'h0000;
@@ -4578,8 +4553,9 @@ endmodule
 module top(pixel_in1, pixel_in2, pixel_in3, pixel_in4, latch_output, rst, clk, zeros, valid_out, enc_out, enc_out_ctr, nready, valid_in);
   wire \$1 ;
   wire \$11 ;
-  wire [123:0] \$13 ;
-  wire [6:0] \$15 ;
+  wire [47:0] \$13 ;
+  wire [123:0] \$15 ;
+  wire [6:0] \$17 ;
   wire \$3 ;
   wire \$5 ;
   wire \$7 ;
@@ -4591,7 +4567,7 @@ module top(pixel_in1, pixel_in2, pixel_in3, pixel_in4, latch_output, rst, clk, z
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:14" *)
   reg [6:0] \$next\converter_enc_out_ctr ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:18" *)
-  reg [35:0] \$next\converter_fifo_enc_in ;
+  reg [47:0] \$next\converter_fifo_enc_in ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:19" *)
   reg [5:0] \$next\converter_fifo_enc_in_ctr ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:20" *)
@@ -4721,11 +4697,11 @@ module top(pixel_in1, pixel_in2, pixel_in3, pixel_in4, latch_output, rst, clk, z
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:23" *)
   wire converter_fifo_close_full;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:18" *)
-  wire [35:0] converter_fifo_enc_in;
+  wire [47:0] converter_fifo_enc_in;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:19" *)
   wire [5:0] converter_fifo_enc_in_ctr;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:27" *)
-  wire [35:0] converter_fifo_enc_out;
+  wire [47:0] converter_fifo_enc_out;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:28" *)
   wire [5:0] converter_fifo_enc_out_ctr;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:20" *)
@@ -4946,12 +4922,13 @@ module top(pixel_in1, pixel_in2, pixel_in3, pixel_in4, latch_output, rst, clk, z
   input valid_in;
   (* src = "./migen_src/integration_2.py:26" *)
   output valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:38" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:37" *)
   input [15:0] zeros;
   assign \$9  = lj92_pipeline_fifo_close_full == (* src = "./migen_src/integration_2.py:76" *) 1'h0;
   assign \$11  = \$7  & (* src = "./migen_src/integration_2.py:76" *) \$9 ;
-  assign \$13  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:27" *) converter_fifo_enc_out;
-  assign \$15  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:28" *) converter_fifo_enc_out_ctr;
+  assign \$13  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter36.py:19" *) converter_enc_in;
+  assign \$15  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:27" *) converter_fifo_enc_out;
+  assign \$17  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:28" *) converter_fifo_enc_out_ctr;
   assign \$1  = valid_in == (* src = "./migen_src/integration_2.py:65" *) 1'h1;
   assign \$3  = lj92_pipeline_fifo_close_full == (* src = "./migen_src/integration_2.py:65" *) 1'h0;
   assign \$5  = \$1  & (* src = "./migen_src/integration_2.py:65" *) \$3 ;
@@ -5295,8 +5272,8 @@ module top(pixel_in1, pixel_in2, pixel_in3, pixel_in4, latch_output, rst, clk, z
     \$next\converter_valid_out  = lj92_pipeline_fifo_valid_out;
   end
   always @* begin
-    \$next\converter_fifo_enc_in  = 36'h000000000;
-    \$next\converter_fifo_enc_in  = converter_enc_in;
+    \$next\converter_fifo_enc_in  = 48'h000000000000;
+    \$next\converter_fifo_enc_in  = \$13 ;
   end
   always @* begin
     \$next\converter_fifo_enc_in_ctr  = 6'h00;
@@ -5316,11 +5293,11 @@ module top(pixel_in1, pixel_in2, pixel_in3, pixel_in4, latch_output, rst, clk, z
   end
   always @* begin
     \$next\enc_out  = 124'h0000000000000000000000000000000;
-    \$next\enc_out  = \$13 ;
+    \$next\enc_out  = \$15 ;
   end
   always @* begin
     \$next\enc_out_ctr  = 7'h00;
-    \$next\enc_out_ctr  = \$15 ;
+    \$next\enc_out_ctr  = \$17 ;
   end
   always @* begin
     \$next\valid_out  = 1'h0;
@@ -5812,7 +5789,7 @@ module \unbuffered$6 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
   reg [7:0] \$next\consume ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  reg [42:0] \$next\dout ;
+  reg [54:0] \$next\dout ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
   reg [7:0] \$next\level ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:155" *)
@@ -5828,7 +5805,7 @@ module \unbuffered$6 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
   reg [7:0] \$next\wrport_storage_w_addr ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
-  reg [42:0] \$next\wrport_storage_w_data ;
+  reg [54:0] \$next\wrport_storage_w_data ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
   reg \$next\wrport_storage_w_en ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
@@ -5837,9 +5814,9 @@ module \unbuffered$6 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
   reg [7:0] consume = 8'h00;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  input [42:0] din;
+  input [54:0] din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  output [42:0] dout;
+  output [54:0] dout;
   (* init = 8'h00 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
   output [7:0] level;
@@ -5850,7 +5827,7 @@ module \unbuffered$6 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
   wire [7:0] rdport_storage_r_addr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:83" *)
-  wire [42:0] rdport_storage_r_data;
+  wire [54:0] rdport_storage_r_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:85" *)
   wire rdport_storage_r_en;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -5868,7 +5845,7 @@ module \unbuffered$6 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
   wire [7:0] wrport_storage_w_addr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
-  wire [42:0] wrport_storage_w_data;
+  wire [54:0] wrport_storage_w_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
   wire wrport_storage_w_en;
   assign \$10  = produce == (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:102" *) 1'h0;
@@ -5908,265 +5885,265 @@ module \unbuffered$6 (we, replace, re, rst, clk, writable, readable, dout, level
       consume <= \$next\consume ;
   always @(posedge clk)
       produce <= \$next\produce ;
-  reg [42:0] storage [254:0];
+  reg [54:0] storage [254:0];
   initial begin
-    storage[0] = 43'h00000000000;
-    storage[1] = 43'h00000000000;
-    storage[2] = 43'h00000000000;
-    storage[3] = 43'h00000000000;
-    storage[4] = 43'h00000000000;
-    storage[5] = 43'h00000000000;
-    storage[6] = 43'h00000000000;
-    storage[7] = 43'h00000000000;
-    storage[8] = 43'h00000000000;
-    storage[9] = 43'h00000000000;
-    storage[10] = 43'h00000000000;
-    storage[11] = 43'h00000000000;
-    storage[12] = 43'h00000000000;
-    storage[13] = 43'h00000000000;
-    storage[14] = 43'h00000000000;
-    storage[15] = 43'h00000000000;
-    storage[16] = 43'h00000000000;
-    storage[17] = 43'h00000000000;
-    storage[18] = 43'h00000000000;
-    storage[19] = 43'h00000000000;
-    storage[20] = 43'h00000000000;
-    storage[21] = 43'h00000000000;
-    storage[22] = 43'h00000000000;
-    storage[23] = 43'h00000000000;
-    storage[24] = 43'h00000000000;
-    storage[25] = 43'h00000000000;
-    storage[26] = 43'h00000000000;
-    storage[27] = 43'h00000000000;
-    storage[28] = 43'h00000000000;
-    storage[29] = 43'h00000000000;
-    storage[30] = 43'h00000000000;
-    storage[31] = 43'h00000000000;
-    storage[32] = 43'h00000000000;
-    storage[33] = 43'h00000000000;
-    storage[34] = 43'h00000000000;
-    storage[35] = 43'h00000000000;
-    storage[36] = 43'h00000000000;
-    storage[37] = 43'h00000000000;
-    storage[38] = 43'h00000000000;
-    storage[39] = 43'h00000000000;
-    storage[40] = 43'h00000000000;
-    storage[41] = 43'h00000000000;
-    storage[42] = 43'h00000000000;
-    storage[43] = 43'h00000000000;
-    storage[44] = 43'h00000000000;
-    storage[45] = 43'h00000000000;
-    storage[46] = 43'h00000000000;
-    storage[47] = 43'h00000000000;
-    storage[48] = 43'h00000000000;
-    storage[49] = 43'h00000000000;
-    storage[50] = 43'h00000000000;
-    storage[51] = 43'h00000000000;
-    storage[52] = 43'h00000000000;
-    storage[53] = 43'h00000000000;
-    storage[54] = 43'h00000000000;
-    storage[55] = 43'h00000000000;
-    storage[56] = 43'h00000000000;
-    storage[57] = 43'h00000000000;
-    storage[58] = 43'h00000000000;
-    storage[59] = 43'h00000000000;
-    storage[60] = 43'h00000000000;
-    storage[61] = 43'h00000000000;
-    storage[62] = 43'h00000000000;
-    storage[63] = 43'h00000000000;
-    storage[64] = 43'h00000000000;
-    storage[65] = 43'h00000000000;
-    storage[66] = 43'h00000000000;
-    storage[67] = 43'h00000000000;
-    storage[68] = 43'h00000000000;
-    storage[69] = 43'h00000000000;
-    storage[70] = 43'h00000000000;
-    storage[71] = 43'h00000000000;
-    storage[72] = 43'h00000000000;
-    storage[73] = 43'h00000000000;
-    storage[74] = 43'h00000000000;
-    storage[75] = 43'h00000000000;
-    storage[76] = 43'h00000000000;
-    storage[77] = 43'h00000000000;
-    storage[78] = 43'h00000000000;
-    storage[79] = 43'h00000000000;
-    storage[80] = 43'h00000000000;
-    storage[81] = 43'h00000000000;
-    storage[82] = 43'h00000000000;
-    storage[83] = 43'h00000000000;
-    storage[84] = 43'h00000000000;
-    storage[85] = 43'h00000000000;
-    storage[86] = 43'h00000000000;
-    storage[87] = 43'h00000000000;
-    storage[88] = 43'h00000000000;
-    storage[89] = 43'h00000000000;
-    storage[90] = 43'h00000000000;
-    storage[91] = 43'h00000000000;
-    storage[92] = 43'h00000000000;
-    storage[93] = 43'h00000000000;
-    storage[94] = 43'h00000000000;
-    storage[95] = 43'h00000000000;
-    storage[96] = 43'h00000000000;
-    storage[97] = 43'h00000000000;
-    storage[98] = 43'h00000000000;
-    storage[99] = 43'h00000000000;
-    storage[100] = 43'h00000000000;
-    storage[101] = 43'h00000000000;
-    storage[102] = 43'h00000000000;
-    storage[103] = 43'h00000000000;
-    storage[104] = 43'h00000000000;
-    storage[105] = 43'h00000000000;
-    storage[106] = 43'h00000000000;
-    storage[107] = 43'h00000000000;
-    storage[108] = 43'h00000000000;
-    storage[109] = 43'h00000000000;
-    storage[110] = 43'h00000000000;
-    storage[111] = 43'h00000000000;
-    storage[112] = 43'h00000000000;
-    storage[113] = 43'h00000000000;
-    storage[114] = 43'h00000000000;
-    storage[115] = 43'h00000000000;
-    storage[116] = 43'h00000000000;
-    storage[117] = 43'h00000000000;
-    storage[118] = 43'h00000000000;
-    storage[119] = 43'h00000000000;
-    storage[120] = 43'h00000000000;
-    storage[121] = 43'h00000000000;
-    storage[122] = 43'h00000000000;
-    storage[123] = 43'h00000000000;
-    storage[124] = 43'h00000000000;
-    storage[125] = 43'h00000000000;
-    storage[126] = 43'h00000000000;
-    storage[127] = 43'h00000000000;
-    storage[128] = 43'h00000000000;
-    storage[129] = 43'h00000000000;
-    storage[130] = 43'h00000000000;
-    storage[131] = 43'h00000000000;
-    storage[132] = 43'h00000000000;
-    storage[133] = 43'h00000000000;
-    storage[134] = 43'h00000000000;
-    storage[135] = 43'h00000000000;
-    storage[136] = 43'h00000000000;
-    storage[137] = 43'h00000000000;
-    storage[138] = 43'h00000000000;
-    storage[139] = 43'h00000000000;
-    storage[140] = 43'h00000000000;
-    storage[141] = 43'h00000000000;
-    storage[142] = 43'h00000000000;
-    storage[143] = 43'h00000000000;
-    storage[144] = 43'h00000000000;
-    storage[145] = 43'h00000000000;
-    storage[146] = 43'h00000000000;
-    storage[147] = 43'h00000000000;
-    storage[148] = 43'h00000000000;
-    storage[149] = 43'h00000000000;
-    storage[150] = 43'h00000000000;
-    storage[151] = 43'h00000000000;
-    storage[152] = 43'h00000000000;
-    storage[153] = 43'h00000000000;
-    storage[154] = 43'h00000000000;
-    storage[155] = 43'h00000000000;
-    storage[156] = 43'h00000000000;
-    storage[157] = 43'h00000000000;
-    storage[158] = 43'h00000000000;
-    storage[159] = 43'h00000000000;
-    storage[160] = 43'h00000000000;
-    storage[161] = 43'h00000000000;
-    storage[162] = 43'h00000000000;
-    storage[163] = 43'h00000000000;
-    storage[164] = 43'h00000000000;
-    storage[165] = 43'h00000000000;
-    storage[166] = 43'h00000000000;
-    storage[167] = 43'h00000000000;
-    storage[168] = 43'h00000000000;
-    storage[169] = 43'h00000000000;
-    storage[170] = 43'h00000000000;
-    storage[171] = 43'h00000000000;
-    storage[172] = 43'h00000000000;
-    storage[173] = 43'h00000000000;
-    storage[174] = 43'h00000000000;
-    storage[175] = 43'h00000000000;
-    storage[176] = 43'h00000000000;
-    storage[177] = 43'h00000000000;
-    storage[178] = 43'h00000000000;
-    storage[179] = 43'h00000000000;
-    storage[180] = 43'h00000000000;
-    storage[181] = 43'h00000000000;
-    storage[182] = 43'h00000000000;
-    storage[183] = 43'h00000000000;
-    storage[184] = 43'h00000000000;
-    storage[185] = 43'h00000000000;
-    storage[186] = 43'h00000000000;
-    storage[187] = 43'h00000000000;
-    storage[188] = 43'h00000000000;
-    storage[189] = 43'h00000000000;
-    storage[190] = 43'h00000000000;
-    storage[191] = 43'h00000000000;
-    storage[192] = 43'h00000000000;
-    storage[193] = 43'h00000000000;
-    storage[194] = 43'h00000000000;
-    storage[195] = 43'h00000000000;
-    storage[196] = 43'h00000000000;
-    storage[197] = 43'h00000000000;
-    storage[198] = 43'h00000000000;
-    storage[199] = 43'h00000000000;
-    storage[200] = 43'h00000000000;
-    storage[201] = 43'h00000000000;
-    storage[202] = 43'h00000000000;
-    storage[203] = 43'h00000000000;
-    storage[204] = 43'h00000000000;
-    storage[205] = 43'h00000000000;
-    storage[206] = 43'h00000000000;
-    storage[207] = 43'h00000000000;
-    storage[208] = 43'h00000000000;
-    storage[209] = 43'h00000000000;
-    storage[210] = 43'h00000000000;
-    storage[211] = 43'h00000000000;
-    storage[212] = 43'h00000000000;
-    storage[213] = 43'h00000000000;
-    storage[214] = 43'h00000000000;
-    storage[215] = 43'h00000000000;
-    storage[216] = 43'h00000000000;
-    storage[217] = 43'h00000000000;
-    storage[218] = 43'h00000000000;
-    storage[219] = 43'h00000000000;
-    storage[220] = 43'h00000000000;
-    storage[221] = 43'h00000000000;
-    storage[222] = 43'h00000000000;
-    storage[223] = 43'h00000000000;
-    storage[224] = 43'h00000000000;
-    storage[225] = 43'h00000000000;
-    storage[226] = 43'h00000000000;
-    storage[227] = 43'h00000000000;
-    storage[228] = 43'h00000000000;
-    storage[229] = 43'h00000000000;
-    storage[230] = 43'h00000000000;
-    storage[231] = 43'h00000000000;
-    storage[232] = 43'h00000000000;
-    storage[233] = 43'h00000000000;
-    storage[234] = 43'h00000000000;
-    storage[235] = 43'h00000000000;
-    storage[236] = 43'h00000000000;
-    storage[237] = 43'h00000000000;
-    storage[238] = 43'h00000000000;
-    storage[239] = 43'h00000000000;
-    storage[240] = 43'h00000000000;
-    storage[241] = 43'h00000000000;
-    storage[242] = 43'h00000000000;
-    storage[243] = 43'h00000000000;
-    storage[244] = 43'h00000000000;
-    storage[245] = 43'h00000000000;
-    storage[246] = 43'h00000000000;
-    storage[247] = 43'h00000000000;
-    storage[248] = 43'h00000000000;
-    storage[249] = 43'h00000000000;
-    storage[250] = 43'h00000000000;
-    storage[251] = 43'h00000000000;
-    storage[252] = 43'h00000000000;
-    storage[253] = 43'h00000000000;
-    storage[254] = 43'h00000000000;
+    storage[0] = 55'h00000000000000;
+    storage[1] = 55'h00000000000000;
+    storage[2] = 55'h00000000000000;
+    storage[3] = 55'h00000000000000;
+    storage[4] = 55'h00000000000000;
+    storage[5] = 55'h00000000000000;
+    storage[6] = 55'h00000000000000;
+    storage[7] = 55'h00000000000000;
+    storage[8] = 55'h00000000000000;
+    storage[9] = 55'h00000000000000;
+    storage[10] = 55'h00000000000000;
+    storage[11] = 55'h00000000000000;
+    storage[12] = 55'h00000000000000;
+    storage[13] = 55'h00000000000000;
+    storage[14] = 55'h00000000000000;
+    storage[15] = 55'h00000000000000;
+    storage[16] = 55'h00000000000000;
+    storage[17] = 55'h00000000000000;
+    storage[18] = 55'h00000000000000;
+    storage[19] = 55'h00000000000000;
+    storage[20] = 55'h00000000000000;
+    storage[21] = 55'h00000000000000;
+    storage[22] = 55'h00000000000000;
+    storage[23] = 55'h00000000000000;
+    storage[24] = 55'h00000000000000;
+    storage[25] = 55'h00000000000000;
+    storage[26] = 55'h00000000000000;
+    storage[27] = 55'h00000000000000;
+    storage[28] = 55'h00000000000000;
+    storage[29] = 55'h00000000000000;
+    storage[30] = 55'h00000000000000;
+    storage[31] = 55'h00000000000000;
+    storage[32] = 55'h00000000000000;
+    storage[33] = 55'h00000000000000;
+    storage[34] = 55'h00000000000000;
+    storage[35] = 55'h00000000000000;
+    storage[36] = 55'h00000000000000;
+    storage[37] = 55'h00000000000000;
+    storage[38] = 55'h00000000000000;
+    storage[39] = 55'h00000000000000;
+    storage[40] = 55'h00000000000000;
+    storage[41] = 55'h00000000000000;
+    storage[42] = 55'h00000000000000;
+    storage[43] = 55'h00000000000000;
+    storage[44] = 55'h00000000000000;
+    storage[45] = 55'h00000000000000;
+    storage[46] = 55'h00000000000000;
+    storage[47] = 55'h00000000000000;
+    storage[48] = 55'h00000000000000;
+    storage[49] = 55'h00000000000000;
+    storage[50] = 55'h00000000000000;
+    storage[51] = 55'h00000000000000;
+    storage[52] = 55'h00000000000000;
+    storage[53] = 55'h00000000000000;
+    storage[54] = 55'h00000000000000;
+    storage[55] = 55'h00000000000000;
+    storage[56] = 55'h00000000000000;
+    storage[57] = 55'h00000000000000;
+    storage[58] = 55'h00000000000000;
+    storage[59] = 55'h00000000000000;
+    storage[60] = 55'h00000000000000;
+    storage[61] = 55'h00000000000000;
+    storage[62] = 55'h00000000000000;
+    storage[63] = 55'h00000000000000;
+    storage[64] = 55'h00000000000000;
+    storage[65] = 55'h00000000000000;
+    storage[66] = 55'h00000000000000;
+    storage[67] = 55'h00000000000000;
+    storage[68] = 55'h00000000000000;
+    storage[69] = 55'h00000000000000;
+    storage[70] = 55'h00000000000000;
+    storage[71] = 55'h00000000000000;
+    storage[72] = 55'h00000000000000;
+    storage[73] = 55'h00000000000000;
+    storage[74] = 55'h00000000000000;
+    storage[75] = 55'h00000000000000;
+    storage[76] = 55'h00000000000000;
+    storage[77] = 55'h00000000000000;
+    storage[78] = 55'h00000000000000;
+    storage[79] = 55'h00000000000000;
+    storage[80] = 55'h00000000000000;
+    storage[81] = 55'h00000000000000;
+    storage[82] = 55'h00000000000000;
+    storage[83] = 55'h00000000000000;
+    storage[84] = 55'h00000000000000;
+    storage[85] = 55'h00000000000000;
+    storage[86] = 55'h00000000000000;
+    storage[87] = 55'h00000000000000;
+    storage[88] = 55'h00000000000000;
+    storage[89] = 55'h00000000000000;
+    storage[90] = 55'h00000000000000;
+    storage[91] = 55'h00000000000000;
+    storage[92] = 55'h00000000000000;
+    storage[93] = 55'h00000000000000;
+    storage[94] = 55'h00000000000000;
+    storage[95] = 55'h00000000000000;
+    storage[96] = 55'h00000000000000;
+    storage[97] = 55'h00000000000000;
+    storage[98] = 55'h00000000000000;
+    storage[99] = 55'h00000000000000;
+    storage[100] = 55'h00000000000000;
+    storage[101] = 55'h00000000000000;
+    storage[102] = 55'h00000000000000;
+    storage[103] = 55'h00000000000000;
+    storage[104] = 55'h00000000000000;
+    storage[105] = 55'h00000000000000;
+    storage[106] = 55'h00000000000000;
+    storage[107] = 55'h00000000000000;
+    storage[108] = 55'h00000000000000;
+    storage[109] = 55'h00000000000000;
+    storage[110] = 55'h00000000000000;
+    storage[111] = 55'h00000000000000;
+    storage[112] = 55'h00000000000000;
+    storage[113] = 55'h00000000000000;
+    storage[114] = 55'h00000000000000;
+    storage[115] = 55'h00000000000000;
+    storage[116] = 55'h00000000000000;
+    storage[117] = 55'h00000000000000;
+    storage[118] = 55'h00000000000000;
+    storage[119] = 55'h00000000000000;
+    storage[120] = 55'h00000000000000;
+    storage[121] = 55'h00000000000000;
+    storage[122] = 55'h00000000000000;
+    storage[123] = 55'h00000000000000;
+    storage[124] = 55'h00000000000000;
+    storage[125] = 55'h00000000000000;
+    storage[126] = 55'h00000000000000;
+    storage[127] = 55'h00000000000000;
+    storage[128] = 55'h00000000000000;
+    storage[129] = 55'h00000000000000;
+    storage[130] = 55'h00000000000000;
+    storage[131] = 55'h00000000000000;
+    storage[132] = 55'h00000000000000;
+    storage[133] = 55'h00000000000000;
+    storage[134] = 55'h00000000000000;
+    storage[135] = 55'h00000000000000;
+    storage[136] = 55'h00000000000000;
+    storage[137] = 55'h00000000000000;
+    storage[138] = 55'h00000000000000;
+    storage[139] = 55'h00000000000000;
+    storage[140] = 55'h00000000000000;
+    storage[141] = 55'h00000000000000;
+    storage[142] = 55'h00000000000000;
+    storage[143] = 55'h00000000000000;
+    storage[144] = 55'h00000000000000;
+    storage[145] = 55'h00000000000000;
+    storage[146] = 55'h00000000000000;
+    storage[147] = 55'h00000000000000;
+    storage[148] = 55'h00000000000000;
+    storage[149] = 55'h00000000000000;
+    storage[150] = 55'h00000000000000;
+    storage[151] = 55'h00000000000000;
+    storage[152] = 55'h00000000000000;
+    storage[153] = 55'h00000000000000;
+    storage[154] = 55'h00000000000000;
+    storage[155] = 55'h00000000000000;
+    storage[156] = 55'h00000000000000;
+    storage[157] = 55'h00000000000000;
+    storage[158] = 55'h00000000000000;
+    storage[159] = 55'h00000000000000;
+    storage[160] = 55'h00000000000000;
+    storage[161] = 55'h00000000000000;
+    storage[162] = 55'h00000000000000;
+    storage[163] = 55'h00000000000000;
+    storage[164] = 55'h00000000000000;
+    storage[165] = 55'h00000000000000;
+    storage[166] = 55'h00000000000000;
+    storage[167] = 55'h00000000000000;
+    storage[168] = 55'h00000000000000;
+    storage[169] = 55'h00000000000000;
+    storage[170] = 55'h00000000000000;
+    storage[171] = 55'h00000000000000;
+    storage[172] = 55'h00000000000000;
+    storage[173] = 55'h00000000000000;
+    storage[174] = 55'h00000000000000;
+    storage[175] = 55'h00000000000000;
+    storage[176] = 55'h00000000000000;
+    storage[177] = 55'h00000000000000;
+    storage[178] = 55'h00000000000000;
+    storage[179] = 55'h00000000000000;
+    storage[180] = 55'h00000000000000;
+    storage[181] = 55'h00000000000000;
+    storage[182] = 55'h00000000000000;
+    storage[183] = 55'h00000000000000;
+    storage[184] = 55'h00000000000000;
+    storage[185] = 55'h00000000000000;
+    storage[186] = 55'h00000000000000;
+    storage[187] = 55'h00000000000000;
+    storage[188] = 55'h00000000000000;
+    storage[189] = 55'h00000000000000;
+    storage[190] = 55'h00000000000000;
+    storage[191] = 55'h00000000000000;
+    storage[192] = 55'h00000000000000;
+    storage[193] = 55'h00000000000000;
+    storage[194] = 55'h00000000000000;
+    storage[195] = 55'h00000000000000;
+    storage[196] = 55'h00000000000000;
+    storage[197] = 55'h00000000000000;
+    storage[198] = 55'h00000000000000;
+    storage[199] = 55'h00000000000000;
+    storage[200] = 55'h00000000000000;
+    storage[201] = 55'h00000000000000;
+    storage[202] = 55'h00000000000000;
+    storage[203] = 55'h00000000000000;
+    storage[204] = 55'h00000000000000;
+    storage[205] = 55'h00000000000000;
+    storage[206] = 55'h00000000000000;
+    storage[207] = 55'h00000000000000;
+    storage[208] = 55'h00000000000000;
+    storage[209] = 55'h00000000000000;
+    storage[210] = 55'h00000000000000;
+    storage[211] = 55'h00000000000000;
+    storage[212] = 55'h00000000000000;
+    storage[213] = 55'h00000000000000;
+    storage[214] = 55'h00000000000000;
+    storage[215] = 55'h00000000000000;
+    storage[216] = 55'h00000000000000;
+    storage[217] = 55'h00000000000000;
+    storage[218] = 55'h00000000000000;
+    storage[219] = 55'h00000000000000;
+    storage[220] = 55'h00000000000000;
+    storage[221] = 55'h00000000000000;
+    storage[222] = 55'h00000000000000;
+    storage[223] = 55'h00000000000000;
+    storage[224] = 55'h00000000000000;
+    storage[225] = 55'h00000000000000;
+    storage[226] = 55'h00000000000000;
+    storage[227] = 55'h00000000000000;
+    storage[228] = 55'h00000000000000;
+    storage[229] = 55'h00000000000000;
+    storage[230] = 55'h00000000000000;
+    storage[231] = 55'h00000000000000;
+    storage[232] = 55'h00000000000000;
+    storage[233] = 55'h00000000000000;
+    storage[234] = 55'h00000000000000;
+    storage[235] = 55'h00000000000000;
+    storage[236] = 55'h00000000000000;
+    storage[237] = 55'h00000000000000;
+    storage[238] = 55'h00000000000000;
+    storage[239] = 55'h00000000000000;
+    storage[240] = 55'h00000000000000;
+    storage[241] = 55'h00000000000000;
+    storage[242] = 55'h00000000000000;
+    storage[243] = 55'h00000000000000;
+    storage[244] = 55'h00000000000000;
+    storage[245] = 55'h00000000000000;
+    storage[246] = 55'h00000000000000;
+    storage[247] = 55'h00000000000000;
+    storage[248] = 55'h00000000000000;
+    storage[249] = 55'h00000000000000;
+    storage[250] = 55'h00000000000000;
+    storage[251] = 55'h00000000000000;
+    storage[252] = 55'h00000000000000;
+    storage[253] = 55'h00000000000000;
+    storage[254] = 55'h00000000000000;
   end
-  reg [42:0] _0_;
+  reg [54:0] _0_;
   always @(posedge clk) begin
     if (\$next\rdport_storage_r_en ) _0_ <= storage[\$next\rdport_storage_r_addr ];
     if (\$next\wrport_storage_w_en ) storage[\$next\wrport_storage_w_addr ] <= \$next\wrport_storage_w_data ;
@@ -6204,7 +6181,7 @@ module \unbuffered$6 (we, replace, re, rst, clk, writable, readable, dout, level
     endcase
   end
   always @* begin
-    \$next\wrport_storage_w_data  = 43'h00000000000;
+    \$next\wrport_storage_w_data  = 55'h00000000000000;
     \$next\wrport_storage_w_data  = din;
   end
   always @* begin
@@ -6227,7 +6204,7 @@ module \unbuffered$6 (we, replace, re, rst, clk, writable, readable, dout, level
     \$next\rdport_storage_r_addr  = consume;
   end
   always @* begin
-    \$next\dout  = 43'h00000000000;
+    \$next\dout  = 55'h00000000000000;
     \$next\dout  = rdport_storage_r_data;
   end
   always @* begin

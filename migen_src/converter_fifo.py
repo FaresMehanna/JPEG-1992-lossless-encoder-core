@@ -5,7 +5,7 @@ from nmigen.lib.fifo import SyncFIFOBuffered
 from math import log, ceil
 from constants import *
 
-DATA_WIDTH = 36
+DATA_WIDTH = 48
 CTR_BITS = 6
 DATA_CTR = DATA_WIDTH + CTR_BITS
 

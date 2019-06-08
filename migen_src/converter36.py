@@ -33,7 +33,6 @@ class Converter36(Elaboratable):
 
 		enc_out_latch = Signal(108)
 		out_end_latch = Signal(1)
-		debug_counter = Signal(32)
 
 		zeros = Signal(16)
 
@@ -53,7 +52,6 @@ class Converter36(Elaboratable):
 
 			with m.State("BRUST"):
 				with m.If(self.valid_out):
-					m.d.sync += debug_counter.eq(debug_counter + self.enc_out_ctr)
 					#if all input can fill
 					with m.If(self.enc_out_ctr <= 36):
 						m.d.sync += [

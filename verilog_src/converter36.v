@@ -10,32 +10,28 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
   wire \$15 ;
   wire \$17 ;
   wire \$19 ;
-  wire [32:0] \$21 ;
-  wire [32:0] \$22 ;
-  wire \$24 ;
-  wire \$26 ;
-  wire \$28 ;
+  wire \$21 ;
+  wire \$23 ;
+  wire \$25 ;
+  wire \$27 ;
+  wire [35:0] \$29 ;
   wire \$3 ;
-  wire \$30 ;
-  wire [35:0] \$32 ;
-  wire \$34 ;
-  wire \$36 ;
-  wire \$38 ;
-  wire \$40 ;
+  wire \$31 ;
+  wire \$33 ;
+  wire \$35 ;
+  wire \$37 ;
+  wire [7:0] \$39 ;
+  wire [7:0] \$40 ;
   wire [7:0] \$42 ;
   wire [7:0] \$43 ;
   wire [7:0] \$45 ;
   wire [7:0] \$46 ;
-  wire [7:0] \$48 ;
-  wire [7:0] \$49 ;
+  wire \$48 ;
   wire \$5 ;
-  wire \$51 ;
-  wire \$53 ;
-  wire \$55 ;
+  wire \$50 ;
+  wire \$52 ;
   wire \$7 ;
   wire \$9 ;
-  (* src = "./migen_src/converter36.py:36" *)
-  reg [31:0] \$next\debug_counter ;
   (* src = "./migen_src/converter36.py:19" *)
   reg [35:0] \$next\enc_in ;
   (* src = "./migen_src/converter36.py:20" *)
@@ -56,9 +52,6 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
   input clk;
   (* src = "./migen_src/converter36.py:23" *)
   input close_full;
-  (* init = 32'd0 *)
-  (* src = "./migen_src/converter36.py:36" *)
-  reg [31:0] debug_counter = 32'd0;
   (* init = 36'h000000000 *)
   (* src = "./migen_src/converter36.py:19" *)
   output [35:0] enc_in;
@@ -98,34 +91,33 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
   reg valid_in = 1'h0;
   (* src = "./migen_src/converter36.py:16" *)
   input valid_out;
-  (* src = "./migen_src/converter36.py:38" *)
+  (* src = "./migen_src/converter36.py:37" *)
   input [15:0] zeros;
-  assign \$9  = close_full == (* src = "./migen_src/converter36.py:47" *) 1'h0;
-  assign \$11  = valid_out & (* src = "./migen_src/converter36.py:47" *) \$9 ;
-  assign \$13  = enc_out_ctr <= (* src = "./migen_src/converter36.py:58" *) 6'h24;
-  assign \$15  = enc_out_ctr <= (* src = "./migen_src/converter36.py:81" *) 7'h48;
-  assign \$17  = enc_out_ctr <= (* src = "./migen_src/converter36.py:87" *) 7'h6c;
-  assign \$1  = enc_out_ctr <= (* src = "./migen_src/converter36.py:58" *) 6'h24;
-  assign \$19  = enc_out_ctr <= (* src = "./migen_src/converter36.py:93" *) 7'h7f;
-  assign \$22  = debug_counter + (* src = "./migen_src/converter36.py:56" *) enc_out_ctr;
-  assign \$24  = enc_out_ctr <= (* src = "./migen_src/converter36.py:58" *) 6'h24;
-  assign \$26  = enc_out_ctr <= (* src = "./migen_src/converter36.py:81" *) 7'h48;
-  assign \$28  = enc_out_ctr <= (* src = "./migen_src/converter36.py:87" *) 7'h6c;
-  assign \$30  = enc_out_ctr <= (* src = "./migen_src/converter36.py:93" *) 7'h7f;
-  assign \$32  = + (* src = "./migen_src/converter36.py:95" *) { zeros, enc_out[123:108] };
-  assign \$34  = enc_out_ctr <= (* src = "./migen_src/converter36.py:58" *) 6'h24;
-  assign \$36  = enc_out_ctr <= (* src = "./migen_src/converter36.py:81" *) 7'h48;
-  assign \$38  = enc_out_ctr <= (* src = "./migen_src/converter36.py:87" *) 7'h6c;
-  assign \$3  = close_full == (* src = "./migen_src/converter36.py:47" *) 1'h0;
-  assign \$40  = enc_out_ctr <= (* src = "./migen_src/converter36.py:93" *) 7'h7f;
-  assign \$43  = enc_out_ctr - (* src = "./migen_src/converter36.py:84" *) 6'h24;
-  assign \$46  = enc_out_ctr - (* src = "./migen_src/converter36.py:90" *) 7'h48;
-  assign \$49  = enc_out_ctr - (* src = "./migen_src/converter36.py:96" *) 7'h6c;
-  assign \$51  = enc_out_ctr <= (* src = "./migen_src/converter36.py:58" *) 6'h24;
-  assign \$53  = enc_out_ctr <= (* src = "./migen_src/converter36.py:58" *) 6'h24;
-  assign \$55  = enc_out_ctr <= (* src = "./migen_src/converter36.py:58" *) 6'h24;
-  assign \$5  = valid_out & (* src = "./migen_src/converter36.py:47" *) \$3 ;
-  assign \$7  = enc_out_ctr <= (* src = "./migen_src/converter36.py:58" *) 6'h24;
+  assign \$9  = close_full == (* src = "./migen_src/converter36.py:46" *) 1'h0;
+  assign \$11  = valid_out & (* src = "./migen_src/converter36.py:46" *) \$9 ;
+  assign \$13  = enc_out_ctr <= (* src = "./migen_src/converter36.py:56" *) 6'h24;
+  assign \$15  = enc_out_ctr <= (* src = "./migen_src/converter36.py:79" *) 7'h48;
+  assign \$17  = enc_out_ctr <= (* src = "./migen_src/converter36.py:85" *) 7'h6c;
+  assign \$1  = enc_out_ctr <= (* src = "./migen_src/converter36.py:56" *) 6'h24;
+  assign \$19  = enc_out_ctr <= (* src = "./migen_src/converter36.py:91" *) 7'h7f;
+  assign \$21  = enc_out_ctr <= (* src = "./migen_src/converter36.py:56" *) 6'h24;
+  assign \$23  = enc_out_ctr <= (* src = "./migen_src/converter36.py:79" *) 7'h48;
+  assign \$25  = enc_out_ctr <= (* src = "./migen_src/converter36.py:85" *) 7'h6c;
+  assign \$27  = enc_out_ctr <= (* src = "./migen_src/converter36.py:91" *) 7'h7f;
+  assign \$29  = + (* src = "./migen_src/converter36.py:93" *) { zeros, enc_out[123:108] };
+  assign \$31  = enc_out_ctr <= (* src = "./migen_src/converter36.py:56" *) 6'h24;
+  assign \$33  = enc_out_ctr <= (* src = "./migen_src/converter36.py:79" *) 7'h48;
+  assign \$35  = enc_out_ctr <= (* src = "./migen_src/converter36.py:85" *) 7'h6c;
+  assign \$37  = enc_out_ctr <= (* src = "./migen_src/converter36.py:91" *) 7'h7f;
+  assign \$3  = close_full == (* src = "./migen_src/converter36.py:46" *) 1'h0;
+  assign \$40  = enc_out_ctr - (* src = "./migen_src/converter36.py:82" *) 6'h24;
+  assign \$43  = enc_out_ctr - (* src = "./migen_src/converter36.py:88" *) 7'h48;
+  assign \$46  = enc_out_ctr - (* src = "./migen_src/converter36.py:94" *) 7'h6c;
+  assign \$48  = enc_out_ctr <= (* src = "./migen_src/converter36.py:56" *) 6'h24;
+  assign \$50  = enc_out_ctr <= (* src = "./migen_src/converter36.py:56" *) 6'h24;
+  assign \$52  = enc_out_ctr <= (* src = "./migen_src/converter36.py:56" *) 6'h24;
+  assign \$5  = valid_out & (* src = "./migen_src/converter36.py:46" *) \$3 ;
+  assign \$7  = enc_out_ctr <= (* src = "./migen_src/converter36.py:56" *) 6'h24;
   always @(posedge clk)
       out_end_latch <= \$next\out_end_latch ;
   always @(posedge clk)
@@ -136,8 +128,6 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
       enc_in_ctr <= \$next\enc_in_ctr ;
   always @(posedge clk)
       enc_in <= \$next\enc_in ;
-  always @(posedge clk)
-      debug_counter <= \$next\debug_counter ;
   always @(posedge clk)
       fsm_state <= \$next\fsm_state ;
   always @(posedge clk)
@@ -244,36 +234,22 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
     endcase
   end
   always @* begin
-    \$next\debug_counter  = debug_counter;
-    casez (fsm_state)
-      3'h1:
-          casez (valid_out)
-            1'h1:
-                \$next\debug_counter  = \$21 [31:0];
-          endcase
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\debug_counter  = 32'd0;
-    endcase
-  end
-  always @* begin
     \$next\enc_in  = enc_in;
     casez (fsm_state)
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$24 )
+                casez (\$21 )
                   1'h1:
                       \$next\enc_in  = enc_out[35:0];
                   1'hz:
-                      casez ({ \$30 , \$28 , \$26  })
+                      casez ({ \$27 , \$25 , \$23  })
                         3'bzz1:
                             \$next\enc_in  = enc_out[71:36];
                         3'bz1z:
                             \$next\enc_in  = enc_out[107:72];
                         3'b1zz:
-                            \$next\enc_in  = \$32 ;
+                            \$next\enc_in  = \$29 ;
                       endcase
                 endcase
           endcase
@@ -295,19 +271,19 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$34 )
+                casez (\$31 )
                   1'h1:
                       \$next\enc_in_ctr  = enc_out_ctr[5:0];
                   1'hz:
                     begin
                       \$next\enc_in_ctr  = 6'h24;
-                      casez ({ \$40 , \$38 , \$36  })
+                      casez ({ \$37 , \$35 , \$33  })
                         3'bzz1:
-                            \$next\enc_in_ctr  = \$42 [5:0];
+                            \$next\enc_in_ctr  = \$39 [5:0];
                         3'bz1z:
-                            \$next\enc_in_ctr  = \$45 [5:0];
+                            \$next\enc_in_ctr  = \$42 [5:0];
                         3'b1zz:
-                            \$next\enc_in_ctr  = \$48 [5:0];
+                            \$next\enc_in_ctr  = \$45 [5:0];
                       endcase
                     end
                 endcase
@@ -330,7 +306,7 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$51 )
+                casez (\$48 )
                   1'h1:
                       \$next\in_end  = out_end;
                   1'hz:
@@ -355,7 +331,7 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$53 )
+                casez (\$50 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -374,7 +350,7 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
       3'h1:
           casez (valid_out)
             1'h1:
-                casez (\$55 )
+                casez (\$52 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -387,9 +363,8 @@ module top(close_full, enc_out_ctr, enc_out, out_end, zeros, rst, clk, latch_out
           \$next\out_end_latch  = 1'h0;
     endcase
   end
-  assign \$21  = \$22 ;
+  assign \$39  = \$40 ;
   assign \$42  = \$43 ;
   assign \$45  = \$46 ;
-  assign \$48  = \$49 ;
 endmodule
 

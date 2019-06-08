@@ -8,13 +8,13 @@ module fifo(we, re, rst, clk, writable, dout, readable, level, din);
   wire \$5 ;
   wire [7:0] \$7 ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  reg [42:0] \$next\dout ;
+  reg [54:0] \$next\dout ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:238" *)
   reg [7:0] \$next\level ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:70" *)
   reg \$next\readable ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  reg [42:0] \$next\unbuffered_din ;
+  reg [54:0] \$next\unbuffered_din ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
   reg \$next\unbuffered_re ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:139" *)
@@ -28,9 +28,9 @@ module fifo(we, re, rst, clk, writable, dout, readable, level, din);
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  input [42:0] din;
+  input [54:0] din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  output [42:0] dout;
+  output [54:0] dout;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:238" *)
   output [7:0] level;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -42,9 +42,9 @@ module fifo(we, re, rst, clk, writable, dout, readable, level, din);
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  wire [42:0] unbuffered_din;
+  wire [54:0] unbuffered_din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  wire [42:0] unbuffered_dout;
+  wire [54:0] unbuffered_dout;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
   wire [6:0] unbuffered_level;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -80,7 +80,7 @@ module fifo(we, re, rst, clk, writable, dout, readable, level, din);
     .writable(unbuffered_writable)
   );
   always @* begin
-    \$next\unbuffered_din  = 43'h00000000000;
+    \$next\unbuffered_din  = 55'h00000000000000;
     \$next\unbuffered_din  = din;
   end
   always @* begin
@@ -97,7 +97,7 @@ module fifo(we, re, rst, clk, writable, dout, readable, level, din);
     \$verilog_initial_trigger  = \$verilog_initial_trigger ;
   end
   always @* begin
-    \$next\dout  = 43'h00000000000;
+    \$next\dout  = 55'h00000000000000;
     \$next\dout  = unbuffered_dout;
   end
   always @* begin
@@ -138,11 +138,11 @@ module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_
   (* src = "./migen_src/converter_fifo.py:23" *)
   reg \$next\close_full ;
   (* src = "./migen_src/converter_fifo.py:27" *)
-  reg [35:0] \$next\enc_out ;
+  reg [47:0] \$next\enc_out ;
   (* src = "./migen_src/converter_fifo.py:28" *)
   reg [5:0] \$next\enc_out_ctr ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  reg [42:0] \$next\fifo_din ;
+  reg [54:0] \$next\fifo_din ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
   reg \$next\fifo_re ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
@@ -160,17 +160,17 @@ module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_
   output close_full;
   reg close_full = 1'h0;
   (* src = "./migen_src/converter_fifo.py:18" *)
-  input [35:0] enc_in;
+  input [47:0] enc_in;
   (* src = "./migen_src/converter_fifo.py:19" *)
   input [5:0] enc_in_ctr;
   (* src = "./migen_src/converter_fifo.py:27" *)
-  output [35:0] enc_out;
+  output [47:0] enc_out;
   (* src = "./migen_src/converter_fifo.py:28" *)
   output [5:0] enc_out_ctr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  wire [42:0] fifo_din;
+  wire [54:0] fifo_din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  wire [42:0] fifo_dout;
+  wire [54:0] fifo_dout;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:238" *)
   wire [7:0] fifo_level;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -214,7 +214,7 @@ module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_
     \$next\fifo_we  = valid_in;
   end
   always @* begin
-    \$next\fifo_din  = 43'h00000000000;
+    \$next\fifo_din  = 55'h00000000000000;
     \$next\fifo_din  = { in_end, enc_in_ctr, enc_in };
   end
   always @* begin
@@ -226,16 +226,16 @@ module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_
     \$next\valid_out  = fifo_readable;
   end
   always @* begin
-    \$next\enc_out  = 36'h000000000;
-    \$next\enc_out  = fifo_dout[35:0];
+    \$next\enc_out  = 48'h000000000000;
+    \$next\enc_out  = fifo_dout[47:0];
   end
   always @* begin
     \$next\enc_out_ctr  = 6'h00;
-    \$next\enc_out_ctr  = fifo_dout[41:36];
+    \$next\enc_out_ctr  = fifo_dout[53:48];
   end
   always @* begin
     \$next\out_end  = 1'h0;
-    \$next\out_end  = fifo_dout[42];
+    \$next\out_end  = fifo_dout[54];
   end
   always @* begin
     \$next\fifo_re  = 1'h0;
@@ -301,7 +301,7 @@ module unbuffered(we, replace, re, rst, clk, writable, readable, dout, level, di
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
   reg [6:0] \$next\consume ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  reg [42:0] \$next\dout ;
+  reg [54:0] \$next\dout ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
   reg [6:0] \$next\level ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:155" *)
@@ -317,7 +317,7 @@ module unbuffered(we, replace, re, rst, clk, writable, readable, dout, level, di
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
   reg [6:0] \$next\wrport_storage_w_addr ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
-  reg [42:0] \$next\wrport_storage_w_data ;
+  reg [54:0] \$next\wrport_storage_w_data ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
   reg \$next\wrport_storage_w_en ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
@@ -326,9 +326,9 @@ module unbuffered(we, replace, re, rst, clk, writable, readable, dout, level, di
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
   reg [6:0] consume = 7'h00;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  input [42:0] din;
+  input [54:0] din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  output [42:0] dout;
+  output [54:0] dout;
   (* init = 7'h00 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
   output [6:0] level;
@@ -339,7 +339,7 @@ module unbuffered(we, replace, re, rst, clk, writable, readable, dout, level, di
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
   wire [6:0] rdport_storage_r_addr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:83" *)
-  wire [42:0] rdport_storage_r_data;
+  wire [54:0] rdport_storage_r_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:85" *)
   wire rdport_storage_r_en;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -357,7 +357,7 @@ module unbuffered(we, replace, re, rst, clk, writable, readable, dout, level, di
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
   wire [6:0] wrport_storage_w_addr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
-  wire [42:0] wrport_storage_w_data;
+  wire [54:0] wrport_storage_w_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
   wire wrport_storage_w_en;
   assign \$10  = produce == (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:102" *) 1'h0;
@@ -397,137 +397,137 @@ module unbuffered(we, replace, re, rst, clk, writable, readable, dout, level, di
       consume <= \$next\consume ;
   always @(posedge clk)
       produce <= \$next\produce ;
-  reg [42:0] storage [126:0];
+  reg [54:0] storage [126:0];
   initial begin
-    storage[0] = 43'h00000000000;
-    storage[1] = 43'h00000000000;
-    storage[2] = 43'h00000000000;
-    storage[3] = 43'h00000000000;
-    storage[4] = 43'h00000000000;
-    storage[5] = 43'h00000000000;
-    storage[6] = 43'h00000000000;
-    storage[7] = 43'h00000000000;
-    storage[8] = 43'h00000000000;
-    storage[9] = 43'h00000000000;
-    storage[10] = 43'h00000000000;
-    storage[11] = 43'h00000000000;
-    storage[12] = 43'h00000000000;
-    storage[13] = 43'h00000000000;
-    storage[14] = 43'h00000000000;
-    storage[15] = 43'h00000000000;
-    storage[16] = 43'h00000000000;
-    storage[17] = 43'h00000000000;
-    storage[18] = 43'h00000000000;
-    storage[19] = 43'h00000000000;
-    storage[20] = 43'h00000000000;
-    storage[21] = 43'h00000000000;
-    storage[22] = 43'h00000000000;
-    storage[23] = 43'h00000000000;
-    storage[24] = 43'h00000000000;
-    storage[25] = 43'h00000000000;
-    storage[26] = 43'h00000000000;
-    storage[27] = 43'h00000000000;
-    storage[28] = 43'h00000000000;
-    storage[29] = 43'h00000000000;
-    storage[30] = 43'h00000000000;
-    storage[31] = 43'h00000000000;
-    storage[32] = 43'h00000000000;
-    storage[33] = 43'h00000000000;
-    storage[34] = 43'h00000000000;
-    storage[35] = 43'h00000000000;
-    storage[36] = 43'h00000000000;
-    storage[37] = 43'h00000000000;
-    storage[38] = 43'h00000000000;
-    storage[39] = 43'h00000000000;
-    storage[40] = 43'h00000000000;
-    storage[41] = 43'h00000000000;
-    storage[42] = 43'h00000000000;
-    storage[43] = 43'h00000000000;
-    storage[44] = 43'h00000000000;
-    storage[45] = 43'h00000000000;
-    storage[46] = 43'h00000000000;
-    storage[47] = 43'h00000000000;
-    storage[48] = 43'h00000000000;
-    storage[49] = 43'h00000000000;
-    storage[50] = 43'h00000000000;
-    storage[51] = 43'h00000000000;
-    storage[52] = 43'h00000000000;
-    storage[53] = 43'h00000000000;
-    storage[54] = 43'h00000000000;
-    storage[55] = 43'h00000000000;
-    storage[56] = 43'h00000000000;
-    storage[57] = 43'h00000000000;
-    storage[58] = 43'h00000000000;
-    storage[59] = 43'h00000000000;
-    storage[60] = 43'h00000000000;
-    storage[61] = 43'h00000000000;
-    storage[62] = 43'h00000000000;
-    storage[63] = 43'h00000000000;
-    storage[64] = 43'h00000000000;
-    storage[65] = 43'h00000000000;
-    storage[66] = 43'h00000000000;
-    storage[67] = 43'h00000000000;
-    storage[68] = 43'h00000000000;
-    storage[69] = 43'h00000000000;
-    storage[70] = 43'h00000000000;
-    storage[71] = 43'h00000000000;
-    storage[72] = 43'h00000000000;
-    storage[73] = 43'h00000000000;
-    storage[74] = 43'h00000000000;
-    storage[75] = 43'h00000000000;
-    storage[76] = 43'h00000000000;
-    storage[77] = 43'h00000000000;
-    storage[78] = 43'h00000000000;
-    storage[79] = 43'h00000000000;
-    storage[80] = 43'h00000000000;
-    storage[81] = 43'h00000000000;
-    storage[82] = 43'h00000000000;
-    storage[83] = 43'h00000000000;
-    storage[84] = 43'h00000000000;
-    storage[85] = 43'h00000000000;
-    storage[86] = 43'h00000000000;
-    storage[87] = 43'h00000000000;
-    storage[88] = 43'h00000000000;
-    storage[89] = 43'h00000000000;
-    storage[90] = 43'h00000000000;
-    storage[91] = 43'h00000000000;
-    storage[92] = 43'h00000000000;
-    storage[93] = 43'h00000000000;
-    storage[94] = 43'h00000000000;
-    storage[95] = 43'h00000000000;
-    storage[96] = 43'h00000000000;
-    storage[97] = 43'h00000000000;
-    storage[98] = 43'h00000000000;
-    storage[99] = 43'h00000000000;
-    storage[100] = 43'h00000000000;
-    storage[101] = 43'h00000000000;
-    storage[102] = 43'h00000000000;
-    storage[103] = 43'h00000000000;
-    storage[104] = 43'h00000000000;
-    storage[105] = 43'h00000000000;
-    storage[106] = 43'h00000000000;
-    storage[107] = 43'h00000000000;
-    storage[108] = 43'h00000000000;
-    storage[109] = 43'h00000000000;
-    storage[110] = 43'h00000000000;
-    storage[111] = 43'h00000000000;
-    storage[112] = 43'h00000000000;
-    storage[113] = 43'h00000000000;
-    storage[114] = 43'h00000000000;
-    storage[115] = 43'h00000000000;
-    storage[116] = 43'h00000000000;
-    storage[117] = 43'h00000000000;
-    storage[118] = 43'h00000000000;
-    storage[119] = 43'h00000000000;
-    storage[120] = 43'h00000000000;
-    storage[121] = 43'h00000000000;
-    storage[122] = 43'h00000000000;
-    storage[123] = 43'h00000000000;
-    storage[124] = 43'h00000000000;
-    storage[125] = 43'h00000000000;
-    storage[126] = 43'h00000000000;
+    storage[0] = 55'h00000000000000;
+    storage[1] = 55'h00000000000000;
+    storage[2] = 55'h00000000000000;
+    storage[3] = 55'h00000000000000;
+    storage[4] = 55'h00000000000000;
+    storage[5] = 55'h00000000000000;
+    storage[6] = 55'h00000000000000;
+    storage[7] = 55'h00000000000000;
+    storage[8] = 55'h00000000000000;
+    storage[9] = 55'h00000000000000;
+    storage[10] = 55'h00000000000000;
+    storage[11] = 55'h00000000000000;
+    storage[12] = 55'h00000000000000;
+    storage[13] = 55'h00000000000000;
+    storage[14] = 55'h00000000000000;
+    storage[15] = 55'h00000000000000;
+    storage[16] = 55'h00000000000000;
+    storage[17] = 55'h00000000000000;
+    storage[18] = 55'h00000000000000;
+    storage[19] = 55'h00000000000000;
+    storage[20] = 55'h00000000000000;
+    storage[21] = 55'h00000000000000;
+    storage[22] = 55'h00000000000000;
+    storage[23] = 55'h00000000000000;
+    storage[24] = 55'h00000000000000;
+    storage[25] = 55'h00000000000000;
+    storage[26] = 55'h00000000000000;
+    storage[27] = 55'h00000000000000;
+    storage[28] = 55'h00000000000000;
+    storage[29] = 55'h00000000000000;
+    storage[30] = 55'h00000000000000;
+    storage[31] = 55'h00000000000000;
+    storage[32] = 55'h00000000000000;
+    storage[33] = 55'h00000000000000;
+    storage[34] = 55'h00000000000000;
+    storage[35] = 55'h00000000000000;
+    storage[36] = 55'h00000000000000;
+    storage[37] = 55'h00000000000000;
+    storage[38] = 55'h00000000000000;
+    storage[39] = 55'h00000000000000;
+    storage[40] = 55'h00000000000000;
+    storage[41] = 55'h00000000000000;
+    storage[42] = 55'h00000000000000;
+    storage[43] = 55'h00000000000000;
+    storage[44] = 55'h00000000000000;
+    storage[45] = 55'h00000000000000;
+    storage[46] = 55'h00000000000000;
+    storage[47] = 55'h00000000000000;
+    storage[48] = 55'h00000000000000;
+    storage[49] = 55'h00000000000000;
+    storage[50] = 55'h00000000000000;
+    storage[51] = 55'h00000000000000;
+    storage[52] = 55'h00000000000000;
+    storage[53] = 55'h00000000000000;
+    storage[54] = 55'h00000000000000;
+    storage[55] = 55'h00000000000000;
+    storage[56] = 55'h00000000000000;
+    storage[57] = 55'h00000000000000;
+    storage[58] = 55'h00000000000000;
+    storage[59] = 55'h00000000000000;
+    storage[60] = 55'h00000000000000;
+    storage[61] = 55'h00000000000000;
+    storage[62] = 55'h00000000000000;
+    storage[63] = 55'h00000000000000;
+    storage[64] = 55'h00000000000000;
+    storage[65] = 55'h00000000000000;
+    storage[66] = 55'h00000000000000;
+    storage[67] = 55'h00000000000000;
+    storage[68] = 55'h00000000000000;
+    storage[69] = 55'h00000000000000;
+    storage[70] = 55'h00000000000000;
+    storage[71] = 55'h00000000000000;
+    storage[72] = 55'h00000000000000;
+    storage[73] = 55'h00000000000000;
+    storage[74] = 55'h00000000000000;
+    storage[75] = 55'h00000000000000;
+    storage[76] = 55'h00000000000000;
+    storage[77] = 55'h00000000000000;
+    storage[78] = 55'h00000000000000;
+    storage[79] = 55'h00000000000000;
+    storage[80] = 55'h00000000000000;
+    storage[81] = 55'h00000000000000;
+    storage[82] = 55'h00000000000000;
+    storage[83] = 55'h00000000000000;
+    storage[84] = 55'h00000000000000;
+    storage[85] = 55'h00000000000000;
+    storage[86] = 55'h00000000000000;
+    storage[87] = 55'h00000000000000;
+    storage[88] = 55'h00000000000000;
+    storage[89] = 55'h00000000000000;
+    storage[90] = 55'h00000000000000;
+    storage[91] = 55'h00000000000000;
+    storage[92] = 55'h00000000000000;
+    storage[93] = 55'h00000000000000;
+    storage[94] = 55'h00000000000000;
+    storage[95] = 55'h00000000000000;
+    storage[96] = 55'h00000000000000;
+    storage[97] = 55'h00000000000000;
+    storage[98] = 55'h00000000000000;
+    storage[99] = 55'h00000000000000;
+    storage[100] = 55'h00000000000000;
+    storage[101] = 55'h00000000000000;
+    storage[102] = 55'h00000000000000;
+    storage[103] = 55'h00000000000000;
+    storage[104] = 55'h00000000000000;
+    storage[105] = 55'h00000000000000;
+    storage[106] = 55'h00000000000000;
+    storage[107] = 55'h00000000000000;
+    storage[108] = 55'h00000000000000;
+    storage[109] = 55'h00000000000000;
+    storage[110] = 55'h00000000000000;
+    storage[111] = 55'h00000000000000;
+    storage[112] = 55'h00000000000000;
+    storage[113] = 55'h00000000000000;
+    storage[114] = 55'h00000000000000;
+    storage[115] = 55'h00000000000000;
+    storage[116] = 55'h00000000000000;
+    storage[117] = 55'h00000000000000;
+    storage[118] = 55'h00000000000000;
+    storage[119] = 55'h00000000000000;
+    storage[120] = 55'h00000000000000;
+    storage[121] = 55'h00000000000000;
+    storage[122] = 55'h00000000000000;
+    storage[123] = 55'h00000000000000;
+    storage[124] = 55'h00000000000000;
+    storage[125] = 55'h00000000000000;
+    storage[126] = 55'h00000000000000;
   end
-  reg [42:0] _0_;
+  reg [54:0] _0_;
   always @(posedge clk) begin
     if (\$next\rdport_storage_r_en ) _0_ <= storage[\$next\rdport_storage_r_addr ];
     if (\$next\wrport_storage_w_en ) storage[\$next\wrport_storage_w_addr ] <= \$next\wrport_storage_w_data ;
@@ -565,7 +565,7 @@ module unbuffered(we, replace, re, rst, clk, writable, readable, dout, level, di
     endcase
   end
   always @* begin
-    \$next\wrport_storage_w_data  = 43'h00000000000;
+    \$next\wrport_storage_w_data  = 55'h00000000000000;
     \$next\wrport_storage_w_data  = din;
   end
   always @* begin
@@ -588,7 +588,7 @@ module unbuffered(we, replace, re, rst, clk, writable, readable, dout, level, di
     \$next\rdport_storage_r_addr  = consume;
   end
   always @* begin
-    \$next\dout  = 43'h00000000000;
+    \$next\dout  = 55'h00000000000000;
     \$next\dout  = rdport_storage_r_data;
   end
   always @* begin

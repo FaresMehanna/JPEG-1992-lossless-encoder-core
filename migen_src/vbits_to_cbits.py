@@ -4,9 +4,9 @@ from nmigen.back import *
 from math import log, ceil
 from constants import *
 
-BUFFER_SIZE = 128
-INPUT_SIZE = 36
+INPUT_SIZE = 48
 OUTPUT_SIZE = 32
+BUFFER_SIZE = 144
 
 class BufferPicker(Elaboratable):
 
@@ -129,12 +129,14 @@ class VBitsToCBits(Elaboratable):
 			sig2.eq(buff_set_latch),
 		]
 
+		current_end = Signal()
+
 		# activate valid signal
 		with m.FSM() as outTransaction:
 
 			with m.State("OUTPUT"):
 				#if we have enough data, or end signal is activated -> last input
-				with m.If((buff_consum >= OUTPUT_SIZE) | ((buff_consum < OUTPUT_SIZE) & self.in_end)):
+				with m.If((buff_consum >= OUTPUT_SIZE) | ((buff_consum < OUTPUT_SIZE) & current_end)):
 					m.d.comb += sig1.eq(1)
 					m.d.sync += [
 						self.valid_out.eq(1),
@@ -142,7 +144,7 @@ class VBitsToCBits(Elaboratable):
 					]
 					m.next = "BRUST"
 				#added to handle end signal - if last input then sent end_out to one
-				with m.If((buff_consum <= OUTPUT_SIZE) & self.in_end):
+				with m.If((buff_consum <= OUTPUT_SIZE) & current_end):
 					m.d.sync += [
 						self.end_out.eq(1),
 					]
@@ -164,7 +166,13 @@ class VBitsToCBits(Elaboratable):
 				#device did not latch the prev output
 				with m.Else():
 					m.d.sync += self.data_out.eq(buffered_output)
+				#added to handle end signal - if last input then sent end_out to one
+				with m.If((buff_consum <= OUTPUT_SIZE) & current_end):
+					m.d.sync += [
+						self.end_out.eq(1),
+					]
 
+		new_consum = Signal(max=(BUFFER_SIZE+1))
 		with m.FSM() as inTransaction:
 
 			with m.State("INPUT"):
@@ -179,8 +187,9 @@ class VBitsToCBits(Elaboratable):
 			with m.State("DELAY_BRUST"):
 				with m.If(self.valid_in):
 					m.d.comb += buff_set_latch.eq(1)
+					m.d.sync += current_end.eq(self.in_end)
 					# burst
-					with m.If((buff_consum + self.enc_in_ctr <= (BUFFER_SIZE-INPUT_SIZE))):
+					with m.If((new_consum <= (BUFFER_SIZE-INPUT_SIZE))):
 						m.next = "BRUST"
 					with m.Else():
 						m.d.sync += [
@@ -194,7 +203,8 @@ class VBitsToCBits(Elaboratable):
 				#if we have new data
 				with m.If(self.valid_in):
 					m.d.comb += buff_set_latch.eq(1)
-					with m.If(buff_consum + self.enc_in_ctr <= (BUFFER_SIZE-INPUT_SIZE)):
+					m.d.sync += current_end.eq(self.in_end)
+					with m.If(new_consum <= (BUFFER_SIZE-INPUT_SIZE)):
 						m.d.sync += [
 							self.latch_input.eq(1),
 						]
@@ -205,17 +215,14 @@ class VBitsToCBits(Elaboratable):
 						m.next = "INPUT"
 
 		with m.If(sig1 & sig2):
-			m.d.sync += [
-				buff_consum.eq(buff_consum - OUTPUT_SIZE + self.enc_in_ctr),
-			]
+			m.d.comb += new_consum.eq(buff_consum - OUTPUT_SIZE + self.enc_in_ctr)
 		with m.Elif(sig1):
-			m.d.sync += [
-				buff_consum.eq(buff_consum - OUTPUT_SIZE),
-			]
+			m.d.comb += new_consum.eq(buff_consum - OUTPUT_SIZE)
 		with m.Elif(sig2):
-			m.d.sync += [
-				buff_consum.eq(buff_consum + self.enc_in_ctr),
-			]
+			m.d.comb += new_consum.eq(buff_consum+ self.enc_in_ctr)
+
+		with m.If(sig1 | sig2):
+			m.d.sync += buff_consum.eq(new_consum)
 
 		return m
 

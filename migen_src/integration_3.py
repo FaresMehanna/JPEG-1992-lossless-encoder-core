@@ -4,7 +4,7 @@ from nmigen.back import *
 from math import log, ceil
 from constants import *
 import predictor, difference, normalize, encode, merge
-import signals, register_file, delayer, converter36
+import signals, register_file, delayer, converter48
 import lj92_pipeline_fifo, converter_fifo, vbits_to_cbits
 
 class Integration3(Elaboratable):
@@ -39,8 +39,8 @@ class Integration3(Elaboratable):
 		self.signals = signals.Signals()
 		self.register_file = register_file.RegisterFile()
 		self.lj92_pipeline_fifo = lj92_pipeline_fifo.LJ92PipelineFifo(128)
-		self.converter = converter36.Converter36()
-		self.converter_fifo = converter_fifo.ConverterFifo(11)
+		self.converter = converter48.Converter48()
+		self.converter_fifo = converter_fifo.ConverterFifo(256)
 		self.vbits_to_cbits = vbits_to_cbits.VBitsToCBits()
 		self.end_delayer = delayer.Delayer(6)
 

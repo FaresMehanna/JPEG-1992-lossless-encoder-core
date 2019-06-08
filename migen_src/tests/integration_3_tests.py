@@ -85,14 +85,14 @@ def integration_3_test_1(m, test_file, test_number, stall_in, stall_out):
 						sys.stdout.flush()
 					
 					if ctr >= TEST_NUM:
-						#last outputs
-						while (yield m.end_out) == 0:
-							if (yield m.valid_out) and (yield m.busy_in == 0):
-								for i in range(1, (NUM_BYTES+1)):
-									bytes_list.append(((yield m.data_out) >> ((NUM_BYTES*8)-i*8)) & 0xFF)
-							yield m.busy_in.eq(0)
-							yield m.valid_in.eq(0)
-							yield
+						# #last outputs
+						# while (yield m.end_out) == 0:
+						# 	if (yield m.valid_out) and (yield m.busy_in == 0):
+						# 		for i in range(1, (NUM_BYTES+1)):
+						# 			bytes_list.append(((yield m.data_out) >> ((NUM_BYTES*8)-i*8)) & 0xFF)
+						# 	yield m.busy_in.eq(0)
+						# 	yield m.valid_in.eq(0)
+						# 	yield
 						print("\nCycles: " + str(cycles))
 						break
 
@@ -120,3 +120,5 @@ if __name__ == "__main__":
 	integration_3_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 15, 5)
 	print("-----")
 	integration_3_test_1(m, "/../test_files/random.raw12", 2, 5, 15)
+	print("-----")
+	integration_3_test_1(m, "/../test_files/IT8Chart15ms.raw12", 3, 1, 1)

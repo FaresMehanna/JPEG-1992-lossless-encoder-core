@@ -40,7 +40,7 @@ module top(clk, height, width, rst);
   end
   always @* begin
     \$next\height_reg  = height_reg;
-    \$next\height_reg  = 16'h000a;
+    \$next\height_reg  = 16'h0c00;
     casez (rst)
       1'h1:
           \$next\height_reg  = 16'h0000;
