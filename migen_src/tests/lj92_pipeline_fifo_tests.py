@@ -75,7 +75,7 @@ def lj92_pipeline_fifo_test_1(m):
 			yield
 			yield
 
-			for _ in range(51):
+			for _ in range(81):
 				yield m.enc_in.eq(0x176524619FF)
 				yield m.enc_in_ctr.eq(41)
 				yield m.in_end.eq(0)
@@ -104,6 +104,11 @@ def lj92_pipeline_fifo_test_1(m):
 
 
 if __name__ == "__main__":
-	n = LJ92PipelineFifo(100)
+	config = {
+		"bit_depth" : 16,
+		"pixels_per_cycle": 4,
+		"LJ92_fifo_depth": 100,
+	}
+	n = LJ92PipelineFifo(config, constraints.Constraints())
 	lj92_pipeline_fifo_test_1(n)
 	main(n, ports=n.ios)

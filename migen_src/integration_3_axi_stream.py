@@ -2,12 +2,30 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
-from constants import *
-import integration_3
+import integration_3, constraints
 
 class Integration3AxiStream(Elaboratable):
 
 	def __init__(self):
+
+		config = {
+			"bit_depth" : 12,
+			"pixels_per_cycle": 4,
+			"LJ92_fifo_depth": 128,
+			"out_bits": 32,
+			"converter" : 48,
+			"converter_fifo_depth": 256,
+			"vbits_to_cbits_buffer_size": 144,
+			"vbits_to_cbits_slow_mhz": True,
+			"vbits_to_cbits_reg": False,
+			"predictor_function": 1,
+			"num_of_components": 4,
+			"pipeline_reg": False,
+			"converter_reg": False,
+			"converter_fifo_reg": False,
+			"pipeline_fifo_reg": False,
+		}
+		cons = constraints.Constraints()
 
 		# axi stream master
 		self.m_tvalid = Signal(1)
@@ -21,7 +39,7 @@ class Integration3AxiStream(Elaboratable):
 		self.s_tready = Signal(1)
 		self.s_tdata = Signal(64)
 
-		self.top = integration_3.Integration3()
+		self.top = integration_3.Integration3(config, cons)
 
 		self.ios = \
 			[self.m_tvalid, self.m_tlast, self.m_tready, self.m_tdata] + \
@@ -43,13 +61,12 @@ class Integration3AxiStream(Elaboratable):
 			self.m_tvalid.eq(top.valid_out),
 		]
 
-
 		# slave interface
 		m.d.comb += [
-			top.pixel_in1.eq(self.s_tdata[0:12]),
-			top.pixel_in2.eq(self.s_tdata[12:24]),
-			top.pixel_in3.eq(self.s_tdata[24:36]),
-			top.pixel_in4.eq(self.s_tdata[36:48]),
+			top.pixels_in[0].eq(self.s_tdata[0:12]),
+			top.pixels_in[1].eq(self.s_tdata[12:24]),
+			top.pixels_in[2].eq(self.s_tdata[24:36]),
+			top.pixels_in[3].eq(self.s_tdata[36:48]),
 			self.s_tready.eq(top.nready==0),
 			s_end.eq(self.s_tlast),
 			top.valid_in.eq(self.s_tvalid),

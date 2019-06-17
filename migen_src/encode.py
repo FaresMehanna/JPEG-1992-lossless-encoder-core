@@ -2,7 +2,7 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
-from constants import *
+import constraints
 
 def get_ssss():
 	return [(0b1110, 4),(0b000, 3),\
@@ -13,22 +13,34 @@ def get_ssss():
 	(0b11111111110, 11),(0b111111111110, 12),\
 	(0b1111111111110, 13)]
 
-def init_huff_table():
-	ssss = get_ssss()
-	assert (len(ssss) == 17),"You must provide 17 values in ssss list!"
+def init_huff_table(bd):
+	ssss = get_ssss()[0:bd+1]
+	assert (len(ssss) == (bd+1)),"You must provide all values in ssss list for wanted bit_depth!"
 	memory_data = []
-	for sx in ssss:
+	for ind, sx in enumerate(ssss):
 		assert (sx[1] <= 16), "ssss value must be represented within 16 bits."
-		memory_data.append((sx[0]<<5)|(sx[1]))
+		if ind == 16:	#last one is special
+			memory_data.append((sx[1] << (16+bd)) | sx[0])
+		else:
+			memory_data.append((sx[1] << (16+bd)) | (sx[0] << ind))
 	return memory_data
 
 class SingleEncoder(Elaboratable):
 
-	def __init__(self):
+	def __init__(self, config, constraints):
 
-		self.val_in = Signal(16)
+		#config assertions
+		assert config['bit_depth'] >= 2 and config['bit_depth'] <= 16
+		assert config['pixels_per_cycle'] >= 1
+
+		#save needed configs
+		self.bd = config['bit_depth']
+		self.rp_addr = Signal(5)
+		self.rp_data = Signal(self.bd+21)
+
+		self.val_in = Signal(self.bd)
 		self.ssss = Signal(5)
-		self.enc_out = Signal(31)
+		self.enc_out = Signal(min(16+self.bd, 31))
 		self.enc_ctr = Signal(5)
 		self.valid = Signal(1)
 
@@ -38,12 +50,6 @@ class SingleEncoder(Elaboratable):
 	def elaborate(self, platform):
 		m = Module()
 
-		# memory & read port
-		# width = 21 = 16(value) + 5(count) 
-		# depth = 17 different class of ssss
-		mem = Memory(21, 17, init_huff_table())
-		m.submodules.rp = rp = mem.read_port()
-
 		# latch valid
 		valid_late = Signal()
 		m.d.sync += valid_late.eq(self.valid)
@@ -51,99 +57,90 @@ class SingleEncoder(Elaboratable):
 		# latch ssss & val_in
 		ssss_late = Signal(5)
 		m.d.sync += ssss_late.eq(self.ssss)
-		val_in_late = Signal(16)
+		val_in_late = Signal(self.bd)
 		m.d.sync += val_in_late.eq(self.val_in)
 
 		#read port wiring
 		m.d.comb += [
-			rp.addr.eq(self.ssss),
+			self.rp_addr.eq(self.ssss),
 		]
+
+		sx_ctr_offset = 16+self.bd
 
 		#logic
 		with m.If(valid_late):
-			with m.If(ssss_late == 16):
-				m.d.sync += [
-						self.enc_out.eq(rp.data[5:21]),
-						self.enc_ctr.eq(rp.data[0:5]),
+			#only need this branch if the sensor support 16bits depth
+			if self.bd == 16:
+				with m.If(ssss_late == 16):
+					m.d.sync += [
+						self.enc_out.eq(self.rp_data),
+						self.enc_ctr.eq(self.rp_data[sx_ctr_offset:sx_ctr_offset+5]),
 					]
-			with m.Else():
+				with m.Else():
+					m.d.sync += [
+						self.enc_out.eq(self.rp_data | val_in_late),
+						self.enc_ctr.eq(self.rp_data[sx_ctr_offset:sx_ctr_offset+5] + ssss_late[0:4]),
+					]
+			else:
 				m.d.sync += [
-					self.enc_out.eq((rp.data[5:21]<<ssss_late) | val_in_late),
-					self.enc_ctr.eq(rp.data[0:5] + ssss_late),
+					self.enc_out.eq(self.rp_data | val_in_late),
+					self.enc_ctr.eq(self.rp_data[sx_ctr_offset:sx_ctr_offset+5] + ssss_late[0:4]),
 				]
 
 		return m
 
 class Encode(Elaboratable):
 
-	def __init__(self):
+	def __init__(self, config, constraints):
 
-		self.val_in1 = Signal(16)
-		self.val_in2 = Signal(16)
-		self.val_in3 = Signal(16)
-		self.val_in4 = Signal(16)
+		#config assertions
+		assert config['bit_depth'] >= 2 and config['bit_depth'] <= 16
+		assert config['pixels_per_cycle'] >= 1
 
-		self.ssss1 = Signal(5)
-		self.ssss2 = Signal(5)
-		self.ssss3 = Signal(5)
-		self.ssss4 = Signal(5)
+		#save needed configs
+		self.bd = config['bit_depth']
+		self.ps = config['pixels_per_cycle']
 
-		self.enc_out1 = Signal(31)
-		self.enc_out2 = Signal(31)
-		self.enc_out3 = Signal(31)
-		self.enc_out4 = Signal(31)
-
-		self.enc_ctr1 = Signal(5)
-		self.enc_ctr2 = Signal(5)
-		self.enc_ctr3 = Signal(5)
-		self.enc_ctr4 = Signal(5)
+		#in
+		self.vals_in = Array(Signal(self.bd, name="val_in") for _ in range(self.ps))
+		self.ssssx = Array(Signal(5, name="ssss") for _ in range(self.ps))
+		
+		#out
+		self.encs_out = Array(Signal(min(16+self.bd, 31), name="enc_out") for _ in range(self.ps))
+		self.encs_ctr = Array(Signal(5, name="enc_ctr") for _ in range(self.ps))
 
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
 
-		self.pixel1 = SingleEncoder()
-		self.pixel2 = SingleEncoder()
-		self.pixel3 = SingleEncoder()
-		self.pixel4 = SingleEncoder()
+		self.mem = Memory(self.bd+21, self.bd+1, init_huff_table(self.bd))
+		self.read_ports = [self.mem.read_port() for _ in range(self.ps)]
+
+		self.pixels = [SingleEncoder(config, constraints) for _ in range(self.ps)]
 
 		self.ios = \
-			[self.val_in1, self.val_in2, self.val_in3, self.val_in4] + \
-			[self.enc_out1, self.enc_out2, self.enc_out3, self.enc_out4] + \
-			[self.enc_ctr1, self.enc_ctr2, self.enc_ctr3, self.enc_ctr4] + \
-			[self.ssss1, self.ssss2, self.ssss3, self.ssss4] + \
-			[self.valid_in, self.valid_out]
+			[enc_out for enc_out in self.encs_out] + \
+			[enc_ctr for enc_ctr in self.encs_ctr] + \
+			[val_in for val_in in self.vals_in] + \
+			[self.valid_in, self.valid_out] + \
+			[ssss for ssss in self.ssssx]
 
 	def elaborate(self, platform):
 
 		m = Module()
 
-		m.submodules.pixel1 = pixel1 = self.pixel1
-		m.submodules.pixel2 = pixel2 = self.pixel2
-		m.submodules.pixel3 = pixel3 = self.pixel3
-		m.submodules.pixel4 = pixel4 = self.pixel4
+		m.submodules += self.pixels
+		m.submodules += self.read_ports
 
-		m.d.comb += [
-			pixel1.val_in.eq(self.val_in1),
-			pixel1.valid.eq(self.valid_in),
-			pixel1.ssss.eq(self.ssss1),
-			self.enc_out1.eq(pixel1.enc_out),
-			self.enc_ctr1.eq(pixel1.enc_ctr),
-			pixel2.val_in.eq(self.val_in2),
-			pixel2.valid.eq(self.valid_in),
-			pixel2.ssss.eq(self.ssss2),
-			self.enc_out2.eq(pixel2.enc_out),
-			self.enc_ctr2.eq(pixel2.enc_ctr),
-			pixel3.val_in.eq(self.val_in3),
-			pixel3.valid.eq(self.valid_in),
-			pixel3.ssss.eq(self.ssss3),
-			self.enc_out3.eq(pixel3.enc_out),
-			self.enc_ctr3.eq(pixel3.enc_ctr),
-			pixel4.val_in.eq(self.val_in4),
-			pixel4.valid.eq(self.valid_in),
-			pixel4.ssss.eq(self.ssss4),
-			self.enc_out4.eq(pixel4.enc_out),
-			self.enc_ctr4.eq(pixel4.enc_ctr),
-		]
+		for pixel, val_in, enc_out, enc_ctr, ssss, read_port in zip(self.pixels, self.vals_in, self.encs_out, self.encs_ctr, self.ssssx, self.read_ports):
+			m.d.comb += [
+				pixel.val_in.eq(val_in),
+				pixel.valid.eq(self.valid_in),
+				pixel.ssss.eq(ssss),
+				read_port.addr.eq(pixel.rp_addr),
+				pixel.rp_data.eq(read_port.data),
+				enc_out.eq(pixel.enc_out),
+				enc_ctr.eq(pixel.enc_ctr),
+			]
 
 		#if valid data
 		valid_late = Signal()
@@ -153,5 +150,9 @@ class Encode(Elaboratable):
 		return m
 
 if __name__ == "__main__":
-	e = Encode()
+	config = {
+		"bit_depth" : 16,
+		"pixels_per_cycle": 1,
+	}
+	e = Encode(config, constraints.Constraints())
 	main(e, ports=e.ios)

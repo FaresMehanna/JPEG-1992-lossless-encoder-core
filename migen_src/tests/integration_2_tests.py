@@ -13,7 +13,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from integration_2 import *
 
-TEST_NUM = int(4096*10)
+TEST_NUM = int(4096*2)
 
 def integration_2_test_1(m, test_file, test_number, stall_in, stall_out):
 
@@ -58,10 +58,10 @@ def integration_2_test_1(m, test_file, test_number, stall_in, stall_out):
 							pix3 = (byte4<<4) | ((byte5 & 0xF0)>>4)
 							pix4 = ((byte5 & 0x0F)<<8) | byte6
 
-							yield m.pixel_in1.eq(pix1)
-							yield m.pixel_in2.eq(pix2)
-							yield m.pixel_in3.eq(pix3)
-							yield m.pixel_in4.eq(pix4)
+							yield m.pixels_in[0].eq(pix1)
+							yield m.pixels_in[1].eq(pix2)
+							yield m.pixels_in[2].eq(pix3)
+							yield m.pixels_in[3].eq(pix4)
 							yield m.valid_in.eq(1)
 							byte1 = f.read(1)
 
@@ -109,13 +109,34 @@ def integration_2_test_1(m, test_file, test_number, stall_in, stall_out):
 	print("Number of bytes to be tested is: " + str(len(bytes_list)))
 	print("Average pixel bits: " + str((len(bytes_list)/(TEST_NUM*1.5))*12))
 	for i in range(len(bytes_list)):
+		if bytes_list[i] != org_bin[i]:
+			print(org_bin[i])
+			print(bytes_list[i])
+			print(i)
 		assert bytes_list[i] == org_bin[i]
 	print("integration_2_test_1_"+str(test_number)+": succeeded.")
 
 if __name__ == "__main__":
-	m = Integration2()
-	integration_2_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 30, 15)
+	#Integration 2 configuration
+	config = {
+		"bit_depth" : 12,
+		"pixels_per_cycle": 4,
+		"LJ92_fifo_depth": 128,
+		"converter" : 48,
+		"converter_fifo_depth": 256,
+		"predictor_function": 1,
+		"num_of_components": 4,
+		"pipeline_reg": False,
+		"converter_reg": False,
+		"converter_fifo_reg": False,
+		"pipeline_fifo_reg": False,
+	}
+	cons = constraints.Constraints()
+	#object
+	m = Integration2(config, cons)
+	#tests
+	integration_2_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 15, 5)
 	print("-----")
-	integration_2_test_1(m, "/../test_files/random.raw12", 2, 15, 30)
+	integration_2_test_1(m, "/../test_files/random.raw12", 2, 5, 15)
 	print("-----")
 	integration_2_test_1(m, "/../test_files/IT8Chart15ms.raw12", 3, 1, 1)

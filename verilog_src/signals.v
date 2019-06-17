@@ -21,56 +21,56 @@ module top(width, height, rst, clk, end_of_frame, new_row, new_input);
   wire [16:0] \$6 ;
   wire [16:0] \$7 ;
   wire [16:0] \$9 ;
-  (* src = "./migen_src/signals.py:15" *)
+  (* src = "./migen_src/signals.py:21" *)
   reg \$next\end_of_frame ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "./migen_src/signals.py:27" *)
+  (* src = "./migen_src/signals.py:33" *)
   reg [15:0] \$next\height_temp ;
-  (* src = "./migen_src/signals.py:16" *)
+  (* src = "./migen_src/signals.py:22" *)
   reg \$next\new_row ;
-  (* src = "./migen_src/signals.py:26" *)
+  (* src = "./migen_src/signals.py:32" *)
   reg [15:0] \$next\width_temp ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
   (* init = 1'h0 *)
-  (* src = "./migen_src/signals.py:15" *)
+  (* src = "./migen_src/signals.py:21" *)
   output end_of_frame;
   reg end_of_frame = 1'h0;
   (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
-  (* src = "./migen_src/signals.py:11" *)
+  (* src = "./migen_src/signals.py:17" *)
   input [15:0] height;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/signals.py:27" *)
+  (* src = "./migen_src/signals.py:33" *)
   reg [15:0] height_temp = 16'h0000;
-  (* src = "./migen_src/signals.py:13" *)
+  (* src = "./migen_src/signals.py:19" *)
   input new_input;
   (* init = 1'h1 *)
-  (* src = "./migen_src/signals.py:16" *)
+  (* src = "./migen_src/signals.py:22" *)
   output new_row;
   reg new_row = 1'h1;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/signals.py:12" *)
+  (* src = "./migen_src/signals.py:18" *)
   input [15:0] width;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/signals.py:26" *)
+  (* src = "./migen_src/signals.py:32" *)
   reg [15:0] width_temp = 16'h0000;
-  assign \$10  = height - (* src = "./migen_src/signals.py:36" *) 1'h1;
-  assign \$12  = width_temp == (* src = "./migen_src/signals.py:43" *) 3'h4;
-  assign \$15  = height_temp - (* src = "./migen_src/signals.py:46" *) 1'h1;
-  assign \$17  = width_temp == (* src = "./migen_src/signals.py:43" *) 3'h4;
-  assign \$19  = height_temp == (* src = "./migen_src/signals.py:54" *) 1'h0;
-  assign \$21  = width_temp == (* src = "./migen_src/signals.py:54" *) 3'h4;
-  assign \$23  = \$19  & (* src = "./migen_src/signals.py:54" *) \$21 ;
-  assign \$25  = height_temp == (* src = "./migen_src/signals.py:54" *) 1'h0;
-  assign \$27  = width_temp == (* src = "./migen_src/signals.py:54" *) 3'h4;
-  assign \$2  = width - (* src = "./migen_src/signals.py:35" *) 3'h4;
-  assign \$29  = \$25  & (* src = "./migen_src/signals.py:54" *) \$27 ;
-  assign \$4  = width_temp == (* src = "./migen_src/signals.py:43" *) 3'h4;
-  assign \$7  = width_temp - (* src = "./migen_src/signals.py:51" *) 3'h4;
+  assign \$10  = height - (* src = "./migen_src/signals.py:42" *) 1'h1;
+  assign \$12  = width_temp == (* src = "./migen_src/signals.py:49" *) 2'h2;
+  assign \$15  = height_temp - (* src = "./migen_src/signals.py:52" *) 1'h1;
+  assign \$17  = width_temp == (* src = "./migen_src/signals.py:49" *) 2'h2;
+  assign \$19  = height_temp == (* src = "./migen_src/signals.py:60" *) 1'h0;
+  assign \$21  = width_temp == (* src = "./migen_src/signals.py:60" *) 2'h2;
+  assign \$23  = \$19  & (* src = "./migen_src/signals.py:60" *) \$21 ;
+  assign \$25  = height_temp == (* src = "./migen_src/signals.py:60" *) 1'h0;
+  assign \$27  = width_temp == (* src = "./migen_src/signals.py:60" *) 2'h2;
+  assign \$2  = width - (* src = "./migen_src/signals.py:41" *) 2'h2;
+  assign \$29  = \$25  & (* src = "./migen_src/signals.py:60" *) \$27 ;
+  assign \$4  = width_temp == (* src = "./migen_src/signals.py:49" *) 2'h2;
+  assign \$7  = width_temp - (* src = "./migen_src/signals.py:57" *) 2'h2;
   always @(posedge clk)
       end_of_frame <= \$next\end_of_frame ;
   always @(posedge clk)

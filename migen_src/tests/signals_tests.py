@@ -46,6 +46,9 @@ def signals_test_1(m):
 		sim.run()
 
 if __name__ == "__main__":
-	p = Signals()
+	config = {
+		"pixels_per_cycle": 4,
+	}
+	p = Signals(config, constraints.Constraints())
 	signals_test_1(p)
 	main(p, ports=p.ios)

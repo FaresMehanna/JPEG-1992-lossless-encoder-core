@@ -8,34 +8,34 @@ module top(rst, clk, out_sig, in_sig);
   wire [3:0] \$2 ;
   wire \$4 ;
   wire \$6 ;
-  (* src = "./migen_src/delayer.py:12" *)
+  (* src = "./migen_src/delayer.py:11" *)
   reg \$next\out_sig ;
-  (* src = "./migen_src/delayer.py:20" *)
-  reg \$next\out_val ;
-  (* src = "./migen_src/delayer.py:13" *)
-  reg [2:0] \$next\timer ;
   (* src = "./migen_src/delayer.py:19" *)
+  reg \$next\out_val ;
+  (* src = "./migen_src/delayer.py:12" *)
+  reg [2:0] \$next\timer ;
+  (* src = "./migen_src/delayer.py:18" *)
   reg \$next\timer_start ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/delayer.py:11" *)
+  (* src = "./migen_src/delayer.py:10" *)
   input in_sig;
-  (* src = "./migen_src/delayer.py:12" *)
+  (* src = "./migen_src/delayer.py:11" *)
   output out_sig;
   (* init = 1'h0 *)
-  (* src = "./migen_src/delayer.py:20" *)
+  (* src = "./migen_src/delayer.py:19" *)
   reg out_val = 1'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 3'h6 *)
-  (* src = "./migen_src/delayer.py:13" *)
+  (* src = "./migen_src/delayer.py:12" *)
   reg [2:0] timer = 3'h6;
   (* init = 1'h0 *)
-  (* src = "./migen_src/delayer.py:19" *)
+  (* src = "./migen_src/delayer.py:18" *)
   reg timer_start = 1'h0;
-  assign \$2  = timer - (* src = "./migen_src/delayer.py:28" *) 1'h1;
-  assign \$4  = timer == (* src = "./migen_src/delayer.py:30" *) 1'h0;
-  assign \$6  = \$4  | (* src = "./migen_src/delayer.py:30" *) out_val;
+  assign \$2  = timer - (* src = "./migen_src/delayer.py:27" *) 1'h1;
+  assign \$4  = timer == (* src = "./migen_src/delayer.py:29" *) 1'h0;
+  assign \$6  = \$4  | (* src = "./migen_src/delayer.py:29" *) out_val;
   always @(posedge clk)
       out_val <= \$next\out_val ;
   always @(posedge clk)

@@ -2,35 +2,35 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
-from constants import *
-import random
+import constraints
 
 class Difference(Elaboratable):
 
-	def __init__(self):
+	def __init__(self, config, constraints):
 
-		self.pixel_in1 = Signal(16)
-		self.pixel_in2 = Signal(16)
-		self.pixel_in3 = Signal(16)
-		self.pixel_in4 = Signal(16)
+		#config assertions
+		assert config['bit_depth'] >= 2 and config['bit_depth'] <= 16
+		assert config['pixels_per_cycle'] >= 1
 
-		self.predic_in1 = Signal(16)
-		self.predic_in2 = Signal(16)
-		self.predic_in3 = Signal(16)
-		self.predic_in4 = Signal(16)
+		#save needed configs
+		self.bd = config['bit_depth']
+		self.ps = config['pixels_per_cycle']
 
-		self.val_out1 = Signal(17)
-		self.val_out2 = Signal(17)
-		self.val_out3 = Signal(17)
-		self.val_out4 = Signal(17)
+		#no update in constraints
+
+		self.pixels_in = Array(Signal(self.bd, name="pixel_in") for _ in range(self.ps))
+		self.predics_in = Array(Signal(self.bd, name="predic_in") for _ in range(self.ps))
+		self.vals_out = Array(Signal(self.bd+1, name="val_out") for _ in range(self.ps))
+		self.vals_out_mns = Array(Signal(self.bd+1, name="val_out") for _ in range(self.ps))
 		
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
 
 		self.ios = \
-			[self.pixel_in1, self.pixel_in2, self.pixel_in3, self.pixel_in4] + \
-			[self.predic_in1, self.predic_in2, self.predic_in3, self.predic_in4] + \
-			[self.val_out1, self.val_out2, self.val_out3, self.val_out4] + \
+			[val_out_mns for val_out_mns in self.vals_out_mns] + \
+			[predic_in for predic_in in self.predics_in] + \
+			[pixel_in for pixel_in in self.pixels_in] + \
+			[val_out for val_out in self.vals_out] + \
 			[self.valid_in, self.valid_out]
 
 
@@ -40,12 +40,8 @@ class Difference(Elaboratable):
 
 		#if valid data
 		with m.If(self.valid_in):
-			m.d.sync += [
-				self.val_out1.eq(self.pixel_in1-self.predic_in1),
-				self.val_out2.eq(self.pixel_in2-self.predic_in2),
-				self.val_out3.eq(self.pixel_in3-self.predic_in3),
-				self.val_out4.eq(self.pixel_in4-self.predic_in4),
-			]
+			m.d.sync += [val_out.eq(pixel_in-predic_in) for val_out, pixel_in, predic_in in zip(self.vals_out, self.pixels_in, self.predics_in)]
+			m.d.sync += [val_out_mns.eq(pixel_in-predic_in-1) for val_out_mns, pixel_in, predic_in in zip(self.vals_out_mns, self.pixels_in, self.predics_in)]
 
 		#if valid data
 		m.d.sync += self.valid_out.eq(self.valid_in)
@@ -53,5 +49,9 @@ class Difference(Elaboratable):
 		return m
 
 if __name__ == "__main__":
-	d = Difference()
+	config = {
+		"bit_depth" : 16,
+		"pixels_per_cycle": 2,
+	}
+	d = Difference(config, constraints.Constraints())
 	main(d, ports=d.ios)

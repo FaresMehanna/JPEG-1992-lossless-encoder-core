@@ -2,11 +2,17 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
-from constants import *
+import constraints
 
 class Signals(Elaboratable):
 
-	def __init__(self):
+	def __init__(self, config, constraints):
+
+		#config assertions
+		assert config['pixels_per_cycle'] >= 1
+
+		#save needed configs
+		self.ps = config['pixels_per_cycle']
 
 		self.height = Signal(16)
 		self.width = Signal(16)
@@ -32,7 +38,7 @@ class Signals(Elaboratable):
 			with m.State("IDLE"):
 				with m.If(self.new_input):
 					m.d.sync += [
-						width_temp.eq(self.width-4),
+						width_temp.eq(self.width-self.ps),
 						height_temp.eq(self.height-1),
 						self.new_row.eq(0),
 					]
@@ -40,7 +46,7 @@ class Signals(Elaboratable):
 
 			with m.State("LOOP"):
 				with m.If(self.new_input):
-					with m.If(width_temp == 4):
+					with m.If(width_temp == self.ps):
 						m.d.sync += [
 							width_temp.eq(self.width),
 							height_temp.eq(height_temp - 1),
@@ -48,10 +54,10 @@ class Signals(Elaboratable):
 						]
 					with m.Else():
 						m.d.sync += [
-							width_temp.eq(width_temp-4),
+							width_temp.eq(width_temp-self.ps),
 							self.new_row.eq(0),
 						]
-					with m.If((height_temp == 0) & (width_temp == 4)):
+					with m.If((height_temp == 0) & (width_temp == self.ps)):
 						m.d.sync += [
 							self.end_of_frame.eq(1),
 						]
@@ -65,5 +71,8 @@ class Signals(Elaboratable):
 		return m
 
 if __name__ == "__main__":
-	m = Signals()
+	config = {
+		"pixels_per_cycle": 2,
+	}
+	m = Signals(config, constraints.Constraints())
 	main(m, ports=m.ios)

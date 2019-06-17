@@ -9,7 +9,7 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from difference import *
-
+import constraints
 
 def diff_test_1(m):
 	vcdf = open(parentdir + "/../simulations/diff_test_1.vcd", "w")
@@ -18,14 +18,14 @@ def diff_test_1(m):
 		def testbench():
 
 			#input 1
-			yield m.pixel_in1.eq(100)
-			yield m.pixel_in2.eq(1000)
-			yield m.pixel_in3.eq(500)
-			yield m.pixel_in4.eq(900)
-			yield m.predic_in1.eq(100)
-			yield m.predic_in2.eq(1000)
-			yield m.predic_in3.eq(500)
-			yield m.predic_in4.eq(900)
+			yield m.pixels_in[0].eq(100)
+			yield m.pixels_in[1].eq(1000)
+			yield m.pixels_in[2].eq(500)
+			yield m.pixels_in[3].eq(900)
+			yield m.predics_in[0].eq(100)
+			yield m.predics_in[1].eq(1000)
+			yield m.predics_in[2].eq(500)
+			yield m.predics_in[3].eq(900)
 			yield m.valid_in.eq(1)
 
 			yield
@@ -33,23 +33,23 @@ def diff_test_1(m):
 			assert 0 == (yield m.valid_out)
 
 			#input 2
-			yield m.pixel_in1.eq(200)
-			yield m.pixel_in2.eq(2000)
-			yield m.pixel_in3.eq(700)
-			yield m.pixel_in4.eq(800)
-			yield m.predic_in1.eq(100)
-			yield m.predic_in2.eq(1000)
-			yield m.predic_in3.eq(500)
-			yield m.predic_in4.eq(900)
+			yield m.pixels_in[0].eq(200)
+			yield m.pixels_in[1].eq(2000)
+			yield m.pixels_in[2].eq(700)
+			yield m.pixels_in[3].eq(800)
+			yield m.predics_in[0].eq(100)
+			yield m.predics_in[1].eq(1000)
+			yield m.predics_in[2].eq(500)
+			yield m.predics_in[3].eq(900)
 			yield m.valid_in.eq(1)
 
 			yield
 
 			#test input 1
-			assert 0 == (yield m.val_out1)
-			assert 0 == (yield m.val_out2)
-			assert 0 == (yield m.val_out3)
-			assert 0 == (yield m.val_out4)
+			assert 0 == (yield m.vals_out[0])
+			assert 0 == (yield m.vals_out[1])
+			assert 0 == (yield m.vals_out[2])
+			assert 0 == (yield m.vals_out[3])
 			assert 1 == (yield m.valid_out)
 
 			yield m.valid_in.eq(0)
@@ -57,10 +57,10 @@ def diff_test_1(m):
 			yield
 
 			#test input 2
-			assert 100 == (yield m.val_out1)
-			assert 1000 == (yield m.val_out2)
-			assert 200 == (yield m.val_out3)
-			assert 0x1FF9C == (yield m.val_out4)
+			assert 100 == (yield m.vals_out[0])
+			assert 1000 == (yield m.vals_out[1])
+			assert 200 == (yield m.vals_out[2])
+			assert 0x1FF9C == (yield m.vals_out[3])
 			assert 1 == (yield m.valid_out)
 
 			yield m.valid_in.eq(0)
@@ -76,6 +76,10 @@ def diff_test_1(m):
 		sim.run()
 
 if __name__ == "__main__":
-	p = Difference()
-	diff_test_1(p)
-	main(p, ports=p.ios)
+	config = {
+		"bit_depth" : 16,
+		"pixels_per_cycle": 4,
+	}
+	d = Difference(config, constraints.Constraints())
+	diff_test_1(d)
+	main(d, ports=d.ios)

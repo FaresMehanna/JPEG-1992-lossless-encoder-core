@@ -3,26 +3,34 @@ from nmigen.cli import main
 from nmigen.back import *
 from nmigen.lib.fifo import SyncFIFOBuffered
 from math import log, ceil
-from constants import *
-
+import constraints
 
 class LJ92PipelineFifo(Elaboratable):
 
-	def __init__(self, depth):
+	def __init__(self, config, constraints):
 
-		assert depth > 50
+		#config assertions
+		assert config['bit_depth'] >= 2 and config['bit_depth'] <= 16
+		assert config['pixels_per_cycle'] >= 1
+		assert config['LJ92_fifo_depth'] >= 25
 
-		self.depth = depth
+		#data width
+		single_data_bits = min(16+config['bit_depth'], 31)
+		self.data_bits = single_data_bits*config['pixels_per_cycle']
+		self.ctr_bits = ceil(log(self.data_bits+1, 2))
+		self.total_width = self.data_bits + self.ctr_bits + 1
+
+		self.depth = config['LJ92_fifo_depth']
 
 		# lj92 pipeline ports
-		self.enc_in = Signal(124)
-		self.enc_in_ctr = Signal(7)
+		self.enc_in = Signal(self.data_bits)
+		self.enc_in_ctr = Signal(max=self.data_bits+1)
 		self.in_end = Signal(1)
 		self.valid_in = Signal(1)
 
 		self.latch_output = Signal(1)
-		self.enc_out = Signal(124)
-		self.enc_out_ctr = Signal(7)
+		self.enc_out = Signal(self.data_bits)
+		self.enc_out_ctr = Signal(max=self.data_bits+1)
 		self.out_end = Signal(1)
 		self.valid_out = Signal(1)
 
@@ -36,7 +44,7 @@ class LJ92PipelineFifo(Elaboratable):
 			[self.latch_output, self.close_full]
 
 		# 4x dual port bram with 36kb each.
-		self.fifo = SyncFIFOBuffered(7+124+1, depth)
+		self.fifo = SyncFIFOBuffered(self.total_width, self.depth)
 
 	def elaborate(self, platform):
 
@@ -52,20 +60,25 @@ class LJ92PipelineFifo(Elaboratable):
 
 		m.d.comb += [
 			self.valid_out.eq(fifo.readable),
-			self.enc_out.eq(fifo.dout[0:124]),
-			self.enc_out_ctr.eq(fifo.dout[124:131]),
-			self.out_end.eq(fifo.dout[131:132]),
+			self.enc_out.eq(fifo.dout[0:self.data_bits]),
+			self.enc_out_ctr.eq(fifo.dout[self.data_bits:self.total_width-1]),
+			self.out_end.eq(fifo.dout[self.total_width-1:self.total_width]),
 			fifo.re.eq(self.latch_output),
 		]
 
 		# fifo with close_full
 		m.d.sync += [
-			self.close_full.eq(fifo.level > (self.depth-50)),
+			self.close_full.eq(fifo.level > (self.depth-20)),
 		]
 
 		return m
 
 
 if __name__ == "__main__":
-	d = LJ92PipelineFifo(128)
+	config = {
+		"bit_depth" : 16,
+		"pixels_per_cycle": 2,
+		"LJ92_fifo_depth": 128,
+	}
+	d = LJ92PipelineFifo(config, constraints.Constraints())
 	main(d, ports=d.ios)

@@ -13,7 +13,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from integration_1 import *
 
-TEST_NUM = int(4096*10)
+TEST_NUM = int(4096*2)
 
 def integration_1_test_1(m, test_file, test_number, stall_in):
 
@@ -49,15 +49,15 @@ def integration_1_test_1(m, test_file, test_number, stall_in):
 						byte4 = int.from_bytes(f.read(1), byteorder='big')
 						byte5 = int.from_bytes(f.read(1), byteorder='big')
 						byte6 = int.from_bytes(f.read(1), byteorder='big')
-						ctr += 4
+						ctr += 2
 						pix1 = (byte1<<4) | ((byte2 & 0xF0)>>4)
 						pix2 = ((byte2 & 0x0F)<<8) | byte3
 						pix3 = (byte4<<4) | ((byte5 & 0xF0)>>4)
 						pix4 = ((byte5 & 0x0F)<<8) | byte6
-						yield m.pixel_in1.eq(pix1)
-						yield m.pixel_in2.eq(pix2)
-						yield m.pixel_in3.eq(pix3)
-						yield m.pixel_in4.eq(pix4)
+						yield m.pixels_in[0].eq(pix1)
+						yield m.pixels_in[1].eq(pix2)
+						yield m.pixels_in[2].eq(pix3)
+						yield m.pixels_in[3].eq(pix4)
 						yield m.valid_in.eq(1)
 						byte1 = f.read(1)
 
@@ -103,7 +103,18 @@ def integration_1_test_1(m, test_file, test_number, stall_in):
 	print("integration_1_test_1_"+str(test_number)+": succeeded.")
 
 if __name__ == "__main__":
-	m = Integration1()
+	#Integration 1 configuration
+	config = {
+		"bit_depth" : 12,
+		"pixels_per_cycle": 4,
+		"predictor_function": 1,
+		"num_of_components": 4,
+		"pipeline_reg": False,
+	}
+	cons = constraints.Constraints()
+	#object
+	m = Integration1(config, cons)
+	#tests
 	integration_1_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 2)
 	print("-----")
 	integration_1_test_1(m, "/../test_files/random.raw12", 2, 5)

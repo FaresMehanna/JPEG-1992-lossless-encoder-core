@@ -9,7 +9,7 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from merge import *
-
+import constraints
 
 def merge_test_1(m):
 	vcdf = open(parentdir + "/../simulations/merge_test_1.vcd", "w")
@@ -17,17 +17,17 @@ def merge_test_1(m):
 		def testbench():
 
 			# input 1
-			yield m.enc_in1.eq(0b11001111)
-			yield m.enc_in_ctr1.eq(8)
+			yield m.encs_in[0].eq(0b11001111)
+			yield m.encs_in_ctr[0].eq(8)
 
-			yield m.enc_in2.eq(0b0)
-			yield m.enc_in_ctr2.eq(1)
+			yield m.encs_in[1].eq(0b0)
+			yield m.encs_in_ctr[1].eq(1)
 
-			yield m.enc_in3.eq(0b1010101010101010101011010101010)
-			yield m.enc_in_ctr3.eq(31)
+			yield m.encs_in[2].eq(0b1010101010101010101011010101010)
+			yield m.encs_in_ctr[2].eq(31)
 
-			yield m.enc_in4.eq(0b000011110)
-			yield m.enc_in_ctr4.eq(9)
+			yield m.encs_in[3].eq(0b000011110)
+			yield m.encs_in_ctr[3].eq(9)
 
 			yield m.valid_in.eq(1)
 
@@ -36,34 +36,34 @@ def merge_test_1(m):
 			assert 0 == (yield m.valid_out)
 
 			#input 2
-			yield m.enc_in1.eq(0b1100)
-			yield m.enc_in_ctr1.eq(4)
+			yield m.encs_in[0].eq(0b1100)
+			yield m.encs_in_ctr[0].eq(4)
 
-			yield m.enc_in2.eq(0b00000)
-			yield m.enc_in_ctr2.eq(5)
+			yield m.encs_in[1].eq(0b00000)
+			yield m.encs_in_ctr[1].eq(5)
 
-			yield m.enc_in3.eq(0b10)
-			yield m.enc_in_ctr3.eq(2)
+			yield m.encs_in[2].eq(0b10)
+			yield m.encs_in_ctr[2].eq(2)
 
-			yield m.enc_in4.eq(0b0)
-			yield m.enc_in_ctr4.eq(1)
+			yield m.encs_in[3].eq(0b0)
+			yield m.encs_in_ctr[3].eq(1)
 
 			yield m.valid_in.eq(1)
 
 			yield
 
 			# input 3
-			yield m.enc_in1.eq(0b1011001101101111000101010101011)
-			yield m.enc_in_ctr1.eq(31)
+			yield m.encs_in[0].eq(0b1011001101101111000101010101011)
+			yield m.encs_in_ctr[0].eq(31)
 
-			yield m.enc_in2.eq(0b0000111110101101010111111110100)
-			yield m.enc_in_ctr2.eq(31)
+			yield m.encs_in[1].eq(0b0000111110101101010111111110100)
+			yield m.encs_in_ctr[1].eq(31)
 
-			yield m.enc_in3.eq(0b1010101010101010101011010101010)
-			yield m.enc_in_ctr3.eq(31)
+			yield m.encs_in[2].eq(0b1010101010101010101011010101010)
+			yield m.encs_in_ctr[2].eq(31)
 
-			yield m.enc_in4.eq(0b0000111100010010110101010101010)
-			yield m.enc_in_ctr4.eq(31)
+			yield m.encs_in[3].eq(0b0000111100010010110101010101010)
+			yield m.encs_in_ctr[3].eq(31)
 
 			yield m.valid_in.eq(1)
 			assert 0 == (yield m.valid_out)
@@ -103,6 +103,10 @@ def merge_test_1(m):
 
 
 if __name__ == "__main__":
-	n = Merge()
-	merge_test_1(n)
-	main(n, ports=n.ios)
+	config = {
+		"bit_depth" : 16,
+		"pixels_per_cycle": 4,
+	}
+	m = Merge(config, constraints.Constraints())
+	merge_test_1(m)
+	main(m, ports=m.ios)

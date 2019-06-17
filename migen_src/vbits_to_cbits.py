@@ -2,90 +2,241 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
-from constants import *
+import constraints
 
-INPUT_SIZE = 48
-OUTPUT_SIZE = 32
-BUFFER_SIZE = 144
+class OutputHandler(Elaboratable):
 
-class BufferPicker(Elaboratable):
+	def __init__(self, config, constraints):
 
-	def __init__(self):
+		self.output_size = config['out_bits']
+		self.input_size = config['converter']
+		self.buffer_size = config['vbits_to_cbits_buffer_size']
+		self.out_bytes = int(self.output_size/8)
 
-		self.in_signal = Signal(BUFFER_SIZE)
-		self.out_signal = Signal(OUTPUT_SIZE)
-		self.buff_consum = Signal(max=(BUFFER_SIZE+1))
+		#output data
+		self.data_out = Signal(self.output_size)
+		self.valid_out = Signal(1)
+		self.end_out = Signal(1)
+		self.busy_in = Signal(1)
 
-		self.ios = [self.in_signal, self.out_signal, self.buff_consum]
+		#buffer data
+		self.buffer = Signal(self.buffer_size)
+		self.buff_consum = Signal(max=(self.buffer_size+1))
+		self.new_buff_consum = Signal(max=(self.buffer_size+1))
+		self.new_buff_consum_actv = Signal(1)
+		#is read happen to the buffer?
+		self.dec_buff_out = Signal(1)
 
-	def elaborate(self, platform):
-
-		m = Module()
-		zeros = Signal(OUTPUT_SIZE)
-		with m.Switch(self.buff_consum):
-			for i in range(1, OUTPUT_SIZE):
-				start = 0
-				end = i
-				zero_length = OUTPUT_SIZE - i
-				with m.Case(i):
-					m.d.comb += [
-						self.out_signal.eq(Cat(zeros[0:zero_length],self.in_signal[start:end])),
-					]
-			for i in range(OUTPUT_SIZE, BUFFER_SIZE+1):
-				start = i - OUTPUT_SIZE
-				end = i
-				with m.Case(i):
-					m.d.comb += [
-						self.out_signal.eq(self.in_signal[start:end]),
-					]
-		return m
-
-class BufferSetter(Elaboratable):
-
-	def __init__(self):
-
-		self.enc_in = Signal(INPUT_SIZE)
-		self.enc_in_ctr = Signal(max=(INPUT_SIZE+1))
-		self.buff = Signal(BUFFER_SIZE)
-		self.latch = Signal(1)
-
-		self.ios = [self.enc_in, self.enc_in_ctr, self.buff]
+		#signal for end from input handler
+		self.end_in = Signal(1)
 
 
 	def elaborate(self, platform):
 
 		m = Module()
 
-		with m.If(self.latch):
+		# right & left shift to handle data output
+		shift_right = Signal(max=self.buffer_size-self.output_size+1)
+		shift_left = Signal(max=self.buffer_size-self.output_size+1)
+		m.d.comb += shift_right.eq(self.buff_consum - self.output_size)
+		m.d.comb += shift_left.eq(self.output_size - self.buff_consum)
+
+		# initial value for dec_buff_out
+		m.d.comb += self.dec_buff_out.eq(0)
+
+		# conditions
+		buff_consum_less_eq = Signal(1)
+		buff_consum_greater_eq = Signal(1)
+
+		with m.If(self.new_buff_consum_actv):
 			m.d.sync += [
-				self.buff.eq((self.buff << self.enc_in_ctr) | self.enc_in),
+				buff_consum_greater_eq.eq((self.new_buff_consum >= self.output_size)),
+				buff_consum_less_eq.eq((self.new_buff_consum <= self.output_size)),
 			]
 
+		def do_output():
+			with m.If(buff_consum_greater_eq):
+				m.d.sync += self.data_out.eq(self.buffer >> shift_right),
+			with m.Else():
+				m.d.sync += self.data_out.eq(self.buffer << shift_left),
+			# for i in range(self.output_size):
+			# 	m.d.sync += self.data_out[i].eq(self.buffer[self.output_size-i-1])
+
+			m.d.sync += self.valid_out.eq(1),
+			m.d.comb += self.dec_buff_out.eq(1)
+
+		# activate valid signal
+		with m.FSM() as outTransaction:
+
+			with m.State("OUTPUT"):
+				#if we have enough data, or end signal is activated -> last input
+				with m.If((buff_consum_greater_eq) | ((buff_consum_less_eq) & self.end_in)):
+					do_output()
+					m.next = "BRUST"
+				#added to handle end signal - if last input then sent end_out to one
+				with m.If((buff_consum_less_eq) & self.end_in):
+					m.d.sync += self.end_out.eq(1),
+
+			with m.State("BRUST"):
+				#device latched the prev output and new output is ready
+				with m.If((self.busy_in == 0) & (buff_consum_greater_eq)):
+					do_output()
+				#device latched the prev output but NO new output is ready
+				with m.Elif(self.busy_in == 0):
+					m.d.sync += self.valid_out.eq(0),
+					m.next = "OUTPUT"
+				#device did not latch the prev output
+				with m.Else():
+					pass
+				#added to handle end signal - if last input then sent end_out to one
+				with m.If((buff_consum_less_eq) & self.end_in):
+					m.d.sync += self.end_out.eq(1),
+
 		return m
 
+class InputHandler(Elaboratable):
 
-class VBitsToCBits(Elaboratable):
+	def __init__(self, config, constraints):
 
-	def __init__(self):
+		self.output_size = config['out_bits']
+		self.input_size = config['converter']
+		self.buffer_size = config['vbits_to_cbits_buffer_size']
 
-		assert BUFFER_SIZE >= (INPUT_SIZE+OUTPUT_SIZE)
-		assert OUTPUT_SIZE%8 == 0
-
-		self.out_bytes = int(OUTPUT_SIZE/8)
+		# input port from last stage
 		self.latch_input = Signal(1)
-		self.enc_in = Signal(INPUT_SIZE)
-		self.enc_in_ctr = Signal(max=(INPUT_SIZE+1))
+		self.enc_in = Signal(self.input_size)
+		self.enc_in_ctr = Signal(max=(self.input_size+1))
 		self.in_end = Signal(1)
 		self.valid_in = Signal(1)
 
-		self.data_out = Signal(OUTPUT_SIZE)
-		self.valid_out = Signal(1)
+		#buffer & related info - ALL OUTPUTS
+		self.buffer = Signal(self.buffer_size)
+		self.buff_consum = Signal(max=(self.buffer_size+1))
+		self.new_buff_consum = Signal(max=(self.buffer_size+1))
+		self.new_buff_consum_actv = Signal(1)
+
+		#signals indicating decrease in buffer - ALL INPUTS
+		self.dec_buff = Signal(1)
+
+		#signal for end
 		self.end_out = Signal(1)
 
+		self.ios = \
+			[self.enc_in, self.enc_in_ctr, self.in_end, self.valid_in] + \
+			[self.latch_input, self.buffer, self.buff_consum] + \
+			[self.end_out, self.dec_buff]
+
+	def elaborate(self, platform):
+
+		m = Module()
+
+		#signals indicating increase & decrease in buffer
+		self.inc_buff = Signal(1)
+		m.d.comb += self.inc_buff.eq(0)
+
+		# to register data from fifo
+		enc_in_reg = Signal(self.input_size)
+		enc_in_ctr_reg = Signal(max=(self.input_size+1))
+		in_end_reg = Signal(1)
+		valid_in_reg = Signal(1)
+
+		# termination condition for brust & base input
+		brust_cond = Signal(1)
+		normal_cond = Signal(1)
+
+		# Default value of self.new_buff_consum_actv
+		m.d.comb += self.new_buff_consum_actv.eq(0)
+
+		def reg_data():
+			m.d.sync += [
+				enc_in_reg.eq(self.enc_in),
+				enc_in_ctr_reg.eq(self.enc_in_ctr),
+				in_end_reg.eq(self.in_end),
+				valid_in_reg.eq(self.valid_in),
+			]
+
+		def get_input():
+			m.d.sync += [
+				self.buffer.eq((self.buffer << enc_in_ctr_reg) | enc_in_reg),
+				self.end_out.eq(in_end_reg),
+			]
+			# m.d.sync += [
+			# 	self.buffer.eq((self.buffer >> self.output_size) | (enc_in_reg << self.buff_consum)),
+			# 	self.end_out.eq(self.in_end),
+			# ]
+			m.d.comb += self.inc_buff.eq(1)
+
+		with m.FSM() as inTransaction:
+
+			with m.State("INPUT"):
+				with m.If(normal_cond):
+					#if we have data in buffer
+					with m.If(valid_in_reg):
+						m.d.sync += self.latch_input.eq(1)
+						m.next = "BRUST"
+					#if we have new data
+					with m.Elif(self.valid_in):
+						m.d.sync += self.latch_input.eq(1)
+						m.next = "DELAY_BRUST"
+
+			with m.State("DELAY_BRUST"):
+				reg_data()
+				m.next = "BRUST"
+
+			with m.State("BRUST"):
+				#if we have new data
+				reg_data()
+				with m.If(valid_in_reg):
+					get_input()
+					with m.If(((self.buff_consum + enc_in_ctr_reg) <= (self.buffer_size-self.input_size))):
+						m.d.sync += self.latch_input.eq(1)
+					with m.Else():
+						m.d.sync += self.latch_input.eq(0)
+						m.next = "INPUT"
+
+		with m.If(self.inc_buff & self.dec_buff):
+			m.d.comb += self.new_buff_consum.eq(self.buff_consum - self.output_size + enc_in_ctr_reg)
+		with m.Elif(self.dec_buff):
+			m.d.comb += self.new_buff_consum.eq(self.buff_consum - self.output_size)
+		with m.Elif(self.inc_buff):
+			m.d.comb += self.new_buff_consum.eq(self.buff_consum + enc_in_ctr_reg)
+
+		with m.If(self.inc_buff | self.dec_buff):
+			m.d.sync += self.buff_consum.eq(self.new_buff_consum)
+			m.d.comb += self.new_buff_consum_actv.eq(1)
+
+		m.d.sync += normal_cond.eq(self.new_buff_consum <= (self.buffer_size-self.input_size))
+
+		# with m.If(self.valid_in & (self.inc_buff | self.dec_buff)):
+			# m.d.sync += brust_cond.eq(((self.new_buff_consum + self.enc_in_ctr) <= (self.buffer_size-self.input_size)))
+
+		return m
+
+class VBitsToCBits(Elaboratable):
+
+	def __init__(self, config, constraints):
+
+		assert config['vbits_to_cbits_buffer_size'] >= (config['converter']+config['out_bits'])
+		assert config['out_bits']%8 == 0
+
+		self.output_size = config['out_bits']
+		self.input_size = config['converter']
+		self.buffer_size = config['vbits_to_cbits_buffer_size']
+		self.out_bytes = int(self.output_size/8)
+
+		self.latch_input = Signal(1)
+		self.enc_in = Signal(self.input_size)
+		self.enc_in_ctr = Signal(max=(self.input_size+1))
+		self.in_end = Signal(1)
+		self.valid_in = Signal(1)
+
+		self.data_out = Signal(self.output_size)
+		self.valid_out = Signal(1)
+		self.end_out = Signal(1)
 		self.busy_in = Signal(1)
 		
-		self.buffer_picker = BufferPicker()
-		self.buffer_setter = BufferSetter()
+		self.input_handler = InputHandler(config, constraints)
+		self.output_handler = OutputHandler(config, constraints)
 
 		self.ios = \
 			[self.enc_in, self.enc_in_ctr, self.in_end, self.valid_in] + \
@@ -96,136 +247,43 @@ class VBitsToCBits(Elaboratable):
 
 		m = Module()
 
-		buff = Signal(BUFFER_SIZE)
-		buff_consum = Signal(max=(BUFFER_SIZE+1))
+		m.submodules.input_handler = input_handler = self.input_handler
+		m.submodules.output_handler = output_handler = self.output_handler
 
-		output = Signal(OUTPUT_SIZE)
-		buffered_output = Signal(OUTPUT_SIZE)
-		m.d.sync += self.data_out.eq(output)
-
-		m.submodules.buff_pick = buff_pick = self.buffer_picker
+		# this and input_handler
 		m.d.comb += [
-			buff_pick.in_signal.eq(buff),
-			buff_pick.buff_consum.eq(buff_consum),
-			output.eq(buff_pick.out_signal),
+			self.latch_input.eq(input_handler.latch_input),
+			input_handler.enc_in.eq(self.enc_in),
+			input_handler.enc_in_ctr.eq(self.enc_in_ctr),
+			input_handler.in_end.eq(self.in_end),
+			input_handler.valid_in.eq(self.valid_in),
 		]
 
-		buff_set_latch = Signal(1)
-		m.d.comb += buff_set_latch.eq(0)
-
-		m.submodules.buff_set = buff_set = self.buffer_setter
+		# input_handler and output_handler
 		m.d.comb += [
-			buff.eq(buff_set.buff),
-			buff_set.enc_in.eq(self.enc_in),
-			buff_set.enc_in_ctr.eq(self.enc_in_ctr),
-			buff_set.latch.eq(buff_set_latch),
-		]
-		
-		sig1 = Signal(1)
-		sig2 = Signal(1)
-
-		m.d.comb += [
-			sig1.eq(0),
-			sig2.eq(buff_set_latch),
+			input_handler.dec_buff.eq(output_handler.dec_buff_out),
+			output_handler.buffer.eq(input_handler.buffer),
+			output_handler.buff_consum.eq(input_handler.buff_consum),
+			output_handler.end_in.eq(input_handler.end_out),
+			output_handler.new_buff_consum.eq(input_handler.new_buff_consum),
+			output_handler.new_buff_consum_actv.eq(input_handler.new_buff_consum_actv),
 		]
 
-		current_end = Signal()
-
-		# activate valid signal
-		with m.FSM() as outTransaction:
-
-			with m.State("OUTPUT"):
-				#if we have enough data, or end signal is activated -> last input
-				with m.If((buff_consum >= OUTPUT_SIZE) | ((buff_consum < OUTPUT_SIZE) & current_end)):
-					m.d.comb += sig1.eq(1)
-					m.d.sync += [
-						self.valid_out.eq(1),
-						buffered_output.eq(output),
-					]
-					m.next = "BRUST"
-				#added to handle end signal - if last input then sent end_out to one
-				with m.If((buff_consum <= OUTPUT_SIZE) & current_end):
-					m.d.sync += [
-						self.end_out.eq(1),
-					]
-
-			with m.State("BRUST"):
-				#device latched the prev output and new output is ready
-				with m.If((self.busy_in == 0) & (buff_consum >= OUTPUT_SIZE)):
-					m.d.comb += sig1.eq(1)
-					m.d.sync += [
-						self.valid_out.eq(1),
-						buffered_output.eq(output),
-					]
-				#device latched the prev output but NO new output is ready
-				with m.Elif(self.busy_in == 0):
-					m.d.sync += [
-						self.valid_out.eq(0),
-					]
-					m.next = "OUTPUT"
-				#device did not latch the prev output
-				with m.Else():
-					m.d.sync += self.data_out.eq(buffered_output)
-				#added to handle end signal - if last input then sent end_out to one
-				with m.If((buff_consum <= OUTPUT_SIZE) & current_end):
-					m.d.sync += [
-						self.end_out.eq(1),
-					]
-
-		new_consum = Signal(max=(BUFFER_SIZE+1))
-		with m.FSM() as inTransaction:
-
-			with m.State("INPUT"):
-				with m.If(buff_consum <= (BUFFER_SIZE-INPUT_SIZE)):
-					#if we have new data
-					with m.If(self.valid_in):
-						m.d.sync += [
-							self.latch_input.eq(1),
-						]
-						m.next = "DELAY_BRUST"
-
-			with m.State("DELAY_BRUST"):
-				with m.If(self.valid_in):
-					m.d.comb += buff_set_latch.eq(1)
-					m.d.sync += current_end.eq(self.in_end)
-					# burst
-					with m.If((new_consum <= (BUFFER_SIZE-INPUT_SIZE))):
-						m.next = "BRUST"
-					with m.Else():
-						m.d.sync += [
-							self.latch_input.eq(0),
-						]
-						m.next = "INPUT"
-				with m.Else():
-					m.next = "INPUT"
-
-			with m.State("BRUST"):
-				#if we have new data
-				with m.If(self.valid_in):
-					m.d.comb += buff_set_latch.eq(1)
-					m.d.sync += current_end.eq(self.in_end)
-					with m.If(new_consum <= (BUFFER_SIZE-INPUT_SIZE)):
-						m.d.sync += [
-							self.latch_input.eq(1),
-						]
-					with m.Else():
-						m.d.sync += [
-							self.latch_input.eq(0),
-						]
-						m.next = "INPUT"
-
-		with m.If(sig1 & sig2):
-			m.d.comb += new_consum.eq(buff_consum - OUTPUT_SIZE + self.enc_in_ctr)
-		with m.Elif(sig1):
-			m.d.comb += new_consum.eq(buff_consum - OUTPUT_SIZE)
-		with m.Elif(sig2):
-			m.d.comb += new_consum.eq(buff_consum+ self.enc_in_ctr)
-
-		with m.If(sig1 | sig2):
-			m.d.sync += buff_consum.eq(new_consum)
+		# output_handler and this
+		m.d.comb += [
+			self.data_out.eq(output_handler.data_out),
+			self.valid_out.eq(output_handler.valid_out),
+			self.end_out.eq(output_handler.end_out),
+			output_handler.busy_in.eq(self.busy_in),
+		]
 
 		return m
 
 if __name__ == "__main__":
-	d = VBitsToCBits()
+	config = {
+		"out_bits" : 32,
+		"converter": 48,
+		"vbits_to_cbits_buffer_size": 144,
+	}
+	d = VBitsToCBits(config, constraints.Constraints())
 	main(d, ports=d.ios)

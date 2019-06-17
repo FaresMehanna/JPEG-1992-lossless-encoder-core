@@ -2,20 +2,20 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
-from constants import *
+import constraints
 
 class SingleMerger(Elaboratable):
 
 	def __init__(self, width):
 
 		self.enc_in1 = Signal(width)
-		self.enc_in_ctr1 = Signal(int(log(width, 2)) + 1)
+		self.enc_in_ctr1 = Signal(max=width+1)
 
 		self.enc_in2 = Signal(width)
-		self.enc_in_ctr2 = Signal(int(log(width, 2)) + 1)
+		self.enc_in_ctr2 = Signal(max=width+1)
 
-		self.enc_out = Signal(width * 2)
-		self.enc_out_ctr = Signal(int(log(width, 2)) + 2)
+		self.enc_out = Signal(width*2)
+		self.enc_out_ctr = Signal(max=width*2+1)
 
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
@@ -41,34 +41,60 @@ class SingleMerger(Elaboratable):
 
 		return m
 
+'''
+         |            = 0
+    |         |       = 1
+  |    |   |     |    = 2
+ | |  | | | |   | |   = 3
+'''
 class Merge(Elaboratable):
 
-	def __init__(self):
+	def __init__(self, config, constraints):
 
-		self.enc_in1 = Signal(31)
-		self.enc_in_ctr1 = Signal(5)
-		self.enc_in2 = Signal(31)
-		self.enc_in_ctr2 = Signal(5)
-		self.enc_in3 = Signal(31)
-		self.enc_in_ctr3 = Signal(5)
-		self.enc_in4 = Signal(31)
-		self.enc_in_ctr4 = Signal(5)
+		#config assertions
+		assert config['bit_depth'] >= 2 and config['bit_depth'] <= 16
+		assert config['pixels_per_cycle'] >= 2
 
-		self.enc_out = Signal(124)
-		self.enc_out_ctr = Signal(7)
+		#save needed configs
+		self.bd = config['bit_depth']
+		self.ps = config['pixels_per_cycle']
+
+		single_ctr = min(16+self.bd, 31)
+		total_ctr = single_ctr * self.ps
+
+		self.encs_in = Array(Signal(single_ctr, name="enc_in") for _ in range(self.ps))
+		self.encs_in_ctr = Array(Signal(5, name="enc_in_ctr") for _ in range(self.ps))
+
+		self.enc_out = Signal(total_ctr, name="enc_out")
+		self.enc_out_ctr = Signal(max=total_ctr+1, name="enc_out_ctr")
 
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
 
-		self.merger_lvl1_1 = SingleMerger(31)
-		self.merger_lvl1_2 = SingleMerger(31)
-		self.merger_lvl2 = SingleMerger(62)
+		self.debug_counter = Signal(20)
+
+		# set levels of merge!
+		levels = ceil(log(self.ps ,2))
+		self.mergers = []
+
+		#set the base level
+		elems = 2**(levels-1)
+		merger_width = single_ctr
+		for i in range(elems):
+			#create single merger for each two pixels
+			self.mergers.append(SingleMerger(merger_width))
+
+		#set all the above loops
+		while elems != 1:
+			elems = int(elems / 2)
+			merger_width = merger_width * 2
+			for j in range(elems):
+				#create single merger for two mergers
+				self.mergers.append(SingleMerger(merger_width))
 
 		self.ios = \
-			[self.enc_in1, self.enc_in_ctr1] + \
-			[self.enc_in2, self.enc_in_ctr2] + \
-			[self.enc_in3, self.enc_in_ctr3] + \
-			[self.enc_in4, self.enc_in_ctr4] + \
+			[enc_in for enc_in in self.encs_in] + \
+			[enc_in_ctr for enc_in_ctr in self.encs_in_ctr] + \
 			[self.enc_out, self.enc_out_ctr] + \
 			[self.valid_in, self.valid_out]
 
@@ -77,46 +103,73 @@ class Merge(Elaboratable):
 
 		m = Module()
 
-		m.submodules.merger_lvl1_1 = mlv11 = self.merger_lvl1_1
-		m.submodules.merger_lvl1_2 = mlv12 = self.merger_lvl1_2
-		m.submodules.merger_lvl2 = mlv2 = self.merger_lvl2
+		m.submodules += self.mergers
 
-		# main with mlv11
-		m.d.comb += [
-			mlv11.enc_in1.eq(self.enc_in1),
-			mlv11.enc_in_ctr1.eq(self.enc_in_ctr1),
-			mlv11.enc_in2.eq(self.enc_in2),
-			mlv11.enc_in_ctr2.eq(self.enc_in_ctr2),
-			mlv11.valid_in.eq(self.valid_in),
-		]
+		# connect the base level
+		levels = ceil(log(self.ps ,2))
+		elems = 2**(levels-1)
 
-		# main with mlv12
-		m.d.comb += [
-			mlv12.enc_in1.eq(self.enc_in3),
-			mlv12.enc_in_ctr1.eq(self.enc_in_ctr3),
-			mlv12.enc_in2.eq(self.enc_in4),
-			mlv12.enc_in_ctr2.eq(self.enc_in_ctr4),
-			mlv12.valid_in.eq(self.valid_in),
-		]
+		with m.If(self.valid_in):
+			m.d.sync += self.debug_counter.eq(self.debug_counter + 1)
 
-		# mlv11 and mlv12 with mlv2
-		m.d.comb += [
-			mlv2.enc_in1.eq(mlv11.enc_out),
-			mlv2.enc_in_ctr1.eq(mlv11.enc_out_ctr),
-			mlv2.enc_in2.eq(mlv12.enc_out),
-			mlv2.enc_in_ctr2.eq(mlv12.enc_out_ctr),
-			mlv2.valid_in.eq(mlv11.valid_out),
-		]
+		in_ctr = 0
+		for i in range(elems):
+			if in_ctr < self.ps:
+				m.d.comb += [
+					self.mergers[i].enc_in1.eq(self.encs_in[in_ctr]),
+					self.mergers[i].enc_in_ctr1.eq(self.encs_in_ctr[in_ctr]),
+					self.mergers[i].valid_in.eq(self.valid_in),
+				]
+				in_ctr += 1
+				if in_ctr < self.ps:
+					m.d.comb += [
+						self.mergers[i].enc_in2.eq(self.encs_in[in_ctr]),
+						self.mergers[i].enc_in_ctr2.eq(self.encs_in_ctr[in_ctr]),
+					]
+					in_ctr += 1
+				else:
+					m.d.comb += [
+						self.mergers[i].enc_in2.eq(0),
+						self.mergers[i].enc_in_ctr2.eq(0),
+					]
+			else:
+				m.d.comb += [
+					self.mergers[i].enc_in1.eq(0),
+					self.mergers[i].enc_in_ctr1.eq(0),
+					self.mergers[i].enc_in2.eq(0),
+					self.mergers[i].enc_in_ctr2.eq(0),
+					self.mergers[i].valid_in.eq(self.valid_in),
+				]
 
-		#mlv2 with main
+		high_ctr = elems
+		low_ctr = 0
+		# connect all other levels
+		while elems != 1:
+			elems = int(elems / 2)
+			for j in range(elems):
+				m.d.comb += [
+					self.mergers[high_ctr].enc_in1.eq(self.mergers[low_ctr].enc_out),
+					self.mergers[high_ctr].enc_in_ctr1.eq(self.mergers[low_ctr].enc_out_ctr),
+					self.mergers[high_ctr].enc_in2.eq(self.mergers[low_ctr+1].enc_out),
+					self.mergers[high_ctr].enc_in_ctr2.eq(self.mergers[low_ctr+1].enc_out_ctr),
+					self.mergers[high_ctr].valid_in.eq(self.mergers[low_ctr].valid_out),
+				]
+				low_ctr += 2
+				high_ctr += 1
+
+		# top merger with main
 		m.d.comb += [
-			self.enc_out.eq(mlv2.enc_out),
-			self.enc_out_ctr.eq(mlv2.enc_out_ctr),
-			self.valid_out.eq(mlv2.valid_out),
+			self.enc_out.eq(self.mergers[-1].enc_out),
+			self.enc_out_ctr.eq(self.mergers[-1].enc_out_ctr),
+			self.valid_out.eq(self.mergers[-1].valid_out),
 		]
 
 		return m
 
 if __name__ == "__main__":
-	m = Merge()
+	config = {
+		"bit_depth" : 16,
+		"pixels_per_cycle": 2,
+	}
+	m = Merge(config, constraints.Constraints())
 	main(m, ports=m.ios)

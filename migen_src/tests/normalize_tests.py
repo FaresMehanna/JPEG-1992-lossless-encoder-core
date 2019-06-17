@@ -9,7 +9,7 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from normalize import *
-
+import constraints
 
 def normalize_test_1(m):
 	vcdf = open(parentdir + "/../simulations/normalize_test_1.vcd", "w")
@@ -17,10 +17,14 @@ def normalize_test_1(m):
 		def testbench():
 
 			#input 1
-			yield m.val_in1.eq(0)
-			yield m.val_in2.eq(1)
-			yield m.val_in3.eq(2)
-			yield m.val_in4.eq(3)
+			yield m.vals_in[0].eq(0)
+			yield m.vals_in[1].eq(1)
+			yield m.vals_in[2].eq(2)
+			yield m.vals_in[3].eq(3)
+			yield m.vals_in_mns[0].eq(-1)
+			yield m.vals_in_mns[1].eq(0)
+			yield m.vals_in_mns[2].eq(1)
+			yield m.vals_in_mns[3].eq(2)
 			yield m.valid_in.eq(1)
 
 			yield
@@ -28,63 +32,75 @@ def normalize_test_1(m):
 			assert 0 == (yield m.valid_out)
 
 			#input 2
-			yield m.val_in1.eq(-1)
-			yield m.val_in2.eq(-2)
-			yield m.val_in3.eq(-3)
-			yield m.val_in4.eq(-4)
+			yield m.vals_in[0].eq(-1)
+			yield m.vals_in[1].eq(-2)
+			yield m.vals_in[2].eq(-3)
+			yield m.vals_in[3].eq(-4)
+			yield m.vals_in_mns[0].eq(-2)
+			yield m.vals_in_mns[1].eq(-3)
+			yield m.vals_in_mns[2].eq(-4)
+			yield m.vals_in_mns[3].eq(-5)
 			yield m.valid_in.eq(1)
 
 			yield
 			
 			#test input 1
-			assert 0 == (yield m.val_out1)
-			assert 1 == (yield m.val_out2)
-			assert 2 == (yield m.val_out3)
-			assert 3 == (yield m.val_out4)
-			assert 0 == (yield m.ssss1)
-			assert 1 == (yield m.ssss2)
-			assert 2 == (yield m.ssss3)
-			assert 2 == (yield m.ssss4)
+			assert 0 == (yield m.vals_out[0])
+			assert 1 == (yield m.vals_out[1])
+			assert 2 == (yield m.vals_out[2])
+			assert 3 == (yield m.vals_out[3])
+			assert 0 == (yield m.ssssx[0])
+			assert 1 == (yield m.ssssx[1])
+			assert 2 == (yield m.ssssx[2])
+			assert 2 == (yield m.ssssx[3])
 			assert 1 == (yield m.valid_out)
 
 			#input 3
-			yield m.val_in1.eq(10)
-			yield m.val_in2.eq(200)
-			yield m.val_in3.eq(3000)
-			yield m.val_in4.eq(65535)
+			yield m.vals_in[0].eq(10)
+			yield m.vals_in[1].eq(200)
+			yield m.vals_in[2].eq(3000)
+			yield m.vals_in[3].eq(65535)
+			yield m.vals_in_mns[0].eq(9)
+			yield m.vals_in_mns[1].eq(199)
+			yield m.vals_in_mns[2].eq(2999)
+			yield m.vals_in_mns[3].eq(65534)
 			yield m.valid_in.eq(1)
 
 			yield
 
 			#test input 2
-			assert 0 == (yield m.val_out1)
-			assert 1 == (yield m.val_out2)
-			assert 0 == (yield m.val_out3)
-			assert 3 == (yield m.val_out4)
-			assert 1 == (yield m.ssss1)
-			assert 2 == (yield m.ssss2)
-			assert 2 == (yield m.ssss3)
-			assert 3 == (yield m.ssss4)
+			assert 0 == (yield m.vals_out[0])
+			assert 1 == (yield m.vals_out[1])
+			assert 0 == (yield m.vals_out[2])
+			assert 3 == (yield m.vals_out[3])
+			assert 1 == (yield m.ssssx[0])
+			assert 2 == (yield m.ssssx[1])
+			assert 2 == (yield m.ssssx[2])
+			assert 3 == (yield m.ssssx[3])
 			assert 1 == (yield m.valid_out)
 
 			#input 4
-			yield m.val_in1.eq(-10)
-			yield m.val_in2.eq(-200)
-			yield m.val_in3.eq(-3000)
-			yield m.val_in4.eq(-65535)
+			yield m.vals_in[0].eq(-10)
+			yield m.vals_in[1].eq(-200)
+			yield m.vals_in[2].eq(-3000)
+			yield m.vals_in[3].eq(-65535)
+			yield m.vals_in_mns[0].eq(-11)
+			yield m.vals_in_mns[1].eq(-201)
+			yield m.vals_in_mns[2].eq(-3001)
+			yield m.vals_in_mns[3].eq(-65536)
 			yield m.valid_in.eq(1)
 
 			yield
 
 			#test input 3
-			assert 10 == (yield m.val_out1)
-			assert 200 == (yield m.val_out2)
-			assert 3000 == (yield m.val_out3)
-			assert 65535 == (yield m.val_out4)
-			assert 4 == (yield m.ssss1)
-			assert 8 == (yield m.ssss2)
-			assert 12 == (yield m.ssss3)
-			assert 16 == (yield m.ssss4)
+			assert 10 == (yield m.vals_out[0])
+			assert 200 == (yield m.vals_out[1])
+			assert 3000 == (yield m.vals_out[2])
+			assert 65535 == (yield m.vals_out[3])
+			assert 4 == (yield m.ssssx[0])
+			assert 8 == (yield m.ssssx[1])
+			assert 12 == (yield m.ssssx[2])
+			assert 16 == (yield m.ssssx[3])
 			assert 1 == (yield m.valid_out)
 
 			yield m.valid_in.eq(0)
@@ -92,14 +108,14 @@ def normalize_test_1(m):
 			yield
 
 			#test input 4
-			assert 5 == (yield m.val_out1)
-			assert 55 == (yield m.val_out2)
-			assert 1095 == (yield m.val_out3)
-			assert 0 == (yield m.val_out4)
-			assert 4 == (yield m.ssss1)
-			assert 8 == (yield m.ssss2)
-			assert 12 == (yield m.ssss3)
-			assert 16 == (yield m.ssss4)
+			assert 5 == (yield m.vals_out[0])
+			assert 55 == (yield m.vals_out[1])
+			assert 1095 == (yield m.vals_out[2])
+			assert 0 == (yield m.vals_out[3])
+			assert 4 == (yield m.ssssx[0])
+			assert 8 == (yield m.ssssx[1])
+			assert 12 == (yield m.ssssx[2])
+			assert 16 == (yield m.ssssx[3])
 			assert 1 == (yield m.valid_out)
 
 			yield m.valid_in.eq(0)
@@ -118,6 +134,10 @@ def normalize_test_1(m):
 
 
 if __name__ == "__main__":
-	n = Normalize()
+	config = {
+		"bit_depth" : 16,
+		"pixels_per_cycle": 4,
+	}
+	n = Normalize(config, constraints.Constraints())
 	normalize_test_1(n)
 	main(n, ports=n.ios)

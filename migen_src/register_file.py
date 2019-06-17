@@ -2,7 +2,6 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
-from constants import *
 
 class RegisterFile(Elaboratable):
 

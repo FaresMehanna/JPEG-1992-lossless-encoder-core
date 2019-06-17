@@ -3,20 +3,30 @@ from nmigen.cli import main
 from nmigen.back import *
 from nmigen.lib.fifo import SyncFIFOBuffered
 from math import log, ceil
-from constants import *
-
-DATA_WIDTH = 48
-CTR_BITS = 6
-DATA_CTR = DATA_WIDTH + CTR_BITS
+import constraints
 
 class ConverterFifo(Elaboratable):
 
-	def __init__(self, depth):
+	def __init__(self, config, constraints):
 
-		self.depth = depth
+		#config assertions
+		assert config['converter'] >= 1
+		assert config['bit_depth'] >= 2 and config['bit_depth'] <= 16
+		assert config['pixels_per_cycle'] >= 1
+		#how many steps in converter
+		single_ctr = min(16+config['bit_depth'], 31)
+		total_ctr = single_ctr*config['pixels_per_cycle']
+		self.steps = ceil(total_ctr / config['converter']) + 1
+		assert config['converter_fifo_depth'] > self.steps+3
 
-		self.enc_in = Signal(DATA_WIDTH)
-		self.enc_in_ctr = Signal(CTR_BITS)
+		#save some data
+		self.data_width = config['converter']
+		self.ctr_bits = ceil(log(config['converter']+1, 2))
+		self.total_bits = self.data_width + self.ctr_bits + 1
+		self.depth = config['converter_fifo_depth']
+
+		self.enc_in = Signal(self.data_width)
+		self.enc_in_ctr = Signal(self.ctr_bits)
 		self.in_end = Signal(1)
 		self.valid_in = Signal(1)
 		self.writable = Signal(1)
@@ -24,8 +34,8 @@ class ConverterFifo(Elaboratable):
 
 
 		self.latch_output = Signal(1)
-		self.enc_out = Signal(DATA_WIDTH)
-		self.enc_out_ctr = Signal(CTR_BITS)
+		self.enc_out = Signal(self.data_width)
+		self.enc_out_ctr = Signal(self.ctr_bits)
 		self.out_end = Signal(1)
 		self.valid_out = Signal(1)
 
@@ -34,7 +44,7 @@ class ConverterFifo(Elaboratable):
 			[self.enc_out, self.enc_out_ctr, self.out_end, self.valid_out] + \
 			[self.latch_output, self.writable, self.close_full]
 
-		self.fifo = SyncFIFOBuffered(DATA_CTR+1, depth)
+		self.fifo = SyncFIFOBuffered(self.total_bits, self.depth)
 
 	def elaborate(self, platform):
 
@@ -51,19 +61,25 @@ class ConverterFifo(Elaboratable):
 		m.d.comb += [
 			self.writable.eq(fifo.writable),
 			self.valid_out.eq(fifo.readable),
-			self.enc_out.eq(fifo.dout[0:DATA_WIDTH]),
-			self.enc_out_ctr.eq(fifo.dout[DATA_WIDTH:DATA_CTR]),
-			self.out_end.eq(fifo.dout[DATA_CTR:DATA_CTR+1]),
+			self.enc_out.eq(fifo.dout[0:self.data_width]),
+			self.enc_out_ctr.eq(fifo.dout[self.data_width:self.total_bits-1]),
+			self.out_end.eq(fifo.dout[self.total_bits-1:self.total_bits]),
 			fifo.re.eq(self.latch_output),
 		]
 
 		# fifo with close_full
 		m.d.sync += [
-			self.close_full.eq(fifo.level > (self.depth-10)),
+			self.close_full.eq(fifo.level > (self.depth-self.steps)),
 		]
 
 		return m
 
 if __name__ == "__main__":
-	d = ConverterFifo(128)
+	config = {
+		"bit_depth" : 16,
+		"pixels_per_cycle": 2,
+		"converter": 36,
+		"converter_fifo_depth": 128,
+	}
+	d = ConverterFifo(config, constraints.Constraints())
 	main(d, ports=d.ios)

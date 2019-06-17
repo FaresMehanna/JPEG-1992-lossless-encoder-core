@@ -4,27 +4,27 @@
 (* top =  1  *)
 (* generator = "nMigen" *)
 module top(clk, height, width, rst);
-  (* src = "./migen_src/register_file.py:11" *)
+  (* src = "./migen_src/register_file.py:10" *)
   reg [15:0] \$next\height ;
-  (* src = "./migen_src/register_file.py:22" *)
-  reg [15:0] \$next\height_reg ;
-  (* src = "./migen_src/register_file.py:12" *)
-  reg [15:0] \$next\width ;
   (* src = "./migen_src/register_file.py:21" *)
+  reg [15:0] \$next\height_reg ;
+  (* src = "./migen_src/register_file.py:11" *)
+  reg [15:0] \$next\width ;
+  (* src = "./migen_src/register_file.py:20" *)
   reg [15:0] \$next\width_reg ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/register_file.py:11" *)
+  (* src = "./migen_src/register_file.py:10" *)
   output [15:0] height;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/register_file.py:22" *)
+  (* src = "./migen_src/register_file.py:21" *)
   reg [15:0] height_reg = 16'h0000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/register_file.py:12" *)
+  (* src = "./migen_src/register_file.py:11" *)
   output [15:0] width;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/register_file.py:21" *)
+  (* src = "./migen_src/register_file.py:20" *)
   reg [15:0] width_reg = 16'h0000;
   always @(posedge clk)
       height_reg <= \$next\height_reg ;
