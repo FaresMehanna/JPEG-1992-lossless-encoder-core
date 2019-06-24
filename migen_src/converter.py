@@ -67,6 +67,27 @@ class Converter(Elaboratable):
 				valid_out_reg.eq(self.valid_out),
 			]
 
+		def try_brust_idle():
+			#if there is input in the buffer & can write it
+			with m.If(valid_out_reg & (self.close_full==0)):
+				# latch the input
+				m.d.sync += [
+					self.latch_output.eq(1),
+				]
+				m.next = "BRUST"
+
+			# if there is new input & can write it
+			with m.Elif(self.valid_out & (self.close_full==0)):
+				# latch the input
+				m.d.sync += [
+					self.latch_output.eq(1),
+				]
+				m.next = "BRUST_IDLE"
+
+			#else stay/goto IDLE
+			with m.Else():
+				m.next = "IDLE"
+
 		with m.FSM() as outTransaction:
 
 			with m.State("IDLE"):
@@ -76,21 +97,8 @@ class Converter(Elaboratable):
 					self.latch_output.eq(0),
 				]
 
-				#if there is input in the buffer & can write it
-				with m.If(valid_out_reg & (self.close_full==0)):
-					# latch the input
-					m.d.sync += [
-						self.latch_output.eq(1),
-					]
-					m.next = "BRUST"
-
-				# if there is new input & can write it
-				with m.Elif(self.valid_out & (self.close_full==0)):
-					# latch the input
-					m.d.sync += [
-						self.latch_output.eq(1),
-					]
-					m.next = "BRUST_IDLE"
+				#this may overwrite self.latch_output
+				try_brust_idle()
 
 			with m.State("BRUST_IDLE"):
 				reg_data()
@@ -128,8 +136,8 @@ class Converter(Elaboratable):
 						end = self.conv_bits
 						state = "STEPS_"
 						for i in range(steps):
-							start += self.conv_bits	#36 72 108 $64
-							end = min(end + self.conv_bits, self.total_ctr) # 72 108 144->124 $128->112
+							start += self.conv_bits	#30
+							end = min(end + self.conv_bits, self.total_ctr) #56
 							if i == 0:
 								with m.If(enc_out_ctr_reg <= end):
 									m.d.sync += [
@@ -156,12 +164,13 @@ class Converter(Elaboratable):
 					m.d.sync += [
 						self.enc_in.eq(enc_out_latch[start:end]),
 						self.enc_in_ctr.eq(self.conv_bits),
-						self.in_end.eq(out_end_latch),
 						self.valid_in.eq(1),
 					]
 					if i == 0:
-						m.next = "IDLE"
+						m.d.sync += self.in_end.eq(out_end_latch),
+						try_brust_idle()
 					else:
+						m.d.sync += self.in_end.eq(0),
 						m.next = "STEPS_" + str(i-1)
 				start += self.conv_bits
 				end += self.conv_bits
