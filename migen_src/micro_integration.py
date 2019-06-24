@@ -15,17 +15,11 @@ class MicroIntegration(Elaboratable):
 			"pixels_per_cycle": 1,
 			"LJ92_fifo_depth": 512, #512 x 36 = RAM18
 			"out_bits": 16,
-			"converter" : 12,
+			"converter" : 15,
 			"converter_fifo_depth": 1024, #1024 x 18 = RAM18
-			"vbits_to_cbits_buffer_size": 42,
-			"vbits_to_cbits_slow_mhz": False,
-			"vbits_to_cbits_reg": False,
+			"vbits_to_cbits_buffer_size": 41,
 			"predictor_function": 1,
 			"num_of_components": 4,
-			"pipeline_reg": False,
-			"converter_reg": False,
-			"converter_fifo_reg": False,
-			"pipeline_fifo_reg": False,
 		}
 		cons = constraints.Constraints()
 

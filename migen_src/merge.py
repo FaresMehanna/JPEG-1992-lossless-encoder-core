@@ -17,14 +17,21 @@ class SingleMerger(Elaboratable):
 		self.enc_out = Signal(width*2)
 		self.enc_out_ctr = Signal(max=width*2+1)
 
+		#valid in & out
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
+
+		#end in & out
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
 
 		self.ios = \
 			[self.enc_in1, self.enc_in_ctr1] + \
 			[self.enc_in2, self.enc_in_ctr2] + \
 			[self.enc_out, self.enc_out_ctr] + \
-			[self.valid_in, self.valid_out]
+			[self.valid_in, self.valid_out] + \
+			[self.end_in, self.end_out]
+
 
 	def elaborate(self, platform):
 
@@ -35,9 +42,12 @@ class SingleMerger(Elaboratable):
 				self.enc_out_ctr.eq(self.enc_in_ctr1 + self.enc_in_ctr2),
 				self.enc_out.eq((self.enc_in1 << self.enc_in_ctr2) | (self.enc_in2)),
 			]
-
-		#if valid data
+			
+		# valid
 		m.d.sync += self.valid_out.eq(self.valid_in)
+
+		# end
+		m.d.sync += self.end_out.eq(self.end_in)
 
 		return m
 
@@ -68,8 +78,13 @@ class Merge(Elaboratable):
 		self.enc_out = Signal(total_ctr, name="enc_out")
 		self.enc_out_ctr = Signal(max=total_ctr+1, name="enc_out_ctr")
 
+		#valid in & out
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
+
+		#end in & out
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
 
 		self.debug_counter = Signal(20)
 
@@ -93,10 +108,11 @@ class Merge(Elaboratable):
 				self.mergers.append(SingleMerger(merger_width))
 
 		self.ios = \
-			[enc_in for enc_in in self.encs_in] + \
 			[enc_in_ctr for enc_in_ctr in self.encs_in_ctr] + \
+			[enc_in for enc_in in self.encs_in] + \
 			[self.enc_out, self.enc_out_ctr] + \
-			[self.valid_in, self.valid_out]
+			[self.valid_in, self.valid_out] + \
+			[self.end_in, self.end_out]
 
 
 	def elaborate(self, platform):
@@ -119,6 +135,7 @@ class Merge(Elaboratable):
 					self.mergers[i].enc_in1.eq(self.encs_in[in_ctr]),
 					self.mergers[i].enc_in_ctr1.eq(self.encs_in_ctr[in_ctr]),
 					self.mergers[i].valid_in.eq(self.valid_in),
+					self.mergers[i].end_in.eq(self.end_in),
 				]
 				in_ctr += 1
 				if in_ctr < self.ps:
@@ -139,6 +156,7 @@ class Merge(Elaboratable):
 					self.mergers[i].enc_in2.eq(0),
 					self.mergers[i].enc_in_ctr2.eq(0),
 					self.mergers[i].valid_in.eq(self.valid_in),
+					self.mergers[i].end_in.eq(self.end_in),
 				]
 
 		high_ctr = elems
@@ -153,6 +171,7 @@ class Merge(Elaboratable):
 					self.mergers[high_ctr].enc_in2.eq(self.mergers[low_ctr+1].enc_out),
 					self.mergers[high_ctr].enc_in_ctr2.eq(self.mergers[low_ctr+1].enc_out_ctr),
 					self.mergers[high_ctr].valid_in.eq(self.mergers[low_ctr].valid_out),
+					self.mergers[high_ctr].end_in.eq(self.mergers[low_ctr].end_out),
 				]
 				low_ctr += 2
 				high_ctr += 1
@@ -162,6 +181,7 @@ class Merge(Elaboratable):
 			self.enc_out.eq(self.mergers[-1].enc_out),
 			self.enc_out_ctr.eq(self.mergers[-1].enc_out_ctr),
 			self.valid_out.eq(self.mergers[-1].valid_out),
+			self.end_out.eq(self.mergers[-1].end_out),
 		]
 
 		return m

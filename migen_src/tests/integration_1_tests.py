@@ -13,7 +13,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from integration_1 import *
 
-TEST_NUM = int(4096*2)
+TEST_NUM = int(4096*1)
 
 def integration_1_test_1(m, test_file, test_number, stall_in):
 

@@ -72,8 +72,13 @@ class SingleNormalizer(Elaboratable):
 		self.valid_o = Signal(1)
 		self.val_in_mns = Signal(self.bd+1)
 
+		#end in & out
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
+
 		self.ios = \
-			[self.val_in, self.val_out, self.ssss, self.valid, self.valid_o, self.val_in_mns]
+			[self.val_in, self.val_out, self.ssss, self.valid, self.valid_o, self.val_in_mns] + \
+			[self.end_in, self.end_out]
 
 	def elaborate(self, platform):
 
@@ -104,6 +109,10 @@ class SingleNormalizer(Elaboratable):
 				build_pos_tree(m, self.val_in, self.ssss, pos_options, 0, self.bd-1)
 
 		m.d.sync += self.valid_o.eq(self.valid)
+
+		# end
+		m.d.sync += self.end_out.eq(self.end_in)
+
 		return m
 
 
@@ -127,6 +136,10 @@ class Normalize(Elaboratable):
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
 
+		#end in & out
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
+
 		self.pixels = [SingleNormalizer(config, constraints) for _ in range(self.ps)]
 
 		self.ios = \
@@ -134,7 +147,9 @@ class Normalize(Elaboratable):
 			[val_out for val_out in self.vals_out] + \
 			[val_in for val_in in self.vals_in] + \
 			[self.valid_in, self.valid_out] + \
-			[ssss for ssss in self.ssssx]
+			[ssss for ssss in self.ssssx] + \
+			[self.end_in, self.end_out]
+
 
 
 	def elaborate(self, platform):
@@ -146,6 +161,7 @@ class Normalize(Elaboratable):
 			m.d.comb += [
 				pixel.val_in.eq(val_in),
 				pixel.valid.eq(self.valid_in),
+				pixel.end_in.eq(self.end_in),
 				pixel.val_in_mns.eq(val_in_mns),
 			]
 			m.d.comb += [
@@ -155,6 +171,10 @@ class Normalize(Elaboratable):
 
 		#if valid data
 		m.d.comb += self.valid_out.eq(self.pixels[0].valid_o)
+
+		# end
+		m.d.comb += self.end_out.eq(self.pixels[0].end_out)
+
 		return m
 
 if __name__ == "__main__":

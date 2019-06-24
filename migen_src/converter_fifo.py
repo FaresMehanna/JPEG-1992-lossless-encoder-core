@@ -14,10 +14,10 @@ class ConverterFifo(Elaboratable):
 		assert config['bit_depth'] >= 2 and config['bit_depth'] <= 16
 		assert config['pixels_per_cycle'] >= 1
 		#how many steps in converter
-		single_ctr = min(16+config['bit_depth'], 31)
-		total_ctr = single_ctr*config['pixels_per_cycle']
-		self.steps = ceil(total_ctr / config['converter']) + 1
-		assert config['converter_fifo_depth'] > self.steps+3
+		single_ctr = min(16 + config['bit_depth'], 31)
+		total_ctr = single_ctr * config['pixels_per_cycle']
+		self.steps = ceil(total_ctr / config['converter']) + 3
+		assert config['converter_fifo_depth'] > (self.steps + 3)
 
 		#save some data
 		self.data_width = config['converter']
@@ -69,7 +69,7 @@ class ConverterFifo(Elaboratable):
 
 		# fifo with close_full
 		m.d.sync += [
-			self.close_full.eq(fifo.level > (self.depth-self.steps)),
+			self.close_full.eq(fifo.level >= (self.depth-self.steps)),
 		]
 
 		return m

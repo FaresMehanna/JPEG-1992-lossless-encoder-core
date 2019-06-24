@@ -2,7 +2,7 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
-import vbits_to_cbits, vbits_to_cbits_reg
+import vbits_to_cbits
 import integration_2
 import constraints
 
@@ -38,7 +38,6 @@ class Integration3(Elaboratable):
 
 		self.integration_2 = integration_2.Integration2(config, cons)
 		self.vbits_to_cbits = vbits_to_cbits.VBitsToCBits(config, cons)
-		self.vbits_to_cbits_reg = vbits_to_cbits_reg.VBitsToCBitsReg(config, cons)
 
 	def elaborate(self, platform):
 
@@ -46,7 +45,6 @@ class Integration3(Elaboratable):
 
 		m.submodules.integration_2 = integration_2 = self.integration_2
 		m.submodules.vbits_to_cbits = vbits_to_cbits = self.vbits_to_cbits
-		m.submodules.vbits_to_cbits_reg = vbits_to_cbits_reg = self.vbits_to_cbits_reg
 
 		#integration_2 and this
 		m.d.comb += [integ_pixel_in.eq(pixel_in) for integ_pixel_in, pixel_in in zip(integration_2.pixels_in, self.pixels_in)]
@@ -61,22 +59,14 @@ class Integration3(Elaboratable):
 			vbits_to_cbits.enc_in_ctr.eq(integration_2.enc_out_ctr),
 			vbits_to_cbits.in_end.eq(integration_2.out_end),
 			vbits_to_cbits.valid_in.eq(integration_2.valid_out),
-			vbits_to_cbits.busy_in.eq(vbits_to_cbits_reg.o_busy),
-		]
-
-		# vbits_to_cbits and vbits_to_cbits_reg
-		m.d.comb += [
-			vbits_to_cbits_reg.i_busy.eq(self.busy_in),
-			vbits_to_cbits_reg.data_left.eq(vbits_to_cbits.data_out),
-			vbits_to_cbits_reg.valid_left.eq(vbits_to_cbits.valid_out),
-			vbits_to_cbits_reg.end_left.eq(vbits_to_cbits.end_out),
+			vbits_to_cbits.busy_in.eq(self.busy_in),
 		]
 
 		# vbits_to_cbits and this
 		m.d.comb += [
-			self.data_out.eq(vbits_to_cbits_reg.data_right),
-			self.valid_out.eq(vbits_to_cbits_reg.valid_right),
-			self.end_out.eq(vbits_to_cbits_reg.end_right),
+			self.data_out.eq(vbits_to_cbits.data_out),
+			self.valid_out.eq(vbits_to_cbits.valid_out),
+			self.end_out.eq(vbits_to_cbits.end_out),
 		]
 
 		# self.busy
@@ -96,14 +86,8 @@ if __name__ == "__main__":
 		"converter" : 48,
 		"converter_fifo_depth": 256,
 		"vbits_to_cbits_buffer_size": 144,
-		"vbits_to_cbits_slow_mhz": True,
-		"vbits_to_cbits_reg": False,
 		"predictor_function": 1,
 		"num_of_components": 4,
-		"pipeline_reg": False,
-		"converter_reg": False,
-		"converter_fifo_reg": False,
-		"pipeline_fifo_reg": False,
 	}
 	cons = constraints.Constraints()
 	d = Integration3(config, cons)

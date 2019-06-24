@@ -68,7 +68,7 @@ class LJ92PipelineFifo(Elaboratable):
 
 		# fifo with close_full
 		m.d.sync += [
-			self.close_full.eq(fifo.level > (self.depth-20)),
+			self.close_full.eq(fifo.level >= (self.depth-10)),
 		]
 
 		return m

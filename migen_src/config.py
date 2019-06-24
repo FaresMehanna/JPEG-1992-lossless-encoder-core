@@ -8,10 +8,6 @@ config = {
 	"vbits_to_cbits_buffer_size": 144,
 	"predictor_function": 1,
 	"num_of_components": 4,
-	"pipeline_reg": True,
-	"pipeline_fifo_reg": True,
-	"converter_reg": True,
-	"converter_fifo_reg": True,
 }
 '''
 bit_depth: is the maximum bit depth supported by the encoder, you can always use lower than that.

@@ -23,15 +23,21 @@ class Difference(Elaboratable):
 		self.vals_out = Array(Signal(self.bd+1, name="val_out") for _ in range(self.ps))
 		self.vals_out_mns = Array(Signal(self.bd+1, name="val_out") for _ in range(self.ps))
 		
+		#valid in & out
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
+
+		#end in & out
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
 
 		self.ios = \
 			[val_out_mns for val_out_mns in self.vals_out_mns] + \
 			[predic_in for predic_in in self.predics_in] + \
 			[pixel_in for pixel_in in self.pixels_in] + \
 			[val_out for val_out in self.vals_out] + \
-			[self.valid_in, self.valid_out]
+			[self.valid_in, self.valid_out] + \
+			[self.end_in, self.end_out]
 
 
 	def elaborate(self, platform):
@@ -46,6 +52,9 @@ class Difference(Elaboratable):
 		#if valid data
 		m.d.sync += self.valid_out.eq(self.valid_in)
 
+		# end
+		m.d.sync += self.end_out.eq(self.end_in)
+		
 		return m
 
 if __name__ == "__main__":

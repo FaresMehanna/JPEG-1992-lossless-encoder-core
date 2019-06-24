@@ -42,17 +42,32 @@ class SingleEncoder(Elaboratable):
 		self.ssss = Signal(5)
 		self.enc_out = Signal(min(16+self.bd, 31))
 		self.enc_ctr = Signal(5)
-		self.valid = Signal(1)
+
+		#valid in & out
+		self.valid_in = Signal(1)
+		self.valid_out = Signal(1)
+
+		#end in & out
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
 
 		self.ios = \
-			[self.val_in, self.enc_out, self.enc_ctr, self.ssss, self.valid]
+			[self.val_in, self.enc_out, self.enc_ctr, self.ssss] + \
+			[self.valid_in, self.valid_out] + \
+			[self.end_in, self.end_out]
 
 	def elaborate(self, platform):
 		m = Module()
 
-		# latch valid
+		# register valid
 		valid_late = Signal()
-		m.d.sync += valid_late.eq(self.valid)
+		m.d.sync += valid_late.eq(self.valid_in)
+		m.d.sync += self.valid_out.eq(valid_late)
+
+		# register end
+		end_late = Signal()
+		m.d.sync += end_late.eq(self.end_in)
+		m.d.sync += self.end_out.eq(end_late)
 
 		# latch ssss & val_in
 		ssss_late = Signal(5)
@@ -109,8 +124,13 @@ class Encode(Elaboratable):
 		self.encs_out = Array(Signal(min(16+self.bd, 31), name="enc_out") for _ in range(self.ps))
 		self.encs_ctr = Array(Signal(5, name="enc_ctr") for _ in range(self.ps))
 
+		#valid in & out
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
+
+		#end in & out
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
 
 		self.mem = Memory(self.bd+21, self.bd+1, init_huff_table(self.bd))
 		self.read_ports = [self.mem.read_port() for _ in range(self.ps)]
@@ -122,7 +142,8 @@ class Encode(Elaboratable):
 			[enc_ctr for enc_ctr in self.encs_ctr] + \
 			[val_in for val_in in self.vals_in] + \
 			[self.valid_in, self.valid_out] + \
-			[ssss for ssss in self.ssssx]
+			[ssss for ssss in self.ssssx] + \
+			[self.end_in, self.end_out]
 
 	def elaborate(self, platform):
 
@@ -134,7 +155,8 @@ class Encode(Elaboratable):
 		for pixel, val_in, enc_out, enc_ctr, ssss, read_port in zip(self.pixels, self.vals_in, self.encs_out, self.encs_ctr, self.ssssx, self.read_ports):
 			m.d.comb += [
 				pixel.val_in.eq(val_in),
-				pixel.valid.eq(self.valid_in),
+				pixel.end_in.eq(self.end_in),
+				pixel.valid_in.eq(self.valid_in),
 				pixel.ssss.eq(ssss),
 				read_port.addr.eq(pixel.rp_addr),
 				pixel.rp_data.eq(read_port.data),
@@ -143,9 +165,8 @@ class Encode(Elaboratable):
 			]
 
 		#if valid data
-		valid_late = Signal()
-		m.d.sync += valid_late.eq(self.valid_in)
-		m.d.sync += self.valid_out.eq(valid_late)
+		m.d.comb += self.valid_out.eq(self.pixels[0].valid_out)
+		m.d.comb += self.end_out.eq(self.pixels[0].end_out)
 
 		return m
 

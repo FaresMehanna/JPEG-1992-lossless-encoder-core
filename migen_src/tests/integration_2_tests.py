@@ -13,7 +13,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from integration_2 import *
 
-TEST_NUM = int(4096*2)
+TEST_NUM = int(4096*1)
 
 def integration_2_test_1(m, test_file, test_number, stall_in, stall_out):
 
@@ -126,10 +126,6 @@ if __name__ == "__main__":
 		"converter_fifo_depth": 256,
 		"predictor_function": 1,
 		"num_of_components": 4,
-		"pipeline_reg": False,
-		"converter_reg": False,
-		"converter_fifo_reg": False,
-		"pipeline_fifo_reg": False,
 	}
 	cons = constraints.Constraints()
 	#object

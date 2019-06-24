@@ -15,17 +15,11 @@ class BetaIntegration(Elaboratable):
 			"pixels_per_cycle": 2,
 			"LJ92_fifo_depth": 512, #512 x 72 = RAM36
 			"out_bits": 16,
-			"converter" : 24,
+			"converter" : 30,
 			"converter_fifo_depth": 512, #512 x 36 = RAM18
-			"vbits_to_cbits_buffer_size": 84,
-			"vbits_to_cbits_slow_mhz": False,
-			"vbits_to_cbits_reg": False,
+			"vbits_to_cbits_buffer_size": 82,
 			"predictor_function": 1,
 			"num_of_components": 4,
-			"pipeline_reg": False,
-			"converter_reg": False,
-			"converter_fifo_reg": False,
-			"pipeline_fifo_reg": False,
 		}
 		cons = constraints.Constraints()
 
@@ -57,6 +51,7 @@ class BetaIntegration(Elaboratable):
 		m.submodules.integration_3 = integration_3 = self.integration_3
 		m.submodules.fix_0xff = fix_0xff = self.fix_0xff
 		m.submodules.fix_0xff2 = fix_0xff2 = self.fix_0xff2
+
 		#in
 		m.d.comb += [
 			integration_3.pixels_in[0].eq(self.pixel_in1),
@@ -69,12 +64,14 @@ class BetaIntegration(Elaboratable):
 		m.d.comb += [
 			fix_0xff.data_in.eq(integration_3.data_out),
 			fix_0xff.valid_in.eq(integration_3.valid_out),
+			fix_0xff.end_in.eq(integration_3.end_out),
 			fix_0xff.i_busy.eq(fix_0xff2.o_busy),
 		]
 		#fixer1 and fixer2
 		m.d.comb += [
 			fix_0xff2.data_in.eq(fix_0xff.data_out),
 			fix_0xff2.valid_in.eq(fix_0xff.valid_out),
+			fix_0xff2.end_in.eq(fix_0xff.end_out),
 			fix_0xff2.i_busy.eq(self.busy_in),
 			fix_0xff2.data_in_ctr.eq(fix_0xff.data_out_ctr),
 		]
@@ -82,7 +79,7 @@ class BetaIntegration(Elaboratable):
 		m.d.comb += [
 			self.data_out.eq(fix_0xff2.data_out),
 			self.valid_out.eq(fix_0xff2.valid_out),
-			self.end_out.eq(integration_3.end_out),
+			self.end_out.eq(fix_0xff2.end_out),
 			self.nready.eq(integration_3.nready),
 		]
 		return m

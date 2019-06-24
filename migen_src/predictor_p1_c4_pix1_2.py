@@ -43,11 +43,16 @@ class PredictorP1C4Pix12(Elaboratable):
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
 
+		#end in & out
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
+
 		self.ios = \
 			[pixel_in for pixel_in in self.pixels_in] + \
 			[pixel_out for pixel_out in self.pixels_out] + \
 			[predic_out for predic_out in self.predics_out] + \
-			[self.valid_in, self.valid_out, self.new_row]
+			[self.valid_in, self.valid_out, self.new_row] + \
+			[self.end_in, self.end_out]
 
 	def elaborate(self, platform):
 
@@ -85,7 +90,6 @@ class PredictorP1C4Pix12(Elaboratable):
 					with m.Case(i):
 						m.d.sync += [buff.eq(pixel_in) for buff, pixel_in in zip(buffs[i], self.pixels_in)]
 
-
 			#handle lbuff
 			with m.If(new_row_latch):
 				m.d.sync += lbuff_ctr.eq(lbuff_ctr+1)
@@ -108,6 +112,9 @@ class PredictorP1C4Pix12(Elaboratable):
 
 		#if valid data
 		m.d.sync += self.valid_out.eq(self.valid_in)
+
+		# end
+		m.d.sync += self.end_out.eq(self.end_in)
 
 		return m
 

@@ -75,7 +75,7 @@ def lj92_pipeline_fifo_test_1(m):
 			yield
 			yield
 
-			for _ in range(81):
+			for _ in range(90):
 				yield m.enc_in.eq(0x176524619FF)
 				yield m.enc_in_ctr.eq(41)
 				yield m.in_end.eq(0)

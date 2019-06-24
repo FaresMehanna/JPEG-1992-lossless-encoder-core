@@ -57,7 +57,7 @@ class Signals(Elaboratable):
 							width_temp.eq(width_temp-self.ps),
 							self.new_row.eq(0),
 						]
-					with m.If((height_temp == 0) & (width_temp == self.ps)):
+					with m.If((height_temp == 0) & (width_temp == 2*self.ps)):
 						m.d.sync += [
 							self.end_of_frame.eq(1),
 						]

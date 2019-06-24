@@ -13,7 +13,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from beta_integration import *
 
-TEST_NUM = int(4096*2)
+TEST_NUM = int(4096*1)
 
 def beta_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 	print("beta_integration_test_1_"+str(test_number)+": started for " + str(TEST_NUM) + " pixels ")
@@ -32,6 +32,7 @@ def beta_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 				byte1 = f.read(1)
 				ctr = 0
 				old_ctr = -1
+				avgbuffconsum = 0
 				cycles = 0
 				
 				while byte1:
@@ -69,15 +70,28 @@ def beta_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 
 					# cycles
 					cycles += 1
+
+					#average buff consumption
+					avgbuffconsum += (yield m.integration_3.vbits_to_cbits.input_handler.buff_consum)
+					
 					yield
 
 					if ctr % 1000 == 0 and ctr != old_ctr:
+						if ctr % 100000 == 0:
+							print(ctr/1000, end="")
+						elif ctr % 10000 == 0:
+							print(ctr/1000, end="")
+						else:
+							print(".", end="")
 						old_ctr = ctr
-						print(".", end="")
 						sys.stdout.flush()
 					
 					if ctr >= TEST_NUM:
+						yield m.valid_in.eq(0)
+						for i in range(1):
+							yield
 						print("\nCycles: " + str(cycles))
+						print("Avg buff consum: " + str((avgbuffconsum/cycles)))
 						break
 
 		sim.add_clock(1e-8)
@@ -101,8 +115,8 @@ def beta_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 
 if __name__ == "__main__":
 	m = BetaIntegration()
-	beta_integration_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 15, 5)
+	beta_integration_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 1, 1)
 	print("-----")
-	beta_integration_test_1(m, "/../test_files/random.raw12", 2, 5, 15)
+	beta_integration_test_1(m, "/../test_files/random.raw12", 2, 1, 1)
 	print("-----")
 	beta_integration_test_1(m, "/../test_files/IT8Chart15ms.raw12", 3, 1, 1)

@@ -13,7 +13,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from micro_integration import *
 
-TEST_NUM = int(4096*2)
+TEST_NUM = int(4096*1)
 
 def micro_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 	print("micro_integration_test_1_"+str(test_number)+": started for " + str(TEST_NUM) + " pixels ")

@@ -13,7 +13,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from integration_3 import *
 
-TEST_NUM = int(4096*2)
+TEST_NUM = int(4096*1)
 
 def integration_3_test_1(m, test_file, test_number, stall_in, stall_out):
 	print("integration_3_test_1_"+str(test_number)+": started for " + str(TEST_NUM) + " pixels ")
@@ -45,20 +45,20 @@ def integration_3_test_1(m, test_file, test_number, stall_in, stall_out):
 							byte1 = int.from_bytes(byte1, byteorder='big')
 							byte2 = int.from_bytes(f.read(1), byteorder='big')
 							byte3 = int.from_bytes(f.read(1), byteorder='big')
-							byte4 = int.from_bytes(f.read(1), byteorder='big')
-							byte5 = int.from_bytes(f.read(1), byteorder='big')
-							byte6 = int.from_bytes(f.read(1), byteorder='big')
+							# byte4 = int.from_bytes(f.read(1), byteorder='big')
+							# byte5 = int.from_bytes(f.read(1), byteorder='big')
+							# byte6 = int.from_bytes(f.read(1), byteorder='big')
 
 							pix1 = (byte1<<4) | ((byte2 & 0xF0)>>4)
 							pix2 = ((byte2 & 0x0F)<<8) | byte3
-							pix3 = (byte4<<4) | ((byte5 & 0xF0)>>4)
-							pix4 = ((byte5 & 0x0F)<<8) | byte6
-							ctr += 4
+							# pix3 = (byte4<<4) | ((byte5 & 0xF0)>>4)
+							# pix4 = ((byte5 & 0x0F)<<8) | byte6
+							ctr += 2
 
 							yield m.pixels_in[0].eq(pix1)
 							yield m.pixels_in[1].eq(pix2)
-							yield m.pixels_in[2].eq(pix3)
-							yield m.pixels_in[3].eq(pix4)
+							# yield m.pixels_in[2].eq(pix3)
+							# yield m.pixels_in[3].eq(pix4)
 							yield m.valid_in.eq(1)
 
 							byte1 = f.read(1)
@@ -111,27 +111,21 @@ if __name__ == "__main__":
 	#config
 	config = {
 		"bit_depth" : 12,
-		"pixels_per_cycle": 4,
-		"LJ92_fifo_depth": 128,
+		"pixels_per_cycle": 2,
+		"LJ92_fifo_depth": 512,
 		"out_bits": 32,
-		"converter" : 48,
-		"converter_fifo_depth": 256,
-		"vbits_to_cbits_buffer_size": 144,
-		"vbits_to_cbits_slow_mhz": False,
-		"vbits_to_cbits_reg": False,
+		"converter" : 30,
+		"converter_fifo_depth": 512,
+		"vbits_to_cbits_buffer_size": 77,
 		"predictor_function": 1,
 		"num_of_components": 4,
-		"pipeline_reg": False,
-		"converter_reg": False,
-		"converter_fifo_reg": False,
-		"pipeline_fifo_reg": False,
 	}
 	cons = constraints.Constraints()
 	#object
 	m = Integration3(config, cons)
 	#tests
-	integration_3_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 15, 5)
-	print("-----")
-	integration_3_test_1(m, "/../test_files/random.raw12", 2, 5, 15)
-	print("-----")
-	integration_3_test_1(m, "/../test_files/IT8Chart15ms.raw12", 3, 1, 1)
+	# integration_3_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 15, 5)
+	# print("-----")
+	# integration_3_test_1(m, "/../test_files/random.raw12", 2, 5, 15)
+	# print("-----")
+	integration_3_test_1(m, "/../test_files/props01.raw12", 3, 1, 1)

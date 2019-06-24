@@ -42,11 +42,16 @@ class PredictorP1C4Px4(Elaboratable):
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
 
+		#end in & out
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
+
 		self.ios = \
 			[predic_out for predic_out in self.predics_out] + \
 			[pixel_out for pixel_out in self.pixels_out] + \
 			[pixel_in for pixel_in in self.pixels_in] + \
-			[self.valid_in, self.valid_out]
+			[self.valid_in, self.valid_out] + \
+			[self.end_in, self.end_out]
 
 	def elaborate(self, platform):
 
@@ -77,6 +82,9 @@ class PredictorP1C4Px4(Elaboratable):
 
 		#if valid data
 		m.d.sync += self.valid_out.eq(self.valid_in)
+
+		# end
+		m.d.sync += self.end_out.eq(self.end_in)
 
 		return m
 
