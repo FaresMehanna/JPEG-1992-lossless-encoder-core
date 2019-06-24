@@ -4,7 +4,7 @@ from nmigen.back import *
 from math import log, ceil
 import constraints
 
-def logic(valid_in, data_in, data_in_ctr, data_out, buffer_data, buffer_count, o_busy, m):
+def normal_logic(valid_in, data_in, data_in_ctr, data_out, end_in, end_out, buffer_data, buffer_count, o_busy, m, end_reg):
 	with m.If(valid_in):
 		with m.Switch(buffer_count):
 			#no data in buffer
@@ -63,24 +63,44 @@ def logic(valid_in, data_in, data_in_ctr, data_out, buffer_data, buffer_count, o
 							o_busy.eq(1),
 						]
 						m.next = "CLEAN"
-
-
-def logic2(data_out, buffer_data, buffer_count, m):
-		with m.Switch(buffer_count):
-			#2 bytes in buffer
-			with m.Case(2):
+		with m.If(end_in):
+			with m.If((buffer_count == 0) & (data_in_ctr == 2)):
+				m.d.sync += end_out.eq(1)
+				m.next = "END"
+			with m.Else():
+				#switch to ending mode!
 				m.d.sync += [
-					data_out.eq(buffer_data[0:16]),
-					buffer_count.eq(0),
+					o_busy.eq(1),
+					end_reg.eq(1),
 				]
-			#3 bytes in buffer
-			with m.Case(3):
-				m.d.sync += [
-					data_out.eq(buffer_data[8:24]),
-					buffer_data.eq(buffer_data[0:8]),
-					buffer_count.eq(1),
-				]
+				m.next = "CLEAN"
 
+def clean_logic(data_out, end_out, buffer_data, buffer_count, m, end_reg):
+	with m.Switch(buffer_count):
+		#1 byte in buffer
+		with m.Case(1):
+			m.d.sync += [
+				data_out[8:16].eq(buffer_data[0:8]),
+				data_out[0:8].eq(0x00),
+				buffer_count.eq(0),
+			]
+		#2 bytes in buffer
+		with m.Case(2):
+			m.d.sync += [
+				data_out.eq(buffer_data[0:16]),
+				buffer_count.eq(0),
+			]
+		#3 bytes in buffer
+		with m.Case(3):
+			m.d.sync += [
+				data_out.eq(buffer_data[8:24]),
+				buffer_data.eq(buffer_data[0:8]),
+				buffer_count.eq(1),
+			]
+	with m.If(end_reg):
+		with m.If((buffer_count <= 2)):
+			m.d.sync += end_out.eq(1)
+			m.next = "END"
 
 class Fix0xFF2(Elaboratable):
 
@@ -96,12 +116,17 @@ class Fix0xFF2(Elaboratable):
 		#signals
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
+
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
+
 		self.o_busy = Signal(1)	#I'm busy
-		self.i_busy = Signal(1)	#next not busy
+		self.i_busy = Signal(1)	#next busy
 
 		self.ios = \
 			[self.valid_in, self.valid_out, self.o_busy, self.i_busy] + \
-			[self.data_out, self.data_in_ctr, self.data_in]
+			[self.data_out, self.data_in_ctr, self.data_in] + \
+			[self.end_in, self.end_out]
 
 	def elaborate(self, platform):
 		m = Module()
@@ -110,18 +135,26 @@ class Fix0xFF2(Elaboratable):
 		buffer_count = Signal(2)
 
 		data_out_reg = Signal(16)
+		end_out_reg = Signal(1)
 		data_out_valid = Signal(1)
+
+		end_reg = Signal(1)
+
+		debug_counter = Signal(32)
+		with m.If((self.i_busy==0) & (self.valid_out==1)):
+			m.d.sync += debug_counter.eq(debug_counter + 1)
 
 		with m.FSM() as pack:
 			with m.State("NORMAL"):
 				with m.If(self.i_busy == 0):
 					with m.If(data_out_valid == 0):
 						m.d.sync += self.valid_out.eq(self.valid_in)
-						logic(self.valid_in, self.data_in, self.data_in_ctr, self.data_out, buffer_data, buffer_count, self.o_busy, m)
+						normal_logic(self.valid_in, self.data_in, self.data_in_ctr, self.data_out, self.end_in, self.end_out, buffer_data, buffer_count, self.o_busy, m, end_reg)
 					with m.Else():
 						m.d.sync += [
 							self.valid_out.eq(1),
 							self.data_out.eq(data_out_reg),
+							self.end_out.eq(end_out_reg),
 						]
 					m.d.sync += [
 						self.o_busy.eq(0),
@@ -134,7 +167,7 @@ class Fix0xFF2(Elaboratable):
 						self.o_busy.eq(0),
 						data_out_valid.eq(0),
 					]
-					logic(self.valid_in, self.data_in, self.data_in_ctr, self.data_out, buffer_data, buffer_count ,self.o_busy, m)
+					normal_logic(self.valid_in, self.data_in, self.data_in_ctr, self.data_out, self.end_in, self.end_out, buffer_data, buffer_count ,self.o_busy, m, end_reg)
 				#next is busy and there is valid data and there is registered valid data
 				#and this core is not busy
 				with m.Elif((self.valid_in==1) & (self.o_busy == 0)):
@@ -144,26 +177,28 @@ class Fix0xFF2(Elaboratable):
 					]
 
 				with m.If(self.o_busy == 0):
-					logic(self.valid_in, self.data_in, self.data_in_ctr, data_out_reg, buffer_data, buffer_count ,self.o_busy, m)
+					normal_logic(self.valid_in, self.data_in, self.data_in_ctr, data_out_reg, self.end_in, end_out_reg,  buffer_data, buffer_count ,self.o_busy, m, end_reg)
 			
 			with m.State("CLEAN"):
 				with m.If(self.i_busy == 0):
 					with m.If(data_out_valid == 0):
-						logic2(self.data_out, buffer_data, buffer_count, m)
-						m.d.sync += [
-							self.valid_out.eq(1),
-							self.o_busy.eq(0),
-						]
-						m.next = "NORMAL"
+						clean_logic(self.data_out, self.end_out, buffer_data, buffer_count, m, end_reg)
+						m.d.sync += self.valid_out.eq(1)
+						with m.If(end_reg==0):
+							m.d.sync += self.o_busy.eq(0)
+							m.next = "NORMAL"
 					with m.Else():
 						m.d.sync += [
 							self.valid_out.eq(1),
 							self.data_out.eq(data_out_reg),
+							self.end_out.eq(end_out_reg),
 							data_out_valid.eq(0),
 						]
 
-		return m
+			with m.State("END"):
+				pass
 
+		return m
 
 if __name__ == "__main__":
 	d = Fix0xFF2()

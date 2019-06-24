@@ -46,17 +46,24 @@ class Fix0xFF(Elaboratable):
 		self.o_busy = Signal(1)	#I'm busy
 		self.i_busy = Signal(1)	#next not busy
 
+		self.end_in = Signal(1)
+		self.end_out = Signal(1)
+
 		self.ios = \
 			[self.valid_in, self.valid_out, self.o_busy, self.i_busy] + \
-			[self.data_out, self.data_out_ctr, self.data_in]
+			[self.data_out, self.data_out_ctr, self.data_in] + \
+			[self.end_in, self.end_out]
 
 	def elaborate(self, platform):
 		m = Module()
 		
 		zeros = Signal(8)
 		ones = Signal(8, reset=0xFF)
+		m.d.sync += ones.eq(0xFF)
+		m.d.sync += zeros.eq(0x00)
 
 		data_out_reg = Signal(32)
+		end_out_reg = Signal(1)
 		data_out_ctr_reg = Signal(max=5)
 		data_out_valid = Signal(1)
 
@@ -66,12 +73,16 @@ class Fix0xFF(Elaboratable):
 		#next is not busy
 		with m.If(self.i_busy == 0):
 			with m.If(data_out_valid == 0):
-				m.d.sync += self.valid_out.eq(self.valid_in),
+				m.d.sync += [
+					self.valid_out.eq(self.valid_in),
+					self.end_out.eq(self.end_in),
+				]
 				logic(self.data_in, self.data_out, self.data_out_ctr, zeros, ones, m)
 			with m.Else():
 				m.d.sync += [
 					self.valid_out.eq(1),
 					self.data_out.eq(data_out_reg),
+					self.end_out.eq(end_out_reg),
 					self.data_out_ctr.eq(data_out_ctr_reg),
 				]
 			m.d.sync += [
@@ -82,6 +93,7 @@ class Fix0xFF(Elaboratable):
 		with m.Elif(self.valid_out == 0):
 			m.d.sync += [
 				self.valid_out.eq(self.valid_in),
+				self.end_out.eq(self.end_in),
 				self.o_busy.eq(0),
 				data_out_valid.eq(0),
 			]
@@ -96,6 +108,7 @@ class Fix0xFF(Elaboratable):
 
 		with m.If(self.o_busy == 0):
 			logic(self.data_in, data_out_reg, data_out_ctr_reg, zeros, ones, m)
+			m.d.sync += end_out_reg.eq(self.end_in)
 
 		return m
 
