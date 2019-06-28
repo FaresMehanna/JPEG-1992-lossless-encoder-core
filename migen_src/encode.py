@@ -132,12 +132,19 @@ class Encode(Elaboratable):
 		self.end_in = Signal(1)
 		self.end_out = Signal(1)
 
+		# read ports to be accessed by encoders
 		self.mem = Memory(self.bd+21, self.bd+1, init_huff_table(self.bd))
 		self.read_ports = [self.mem.read_port() for _ in range(self.ps)]
+		
+		# read and write ports to the memory to be accessed from axi lite
+		self.extern_w_port = self.mem.write_port()
+		self.extern_r_port = self.mem.read_port()
 
 		self.pixels = [SingleEncoder(config, constraints) for _ in range(self.ps)]
 
 		self.ios = \
+			[self.extern_w_port.addr, self.extern_w_port.data, self.extern_w_port.en] + \
+			[self.extern_r_port.addr, self.extern_r_port.data] + \
 			[enc_out for enc_out in self.encs_out] + \
 			[enc_ctr for enc_ctr in self.encs_ctr] + \
 			[val_in for val_in in self.vals_in] + \
@@ -151,6 +158,7 @@ class Encode(Elaboratable):
 
 		m.submodules += self.pixels
 		m.submodules += self.read_ports
+		m.submodules += [self.extern_r_port, self.extern_w_port]
 
 		for pixel, val_in, enc_out, enc_ctr, ssss, read_port in zip(self.pixels, self.vals_in, self.encs_out, self.encs_ctr, self.ssssx, self.read_ports):
 			m.d.comb += [

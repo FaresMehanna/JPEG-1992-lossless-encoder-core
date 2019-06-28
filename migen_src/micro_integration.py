@@ -36,15 +36,15 @@ class MicroIntegration(Elaboratable):
 		self.nready = Signal(1)
 		self.busy_in = Signal(1)
 
-		self.ios = \
-			[self.valid_in, self.valid_out, self.end_out] + \
-			[self.data_out, self.busy_in] + \
-			[self.pixel_in, self.nready]
-
 		self.integration_3 = integration_3.Integration3(config, cons)
 		self.fix_0xff = fix_0xff.Fix0xFF()
 		self.fix_0xff2 = fix_0xff2.Fix0xFF2()
 
+		self.ios = \
+			[self.valid_in, self.valid_out, self.end_out] + \
+			[self.data_out, self.busy_in] + \
+			[self.pixel_in, self.nready]
+			
 	def elaborate(self, platform):
 		m = Module()
 		m.submodules.integration_3 = integration_3 = self.integration_3

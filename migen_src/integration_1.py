@@ -2,9 +2,10 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
-import difference, normalize, encode, merge, signals, register_file
+import difference, normalize, encode, merge, signals
 import constraints
 import predictor_p1_c4_px4, predictor_p1_c4_pix1_2
+import core_axi_lite
 
 class Integration1(Elaboratable):
 
@@ -31,13 +32,6 @@ class Integration1(Elaboratable):
 		# end
 		self.end_out = Signal(1)
 
-		self.ios = \
-			[pixel_in for pixel_in in self.pixels_in] + \
-			[self.enc_out, self.enc_out_ctr] + \
-			[self.valid_in, self.valid_out] + \
-			[self.end_out]
-
-
 		if self.ps == 4:
 			self.predictor = predictor_p1_c4_px4.PredictorP1C4Px4(config, cons)
 		else:
@@ -49,8 +43,14 @@ class Integration1(Elaboratable):
 		if self.ps > 1:
 			self.merge = merge.Merge(config, cons)
 		self.signals = signals.Signals(config, cons)
-		self.register_file = register_file.RegisterFile()
+		self.core_axi_lite = core_axi_lite.CoreAxiLite(config, cons)
 
+		self.ios = \
+			[pixel_in for pixel_in in self.pixels_in] + \
+			[self.enc_out, self.enc_out_ctr] + \
+			[self.valid_in, self.valid_out] + \
+			[self.end_out]
+			
 	def elaborate(self, platform):
 
 		m = Module()
@@ -62,12 +62,12 @@ class Integration1(Elaboratable):
 		if self.ps > 1:
 			m.submodules.merge = merge = self.merge
 		m.submodules.signals = signals = self.signals
-		m.submodules.register_file = register_file = self.register_file
+		m.submodules.core_axi_lite = core_axi_lite = self.core_axi_lite
 
 		# signals
 		m.d.comb += [
-			signals.height.eq(register_file.height),
-			signals.width.eq(register_file.width),
+			signals.height.eq(core_axi_lite.height),
+			signals.width.eq(core_axi_lite.width),
 			signals.new_input.eq(self.valid_in),
 		]
 
@@ -102,6 +102,15 @@ class Integration1(Elaboratable):
 		m.d.comb += [
 			encode.valid_in.eq(normalize.valid_out),
 			encode.end_in.eq(normalize.end_out),
+		]
+
+		# core axi lite and encode
+		m.d.comb += [
+			core_axi_lite.rp_data.eq(encode.extern_r_port.data),
+			encode.extern_r_port.addr.eq(core_axi_lite.rp_addr),
+			encode.extern_w_port.addr.eq(core_axi_lite.wp_addr),
+			encode.extern_w_port.data.eq(core_axi_lite.wp_data),
+			encode.extern_w_port.en.eq(core_axi_lite.wp_en),
 		]
 
 		if self.ps > 1:

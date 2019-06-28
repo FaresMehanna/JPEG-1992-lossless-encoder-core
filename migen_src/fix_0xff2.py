@@ -140,10 +140,6 @@ class Fix0xFF2(Elaboratable):
 
 		end_reg = Signal(1)
 
-		debug_counter = Signal(32)
-		with m.If((self.i_busy==0) & (self.valid_out==1)):
-			m.d.sync += debug_counter.eq(debug_counter + 1)
-
 		with m.FSM() as pack:
 			with m.State("NORMAL"):
 				with m.If(self.i_busy == 0):

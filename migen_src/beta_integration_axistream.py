@@ -24,7 +24,8 @@ class BetaIntegrationAxiStream(Elaboratable):
 
 		self.ios = \
 			[self.m_tvalid, self.m_tlast, self.m_tready, self.m_tdata] + \
-			[self.s_tvalid, self.s_tlast, self.s_tready, self.s_tdata]
+			[self.s_tvalid, self.s_tlast, self.s_tready, self.s_tdata] + \
+			self.top.integration_3.integration_2.integration_1.core_axi_lite.ios
 
 	def elaborate(self, platform):
 

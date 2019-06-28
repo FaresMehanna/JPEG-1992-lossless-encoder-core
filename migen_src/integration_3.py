@@ -31,14 +31,14 @@ class Integration3(Elaboratable):
 		self.nready = Signal(1)
 		self.busy_in = Signal(1)
 
+		self.integration_2 = integration_2.Integration2(config, cons)
+		self.vbits_to_cbits = vbits_to_cbits.VBitsToCBits(config, cons)
+
 		self.ios = \
 			[self.valid_in, self.valid_out, self.end_out] + \
 			[self.data_out, self.busy_in, self.nready] + \
 			[pixel_in for pixel_in in self.pixels_in]
-
-		self.integration_2 = integration_2.Integration2(config, cons)
-		self.vbits_to_cbits = vbits_to_cbits.VBitsToCBits(config, cons)
-
+			
 	def elaborate(self, platform):
 
 		m = Module()

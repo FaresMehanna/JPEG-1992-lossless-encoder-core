@@ -86,8 +86,6 @@ class Merge(Elaboratable):
 		self.end_in = Signal(1)
 		self.end_out = Signal(1)
 
-		self.debug_counter = Signal(20)
-
 		# set levels of merge!
 		levels = ceil(log(self.ps ,2))
 		self.mergers = []
@@ -124,9 +122,6 @@ class Merge(Elaboratable):
 		# connect the base level
 		levels = ceil(log(self.ps ,2))
 		elems = 2**(levels-1)
-
-		with m.If(self.valid_in):
-			m.d.sync += self.debug_counter.eq(self.debug_counter + 1)
 
 		in_ctr = 0
 		for i in range(elems):

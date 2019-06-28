@@ -31,17 +31,17 @@ class Integration2(Elaboratable):
 		self.valid_out = Signal(1)
 		self.out_end = Signal(1)
 
-		self.ios = \
-			[pixel_in for pixel_in in self.pixels_in] + \
-			[self.enc_out, self.enc_out_ctr] + \
-			[self.latch_output, self.nready] + \
-			[self.valid_in, self.valid_out]
-
 		self.integration_1 = integration_1.Integration1(config, cons)
 		self.lj92_pipeline_fifo = lj92_pipeline_fifo.LJ92PipelineFifo(config, cons)
 		self.converter = converter.Converter(config, cons)
 		self.converter_fifo = converter_fifo.ConverterFifo(config, cons)
 
+		self.ios = \
+			[pixel_in for pixel_in in self.pixels_in] + \
+			[self.enc_out, self.enc_out_ctr] + \
+			[self.latch_output, self.nready] + \
+			[self.valid_in, self.valid_out]
+			
 	def elaborate(self, platform):
 
 		m = Module()

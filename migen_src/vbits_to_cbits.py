@@ -22,6 +22,7 @@ class OutputHandler(Elaboratable):
 		#buffer data
 		self.buffer = Signal(self.buffer_size)
 		self.buff_consum = Signal(max=(self.buffer_size+1))
+		self.new_buff_consum = Signal(max=(self.buffer_size+1))
 
 		#is read happen to the buffer?
 		self.dec_buff_out = Signal(1)
@@ -108,6 +109,7 @@ class InputHandler(Elaboratable):
 		#buffer & related info - ALL OUTPUTS
 		self.buffer = Signal(self.buffer_size)
 		self.buff_consum = Signal(max=(self.buffer_size+1))
+		self.new_buff_consum = Signal(max=(self.buffer_size+1))
 
 		#signals indicating decrease in buffer
 		self.dec_buff = Signal(1)
@@ -118,7 +120,7 @@ class InputHandler(Elaboratable):
 		self.ios = \
 			[self.enc_in, self.enc_in_ctr, self.in_end, self.valid_in] + \
 			[self.latch_input, self.buffer, self.buff_consum] + \
-			[self.end_out, self.dec_buff]
+			[self.end_out, self.dec_buff, self.new_buff_consum]
 
 	def elaborate(self, platform):
 
@@ -154,7 +156,6 @@ class InputHandler(Elaboratable):
 		#signal indicating buffer register
 		self.buff_reg = Signal(1)
 		m.d.comb += self.buff_reg.eq(0)
-
 
 		def reg_data():
 			m.d.sync += [
@@ -258,10 +259,20 @@ class InputHandler(Elaboratable):
 			with m.Elif(self.inc_buff):
 				m.d.comb += self.new_buff_free.eq(self.buff_free - enc_in_ctr_reg)
 
+		#handle buffer consum
+		with m.If(self.inc_buff & self.dec_buff):
+			m.d.comb += self.new_buff_consum.eq(self.buff_consum - self.output_size + enc_in_ctr_reg)
+		with m.Else():
+			with m.If(self.dec_buff):
+				m.d.comb += self.new_buff_consum.eq(self.buff_consum - self.output_size)
+			with m.Elif(self.inc_buff):
+				m.d.comb += self.new_buff_consum.eq(self.buff_consum + enc_in_ctr_reg)
+
+
 		# update buff_free, buff_consum
 		with m.If(self.buff_change):
 			m.d.sync += self.buff_free.eq(self.new_buff_free)
-			m.d.sync += self.buff_consum.eq(self.buffer_size - self.new_buff_free)
+			m.d.sync += self.buff_consum.eq(self.new_buff_consum)
 
 		return m
 
@@ -317,6 +328,7 @@ class VBitsToCBits(Elaboratable):
 			input_handler.dec_buff.eq(output_handler.dec_buff_out),
 			output_handler.buffer.eq(input_handler.buffer),
 			output_handler.buff_consum.eq(input_handler.buff_consum),
+			output_handler.new_buff_consum.eq(input_handler.new_buff_consum),
 			output_handler.end_in.eq(input_handler.end_out),
 		]
 
