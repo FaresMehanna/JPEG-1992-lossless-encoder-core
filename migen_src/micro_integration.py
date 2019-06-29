@@ -20,6 +20,7 @@ class MicroIntegration(Elaboratable):
 			"vbits_to_cbits_buffer_size": 41,
 			"predictor_function": 1,
 			"num_of_components": 4,
+			"axi_lite_debug": True,
 		}
 		cons = constraints.Constraints()
 

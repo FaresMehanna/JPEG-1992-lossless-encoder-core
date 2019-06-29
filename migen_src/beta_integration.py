@@ -10,7 +10,7 @@ class BetaIntegration(Elaboratable):
 
 	def __init__(self):
 
-		config = {
+		self.config = config = {
 			"bit_depth" : 12,
 			"pixels_per_cycle": 2,
 			"LJ92_fifo_depth": 512, #512 x 72 = RAM36
@@ -18,6 +18,7 @@ class BetaIntegration(Elaboratable):
 			"converter" : 30,
 			"converter_fifo_depth": 512, #512 x 36 = RAM18
 			"vbits_to_cbits_buffer_size": 77,
+			"axi_lite_debug": True,
 			"predictor_function": 1,
 			"num_of_components": 4,
 		}
@@ -47,10 +48,27 @@ class BetaIntegration(Elaboratable):
 			[self.data_out, self.busy_in]
 			
 	def elaborate(self, platform):
+
 		m = Module()
+		
 		m.submodules.integration_3 = integration_3 = self.integration_3
 		m.submodules.fix_0xff = fix_0xff = self.fix_0xff
 		m.submodules.fix_0xff2 = fix_0xff2 = self.fix_0xff2
+
+		if self.config['axi_lite_debug']:
+			# set debugging counters
+			trans_started = Signal(1)
+			m.d.sync += trans_started.eq(trans_started | self.valid_in)
+			debug_en = Signal(8)
+			m.d.sync += self.integration_3.integration_2.integration_1.core_axi_lite.debug_en.eq(debug_en)
+			m.d.sync += debug_en[0].eq((trans_started==1) & (self.end_out==0) & (self.valid_in==0))
+			m.d.sync += debug_en[1].eq((trans_started==1) & (self.end_out==0) & (self.valid_in==1))
+			m.d.sync += debug_en[2].eq((trans_started==1) & (self.end_out==0) & (self.valid_out==0))
+			m.d.sync += debug_en[3].eq((trans_started==1) & (self.end_out==0) & (self.valid_out==1))
+			m.d.sync += debug_en[4].eq((trans_started==1) & (self.end_out==0) & (self.nready==1))
+			m.d.sync += debug_en[5].eq((trans_started==1) & (self.end_out==0) & (self.nready==0))
+			m.d.sync += debug_en[6].eq((trans_started==1) & (self.end_out==0) & (self.busy_in==1))
+			m.d.sync += debug_en[7].eq((trans_started==1) & (self.end_out==0) & (self.busy_in==0))
 
 		#in
 		m.d.comb += [

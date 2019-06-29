@@ -88,6 +88,7 @@ if __name__ == "__main__":
 		"vbits_to_cbits_buffer_size": 144,
 		"predictor_function": 1,
 		"num_of_components": 4,
+		"axi_lite_debug": False,
 	}
 	cons = constraints.Constraints()
 	d = Integration3(config, cons)

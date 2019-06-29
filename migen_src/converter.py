@@ -67,14 +67,14 @@ class Converter(Elaboratable):
 				valid_out_reg.eq(self.valid_out),
 			]
 
-		def try_brust_idle():
+		def try_burst_idle():
 			#if there is input in the buffer & can write it
 			with m.If(valid_out_reg & (self.close_full==0)):
 				# latch the input
 				m.d.sync += [
 					self.latch_output.eq(1),
 				]
-				m.next = "BRUST"
+				m.next = "BURST"
 
 			# if there is new input & can write it
 			with m.Elif(self.valid_out & (self.close_full==0)):
@@ -82,7 +82,7 @@ class Converter(Elaboratable):
 				m.d.sync += [
 					self.latch_output.eq(1),
 				]
-				m.next = "BRUST_IDLE"
+				m.next = "BURST_IDLE"
 
 			#else stay/goto IDLE
 			with m.Else():
@@ -98,13 +98,13 @@ class Converter(Elaboratable):
 				]
 
 				#this may overwrite self.latch_output
-				try_brust_idle()
+				try_burst_idle()
 
-			with m.State("BRUST_IDLE"):
+			with m.State("BURST_IDLE"):
 				reg_data()
-				m.next = "BRUST"
+				m.next = "BURST"
 
-			with m.State("BRUST"):
+			with m.State("BURST"):
 				reg_data()
 				with m.If(valid_out_reg):
 					#if all input can fill
@@ -168,7 +168,7 @@ class Converter(Elaboratable):
 					]
 					if i == 0:
 						m.d.sync += self.in_end.eq(out_end_latch),
-						try_brust_idle()
+						try_burst_idle()
 					else:
 						m.d.sync += self.in_end.eq(0),
 						m.next = "STEPS_" + str(i-1)

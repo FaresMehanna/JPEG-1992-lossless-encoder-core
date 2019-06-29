@@ -4,6 +4,7 @@ from nmigen.back import *
 from axi3_pkg import *
 from axi3_lite_pkg import *
 import constraints
+import debug_module
 
 class CoreAxiLite(Elaboratable):
 
@@ -31,6 +32,9 @@ class CoreAxiLite(Elaboratable):
 		self.mem_depth = self.bd+1
 		self.mem_width = self.bd+21
 
+		# debug module enabled?
+		self.debug = config['axi_lite_debug']
+
 		# ssss write port
 		self.wp_addr = Signal(5)
 		self.wp_data = Signal(self.bd+21)
@@ -39,6 +43,16 @@ class CoreAxiLite(Elaboratable):
 		# ssss read port
 		self.rp_addr = Signal(5)
 		self.rp_data = Signal(self.bd+21)
+
+		# debug register
+		if self.debug:
+			#debug module
+			self.debug_module = debug_module.DebugModule()
+			#debug enables
+			self.debug_en = Signal(8)
+
+		# height and width registers
+		self.height_width = Signal(32)
 
 		self.ios = \
 			[self.s_axi_aclk, self.s_axi_areset_n] + \
@@ -56,9 +70,21 @@ class CoreAxiLite(Elaboratable):
 			[self.s_axi_wi.wstrb, self.s_axi_wi.wvalid] + \
 			[self.s_axi_wi.bready]
 
+		if self.debug:
+			self.ios += [self.debug_en]
+
 	def elaborate(self, platform):
 
 		m = Module()
+
+		if self.debug:
+			# registers
+			self.debug_regs = Array(Signal(32) for _ in range(8))
+			# module
+			m.submodules.debug_module = debug_module = self.debug_module
+			#connect them
+			m.d.comb += debug_module.regs_en.eq(self.debug_en)
+			m.d.comb += [m_reg.eq(d_reg) for m_reg, d_reg in zip(self.debug_regs, debug_module.registers)]
 
 		# registers to hold data
 		addr_v = Signal(32)
@@ -75,26 +101,6 @@ class CoreAxiLite(Elaboratable):
 
 		bresp_v = Signal(2)
 
-		m.d.comb += [
-			self.s_axi_ro.arready.eq(arready_v),
-			self.s_axi_ro.rvalid.eq(rvalid_v),
-		]
-
-		m.d.comb += [
-			self.s_axi_wo.awready.eq(awready_v),
-			self.s_axi_wo.wready.eq(wready_v),
-			self.s_axi_wo.bvalid.eq(bvalid_v),
-		]
-
-		m.d.comb += [
-			self.s_axi_ro.rdata.eq(rdata_v),
-			self.s_axi_ro.rresp.eq(rresp_v),
-		]
-
-		m.d.comb += [
-			self.s_axi_wo.bresp.eq(bresp_v),
-		]
-
 		# wires for writing operations
 		wdata_v = Signal(32)
 		wstrb_v = Signal(4)
@@ -106,23 +112,21 @@ class CoreAxiLite(Elaboratable):
 
 		# wires for addressing operations
 		ssss_enable = Signal(1)
-		ssss_index = Signal(6)
 		hw_enable = Signal(1)
-		hw_index = Signal(1)
+		debug_enable = Signal(1)
+		ssss_index = Signal(6)
+		debug_index = Signal(3)
 
 		m.d.comb += [
-			ssss_enable.eq(addr_v[6]),
+			ssss_enable.eq(addr_v[10]),
+			hw_enable.eq(addr_v[11]),
+			debug_enable.eq(addr_v[12]),
 			ssss_index.eq(addr_v),
-			hw_enable.eq(addr_v[1]),
-			hw_index.eq(addr_v),
+			debug_index.eq(addr_v),
 		]
 
 		# height and width registers
-		height_width = Signal(32)
-		m.d.sync += [
-			self.height.eq(height_width[0:16]),
-			self.width.eq(height_width[16:32]),
-		]
+		height_width = self.height_width
 
 		# ssss wires to extend data to 64bits
 		rp_data64_in = Signal(64)
@@ -187,6 +191,19 @@ class CoreAxiLite(Elaboratable):
 		def clean_write_ssss():
 			m.d.sync += self.wp_en.eq(0)
 
+		# functions that handle read operation to debug.
+		def read_debug():
+			m.d.sync += [
+				rdata_v.eq(self.debug_regs[debug_index]),
+				rresp_v.eq(0),
+			]
+
+		def write_to_debug():							
+			m.d.sync += bresp_v.eq(2)
+
+		def clean_write_debug():
+			pass
+
 		# reset
 		with m.If(self.s_axi_areset_n == 0):
 			m.d.sync += [
@@ -240,8 +257,12 @@ class CoreAxiLite(Elaboratable):
 					with m.If((ssss_enable == 1) & (ssss_index < 2*self.mem_depth)):
 						read_ssss()
 					# height & width
-					with m.Elif((hw_enable == 1) & (hw_index == 0)):
+					with m.Elif(hw_enable == 1):
 						read_hw()
+					# debug
+					if self.debug:
+						with m.Elif(debug_enable == 1):
+							read_debug()
 					# decode error
 					with m.Else():
 						m.d.sync += rresp_v.eq(3)
@@ -279,10 +300,14 @@ class CoreAxiLite(Elaboratable):
 						]
 						# ssss bram
 						with m.If((ssss_enable == 1) & (ssss_index < 2*self.mem_depth)):
-							write_to_ssss()
+							write_to_ssss()	
 						# height & width
-						with m.Elif((hw_enable == 1) & (hw_index == 0)):
+						with m.Elif(hw_enable == 1):
 							write_to_hw()
+						# debug
+						if self.debug:
+							with m.Elif(debug_enable == 1):
+								write_to_debug()
 						# decode error
 						with m.Else():
 							m.d.sync += bresp_v.eq(3)
@@ -290,6 +315,8 @@ class CoreAxiLite(Elaboratable):
 
 
 				with m.State("WRITE_RESPONSE"):
+					if self.debug:
+						clean_write_debug()
 					clean_write_hw()
 					clean_write_ssss()
 					m.d.sync += wready_v.eq(0)
@@ -297,12 +324,37 @@ class CoreAxiLite(Elaboratable):
 						m.d.sync += bvalid_v.eq(1)
 						m.next = "IDLE"
 
+		m.d.comb += [
+			self.s_axi_ro.arready.eq(arready_v),
+			self.s_axi_ro.rvalid.eq(rvalid_v),
+		]
+
+		m.d.comb += [
+			self.s_axi_wo.awready.eq(awready_v),
+			self.s_axi_wo.wready.eq(wready_v),
+			self.s_axi_wo.bvalid.eq(bvalid_v),
+		]
+
+		m.d.comb += [
+			self.s_axi_ro.rdata.eq(rdata_v),
+			self.s_axi_ro.rresp.eq(rresp_v),
+		]
+
+		m.d.comb += [
+			self.s_axi_wo.bresp.eq(bresp_v),
+		]
+
+		m.d.comb += [
+			self.height.eq(height_width[0:16]),
+			self.width.eq(height_width[16:32]),
+		]
+
 		return m
 
 if __name__ == "__main__":
 	config = {
 		"bit_depth" : 12,
-		"axi_lite_debug": False,
+		"axi_lite_debug": True,
 	}
 	d = CoreAxiLite(config, constraints.Constraints())
 	main(d, ports=d.ios)

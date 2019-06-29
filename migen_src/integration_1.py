@@ -146,6 +146,7 @@ if __name__ == "__main__":
 		"pixels_per_cycle": 2,
 		"predictor_function": 1,
 		"num_of_components": 4,
+		"axi_lite_debug": False,
 	}
 	cons = constraints.Constraints()
 	d = Integration1(config, cons)

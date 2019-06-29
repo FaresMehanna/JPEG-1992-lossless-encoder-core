@@ -16,14 +16,9 @@ class Integration3AxiStream(Elaboratable):
 			"converter" : 48,
 			"converter_fifo_depth": 256,
 			"vbits_to_cbits_buffer_size": 144,
-			"vbits_to_cbits_slow_mhz": True,
-			"vbits_to_cbits_reg": False,
 			"predictor_function": 1,
 			"num_of_components": 4,
-			"pipeline_reg": False,
-			"converter_reg": False,
-			"converter_fifo_reg": False,
-			"pipeline_fifo_reg": False,
+			"axi_lite_debug": False,
 		}
 		cons = constraints.Constraints()
 
