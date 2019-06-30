@@ -6,6 +6,8 @@ from axi3_lite_pkg import *
 import constraints
 import debug_module
 
+#reference: https://github.com/apertus-open-source-cinema/axiom-beta-firmware/blob/master/peripherals/soc_main/reg_file.vhd
+
 class CoreAxiLite(Elaboratable):
 
 	def __init__(self, config, constraints):
@@ -205,124 +207,112 @@ class CoreAxiLite(Elaboratable):
 			pass
 
 		# reset
-		with m.If(self.s_axi_areset_n == 0):
-			m.d.sync += [
-				addr_v.eq(0),#
-				arready_v.eq(0),#
-				rvalid_v.eq(0),#
-				awready_v.eq(0),#
-				wready_v.eq(0),#
-				bvalid_v.eq(0),#
-				rdata_v.eq(0),#
-			]
-
-		with m.Else():
-			with m.FSM() as main:
+		with m.FSM() as main:
 
 
-				with m.State("IDLE"):
-					#needed from other states
-					m.d.sync += [
-						rvalid_v.eq(0),
-						bvalid_v.eq(0),
+			with m.State("IDLE"):
+				#needed from other states
+				m.d.sync += [
+					rvalid_v.eq(0),
+					bvalid_v.eq(0),
+				]
+				#read operation
+				with m.If(self.s_axi_ri.arvalid):
+					m.next = "READ_ADDRESS"
+				with m.Elif(self.s_axi_wi.awvalid):
+					m.next = "WRITE_ADDRESS"
+
+
+			with m.State("READ_ADDRESS"):
+				# ack address, ready for transfer
+				m.d.sync += [
+					addr_v.eq(self.s_axi_ri.araddr >> 2),
+					self.rp_addr.eq(self.s_axi_ri.araddr >> 3),
+					arready_v.eq(1),
+				]
+				m.next = "READ_DATA_DELAY1"
+
+
+			with m.State("READ_DATA_DELAY1"):
+				m.d.sync += arready_v.eq(0)	# done
+				m.next = "READ_DATA_DELAY2"
+
+
+			with m.State("READ_DATA_DELAY2"):
+				m.next = "READ_DATA"
+
+
+			with m.State("READ_DATA"):
+				# ssss bram
+				with m.If((ssss_enable == 1) & (ssss_index < 2*self.mem_depth)):
+					read_ssss()
+				# height & width
+				with m.Elif(hw_enable == 1):
+					read_hw()
+				# debug
+				if self.debug:
+					with m.Elif(debug_enable == 1):
+						read_debug()
+				# decode error
+				with m.Else():
+					m.d.sync += rresp_v.eq(3)
+				# to finish
+				with m.If(self.s_axi_ri.rready):
+					m.d.sync += rvalid_v.eq(1)
+					m.next = "IDLE"
+
+
+			with m.State("WRITE_ADDRESS"):
+				# ack address, ready for transfer
+				m.d.sync += [
+					addr_v.eq(self.s_axi_wi.awaddr >> 2),
+					self.rp_addr.eq(self.s_axi_wi.awaddr >> 3),
+					awready_v.eq(1),
+				]
+				m.next = "WRITE_DATA_DELAY1"
+
+
+			with m.State("WRITE_DATA_DELAY1"):
+				m.d.sync += awready_v.eq(0)	# done
+				m.next = "WRITE_DATA_DELAY2"
+
+
+			with m.State("WRITE_DATA_DELAY2"):
+				m.next = "WRITE_DATA"
+
+
+			with m.State("WRITE_DATA"):
+				m.d.sync += wready_v.eq(1)	# ready for data
+				with m.If(self.s_axi_wi.wvalid):
+					m.d.comb += [
+						wdata_v.eq(self.s_axi_wi.wdata),
+						wstrb_v.eq(self.s_axi_wi.wstrb),
 					]
-					#read operation
-					with m.If(self.s_axi_ri.arvalid):
-						m.next = "READ_ADDRESS"
-					with m.Elif(self.s_axi_wi.awvalid):
-						m.next = "WRITE_ADDRESS"
-
-
-				with m.State("READ_ADDRESS"):
-					# ack address, ready for transfer
-					m.d.sync += [
-						addr_v.eq(self.s_axi_ri.araddr >> 2),
-						self.rp_addr.eq(self.s_axi_ri.araddr >> 3),
-						arready_v.eq(1),
-					]
-					m.next = "READ_DATA_DELAY1"
-
-
-				with m.State("READ_DATA_DELAY1"):
-					m.d.sync += arready_v.eq(0)	# done
-					m.next = "READ_DATA_DELAY2"
-
-
-				with m.State("READ_DATA_DELAY2"):
-					m.next = "READ_DATA"
-
-
-				with m.State("READ_DATA"):
 					# ssss bram
 					with m.If((ssss_enable == 1) & (ssss_index < 2*self.mem_depth)):
-						read_ssss()
+						write_to_ssss()	
 					# height & width
 					with m.Elif(hw_enable == 1):
-						read_hw()
+						write_to_hw()
 					# debug
 					if self.debug:
 						with m.Elif(debug_enable == 1):
-							read_debug()
+							write_to_debug()
 					# decode error
 					with m.Else():
-						m.d.sync += rresp_v.eq(3)
-					# to finish
-					with m.If(self.s_axi_ri.rready):
-						m.d.sync += rvalid_v.eq(1)
-						m.next = "IDLE"
+						m.d.sync += bresp_v.eq(3)
+					m.next = "WRITE_RESPONSE"
 
 
-				with m.State("WRITE_ADDRESS"):
-					# ack address, ready for transfer
-					m.d.sync += [
-						addr_v.eq(self.s_axi_wi.awaddr >> 2),
-						self.rp_addr.eq(self.s_axi_wi.awaddr >> 3),
-						awready_v.eq(1),
-					]
-					m.next = "WRITE_DATA_DELAY1"
-
-
-				with m.State("WRITE_DATA_DELAY1"):
-					m.d.sync += awready_v.eq(0)	# done
-					m.next = "WRITE_DATA_DELAY2"
-
-
-				with m.State("WRITE_DATA_DELAY2"):
-					m.next = "WRITE_DATA"
-
-
-				with m.State("WRITE_DATA"):
-					m.d.sync += wready_v.eq(1)	# ready for data
-					with m.If(self.s_axi_wi.wvalid):
-						m.d.comb += [
-							wdata_v.eq(self.s_axi_wi.wdata),
-							wstrb_v.eq(self.s_axi_wi.wstrb),
-						]
-						# ssss bram
-						with m.If((ssss_enable == 1) & (ssss_index < 2*self.mem_depth)):
-							write_to_ssss()	
-						# height & width
-						with m.Elif(hw_enable == 1):
-							write_to_hw()
-						# debug
-						if self.debug:
-							with m.Elif(debug_enable == 1):
-								write_to_debug()
-						# decode error
-						with m.Else():
-							m.d.sync += bresp_v.eq(3)
-						m.next = "WRITE_RESPONSE"
-
-
-				with m.State("WRITE_RESPONSE"):
-					if self.debug:
-						clean_write_debug()
-					clean_write_hw()
-					clean_write_ssss()
-					m.d.sync += wready_v.eq(0)
-					with m.If(self.s_axi_wi.bready):
-						m.d.sync += bvalid_v.eq(1)
-						m.next = "IDLE"
+			with m.State("WRITE_RESPONSE"):
+				if self.debug:
+					clean_write_debug()
+				clean_write_hw()
+				clean_write_ssss()
+				m.d.sync += wready_v.eq(0)
+				with m.If(self.s_axi_wi.bready):
+					m.d.sync += bvalid_v.eq(1)
+					m.next = "IDLE"
 
 		m.d.comb += [
 			self.s_axi_ro.arready.eq(arready_v),

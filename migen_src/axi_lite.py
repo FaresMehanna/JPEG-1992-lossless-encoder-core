@@ -4,6 +4,8 @@ from nmigen.back import *
 from axi3_pkg import *
 from axi3_lite_pkg import *
 
+#reference: https://github.com/apertus-open-source-cinema/axiom-beta-firmware/blob/master/peripherals/soc_main/axi_lite.vhd
+
 class AxiLite(Elaboratable):
 
 	def __init__(self):
@@ -66,13 +68,11 @@ class AxiLite(Elaboratable):
 		rwid = Signal(12)
 
 		#main process
-		with m.If(self.s_axi_areset_n == 0):
-			m.d.sync += rwid.eq(0)
-		with m.Else():
-			with m.If(self.s_axi_ri.arvalid):
-				m.d.sync += rwid.eq(self.s_axi_ri.arid)
-			with m.If(self.s_axi_wi.awvalid):
-				m.d.sync += rwid.eq(self.s_axi_wi.awid)
+		with m.If(self.s_axi_ri.arvalid):
+			m.d.sync += rwid.eq(self.s_axi_ri.arid)
+		with m.If(self.s_axi_wi.awvalid):
+			m.d.sync += rwid.eq(self.s_axi_wi.awid)
+
 		m.d.sync += [
 			self.s_axi_ro.rid.eq(rwid),
 			self.s_axi_wo.bid.eq(rwid),
