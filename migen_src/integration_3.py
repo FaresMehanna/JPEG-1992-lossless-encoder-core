@@ -89,6 +89,7 @@ if __name__ == "__main__":
 		"predictor_function": 1,
 		"num_of_components": 4,
 		"axi_lite_debug": False,
+		"support_axi_lite": False,
 	}
 	cons = constraints.Constraints()
 	d = Integration3(config, cons)

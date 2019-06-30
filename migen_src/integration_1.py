@@ -5,7 +5,7 @@ from math import log, ceil
 import difference, normalize, encode, merge, signals
 import constraints
 import predictor_p1_c4_px4, predictor_p1_c4_pix1_2
-import core_axi_lite
+import core_axi_lite, register_file
 
 class Integration1(Elaboratable):
 
@@ -16,6 +16,7 @@ class Integration1(Elaboratable):
 
 		self.bd = config['bit_depth']
 		self.ps = config['pixels_per_cycle']
+		self.axi_lite = config['support_axi_lite']
 		enc_out_bits = min(31, 16+self.bd) * self.ps
 
 		#pixels in
@@ -43,7 +44,10 @@ class Integration1(Elaboratable):
 		if self.ps > 1:
 			self.merge = merge.Merge(config, cons)
 		self.signals = signals.Signals(config, cons)
-		self.core_axi_lite = core_axi_lite.CoreAxiLite(config, cons)
+		if self.axi_lite:
+			self.core_axi_lite = core_axi_lite.CoreAxiLite(config, cons)
+		else:
+			self.register_file = register_file.RegisterFile()
 
 		self.ios = \
 			[pixel_in for pixel_in in self.pixels_in] + \
@@ -62,14 +66,26 @@ class Integration1(Elaboratable):
 		if self.ps > 1:
 			m.submodules.merge = merge = self.merge
 		m.submodules.signals = signals = self.signals
-		m.submodules.core_axi_lite = core_axi_lite = self.core_axi_lite
+		if self.axi_lite:
+			m.submodules.core_axi_lite = core_axi_lite = self.core_axi_lite
+		else:
+			m.submodules.register_file = register_file = self.register_file
+		
+		if self.axi_lite:
+			# signals
+			m.d.comb += [
+				signals.height.eq(core_axi_lite.height),
+				signals.width.eq(core_axi_lite.width),
+			]
+		else:
+			# signals
+			m.d.comb += [
+				signals.height.eq(register_file.height),
+				signals.width.eq(register_file.width),
+			]
 
 		# signals
-		m.d.comb += [
-			signals.height.eq(core_axi_lite.height),
-			signals.width.eq(core_axi_lite.width),
-			signals.new_input.eq(self.valid_in),
-		]
+		m.d.comb += signals.new_input.eq(self.valid_in)
 
 		# this and predictor
 		m.d.comb += [pred_pixel_in.eq(pixel_in) for pred_pixel_in, pixel_in in zip(predictor.pixels_in, self.pixels_in)]
@@ -104,14 +120,15 @@ class Integration1(Elaboratable):
 			encode.end_in.eq(normalize.end_out),
 		]
 
-		# core axi lite and encode
-		m.d.comb += [
-			core_axi_lite.rp_data.eq(encode.extern_r_port.data),
-			encode.extern_r_port.addr.eq(core_axi_lite.rp_addr),
-			encode.extern_w_port.addr.eq(core_axi_lite.wp_addr),
-			encode.extern_w_port.data.eq(core_axi_lite.wp_data),
-			encode.extern_w_port.en.eq(core_axi_lite.wp_en),
-		]
+		if self.axi_lite:
+			# core axi lite and encode
+			m.d.comb += [
+				core_axi_lite.rp_data.eq(encode.extern_r_port.data),
+				encode.extern_r_port.addr.eq(core_axi_lite.rp_addr),
+				encode.extern_w_port.addr.eq(core_axi_lite.wp_addr),
+				encode.extern_w_port.data.eq(core_axi_lite.wp_data),
+				encode.extern_w_port.en.eq(core_axi_lite.wp_en),
+			]
 
 		if self.ps > 1:
 			# encode and merge
@@ -147,6 +164,7 @@ if __name__ == "__main__":
 		"predictor_function": 1,
 		"num_of_components": 4,
 		"axi_lite_debug": False,
+		"support_axi_lite": True,
 	}
 	cons = constraints.Constraints()
 	d = Integration1(config, cons)

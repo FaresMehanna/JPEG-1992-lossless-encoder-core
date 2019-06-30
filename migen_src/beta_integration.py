@@ -18,6 +18,7 @@ class BetaIntegration(Elaboratable):
 			"converter" : 30,
 			"converter_fifo_depth": 512, #512 x 36 = RAM18
 			"vbits_to_cbits_buffer_size": 77,
+			"support_axi_lite": True,
 			"axi_lite_debug": True,
 			"predictor_function": 1,
 			"num_of_components": 4,
@@ -55,7 +56,7 @@ class BetaIntegration(Elaboratable):
 		m.submodules.fix_0xff = fix_0xff = self.fix_0xff
 		m.submodules.fix_0xff2 = fix_0xff2 = self.fix_0xff2
 
-		if self.config['axi_lite_debug']:
+		if self.config['axi_lite_debug'] and self.config['support_axi_lite']:
 			# set debugging counters
 			trans_started = Signal(1)
 			m.d.sync += trans_started.eq(trans_started | self.valid_in)

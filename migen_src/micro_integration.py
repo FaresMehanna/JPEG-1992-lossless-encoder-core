@@ -10,7 +10,7 @@ class MicroIntegration(Elaboratable):
 
 	def __init__(self):
 
-		config = {
+		self.config = config = {
 			"bit_depth" : 12,
 			"pixels_per_cycle": 1,
 			"LJ92_fifo_depth": 512, #512 x 36 = RAM18
@@ -20,6 +20,7 @@ class MicroIntegration(Elaboratable):
 			"vbits_to_cbits_buffer_size": 41,
 			"predictor_function": 1,
 			"num_of_components": 4,
+			"support_axi_lite": True,
 			"axi_lite_debug": True,
 		}
 		cons = constraints.Constraints()

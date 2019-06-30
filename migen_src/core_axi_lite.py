@@ -72,6 +72,19 @@ class CoreAxiLite(Elaboratable):
 			[self.s_axi_wi.wstrb, self.s_axi_wi.wvalid] + \
 			[self.s_axi_wi.bready]
 
+		self.axi_ios = \
+			[self.s_axi_aclk, self.s_axi_areset_n] + \
+			[self.s_axi_ro.arready, self.s_axi_ro.rdata] + \
+			[self.s_axi_ro.rresp, self.s_axi_ro.rvalid] + \
+			[self.s_axi_ri.araddr, self.s_axi_ri.arprot] + \
+			[self.s_axi_ri.arvalid, self.s_axi_ri.rready] + \
+			[self.s_axi_wo.awready, self.s_axi_wo.wready] + \
+			[self.s_axi_wo.bresp, self.s_axi_wo.bvalid] + \
+			[self.s_axi_wi.awaddr, self.s_axi_wi.awprot] + \
+			[self.s_axi_wi.awvalid, self.s_axi_wi.wdata] + \
+			[self.s_axi_wi.wstrb, self.s_axi_wi.wvalid] + \
+			[self.s_axi_wi.bready]
+
 		if self.debug:
 			self.ios += [self.debug_en]
 
