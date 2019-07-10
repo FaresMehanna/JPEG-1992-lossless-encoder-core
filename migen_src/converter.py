@@ -1,3 +1,37 @@
+'''
+--------------------
+Module: converter
+--------------------
+Description: 
+    - converter is a module introduced as an optimization step in
+    the core, since the output of LJ92 pipeline is variable in number of
+    bits, it is not very friendly to build the rest of the core
+    on the worst case possible, so a converter module is introduced
+    to lower the worst case to a more sensible one by dividing
+    the big chunks of data into several smaller ones, also it
+    should be noted that most of the chunks are already small in size,
+    so this will divide very small amount of chunks.
+--------------------
+Input: 
+    - single signal representing the encoded value for all the pixels.
+    - single signal representing how many bits represent encoded value
+    for all the pixels.
+--------------------
+Output:
+    - single signal representing the encoded value for all the pixels.
+    - single signal representing how many bits represent encoded value
+    for all the pixels.
+--------------------
+timing:
+    - one cycle or more depending on the size of the input.
+--------------------
+Notes :
+    - converter implementation assume that it read and write to
+    fifo modules.
+    - The module is optional step made as an optimization step.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
@@ -44,6 +78,9 @@ class Converter(Elaboratable):
 
 		m = Module()
 
+		# based on the size of the input and the size of the
+		# output, calculate the max number of steps and the
+		# number of bits needed to be cached.
 		data_top = 0
 		steps = 0
 		while data_top + self.conv_bits <= self.total_ctr:
@@ -53,12 +90,14 @@ class Converter(Elaboratable):
 		enc_out_latch = Signal(data_top)
 		out_end_latch = Signal(1)
 
-		# register prev data
+		# register inputted data to allow for faster MHz
 		enc_out_reg = Signal(self.total_ctr)
 		enc_out_ctr_reg = Signal(max=self.total_ctr+1)
 		out_end_reg = Signal(1)
 		valid_out_reg = Signal(1)
 
+		# function that will be used in any place to 
+		# register the inputted data
 		def reg_data():
 			m.d.sync += [
 				enc_out_reg.eq(self.enc_out),
@@ -67,6 +106,8 @@ class Converter(Elaboratable):
 				valid_out_reg.eq(self.valid_out),
 			]
 
+		# function that will try to go to BURST mode,
+		# it may be used in IDLE state or any other state.
 		def try_burst_idle():
 			#if there is input in the buffer & can write it
 			with m.If(valid_out_reg & (self.close_full==0)):
@@ -82,12 +123,14 @@ class Converter(Elaboratable):
 				m.d.sync += [
 					self.latch_output.eq(1),
 				]
-				m.next = "BURST_IDLE"
+				m.next = "BURST_PREPARE"
 
 			#else stay/goto IDLE
 			with m.Else():
 				m.next = "IDLE"
 
+		# finite state machine that implement the converter
+		# logic.
 		with m.FSM() as outTransaction:
 
 			with m.State("IDLE"):
@@ -100,14 +143,17 @@ class Converter(Elaboratable):
 				#this may overwrite self.latch_output
 				try_burst_idle()
 
-			with m.State("BURST_IDLE"):
+			with m.State("BURST_PREPARE"):
 				reg_data()
 				m.next = "BURST"
 
+			# most of the time it should be here in "BRUST"
+			# state and go only to "STEPS_X" when the inputted
+			# data is big.
 			with m.State("BURST"):
 				reg_data()
 				with m.If(valid_out_reg):
-					#if all input can fill
+					#if all input can fill the output
 					with m.If(enc_out_ctr_reg <= self.conv_bits):
 						m.d.sync += [
 							self.enc_in.eq(enc_out_reg),
@@ -120,6 +166,7 @@ class Converter(Elaboratable):
 								self.latch_output.eq(0),
 							]
 							m.next = "IDLE"
+					# if inputted data is bigger than the converter
 					with m.Else():
 						#latch only the first part of the input
 						m.d.sync += [
@@ -132,6 +179,8 @@ class Converter(Elaboratable):
 							out_end_latch.eq(out_end_reg),
 						]
 
+						# depends on the size of the input data it
+						# will move to suitable "STEPS_X" state.
 						start = 0
 						end = self.conv_bits
 						state = "STEPS_"
@@ -155,7 +204,9 @@ class Converter(Elaboratable):
 				with m.Else():
 					m.d.sync += self.valid_in.eq(0)
 
-			# the rest of state
+			# the rest of states.
+			# every state handle part of the data and
+			# move to the next one.
 			state = "STEPS"
 			start = 0
 			end = self.conv_bits

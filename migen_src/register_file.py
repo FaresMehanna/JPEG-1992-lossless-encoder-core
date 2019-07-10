@@ -1,3 +1,28 @@
+'''
+--------------------
+Module: register_file
+--------------------
+Description: 
+    - register_file is a component where some values are stored
+    and outputted for any other component to use.
+--------------------
+Input: 
+    - no input.
+--------------------
+Output:
+    - height and width of the frame.
+--------------------
+timing:
+    - always same values.
+--------------------
+Notes :
+    - this module is optional since height and width
+    are existed in Axi-lite module for access from PS,
+    so if axi lite is used, then no need to use this 
+    module.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *

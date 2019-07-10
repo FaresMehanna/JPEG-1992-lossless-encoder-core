@@ -1,3 +1,27 @@
+'''
+--------------------
+Module: reverser
+--------------------
+Description: 
+    - reverser is a module to reverse a signal bits order,
+    it can be configured to be comp or sync.
+--------------------
+Input: 
+    - N-bits signal.
+--------------------
+Output:
+    - reversed N-bits signal.
+--------------------
+timing:
+    - 0 or 1 cycle depending on the configuration.
+--------------------
+Notes :
+    - this module can be configured as combinatorial or 
+    sync.
+    - this module not currently used.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *

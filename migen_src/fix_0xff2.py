@@ -1,9 +1,40 @@
+'''
+--------------------
+Module: fix_0xff2
+--------------------
+Description: 
+    - fix_0xff is the second step in two steps to fix the 0xff
+    bytes, in LJ92 standard, every 0xFF byte must be followed
+    with 0x00 byte.
+    This module will convert 4 bytes variable size into two
+    bytes for the output.
+--------------------
+Input: 
+    - single signal with variable number of bytes - must be 4-bytes for now.
+--------------------
+Output:
+    - single signal with constant number of bytes - must be 2-bytes for now.
+--------------------
+timing:
+    - result ready in the next rising edge.
+--------------------
+Notes :
+    - this module handle only constant number of bytes, 2 only.
+    - this module is a must to be complaint with LJ92 standard,
+    but not crucial in the compressing algorithm.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
 import constraints
 
+# normal_logic, represent the normal logic of input_data and
+# buffer_data and the output can be processed in 1 cycle, and the
+# buffer is not filled yet, if filled then the "clean_logic"
+# will be called.
 def normal_logic(valid_in, data_in, data_in_ctr, data_out, end_in, end_out, buffer_data, buffer_count, o_busy, m, end_reg):
 	with m.If(valid_in):
 		with m.Switch(buffer_count):
@@ -75,6 +106,10 @@ def normal_logic(valid_in, data_in, data_in_ctr, data_out, end_in, end_out, buff
 				]
 				m.next = "CLEAN"
 
+				
+# this state only happens when the buffer is filled
+# with data and need to be cleaned, so this will stop
+# accepting new data until the buffer is emptied.
 def clean_logic(data_out, end_out, buffer_data, buffer_count, m, end_reg):
 	with m.Switch(buffer_count):
 		#1 byte in buffer

@@ -1,3 +1,38 @@
+'''
+--------------------
+Module: vbits_to_cbits
+--------------------
+Description: 
+    - vbits_to_cbits is the most complex module in the core, its 
+    job is simple, given variable bits signal, it need to store
+    them in buffer and output a constant number of bits using
+    shift and OR operations.
+--------------------
+Input: 
+    - single signal representing the encoded value for all the pixels.
+    - single signal representing how many bits represent encoded value
+    for all the pixels.
+--------------------
+Output:
+    - single signal with constant number of bits.
+--------------------
+timing:
+    - when enough data is available it will be outputted in
+    next cycle.
+--------------------
+Notes :
+    - vbits_to_cbits is a crucial part and still need optimizations.
+    - vbits_to_cbits contains two main parts InputHandler and 
+    OutputHandler.
+    - InputHandler is responsible of getting new data and add them
+    properly to the buffer.
+    - OutputHandler is responsible of outputting the data from the
+    buffer when enough data is present.
+    - input size and output size and buffer size are all configured
+    via config object.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
@@ -71,10 +106,10 @@ class OutputHandler(Elaboratable):
 			with m.State("OUTPUT"):
 				#if we have enough data, or end signal is activated -> last input
 				with m.If((buff_consum_greater_eq) | ((buff_consum_less_eq) & self.end_in)):
-					m.next = "BRUST"
+					m.next = "BURST"
 					do_output()
 
-			with m.State("BRUST"):
+			with m.State("BURST"):
 				#device latched the prev output and new output is ready
 				with m.If((self.busy_in == 0) & (buff_consum_greater_eq)):
 					do_output()
@@ -211,11 +246,11 @@ class InputHandler(Elaboratable):
 					#if we have data in buffer
 					with m.Elif(valid_in_reg):
 						m.d.sync += self.latch_input.eq(1)
-						m.next = "BRUST"
+						m.next = "BURST"
 					#if we have new data
 					with m.Else():
 						m.d.sync += self.latch_input.eq(1)
-						m.next = "REGISTER_FOR_BRUST"
+						m.next = "REGISTER_FOR_BURST"
 
 			with m.State("CLEAN_BUFFER"):
 				# invalidate buffered data
@@ -224,21 +259,21 @@ class InputHandler(Elaboratable):
 				swap_reg_buff()
 				# get input from swapped data then go to input
 				get_input_from_reg()
-				### short cut ###
+				### short cut instead of going to INPUT ###
 				#if we have data in buffer
 				with m.If(valid_in_reg):
 					m.d.sync += self.latch_input.eq(1)
-					m.next = "BRUST"
+					m.next = "BURST"
 				#if we have new data
 				with m.Else():
 					m.d.sync += self.latch_input.eq(1)
-					m.next = "REGISTER_FOR_BRUST"
+					m.next = "REGISTER_FOR_BURST"
 
-			with m.State("REGISTER_FOR_BRUST"):
+			with m.State("REGISTER_FOR_BURST"):
 				reg_data()
-				m.next = "BRUST"
+				m.next = "BURST"
 
-			with m.State("BRUST"):
+			with m.State("BURST"):
 				#if we have new data
 				reg_data()
 				reg_to_buff()
@@ -250,7 +285,7 @@ class InputHandler(Elaboratable):
 						m.d.sync += self.latch_input.eq(0)
 						m.next = "INPUT"
 
-		#handle buffer free
+		#handle buffer free counter
 		with m.If(self.inc_buff & self.dec_buff):
 			m.d.comb += self.new_buff_free.eq(self.buff_free + self.output_size - enc_in_ctr_reg)
 		with m.Else():
@@ -259,7 +294,7 @@ class InputHandler(Elaboratable):
 			with m.Elif(self.inc_buff):
 				m.d.comb += self.new_buff_free.eq(self.buff_free - enc_in_ctr_reg)
 
-		#handle buffer consum
+		#handle buffer consum counter
 		with m.If(self.inc_buff & self.dec_buff):
 			m.d.comb += self.new_buff_consum.eq(self.buff_consum - self.output_size + enc_in_ctr_reg)
 		with m.Else():

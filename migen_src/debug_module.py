@@ -1,3 +1,29 @@
+'''
+--------------------
+Module: debug_module
+--------------------
+Description: 
+    - when some debugging info is required this module
+    can be used to gather some run-time data.
+    this module is simply 8 counters that get incremented
+    when active signal is asserted.
+--------------------
+Input: 
+    - 8 activate signals.
+--------------------
+Output:
+    - 8 counters.
+--------------------
+timing:
+    - No need for time analysis for this module.
+--------------------
+Notes :
+    - this module is optional and can only be
+    used with axi lite module to access theses
+    counters from PS.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *

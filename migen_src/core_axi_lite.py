@@ -1,3 +1,50 @@
+'''
+--------------------
+Module: core_axi_lite
+--------------------
+Description: 
+    - core_axi_lite is a module implements AXI lite interface to allow
+    the PS to read/write certain registers or BRAM.
+    - it can be used to read/write the height and width of the frame.
+    - it can be used to read/write Huffman table values.
+    - it can be used to read debugging registers - if enabled.
+--------------------
+Input: 
+    - AXI lite interface inputs.
+    - Huffman table BRAM port read/write port.
+--------------------
+Output:
+    - AXI lite interface outputs.
+    - Huffman table BRAM port read/write port.
+	- height and width register.
+--------------------
+timing:
+    - timing as normal AXI lite interface, but it take more cycles
+    per transaction since BRAM is registered, so expect lower
+    throughput.
+--------------------
+Notes :
+    - this module is optional and is not important to be used
+    if the height & width of frames is constant in the camera,
+    and no experiments with Huffman values is needed.
+    - to read and write in Huffman table, the address will be as
+    following (uint32_t)((AXI_LITE_ADDRESS | 0x400) + ssss_index),
+    ssss_index is between 0 and 2*bit_depth.
+    It take up to 2*bit_depth since every ssss will be accessed 
+    as 2 x uint32_t registers, the size exactly is defined in
+    encoding module.
+    - to read and write in height and width registers, the address will 
+    be as following (uint32_t)((AXI_LITE_ADDRESS | 0x800),
+    first 16 bits are representing the height and second 16 bits are
+    representing the width register.
+    - to read from debug module register, the address will be as
+    following (uint32_t)((AXI_LITE_ADDRESS | 0x1000) + reg_index),
+    reg_index is between 0 and 7.
+    - to check how ssss values are set, you may refer to encoding
+    module where the Huffman BRAM originally defined.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
@@ -219,9 +266,7 @@ class CoreAxiLite(Elaboratable):
 		def clean_write_debug():
 			pass
 
-		# reset
 		with m.FSM() as main:
-
 
 			with m.State("IDLE"):
 				#needed from other states

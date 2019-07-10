@@ -1,9 +1,41 @@
+'''
+--------------------
+Module: fix_0xff
+--------------------
+Description: 
+    - fix_0xff is the first step in two steps to fix the 0xff
+    bytes, in LJ92 standard, every 0xFF byte must be followed
+    with 0x00 byte.
+    This module will detect 0xFF bytes and follow it with
+    0x00 byte.
+--------------------
+Input: 
+    - single signal with constant number of bytes - must be 2-bytes for now.
+--------------------
+Output:
+    - single signal with variable number of bytes - must be 4-bytes for now.
+--------------------
+timing:
+    - result ready in the next rising edge, maybe converted into
+    multiple cycles if more bytes need to be handled in the future.
+--------------------
+Notes :
+    - this module handle only constant number of bytes, 2 only.
+    - this module is a must to be complaint with LJ92 standard,
+    but not crucial in the compressing algorithm.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
 import constraints
 
+# logic is the function which will handle the inputted data to
+# detect 0xFF and set the output accordingly.
+# for 2 bytes it will be 4 cases, for 4 bytes it will be 16
+# cases, so a tree comparisons maybe more suitable then.
 def logic(data_in, data_out, data_out_ctr, zeros, ones, m):
 	# 0xFF 0x00 0xFF 0x00
 	with m.If(data_in[0:16] == 0xFFFF):

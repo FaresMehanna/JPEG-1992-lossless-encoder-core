@@ -1,3 +1,31 @@
+'''
+--------------------
+Module: converter_fifo
+--------------------
+Description: 
+    - converter_fifo is a fifo enclosure using BRAM, that
+    sit between the converter and the rest of the logic.
+--------------------
+Input: 
+    - single signal representing the encoded value for all the pixels.
+    - single signal representing how many bits represent encoded value
+    for all the pixels.
+--------------------
+Output:
+    - single signal representing the encoded value for all the pixels.
+    - single signal representing how many bits represent encoded value
+    for all the pixels.
+--------------------
+timing:
+    - This is a fifo based on BRAM, so there is one cycle latency.
+--------------------
+Notes :
+    - converter_fifo module is placed after the converter module
+    - The module is a optional in LJ92 pipeline, but it is a must
+    if the converter module is used.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *

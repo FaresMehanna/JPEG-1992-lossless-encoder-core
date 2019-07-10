@@ -1,3 +1,27 @@
+'''
+--------------------
+Module: signals
+--------------------
+Description: 
+    - some signals are needed in the LJ92 process like
+    indicating end of frame or start of new row.
+--------------------
+Input: 
+    - height and width.
+--------------------
+Output:
+    - end of frame.
+    - start of new row.
+--------------------
+timing:
+    - No need for time analysis for this module.
+--------------------
+Notes :
+    - this module is a must for several components
+    which make a use of new row and end of frame.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *

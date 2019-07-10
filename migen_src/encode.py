@@ -1,9 +1,46 @@
+'''
+--------------------
+Module: encode
+--------------------
+Description: 
+    - encode is a module that do the actual encoding for each
+    pixel alone using the normalized value, the ssss class and
+    the huffman table for ssss classes.
+--------------------
+Input: 
+    - N signals representing the ssss class of the every pixel.
+    - N signals representing the pixel value within its ssss class.
+--------------------
+Output:
+    - N signals representing the encoded value for the pixel.
+    - N signals representing how many bits represent encoded value.
+--------------------
+timing:
+    - The encoding calculated in two cycles, although it may be
+    increased if more MHz is needed.
+--------------------
+Notes :
+    - encoding module is the fourth step in LJ92 pipeline.
+    - the huffman table values for ssss classes must be correct.
+    - The module can be used with any number of input values.
+    - The module uses traveling valid signal with no handshake.
+    - The module is a MUST in LJ92 pipeline.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
 import constraints
 
+# get_ssss is a function that returns a list of the Huffman
+# table values for every ssss class in order, it returns a
+# list of pairs, the first item in the pair is the Huffman 
+# value and the second is how many bits represents this value.
+# The list length should be at least the same number as the
+# bit depth + 1, 17 is the maximum for 16-bits image,
+# 3 is the minimum for 2-bits image.
 def get_ssss():
 	return [(0b1110, 4),(0b000, 3),\
 	(0b001, 3),(0b010, 3),(0b011, 3),\
@@ -13,6 +50,15 @@ def get_ssss():
 	(0b11111111110, 11),(0b111111111110, 12),\
 	(0b1111111111110, 13)]
 
+# init_huff_table is a function that prepare the Huffman
+# values to be stored in the memory block, it does that by
+# represent the number of bits in the value in the last 5
+# bits, and the value itself is added at the most right but
+# shifted with the same amount of the ssss class, the left
+# shift to the value is done here and will consume bigger
+# memory in the benefit of removing the circuit from the 
+# fpga, so to encode a value it will only be OR-ed with
+# the Huffman value.
 def init_huff_table(bd):
 	ssss = get_ssss()[0:bd+1]
 	assert (len(ssss) == (bd+1)),"You must provide all values in ssss list for wanted bit_depth!"
@@ -25,6 +71,10 @@ def init_huff_table(bd):
 			memory_data.append((sx[1] << (16+bd)) | (sx[0] << ind))
 	return memory_data
 
+# This is a single encoder that handle a single pixel,
+# using the inputted normalized value and the ssss class,
+# it will output the final encoded value and how many
+# bits it will need to be represented.
 class SingleEncoder(Elaboratable):
 
 	def __init__(self, config, constraints):
@@ -38,9 +88,14 @@ class SingleEncoder(Elaboratable):
 		self.rp_addr = Signal(5)
 		self.rp_data = Signal(self.bd+21)
 
+		# normalized value - in
 		self.val_in = Signal(self.bd)
+		# ssss class - in
 		self.ssss = Signal(5)
+
+		# encoded value - out
 		self.enc_out = Signal(min(16+self.bd, 31))
+		# number of bits represents encoded value - out
 		self.enc_ctr = Signal(5)
 
 		#valid in & out
@@ -104,6 +159,7 @@ class SingleEncoder(Elaboratable):
 
 		return m
 
+
 class Encode(Elaboratable):
 
 	def __init__(self, config, constraints):
@@ -117,12 +173,14 @@ class Encode(Elaboratable):
 		self.ps = config['pixels_per_cycle']
 		self.axi_lite = config['support_axi_lite']
 
-		#in
+		# normalized values - in
 		self.vals_in = Array(Signal(self.bd, name="val_in") for _ in range(self.ps))
+		# ssss classes - in
 		self.ssssx = Array(Signal(5, name="ssss") for _ in range(self.ps))
 		
-		#out
+		# encoded values - out
 		self.encs_out = Array(Signal(min(16+self.bd, 31), name="enc_out") for _ in range(self.ps))
+		# number of bits represents encoded values - out
 		self.encs_ctr = Array(Signal(5, name="enc_ctr") for _ in range(self.ps))
 
 		#valid in & out
@@ -152,6 +210,8 @@ class Encode(Elaboratable):
 			[ssss for ssss in self.ssssx] + \
 			[self.end_in, self.end_out]
 
+		# if axi lite is enabled for LJ92 core, It will add the
+		# external memory ports to the I/O ports.
 		if self.axi_lite:
 			self.ios += \
 				[self.extern_w_port.addr, self.extern_w_port.data, self.extern_w_port.en] + \
@@ -165,9 +225,12 @@ class Encode(Elaboratable):
 		m.submodules += self.pixels
 		m.submodules += self.read_ports
 
+		# if axi lite is enabled for LJ92 core, It will add the
+		# external memory ports to the submodules.
 		if self.axi_lite:
 			m.submodules += [self.extern_r_port, self.extern_w_port]
 
+		# This loop will initiate number of SingleEncoder-s for every pixel.
 		for pixel, val_in, enc_out, enc_ctr, ssss, read_port in zip(self.pixels, self.vals_in, self.encs_out, self.encs_ctr, self.ssssx, self.read_ports):
 			m.d.comb += [
 				pixel.val_in.eq(val_in),

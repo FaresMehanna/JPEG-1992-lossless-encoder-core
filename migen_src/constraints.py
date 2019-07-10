@@ -1,3 +1,6 @@
+
+# This class is to be used when any module set a constraints
+# on the frame.
 class Constraints():
 
 	def __init__(self):

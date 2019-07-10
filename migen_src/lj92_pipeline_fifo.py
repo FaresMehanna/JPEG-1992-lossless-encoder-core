@@ -1,3 +1,31 @@
+'''
+--------------------
+Module: lj92_pipeline_fifo
+--------------------
+Description: 
+    - lj92_pipeline_fifo is a fifo enclosure using BRAM, since
+    LJ92 pipeline uses traveling valid signal, so a fifo at the
+    end is a must.
+--------------------
+Input: 
+    - single signal representing the encoded value for all the pixels.
+    - single signal representing how many bits represent encoded value
+    for all the pixels.
+--------------------
+Output:
+    - single signal representing the encoded value for all the pixels.
+    - single signal representing how many bits represent encoded value
+    for all the pixels.
+--------------------
+timing:
+    - This is a fifo based on BRAM, so there is one cycle latency.
+--------------------
+Notes :
+    - lj92_pipeline_fifo module is the last step in LJ92 pipeline.
+    - The module is a MUST in LJ92 pipeline.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *

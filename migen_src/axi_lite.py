@@ -1,3 +1,32 @@
+'''
+--------------------
+Module: axi_lite
+--------------------
+Description: 
+    - convert AXI interface from zynq PS to AXI-lite
+    interface.
+--------------------
+Input: 
+    - axi3m_read_out_r
+    - axi3m_write_out_r
+    - axi3ml_read_in_r
+    - axi3ml_write_in_r
+--------------------
+Output:
+    - axi3m_read_in_r
+    - axi3m_write_in_r
+    - axi3ml_read_out_r
+    - axi3ml_write_out_r
+--------------------
+timing:
+    - No timing analysis available.
+--------------------
+Notes :
+    - Only needed if the AXI lite module will be directly
+    connected to the ZYNQ PS.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *

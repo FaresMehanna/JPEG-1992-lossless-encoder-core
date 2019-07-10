@@ -1,9 +1,41 @@
+'''
+--------------------
+Module: merge
+--------------------
+Description: 
+    - merge is a module that  combine the encoded values of
+    several pixels into one chunk of bits.
+--------------------
+Input: 
+    - N signals representing the encoded value for the pixel.
+    - N signals representing how many bits represent encoded value.
+--------------------
+Output:
+    - single signal representing the encoded value for all the pixels.
+    - single signal representing how many bits represent encoded value
+    for all the pixels.
+--------------------
+timing:
+    - The merging done in binary tree fashion, so it take 
+    O(lg(N)) to complete.
+--------------------
+Notes :
+    - merging module is the fifth step in LJ92 pipeline.
+    - The module can be used with any number of input values.
+    - The module uses traveling valid signal with no handshake.
+    - The module is a optional in LJ92 pipeline, only used when
+    several pixels is present.
+--------------------
+'''
+
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
 import constraints
 
+# SingleMerger is a module to handle single merge between
+# two values, it is a simple shift then OR.
 class SingleMerger(Elaboratable):
 
 	def __init__(self, width):
@@ -57,6 +89,8 @@ class SingleMerger(Elaboratable):
   |    |   |     |    = 2
  | |  | | | |   | |   = 3
 '''
+# The main class that ordered the pixels in the lowest
+# level and add SingleMerger in all above levels.
 class Merge(Elaboratable):
 
 	def __init__(self, config, constraints):
@@ -102,7 +136,7 @@ class Merge(Elaboratable):
 			elems = int(elems / 2)
 			merger_width = merger_width * 2
 			for j in range(elems):
-				#create single merger for two mergers
+				#create single merger for each two mergers
 				self.mergers.append(SingleMerger(merger_width))
 
 		self.ios = \
@@ -125,6 +159,9 @@ class Merge(Elaboratable):
 
 		in_ctr = 0
 		for i in range(elems):
+			# connect pixels with mergers,
+			# if number of pixels is not power of two, a zero
+			# value is added to represent a null value.
 			if in_ctr < self.ps:
 				m.d.comb += [
 					self.mergers[i].enc_in1.eq(self.encs_in[in_ctr]),
@@ -144,6 +181,7 @@ class Merge(Elaboratable):
 						self.mergers[i].enc_in2.eq(0),
 						self.mergers[i].enc_in_ctr2.eq(0),
 					]
+			# connect two mergers with each other
 			else:
 				m.d.comb += [
 					self.mergers[i].enc_in1.eq(0),
