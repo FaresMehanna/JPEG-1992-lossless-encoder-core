@@ -97,7 +97,7 @@ def normal_logic(valid_in, data_in, data_in_ctr, data_out, end_in, end_out, buff
 		with m.If(end_in):
 			with m.If((buffer_count == 0) & (data_in_ctr == 2)):
 				m.d.sync += end_out.eq(1)
-				m.next = "END"
+				m.next = "PRE_END"
 			with m.Else():
 				#switch to ending mode!
 				m.d.sync += [
@@ -225,6 +225,16 @@ class Fix0xFF2(Elaboratable):
 							self.end_out.eq(end_out_reg),
 							data_out_valid.eq(0),
 						]
+
+			with m.State("PRE_END"):
+				with m.If(self.i_busy == 0):
+					with m.If(data_out_valid):
+						m.d.sync += [
+							self.valid_out.eq(1),
+							self.data_out.eq(data_out_reg),
+							self.end_out.eq(1),
+						]
+					m.next = "END"
 
 			with m.State("END"):
 				pass

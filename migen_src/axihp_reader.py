@@ -9,8 +9,8 @@ class AxiHPReader(Elaboratable):
 
 	def __init__(self, data_w=64, data_c=16):
 
-		self.m_axi_aclk = Signal(1)		# in
-		self.m_axi_areset_n = Signal(1)	# in
+		self.m_axi_aclk_ = Signal(1)		# in
+		self.m_axi_areset_n_ = Signal(1)	# in
 		self.enable = Signal(1)			# in
 		self.inactive = Signal(1)		# out
 
@@ -34,7 +34,7 @@ class AxiHPReader(Elaboratable):
 		self.data_c = data_c
 
 		self.ios = \
-			[self.m_axi_aclk, self.m_axi_areset_n, self.enable, self.inactive] + \
+			[self.m_axi_aclk_, self.m_axi_areset_n_, self.enable, self.inactive] + \
 			[self.data_clk, self.data_enable, self.data_out, self.data_full] + \
 			[self.addr_clk, self.addr_enable, self.addr_in, self.addr_empty] + \
 			[self.reader_error, self.reader_active] + \
@@ -47,6 +47,16 @@ class AxiHPReader(Elaboratable):
 			[self.m_axi_ri.rlast, self.m_axi_ri.rresp] + \
 			[self.m_axi_ri.rvalid, self.m_axi_ri.rcount]
 
+		self.axi_ios = \
+			[self.m_axi_aclk_, self.m_axi_areset_n_] + \
+			[self.m_axi_ro.arid, self.m_axi_ro.araddr] + \
+			[self.m_axi_ro.arburst, self.m_axi_ro.arlen] + \
+			[self.m_axi_ro.arsize, self.m_axi_ro.arprot] + \
+			[self.m_axi_ro.arvalid, self.m_axi_ro.rready] + \
+			[self.m_axi_ri.arready, self.m_axi_ri.racount] + \
+			[self.m_axi_ri.rid, self.m_axi_ri.rdata] + \
+			[self.m_axi_ri.rlast, self.m_axi_ri.rresp] + \
+			[self.m_axi_ri.rvalid, self.m_axi_ri.rcount]
 
 	def elaborate(self, platform):
 
@@ -54,7 +64,7 @@ class AxiHPReader(Elaboratable):
 
 		# needed signals
 		arlen_c = Signal(4)
-		m.d.sync += arlen_c.eq(self.data_c - 1)
+		m.d.comb += arlen_c.eq(self.data_c - 1)
 
 		active = Signal(4)
 		arvalid = Signal(1)
@@ -70,7 +80,7 @@ class AxiHPReader(Elaboratable):
 		|   Address Pipeline   |
 		---------------------'''
 
-		m.d.sync += addr_en.eq((arvalid==1) & (self.m_axi_ri.arready==1))
+		m.d.comb += addr_en.eq((arvalid==1) & (self.m_axi_ri.arready==1))
 
 		# idle phase
 		with m.If(arvalid==0):
@@ -83,7 +93,7 @@ class AxiHPReader(Elaboratable):
 			with m.If(self.m_axi_ri.arready):
 				m.d.sync += arvalid.eq(0)
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_ro.araddr.eq(self.addr_in),
 			self.m_axi_ro.arvalid.eq(arvalid),
 			self.addr_enable.eq(addr_en),
@@ -94,7 +104,7 @@ class AxiHPReader(Elaboratable):
 		|     Data Pipeline    |
 		---------------------'''
 
-		m.d.sync += data_en.eq((rready==1) & (self.m_axi_ri.rvalid==1))
+		m.d.comb += data_en.eq((rready==1) & (self.m_axi_ri.rvalid==1))
 
 		# idle phase
 		with m.If(rready==0):
@@ -107,7 +117,7 @@ class AxiHPReader(Elaboratable):
 			with m.If(self.m_axi_ri.rlast):
 				m.d.sync += rready.eq(0)
 
-		m.d.sync += [
+		m.d.comb += [
 			self.reader_error.eq(((data_en==1) & (self.m_axi_ri.rresp!=0))),
 			self.data_out.eq(self.m_axi_ri.rdata),
 			self.m_axi_ro.rready.eq(rready),
@@ -127,33 +137,37 @@ class AxiHPReader(Elaboratable):
 		with m.Elif((addr_en==0) & (self.m_axi_ri.rlast==1)):
 			m.d.sync += active.eq(active - 1)
 
-		m.d.sync += self.inactive.eq(active==0)
+		m.d.comb += self.inactive.eq(active==0)
 
 
 		'''---------------------
 		| Constant Values, clk |
 		---------------------'''
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_ro.arid.eq(0),
 		]
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_ro.arlen.eq(arlen_c),
 		]
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_ro.arburst.eq(0b01),
 			self.m_axi_ro.arsize.eq(0b11),
 		]
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_ro.arprot.eq(0),
 		]
 
-		m.d.sync += [
-			self.data_clk.eq(self.m_axi_aclk),
-			self.addr_clk.eq(self.m_axi_aclk),
+		m.d.comb += [
+			self.data_clk.eq(self.m_axi_aclk_),
+			self.addr_clk.eq(self.m_axi_aclk_),
+		]
+
+		m.d.comb += [
+			self.reader_active.eq(active),
 		]
 
 		return m

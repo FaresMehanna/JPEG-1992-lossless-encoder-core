@@ -145,6 +145,7 @@ class Converter(Elaboratable):
 
 			with m.State("BURST_PREPARE"):
 				reg_data()
+				m.d.sync += self.valid_in.eq(0)
 				m.next = "BURST"
 
 			# most of the time it should be here in "BRUST"

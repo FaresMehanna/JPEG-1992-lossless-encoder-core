@@ -119,13 +119,15 @@ if __name__ == "__main__":
 		"vbits_to_cbits_buffer_size": 77,
 		"predictor_function": 1,
 		"num_of_components": 4,
+		"axi_lite_debug": False,
+		"support_axi_lite": False,
 	}
 	cons = constraints.Constraints()
 	#object
 	m = Integration3(config, cons)
 	#tests
-	# integration_3_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 15, 5)
-	# print("-----")
-	# integration_3_test_1(m, "/../test_files/random.raw12", 2, 5, 15)
-	# print("-----")
+	integration_3_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 15, 5)
+	print("-----")
+	integration_3_test_1(m, "/../test_files/random.raw12", 2, 5, 15)
+	print("-----")
 	integration_3_test_1(m, "/../test_files/props01.raw12", 3, 1, 1)

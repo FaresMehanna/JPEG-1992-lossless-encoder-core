@@ -5,6 +5,7 @@ from math import log, ceil
 import integration_3
 import constraints
 import fix_0xff, fix_0xff2
+import markers
 
 class BetaIntegration(Elaboratable):
 
@@ -42,6 +43,7 @@ class BetaIntegration(Elaboratable):
 		self.integration_3 = integration_3.Integration3(config, cons)
 		self.fix_0xff = fix_0xff.Fix0xFF()
 		self.fix_0xff2 = fix_0xff2.Fix0xFF2()
+		self.markers = markers.Markers()
 
 		self.ios = \
 			[self.valid_in, self.valid_out, self.end_out] + \
@@ -55,6 +57,7 @@ class BetaIntegration(Elaboratable):
 		m.submodules.integration_3 = integration_3 = self.integration_3
 		m.submodules.fix_0xff = fix_0xff = self.fix_0xff
 		m.submodules.fix_0xff2 = fix_0xff2 = self.fix_0xff2
+		m.submodules.markers = markers = self.markers
 
 		if self.config['axi_lite_debug'] and self.config['support_axi_lite']:
 			# set debugging counters
@@ -91,16 +94,26 @@ class BetaIntegration(Elaboratable):
 			fix_0xff2.data_in.eq(fix_0xff.data_out),
 			fix_0xff2.valid_in.eq(fix_0xff.valid_out),
 			fix_0xff2.end_in.eq(fix_0xff.end_out),
-			fix_0xff2.i_busy.eq(self.busy_in),
+			fix_0xff2.i_busy.eq(markers.o_busy),
 			fix_0xff2.data_in_ctr.eq(fix_0xff.data_out_ctr),
 		]
+
+		#fixer2 and markers
+		m.d.comb += [
+			markers.data_in.eq(fix_0xff2.data_out),
+			markers.valid_in.eq(fix_0xff2.valid_out),
+			markers.end_in.eq(fix_0xff2.end_out),
+			markers.i_busy.eq(self.busy_in),
+		]
+
 		#out
 		m.d.comb += [
-			self.data_out.eq(fix_0xff2.data_out),
-			self.valid_out.eq(fix_0xff2.valid_out),
-			self.end_out.eq(fix_0xff2.end_out),
+			self.data_out.eq(markers.data_out),
+			self.valid_out.eq(markers.valid_out),
+			self.end_out.eq(markers.end_out),
 			self.nready.eq(integration_3.nready),
 		]
+
 		return m
 
 

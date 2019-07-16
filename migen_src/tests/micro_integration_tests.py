@@ -37,6 +37,9 @@ def micro_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 				cached_pixel = 0
 				cached_valid = False
 
+				yield m.integration_3.integration_2.integration_1.core_axi_lite.height_width.eq(0x10000c00)
+				yield
+
 				while byte1:
 
 					# input logic

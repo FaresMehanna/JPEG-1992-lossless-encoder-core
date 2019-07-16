@@ -126,6 +126,8 @@ if __name__ == "__main__":
 		"converter_fifo_depth": 256,
 		"predictor_function": 1,
 		"num_of_components": 4,
+		"axi_lite_debug": False,
+		"support_axi_lite": False,
 	}
 	cons = constraints.Constraints()
 	#object

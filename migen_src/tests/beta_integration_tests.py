@@ -13,7 +13,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 from beta_integration import *
 
-TEST_NUM = int(4096*1)
+TEST_NUM = int(4096*2)
 
 def beta_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 	print("beta_integration_test_1_"+str(test_number)+": started for " + str(TEST_NUM) + " pixels ")
@@ -35,6 +35,10 @@ def beta_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 				avgbuffconsum = 0
 				cycles = 0
 				
+				# yield m.integration_3.integration_2.integration_1.core_axi_lite.height_width.eq(0x10000c00)
+				yield m.integration_3.integration_2.integration_1.core_axi_lite.height_width.eq(0x10000001)
+				yield
+
 				while byte1:
 
 					# input logic
@@ -88,7 +92,7 @@ def beta_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 					
 					if ctr >= TEST_NUM:
 						yield m.valid_in.eq(0)
-						for i in range(1):
+						for i in range(5000):
 							yield
 						print("\nCycles: " + str(cycles))
 						print("Avg buff consum: " + str((avgbuffconsum/cycles)))
@@ -115,8 +119,8 @@ def beta_integration_test_1(m, test_file, test_number, stall_in, stall_out):
 
 if __name__ == "__main__":
 	m = BetaIntegration()
-	beta_integration_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 1, 1)
+	beta_integration_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 10, 10)
+	# print("-----")
+	beta_integration_test_1(m, "/../test_files/random.raw12", 8, 1, 1)
 	print("-----")
-	beta_integration_test_1(m, "/../test_files/random.raw12", 2, 1, 1)
-	print("-----")
-	beta_integration_test_1(m, "/../test_files/IT8Chart15ms.raw12", 3, 1, 1)
+	beta_integration_test_1(m, "/../test_files/props01.raw12", 3, 0, 0)

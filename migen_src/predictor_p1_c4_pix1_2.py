@@ -80,12 +80,15 @@ class PredictorP1C4Pix12(Elaboratable):
 		self.end_in = Signal(1)
 		self.end_out = Signal(1)
 
+		# debug counter
+		self.debug_counter = Signal(32)
+
 		self.ios = \
 			[pixel_in for pixel_in in self.pixels_in] + \
 			[pixel_out for pixel_out in self.pixels_out] + \
 			[predic_out for predic_out in self.predics_out] + \
 			[self.valid_in, self.valid_out, self.new_row] + \
-			[self.end_in, self.end_out]
+			[self.end_in, self.end_out, self.debug_counter]
 
 	def elaborate(self, platform):
 
@@ -118,6 +121,8 @@ class PredictorP1C4Pix12(Elaboratable):
 
 		with m.If(self.valid_in):
 
+			m.d.sync  += self.debug_counter.eq(self.debug_counter + 1)
+			
 			#handle pixels_out
 			m.d.sync += [pixel_out.eq(pixel_in) for pixel_out, pixel_in in zip(self.pixels_out, self.pixels_in)]
 

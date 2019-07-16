@@ -109,7 +109,8 @@ if __name__ == "__main__":
 		"pixels_per_cycle": 4,
 		"predictor_function": 1,
 		"num_of_components": 4,
-		"pipeline_reg": False,
+		"axi_lite_debug": False,
+		"support_axi_lite": False,
 	}
 	cons = constraints.Constraints()
 	#object

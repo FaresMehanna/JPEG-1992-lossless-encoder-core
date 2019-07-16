@@ -54,13 +54,27 @@ class AxiHPWriter(Elaboratable):
 			[self.m_axi_wi.bid, self.m_axi_wi.bresp] + \
 			[self.m_axi_wi.bvalid]
 
+		self.axi_ios = \
+			[self.m_axi_aclk, self.m_axi_areset_n] + \
+			[self.m_axi_wo.awid, self.m_axi_wo.awaddr] + \
+			[self.m_axi_wo.awburst, self.m_axi_wo.awlen] + \
+			[self.m_axi_wo.awsize, self.m_axi_wo.awprot] + \
+			[self.m_axi_wo.awvalid, self.m_axi_wo.wid] + \
+			[self.m_axi_wo.wdata, self.m_axi_wo.wstrb] + \
+			[self.m_axi_wo.wlast, self.m_axi_wo.wvalid] + \
+			[self.m_axi_wo.bready] + \
+			[self.m_axi_wi.awready, self.m_axi_wi.wacount] + \
+			[self.m_axi_wi.wready, self.m_axi_wi.wcount] + \
+			[self.m_axi_wi.bid, self.m_axi_wi.bresp] + \
+			[self.m_axi_wi.bvalid]
+			
 	def elaborate(self, platform):
 
 		m = Module()
 
 		# needed signals
 		awlen_c = Signal(4)
-		m.d.comb += awlen_c.eq(self.data_c)
+		m.d.comb += awlen_c.eq(self.data_c - 1)
 
 		active = Signal(4)
 		unconf = Signal(4)
@@ -79,7 +93,7 @@ class AxiHPWriter(Elaboratable):
 		|   Address Pipeline   |
 		---------------------'''
 
-		m.d.sync += addr_en.eq((awvalid==1) & (self.m_axi_wi.awready==1))
+		m.d.comb += addr_en.eq((awvalid==1) & (self.m_axi_wi.awready==1))
 
 		# idle phase
 		with m.If(awvalid==0):
@@ -92,7 +106,7 @@ class AxiHPWriter(Elaboratable):
 			with m.If(self.m_axi_wi.awready):
 				m.d.sync += awvalid.eq(0)
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_wo.awaddr.eq(self.addr_in),
 			self.m_axi_wo.awvalid.eq(awvalid),
 			self.addr_enable.eq(addr_en),
@@ -113,11 +127,11 @@ class AxiHPWriter(Elaboratable):
 				]
 			with m.Else():
 				m.d.sync += [
-					counter.eq(counter + 1),
 					wlast.eq(0),
+					counter.eq(counter + 1),
 				]
 
-		m.d.sync += data_en.eq((wvalid==1) & (self.m_axi_wi.wready==1))
+		m.d.comb += data_en.eq((wvalid==1) & (self.m_axi_wi.wready==1))
 
 		# idle phase
 		with m.If(wvalid==0):
@@ -130,7 +144,7 @@ class AxiHPWriter(Elaboratable):
 			with m.If(wlast):
 				m.d.sync += wvalid.eq(0)
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_wo.wdata.eq(self.data_in),
 			self.m_axi_wo.wvalid.eq(wvalid),
 			self.m_axi_wo.wlast.eq(wlast),
@@ -142,7 +156,7 @@ class AxiHPWriter(Elaboratable):
 		|   Response Pipeline  |
 		---------------------'''
 
-		m.d.sync += resp_en.eq((bready==1) & (self.m_axi_wi.bvalid==1))
+		m.d.comb += resp_en.eq((bready==1) & (self.m_axi_wi.bvalid==1))
 
 		# idle phase
 		with m.If(bready==0):
@@ -155,7 +169,7 @@ class AxiHPWriter(Elaboratable):
 			with m.If(unconf==0):
 				m.d.sync += bready.eq(0)
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_wo.bready.eq(bready),
 			self.writer_error.eq((resp_en==1) & (self.m_axi_wi.bresp!=0)),
 		]
@@ -183,35 +197,40 @@ class AxiHPWriter(Elaboratable):
 			# one less
 			m.d.sync += unconf.eq(unconf - 1)
 
-		m.d.sync += self.inactive.eq((active==0) & (unconf==0))
+		m.d.comb += self.inactive.eq((active==0) & (unconf==0))
 
 
 		'''---------------------
 		| Constant Values, clk |
 		---------------------'''
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_wo.awid.eq(0),
 			self.m_axi_wo.wid.eq(0),
 		]
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_wo.awlen.eq(awlen_c),
 		]
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_wo.awburst.eq(0b01),
 			self.m_axi_wo.awsize.eq(0b11),
 			self.m_axi_wo.wstrb.eq(self.write_strobe),
 		]
 
-		m.d.sync += [
+		m.d.comb += [
 			self.m_axi_wo.awprot.eq(0),
 		]
 
-		m.d.sync += [
+		m.d.comb += [
 			self.data_clk.eq(self.m_axi_aclk),
 			self.addr_clk.eq(self.m_axi_aclk),
+		]
+
+		m.d.comb += [
+			self.writer_active.eq(active),
+			self.writer_unconf.eq(unconf),
 		]
 
 		return m
