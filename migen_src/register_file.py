@@ -34,9 +34,10 @@ class RegisterFile(Elaboratable):
 
 		self.height = Signal(16)
 		self.width = Signal(16)
+		self.allowed_cycles = Signal(24)
 
 		self.ios = \
-		[self.height, self.width]
+		[self.height, self.width, self.allowed_cycles]
 
 
 	def elaborate(self, platform):
@@ -44,15 +45,18 @@ class RegisterFile(Elaboratable):
 
 		width_reg = Signal(16)
 		height_reg = Signal(16)
+		allowed_cycles_reg = Signal(16)
 
 		m.d.sync += [
 			width_reg.eq(4096),
 			height_reg.eq(3072),
+			allowed_cycles_reg.eq(6666000),
 		]
 
 		m.d.comb += [
 			self.width.eq(width_reg),
 			self.height.eq(height_reg),
+			self.allowed_cycles.eq(allowed_cycles_reg),
 		]
 
 		return m

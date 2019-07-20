@@ -42,6 +42,7 @@ class Markers(Elaboratable):
         self.valid_out = Signal(1)
 
         self.end_in = Signal(1)
+        self.force_end_in = Signal(1)
         self.end_out = Signal(1)
 
         self.o_busy = Signal(1) #I'm busy
@@ -101,17 +102,28 @@ class Markers(Elaboratable):
                         m.next = "FRAME_HANDLING"
 
             with m.State("ENDING_MARKER"):
-                
                 # handle output data
                 m.d.comb += [
                     self.data_out.eq(0xFFFF),
                     self.valid_out.eq(1),
                 ]
-
                 # handle counter
                 with m.If(self.i_busy==0):
                     m.d.sync += counter.eq(counter - 1)
- 
+                    # handle end signals
+                    with m.If(counter==1):
+                        m.d.comb += self.end_out.eq(1)
+                        m.next = "DONE"
+
+            with m.State("FORCE_ENDING_MARKER"):
+                # handle output data
+                m.d.comb += [
+                    self.data_out.eq(0xFFEE),
+                    self.valid_out.eq(1),
+                ]
+                # handle counter
+                with m.If(self.i_busy==0):
+                    m.d.sync += counter.eq(counter - 1)
                     # handle end signals
                     with m.If(counter==1):
                         m.d.comb += self.end_out.eq(1)
@@ -120,7 +132,9 @@ class Markers(Elaboratable):
             with m.State("FRAME_HANDLING"):
                 #end detection
                 with m.If((late_busy_i==0)&(late_valid_i==1)&(late_end_i==1)):
-                        m.next = "ENDING_MARKER"
+                    m.next = "ENDING_MARKER"
+                with m.Elif(self.force_end_in):
+                    m.next = "FORCE_ENDING_MARKER"
                 with m.Else():
                     m.d.comb += [
                         self.data_out.eq(self.data_in),
@@ -134,6 +148,7 @@ class Markers(Elaboratable):
                     self.valid_out.eq(1),
                     self.end_out.eq(1),
                 ]
+
         return m
 
 if __name__ == "__main__":

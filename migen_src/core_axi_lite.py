@@ -34,9 +34,12 @@ Notes :
     as 2 x uint32_t registers, the size exactly is defined in
     encoding module.
     - to read and write in height and width registers, the address will 
-    be as following (uint32_t)((AXI_LITE_ADDRESS | 0x800),
+    be as following (uint32_t)((AXI_LITE_ADDRESS | 0x800)),
     first 16 bits are representing the height and second 16 bits are
     representing the width register.
+    - to read and write the allowed cycles for every frame, the
+    address will be (uint32_t)((AXI_LITE_ADDRESS | 0x800) + 1),
+    keep in mind this is only 24-bits register.
     - to read from debug module register, the address will be as
     following (uint32_t)((AXI_LITE_ADDRESS | 0x1000) + reg_index),
     reg_index is between 0 and 7.
@@ -76,6 +79,9 @@ class CoreAxiLite(Elaboratable):
 		self.height = Signal(16)
 		self.width = Signal(16)
 
+		# allowed cycles for every frame
+		self.allowed_cycles = Signal(24)
+
 		# ssss huffman data to encoders
 		self.bd = config['bit_depth']
 		self.mem_depth = self.bd+1
@@ -106,6 +112,7 @@ class CoreAxiLite(Elaboratable):
 		self.ios = \
 			[self.s_axi_aclk, self.s_axi_areset_n] + \
 			[self.height, self.width] + \
+			[self.allowed_cycles] + \
 			[self.wp_addr, self.wp_data, self.wp_en] + \
 			[self.rp_addr, self.rp_data] + \
 			[self.s_axi_ro.arready, self.s_axi_ro.rdata] + \
@@ -178,6 +185,7 @@ class CoreAxiLite(Elaboratable):
 		debug_enable = Signal(1)
 		ssss_index = Signal(6)
 		debug_index = Signal(3)
+		hw_index = Signal(1)
 
 		m.d.comb += [
 			ssss_enable.eq(addr_v[10]),
@@ -185,6 +193,7 @@ class CoreAxiLite(Elaboratable):
 			debug_enable.eq(addr_v[12]),
 			ssss_index.eq(addr_v),
 			debug_index.eq(addr_v),
+			hw_index.eq(addr_v),
 		]
 
 		# height and width registers
@@ -198,17 +207,27 @@ class CoreAxiLite(Elaboratable):
 
 		# function that handle read/write operations on height and width register
 		def read_hw():
-			m.d.sync += [
-				rdata_v.eq(height_width),
-				rresp_v.eq(0),
-			]
+			with m.If(hw_index==0):
+				m.d.sync += [
+					rdata_v.eq(height_width),
+					rresp_v.eq(0),
+				]
+			with m.Else():
+				m.d.sync += [
+					rdata_v.eq(self.allowed_cycles),
+					rresp_v.eq(0),
+				]
 
 		def write_to_hw():
 			for i in range(4):
 				start = i*8
 				end = start+8
 				with m.If(wstrb_v[i]):
-					m.d.sync += height_width[start:end].eq(wdata_v[start:end])
+					with m.If(hw_index==0):
+						m.d.sync += height_width[start:end].eq(wdata_v[start:end])
+					with m.Else():
+						if end <= 24:
+							m.d.sync += self.allowed_cycles[start:end].eq(wdata_v[start:end])
 			m.d.sync += bresp_v.eq(0)
 
 		def clean_write_hw():

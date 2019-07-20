@@ -5,7 +5,7 @@ from math import log, ceil
 import difference, normalize, encode, merge, signals
 import constraints
 import predictor_p1_c4_px4, predictor_p1_c4_pix1_2
-import core_axi_lite, register_file
+import core_axi_lite, register_file, force_end
 
 class Integration1(Elaboratable):
 
@@ -32,6 +32,7 @@ class Integration1(Elaboratable):
 
 		# end
 		self.end_out = Signal(1)
+		self.fend_out = Signal(1)
 
 		if self.ps == 4:
 			self.predictor = predictor_p1_c4_px4.PredictorP1C4Px4(config, cons)
@@ -48,12 +49,13 @@ class Integration1(Elaboratable):
 			self.core_axi_lite = core_axi_lite.CoreAxiLite(config, cons)
 		else:
 			self.register_file = register_file.RegisterFile()
+		self.force_end = force_end.ForceEnd(config, cons)
 
 		self.ios = \
 			[pixel_in for pixel_in in self.pixels_in] + \
 			[self.enc_out, self.enc_out_ctr] + \
 			[self.valid_in, self.valid_out] + \
-			[self.end_out]
+			[self.end_out, self.fend_out]
 			
 	def elaborate(self, platform):
 
@@ -70,19 +72,27 @@ class Integration1(Elaboratable):
 			m.submodules.core_axi_lite = core_axi_lite = self.core_axi_lite
 		else:
 			m.submodules.register_file = register_file = self.register_file
+		m.submodules.force_end = force_end = self.force_end
 		
 		if self.axi_lite:
 			# signals
 			m.d.comb += [
 				signals.height.eq(core_axi_lite.height),
 				signals.width.eq(core_axi_lite.width),
+				force_end.allowed_cycles.eq(core_axi_lite.allowed_cycles),
 			]
 		else:
 			# signals
 			m.d.comb += [
 				signals.height.eq(register_file.height),
 				signals.width.eq(register_file.width),
+				force_end.allowed_cycles.eq(register_file.allowed_cycles),
 			]
+
+		m.d.comb += [
+			force_end.valid_in.eq(self.valid_in),
+			self.fend_out.eq(force_end.fend),
+		]
 
 		# signals
 		m.d.comb += signals.new_input.eq(self.valid_in)
