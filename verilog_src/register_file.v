@@ -3,29 +3,42 @@
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(clk, height, width, rst);
-  (* src = "./migen_src/register_file.py:10" *)
+module top(clk, height, width, allowed_cycles, rst);
+  wire [23:0] \$1 ;
+  (* src = "./migen_src/register_file.py:37" *)
+  reg [23:0] \$next\allowed_cycles ;
+  (* src = "./migen_src/register_file.py:48" *)
+  reg [15:0] \$next\allowed_cycles_reg ;
+  (* src = "./migen_src/register_file.py:35" *)
   reg [15:0] \$next\height ;
-  (* src = "./migen_src/register_file.py:21" *)
+  (* src = "./migen_src/register_file.py:47" *)
   reg [15:0] \$next\height_reg ;
-  (* src = "./migen_src/register_file.py:11" *)
+  (* src = "./migen_src/register_file.py:36" *)
   reg [15:0] \$next\width ;
-  (* src = "./migen_src/register_file.py:20" *)
+  (* src = "./migen_src/register_file.py:46" *)
   reg [15:0] \$next\width_reg ;
+  (* src = "./migen_src/register_file.py:37" *)
+  output [23:0] allowed_cycles;
+  (* init = 16'h0000 *)
+  (* src = "./migen_src/register_file.py:48" *)
+  reg [15:0] allowed_cycles_reg = 16'h0000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/register_file.py:10" *)
+  (* src = "./migen_src/register_file.py:35" *)
   output [15:0] height;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/register_file.py:21" *)
+  (* src = "./migen_src/register_file.py:47" *)
   reg [15:0] height_reg = 16'h0000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/register_file.py:11" *)
+  (* src = "./migen_src/register_file.py:36" *)
   output [15:0] width;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/register_file.py:20" *)
+  (* src = "./migen_src/register_file.py:46" *)
   reg [15:0] width_reg = 16'h0000;
+  assign \$1  = + (* src = "./migen_src/register_file.py:48" *) allowed_cycles_reg;
+  always @(posedge clk)
+      allowed_cycles_reg <= \$next\allowed_cycles_reg ;
   always @(posedge clk)
       height_reg <= \$next\height_reg ;
   always @(posedge clk)
@@ -47,6 +60,14 @@ module top(clk, height, width, rst);
     endcase
   end
   always @* begin
+    \$next\allowed_cycles_reg  = allowed_cycles_reg;
+    \$next\allowed_cycles_reg  = 16'hb710;
+    casez (rst)
+      1'h1:
+          \$next\allowed_cycles_reg  = 16'h0000;
+    endcase
+  end
+  always @* begin
     \$next\width  = 16'h0000;
     \$next\width  = width_reg;
   end
@@ -54,6 +75,11 @@ module top(clk, height, width, rst);
     \$next\height  = 16'h0000;
     \$next\height  = height_reg;
   end
+  always @* begin
+    \$next\allowed_cycles  = 24'h000000;
+    \$next\allowed_cycles  = \$1 ;
+  end
+  assign allowed_cycles = \$next\allowed_cycles ;
   assign height = \$next\height ;
   assign width = \$next\width ;
 endmodule

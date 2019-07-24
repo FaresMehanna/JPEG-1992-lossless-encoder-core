@@ -3,119 +3,129 @@
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(pixel_in, \pixel_in$1 , \pixel_in$2 , \pixel_in$3 , new_row, rst, clk, predic_out, \predic_out$4 , \predic_out$5 , \predic_out$6 , pixel_out, \pixel_out$7 , \pixel_out$8 , \pixel_out$9 , valid_out, valid_in);
-  (* src = "./migen_src/predictor_p1_c4_px4.py:56" *)
+module top(pixel_in, \pixel_in$1 , \pixel_in$2 , \pixel_in$3 , new_row, end_in, rst, clk, predic_out, \predic_out$4 , \predic_out$5 , \predic_out$6 , pixel_out, \pixel_out$7 , \pixel_out$8 , \pixel_out$9 , valid_out, end_out, valid_in);
+  (* src = "./migen_src/predictor_p1_c4_px4.py:96" *)
   reg [15:0] \$next\buff ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:56" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:96" *)
   reg [15:0] \$next\buff$11 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:56" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:96" *)
   reg [15:0] \$next\buff$13 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:56" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:96" *)
   reg [15:0] \$next\buff$15 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:59" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:80" *)
+  reg \$next\end_out ;
+  (* src = "./migen_src/predictor_p1_c4_px4.py:102" *)
   reg [15:0] \$next\lbuff ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:59" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:102" *)
   reg [15:0] \$next\lbuff$10 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:59" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:102" *)
   reg [15:0] \$next\lbuff$12 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:59" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:102" *)
   reg [15:0] \$next\lbuff$14 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:36" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:69" *)
   reg [15:0] \$next\pixel_out ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:36" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:69" *)
   reg [15:0] \$next\pixel_out$7 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:36" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:69" *)
   reg [15:0] \$next\pixel_out$8 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:36" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:69" *)
   reg [15:0] \$next\pixel_out$9 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:39" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:72" *)
   reg [15:0] \$next\predic_out ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:39" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:72" *)
   reg [15:0] \$next\predic_out$4 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:39" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:72" *)
   reg [15:0] \$next\predic_out$5 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:39" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:72" *)
   reg [15:0] \$next\predic_out$6 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:43" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:76" *)
   reg \$next\valid_out ;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:56" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:96" *)
   reg [15:0] buff = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:56" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:96" *)
   reg [15:0] \buff$11  = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:56" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:96" *)
   reg [15:0] \buff$13  = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:56" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:96" *)
   reg [15:0] \buff$15  = 16'h8000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
+  (* src = "./migen_src/predictor_p1_c4_px4.py:79" *)
+  input end_in;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:80" *)
+  output end_out;
+  reg end_out = 1'h0;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:59" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:102" *)
   reg [15:0] lbuff = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:59" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:102" *)
   reg [15:0] \lbuff$10  = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:59" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:102" *)
   reg [15:0] \lbuff$12  = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:59" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:102" *)
   reg [15:0] \lbuff$14  = 16'h8000;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:33" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:66" *)
   input new_row;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:30" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:63" *)
   input [15:0] pixel_in;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:30" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:63" *)
   input [15:0] \pixel_in$1 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:30" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:63" *)
   input [15:0] \pixel_in$2 ;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:30" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:63" *)
   input [15:0] \pixel_in$3 ;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:36" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:69" *)
   output [15:0] pixel_out;
   reg [15:0] pixel_out = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:36" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:69" *)
   output [15:0] \pixel_out$7 ;
   reg [15:0] \pixel_out$7  = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:36" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:69" *)
   output [15:0] \pixel_out$8 ;
   reg [15:0] \pixel_out$8  = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:36" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:69" *)
   output [15:0] \pixel_out$9 ;
   reg [15:0] \pixel_out$9  = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:39" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:72" *)
   output [15:0] predic_out;
   reg [15:0] predic_out = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:39" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:72" *)
   output [15:0] \predic_out$4 ;
   reg [15:0] \predic_out$4  = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:39" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:72" *)
   output [15:0] \predic_out$5 ;
   reg [15:0] \predic_out$5  = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:39" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:72" *)
   output [15:0] \predic_out$6 ;
   reg [15:0] \predic_out$6  = 16'h0000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/predictor_p1_c4_px4.py:42" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:75" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/predictor_p1_c4_px4.py:43" *)
+  (* src = "./migen_src/predictor_p1_c4_px4.py:76" *)
   output valid_out;
   reg valid_out = 1'h0;
   always @(posedge clk)
-      valid_out <= \$next\valid_out ;
+      end_out <= \$next\end_out ;
+  always @(posedge clk)
+      lbuff <= \$next\lbuff ;
   always @(posedge clk)
       \predic_out$6  <= \$next\predic_out$6 ;
   always @(posedge clk)
@@ -133,6 +143,8 @@ module top(pixel_in, \pixel_in$1 , \pixel_in$2 , \pixel_in$3 , new_row, rst, clk
   always @(posedge clk)
       pixel_out <= \$next\pixel_out ;
   always @(posedge clk)
+      valid_out <= \$next\valid_out ;
+  always @(posedge clk)
       \buff$15  <= \$next\buff$15 ;
   always @(posedge clk)
       \buff$13  <= \$next\buff$13 ;
@@ -146,8 +158,6 @@ module top(pixel_in, \pixel_in$1 , \pixel_in$2 , \pixel_in$3 , new_row, rst, clk
       \lbuff$12  <= \$next\lbuff$12 ;
   always @(posedge clk)
       \lbuff$10  <= \$next\lbuff$10 ;
-  always @(posedge clk)
-      lbuff <= \$next\lbuff ;
   always @* begin
     \$next\pixel_out  = pixel_out;
     casez (valid_in)
@@ -248,6 +258,14 @@ module top(pixel_in, \pixel_in$1 , \pixel_in$2 , \pixel_in$3 , new_row, rst, clk
     casez (rst)
       1'h1:
           \$next\valid_out  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\end_out  = end_out;
+    \$next\end_out  = end_in;
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
     endcase
   end
   always @* begin

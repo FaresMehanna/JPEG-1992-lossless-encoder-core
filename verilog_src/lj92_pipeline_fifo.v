@@ -135,11 +135,11 @@ endmodule
 (* generator = "nMigen" *)
 module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_ctr, out_end, valid_out, close_full, valid_in);
   wire \$1 ;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:39" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:67" *)
   reg \$next\close_full ;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:32" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:60" *)
   reg [61:0] \$next\enc_out ;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:33" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:61" *)
   reg [5:0] \$next\enc_out_ctr ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
   reg [68:0] \$next\fifo_din ;
@@ -147,23 +147,23 @@ module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_
   reg \$next\fifo_re ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
   reg \$next\fifo_we ;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:34" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:62" *)
   reg \$next\out_end ;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:35" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:63" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* init = 1'h0 *)
-  (* src = "./migen_src/lj92_pipeline_fifo.py:39" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:67" *)
   output close_full;
   reg close_full = 1'h0;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:26" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:54" *)
   input [61:0] enc_in;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:27" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:55" *)
   input [5:0] enc_in_ctr;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:32" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:60" *)
   output [61:0] enc_out;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:33" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:61" *)
   output [5:0] enc_out_ctr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
   wire [68:0] fifo_din;
@@ -177,19 +177,19 @@ module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_
   wire fifo_readable;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
   wire fifo_we;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:28" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:56" *)
   input in_end;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:31" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:59" *)
   input latch_output;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:34" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:62" *)
   output out_end;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:29" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:57" *)
   input valid_in;
-  (* src = "./migen_src/lj92_pipeline_fifo.py:35" *)
+  (* src = "./migen_src/lj92_pipeline_fifo.py:63" *)
   output valid_out;
-  assign \$1  = fifo_level > (* src = "./migen_src/lj92_pipeline_fifo.py:71" *) 7'h6c;
+  assign \$1  = fifo_level >= (* src = "./migen_src/lj92_pipeline_fifo.py:99" *) 7'h76;
   always @(posedge clk)
       close_full <= \$next\close_full ;
   fifo fifo (

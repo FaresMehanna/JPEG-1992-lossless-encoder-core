@@ -2,60 +2,79 @@
 
 (* \nmigen.hierarchy  = "top.anonymous" *)
 (* generator = "nMigen" *)
-module anonymous(ssss, val_in, rp_data, rst, clk, rp_addr, enc_out, enc_ctr, valid);
+module anonymous(end_in, ssss, val_in, rp_data, rst, clk, valid_out, end_out, rp_addr, enc_out, enc_ctr, valid_in);
   wire \$1 ;
   wire [36:0] \$3 ;
   wire [36:0] \$4 ;
   wire \$6 ;
   wire [5:0] \$8 ;
   wire [5:0] \$9 ;
-  (* src = "./migen_src/encode.py:44" *)
+  (* src = "./migen_src/encode.py:99" *)
   reg [4:0] \$next\enc_ctr ;
-  (* src = "./migen_src/encode.py:43" *)
+  (* src = "./migen_src/encode.py:97" *)
   reg [30:0] \$next\enc_out ;
-  (* src = "./migen_src/encode.py:38" *)
+  (* src = "./migen_src/encode.py:123" *)
+  reg \$next\end_late ;
+  (* src = "./migen_src/encode.py:107" *)
+  reg \$next\end_out ;
+  (* src = "./migen_src/encode.py:88" *)
   reg [4:0] \$next\rp_addr ;
-  (* src = "./migen_src/encode.py:58" *)
+  (* src = "./migen_src/encode.py:128" *)
   reg [4:0] \$next\ssss_late ;
-  (* src = "./migen_src/encode.py:60" *)
+  (* src = "./migen_src/encode.py:130" *)
   reg [15:0] \$next\val_in_late ;
-  (* src = "./migen_src/encode.py:54" *)
+  (* src = "./migen_src/encode.py:118" *)
   reg \$next\valid_late ;
+  (* src = "./migen_src/encode.py:103" *)
+  reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:124" *)
   input clk;
   (* init = 5'h00 *)
-  (* src = "./migen_src/encode.py:44" *)
+  (* src = "./migen_src/encode.py:99" *)
   output [4:0] enc_ctr;
   reg [4:0] enc_ctr = 5'h00;
   (* init = 31'h00000000 *)
-  (* src = "./migen_src/encode.py:43" *)
+  (* src = "./migen_src/encode.py:97" *)
   output [30:0] enc_out;
   reg [30:0] enc_out = 31'h00000000;
-  (* src = "./migen_src/encode.py:38" *)
+  (* src = "./migen_src/encode.py:106" *)
+  input end_in;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/encode.py:123" *)
+  reg end_late = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/encode.py:107" *)
+  output end_out;
+  reg end_out = 1'h0;
+  (* src = "./migen_src/encode.py:88" *)
   output [4:0] rp_addr;
-  (* src = "./migen_src/encode.py:39" *)
+  (* src = "./migen_src/encode.py:89" *)
   input [36:0] rp_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/encode.py:42" *)
+  (* src = "./migen_src/encode.py:94" *)
   input [4:0] ssss;
   (* init = 5'h00 *)
-  (* src = "./migen_src/encode.py:58" *)
+  (* src = "./migen_src/encode.py:128" *)
   reg [4:0] ssss_late = 5'h00;
-  (* src = "./migen_src/encode.py:41" *)
+  (* src = "./migen_src/encode.py:92" *)
   input [15:0] val_in;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/encode.py:60" *)
+  (* src = "./migen_src/encode.py:130" *)
   reg [15:0] val_in_late = 16'h0000;
-  (* src = "./migen_src/encode.py:45" *)
-  input valid;
+  (* src = "./migen_src/encode.py:102" *)
+  input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/encode.py:54" *)
+  (* src = "./migen_src/encode.py:118" *)
   reg valid_late = 1'h0;
-  assign \$9  = rp_data[36:32] + (* src = "./migen_src/encode.py:82" *) ssss_late[3:0];
-  assign \$1  = ssss_late == (* src = "./migen_src/encode.py:74" *) 5'h10;
-  assign \$4  = rp_data | (* src = "./migen_src/encode.py:81" *) val_in_late;
-  assign \$6  = ssss_late == (* src = "./migen_src/encode.py:74" *) 5'h10;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/encode.py:103" *)
+  output valid_out;
+  reg valid_out = 1'h0;
+  assign \$9  = rp_data[36:32] + (* src = "./migen_src/encode.py:152" *) ssss_late[3:0];
+  assign \$1  = ssss_late == (* src = "./migen_src/encode.py:144" *) 5'h10;
+  assign \$4  = rp_data | (* src = "./migen_src/encode.py:151" *) val_in_late;
+  assign \$6  = ssss_late == (* src = "./migen_src/encode.py:144" *) 5'h10;
   always @(posedge clk)
       enc_ctr <= \$next\enc_ctr ;
   always @(posedge clk)
@@ -65,13 +84,43 @@ module anonymous(ssss, val_in, rp_data, rst, clk, rp_addr, enc_out, enc_ctr, val
   always @(posedge clk)
       ssss_late <= \$next\ssss_late ;
   always @(posedge clk)
+      end_out <= \$next\end_out ;
+  always @(posedge clk)
+      end_late <= \$next\end_late ;
+  always @(posedge clk)
+      valid_out <= \$next\valid_out ;
+  always @(posedge clk)
       valid_late <= \$next\valid_late ;
   always @* begin
     \$next\valid_late  = valid_late;
-    \$next\valid_late  = valid;
+    \$next\valid_late  = valid_in;
     casez (rst)
       1'h1:
           \$next\valid_late  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\valid_out  = valid_out;
+    \$next\valid_out  = valid_late;
+    casez (rst)
+      1'h1:
+          \$next\valid_out  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\end_late  = end_late;
+    \$next\end_late  = end_in;
+    casez (rst)
+      1'h1:
+          \$next\end_late  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\end_out  = end_out;
+    \$next\end_out  = end_late;
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
     endcase
   end
   always @* begin
@@ -134,79 +183,85 @@ endmodule
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(valid_in, ssss, rst, clk, enc_out, enc_ctr, valid_out, val_in);
-  (* src = "./migen_src/encode.py:110" *)
+module top(end_in, valid_in, ssss, rst, clk, enc_out, enc_ctr, valid_out, end_out, val_in);
+  (* src = "./migen_src/encode.py:184" *)
   reg [4:0] \$next\enc_ctr ;
-  (* src = "./migen_src/encode.py:109" *)
+  (* src = "./migen_src/encode.py:182" *)
   reg [30:0] \$next\enc_out ;
+  (* src = "./migen_src/encode.py:106" *)
+  reg \$next\end_in$2 ;
+  (* src = "./migen_src/encode.py:192" *)
+  reg \$next\end_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
   reg [4:0] \$next\mem_r_addr ;
-  (* src = "./migen_src/encode.py:39" *)
+  (* src = "./migen_src/encode.py:89" *)
   reg [36:0] \$next\rp_data ;
-  (* src = "./migen_src/encode.py:42" *)
-  reg [4:0] \$next\ssss$1 ;
-  (* src = "./migen_src/encode.py:41" *)
-  reg [15:0] \$next\val_in$2 ;
-  (* src = "./migen_src/encode.py:45" *)
-  reg \$next\valid ;
-  (* src = "./migen_src/encode.py:146" *)
-  reg \$next\valid_late ;
-  (* src = "./migen_src/encode.py:113" *)
+  (* src = "./migen_src/encode.py:94" *)
+  reg [4:0] \$next\ssss$3 ;
+  (* src = "./migen_src/encode.py:92" *)
+  reg [15:0] \$next\val_in$4 ;
+  (* src = "./migen_src/encode.py:102" *)
+  reg \$next\valid_in$1 ;
+  (* src = "./migen_src/encode.py:188" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:124" *)
   input clk;
-  (* src = "./migen_src/encode.py:110" *)
+  (* src = "./migen_src/encode.py:184" *)
   output [4:0] enc_ctr;
-  (* src = "./migen_src/encode.py:44" *)
-  wire [4:0] \enc_ctr$4 ;
-  (* src = "./migen_src/encode.py:109" *)
+  (* src = "./migen_src/encode.py:99" *)
+  wire [4:0] \enc_ctr$8 ;
+  (* src = "./migen_src/encode.py:182" *)
   output [30:0] enc_out;
-  (* src = "./migen_src/encode.py:43" *)
-  wire [30:0] \enc_out$3 ;
+  (* src = "./migen_src/encode.py:97" *)
+  wire [30:0] \enc_out$7 ;
+  (* src = "./migen_src/encode.py:191" *)
+  input end_in;
+  (* src = "./migen_src/encode.py:106" *)
+  wire \end_in$2 ;
+  (* src = "./migen_src/encode.py:192" *)
+  output end_out;
+  (* src = "./migen_src/encode.py:107" *)
+  wire \end_out$6 ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
   wire [4:0] mem_r_addr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:83" *)
   wire [36:0] mem_r_data;
-  (* src = "./migen_src/encode.py:38" *)
+  (* src = "./migen_src/encode.py:88" *)
   wire [4:0] rp_addr;
-  (* src = "./migen_src/encode.py:39" *)
+  (* src = "./migen_src/encode.py:89" *)
   wire [36:0] rp_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/encode.py:106" *)
+  (* src = "./migen_src/encode.py:179" *)
   input [4:0] ssss;
-  (* src = "./migen_src/encode.py:42" *)
-  wire [4:0] \ssss$1 ;
-  (* src = "./migen_src/encode.py:105" *)
+  (* src = "./migen_src/encode.py:94" *)
+  wire [4:0] \ssss$3 ;
+  (* src = "./migen_src/encode.py:177" *)
   input [15:0] val_in;
-  (* src = "./migen_src/encode.py:41" *)
-  wire [15:0] \val_in$2 ;
-  (* src = "./migen_src/encode.py:45" *)
-  wire valid;
-  (* src = "./migen_src/encode.py:112" *)
+  (* src = "./migen_src/encode.py:92" *)
+  wire [15:0] \val_in$4 ;
+  (* src = "./migen_src/encode.py:187" *)
   input valid_in;
-  (* init = 1'h0 *)
-  (* src = "./migen_src/encode.py:146" *)
-  reg valid_late = 1'h0;
-  (* init = 1'h0 *)
-  (* src = "./migen_src/encode.py:113" *)
+  (* src = "./migen_src/encode.py:102" *)
+  wire \valid_in$1 ;
+  (* src = "./migen_src/encode.py:188" *)
   output valid_out;
-  reg valid_out = 1'h0;
-  anonymous \$5  (
+  (* src = "./migen_src/encode.py:103" *)
+  wire \valid_out$5 ;
+  anonymous \$9  (
     .clk(clk),
-    .enc_ctr(\enc_ctr$4 ),
-    .enc_out(\enc_out$3 ),
+    .enc_ctr(\enc_ctr$8 ),
+    .enc_out(\enc_out$7 ),
+    .end_in(\end_in$2 ),
+    .end_out(\end_out$6 ),
     .rp_addr(rp_addr),
     .rp_data(rp_data),
     .rst(rst),
-    .ssss(\ssss$1 ),
-    .val_in(\val_in$2 ),
-    .valid(valid)
+    .ssss(\ssss$3 ),
+    .val_in(\val_in$4 ),
+    .valid_in(\valid_in$1 ),
+    .valid_out(\valid_out$5 )
   );
-  always @(posedge clk)
-      valid_out <= \$next\valid_out ;
-  always @(posedge clk)
-      valid_late <= \$next\valid_late ;
   reg [36:0] mem [16:0];
   initial begin
     mem[0] = 37'h040000000e;
@@ -233,16 +288,20 @@ module top(valid_in, ssss, rst, clk, enc_out, enc_ctr, valid_out, val_in);
   end
   assign mem_r_data = mem[_0_];
   always @* begin
-    \$next\val_in$2  = 16'h0000;
-    \$next\val_in$2  = val_in;
+    \$next\val_in$4  = 16'h0000;
+    \$next\val_in$4  = val_in;
   end
   always @* begin
-    \$next\valid  = 1'h0;
-    \$next\valid  = valid_in;
+    \$next\end_in$2  = 1'h0;
+    \$next\end_in$2  = end_in;
   end
   always @* begin
-    \$next\ssss$1  = 5'h00;
-    \$next\ssss$1  = ssss;
+    \$next\valid_in$1  = 1'h0;
+    \$next\valid_in$1  = valid_in;
+  end
+  always @* begin
+    \$next\ssss$3  = 5'h00;
+    \$next\ssss$3  = ssss;
   end
   always @* begin
     \$next\mem_r_addr  = 5'h00;
@@ -254,34 +313,29 @@ module top(valid_in, ssss, rst, clk, enc_out, enc_ctr, valid_out, val_in);
   end
   always @* begin
     \$next\enc_out  = 31'h00000000;
-    \$next\enc_out  = \enc_out$3 ;
+    \$next\enc_out  = \enc_out$7 ;
   end
   always @* begin
     \$next\enc_ctr  = 5'h00;
-    \$next\enc_ctr  = \enc_ctr$4 ;
+    \$next\enc_ctr  = \enc_ctr$8 ;
   end
   always @* begin
-    \$next\valid_late  = valid_late;
-    \$next\valid_late  = valid_in;
-    casez (rst)
-      1'h1:
-          \$next\valid_late  = 1'h0;
-    endcase
+    \$next\valid_out  = 1'h0;
+    \$next\valid_out  = \valid_out$5 ;
   end
   always @* begin
-    \$next\valid_out  = valid_out;
-    \$next\valid_out  = valid_late;
-    casez (rst)
-      1'h1:
-          \$next\valid_out  = 1'h0;
-    endcase
+    \$next\end_out  = 1'h0;
+    \$next\end_out  = \end_out$6 ;
   end
+  assign end_out = \$next\end_out ;
+  assign valid_out = \$next\valid_out ;
   assign enc_ctr = \$next\enc_ctr ;
   assign enc_out = \$next\enc_out ;
   assign rp_data = \$next\rp_data ;
   assign mem_r_addr = \$next\mem_r_addr ;
-  assign \ssss$1  = \$next\ssss$1 ;
-  assign valid = \$next\valid ;
-  assign \val_in$2  = \$next\val_in$2 ;
+  assign \ssss$3  = \$next\ssss$3 ;
+  assign \valid_in$1  = \$next\valid_in$1 ;
+  assign \end_in$2  = \$next\end_in$2 ;
+  assign \val_in$4  = \$next\val_in$4 ;
 endmodule
 

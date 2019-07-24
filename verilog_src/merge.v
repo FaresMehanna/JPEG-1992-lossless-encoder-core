@@ -2,45 +2,55 @@
 
 (* \nmigen.hierarchy  = "top.anonymous" *)
 (* generator = "nMigen" *)
-module anonymous(enc_in_ctr1, enc_in_ctr2, enc_in1, enc_in2, rst, clk, enc_out_ctr, enc_out, valid_out, valid_in);
+module anonymous(enc_in_ctr1, enc_in_ctr2, enc_in1, enc_in2, end_in, rst, clk, enc_out_ctr, enc_out, valid_out, end_out, valid_in);
   wire [5:0] \$1 ;
   wire [61:0] \$3 ;
   wire [61:0] \$5 ;
-  (* src = "./migen_src/merge.py:17" *)
+  (* src = "./migen_src/merge.py:49" *)
   reg [61:0] \$next\enc_out ;
-  (* src = "./migen_src/merge.py:18" *)
+  (* src = "./migen_src/merge.py:50" *)
   reg [5:0] \$next\enc_out_ctr ;
-  (* src = "./migen_src/merge.py:21" *)
+  (* src = "./migen_src/merge.py:58" *)
+  reg \$next\end_out ;
+  (* src = "./migen_src/merge.py:54" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/merge.py:11" *)
+  (* src = "./migen_src/merge.py:43" *)
   input [30:0] enc_in1;
-  (* src = "./migen_src/merge.py:14" *)
+  (* src = "./migen_src/merge.py:46" *)
   input [30:0] enc_in2;
-  (* src = "./migen_src/merge.py:12" *)
+  (* src = "./migen_src/merge.py:44" *)
   input [4:0] enc_in_ctr1;
-  (* src = "./migen_src/merge.py:15" *)
+  (* src = "./migen_src/merge.py:47" *)
   input [4:0] enc_in_ctr2;
   (* init = 62'h0000000000000000 *)
-  (* src = "./migen_src/merge.py:17" *)
+  (* src = "./migen_src/merge.py:49" *)
   output [61:0] enc_out;
   reg [61:0] enc_out = 62'h0000000000000000;
   (* init = 6'h00 *)
-  (* src = "./migen_src/merge.py:18" *)
+  (* src = "./migen_src/merge.py:50" *)
   output [5:0] enc_out_ctr;
   reg [5:0] enc_out_ctr = 6'h00;
+  (* src = "./migen_src/merge.py:57" *)
+  input end_in;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/merge.py:58" *)
+  output end_out;
+  reg end_out = 1'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/merge.py:20" *)
+  (* src = "./migen_src/merge.py:53" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/merge.py:21" *)
+  (* src = "./migen_src/merge.py:54" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$1  = enc_in_ctr1 + (* src = "./migen_src/merge.py:35" *) enc_in_ctr2;
-  assign \$3  = enc_in1 <<< (* src = "./migen_src/merge.py:36" *) enc_in_ctr2;
-  assign \$5  = \$3  | (* src = "./migen_src/merge.py:36" *) enc_in2;
+  assign \$1  = enc_in_ctr1 + (* src = "./migen_src/merge.py:74" *) enc_in_ctr2;
+  assign \$3  = enc_in1 <<< (* src = "./migen_src/merge.py:75" *) enc_in_ctr2;
+  assign \$5  = \$3  | (* src = "./migen_src/merge.py:75" *) enc_in2;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
   always @(posedge clk)
       valid_out <= \$next\valid_out ;
   always @(posedge clk)
@@ -77,97 +87,98 @@ module anonymous(enc_in_ctr1, enc_in_ctr2, enc_in1, enc_in2, rst, clk, enc_out_c
           \$next\valid_out  = 1'h0;
     endcase
   end
+  always @* begin
+    \$next\end_out  = end_out;
+    \$next\end_out  = end_in;
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
+    endcase
+  end
 endmodule
 
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(enc_in, enc_in_ctr, \enc_in$1 , \enc_in_ctr$2 , rst, clk, enc_out, enc_out_ctr, valid_out, valid_in);
-  wire [20:0] \$8 ;
-  wire [20:0] \$9 ;
-  (* src = "./migen_src/merge.py:74" *)
-  reg [19:0] \$next\debug_counter ;
-  (* src = "./migen_src/merge.py:11" *)
+module top(enc_in_ctr, valid_in, end_in, \enc_in$1 , \enc_in_ctr$2 , rst, clk, enc_out, enc_out_ctr, valid_out, end_out, enc_in);
+  (* src = "./migen_src/merge.py:43" *)
   reg [30:0] \$next\enc_in1 ;
-  (* src = "./migen_src/merge.py:14" *)
+  (* src = "./migen_src/merge.py:46" *)
   reg [30:0] \$next\enc_in2 ;
-  (* src = "./migen_src/merge.py:12" *)
+  (* src = "./migen_src/merge.py:44" *)
   reg [4:0] \$next\enc_in_ctr1 ;
-  (* src = "./migen_src/merge.py:15" *)
+  (* src = "./migen_src/merge.py:47" *)
   reg [4:0] \$next\enc_in_ctr2 ;
-  (* src = "./migen_src/merge.py:68" *)
+  (* src = "./migen_src/merge.py:112" *)
   reg [61:0] \$next\enc_out ;
-  (* src = "./migen_src/merge.py:69" *)
+  (* src = "./migen_src/merge.py:113" *)
   reg [5:0] \$next\enc_out_ctr ;
-  (* src = "./migen_src/merge.py:20" *)
+  (* src = "./migen_src/merge.py:57" *)
+  reg \$next\end_in$4 ;
+  (* src = "./migen_src/merge.py:121" *)
+  reg \$next\end_out ;
+  (* src = "./migen_src/merge.py:53" *)
   reg \$next\valid_in$3 ;
-  (* src = "./migen_src/merge.py:72" *)
+  (* src = "./migen_src/merge.py:117" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
-  (* init = 20'h00000 *)
-  (* src = "./migen_src/merge.py:74" *)
-  reg [19:0] debug_counter = 20'h00000;
-  (* src = "./migen_src/merge.py:65" *)
+  (* src = "./migen_src/merge.py:109" *)
   input [30:0] enc_in;
-  (* src = "./migen_src/merge.py:65" *)
+  (* src = "./migen_src/merge.py:109" *)
   input [30:0] \enc_in$1 ;
-  (* src = "./migen_src/merge.py:11" *)
+  (* src = "./migen_src/merge.py:43" *)
   wire [30:0] enc_in1;
-  (* src = "./migen_src/merge.py:14" *)
+  (* src = "./migen_src/merge.py:46" *)
   wire [30:0] enc_in2;
-  (* src = "./migen_src/merge.py:66" *)
+  (* src = "./migen_src/merge.py:110" *)
   input [4:0] enc_in_ctr;
-  (* src = "./migen_src/merge.py:66" *)
+  (* src = "./migen_src/merge.py:110" *)
   input [4:0] \enc_in_ctr$2 ;
-  (* src = "./migen_src/merge.py:12" *)
+  (* src = "./migen_src/merge.py:44" *)
   wire [4:0] enc_in_ctr1;
-  (* src = "./migen_src/merge.py:15" *)
+  (* src = "./migen_src/merge.py:47" *)
   wire [4:0] enc_in_ctr2;
-  (* src = "./migen_src/merge.py:68" *)
+  (* src = "./migen_src/merge.py:112" *)
   output [61:0] enc_out;
-  (* src = "./migen_src/merge.py:17" *)
-  wire [61:0] \enc_out$5 ;
-  (* src = "./migen_src/merge.py:69" *)
+  (* src = "./migen_src/merge.py:49" *)
+  wire [61:0] \enc_out$6 ;
+  (* src = "./migen_src/merge.py:113" *)
   output [5:0] enc_out_ctr;
-  (* src = "./migen_src/merge.py:18" *)
-  wire [5:0] \enc_out_ctr$4 ;
+  (* src = "./migen_src/merge.py:50" *)
+  wire [5:0] \enc_out_ctr$5 ;
+  (* src = "./migen_src/merge.py:120" *)
+  input end_in;
+  (* src = "./migen_src/merge.py:57" *)
+  wire \end_in$4 ;
+  (* src = "./migen_src/merge.py:121" *)
+  output end_out;
+  (* src = "./migen_src/merge.py:58" *)
+  wire \end_out$8 ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/merge.py:71" *)
+  (* src = "./migen_src/merge.py:116" *)
   input valid_in;
-  (* src = "./migen_src/merge.py:20" *)
+  (* src = "./migen_src/merge.py:53" *)
   wire \valid_in$3 ;
-  (* src = "./migen_src/merge.py:72" *)
+  (* src = "./migen_src/merge.py:117" *)
   output valid_out;
-  (* src = "./migen_src/merge.py:21" *)
-  wire \valid_out$6 ;
-  assign \$9  = debug_counter + (* src = "./migen_src/merge.py:113" *) 1'h1;
-  anonymous \$7  (
+  (* src = "./migen_src/merge.py:54" *)
+  wire \valid_out$7 ;
+  anonymous \$9  (
     .clk(clk),
     .enc_in1(enc_in1),
     .enc_in2(enc_in2),
     .enc_in_ctr1(enc_in_ctr1),
     .enc_in_ctr2(enc_in_ctr2),
-    .enc_out(\enc_out$5 ),
-    .enc_out_ctr(\enc_out_ctr$4 ),
+    .enc_out(\enc_out$6 ),
+    .enc_out_ctr(\enc_out_ctr$5 ),
+    .end_in(\end_in$4 ),
+    .end_out(\end_out$8 ),
     .rst(rst),
     .valid_in(\valid_in$3 ),
-    .valid_out(\valid_out$6 )
+    .valid_out(\valid_out$7 )
   );
-  always @(posedge clk)
-      debug_counter <= \$next\debug_counter ;
-  always @* begin
-    \$next\debug_counter  = debug_counter;
-    casez (valid_in)
-      1'h1:
-          \$next\debug_counter  = \$8 [19:0];
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\debug_counter  = 20'h00000;
-    endcase
-  end
   always @* begin
     \$next\enc_in1  = 31'h00000000;
     \$next\enc_in1  = enc_in;
@@ -181,6 +192,10 @@ module top(enc_in, enc_in_ctr, \enc_in$1 , \enc_in_ctr$2 , rst, clk, enc_out, en
     \$next\valid_in$3  = valid_in;
   end
   always @* begin
+    \$next\end_in$4  = 1'h0;
+    \$next\end_in$4  = end_in;
+  end
+  always @* begin
     \$next\enc_in2  = 31'h00000000;
     \$next\enc_in2  = \enc_in$1 ;
   end
@@ -190,22 +205,27 @@ module top(enc_in, enc_in_ctr, \enc_in$1 , \enc_in_ctr$2 , rst, clk, enc_out, en
   end
   always @* begin
     \$next\enc_out  = 62'h0000000000000000;
-    \$next\enc_out  = \enc_out$5 ;
+    \$next\enc_out  = \enc_out$6 ;
   end
   always @* begin
     \$next\enc_out_ctr  = 6'h00;
-    \$next\enc_out_ctr  = \enc_out_ctr$4 ;
+    \$next\enc_out_ctr  = \enc_out_ctr$5 ;
   end
   always @* begin
     \$next\valid_out  = 1'h0;
-    \$next\valid_out  = \valid_out$6 ;
+    \$next\valid_out  = \valid_out$7 ;
   end
-  assign \$8  = \$9 ;
+  always @* begin
+    \$next\end_out  = 1'h0;
+    \$next\end_out  = \end_out$8 ;
+  end
+  assign end_out = \$next\end_out ;
   assign valid_out = \$next\valid_out ;
   assign enc_out_ctr = \$next\enc_out_ctr ;
   assign enc_out = \$next\enc_out ;
   assign enc_in_ctr2 = \$next\enc_in_ctr2 ;
   assign enc_in2 = \$next\enc_in2 ;
+  assign \end_in$4  = \$next\end_in$4 ;
   assign \valid_in$3  = \$next\valid_in$3 ;
   assign enc_in_ctr1 = \$next\enc_in_ctr1 ;
   assign enc_in1 = \$next\enc_in1 ;

@@ -3,7 +3,7 @@
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out, i_busy);
+module top(valid_in, data_in_ctr, data_in, end_in, rst, clk, valid_out, o_busy, data_out, end_out, i_busy);
   wire \$1 ;
   wire \$101 ;
   wire \$103 ;
@@ -37,12 +37,72 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
   wire \$153 ;
   wire \$155 ;
   wire \$157 ;
+  wire \$159 ;
+  wire \$161 ;
+  wire \$163 ;
+  wire \$165 ;
+  wire \$167 ;
+  wire \$169 ;
   wire \$17 ;
+  wire \$171 ;
+  wire \$173 ;
+  wire \$175 ;
+  wire \$177 ;
+  wire \$179 ;
+  wire \$181 ;
+  wire \$183 ;
+  wire \$185 ;
+  wire \$187 ;
+  wire \$189 ;
   wire \$19 ;
+  wire \$191 ;
+  wire \$193 ;
+  wire \$195 ;
+  wire \$197 ;
+  wire \$199 ;
+  wire \$201 ;
+  wire \$203 ;
+  wire \$205 ;
+  wire \$207 ;
+  wire \$209 ;
   wire \$21 ;
+  wire \$211 ;
+  wire \$213 ;
+  wire \$215 ;
+  wire \$217 ;
+  wire \$219 ;
+  wire \$221 ;
+  wire \$223 ;
+  wire \$225 ;
+  wire \$227 ;
+  wire \$229 ;
   wire \$23 ;
+  wire \$231 ;
+  wire \$233 ;
+  wire \$235 ;
+  wire \$237 ;
+  wire \$239 ;
+  wire \$241 ;
+  wire \$243 ;
+  wire \$245 ;
+  wire \$247 ;
+  wire \$249 ;
   wire \$25 ;
+  wire \$251 ;
+  wire \$253 ;
+  wire \$255 ;
+  wire \$257 ;
+  wire \$259 ;
+  wire \$261 ;
+  wire \$263 ;
+  wire \$265 ;
+  wire \$267 ;
+  wire \$269 ;
   wire \$27 ;
+  wire \$271 ;
+  wire \$273 ;
+  wire \$275 ;
+  wire \$277 ;
   wire \$29 ;
   wire \$3 ;
   wire \$31 ;
@@ -52,8 +112,8 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
   wire \$39 ;
   wire \$41 ;
   wire \$43 ;
-  wire [23:0] \$45 ;
-  wire [23:0] \$47 ;
+  wire \$45 ;
+  wire \$47 ;
   wire [23:0] \$49 ;
   wire \$5 ;
   wire [23:0] \$51 ;
@@ -61,17 +121,17 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
   wire [23:0] \$55 ;
   wire [23:0] \$57 ;
   wire [23:0] \$59 ;
-  wire \$61 ;
+  wire [23:0] \$61 ;
   wire [23:0] \$63 ;
-  wire [23:0] \$65 ;
+  wire \$65 ;
   wire [23:0] \$67 ;
   wire [23:0] \$69 ;
   wire \$7 ;
-  wire \$71 ;
-  wire \$73 ;
-  wire [23:0] \$75 ;
+  wire [23:0] \$71 ;
+  wire [23:0] \$73 ;
+  wire \$75 ;
   wire \$77 ;
-  wire \$79 ;
+  wire [23:0] \$79 ;
   wire \$81 ;
   wire \$83 ;
   wire \$85 ;
@@ -83,144 +143,232 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
   wire \$95 ;
   wire \$97 ;
   wire \$99 ;
-  (* src = "./migen_src/fix_0xff2.py:110" *)
+  (* src = "./migen_src/fix_0xff2.py:170" *)
   reg [1:0] \$next\buffer_count ;
-  (* src = "./migen_src/fix_0xff2.py:109" *)
+  (* src = "./migen_src/fix_0xff2.py:169" *)
   reg [23:0] \$next\buffer_data ;
-  (* src = "./migen_src/fix_0xff2.py:94" *)
+  (* src = "./migen_src/fix_0xff2.py:149" *)
   reg [15:0] \$next\data_out ;
-  (* src = "./migen_src/fix_0xff2.py:112" *)
+  (* src = "./migen_src/fix_0xff2.py:172" *)
   reg [15:0] \$next\data_out_reg ;
-  (* src = "./migen_src/fix_0xff2.py:113" *)
+  (* src = "./migen_src/fix_0xff2.py:174" *)
   reg \$next\data_out_valid ;
+  (* src = "./migen_src/fix_0xff2.py:156" *)
+  reg \$next\end_out ;
+  (* src = "./migen_src/fix_0xff2.py:173" *)
+  reg \$next\end_out_reg ;
+  (* src = "./migen_src/fix_0xff2.py:176" *)
+  reg \$next\end_reg ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg \$next\fsm_state ;
-  (* src = "./migen_src/fix_0xff2.py:99" *)
+  reg [1:0] \$next\fsm_state ;
+  (* src = "./migen_src/fix_0xff2.py:158" *)
   reg \$next\o_busy ;
-  (* src = "./migen_src/fix_0xff2.py:98" *)
+  (* src = "./migen_src/fix_0xff2.py:153" *)
   reg \$next\valid_out ;
   (* init = 2'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:110" *)
+  (* src = "./migen_src/fix_0xff2.py:170" *)
   reg [1:0] buffer_count = 2'h0;
   (* init = 24'h000000 *)
-  (* src = "./migen_src/fix_0xff2.py:109" *)
+  (* src = "./migen_src/fix_0xff2.py:169" *)
   reg [23:0] buffer_data = 24'h000000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/fix_0xff2.py:90" *)
+  (* src = "./migen_src/fix_0xff2.py:145" *)
   input [31:0] data_in;
-  (* src = "./migen_src/fix_0xff2.py:91" *)
+  (* src = "./migen_src/fix_0xff2.py:146" *)
   input [2:0] data_in_ctr;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/fix_0xff2.py:94" *)
+  (* src = "./migen_src/fix_0xff2.py:149" *)
   output [15:0] data_out;
   reg [15:0] data_out = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/fix_0xff2.py:112" *)
+  (* src = "./migen_src/fix_0xff2.py:172" *)
   reg [15:0] data_out_reg = 16'h0000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:113" *)
+  (* src = "./migen_src/fix_0xff2.py:174" *)
   reg data_out_valid = 1'h0;
+  (* src = "./migen_src/fix_0xff2.py:155" *)
+  input end_in;
   (* init = 1'h0 *)
+  (* src = "./migen_src/fix_0xff2.py:156" *)
+  output end_out;
+  reg end_out = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/fix_0xff2.py:173" *)
+  reg end_out_reg = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/fix_0xff2.py:176" *)
+  reg end_reg = 1'h0;
+  (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg fsm_state = 1'h0;
-  (* src = "./migen_src/fix_0xff2.py:100" *)
+  reg [1:0] fsm_state = 2'h0;
+  (* src = "./migen_src/fix_0xff2.py:159" *)
   input i_busy;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:99" *)
+  (* src = "./migen_src/fix_0xff2.py:158" *)
   output o_busy;
   reg o_busy = 1'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/fix_0xff2.py:97" *)
+  (* src = "./migen_src/fix_0xff2.py:152" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:98" *)
+  (* src = "./migen_src/fix_0xff2.py:153" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$9  = \$5  & (* src = "./migen_src/fix_0xff2.py:140" *) \$7 ;
-  assign \$99  = valid_in == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$101  = o_busy == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$103  = \$99  & (* src = "./migen_src/fix_0xff2.py:140" *) \$101 ;
-  assign \$105  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$107  = valid_in == (* src = "./migen_src/fix_0xff2.py:143" *) 1'h1;
-  assign \$109  = valid_out == (* src = "./migen_src/fix_0xff2.py:143" *) 1'h1;
-  assign \$111  = \$107  & (* src = "./migen_src/fix_0xff2.py:143" *) \$109 ;
-  assign \$113  = o_busy == (* src = "./migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$115  = i_busy == (* src = "./migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$117  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$11  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$119  = i_busy == (* src = "./migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$121  = valid_out == (* src = "./migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$123  = valid_in == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$125  = o_busy == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$127  = \$123  & (* src = "./migen_src/fix_0xff2.py:140" *) \$125 ;
-  assign \$129  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$131  = o_busy == (* src = "./migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$133  = i_busy == (* src = "./migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$135  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$137  = i_busy == (* src = "./migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$13  = i_busy == (* src = "./migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$139  = valid_out == (* src = "./migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$141  = valid_in == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$143  = o_busy == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$145  = \$141  & (* src = "./migen_src/fix_0xff2.py:140" *) \$143 ;
-  assign \$147  = valid_in == (* src = "./migen_src/fix_0xff2.py:142" *) 1'h1;
-  assign \$149  = valid_out == (* src = "./migen_src/fix_0xff2.py:142" *) 1'h1;
-  assign \$151  = \$147  & (* src = "./migen_src/fix_0xff2.py:142" *) \$149 ;
-  assign \$153  = i_busy == (* src = "./migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$155  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$157  = o_busy == (* src = "./migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$15  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$17  = i_busy == (* src = "./migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$1  = i_busy == (* src = "./migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$19  = valid_out == (* src = "./migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$21  = valid_in == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$23  = o_busy == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$25  = \$21  & (* src = "./migen_src/fix_0xff2.py:140" *) \$23 ;
-  assign \$27  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$29  = i_busy == (* src = "./migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$31  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$33  = i_busy == (* src = "./migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$35  = valid_out == (* src = "./migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$37  = valid_in == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$3  = valid_out == (* src = "./migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$39  = o_busy == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$41  = \$37  & (* src = "./migen_src/fix_0xff2.py:140" *) \$39 ;
-  assign \$43  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$45  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$47  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$9  = \$5  & (* src = "./migen_src/fix_0xff2.py:204" *) \$7 ;
+  assign \$99  = i_busy == (* src = "./migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$101  = valid_out == (* src = "./migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$103  = valid_in == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$105  = o_busy == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$107  = \$103  & (* src = "./migen_src/fix_0xff2.py:204" *) \$105 ;
+  assign \$109  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$111  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$113  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$115  = \$111  & (* src = "./migen_src/fix_0xff2.py:98" *) \$113 ;
+  assign \$117  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$11  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$119  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$121  = \$117  & (* src = "./migen_src/fix_0xff2.py:98" *) \$119 ;
+  assign \$123  = valid_in == (* src = "./migen_src/fix_0xff2.py:207" *) 1'h1;
+  assign \$125  = valid_out == (* src = "./migen_src/fix_0xff2.py:207" *) 1'h1;
+  assign \$127  = \$123  & (* src = "./migen_src/fix_0xff2.py:207" *) \$125 ;
+  assign \$129  = o_busy == (* src = "./migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$131  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$133  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$135  = \$131  & (* src = "./migen_src/fix_0xff2.py:98" *) \$133 ;
+  assign \$137  = i_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$13  = i_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$139  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$141  = end_reg == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
+  assign \$143  = i_busy == (* src = "./migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$145  = valid_out == (* src = "./migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$147  = valid_in == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$149  = o_busy == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$151  = \$147  & (* src = "./migen_src/fix_0xff2.py:204" *) \$149 ;
+  assign \$153  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$155  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$157  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$15  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$159  = \$155  & (* src = "./migen_src/fix_0xff2.py:98" *) \$157 ;
+  assign \$161  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$163  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$165  = \$161  & (* src = "./migen_src/fix_0xff2.py:98" *) \$163 ;
+  assign \$167  = o_busy == (* src = "./migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$169  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$171  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$173  = \$169  & (* src = "./migen_src/fix_0xff2.py:98" *) \$171 ;
+  assign \$175  = i_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$177  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$17  = i_busy == (* src = "./migen_src/fix_0xff2.py:230" *) 1'h0;
+  assign \$179  = buffer_count <= (* src = "./migen_src/fix_0xff2.py:136" *) 2'h2;
+  assign \$181  = end_reg == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
+  assign \$183  = i_busy == (* src = "./migen_src/fix_0xff2.py:230" *) 1'h0;
+  assign \$185  = i_busy == (* src = "./migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$187  = valid_out == (* src = "./migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$189  = valid_in == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$191  = o_busy == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$193  = \$189  & (* src = "./migen_src/fix_0xff2.py:204" *) \$191 ;
+  assign \$195  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$197  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$1  = i_busy == (* src = "./migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$19  = i_busy == (* src = "./migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$199  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$201  = \$197  & (* src = "./migen_src/fix_0xff2.py:98" *) \$199 ;
+  assign \$203  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$205  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$207  = \$203  & (* src = "./migen_src/fix_0xff2.py:98" *) \$205 ;
+  assign \$209  = i_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$211  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$213  = buffer_count <= (* src = "./migen_src/fix_0xff2.py:136" *) 2'h2;
+  assign \$215  = i_busy == (* src = "./migen_src/fix_0xff2.py:230" *) 1'h0;
+  assign \$217  = i_busy == (* src = "./migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$21  = valid_out == (* src = "./migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$219  = valid_out == (* src = "./migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$221  = valid_in == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$223  = o_busy == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$225  = \$221  & (* src = "./migen_src/fix_0xff2.py:204" *) \$223 ;
+  assign \$227  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$229  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$231  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$233  = \$229  & (* src = "./migen_src/fix_0xff2.py:98" *) \$231 ;
+  assign \$235  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$237  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$23  = valid_in == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$239  = \$235  & (* src = "./migen_src/fix_0xff2.py:98" *) \$237 ;
+  assign \$241  = o_busy == (* src = "./migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$243  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$245  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$247  = \$243  & (* src = "./migen_src/fix_0xff2.py:98" *) \$245 ;
+  assign \$249  = i_busy == (* src = "./migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$251  = valid_out == (* src = "./migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$253  = valid_in == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$255  = o_busy == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$257  = \$253  & (* src = "./migen_src/fix_0xff2.py:204" *) \$255 ;
+  assign \$25  = o_busy == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$259  = valid_in == (* src = "./migen_src/fix_0xff2.py:206" *) 1'h1;
+  assign \$261  = valid_out == (* src = "./migen_src/fix_0xff2.py:206" *) 1'h1;
+  assign \$263  = \$259  & (* src = "./migen_src/fix_0xff2.py:206" *) \$261 ;
+  assign \$265  = i_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$267  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$269  = o_busy == (* src = "./migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$271  = o_busy == (* src = "./migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$273  = buffer_count == (* src = "./migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$275  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$277  = \$273  & (* src = "./migen_src/fix_0xff2.py:98" *) \$275 ;
+  assign \$27  = \$23  & (* src = "./migen_src/fix_0xff2.py:204" *) \$25 ;
+  assign \$29  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$31  = i_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$33  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$35  = i_busy == (* src = "./migen_src/fix_0xff2.py:230" *) 1'h0;
+  assign \$37  = i_busy == (* src = "./migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$3  = valid_out == (* src = "./migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$39  = valid_out == (* src = "./migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$41  = valid_in == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$43  = o_busy == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$45  = \$41  & (* src = "./migen_src/fix_0xff2.py:204" *) \$43 ;
+  assign \$47  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:181" *) 1'h0;
   assign \$49  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
   assign \$51  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
   assign \$53  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
   assign \$55  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
   assign \$57  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$5  = valid_in == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h1;
+  assign \$5  = valid_in == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h1;
   assign \$59  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$61  = o_busy == (* src = "./migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$63  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$65  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$61  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$63  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$65  = o_busy == (* src = "./migen_src/fix_0xff2.py:210" *) 1'h0;
   assign \$67  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
   assign \$69  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$71  = i_busy == (* src = "./migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$73  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$75  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) buffer_data[7:0];
-  assign \$77  = i_busy == (* src = "./migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$7  = o_busy == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$79  = valid_out == (* src = "./migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$81  = valid_in == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$83  = o_busy == (* src = "./migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$85  = \$81  & (* src = "./migen_src/fix_0xff2.py:140" *) \$83 ;
-  assign \$87  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$89  = o_busy == (* src = "./migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$91  = i_busy == (* src = "./migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$93  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$95  = i_busy == (* src = "./migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$97  = valid_out == (* src = "./migen_src/fix_0xff2.py:131" *) 1'h0;
+  assign \$71  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$73  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$75  = i_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$77  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$7  = o_busy == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$79  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) buffer_data[7:0];
+  assign \$81  = i_busy == (* src = "./migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$83  = valid_out == (* src = "./migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$85  = valid_in == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$87  = o_busy == (* src = "./migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$89  = \$85  & (* src = "./migen_src/fix_0xff2.py:204" *) \$87 ;
+  assign \$91  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$93  = o_busy == (* src = "./migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$95  = i_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$97  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:215" *) 1'h0;
+  always @(posedge clk)
+      end_out_reg <= \$next\end_out_reg ;
+  always @(posedge clk)
+      data_out <= \$next\data_out ;
+  always @(posedge clk)
+      valid_out <= \$next\valid_out ;
   always @(posedge clk)
       data_out_reg <= \$next\data_out_reg ;
   always @(posedge clk)
       data_out_valid <= \$next\data_out_valid ;
+  always @(posedge clk)
+      end_reg <= \$next\end_reg ;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
   always @(posedge clk)
       fsm_state <= \$next\fsm_state ;
   always @(posedge clk)
@@ -229,14 +377,10 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
       buffer_count <= \$next\buffer_count ;
   always @(posedge clk)
       buffer_data <= \$next\buffer_data ;
-  always @(posedge clk)
-      data_out <= \$next\data_out ;
-  always @(posedge clk)
-      valid_out <= \$next\valid_out ;
   always @* begin
     \$next\valid_out  = valid_out;
     casez (fsm_state)
-      1'h0:
+      2'h0:
           casez ({ \$9 , \$3 , \$1  })
             3'bzz1:
                 casez (\$11 )
@@ -248,13 +392,21 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
             3'bz1z:
                 \$next\valid_out  = valid_in;
           endcase
-      1'h1:
+      2'h1:
           casez (\$13 )
             1'h1:
                 casez (\$15 )
                   1'h1:
                       \$next\valid_out  = 1'h1;
                   1'hz:
+                      \$next\valid_out  = 1'h1;
+                endcase
+          endcase
+      2'h2:
+          casez (\$17 )
+            1'h1:
+                casez (data_out_valid)
+                  1'h1:
                       \$next\valid_out  = 1'h1;
                 endcase
           endcase
@@ -267,10 +419,10 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
   always @* begin
     \$next\data_out  = data_out;
     casez (fsm_state)
-      1'h0:
-          casez ({ \$25 , \$19 , \$17  })
+      2'h0:
+          casez ({ \$27 , \$21 , \$19  })
             3'bzz1:
-                casez (\$27 )
+                casez (\$29 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
@@ -323,18 +475,31 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                       endcase
                 endcase
           endcase
-      1'h1:
-          casez (\$29 )
+      2'h1:
+          casez (\$31 )
             1'h1:
-                casez (\$31 )
+                casez (\$33 )
                   1'h1:
                       casez (buffer_count)
+                        2'h1:
+                          begin
+                            \$next\data_out [15:8] = buffer_data[7:0];
+                            \$next\data_out [7:0] = 8'h00;
+                          end
                         2'h2:
                             \$next\data_out  = buffer_data[15:0];
                         2'h3:
                             \$next\data_out  = buffer_data[23:8];
                       endcase
                   1'hz:
+                      \$next\data_out  = data_out_reg;
+                endcase
+          endcase
+      2'h2:
+          casez (\$35 )
+            1'h1:
+                casez (data_out_valid)
+                  1'h1:
                       \$next\data_out  = data_out_reg;
                 endcase
           endcase
@@ -345,13 +510,36 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
     endcase
   end
   always @* begin
+    \$next\end_out_reg  = end_out_reg;
+    casez (fsm_state)
+      2'h0:
+          casez (\$271 )
+            1'h1:
+                casez (valid_in)
+                  1'h1:
+                      casez (end_in)
+                        1'h1:
+                            casez (\$277 )
+                              1'h1:
+                                  \$next\end_out_reg  = 1'h1;
+                            endcase
+                      endcase
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\end_out_reg  = 1'h0;
+    endcase
+  end
+  always @* begin
     \$next\buffer_data  = buffer_data;
     casez (fsm_state)
-      1'h0:
+      2'h0:
         begin
-          casez ({ \$41 , \$35 , \$33  })
+          casez ({ \$45 , \$39 , \$37  })
             3'bzz1:
-                casez (\$43 )
+                casez (\$47 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
@@ -359,16 +547,16 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                               2'h0:
                                   casez (data_in_ctr)
                                     3'h3:
-                                        \$next\buffer_data  = \$45 ;
+                                        \$next\buffer_data  = \$49 ;
                                     3'h4:
-                                        \$next\buffer_data  = \$47 ;
+                                        \$next\buffer_data  = \$51 ;
                                   endcase
                               2'h1:
                                   casez (data_in_ctr)
                                     3'h2:
-                                        \$next\buffer_data  = \$49 ;
+                                        \$next\buffer_data  = \$53 ;
                                     3'h3:
-                                        \$next\buffer_data  = \$51 ;
+                                        \$next\buffer_data  = \$55 ;
                                     3'h4:
                                         \$next\buffer_data  = data_in[23:0];
                                   endcase
@@ -382,23 +570,23 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                         2'h0:
                             casez (data_in_ctr)
                               3'h3:
-                                  \$next\buffer_data  = \$53 ;
+                                  \$next\buffer_data  = \$57 ;
                               3'h4:
-                                  \$next\buffer_data  = \$55 ;
+                                  \$next\buffer_data  = \$59 ;
                             endcase
                         2'h1:
                             casez (data_in_ctr)
                               3'h2:
-                                  \$next\buffer_data  = \$57 ;
+                                  \$next\buffer_data  = \$61 ;
                               3'h3:
-                                  \$next\buffer_data  = \$59 ;
+                                  \$next\buffer_data  = \$63 ;
                               3'h4:
                                   \$next\buffer_data  = data_in[23:0];
                             endcase
                       endcase
                 endcase
           endcase
-          casez (\$61 )
+          casez (\$65 )
             1'h1:
                 casez (valid_in)
                   1'h1:
@@ -406,16 +594,16 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                         2'h0:
                             casez (data_in_ctr)
                               3'h3:
-                                  \$next\buffer_data  = \$63 ;
+                                  \$next\buffer_data  = \$67 ;
                               3'h4:
-                                  \$next\buffer_data  = \$65 ;
+                                  \$next\buffer_data  = \$69 ;
                             endcase
                         2'h1:
                             casez (data_in_ctr)
                               3'h2:
-                                  \$next\buffer_data  = \$67 ;
+                                  \$next\buffer_data  = \$71 ;
                               3'h3:
-                                  \$next\buffer_data  = \$69 ;
+                                  \$next\buffer_data  = \$73 ;
                               3'h4:
                                   \$next\buffer_data  = data_in[23:0];
                             endcase
@@ -423,14 +611,14 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                 endcase
           endcase
         end
-      1'h1:
-          casez (\$71 )
+      2'h1:
+          casez (\$75 )
             1'h1:
-                casez (\$73 )
+                casez (\$77 )
                   1'h1:
                       casez (buffer_count)
                         2'h3:
-                            \$next\buffer_data  = \$75 ;
+                            \$next\buffer_data  = \$79 ;
                       endcase
                 endcase
           endcase
@@ -443,11 +631,11 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
   always @* begin
     \$next\buffer_count  = buffer_count;
     casez (fsm_state)
-      1'h0:
+      2'h0:
         begin
-          casez ({ \$85 , \$79 , \$77  })
+          casez ({ \$89 , \$83 , \$81  })
             3'bzz1:
-                casez (\$87 )
+                casez (\$91 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
@@ -494,7 +682,7 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                       endcase
                 endcase
           endcase
-          casez (\$89 )
+          casez (\$93 )
             1'h1:
                 casez (valid_in)
                   1'h1:
@@ -519,12 +707,14 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                 endcase
           endcase
         end
-      1'h1:
-          casez (\$91 )
+      2'h1:
+          casez (\$95 )
             1'h1:
-                casez (\$93 )
+                casez (\$97 )
                   1'h1:
                       casez (buffer_count)
+                        2'h1:
+                            \$next\buffer_count  = 2'h0;
                         2'h2:
                             \$next\buffer_count  = 2'h0;
                         2'h3:
@@ -541,16 +731,17 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
   always @* begin
     \$next\o_busy  = o_busy;
     casez (fsm_state)
-      1'h0:
+      2'h0:
         begin
-          casez ({ \$103 , \$97 , \$95  })
+          casez ({ \$107 , \$101 , \$99  })
             3'bzz1:
               begin
                 \$next\o_busy  = 1'h0;
-                casez (\$105 )
+                casez (\$109 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
+                          begin
                             casez (buffer_count)
                               2'h0:
                                   casez (data_in_ctr)
@@ -565,6 +756,16 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                                         \$next\o_busy  = 1'h1;
                                   endcase
                             endcase
+                            casez (end_in)
+                              1'h1:
+                                  casez (\$115 )
+                                    1'h1:
+                                        /* empty */;
+                                    1'hz:
+                                        \$next\o_busy  = 1'h1;
+                                  endcase
+                            endcase
+                          end
                       endcase
                 endcase
               end
@@ -573,6 +774,7 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                 \$next\o_busy  = 1'h0;
                 casez (valid_in)
                   1'h1:
+                    begin
                       casez (buffer_count)
                         2'h0:
                             casez (data_in_ctr)
@@ -587,15 +789,26 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                                   \$next\o_busy  = 1'h1;
                             endcase
                       endcase
+                      casez (end_in)
+                        1'h1:
+                            casez (\$121 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\o_busy  = 1'h1;
+                            endcase
+                      endcase
+                    end
                 endcase
               end
             3'b1zz:
-                \$next\o_busy  = \$111 ;
+                \$next\o_busy  = \$127 ;
           endcase
-          casez (\$113 )
+          casez (\$129 )
             1'h1:
                 casez (valid_in)
                   1'h1:
+                    begin
                       casez (buffer_count)
                         2'h0:
                             casez (data_in_ctr)
@@ -610,15 +823,28 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
                                   \$next\o_busy  = 1'h1;
                             endcase
                       endcase
+                      casez (end_in)
+                        1'h1:
+                            casez (\$135 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\o_busy  = 1'h1;
+                            endcase
+                      endcase
+                    end
                 endcase
           endcase
         end
-      1'h1:
-          casez (\$115 )
+      2'h1:
+          casez (\$137 )
             1'h1:
-                casez (\$117 )
+                casez (\$139 )
                   1'h1:
-                      \$next\o_busy  = 1'h0;
+                      casez (\$141 )
+                        1'h1:
+                            \$next\o_busy  = 1'h0;
+                      endcase
                 endcase
           endcase
     endcase
@@ -630,100 +856,271 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
   always @* begin
     \$next\fsm_state  = fsm_state;
     casez (fsm_state)
-      1'h0:
+      2'h0:
         begin
-          casez ({ \$127 , \$121 , \$119  })
+          casez ({ \$151 , \$145 , \$143  })
             3'bzz1:
-                casez (\$129 )
+                casez (\$153 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
+                          begin
                             casez (buffer_count)
                               2'h0:
                                   casez (data_in_ctr)
                                     3'h4:
-                                        \$next\fsm_state  = 1'h1;
+                                        \$next\fsm_state  = 2'h1;
                                   endcase
                               2'h1:
                                   casez (data_in_ctr)
                                     3'h3:
-                                        \$next\fsm_state  = 1'h1;
+                                        \$next\fsm_state  = 2'h1;
                                     3'h4:
-                                        \$next\fsm_state  = 1'h1;
+                                        \$next\fsm_state  = 2'h1;
                                   endcase
                             endcase
+                            casez (end_in)
+                              1'h1:
+                                  casez (\$159 )
+                                    1'h1:
+                                        \$next\fsm_state  = 2'h2;
+                                    1'hz:
+                                        \$next\fsm_state  = 2'h1;
+                                  endcase
+                            endcase
+                          end
                       endcase
                 endcase
             3'bz1z:
                 casez (valid_in)
                   1'h1:
+                    begin
                       casez (buffer_count)
                         2'h0:
                             casez (data_in_ctr)
                               3'h4:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                             endcase
                         2'h1:
                             casez (data_in_ctr)
                               3'h3:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                               3'h4:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                             endcase
                       endcase
+                      casez (end_in)
+                        1'h1:
+                            casez (\$165 )
+                              1'h1:
+                                  \$next\fsm_state  = 2'h2;
+                              1'hz:
+                                  \$next\fsm_state  = 2'h1;
+                            endcase
+                      endcase
+                    end
                 endcase
           endcase
-          casez (\$131 )
+          casez (\$167 )
             1'h1:
                 casez (valid_in)
                   1'h1:
+                    begin
                       casez (buffer_count)
                         2'h0:
                             casez (data_in_ctr)
                               3'h4:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                             endcase
                         2'h1:
                             casez (data_in_ctr)
                               3'h3:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                               3'h4:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
+                            endcase
+                      endcase
+                      casez (end_in)
+                        1'h1:
+                            casez (\$173 )
+                              1'h1:
+                                  \$next\fsm_state  = 2'h2;
+                              1'hz:
+                                  \$next\fsm_state  = 2'h1;
+                            endcase
+                      endcase
+                    end
+                endcase
+          endcase
+        end
+      2'h1:
+          casez (\$175 )
+            1'h1:
+                casez (\$177 )
+                  1'h1:
+                    begin
+                      casez (end_reg)
+                        1'h1:
+                            casez (\$179 )
+                              1'h1:
+                                  \$next\fsm_state  = 2'h3;
+                            endcase
+                      endcase
+                      casez (\$181 )
+                        1'h1:
+                            \$next\fsm_state  = 2'h0;
+                      endcase
+                    end
+                endcase
+          endcase
+      2'h2:
+          casez (\$183 )
+            1'h1:
+                \$next\fsm_state  = 2'h3;
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\fsm_state  = 2'h0;
+    endcase
+  end
+  always @* begin
+    \$next\end_out  = end_out;
+    casez (fsm_state)
+      2'h0:
+          casez ({ \$193 , \$187 , \$185  })
+            3'bzz1:
+                casez (\$195 )
+                  1'h1:
+                      casez (valid_in)
+                        1'h1:
+                            casez (end_in)
+                              1'h1:
+                                  casez (\$201 )
+                                    1'h1:
+                                        \$next\end_out  = 1'h1;
+                                  endcase
+                            endcase
+                      endcase
+                  1'hz:
+                      \$next\end_out  = end_out_reg;
+                endcase
+            3'bz1z:
+                casez (valid_in)
+                  1'h1:
+                      casez (end_in)
+                        1'h1:
+                            casez (\$207 )
+                              1'h1:
+                                  \$next\end_out  = 1'h1;
                             endcase
                       endcase
                 endcase
           endcase
-        end
-      1'h1:
-          casez (\$133 )
+      2'h1:
+          casez (\$209 )
             1'h1:
-                casez (\$135 )
+                casez (\$211 )
                   1'h1:
-                      \$next\fsm_state  = 1'h0;
+                      casez (end_reg)
+                        1'h1:
+                            casez (\$213 )
+                              1'h1:
+                                  \$next\end_out  = 1'h1;
+                            endcase
+                      endcase
+                  1'hz:
+                      \$next\end_out  = end_out_reg;
+                endcase
+          endcase
+      2'h2:
+          casez (\$215 )
+            1'h1:
+                casez (data_out_valid)
+                  1'h1:
+                      \$next\end_out  = 1'h1;
                 endcase
           endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\fsm_state  = 1'h0;
+          \$next\end_out  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\end_reg  = end_reg;
+    casez (fsm_state)
+      2'h0:
+        begin
+          casez ({ \$225 , \$219 , \$217  })
+            3'bzz1:
+                casez (\$227 )
+                  1'h1:
+                      casez (valid_in)
+                        1'h1:
+                            casez (end_in)
+                              1'h1:
+                                  casez (\$233 )
+                                    1'h1:
+                                        /* empty */;
+                                    1'hz:
+                                        \$next\end_reg  = 1'h1;
+                                  endcase
+                            endcase
+                      endcase
+                endcase
+            3'bz1z:
+                casez (valid_in)
+                  1'h1:
+                      casez (end_in)
+                        1'h1:
+                            casez (\$239 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\end_reg  = 1'h1;
+                            endcase
+                      endcase
+                endcase
+          endcase
+          casez (\$241 )
+            1'h1:
+                casez (valid_in)
+                  1'h1:
+                      casez (end_in)
+                        1'h1:
+                            casez (\$247 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\end_reg  = 1'h1;
+                            endcase
+                      endcase
+                endcase
+          endcase
+        end
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\end_reg  = 1'h0;
     endcase
   end
   always @* begin
     \$next\data_out_valid  = data_out_valid;
     casez (fsm_state)
-      1'h0:
-          casez ({ \$145 , \$139 , \$137  })
+      2'h0:
+          casez ({ \$257 , \$251 , \$249  })
             3'bzz1:
                 \$next\data_out_valid  = 1'h0;
             3'bz1z:
                 \$next\data_out_valid  = 1'h0;
             3'b1zz:
-                \$next\data_out_valid  = \$151 ;
+                \$next\data_out_valid  = \$263 ;
           endcase
-      1'h1:
-          casez (\$153 )
+      2'h1:
+          casez (\$265 )
             1'h1:
-                casez (\$155 )
+                casez (\$267 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -739,8 +1136,8 @@ module top(valid_in, data_in_ctr, data_in, rst, clk, valid_out, o_busy, data_out
   always @* begin
     \$next\data_out_reg  = data_out_reg;
     casez (fsm_state)
-      1'h0:
-          casez (\$157 )
+      2'h0:
+          casez (\$269 )
             1'h1:
                 casez (valid_in)
                   1'h1:

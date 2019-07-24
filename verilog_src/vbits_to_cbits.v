@@ -2,123 +2,195 @@
 
 (* \nmigen.hierarchy  = "top.input_handler" *)
 (* generator = "nMigen" *)
-module input_handler(enc_in, enc_in_ctr, in_end, dec_buff, rst, clk, new_buff_consum_actv, latch_input, buffer, end_out, new_buff_consum, buff_consum, valid_in);
+module input_handler(valid_in, enc_in, enc_in_ctr, in_end, rst, clk, latch_input, buffer, end_out, new_buff_consum, buff_consum, dec_buff);
   wire \$1 ;
-  wire [206:0] \$11 ;
-  wire [206:0] \$12 ;
-  wire [206:0] \$14 ;
-  wire \$16 ;
-  wire [9:0] \$18 ;
-  wire [8:0] \$19 ;
-  wire [9:0] \$21 ;
-  wire [8:0] \$23 ;
-  wire [8:0] \$24 ;
-  wire [8:0] \$26 ;
-  wire [8:0] \$27 ;
-  wire \$29 ;
-  wire [8:0] \$3 ;
-  wire \$31 ;
+  wire \$11 ;
+  wire \$13 ;
+  wire \$15 ;
+  wire \$17 ;
+  wire \$19 ;
+  wire \$21 ;
+  wire \$23 ;
+  wire \$25 ;
+  wire [206:0] \$27 ;
+  wire [206:0] \$28 ;
+  wire \$3 ;
+  wire [206:0] \$30 ;
+  wire \$32 ;
+  wire [206:0] \$34 ;
+  wire [206:0] \$35 ;
+  wire [206:0] \$37 ;
+  wire \$39 ;
+  wire \$41 ;
+  wire [9:0] \$43 ;
+  wire [8:0] \$44 ;
+  wire [9:0] \$46 ;
+  wire [8:0] \$48 ;
+  wire [8:0] \$49 ;
   wire \$5 ;
-  wire [8:0] \$7 ;
+  wire [8:0] \$51 ;
+  wire [8:0] \$52 ;
+  wire \$54 ;
+  wire [9:0] \$56 ;
+  wire [8:0] \$57 ;
+  wire [9:0] \$59 ;
+  wire [8:0] \$61 ;
+  wire [8:0] \$62 ;
+  wire [8:0] \$64 ;
+  wire [8:0] \$65 ;
+  wire \$7 ;
   wire \$9 ;
-  (* src = "./migen_src/vbits_to_cbits.py:114" *)
+  (* src = "./migen_src/vbits_to_cbits.py:171" *)
+  reg \$next\buff_change ;
+  (* src = "./migen_src/vbits_to_cbits.py:146" *)
   reg [7:0] \$next\buff_consum ;
-  (* src = "./migen_src/vbits_to_cbits.py:113" *)
+  (* src = "./migen_src/vbits_to_cbits.py:166" *)
+  reg [7:0] \$next\buff_free ;
+  (* src = "./migen_src/vbits_to_cbits.py:192" *)
+  reg \$next\buff_reg ;
+  (* src = "./migen_src/vbits_to_cbits.py:145" *)
   reg [143:0] \$next\buffer ;
-  (* src = "./migen_src/vbits_to_cbits.py:139" *)
+  (* src = "./migen_src/vbits_to_cbits.py:186" *)
+  reg [47:0] \$next\enc_in_buff ;
+  (* src = "./migen_src/vbits_to_cbits.py:187" *)
+  reg [5:0] \$next\enc_in_ctr_buff ;
+  (* src = "./migen_src/vbits_to_cbits.py:181" *)
   reg [5:0] \$next\enc_in_ctr_reg ;
-  (* src = "./migen_src/vbits_to_cbits.py:138" *)
+  (* src = "./migen_src/vbits_to_cbits.py:180" *)
   reg [47:0] \$next\enc_in_reg ;
-  (* src = "./migen_src/vbits_to_cbits.py:122" *)
+  (* src = "./migen_src/vbits_to_cbits.py:153" *)
   reg \$next\end_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "./migen_src/vbits_to_cbits.py:140" *)
+  (* src = "./migen_src/vbits_to_cbits.py:188" *)
+  reg \$next\in_end_buff ;
+  (* src = "./migen_src/vbits_to_cbits.py:182" *)
   reg \$next\in_end_reg ;
-  (* src = "./migen_src/vbits_to_cbits.py:134" *)
+  (* src = "./migen_src/vbits_to_cbits.py:170" *)
   reg \$next\inc_buff ;
-  (* src = "./migen_src/vbits_to_cbits.py:106" *)
+  (* src = "./migen_src/vbits_to_cbits.py:138" *)
   reg \$next\latch_input ;
-  (* src = "./migen_src/vbits_to_cbits.py:115" *)
+  (* src = "./migen_src/vbits_to_cbits.py:147" *)
   reg [7:0] \$next\new_buff_consum ;
-  (* src = "./migen_src/vbits_to_cbits.py:116" *)
-  reg \$next\new_buff_consum_actv ;
-  (* src = "./migen_src/vbits_to_cbits.py:145" *)
-  reg \$next\normal_cond ;
-  (* src = "./migen_src/vbits_to_cbits.py:141" *)
+  (* src = "./migen_src/vbits_to_cbits.py:167" *)
+  reg [7:0] \$next\new_buff_free ;
+  (* src = "./migen_src/vbits_to_cbits.py:165" *)
+  reg \$next\start ;
+  (* src = "./migen_src/vbits_to_cbits.py:189" *)
+  reg \$next\valid_in_buff ;
+  (* src = "./migen_src/vbits_to_cbits.py:176" *)
+  reg \$next\valid_in_late ;
+  (* src = "./migen_src/vbits_to_cbits.py:183" *)
   reg \$next\valid_in_reg ;
+  (* src = "./migen_src/vbits_to_cbits.py:171" *)
+  wire buff_change;
   (* init = 8'h00 *)
-  (* src = "./migen_src/vbits_to_cbits.py:114" *)
+  (* src = "./migen_src/vbits_to_cbits.py:146" *)
   output [7:0] buff_consum;
   reg [7:0] buff_consum = 8'h00;
+  (* init = 8'h00 *)
+  (* src = "./migen_src/vbits_to_cbits.py:166" *)
+  reg [7:0] buff_free = 8'h00;
+  (* src = "./migen_src/vbits_to_cbits.py:192" *)
+  wire buff_reg;
   (* init = 144'h000000000000000000000000000000000000 *)
-  (* src = "./migen_src/vbits_to_cbits.py:113" *)
+  (* src = "./migen_src/vbits_to_cbits.py:145" *)
   output [143:0] buffer;
   reg [143:0] buffer = 144'h000000000000000000000000000000000000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/vbits_to_cbits.py:119" *)
+  (* src = "./migen_src/vbits_to_cbits.py:150" *)
   input dec_buff;
-  (* src = "./migen_src/vbits_to_cbits.py:107" *)
+  (* src = "./migen_src/vbits_to_cbits.py:139" *)
   input [47:0] enc_in;
-  (* src = "./migen_src/vbits_to_cbits.py:108" *)
+  (* init = 48'h000000000000 *)
+  (* src = "./migen_src/vbits_to_cbits.py:186" *)
+  reg [47:0] enc_in_buff = 48'h000000000000;
+  (* src = "./migen_src/vbits_to_cbits.py:140" *)
   input [5:0] enc_in_ctr;
   (* init = 6'h00 *)
-  (* src = "./migen_src/vbits_to_cbits.py:139" *)
+  (* src = "./migen_src/vbits_to_cbits.py:187" *)
+  reg [5:0] enc_in_ctr_buff = 6'h00;
+  (* init = 6'h00 *)
+  (* src = "./migen_src/vbits_to_cbits.py:181" *)
   reg [5:0] enc_in_ctr_reg = 6'h00;
   (* init = 48'h000000000000 *)
-  (* src = "./migen_src/vbits_to_cbits.py:138" *)
+  (* src = "./migen_src/vbits_to_cbits.py:180" *)
   reg [47:0] enc_in_reg = 48'h000000000000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:122" *)
+  (* src = "./migen_src/vbits_to_cbits.py:153" *)
   output end_out;
   reg end_out = 1'h0;
   (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
-  (* src = "./migen_src/vbits_to_cbits.py:109" *)
+  (* src = "./migen_src/vbits_to_cbits.py:141" *)
   input in_end;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:140" *)
+  (* src = "./migen_src/vbits_to_cbits.py:188" *)
+  reg in_end_buff = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/vbits_to_cbits.py:182" *)
   reg in_end_reg = 1'h0;
-  (* src = "./migen_src/vbits_to_cbits.py:134" *)
+  (* src = "./migen_src/vbits_to_cbits.py:170" *)
   wire inc_buff;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:106" *)
+  (* src = "./migen_src/vbits_to_cbits.py:138" *)
   output latch_input;
   reg latch_input = 1'h0;
-  (* src = "./migen_src/vbits_to_cbits.py:115" *)
+  (* src = "./migen_src/vbits_to_cbits.py:147" *)
   output [7:0] new_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:116" *)
-  output new_buff_consum_actv;
-  (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:145" *)
-  reg normal_cond = 1'h0;
+  (* src = "./migen_src/vbits_to_cbits.py:167" *)
+  wire [7:0] new_buff_free;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/vbits_to_cbits.py:110" *)
+  (* init = 1'h0 *)
+  (* src = "./migen_src/vbits_to_cbits.py:165" *)
+  reg start = 1'h0;
+  (* src = "./migen_src/vbits_to_cbits.py:142" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:141" *)
+  (* src = "./migen_src/vbits_to_cbits.py:189" *)
+  reg valid_in_buff = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/vbits_to_cbits.py:176" *)
+  reg valid_in_late = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/vbits_to_cbits.py:183" *)
   reg valid_in_reg = 1'h0;
-  assign \$9  = \$7  <= (* src = "./migen_src/vbits_to_cbits.py:191" *) 7'h60;
-  assign \$12  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:160" *) enc_in_ctr_reg;
-  assign \$14  = \$12  | (* src = "./migen_src/vbits_to_cbits.py:160" *) enc_in_reg;
-  assign \$16  = inc_buff & (* src = "./migen_src/vbits_to_cbits.py:197" *) dec_buff;
-  assign \$1  = inc_buff | (* src = "./migen_src/vbits_to_cbits.py:204" *) dec_buff;
-  assign \$19  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:198" *) 6'h20;
-  assign \$21  = \$19  + (* src = "./migen_src/vbits_to_cbits.py:198" *) enc_in_ctr_reg;
-  assign \$24  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:200" *) 6'h20;
-  assign \$27  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:202" *) enc_in_ctr_reg;
-  assign \$29  = inc_buff | (* src = "./migen_src/vbits_to_cbits.py:204" *) dec_buff;
-  assign \$31  = new_buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:208" *) 7'h60;
-  assign \$3  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:191" *) enc_in_ctr_reg;
-  assign \$5  = \$3  <= (* src = "./migen_src/vbits_to_cbits.py:191" *) 7'h60;
-  assign \$7  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:191" *) enc_in_ctr_reg;
+  assign \$9  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$11  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$13  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$15  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$17  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$1  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$19  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$21  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$23  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$25  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$28  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:206" *) enc_in_ctr_reg;
+  assign \$30  = \$28  | (* src = "./migen_src/vbits_to_cbits.py:206" *) enc_in_reg;
+  assign \$32  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$35  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:206" *) enc_in_ctr_reg;
+  assign \$37  = \$35  | (* src = "./migen_src/vbits_to_cbits.py:206" *) enc_in_reg;
+  assign \$3  = inc_buff | (* src = "./migen_src/vbits_to_cbits.py:173" *) dec_buff;
+  assign \$39  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$41  = inc_buff & (* src = "./migen_src/vbits_to_cbits.py:289" *) dec_buff;
+  assign \$44  = buff_free + (* src = "./migen_src/vbits_to_cbits.py:290" *) 6'h20;
+  assign \$46  = \$44  - (* src = "./migen_src/vbits_to_cbits.py:290" *) enc_in_ctr_reg;
+  assign \$49  = buff_free + (* src = "./migen_src/vbits_to_cbits.py:293" *) 6'h20;
+  assign \$52  = buff_free - (* src = "./migen_src/vbits_to_cbits.py:295" *) enc_in_ctr_reg;
+  assign \$54  = inc_buff & (* src = "./migen_src/vbits_to_cbits.py:298" *) dec_buff;
+  assign \$57  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:299" *) 6'h20;
+  assign \$5  = start == (* src = "./migen_src/vbits_to_cbits.py:232" *) 1'h0;
+  assign \$59  = \$57  + (* src = "./migen_src/vbits_to_cbits.py:299" *) enc_in_ctr_reg;
+  assign \$62  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:302" *) 6'h20;
+  assign \$65  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:304" *) enc_in_ctr_reg;
+  assign \$7  = start == (* src = "./migen_src/vbits_to_cbits.py:232" *) 1'h0;
   always @(posedge clk)
-      buffer <= \$next\buffer ;
+      latch_input <= \$next\latch_input ;
   always @(posedge clk)
-      valid_in_reg <= \$next\valid_in_reg ;
+      fsm_state <= \$next\fsm_state ;
   always @(posedge clk)
       in_end_reg <= \$next\in_end_reg ;
   always @(posedge clk)
@@ -126,112 +198,121 @@ module input_handler(enc_in, enc_in_ctr, in_end, dec_buff, rst, clk, new_buff_co
   always @(posedge clk)
       enc_in_reg <= \$next\enc_in_reg ;
   always @(posedge clk)
-      fsm_state <= \$next\fsm_state ;
+      in_end_buff <= \$next\in_end_buff ;
   always @(posedge clk)
-      latch_input <= \$next\latch_input ;
+      enc_in_ctr_buff <= \$next\enc_in_ctr_buff ;
   always @(posedge clk)
-      normal_cond <= \$next\normal_cond ;
+      enc_in_buff <= \$next\enc_in_buff ;
+  always @(posedge clk)
+      start <= \$next\start ;
+  always @(posedge clk)
+      buff_free <= \$next\buff_free ;
+  always @(posedge clk)
+      valid_in_late <= \$next\valid_in_late ;
   always @(posedge clk)
       buff_consum <= \$next\buff_consum ;
   always @(posedge clk)
+      valid_in_reg <= \$next\valid_in_reg ;
+  always @(posedge clk)
       end_out <= \$next\end_out ;
+  always @(posedge clk)
+      buffer <= \$next\buffer ;
+  always @(posedge clk)
+      valid_in_buff <= \$next\valid_in_buff ;
   always @* begin
     \$next\inc_buff  = 1'h0;
     \$next\inc_buff  = 1'h0;
     casez (fsm_state)
       2'h1:
+          \$next\inc_buff  = 1'h1;
+      2'h2:
           casez (valid_in_reg)
             1'h1:
-                \$next\inc_buff  = 1'h1;
+                casez (\$1 )
+                  1'h1:
+                      \$next\inc_buff  = 1'h1;
+                endcase
           endcase
     endcase
   end
   always @* begin
-    \$next\new_buff_consum_actv  = 1'h0;
-    \$next\new_buff_consum_actv  = 1'h0;
-    casez (\$1 )
-      1'h1:
-          \$next\new_buff_consum_actv  = 1'h1;
-    endcase
+    \$next\buff_change  = 1'h0;
+    \$next\buff_change  = \$3 ;
   end
   always @* begin
-    \$next\new_buff_consum  = 8'h00;
-    casez ({ inc_buff, dec_buff, \$16  })
-      3'bzz1:
-          \$next\new_buff_consum  = \$18 [7:0];
-      3'bz1z:
-          \$next\new_buff_consum  = \$23 [7:0];
-      3'b1zz:
-          \$next\new_buff_consum  = \$26 [7:0];
-    endcase
-  end
-  always @* begin
-    \$next\buff_consum  = buff_consum;
-    casez (\$29 )
-      1'h1:
-          \$next\buff_consum  = new_buff_consum;
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\buff_consum  = 8'h00;
-    endcase
-  end
-  always @* begin
-    \$next\normal_cond  = normal_cond;
-    \$next\normal_cond  = \$31 ;
-    casez (rst)
-      1'h1:
-          \$next\normal_cond  = 1'h0;
-    endcase
-  end
-  always @* begin
-    \$next\latch_input  = latch_input;
+    \$next\enc_in_ctr_reg  = enc_in_ctr_reg;
     casez (fsm_state)
       2'h0:
-          casez (normal_cond)
-            1'h1:
-                casez ({ valid_in, valid_in_reg })
-                  2'bz1:
-                      \$next\latch_input  = 1'h1;
-                  2'b1z:
-                      \$next\latch_input  = 1'h1;
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$17 )
+                  1'h1:
+                      \$next\enc_in_ctr_reg  = enc_in_ctr_buff;
                 endcase
           endcase
       2'h1:
-          casez (valid_in_reg)
-            1'h1:
-                casez (\$5 )
-                  1'h1:
-                      \$next\latch_input  = 1'h1;
-                  1'hz:
-                      \$next\latch_input  = 1'h0;
-                endcase
-          endcase
+          \$next\enc_in_ctr_reg  = enc_in_ctr_buff;
+      2'h3:
+          \$next\enc_in_ctr_reg  = enc_in_ctr;
+      2'h2:
+          \$next\enc_in_ctr_reg  = enc_in_ctr;
     endcase
     casez (rst)
       1'h1:
-          \$next\latch_input  = 1'h0;
+          \$next\enc_in_ctr_reg  = 6'h00;
+    endcase
+  end
+  always @* begin
+    \$next\in_end_reg  = in_end_reg;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$19 )
+                  1'h1:
+                      \$next\in_end_reg  = in_end_buff;
+                endcase
+          endcase
+      2'h1:
+          \$next\in_end_reg  = in_end_buff;
+      2'h3:
+          \$next\in_end_reg  = in_end;
+      2'h2:
+          \$next\in_end_reg  = in_end;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\in_end_reg  = 1'h0;
     endcase
   end
   always @* begin
     \$next\fsm_state  = fsm_state;
     casez (fsm_state)
       2'h0:
-          casez (normal_cond)
-            1'h1:
-                casez ({ valid_in, valid_in_reg })
-                  2'bz1:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$21 )
+                  1'h1:
                       \$next\fsm_state  = 2'h1;
-                  2'b1z:
-                      \$next\fsm_state  = 2'h2;
                 endcase
+            2'b1z:
+                \$next\fsm_state  = 2'h2;
+            2'hz:
+                \$next\fsm_state  = 2'h3;
           endcase
-      2'h2:
-          \$next\fsm_state  = 2'h1;
       2'h1:
           casez (valid_in_reg)
             1'h1:
-                casez (\$9 )
+                \$next\fsm_state  = 2'h2;
+            1'hz:
+                \$next\fsm_state  = 2'h3;
+          endcase
+      2'h3:
+          \$next\fsm_state  = 2'h2;
+      2'h2:
+          casez (valid_in_reg)
+            1'h1:
+                casez (\$23 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -245,64 +326,65 @@ module input_handler(enc_in, enc_in_ctr, in_end, dec_buff, rst, clk, new_buff_co
     endcase
   end
   always @* begin
-    \$next\enc_in_reg  = enc_in_reg;
+    \$next\latch_input  = latch_input;
     casez (fsm_state)
-      2'h2:
-          \$next\enc_in_reg  = enc_in;
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                /* empty */;
+            2'b1z:
+                \$next\latch_input  = 1'h1;
+            2'hz:
+                \$next\latch_input  = 1'h1;
+          endcase
       2'h1:
-          \$next\enc_in_reg  = enc_in;
+          casez (valid_in_reg)
+            1'h1:
+                \$next\latch_input  = 1'h1;
+            1'hz:
+                \$next\latch_input  = 1'h1;
+          endcase
+      2'h2:
+          casez (valid_in_reg)
+            1'h1:
+                casez (\$25 )
+                  1'h1:
+                      \$next\latch_input  = 1'h1;
+                  1'hz:
+                      \$next\latch_input  = 1'h0;
+                endcase
+          endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\enc_in_reg  = 48'h000000000000;
+          \$next\latch_input  = 1'h0;
     endcase
   end
   always @* begin
-    \$next\enc_in_ctr_reg  = enc_in_ctr_reg;
+    \$next\valid_in_buff  = valid_in_buff;
     casez (fsm_state)
-      2'h2:
-          \$next\enc_in_ctr_reg  = enc_in_ctr;
       2'h1:
-          \$next\enc_in_ctr_reg  = enc_in_ctr;
+          \$next\valid_in_buff  = 1'h0;
+      2'h2:
+          \$next\valid_in_buff  = valid_in_reg;
     endcase
     casez (rst)
       1'h1:
-          \$next\enc_in_ctr_reg  = 6'h00;
-    endcase
-  end
-  always @* begin
-    \$next\in_end_reg  = in_end_reg;
-    casez (fsm_state)
-      2'h2:
-          \$next\in_end_reg  = in_end;
-      2'h1:
-          \$next\in_end_reg  = in_end;
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\in_end_reg  = 1'h0;
-    endcase
-  end
-  always @* begin
-    \$next\valid_in_reg  = valid_in_reg;
-    casez (fsm_state)
-      2'h2:
-          \$next\valid_in_reg  = valid_in;
-      2'h1:
-          \$next\valid_in_reg  = valid_in;
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\valid_in_reg  = 1'h0;
+          \$next\valid_in_buff  = 1'h0;
     endcase
   end
   always @* begin
     \$next\buffer  = buffer;
     casez (fsm_state)
       2'h1:
+          \$next\buffer  = \$27 [143:0];
+      2'h2:
           casez (valid_in_reg)
             1'h1:
-                \$next\buffer  = \$11 [143:0];
+                casez (\$32 )
+                  1'h1:
+                      \$next\buffer  = \$34 [143:0];
+                endcase
           endcase
     endcase
     casez (rst)
@@ -314,9 +396,14 @@ module input_handler(enc_in, enc_in_ctr, in_end, dec_buff, rst, clk, new_buff_co
     \$next\end_out  = end_out;
     casez (fsm_state)
       2'h1:
+          \$next\end_out  = in_end_reg;
+      2'h2:
           casez (valid_in_reg)
             1'h1:
-                \$next\end_out  = in_end_reg;
+                casez (\$39 )
+                  1'h1:
+                      \$next\end_out  = in_end_reg;
+                endcase
           endcase
     endcase
     casez (rst)
@@ -324,18 +411,206 @@ module input_handler(enc_in, enc_in_ctr, in_end, dec_buff, rst, clk, new_buff_co
           \$next\end_out  = 1'h0;
     endcase
   end
-  assign \$11  = \$14 ;
-  assign \$18  = \$21 ;
-  assign \$23  = \$24 ;
-  assign \$26  = \$27 ;
+  always @* begin
+    \$next\valid_in_reg  = valid_in_reg;
+    casez (fsm_state)
+      2'h3:
+          \$next\valid_in_reg  = valid_in;
+      2'h2:
+          \$next\valid_in_reg  = valid_in;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\valid_in_reg  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\new_buff_free  = 8'h00;
+    casez (\$41 )
+      1'h1:
+          \$next\new_buff_free  = \$43 [7:0];
+      1'hz:
+          casez ({ inc_buff, dec_buff })
+            2'bz1:
+                \$next\new_buff_free  = \$48 [7:0];
+            2'b1z:
+                \$next\new_buff_free  = \$51 [7:0];
+          endcase
+    endcase
+  end
+  always @* begin
+    \$next\new_buff_consum  = 8'h00;
+    casez (\$54 )
+      1'h1:
+          \$next\new_buff_consum  = \$56 [7:0];
+      1'hz:
+          casez ({ inc_buff, dec_buff })
+            2'bz1:
+                \$next\new_buff_consum  = \$61 [7:0];
+            2'b1z:
+                \$next\new_buff_consum  = \$64 [7:0];
+          endcase
+    endcase
+  end
+  always @* begin
+    \$next\valid_in_late  = valid_in_late;
+    \$next\valid_in_late  = valid_in;
+    casez (rst)
+      1'h1:
+          \$next\valid_in_late  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\buff_consum  = buff_consum;
+    casez (buff_change)
+      1'h1:
+          \$next\buff_consum  = new_buff_consum;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\buff_consum  = 8'h00;
+    endcase
+  end
+  always @* begin
+    \$next\buff_reg  = 1'h0;
+    \$next\buff_reg  = 1'h0;
+    casez (fsm_state)
+      2'h3:
+          \$next\buff_reg  = 1'h1;
+      2'h2:
+          \$next\buff_reg  = 1'h1;
+    endcase
+  end
+  always @* begin
+    \$next\buff_free  = buff_free;
+    casez (\$5 )
+      1'h1:
+          \$next\buff_free  = 8'h90;
+    endcase
+    casez (buff_change)
+      1'h1:
+          \$next\buff_free  = new_buff_free;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\buff_free  = 8'h00;
+    endcase
+  end
+  always @* begin
+    \$next\start  = start;
+    casez (\$7 )
+      1'h1:
+          \$next\start  = 1'h1;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\start  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\enc_in_buff  = enc_in_buff;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$9 )
+                  1'h1:
+                      \$next\enc_in_buff  = enc_in_reg;
+                endcase
+          endcase
+      2'h1:
+          \$next\enc_in_buff  = enc_in_reg;
+      2'h2:
+          \$next\enc_in_buff  = enc_in_reg;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\enc_in_buff  = 48'h000000000000;
+    endcase
+  end
+  always @* begin
+    \$next\enc_in_ctr_buff  = enc_in_ctr_buff;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$11 )
+                  1'h1:
+                      \$next\enc_in_ctr_buff  = enc_in_ctr_reg;
+                endcase
+          endcase
+      2'h1:
+          \$next\enc_in_ctr_buff  = enc_in_ctr_reg;
+      2'h2:
+          \$next\enc_in_ctr_buff  = enc_in_ctr_reg;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\enc_in_ctr_buff  = 6'h00;
+    endcase
+  end
+  always @* begin
+    \$next\in_end_buff  = in_end_buff;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$13 )
+                  1'h1:
+                      \$next\in_end_buff  = in_end_reg;
+                endcase
+          endcase
+      2'h1:
+          \$next\in_end_buff  = in_end_reg;
+      2'h2:
+          \$next\in_end_buff  = in_end_reg;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\in_end_buff  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\enc_in_reg  = enc_in_reg;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$15 )
+                  1'h1:
+                      \$next\enc_in_reg  = enc_in_buff;
+                endcase
+          endcase
+      2'h1:
+          \$next\enc_in_reg  = enc_in_buff;
+      2'h3:
+          \$next\enc_in_reg  = enc_in;
+      2'h2:
+          \$next\enc_in_reg  = enc_in;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\enc_in_reg  = 48'h000000000000;
+    endcase
+  end
+  assign \$27  = \$30 ;
+  assign \$34  = \$37 ;
+  assign \$43  = \$46 ;
+  assign \$48  = \$49 ;
+  assign \$51  = \$52 ;
+  assign \$56  = \$59 ;
+  assign \$61  = \$62 ;
+  assign \$64  = \$65 ;
   assign new_buff_consum = \$next\new_buff_consum ;
-  assign new_buff_consum_actv = \$next\new_buff_consum_actv ;
+  assign new_buff_free = \$next\new_buff_free ;
+  assign buff_reg = \$next\buff_reg ;
+  assign buff_change = \$next\buff_change ;
   assign inc_buff = \$next\inc_buff ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.output_handler" *)
 (* generator = "nMigen" *)
-module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, busy_in, rst, clk, dec_buff_out, data_out, valid_out, end_out, buff_consum);
+module output_handler(end_in, buffer, busy_in, rst, clk, dec_buff_out, data_out, end_out, valid_out, buff_consum);
   wire [8:0] \$1 ;
   wire \$11 ;
   wire \$13 ;
@@ -345,154 +620,158 @@ module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, bus
   wire [8:0] \$2 ;
   wire \$21 ;
   wire \$23 ;
-  wire [143:0] \$25 ;
-  wire [143:0] \$26 ;
-  wire [270:0] \$28 ;
-  wire [270:0] \$29 ;
+  wire \$25 ;
+  wire \$27 ;
+  wire \$29 ;
   wire \$31 ;
   wire \$33 ;
   wire \$35 ;
-  wire [143:0] \$37 ;
-  wire [143:0] \$38 ;
+  wire \$37 ;
+  wire [143:0] \$39 ;
   wire [8:0] \$4 ;
-  wire [270:0] \$40 ;
-  wire [270:0] \$41 ;
-  wire \$43 ;
+  wire [143:0] \$40 ;
+  wire [174:0] \$42 ;
+  wire [174:0] \$43 ;
   wire \$45 ;
   wire \$47 ;
   wire \$49 ;
   wire [8:0] \$5 ;
-  wire \$51 ;
-  wire \$53 ;
-  wire \$55 ;
+  wire [143:0] \$51 ;
+  wire [143:0] \$52 ;
+  wire [174:0] \$54 ;
+  wire [174:0] \$55 ;
   wire \$57 ;
   wire \$59 ;
   wire \$61 ;
   wire \$63 ;
   wire \$65 ;
+  wire \$67 ;
+  wire \$69 ;
   wire \$7 ;
+  wire \$71 ;
+  wire \$73 ;
+  wire \$75 ;
+  wire \$77 ;
+  wire \$79 ;
   wire \$9 ;
-  (* src = "./migen_src/vbits_to_cbits.py:49" *)
+  (* src = "./migen_src/vbits_to_cbits.py:84" *)
   reg \$next\buff_consum_greater_eq ;
-  (* src = "./migen_src/vbits_to_cbits.py:48" *)
+  (* src = "./migen_src/vbits_to_cbits.py:83" *)
   reg \$next\buff_consum_less_eq ;
-  (* src = "./migen_src/vbits_to_cbits.py:17" *)
+  (* src = "./migen_src/vbits_to_cbits.py:52" *)
   reg [31:0] \$next\data_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:28" *)
+  (* src = "./migen_src/vbits_to_cbits.py:63" *)
   reg \$next\dec_buff_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:19" *)
+  (* src = "./migen_src/vbits_to_cbits.py:54" *)
   reg \$next\end_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg \$next\fsm_state ;
-  (* src = "./migen_src/vbits_to_cbits.py:40" *)
-  reg [6:0] \$next\shift_left ;
-  (* src = "./migen_src/vbits_to_cbits.py:39" *)
+  reg [1:0] \$next\fsm_state ;
+  (* src = "./migen_src/vbits_to_cbits.py:75" *)
+  reg [4:0] \$next\shift_left ;
+  (* src = "./migen_src/vbits_to_cbits.py:74" *)
   reg [6:0] \$next\shift_right ;
-  (* src = "./migen_src/vbits_to_cbits.py:18" *)
+  (* src = "./migen_src/vbits_to_cbits.py:53" *)
   reg \$next\valid_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:24" *)
+  (* src = "./migen_src/vbits_to_cbits.py:59" *)
   input [7:0] buff_consum;
-  (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:49" *)
-  reg buff_consum_greater_eq = 1'h0;
-  (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:48" *)
-  reg buff_consum_less_eq = 1'h0;
-  (* src = "./migen_src/vbits_to_cbits.py:23" *)
+  (* src = "./migen_src/vbits_to_cbits.py:84" *)
+  wire buff_consum_greater_eq;
+  (* src = "./migen_src/vbits_to_cbits.py:83" *)
+  wire buff_consum_less_eq;
+  (* src = "./migen_src/vbits_to_cbits.py:58" *)
   input [143:0] buffer;
-  (* src = "./migen_src/vbits_to_cbits.py:20" *)
+  (* src = "./migen_src/vbits_to_cbits.py:55" *)
   input busy_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
   (* init = 32'd0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:17" *)
+  (* src = "./migen_src/vbits_to_cbits.py:52" *)
   output [31:0] data_out;
   reg [31:0] data_out = 32'd0;
-  (* src = "./migen_src/vbits_to_cbits.py:28" *)
+  (* src = "./migen_src/vbits_to_cbits.py:63" *)
   output dec_buff_out;
-  (* src = "./migen_src/vbits_to_cbits.py:31" *)
+  (* src = "./migen_src/vbits_to_cbits.py:66" *)
   input end_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:19" *)
+  (* src = "./migen_src/vbits_to_cbits.py:54" *)
   output end_out;
   reg end_out = 1'h0;
-  (* init = 1'h0 *)
+  (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg fsm_state = 1'h0;
-  (* src = "./migen_src/vbits_to_cbits.py:25" *)
-  input [7:0] new_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:26" *)
-  input new_buff_consum_actv;
+  reg [1:0] fsm_state = 2'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/vbits_to_cbits.py:40" *)
-  wire [6:0] shift_left;
-  (* src = "./migen_src/vbits_to_cbits.py:39" *)
+  (* src = "./migen_src/vbits_to_cbits.py:75" *)
+  wire [4:0] shift_left;
+  (* src = "./migen_src/vbits_to_cbits.py:74" *)
   wire [6:0] shift_right;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:18" *)
+  (* src = "./migen_src/vbits_to_cbits.py:53" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$9  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:73" *) \$7 ;
-  assign \$11  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:82" *) 1'h0;
-  assign \$13  = \$11  & (* src = "./migen_src/vbits_to_cbits.py:82" *) buff_consum_greater_eq;
-  assign \$15  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:85" *) 1'h0;
-  assign \$17  = new_buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:53" *) 6'h20;
-  assign \$19  = new_buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:54" *) 6'h20;
-  assign \$21  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:73" *) end_in;
-  assign \$23  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:73" *) \$21 ;
-  assign \$26  = buffer >>> (* src = "./migen_src/vbits_to_cbits.py:59" *) shift_right;
-  assign \$2  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:41" *) 6'h20;
-  assign \$29  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:61" *) shift_left;
-  assign \$31  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:82" *) 1'h0;
-  assign \$33  = \$31  & (* src = "./migen_src/vbits_to_cbits.py:82" *) buff_consum_greater_eq;
-  assign \$35  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:85" *) 1'h0;
-  assign \$38  = buffer >>> (* src = "./migen_src/vbits_to_cbits.py:59" *) shift_right;
-  assign \$41  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:61" *) shift_left;
-  assign \$43  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:73" *) end_in;
-  assign \$45  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:73" *) \$43 ;
-  assign \$47  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:82" *) 1'h0;
-  assign \$49  = \$47  & (* src = "./migen_src/vbits_to_cbits.py:82" *) buff_consum_greater_eq;
-  assign \$51  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:85" *) 1'h0;
-  assign \$53  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:73" *) end_in;
-  assign \$55  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:73" *) \$53 ;
-  assign \$57  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:82" *) 1'h0;
-  assign \$5  = 6'h20 - (* src = "./migen_src/vbits_to_cbits.py:42" *) buff_consum;
-  assign \$59  = \$57  & (* src = "./migen_src/vbits_to_cbits.py:82" *) buff_consum_greater_eq;
-  assign \$61  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:85" *) 1'h0;
-  assign \$63  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:77" *) end_in;
-  assign \$65  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:92" *) end_in;
-  assign \$7  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:73" *) end_in;
-  always @(posedge clk)
-      end_out <= \$next\end_out ;
-  always @(posedge clk)
-      fsm_state <= \$next\fsm_state ;
+  assign \$9  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$7 ;
+  assign \$11  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$13  = \$11  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$15  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
+  assign \$17  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:87" *) 6'h20;
+  assign \$19  = buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:88" *) 6'h20;
+  assign \$21  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$23  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$21 ;
+  assign \$25  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:97" *) end_in;
+  assign \$27  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$2  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:76" *) 6'h20;
+  assign \$29  = \$27  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$31  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
+  assign \$33  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:97" *) end_in;
+  assign \$35  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$37  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$35 ;
+  assign \$40  = buffer >>> (* src = "./migen_src/vbits_to_cbits.py:93" *) shift_right;
+  assign \$43  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:95" *) shift_left;
+  assign \$45  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$47  = \$45  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$49  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
+  assign \$52  = buffer >>> (* src = "./migen_src/vbits_to_cbits.py:93" *) shift_right;
+  assign \$55  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:95" *) shift_left;
+  assign \$57  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$5  = 6'h20 - (* src = "./migen_src/vbits_to_cbits.py:77" *) buff_consum;
+  assign \$59  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$57 ;
+  assign \$61  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:97" *) end_in;
+  assign \$63  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$65  = \$63  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$67  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
+  assign \$69  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:97" *) end_in;
+  assign \$71  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$73  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$71 ;
+  assign \$75  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$77  = \$75  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$7  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$79  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
   always @(posedge clk)
       valid_out <= \$next\valid_out ;
   always @(posedge clk)
+      end_out <= \$next\end_out ;
+  always @(posedge clk)
       data_out <= \$next\data_out ;
   always @(posedge clk)
-      buff_consum_less_eq <= \$next\buff_consum_less_eq ;
-  always @(posedge clk)
-      buff_consum_greater_eq <= \$next\buff_consum_greater_eq ;
+      fsm_state <= \$next\fsm_state ;
   always @* begin
     \$next\shift_right  = 7'h00;
     \$next\shift_right  = \$1 [6:0];
   end
   always @* begin
-    \$next\shift_left  = 7'h00;
-    \$next\shift_left  = \$4 [6:0];
+    \$next\shift_left  = 5'h00;
+    \$next\shift_left  = \$4 [4:0];
   end
   always @* begin
     \$next\dec_buff_out  = 1'h0;
     \$next\dec_buff_out  = 1'h0;
     casez (fsm_state)
-      1'h0:
+      2'h0:
           casez (\$9 )
             1'h1:
                 \$next\dec_buff_out  = 1'h1;
           endcase
-      1'h1:
+      2'h1:
           casez ({ \$15 , \$13  })
             2'bz1:
                 \$next\dec_buff_out  = 1'h1;
@@ -500,48 +779,64 @@ module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, bus
     endcase
   end
   always @* begin
-    \$next\buff_consum_greater_eq  = buff_consum_greater_eq;
-    casez (new_buff_consum_actv)
-      1'h1:
-          \$next\buff_consum_greater_eq  = \$17 ;
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\buff_consum_greater_eq  = 1'h0;
-    endcase
+    \$next\buff_consum_greater_eq  = 1'h0;
+    \$next\buff_consum_greater_eq  = \$17 ;
   end
   always @* begin
-    \$next\buff_consum_less_eq  = buff_consum_less_eq;
-    casez (new_buff_consum_actv)
-      1'h1:
-          \$next\buff_consum_less_eq  = \$19 ;
+    \$next\buff_consum_less_eq  = 1'h0;
+    \$next\buff_consum_less_eq  = \$19 ;
+  end
+  always @* begin
+    \$next\fsm_state  = fsm_state;
+    casez (fsm_state)
+      2'h0:
+          casez (\$23 )
+            1'h1:
+              begin
+                \$next\fsm_state  = 2'h1;
+                casez (\$25 )
+                  1'h1:
+                      \$next\fsm_state  = 2'h2;
+                endcase
+              end
+          endcase
+      2'h1:
+          casez ({ \$31 , \$29  })
+            2'bz1:
+                casez (\$33 )
+                  1'h1:
+                      \$next\fsm_state  = 2'h2;
+                endcase
+            2'b1z:
+                \$next\fsm_state  = 2'h0;
+          endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\buff_consum_less_eq  = 1'h0;
+          \$next\fsm_state  = 2'h0;
     endcase
   end
   always @* begin
     \$next\data_out  = data_out;
     casez (fsm_state)
-      1'h0:
-          casez (\$23 )
+      2'h0:
+          casez (\$37 )
             1'h1:
                 casez (buff_consum_greater_eq)
                   1'h1:
-                      \$next\data_out  = \$25 [31:0];
+                      \$next\data_out  = \$39 [31:0];
                   1'hz:
-                      \$next\data_out  = \$28 [31:0];
+                      \$next\data_out  = \$42 [31:0];
                 endcase
           endcase
-      1'h1:
-          casez ({ \$35 , \$33  })
+      2'h1:
+          casez ({ \$49 , \$47  })
             2'bz1:
                 casez (buff_consum_greater_eq)
                   1'h1:
-                      \$next\data_out  = \$37 [31:0];
+                      \$next\data_out  = \$51 [31:0];
                   1'hz:
-                      \$next\data_out  = \$40 [31:0];
+                      \$next\data_out  = \$54 [31:0];
                 endcase
           endcase
     endcase
@@ -551,15 +846,40 @@ module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, bus
     endcase
   end
   always @* begin
+    \$next\end_out  = end_out;
+    casez (fsm_state)
+      2'h0:
+          casez (\$59 )
+            1'h1:
+                casez (\$61 )
+                  1'h1:
+                      \$next\end_out  = 1'h1;
+                endcase
+          endcase
+      2'h1:
+          casez ({ \$67 , \$65  })
+            2'bz1:
+                casez (\$69 )
+                  1'h1:
+                      \$next\end_out  = 1'h1;
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
+    endcase
+  end
+  always @* begin
     \$next\valid_out  = valid_out;
     casez (fsm_state)
-      1'h0:
-          casez (\$45 )
+      2'h0:
+          casez (\$73 )
             1'h1:
                 \$next\valid_out  = 1'h1;
           endcase
-      1'h1:
-          casez ({ \$51 , \$49  })
+      2'h1:
+          casez ({ \$79 , \$77  })
             2'bz1:
                 \$next\valid_out  = 1'h1;
             2'b1z:
@@ -571,52 +891,14 @@ module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, bus
           \$next\valid_out  = 1'h0;
     endcase
   end
-  always @* begin
-    \$next\fsm_state  = fsm_state;
-    casez (fsm_state)
-      1'h0:
-          casez (\$55 )
-            1'h1:
-                \$next\fsm_state  = 1'h1;
-          endcase
-      1'h1:
-          casez ({ \$61 , \$59  })
-            2'bz1:
-                /* empty */;
-            2'b1z:
-                \$next\fsm_state  = 1'h0;
-          endcase
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\fsm_state  = 1'h0;
-    endcase
-  end
-  always @* begin
-    \$next\end_out  = end_out;
-    casez (fsm_state)
-      1'h0:
-          casez (\$63 )
-            1'h1:
-                \$next\end_out  = 1'h1;
-          endcase
-      1'h1:
-          casez (\$65 )
-            1'h1:
-                \$next\end_out  = 1'h1;
-          endcase
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\end_out  = 1'h0;
-    endcase
-  end
   assign \$1  = \$2 ;
   assign \$4  = \$5 ;
-  assign \$25  = \$26 ;
-  assign \$28  = \$29 ;
-  assign \$37  = \$38 ;
-  assign \$40  = \$41 ;
+  assign \$39  = \$40 ;
+  assign \$42  = \$43 ;
+  assign \$51  = \$52 ;
+  assign \$54  = \$55 ;
+  assign buff_consum_less_eq = \$next\buff_consum_less_eq ;
+  assign buff_consum_greater_eq = \$next\buff_consum_greater_eq ;
   assign dec_buff_out = \$next\dec_buff_out ;
   assign shift_left = \$next\shift_left ;
   assign shift_right = \$next\shift_right ;
@@ -626,99 +908,93 @@ endmodule
 (* top =  1  *)
 (* generator = "nMigen" *)
 module top(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, data_out, valid_out, latch_input, end_out, enc_in);
-  (* src = "./migen_src/vbits_to_cbits.py:233" *)
+  (* src = "./migen_src/vbits_to_cbits.py:332" *)
   reg [31:0] \$next\data_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:235" *)
+  (* src = "./migen_src/vbits_to_cbits.py:334" *)
   reg \$next\end_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:119" *)
+  (* src = "./migen_src/vbits_to_cbits.py:150" *)
   reg \$next\input_handler_dec_buff ;
-  (* src = "./migen_src/vbits_to_cbits.py:107" *)
+  (* src = "./migen_src/vbits_to_cbits.py:139" *)
   reg [47:0] \$next\input_handler_enc_in ;
-  (* src = "./migen_src/vbits_to_cbits.py:108" *)
+  (* src = "./migen_src/vbits_to_cbits.py:140" *)
   reg [5:0] \$next\input_handler_enc_in_ctr ;
-  (* src = "./migen_src/vbits_to_cbits.py:109" *)
+  (* src = "./migen_src/vbits_to_cbits.py:141" *)
   reg \$next\input_handler_in_end ;
-  (* src = "./migen_src/vbits_to_cbits.py:110" *)
+  (* src = "./migen_src/vbits_to_cbits.py:142" *)
   reg \$next\input_handler_valid_in ;
-  (* src = "./migen_src/vbits_to_cbits.py:227" *)
+  (* src = "./migen_src/vbits_to_cbits.py:326" *)
   reg \$next\latch_input ;
-  (* src = "./migen_src/vbits_to_cbits.py:24" *)
+  (* src = "./migen_src/vbits_to_cbits.py:60" *)
+  reg [7:0] \$next\new_buff_consum ;
+  (* src = "./migen_src/vbits_to_cbits.py:59" *)
   reg [7:0] \$next\output_handler_buff_consum ;
-  (* src = "./migen_src/vbits_to_cbits.py:23" *)
+  (* src = "./migen_src/vbits_to_cbits.py:58" *)
   reg [143:0] \$next\output_handler_buffer ;
-  (* src = "./migen_src/vbits_to_cbits.py:20" *)
+  (* src = "./migen_src/vbits_to_cbits.py:55" *)
   reg \$next\output_handler_busy_in ;
-  (* src = "./migen_src/vbits_to_cbits.py:31" *)
+  (* src = "./migen_src/vbits_to_cbits.py:66" *)
   reg \$next\output_handler_end_in ;
-  (* src = "./migen_src/vbits_to_cbits.py:25" *)
-  reg [7:0] \$next\output_handler_new_buff_consum ;
-  (* src = "./migen_src/vbits_to_cbits.py:26" *)
-  reg \$next\output_handler_new_buff_consum_actv ;
-  (* src = "./migen_src/vbits_to_cbits.py:234" *)
+  (* src = "./migen_src/vbits_to_cbits.py:333" *)
   reg \$next\valid_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:236" *)
+  (* src = "./migen_src/vbits_to_cbits.py:335" *)
   input busy_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/vbits_to_cbits.py:233" *)
+  (* src = "./migen_src/vbits_to_cbits.py:332" *)
   output [31:0] data_out;
-  (* src = "./migen_src/vbits_to_cbits.py:228" *)
+  (* src = "./migen_src/vbits_to_cbits.py:327" *)
   input [47:0] enc_in;
-  (* src = "./migen_src/vbits_to_cbits.py:229" *)
+  (* src = "./migen_src/vbits_to_cbits.py:328" *)
   input [5:0] enc_in_ctr;
-  (* src = "./migen_src/vbits_to_cbits.py:235" *)
+  (* src = "./migen_src/vbits_to_cbits.py:334" *)
   output end_out;
-  (* src = "./migen_src/vbits_to_cbits.py:230" *)
+  (* src = "./migen_src/vbits_to_cbits.py:329" *)
   input in_end;
-  (* src = "./migen_src/vbits_to_cbits.py:114" *)
+  (* src = "./migen_src/vbits_to_cbits.py:146" *)
   wire [7:0] input_handler_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:113" *)
+  (* src = "./migen_src/vbits_to_cbits.py:145" *)
   wire [143:0] input_handler_buffer;
-  (* src = "./migen_src/vbits_to_cbits.py:119" *)
+  (* src = "./migen_src/vbits_to_cbits.py:150" *)
   wire input_handler_dec_buff;
-  (* src = "./migen_src/vbits_to_cbits.py:107" *)
+  (* src = "./migen_src/vbits_to_cbits.py:139" *)
   wire [47:0] input_handler_enc_in;
-  (* src = "./migen_src/vbits_to_cbits.py:108" *)
+  (* src = "./migen_src/vbits_to_cbits.py:140" *)
   wire [5:0] input_handler_enc_in_ctr;
-  (* src = "./migen_src/vbits_to_cbits.py:122" *)
+  (* src = "./migen_src/vbits_to_cbits.py:153" *)
   wire input_handler_end_out;
-  (* src = "./migen_src/vbits_to_cbits.py:109" *)
+  (* src = "./migen_src/vbits_to_cbits.py:141" *)
   wire input_handler_in_end;
-  (* src = "./migen_src/vbits_to_cbits.py:106" *)
+  (* src = "./migen_src/vbits_to_cbits.py:138" *)
   wire input_handler_latch_input;
-  (* src = "./migen_src/vbits_to_cbits.py:115" *)
+  (* src = "./migen_src/vbits_to_cbits.py:147" *)
   wire [7:0] input_handler_new_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:116" *)
-  wire input_handler_new_buff_consum_actv;
-  (* src = "./migen_src/vbits_to_cbits.py:110" *)
+  (* src = "./migen_src/vbits_to_cbits.py:142" *)
   wire input_handler_valid_in;
-  (* src = "./migen_src/vbits_to_cbits.py:227" *)
+  (* src = "./migen_src/vbits_to_cbits.py:326" *)
   output latch_input;
-  (* src = "./migen_src/vbits_to_cbits.py:24" *)
+  (* src = "./migen_src/vbits_to_cbits.py:60" *)
+  wire [7:0] new_buff_consum;
+  (* src = "./migen_src/vbits_to_cbits.py:59" *)
   wire [7:0] output_handler_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:23" *)
+  (* src = "./migen_src/vbits_to_cbits.py:58" *)
   wire [143:0] output_handler_buffer;
-  (* src = "./migen_src/vbits_to_cbits.py:20" *)
+  (* src = "./migen_src/vbits_to_cbits.py:55" *)
   wire output_handler_busy_in;
-  (* src = "./migen_src/vbits_to_cbits.py:17" *)
+  (* src = "./migen_src/vbits_to_cbits.py:52" *)
   wire [31:0] output_handler_data_out;
-  (* src = "./migen_src/vbits_to_cbits.py:28" *)
+  (* src = "./migen_src/vbits_to_cbits.py:63" *)
   wire output_handler_dec_buff_out;
-  (* src = "./migen_src/vbits_to_cbits.py:31" *)
+  (* src = "./migen_src/vbits_to_cbits.py:66" *)
   wire output_handler_end_in;
-  (* src = "./migen_src/vbits_to_cbits.py:19" *)
+  (* src = "./migen_src/vbits_to_cbits.py:54" *)
   wire output_handler_end_out;
-  (* src = "./migen_src/vbits_to_cbits.py:25" *)
-  wire [7:0] output_handler_new_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:26" *)
-  wire output_handler_new_buff_consum_actv;
-  (* src = "./migen_src/vbits_to_cbits.py:18" *)
+  (* src = "./migen_src/vbits_to_cbits.py:53" *)
   wire output_handler_valid_out;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/vbits_to_cbits.py:231" *)
+  (* src = "./migen_src/vbits_to_cbits.py:330" *)
   input valid_in;
-  (* src = "./migen_src/vbits_to_cbits.py:234" *)
+  (* src = "./migen_src/vbits_to_cbits.py:333" *)
   output valid_out;
   input_handler input_handler (
     .buff_consum(input_handler_buff_consum),
@@ -731,7 +1007,6 @@ module top(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, data_out, valid_out,
     .in_end(input_handler_in_end),
     .latch_input(input_handler_latch_input),
     .new_buff_consum(input_handler_new_buff_consum),
-    .new_buff_consum_actv(input_handler_new_buff_consum_actv),
     .rst(rst),
     .valid_in(input_handler_valid_in)
   );
@@ -744,8 +1019,6 @@ module top(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, data_out, valid_out,
     .dec_buff_out(output_handler_dec_buff_out),
     .end_in(output_handler_end_in),
     .end_out(output_handler_end_out),
-    .new_buff_consum(output_handler_new_buff_consum),
-    .new_buff_consum_actv(output_handler_new_buff_consum_actv),
     .rst(rst),
     .valid_out(output_handler_valid_out)
   );
@@ -756,10 +1029,6 @@ module top(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, data_out, valid_out,
   always @* begin
     \$next\input_handler_enc_in  = 48'h000000000000;
     \$next\input_handler_enc_in  = enc_in;
-  end
-  always @* begin
-    \$next\output_handler_new_buff_consum_actv  = 1'h0;
-    \$next\output_handler_new_buff_consum_actv  = input_handler_new_buff_consum_actv;
   end
   always @* begin
     \$next\data_out  = 32'd0;
@@ -802,20 +1071,19 @@ module top(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, data_out, valid_out,
     \$next\output_handler_buff_consum  = input_handler_buff_consum;
   end
   always @* begin
-    \$next\output_handler_end_in  = 1'h0;
-    \$next\output_handler_end_in  = input_handler_end_out;
+    \$next\new_buff_consum  = 8'h00;
+    \$next\new_buff_consum  = input_handler_new_buff_consum;
   end
   always @* begin
-    \$next\output_handler_new_buff_consum  = 8'h00;
-    \$next\output_handler_new_buff_consum  = input_handler_new_buff_consum;
+    \$next\output_handler_end_in  = 1'h0;
+    \$next\output_handler_end_in  = input_handler_end_out;
   end
   assign output_handler_busy_in = \$next\output_handler_busy_in ;
   assign end_out = \$next\end_out ;
   assign valid_out = \$next\valid_out ;
   assign data_out = \$next\data_out ;
-  assign output_handler_new_buff_consum_actv = \$next\output_handler_new_buff_consum_actv ;
-  assign output_handler_new_buff_consum = \$next\output_handler_new_buff_consum ;
   assign output_handler_end_in = \$next\output_handler_end_in ;
+  assign new_buff_consum = \$next\new_buff_consum ;
   assign output_handler_buff_consum = \$next\output_handler_buff_consum ;
   assign output_handler_buffer = \$next\output_handler_buffer ;
   assign input_handler_dec_buff = \$next\input_handler_dec_buff ;

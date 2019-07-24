@@ -14,118 +14,134 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
   wire \$23 ;
   wire \$25 ;
   wire \$27 ;
-  wire [35:0] \$29 ;
+  wire \$29 ;
   wire \$3 ;
   wire \$31 ;
   wire \$33 ;
-  wire [6:0] \$35 ;
-  wire [6:0] \$36 ;
-  wire \$38 ;
-  wire \$40 ;
-  wire \$42 ;
+  wire \$35 ;
+  wire \$37 ;
+  wire \$39 ;
+  wire \$41 ;
+  wire \$43 ;
+  wire [35:0] \$45 ;
+  wire \$47 ;
+  wire \$49 ;
   wire \$5 ;
+  wire [6:0] \$51 ;
+  wire [6:0] \$52 ;
+  wire \$54 ;
+  wire \$56 ;
+  wire \$58 ;
   wire \$7 ;
   wire \$9 ;
-  (* src = "./migen_src/converter.py:32" *)
+  (* src = "./migen_src/converter.py:66" *)
   reg [35:0] \$next\enc_in ;
-  (* src = "./migen_src/converter.py:33" *)
+  (* src = "./migen_src/converter.py:67" *)
   reg [5:0] \$next\enc_in_ctr ;
-  (* src = "./migen_src/converter.py:58" *)
+  (* src = "./migen_src/converter.py:95" *)
   reg [5:0] \$next\enc_out_ctr_reg ;
-  (* src = "./migen_src/converter.py:53" *)
+  (* src = "./migen_src/converter.py:90" *)
   reg [35:0] \$next\enc_out_latch ;
-  (* src = "./migen_src/converter.py:57" *)
+  (* src = "./migen_src/converter.py:94" *)
   reg [61:0] \$next\enc_out_reg ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "./migen_src/converter.py:34" *)
+  (* src = "./migen_src/converter.py:68" *)
   reg \$next\in_end ;
-  (* src = "./migen_src/converter.py:25" *)
-  reg \$next\latch_output ;
-  (* src = "./migen_src/converter.py:54" *)
-  reg \$next\out_end_latch ;
   (* src = "./migen_src/converter.py:59" *)
+  reg \$next\latch_output ;
+  (* src = "./migen_src/converter.py:91" *)
+  reg \$next\out_end_latch ;
+  (* src = "./migen_src/converter.py:96" *)
   reg \$next\out_end_reg ;
-  (* src = "./migen_src/converter.py:35" *)
+  (* src = "./migen_src/converter.py:69" *)
   reg \$next\valid_in ;
-  (* src = "./migen_src/converter.py:60" *)
+  (* src = "./migen_src/converter.py:97" *)
   reg \$next\valid_out_reg ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/converter.py:36" *)
+  (* src = "./migen_src/converter.py:70" *)
   input close_full;
   (* init = 36'h000000000 *)
-  (* src = "./migen_src/converter.py:32" *)
+  (* src = "./migen_src/converter.py:66" *)
   output [35:0] enc_in;
   reg [35:0] enc_in = 36'h000000000;
   (* init = 6'h00 *)
-  (* src = "./migen_src/converter.py:33" *)
+  (* src = "./migen_src/converter.py:67" *)
   output [5:0] enc_in_ctr;
   reg [5:0] enc_in_ctr = 6'h00;
-  (* src = "./migen_src/converter.py:26" *)
+  (* src = "./migen_src/converter.py:60" *)
   input [61:0] enc_out;
-  (* src = "./migen_src/converter.py:27" *)
+  (* src = "./migen_src/converter.py:61" *)
   input [5:0] enc_out_ctr;
   (* init = 6'h00 *)
-  (* src = "./migen_src/converter.py:58" *)
+  (* src = "./migen_src/converter.py:95" *)
   reg [5:0] enc_out_ctr_reg = 6'h00;
   (* init = 36'h000000000 *)
-  (* src = "./migen_src/converter.py:53" *)
+  (* src = "./migen_src/converter.py:90" *)
   reg [35:0] enc_out_latch = 36'h000000000;
   (* init = 62'h0000000000000000 *)
-  (* src = "./migen_src/converter.py:57" *)
+  (* src = "./migen_src/converter.py:94" *)
   reg [61:0] enc_out_reg = 62'h0000000000000000;
   (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:34" *)
+  (* src = "./migen_src/converter.py:68" *)
   output in_end;
   reg in_end = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:25" *)
+  (* src = "./migen_src/converter.py:59" *)
   output latch_output;
   reg latch_output = 1'h0;
-  (* src = "./migen_src/converter.py:28" *)
+  (* src = "./migen_src/converter.py:62" *)
   input out_end;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:54" *)
+  (* src = "./migen_src/converter.py:91" *)
   reg out_end_latch = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:59" *)
+  (* src = "./migen_src/converter.py:96" *)
   reg out_end_reg = 1'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:35" *)
+  (* src = "./migen_src/converter.py:69" *)
   output valid_in;
   reg valid_in = 1'h0;
-  (* src = "./migen_src/converter.py:29" *)
+  (* src = "./migen_src/converter.py:63" *)
   input valid_out;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:60" *)
+  (* src = "./migen_src/converter.py:97" *)
   reg valid_out_reg = 1'h0;
-  assign \$9  = valid_out & (* src = "./migen_src/converter.py:88" *) \$7 ;
-  assign \$11  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:103" *) 6'h24;
-  assign \$13  = close_full == (* src = "./migen_src/converter.py:80" *) 1'h0;
-  assign \$15  = valid_out_reg & (* src = "./migen_src/converter.py:80" *) \$13 ;
-  assign \$17  = close_full == (* src = "./migen_src/converter.py:88" *) 1'h0;
-  assign \$1  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:103" *) 6'h24;
-  assign \$19  = valid_out & (* src = "./migen_src/converter.py:88" *) \$17 ;
-  assign \$21  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:103" *) 6'h24;
-  assign \$23  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:134" *) 6'h3e;
-  assign \$25  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:103" *) 6'h24;
-  assign \$27  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:134" *) 6'h3e;
-  assign \$29  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) enc_out_reg[61:36];
-  assign \$31  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:103" *) 6'h24;
-  assign \$33  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:134" *) 6'h3e;
-  assign \$36  = enc_out_ctr_reg - (* src = "./migen_src/converter.py:137" *) 6'h24;
-  assign \$38  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:103" *) 6'h24;
-  assign \$3  = close_full == (* src = "./migen_src/converter.py:80" *) 1'h0;
-  assign \$40  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:103" *) 6'h24;
-  assign \$42  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:103" *) 6'h24;
-  assign \$5  = valid_out_reg & (* src = "./migen_src/converter.py:80" *) \$3 ;
-  assign \$7  = close_full == (* src = "./migen_src/converter.py:88" *) 1'h0;
+  assign \$9  = valid_out & (* src = "./migen_src/converter.py:121" *) \$7 ;
+  assign \$11  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
+  assign \$13  = close_full == (* src = "./migen_src/converter.py:113" *) 1'h0;
+  assign \$15  = valid_out_reg & (* src = "./migen_src/converter.py:113" *) \$13 ;
+  assign \$17  = close_full == (* src = "./migen_src/converter.py:121" *) 1'h0;
+  assign \$1  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
+  assign \$19  = valid_out & (* src = "./migen_src/converter.py:121" *) \$17 ;
+  assign \$21  = close_full == (* src = "./migen_src/converter.py:113" *) 1'h0;
+  assign \$23  = valid_out_reg & (* src = "./migen_src/converter.py:113" *) \$21 ;
+  assign \$25  = close_full == (* src = "./migen_src/converter.py:121" *) 1'h0;
+  assign \$27  = valid_out & (* src = "./migen_src/converter.py:121" *) \$25 ;
+  assign \$29  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
+  assign \$31  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:192" *) 6'h3e;
+  assign \$33  = close_full == (* src = "./migen_src/converter.py:113" *) 1'h0;
+  assign \$35  = valid_out_reg & (* src = "./migen_src/converter.py:113" *) \$33 ;
+  assign \$37  = close_full == (* src = "./migen_src/converter.py:121" *) 1'h0;
+  assign \$3  = close_full == (* src = "./migen_src/converter.py:113" *) 1'h0;
+  assign \$39  = valid_out & (* src = "./migen_src/converter.py:121" *) \$37 ;
+  assign \$41  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
+  assign \$43  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:192" *) 6'h3e;
+  assign \$45  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) enc_out_reg[61:36];
+  assign \$47  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
+  assign \$49  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:192" *) 6'h3e;
+  assign \$52  = enc_out_ctr_reg - (* src = "./migen_src/converter.py:195" *) 6'h24;
+  assign \$54  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
+  assign \$56  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
+  assign \$58  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
+  assign \$5  = valid_out_reg & (* src = "./migen_src/converter.py:113" *) \$3 ;
+  assign \$7  = close_full == (* src = "./migen_src/converter.py:121" *) 1'h0;
   always @(posedge clk)
       out_end_latch <= \$next\out_end_latch ;
   always @(posedge clk)
@@ -154,6 +170,8 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
     \$next\valid_in  = valid_in;
     casez (fsm_state)
       2'h0:
+          \$next\valid_in  = 1'h0;
+      2'h2:
           \$next\valid_in  = 1'h0;
       2'h1:
           casez (valid_out_reg)
@@ -201,6 +219,13 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
                       \$next\latch_output  = 1'h0;
                 endcase
           endcase
+      2'h3:
+          casez ({ \$19 , \$15  })
+            2'bz1:
+                \$next\latch_output  = 1'h1;
+            2'b1z:
+                \$next\latch_output  = 1'h1;
+          endcase
     endcase
     casez (rst)
       1'h1:
@@ -213,7 +238,7 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
       2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$40 )
+                casez (\$56 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -232,7 +257,7 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
       2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$42 )
+                casez (\$58 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -249,32 +274,41 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
     \$next\fsm_state  = fsm_state;
     casez (fsm_state)
       2'h0:
-          casez ({ \$19 , \$15  })
+          casez ({ \$27 , \$23  })
             2'bz1:
                 \$next\fsm_state  = 2'h1;
             2'b1z:
                 \$next\fsm_state  = 2'h2;
+            2'hz:
+                \$next\fsm_state  = 2'h0;
           endcase
       2'h2:
           \$next\fsm_state  = 2'h1;
       2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$21 )
+                casez (\$29 )
                   1'h1:
                       casez (close_full)
                         1'h1:
                             \$next\fsm_state  = 2'h0;
                       endcase
                   1'hz:
-                      casez (\$23 )
+                      casez (\$31 )
                         1'h1:
                             \$next\fsm_state  = 2'h3;
                       endcase
                 endcase
           endcase
       2'h3:
-          \$next\fsm_state  = 2'h0;
+          casez ({ \$39 , \$35  })
+            2'bz1:
+                \$next\fsm_state  = 2'h1;
+            2'b1z:
+                \$next\fsm_state  = 2'h2;
+            2'hz:
+                \$next\fsm_state  = 2'h0;
+          endcase
     endcase
     casez (rst)
       1'h1:
@@ -339,13 +373,13 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
       2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$25 )
+                casez (\$41 )
                   1'h1:
                       \$next\enc_in  = enc_out_reg[35:0];
                   1'hz:
-                      casez (\$27 )
+                      casez (\$43 )
                         1'h1:
-                            \$next\enc_in  = \$29 ;
+                            \$next\enc_in  = \$45 ;
                       endcase
                 endcase
           endcase
@@ -363,15 +397,15 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
       2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$31 )
+                casez (\$47 )
                   1'h1:
                       \$next\enc_in_ctr  = enc_out_ctr_reg;
                   1'hz:
                     begin
                       \$next\enc_in_ctr  = 6'h24;
-                      casez (\$33 )
+                      casez (\$49 )
                         1'h1:
-                            \$next\enc_in_ctr  = \$35 [5:0];
+                            \$next\enc_in_ctr  = \$51 [5:0];
                       endcase
                     end
                 endcase
@@ -390,7 +424,7 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
       2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$38 )
+                casez (\$54 )
                   1'h1:
                       \$next\in_end  = out_end_reg;
                   1'hz:
@@ -405,6 +439,6 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
           \$next\in_end  = 1'h0;
     endcase
   end
-  assign \$35  = \$36 ;
+  assign \$51  = \$52 ;
 endmodule
 

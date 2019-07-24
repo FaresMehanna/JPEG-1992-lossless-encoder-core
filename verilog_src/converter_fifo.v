@@ -135,11 +135,11 @@ endmodule
 (* generator = "nMigen" *)
 module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_ctr, out_end, valid_out, writable, close_full, valid_in);
   wire \$1 ;
-  (* src = "./migen_src/converter_fifo.py:33" *)
+  (* src = "./migen_src/converter_fifo.py:61" *)
   reg \$next\close_full ;
-  (* src = "./migen_src/converter_fifo.py:37" *)
+  (* src = "./migen_src/converter_fifo.py:65" *)
   reg [35:0] \$next\enc_out ;
-  (* src = "./migen_src/converter_fifo.py:38" *)
+  (* src = "./migen_src/converter_fifo.py:66" *)
   reg [5:0] \$next\enc_out_ctr ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
   reg [42:0] \$next\fifo_din ;
@@ -147,25 +147,25 @@ module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_
   reg \$next\fifo_re ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
   reg \$next\fifo_we ;
-  (* src = "./migen_src/converter_fifo.py:39" *)
+  (* src = "./migen_src/converter_fifo.py:67" *)
   reg \$next\out_end ;
-  (* src = "./migen_src/converter_fifo.py:40" *)
+  (* src = "./migen_src/converter_fifo.py:68" *)
   reg \$next\valid_out ;
-  (* src = "./migen_src/converter_fifo.py:32" *)
+  (* src = "./migen_src/converter_fifo.py:60" *)
   reg \$next\writable ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter_fifo.py:33" *)
+  (* src = "./migen_src/converter_fifo.py:61" *)
   output close_full;
   reg close_full = 1'h0;
-  (* src = "./migen_src/converter_fifo.py:28" *)
+  (* src = "./migen_src/converter_fifo.py:56" *)
   input [35:0] enc_in;
-  (* src = "./migen_src/converter_fifo.py:29" *)
+  (* src = "./migen_src/converter_fifo.py:57" *)
   input [5:0] enc_in_ctr;
-  (* src = "./migen_src/converter_fifo.py:37" *)
+  (* src = "./migen_src/converter_fifo.py:65" *)
   output [35:0] enc_out;
-  (* src = "./migen_src/converter_fifo.py:38" *)
+  (* src = "./migen_src/converter_fifo.py:66" *)
   output [5:0] enc_out_ctr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
   wire [42:0] fifo_din;
@@ -181,21 +181,21 @@ module top(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, enc_out, enc_out_
   wire fifo_we;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:66" *)
   wire fifo_writable;
-  (* src = "./migen_src/converter_fifo.py:30" *)
+  (* src = "./migen_src/converter_fifo.py:58" *)
   input in_end;
-  (* src = "./migen_src/converter_fifo.py:36" *)
+  (* src = "./migen_src/converter_fifo.py:64" *)
   input latch_output;
-  (* src = "./migen_src/converter_fifo.py:39" *)
+  (* src = "./migen_src/converter_fifo.py:67" *)
   output out_end;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/converter_fifo.py:31" *)
+  (* src = "./migen_src/converter_fifo.py:59" *)
   input valid_in;
-  (* src = "./migen_src/converter_fifo.py:40" *)
+  (* src = "./migen_src/converter_fifo.py:68" *)
   output valid_out;
-  (* src = "./migen_src/converter_fifo.py:32" *)
+  (* src = "./migen_src/converter_fifo.py:60" *)
   output writable;
-  assign \$1  = fifo_level > (* src = "./migen_src/converter_fifo.py:72" *) 7'h7d;
+  assign \$1  = fifo_level >= (* src = "./migen_src/converter_fifo.py:100" *) 7'h7b;
   always @(posedge clk)
       close_full <= \$next\close_full ;
   fifo fifo (

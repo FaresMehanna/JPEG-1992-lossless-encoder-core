@@ -2,7 +2,7 @@
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.normalize.anonymous" *)
 (* generator = "nMigen" *)
-module anonymous(val_in, val_in_mns, rst, clk, val_out, ssss, valid_o, valid);
+module anonymous(val_in, val_in_mns, end_in, rst, clk, val_out, ssss, valid_o, end_out, valid);
   wire \$1 ;
   wire [13:0] \$11 ;
   wire [13:0] \$12 ;
@@ -51,70 +51,80 @@ module anonymous(val_in, val_in_mns, rst, clk, val_out, ssss, valid_o, valid);
   wire \$81 ;
   wire \$83 ;
   wire \$9 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:70" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:133" *)
+  reg \$next\end_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:126" *)
   reg [4:0] \$next\ssss ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:69" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:124" *)
   reg [11:0] \$next\val_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:72" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:129" *)
   reg \$next\valid_o ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:132" *)
+  input end_in;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:133" *)
+  output end_out;
+  reg end_out = 1'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 5'h00 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:70" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:126" *)
   output [4:0] ssss;
   reg [4:0] ssss = 5'h00;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:68" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:119" *)
   input [12:0] val_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:73" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:121" *)
   input [12:0] val_in_mns;
   (* init = 12'h000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:69" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:124" *)
   output [11:0] val_out;
   reg [11:0] val_out = 12'h000;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:71" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:128" *)
   input valid;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:72" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:129" *)
   output valid_o;
   reg valid_o = 1'h0;
-  assign \$9  = val_in_mns[12:1] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:24" *) 12'hfff;
-  assign \$12  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:26" *) 1'h1;
-  assign \$15  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:31" *) 2'h3;
-  assign \$18  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:17" *) 3'h7;
-  assign \$1  = val_in[12] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:92" *) 1'h1;
-  assign \$20  = val_in_mns[12:5] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 8'hff;
-  assign \$22  = val_in_mns[12:4] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:24" *) 9'h1ff;
-  assign \$25  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:26" *) 4'hf;
-  assign \$28  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:31" *) 5'h1f;
-  assign \$31  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:17" *) 6'h3f;
-  assign \$33  = val_in_mns[12:9] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 4'hf;
-  assign \$35  = val_in_mns[12:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 5'h1f;
-  assign \$37  = val_in_mns[12:7] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:24" *) 6'h3f;
-  assign \$3  = val_in_mns[12:6] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 7'h7f;
-  assign \$40  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:26" *) 7'h7f;
-  assign \$43  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:31" *) 8'hff;
-  assign \$46  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:17" *) 9'h1ff;
-  assign \$48  = val_in_mns[12:11] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 2'h3;
-  assign \$50  = val_in_mns[12:10] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:24" *) 3'h7;
-  assign \$53  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:26" *) 10'h3ff;
-  assign \$56  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:31" *) 11'h7ff;
-  assign \$5  = val_in_mns[12:3] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 10'h3ff;
-  assign \$59  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:17" *) 12'hfff;
-  assign \$61  = val_in[12] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:92" *) 1'h1;
-  assign \$63  = val_in_mns[12:6] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 7'h7f;
-  assign \$65  = val_in_mns[12:3] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 10'h3ff;
-  assign \$67  = val_in_mns[12:2] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 11'h7ff;
-  assign \$69  = val_in_mns[12:1] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:24" *) 12'hfff;
-  assign \$71  = val_in_mns[12:5] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 8'hff;
-  assign \$73  = val_in_mns[12:4] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:24" *) 9'h1ff;
-  assign \$75  = val_in_mns[12:9] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 4'hf;
-  assign \$77  = val_in_mns[12:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 5'h1f;
-  assign \$7  = val_in_mns[12:2] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 11'h7ff;
-  assign \$79  = val_in_mns[12:7] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:24" *) 6'h3f;
-  assign \$81  = val_in_mns[12:11] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:40" *) 2'h3;
-  assign \$83  = val_in_mns[12:10] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:24" *) 3'h7;
+  assign \$9  = val_in_mns[12:1] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:65" *) 12'hfff;
+  assign \$12  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:67" *) 1'h1;
+  assign \$15  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:72" *) 2'h3;
+  assign \$18  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:58" *) 3'h7;
+  assign \$1  = val_in[12] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:156" *) 1'h1;
+  assign \$20  = val_in_mns[12:5] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 8'hff;
+  assign \$22  = val_in_mns[12:4] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:65" *) 9'h1ff;
+  assign \$25  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:67" *) 4'hf;
+  assign \$28  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:72" *) 5'h1f;
+  assign \$31  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:58" *) 6'h3f;
+  assign \$33  = val_in_mns[12:9] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 4'hf;
+  assign \$35  = val_in_mns[12:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 5'h1f;
+  assign \$37  = val_in_mns[12:7] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:65" *) 6'h3f;
+  assign \$3  = val_in_mns[12:6] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 7'h7f;
+  assign \$40  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:67" *) 7'h7f;
+  assign \$43  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:72" *) 8'hff;
+  assign \$46  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:58" *) 9'h1ff;
+  assign \$48  = val_in_mns[12:11] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 2'h3;
+  assign \$50  = val_in_mns[12:10] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:65" *) 3'h7;
+  assign \$53  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:67" *) 10'h3ff;
+  assign \$56  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:72" *) 11'h7ff;
+  assign \$5  = val_in_mns[12:3] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 10'h3ff;
+  assign \$59  = val_in + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:58" *) 12'hfff;
+  assign \$61  = val_in[12] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:156" *) 1'h1;
+  assign \$63  = val_in_mns[12:6] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 7'h7f;
+  assign \$65  = val_in_mns[12:3] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 10'h3ff;
+  assign \$67  = val_in_mns[12:2] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 11'h7ff;
+  assign \$69  = val_in_mns[12:1] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:65" *) 12'hfff;
+  assign \$71  = val_in_mns[12:5] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 8'hff;
+  assign \$73  = val_in_mns[12:4] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:65" *) 9'h1ff;
+  assign \$75  = val_in_mns[12:9] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 4'hf;
+  assign \$77  = val_in_mns[12:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 5'h1f;
+  assign \$7  = val_in_mns[12:2] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 11'h7ff;
+  assign \$79  = val_in_mns[12:7] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:65" *) 6'h3f;
+  assign \$81  = val_in_mns[12:11] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:81" *) 2'h3;
+  assign \$83  = val_in_mns[12:10] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:65" *) 3'h7;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
   always @(posedge clk)
       valid_o <= \$next\valid_o ;
   always @(posedge clk)
@@ -299,6 +309,14 @@ module anonymous(val_in, val_in_mns, rst, clk, val_out, ssss, valid_o, valid);
           \$next\valid_o  = 1'h0;
     endcase
   end
+  always @* begin
+    \$next\end_out  = end_out;
+    \$next\end_out  = end_in;
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
+    endcase
+  end
   assign \$11  = \$12 ;
   assign \$14  = \$15 ;
   assign \$17  = \$18 ;
@@ -315,72 +333,121 @@ endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.encode.anonymous" *)
 (* generator = "nMigen" *)
-module \anonymous$1 (ssss, val_in, rp_data, rst, clk, rp_addr, enc_out, enc_ctr, valid);
+module \anonymous$1 (end_in, ssss, val_in, rp_data, rst, clk, valid_out, end_out, rp_addr, enc_out, enc_ctr, valid_in);
   wire [32:0] \$1 ;
   wire [32:0] \$2 ;
   wire [5:0] \$4 ;
   wire [5:0] \$5 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:44" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:99" *)
   reg [4:0] \$next\enc_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:43" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:97" *)
   reg [27:0] \$next\enc_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:38" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:123" *)
+  reg \$next\end_late ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:107" *)
+  reg \$next\end_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:88" *)
   reg [4:0] \$next\rp_addr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:58" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:128" *)
   reg [4:0] \$next\ssss_late ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:60" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:130" *)
   reg [11:0] \$next\val_in_late ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:54" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:118" *)
   reg \$next\valid_late ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:103" *)
+  reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* init = 5'h00 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:44" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:99" *)
   output [4:0] enc_ctr;
   reg [4:0] enc_ctr = 5'h00;
   (* init = 28'h0000000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:43" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:97" *)
   output [27:0] enc_out;
   reg [27:0] enc_out = 28'h0000000;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:38" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:106" *)
+  input end_in;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:123" *)
+  reg end_late = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:107" *)
+  output end_out;
+  reg end_out = 1'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:88" *)
   output [4:0] rp_addr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:39" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:89" *)
   input [32:0] rp_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:42" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:94" *)
   input [4:0] ssss;
   (* init = 5'h00 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:58" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:128" *)
   reg [4:0] ssss_late = 5'h00;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:41" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:92" *)
   input [11:0] val_in;
   (* init = 12'h000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:60" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:130" *)
   reg [11:0] val_in_late = 12'h000;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:45" *)
-  input valid;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:102" *)
+  input valid_in;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:54" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:118" *)
   reg valid_late = 1'h0;
-  assign \$2  = rp_data | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:86" *) val_in_late;
-  assign \$5  = rp_data[32:28] + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:87" *) ssss_late[3:0];
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:103" *)
+  output valid_out;
+  reg valid_out = 1'h0;
+  assign \$2  = rp_data | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:156" *) val_in_late;
+  assign \$5  = rp_data[32:28] + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:157" *) ssss_late[3:0];
+  always @(posedge clk)
+      ssss_late <= \$next\ssss_late ;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
+  always @(posedge clk)
+      end_late <= \$next\end_late ;
+  always @(posedge clk)
+      valid_out <= \$next\valid_out ;
+  always @(posedge clk)
+      valid_late <= \$next\valid_late ;
   always @(posedge clk)
       enc_ctr <= \$next\enc_ctr ;
   always @(posedge clk)
       enc_out <= \$next\enc_out ;
   always @(posedge clk)
       val_in_late <= \$next\val_in_late ;
-  always @(posedge clk)
-      ssss_late <= \$next\ssss_late ;
-  always @(posedge clk)
-      valid_late <= \$next\valid_late ;
   always @* begin
     \$next\valid_late  = valid_late;
-    \$next\valid_late  = valid;
+    \$next\valid_late  = valid_in;
     casez (rst)
       1'h1:
           \$next\valid_late  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\valid_out  = valid_out;
+    \$next\valid_out  = valid_late;
+    casez (rst)
+      1'h1:
+          \$next\valid_out  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\end_late  = end_late;
+    \$next\end_late  = end_in;
+    casez (rst)
+      1'h1:
+          \$next\end_late  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\end_out  = end_out;
+    \$next\end_out  = end_late;
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
     endcase
   end
   always @* begin
@@ -446,124 +513,131 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   wire \$29 ;
   wire \$3 ;
   wire \$31 ;
-  wire [11:0] \$33 ;
+  wire \$33 ;
   wire \$35 ;
   wire \$37 ;
   wire \$39 ;
-  wire [5:0] \$41 ;
-  wire [5:0] \$42 ;
-  wire [5:0] \$44 ;
-  wire [5:0] \$45 ;
+  wire \$41 ;
+  wire \$43 ;
+  wire [14:0] \$45 ;
   wire \$47 ;
   wire \$49 ;
   wire \$5 ;
-  wire \$51 ;
+  wire [5:0] \$51 ;
+  wire [5:0] \$52 ;
+  wire \$54 ;
+  wire \$56 ;
+  wire \$58 ;
   wire \$7 ;
   wire \$9 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:32" *)
-  reg [11:0] \$next\enc_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:66" *)
+  reg [14:0] \$next\enc_in ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:67" *)
   reg [3:0] \$next\enc_in_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:58" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:95" *)
   reg [4:0] \$next\enc_out_ctr_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:53" *)
-  reg [23:0] \$next\enc_out_latch ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:57" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:90" *)
+  reg [14:0] \$next\enc_out_latch ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:94" *)
   reg [27:0] \$next\enc_out_reg ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg [2:0] \$next\fsm_state ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:34" *)
+  reg [1:0] \$next\fsm_state ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:68" *)
   reg \$next\in_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:25" *)
-  reg \$next\latch_output ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:54" *)
-  reg \$next\out_end_latch ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:59" *)
+  reg \$next\latch_output ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:91" *)
+  reg \$next\out_end_latch ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:96" *)
   reg \$next\out_end_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:35" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:69" *)
   reg \$next\valid_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:60" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:97" *)
   reg \$next\valid_out_reg ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:36" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:70" *)
   input close_full;
-  (* init = 12'h000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:32" *)
-  output [11:0] enc_in;
-  reg [11:0] enc_in = 12'h000;
+  (* init = 15'h0000 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:66" *)
+  output [14:0] enc_in;
+  reg [14:0] enc_in = 15'h0000;
   (* init = 4'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:67" *)
   output [3:0] enc_in_ctr;
   reg [3:0] enc_in_ctr = 4'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:26" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:60" *)
   input [27:0] enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:27" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:61" *)
   input [4:0] enc_out_ctr;
   (* init = 5'h00 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:58" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:95" *)
   reg [4:0] enc_out_ctr_reg = 5'h00;
-  (* init = 24'h000000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:53" *)
-  reg [23:0] enc_out_latch = 24'h000000;
+  (* init = 15'h0000 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:90" *)
+  reg [14:0] enc_out_latch = 15'h0000;
   (* init = 28'h0000000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:57" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:94" *)
   reg [27:0] enc_out_reg = 28'h0000000;
-  (* init = 3'h0 *)
+  (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg [2:0] fsm_state = 3'h0;
+  reg [1:0] fsm_state = 2'h0;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:34" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:68" *)
   output in_end;
   reg in_end = 1'h0;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:25" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:59" *)
   output latch_output;
   reg latch_output = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:62" *)
   input out_end;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:54" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:91" *)
   reg out_end_latch = 1'h0;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:59" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:96" *)
   reg out_end_reg = 1'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:35" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:69" *)
   output valid_in;
   reg valid_in = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:63" *)
   input valid_out;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:60" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:97" *)
   reg valid_out_reg = 1'h0;
-  assign \$9  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:88" *) \$7 ;
-  assign \$11  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:103" *) 4'hc;
-  assign \$13  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:80" *) 1'h0;
-  assign \$15  = valid_out_reg & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:80" *) \$13 ;
-  assign \$17  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:88" *) 1'h0;
-  assign \$1  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:103" *) 4'hc;
-  assign \$19  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:88" *) \$17 ;
-  assign \$21  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:103" *) 4'hc;
-  assign \$23  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:134" *) 5'h18;
-  assign \$25  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:141" *) 5'h1c;
-  assign \$27  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:103" *) 4'hc;
-  assign \$29  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:134" *) 5'h18;
-  assign \$31  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:141" *) 5'h1c;
-  assign \$33  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) enc_out_reg[27:24];
-  assign \$35  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:103" *) 4'hc;
-  assign \$37  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:134" *) 5'h18;
-  assign \$3  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:80" *) 1'h0;
-  assign \$39  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:141" *) 5'h1c;
-  assign \$42  = enc_out_ctr_reg - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:137" *) 4'hc;
-  assign \$45  = enc_out_ctr_reg - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:144" *) 5'h18;
-  assign \$47  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:103" *) 4'hc;
-  assign \$49  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:103" *) 4'hc;
-  assign \$51  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:103" *) 4'hc;
-  assign \$5  = valid_out_reg & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:80" *) \$3 ;
-  assign \$7  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:88" *) 1'h0;
+  assign \$9  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:121" *) \$7 ;
+  assign \$11  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:158" *) 4'hf;
+  assign \$13  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:113" *) 1'h0;
+  assign \$15  = valid_out_reg & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:113" *) \$13 ;
+  assign \$17  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:121" *) 1'h0;
+  assign \$1  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:158" *) 4'hf;
+  assign \$19  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:121" *) \$17 ;
+  assign \$21  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:113" *) 1'h0;
+  assign \$23  = valid_out_reg & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:113" *) \$21 ;
+  assign \$25  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:121" *) 1'h0;
+  assign \$27  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:121" *) \$25 ;
+  assign \$29  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:158" *) 4'hf;
+  assign \$31  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:192" *) 5'h1c;
+  assign \$33  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:113" *) 1'h0;
+  assign \$35  = valid_out_reg & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:113" *) \$33 ;
+  assign \$37  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:121" *) 1'h0;
+  assign \$3  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:113" *) 1'h0;
+  assign \$39  = valid_out & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:121" *) \$37 ;
+  assign \$41  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:158" *) 4'hf;
+  assign \$43  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:192" *) 5'h1c;
+  assign \$45  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) enc_out_reg[27:15];
+  assign \$47  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:158" *) 4'hf;
+  assign \$49  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:192" *) 5'h1c;
+  assign \$52  = enc_out_ctr_reg - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:195" *) 4'hf;
+  assign \$54  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:158" *) 4'hf;
+  assign \$56  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:158" *) 4'hf;
+  assign \$58  = enc_out_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:158" *) 4'hf;
+  assign \$5  = valid_out_reg & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:113" *) \$3 ;
+  assign \$7  = close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:121" *) 1'h0;
   always @(posedge clk)
       out_end_latch <= \$next\out_end_latch ;
   always @(posedge clk)
@@ -591,9 +665,11 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   always @* begin
     \$next\valid_in  = valid_in;
     casez (fsm_state)
-      3'h0:
+      2'h0:
           \$next\valid_in  = 1'h0;
-      3'h1:
+      2'h2:
+          \$next\valid_in  = 1'h0;
+      2'h1:
           casez (valid_out_reg)
             1'h1:
                 casez (\$1 )
@@ -605,9 +681,7 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
             1'hz:
                 \$next\valid_in  = 1'h0;
           endcase
-      3'h3:
-          \$next\valid_in  = 1'h1;
-      3'h4:
+      2'h3:
           \$next\valid_in  = 1'h1;
     endcase
     casez (rst)
@@ -618,7 +692,7 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   always @* begin
     \$next\latch_output  = latch_output;
     casez (fsm_state)
-      3'h0:
+      2'h0:
         begin
           \$next\latch_output  = 1'h0;
           casez ({ \$9 , \$5  })
@@ -628,7 +702,7 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
                 \$next\latch_output  = 1'h1;
           endcase
         end
-      3'h1:
+      2'h1:
           casez (valid_out_reg)
             1'h1:
                 casez (\$11 )
@@ -641,6 +715,13 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
                       \$next\latch_output  = 1'h0;
                 endcase
           endcase
+      2'h3:
+          casez ({ \$19 , \$15  })
+            2'bz1:
+                \$next\latch_output  = 1'h1;
+            2'b1z:
+                \$next\latch_output  = 1'h1;
+          endcase
     endcase
     casez (rst)
       1'h1:
@@ -650,29 +731,29 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   always @* begin
     \$next\enc_out_latch  = enc_out_latch;
     casez (fsm_state)
-      3'h1:
+      2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$49 )
+                casez (\$56 )
                   1'h1:
                       /* empty */;
                   1'hz:
-                      \$next\enc_out_latch  = enc_out_reg[23:0];
+                      \$next\enc_out_latch  = enc_out_reg[14:0];
                 endcase
           endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\enc_out_latch  = 24'h000000;
+          \$next\enc_out_latch  = 15'h0000;
     endcase
   end
   always @* begin
     \$next\out_end_latch  = out_end_latch;
     casez (fsm_state)
-      3'h1:
+      2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$51 )
+                casez (\$58 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -688,49 +769,54 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   always @* begin
     \$next\fsm_state  = fsm_state;
     casez (fsm_state)
-      3'h0:
-          casez ({ \$19 , \$15  })
+      2'h0:
+          casez ({ \$27 , \$23  })
             2'bz1:
-                \$next\fsm_state  = 3'h1;
+                \$next\fsm_state  = 2'h1;
             2'b1z:
-                \$next\fsm_state  = 3'h2;
+                \$next\fsm_state  = 2'h2;
+            2'hz:
+                \$next\fsm_state  = 2'h0;
           endcase
-      3'h2:
-          \$next\fsm_state  = 3'h1;
-      3'h1:
+      2'h2:
+          \$next\fsm_state  = 2'h1;
+      2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$21 )
+                casez (\$29 )
                   1'h1:
                       casez (close_full)
                         1'h1:
-                            \$next\fsm_state  = 3'h0;
+                            \$next\fsm_state  = 2'h0;
                       endcase
                   1'hz:
-                      casez ({ \$25 , \$23  })
-                        2'bz1:
-                            \$next\fsm_state  = 3'h3;
-                        2'b1z:
-                            \$next\fsm_state  = 3'h4;
+                      casez (\$31 )
+                        1'h1:
+                            \$next\fsm_state  = 2'h3;
                       endcase
                 endcase
           endcase
-      3'h3:
-          \$next\fsm_state  = 3'h0;
-      3'h4:
-          \$next\fsm_state  = 3'h3;
+      2'h3:
+          casez ({ \$39 , \$35  })
+            2'bz1:
+                \$next\fsm_state  = 2'h1;
+            2'b1z:
+                \$next\fsm_state  = 2'h2;
+            2'hz:
+                \$next\fsm_state  = 2'h0;
+          endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\fsm_state  = 3'h0;
+          \$next\fsm_state  = 2'h0;
     endcase
   end
   always @* begin
     \$next\enc_out_reg  = enc_out_reg;
     casez (fsm_state)
-      3'h2:
+      2'h2:
           \$next\enc_out_reg  = enc_out;
-      3'h1:
+      2'h1:
           \$next\enc_out_reg  = enc_out;
     endcase
     casez (rst)
@@ -741,9 +827,9 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   always @* begin
     \$next\enc_out_ctr_reg  = enc_out_ctr_reg;
     casez (fsm_state)
-      3'h2:
+      2'h2:
           \$next\enc_out_ctr_reg  = enc_out_ctr;
-      3'h1:
+      2'h1:
           \$next\enc_out_ctr_reg  = enc_out_ctr;
     endcase
     casez (rst)
@@ -754,9 +840,9 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   always @* begin
     \$next\out_end_reg  = out_end_reg;
     casez (fsm_state)
-      3'h2:
+      2'h2:
           \$next\out_end_reg  = out_end;
-      3'h1:
+      2'h1:
           \$next\out_end_reg  = out_end;
     endcase
     casez (rst)
@@ -767,9 +853,9 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   always @* begin
     \$next\valid_out_reg  = valid_out_reg;
     casez (fsm_state)
-      3'h2:
+      2'h2:
           \$next\valid_out_reg  = valid_out;
-      3'h1:
+      2'h1:
           \$next\valid_out_reg  = valid_out;
     endcase
     casez (rst)
@@ -780,56 +866,48 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   always @* begin
     \$next\enc_in  = enc_in;
     casez (fsm_state)
-      3'h1:
+      2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$27 )
+                casez (\$41 )
                   1'h1:
-                      \$next\enc_in  = enc_out_reg[11:0];
+                      \$next\enc_in  = enc_out_reg[14:0];
                   1'hz:
-                      casez ({ \$31 , \$29  })
-                        2'bz1:
-                            \$next\enc_in  = enc_out_reg[23:12];
-                        2'b1z:
-                            \$next\enc_in  = \$33 ;
+                      casez (\$43 )
+                        1'h1:
+                            \$next\enc_in  = \$45 ;
                       endcase
                 endcase
           endcase
-      3'h3:
-          \$next\enc_in  = enc_out_latch[11:0];
-      3'h4:
-          \$next\enc_in  = enc_out_latch[23:12];
+      2'h3:
+          \$next\enc_in  = enc_out_latch;
     endcase
     casez (rst)
       1'h1:
-          \$next\enc_in  = 12'h000;
+          \$next\enc_in  = 15'h0000;
     endcase
   end
   always @* begin
     \$next\enc_in_ctr  = enc_in_ctr;
     casez (fsm_state)
-      3'h1:
+      2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$35 )
+                casez (\$47 )
                   1'h1:
                       \$next\enc_in_ctr  = enc_out_ctr_reg[3:0];
                   1'hz:
                     begin
-                      \$next\enc_in_ctr  = 4'hc;
-                      casez ({ \$39 , \$37  })
-                        2'bz1:
-                            \$next\enc_in_ctr  = \$41 [3:0];
-                        2'b1z:
-                            \$next\enc_in_ctr  = \$44 [3:0];
+                      \$next\enc_in_ctr  = 4'hf;
+                      casez (\$49 )
+                        1'h1:
+                            \$next\enc_in_ctr  = \$51 [3:0];
                       endcase
                     end
                 endcase
           endcase
-      3'h3:
-          \$next\enc_in_ctr  = 4'hc;
-      3'h4:
-          \$next\enc_in_ctr  = 4'hc;
+      2'h3:
+          \$next\enc_in_ctr  = 4'hf;
     endcase
     casez (rst)
       1'h1:
@@ -839,19 +917,17 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
   always @* begin
     \$next\in_end  = in_end;
     casez (fsm_state)
-      3'h1:
+      2'h1:
           casez (valid_out_reg)
             1'h1:
-                casez (\$47 )
+                casez (\$54 )
                   1'h1:
                       \$next\in_end  = out_end_reg;
                   1'hz:
                       \$next\in_end  = 1'h0;
                 endcase
           endcase
-      3'h3:
-          \$next\in_end  = out_end_latch;
-      3'h4:
+      2'h3:
           \$next\in_end  = out_end_latch;
     endcase
     casez (rst)
@@ -859,50 +935,49 @@ module converter(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, valid_in, l
           \$next\in_end  = 1'h0;
     endcase
   end
-  assign \$41  = \$42 ;
-  assign \$44  = \$45 ;
+  assign \$51  = \$52 ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.converter_fifo" *)
 (* generator = "nMigen" *)
 module converter_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_out, enc_out, enc_out_ctr, out_end, close_full, valid_in);
   wire \$1 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:61" *)
   reg \$next\close_full ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:37" *)
-  reg [11:0] \$next\enc_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:38" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:65" *)
+  reg [14:0] \$next\enc_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:66" *)
   reg [3:0] \$next\enc_out_ctr ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  reg [16:0] \$next\fifo_din ;
+  reg [19:0] \$next\fifo_din ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
   reg \$next\fifo_re ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
   reg \$next\fifo_we ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:39" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:67" *)
   reg \$next\out_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:40" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:68" *)
   reg \$next\valid_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:32" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:60" *)
   reg \$next\writable ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:61" *)
   output close_full;
   reg close_full = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:28" *)
-  input [11:0] enc_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:56" *)
+  input [14:0] enc_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:57" *)
   input [3:0] enc_in_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:37" *)
-  output [11:0] enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:38" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:65" *)
+  output [14:0] enc_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:66" *)
   output [3:0] enc_out_ctr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  wire [16:0] fifo_din;
+  wire [19:0] fifo_din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  wire [16:0] fifo_dout;
+  wire [19:0] fifo_dout;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:238" *)
   wire [10:0] fifo_level;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -913,21 +988,21 @@ module converter_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_
   wire fifo_we;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:66" *)
   wire fifo_writable;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:30" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:58" *)
   input in_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:36" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:64" *)
   input latch_output;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:39" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:67" *)
   output out_end;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:59" *)
   input valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:40" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:68" *)
   output valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:32" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:60" *)
   wire writable;
-  assign \$1  = fifo_level > (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:72" *) 10'h3fc;
+  assign \$1  = fifo_level >= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:100" *) 10'h3fb;
   always @(posedge clk)
       close_full <= \$next\close_full ;
   \fifo$2  fifo (
@@ -946,7 +1021,7 @@ module converter_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_
     \$next\fifo_we  = valid_in;
   end
   always @* begin
-    \$next\fifo_din  = 17'h00000;
+    \$next\fifo_din  = 20'h00000;
     \$next\fifo_din  = { in_end, enc_in_ctr, enc_in };
   end
   always @* begin
@@ -958,16 +1033,16 @@ module converter_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_
     \$next\valid_out  = fifo_readable;
   end
   always @* begin
-    \$next\enc_out  = 12'h000;
-    \$next\enc_out  = fifo_dout[11:0];
+    \$next\enc_out  = 15'h0000;
+    \$next\enc_out  = fifo_dout[14:0];
   end
   always @* begin
     \$next\enc_out_ctr  = 4'h0;
-    \$next\enc_out_ctr  = fifo_dout[15:12];
+    \$next\enc_out_ctr  = fifo_dout[18:15];
   end
   always @* begin
     \$next\out_end  = 1'h0;
-    \$next\out_end  = fifo_dout[16];
+    \$next\out_end  = fifo_dout[19];
   end
   always @* begin
     \$next\fifo_re  = 1'h0;
@@ -991,164 +1066,1287 @@ module converter_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_
   assign fifo_we = \$next\fifo_we ;
 endmodule
 
-(* \nmigen.hierarchy  = "top.integration_3.integration_2.converter_fifo_reg" *)
+(* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.core_axi_lite" *)
 (* generator = "nMigen" *)
-module converter_fifo_reg(enc_left, enc_ctr_left, out_end_left, valid_left, o_busy, enc_right, enc_ctr_right, out_end_right, valid_right, i_busy);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:30" *)
-  reg [3:0] \$next\enc_ctr_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:29" *)
-  reg [11:0] \$next\enc_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:21" *)
-  reg \$next\o_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:31" *)
-  reg \$next\out_end_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:32" *)
-  reg \$next\valid_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:23" *)
-  input [3:0] enc_ctr_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:30" *)
-  output [3:0] enc_ctr_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:22" *)
-  input [11:0] enc_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:29" *)
-  output [11:0] enc_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:28" *)
-  input i_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:21" *)
-  output o_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:24" *)
-  input out_end_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:31" *)
-  output out_end_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:25" *)
-  input valid_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:32" *)
-  output valid_right;
+module core_axi_lite(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_axi_ri__rready, s_axi_wi__awaddr, s_axi_wi__wvalid, s_axi_wi__wdata, s_axi_wi__wstrb, s_axi_wi__bready, rst, clk, rp_addr, wp_addr, wp_data, wp_en, allowed_cycles, height, width, debug_en);
+  wire \$100 ;
+  wire \$102 ;
+  wire \$104 ;
+  wire \$106 ;
+  wire \$108 ;
+  wire \$110 ;
+  wire \$112 ;
+  wire \$114 ;
+  wire \$116 ;
+  wire \$118 ;
+  wire \$120 ;
+  wire \$122 ;
+  wire \$124 ;
+  wire \$126 ;
+  wire \$128 ;
+  wire \$130 ;
+  wire \$132 ;
+  wire \$134 ;
+  wire \$136 ;
+  wire \$138 ;
+  wire \$140 ;
+  wire \$142 ;
+  wire \$144 ;
+  wire \$146 ;
+  wire \$148 ;
+  wire [63:0] \$15 ;
+  wire \$150 ;
+  wire \$17 ;
+  wire \$19 ;
+  wire \$21 ;
+  wire \$23 ;
+  wire \$25 ;
+  wire \$27 ;
+  wire [7:0] \$29 ;
+  wire [7:0] \$31 ;
+  wire [7:0] \$33 ;
+  wire [7:0] \$35 ;
+  wire [31:0] \$37 ;
+  wire [31:0] \$39 ;
+  wire [31:0] \$41 ;
+  wire [31:0] \$42 ;
+  wire [31:0] \$44 ;
+  wire [31:0] \$45 ;
+  wire \$47 ;
+  wire \$49 ;
+  wire \$51 ;
+  wire \$53 ;
+  wire \$55 ;
+  wire \$57 ;
+  wire \$59 ;
+  wire [31:0] \$61 ;
+  wire \$63 ;
+  wire \$65 ;
+  wire \$67 ;
+  wire \$69 ;
+  wire \$71 ;
+  wire \$73 ;
+  wire \$75 ;
+  wire \$77 ;
+  wire \$79 ;
+  wire \$81 ;
+  wire \$83 ;
+  wire [5:0] \$85 ;
+  wire [5:0] \$86 ;
+  wire \$88 ;
+  wire \$90 ;
+  wire \$92 ;
+  wire \$94 ;
+  wire \$96 ;
+  wire \$98 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  reg [31:0] \$next$signal ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  reg [31:0] \$next$signal$10 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  reg [31:0] \$next$signal$11 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  reg [31:0] \$next$signal$12 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  reg [31:0] \$next$signal$13 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  reg [31:0] \$next$signal$14 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  reg [31:0] \$next$signal$8 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  reg [31:0] \$next$signal$9 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:159" *)
+  reg [31:0] \$next\addr_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:83" *)
+  reg [23:0] \$next\allowed_cycles ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:161" *)
+  reg \$next\arready_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:164" *)
+  reg \$next\awready_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:171" *)
+  reg [1:0] \$next\bresp_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:166" *)
+  reg \$next\bvalid_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:185" *)
+  reg \$next\debug_enable ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:187" *)
+  reg [2:0] \$next\debug_index ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:36" *)
+  reg [7:0] \$next\debug_module_regs_en ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  reg [3:0] \$next\fsm_state ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:79" *)
+  reg [15:0] \$next\height ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:110" *)
+  reg [31:0] \$next\height_width ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:184" *)
+  reg \$next\hw_enable ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:188" *)
+  reg \$next\hw_index ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:168" *)
+  reg [31:0] \$next\rdata_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:99" *)
+  reg [4:0] \$next\rp_addr ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:204" *)
+  reg [63:0] \$next\rp_data64 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:203" *)
+  reg [63:0] \$next\rp_data64_in ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:169" *)
+  reg [1:0] \$next\rresp_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:162" *)
+  reg \$next\rvalid_v ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  reg \$next\s_axi_ro__arready ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  reg [31:0] \$next\s_axi_ro__rdata ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  reg [1:0] \$next\s_axi_ro__rresp ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  reg \$next\s_axi_ro__rvalid ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  reg \$next\s_axi_wo__awready ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  reg [1:0] \$next\s_axi_wo__bresp ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  reg \$next\s_axi_wo__bvalid ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  reg \$next\s_axi_wo__wready ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:183" *)
+  reg \$next\ssss_enable ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:186" *)
+  reg [5:0] \$next\ssss_index ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:174" *)
+  reg [31:0] \$next\wdata_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:80" *)
+  reg [15:0] \$next\width ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:94" *)
+  reg [4:0] \$next\wp_addr ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:95" *)
+  reg [32:0] \$next\wp_data ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:96" *)
+  reg \$next\wp_en ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:165" *)
+  reg \$next\wready_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:175" *)
+  reg [3:0] \$next\wstrb_v ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  wire [31:0] \$signal ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  wire [31:0] \$signal$10 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  wire [31:0] \$signal$11 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  wire [31:0] \$signal$12 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  wire [31:0] \$signal$13 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  wire [31:0] \$signal$14 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  wire [31:0] \$signal$8 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:151" *)
+  wire [31:0] \$signal$9 ;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:159" *)
+  reg [31:0] addr_v = 32'd0;
+  (* init = 24'h000000 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:83" *)
+  output [23:0] allowed_cycles;
+  reg [23:0] allowed_cycles = 24'h000000;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:161" *)
+  reg arready_v = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:164" *)
+  reg awready_v = 1'h0;
+  (* init = 2'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:171" *)
+  reg [1:0] bresp_v = 2'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:166" *)
+  reg bvalid_v = 1'h0;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
+  input clk;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:107" *)
+  input [7:0] debug_en;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:185" *)
+  wire debug_enable;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:187" *)
+  wire [2:0] debug_index;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  wire [31:0] \debug_module_$signal ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  wire [31:0] \debug_module_$signal$1 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  wire [31:0] \debug_module_$signal$2 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  wire [31:0] \debug_module_$signal$3 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  wire [31:0] \debug_module_$signal$4 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  wire [31:0] \debug_module_$signal$5 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  wire [31:0] \debug_module_$signal$6 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  wire [31:0] \debug_module_$signal$7 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:36" *)
+  wire [7:0] debug_module_regs_en;
+  (* init = 4'h0 *)
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  reg [3:0] fsm_state = 4'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:79" *)
+  output [15:0] height;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:110" *)
+  reg [31:0] height_width = 32'd0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:184" *)
+  wire hw_enable;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:188" *)
+  wire hw_index;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:168" *)
+  reg [31:0] rdata_v = 32'd0;
+  (* init = 5'h00 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:99" *)
+  output [4:0] rp_addr;
+  reg [4:0] rp_addr = 5'h00;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:100" *)
+  input [32:0] rp_data;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:204" *)
+  wire [63:0] rp_data64;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:203" *)
+  wire [63:0] rp_data64_in;
+  (* init = 2'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:169" *)
+  reg [1:0] rresp_v = 2'h0;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  input rst;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:162" *)
+  reg rvalid_v = 1'h0;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_ri__araddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__arvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__rready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  wire s_axi_ro__arready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  wire [31:0] s_axi_ro__rdata;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  wire [1:0] s_axi_ro__rresp;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  wire s_axi_ro__rvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__awaddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__awvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__bready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__wdata;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [3:0] s_axi_wi__wstrb;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__wvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  wire s_axi_wo__awready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  wire [1:0] s_axi_wo__bresp;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  wire s_axi_wo__bvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  wire s_axi_wo__wready;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:183" *)
+  wire ssss_enable;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:186" *)
+  wire [5:0] ssss_index;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:174" *)
+  wire [31:0] wdata_v;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:80" *)
+  output [15:0] width;
+  (* init = 5'h00 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:94" *)
+  output [4:0] wp_addr;
+  reg [4:0] wp_addr = 5'h00;
+  (* init = 33'h000000000 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:95" *)
+  output [32:0] wp_data;
+  reg [32:0] wp_data = 33'h000000000;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:96" *)
+  output wp_en;
+  reg wp_en = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:165" *)
+  reg wready_v = 1'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:175" *)
+  wire [3:0] wstrb_v;
+  assign \$100  = ssss_index < (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 5'h1a;
+  assign \$102  = \$98  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) \$100 ;
+  assign \$104  = hw_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:372" *) 1'h1;
+  assign \$106  = debug_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$108  = ssss_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 1'h1;
+  assign \$110  = ssss_index < (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 5'h1a;
+  assign \$112  = \$108  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) \$110 ;
+  assign \$114  = hw_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:372" *) 1'h1;
+  assign \$116  = debug_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$118  = ssss_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 1'h1;
+  assign \$120  = ssss_index < (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 5'h1a;
+  assign \$122  = \$118  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) \$120 ;
+  assign \$124  = hw_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:372" *) 1'h1;
+  assign \$126  = debug_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$128  = hw_index == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:226" *) 1'h0;
+  assign \$130  = hw_index == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:226" *) 1'h0;
+  assign \$132  = hw_index == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:226" *) 1'h0;
+  assign \$134  = hw_index == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:226" *) 1'h0;
+  assign \$136  = ssss_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 1'h1;
+  assign \$138  = ssss_index < (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 5'h1a;
+  assign \$140  = \$136  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) \$138 ;
+  assign \$142  = hw_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:372" *) 1'h1;
+  assign \$144  = debug_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$146  = hw_index == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:226" *) 1'h0;
+  assign \$148  = hw_index == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:226" *) 1'h0;
+  assign \$150  = hw_index == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:226" *) 1'h0;
+  assign \$15  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:100" *) rp_data;
+  assign \$17  = ssss_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 1'h1;
+  assign \$19  = ssss_index < (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 5'h1a;
+  assign \$21  = \$17  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) \$19 ;
+  assign \$23  = hw_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:372" *) 1'h1;
+  assign \$25  = debug_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$27  = ssss_index[0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:248" *) 1'h0;
+  assign \$29  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) "";
+  assign \$31  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) "";
+  assign \$33  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) "";
+  assign \$35  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) "";
+  assign \$37  = s_axi_ri__araddr >>> (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:306" *) 2'h2;
+  assign \$39  = s_axi_wi__awaddr >>> (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:345" *) 2'h2;
+  assign \$42  = s_axi_ri__araddr >>> (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:307" *) 2'h3;
+  assign \$45  = s_axi_wi__awaddr >>> (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:346" *) 2'h3;
+  assign \$47  = ssss_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:324" *) 1'h1;
+  assign \$49  = ssss_index < (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:324" *) 5'h1a;
+  assign \$51  = \$47  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:324" *) \$49 ;
+  assign \$53  = hw_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:327" *) 1'h1;
+  assign \$55  = debug_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:331" *) 1'h1;
+  assign \$57  = ssss_index[0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:239" *) 1'h0;
+  assign \$59  = hw_index == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:210" *) 1'h0;
+  assign \$61  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:83" *) allowed_cycles;
+  assign \$63  = ssss_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:324" *) 1'h1;
+  assign \$65  = ssss_index < (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:324" *) 5'h1a;
+  assign \$67  = \$63  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:324" *) \$65 ;
+  assign \$69  = hw_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:327" *) 1'h1;
+  assign \$71  = debug_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:331" *) 1'h1;
+  assign \$73  = hw_index == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:210" *) 1'h0;
+  assign \$75  = ssss_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 1'h1;
+  assign \$77  = ssss_index < (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 5'h1a;
+  assign \$79  = \$75  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) \$77 ;
+  assign \$81  = hw_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:372" *) 1'h1;
+  assign \$83  = debug_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$86  = ssss_index >>> (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:266" *) 1'h1;
+  assign \$88  = ssss_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 1'h1;
+  assign \$90  = ssss_index < (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 5'h1a;
+  assign \$92  = \$88  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) \$90 ;
+  assign \$94  = hw_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:372" *) 1'h1;
+  assign \$96  = debug_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$98  = ssss_enable == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:369" *) 1'h1;
+  always @(posedge clk)
+      allowed_cycles <= \$next\allowed_cycles ;
+  always @(posedge clk)
+      height_width <= \$next\height_width ;
+  always @(posedge clk)
+      bresp_v <= \$next\bresp_v ;
+  always @(posedge clk)
+      wp_en <= \$next\wp_en ;
+  always @(posedge clk)
+      wp_data <= \$next\wp_data ;
+  always @(posedge clk)
+      wp_addr <= \$next\wp_addr ;
+  always @(posedge clk)
+      wready_v <= \$next\wready_v ;
+  always @(posedge clk)
+      awready_v <= \$next\awready_v ;
+  always @(posedge clk)
+      rresp_v <= \$next\rresp_v ;
+  always @(posedge clk)
+      rdata_v <= \$next\rdata_v ;
+  always @(posedge clk)
+      arready_v <= \$next\arready_v ;
+  always @(posedge clk)
+      rp_addr <= \$next\rp_addr ;
+  always @(posedge clk)
+      addr_v <= \$next\addr_v ;
+  always @(posedge clk)
+      fsm_state <= \$next\fsm_state ;
+  always @(posedge clk)
+      bvalid_v <= \$next\bvalid_v ;
+  always @(posedge clk)
+      rvalid_v <= \$next\rvalid_v ;
+  debug_module debug_module (
+    .\$signal (\debug_module_$signal ),
+    .\$signal$1 (\debug_module_$signal$1 ),
+    .\$signal$2 (\debug_module_$signal$2 ),
+    .\$signal$3 (\debug_module_$signal$3 ),
+    .\$signal$4 (\debug_module_$signal$4 ),
+    .\$signal$5 (\debug_module_$signal$5 ),
+    .\$signal$6 (\debug_module_$signal$6 ),
+    .\$signal$7 (\debug_module_$signal$7 ),
+    .clk(clk),
+    .regs_en(debug_module_regs_en),
+    .rst(rst)
+  );
   always @* begin
-    \$next\o_busy  = 1'h0;
-    \$next\o_busy  = i_busy;
+    \$next\debug_module_regs_en  = 8'h00;
+    \$next\debug_module_regs_en  = debug_en;
   end
   always @* begin
-    \$next\enc_right  = 12'h000;
-    \$next\enc_right  = enc_left;
+    \$next$signal  = 32'd0;
+    \$next$signal  = \debug_module_$signal ;
   end
   always @* begin
-    \$next\enc_ctr_right  = 4'h0;
-    \$next\enc_ctr_right  = enc_ctr_left;
+    \$next\wstrb_v  = 4'h0;
+    \$next\wstrb_v  = 4'h0;
+    casez (fsm_state)
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                \$next\wstrb_v  = s_axi_wi__wstrb;
+          endcase
+    endcase
   end
   always @* begin
-    \$next\out_end_right  = 1'h0;
-    \$next\out_end_right  = out_end_left;
+    \$next\ssss_enable  = 1'h0;
+    \$next\ssss_enable  = addr_v[10];
   end
   always @* begin
-    \$next\valid_right  = 1'h0;
-    \$next\valid_right  = valid_left;
+    \$next\hw_enable  = 1'h0;
+    \$next\hw_enable  = addr_v[11];
   end
-  assign valid_right = \$next\valid_right ;
-  assign out_end_right = \$next\out_end_right ;
-  assign enc_ctr_right = \$next\enc_ctr_right ;
-  assign enc_right = \$next\enc_right ;
-  assign o_busy = \$next\o_busy ;
+  always @* begin
+    \$next\debug_enable  = 1'h0;
+    \$next\debug_enable  = addr_v[12];
+  end
+  always @* begin
+    \$next\ssss_index  = 6'h00;
+    \$next\ssss_index  = addr_v[5:0];
+  end
+  always @* begin
+    \$next\debug_index  = 3'h0;
+    \$next\debug_index  = addr_v[2:0];
+  end
+  always @* begin
+    \$next\hw_index  = 1'h0;
+    \$next\hw_index  = addr_v[0];
+  end
+  always @* begin
+    \$next\rp_data64  = 64'h0000000000000000;
+    \$next\rp_data64  = \$15 ;
+  end
+  always @* begin
+    \$next\rp_data64_in  = 64'h0000000000000000;
+    \$next\rp_data64_in  = 64'h0000000000000000;
+    casez (fsm_state)
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                casez ({ \$25 , \$23 , \$21  })
+                  3'bzz1:
+                      casez (\$27 )
+                        1'h1:
+                          begin
+                            casez (wstrb_v[0])
+                              1'h1:
+                                  \$next\rp_data64_in [7:0] = wdata_v[7:0];
+                              1'hz:
+                                  \$next\rp_data64_in [7:0] = rp_data64[7:0];
+                            endcase
+                            casez (wstrb_v[1])
+                              1'h1:
+                                  \$next\rp_data64_in [15:8] = wdata_v[15:8];
+                              1'hz:
+                                  \$next\rp_data64_in [15:8] = rp_data64[15:8];
+                            endcase
+                            casez (wstrb_v[2])
+                              1'h1:
+                                  \$next\rp_data64_in [23:16] = wdata_v[23:16];
+                              1'hz:
+                                  \$next\rp_data64_in [23:16] = rp_data64[23:16];
+                            endcase
+                            casez (wstrb_v[3])
+                              1'h1:
+                                  \$next\rp_data64_in [31:24] = wdata_v[31:24];
+                              1'hz:
+                                  \$next\rp_data64_in [31:24] = rp_data64[31:24];
+                            endcase
+                          end
+                        1'hz:
+                          begin
+                            casez (wstrb_v[0])
+                              1'h1:
+                                  \$next\rp_data64_in [39:32] = \$29 ;
+                              1'hz:
+                                  \$next\rp_data64_in [39:32] = rp_data64[39:32];
+                            endcase
+                            casez (wstrb_v[1])
+                              1'h1:
+                                  \$next\rp_data64_in [47:40] = \$31 ;
+                              1'hz:
+                                  \$next\rp_data64_in [47:40] = rp_data64[47:40];
+                            endcase
+                            casez (wstrb_v[2])
+                              1'h1:
+                                  \$next\rp_data64_in [55:48] = \$33 ;
+                              1'hz:
+                                  \$next\rp_data64_in [55:48] = rp_data64[55:48];
+                            endcase
+                            casez (wstrb_v[3])
+                              1'h1:
+                                  \$next\rp_data64_in [63:56] = \$35 ;
+                              1'hz:
+                                  \$next\rp_data64_in [63:56] = rp_data64[63:56];
+                            endcase
+                          end
+                      endcase
+                endcase
+          endcase
+    endcase
+  end
+  always @* begin
+    \$next\rvalid_v  = rvalid_v;
+    casez (fsm_state)
+      4'h0:
+          \$next\rvalid_v  = 1'h0;
+      4'h5:
+          casez (s_axi_ri__rready)
+            1'h1:
+                \$next\rvalid_v  = 1'h1;
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\rvalid_v  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next$signal$8  = 32'd0;
+    \$next$signal$8  = \debug_module_$signal$1 ;
+  end
+  always @* begin
+    \$next\bvalid_v  = bvalid_v;
+    casez (fsm_state)
+      4'h0:
+          \$next\bvalid_v  = 1'h0;
+      4'h9:
+          casez (s_axi_wi__bready)
+            1'h1:
+                \$next\bvalid_v  = 1'h1;
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\bvalid_v  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\fsm_state  = fsm_state;
+    casez (fsm_state)
+      4'h0:
+          casez ({ s_axi_wi__awvalid, s_axi_ri__arvalid })
+            2'bz1:
+                \$next\fsm_state  = 4'h1;
+            2'b1z:
+                \$next\fsm_state  = 4'h2;
+          endcase
+      4'h1:
+          \$next\fsm_state  = 4'h3;
+      4'h3:
+          \$next\fsm_state  = 4'h4;
+      4'h4:
+          \$next\fsm_state  = 4'h5;
+      4'h5:
+          casez (s_axi_ri__rready)
+            1'h1:
+                \$next\fsm_state  = 4'h0;
+          endcase
+      4'h2:
+          \$next\fsm_state  = 4'h6;
+      4'h6:
+          \$next\fsm_state  = 4'h7;
+      4'h7:
+          \$next\fsm_state  = 4'h8;
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                \$next\fsm_state  = 4'h9;
+          endcase
+      4'h9:
+          casez (s_axi_wi__bready)
+            1'h1:
+                \$next\fsm_state  = 4'h0;
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\fsm_state  = 4'h0;
+    endcase
+  end
+  always @* begin
+    \$next\addr_v  = addr_v;
+    casez (fsm_state)
+      4'h1:
+          \$next\addr_v  = \$37 ;
+      4'h2:
+          \$next\addr_v  = \$39 ;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\addr_v  = 32'd0;
+    endcase
+  end
+  always @* begin
+    \$next\rp_addr  = rp_addr;
+    casez (fsm_state)
+      4'h1:
+          \$next\rp_addr  = \$41 [4:0];
+      4'h2:
+          \$next\rp_addr  = \$44 [4:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\rp_addr  = 5'h00;
+    endcase
+  end
+  always @* begin
+    \$next\arready_v  = arready_v;
+    casez (fsm_state)
+      4'h1:
+          \$next\arready_v  = 1'h1;
+      4'h3:
+          \$next\arready_v  = 1'h0;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\arready_v  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\rdata_v  = rdata_v;
+    casez (fsm_state)
+      4'h5:
+          casez ({ \$55 , \$53 , \$51  })
+            3'bzz1:
+                casez (\$57 )
+                  1'h1:
+                      \$next\rdata_v  = rp_data64[31:0];
+                  1'hz:
+                      \$next\rdata_v  = rp_data64[63:32];
+                endcase
+            3'bz1z:
+                casez (\$59 )
+                  1'h1:
+                      \$next\rdata_v  = height_width;
+                  1'hz:
+                      \$next\rdata_v  = \$61 ;
+                endcase
+            3'b1zz:
+                casez (debug_index)
+                  3'h0:
+                      \$next\rdata_v  = \$signal ;
+                  3'h1:
+                      \$next\rdata_v  = \$signal$8 ;
+                  3'h2:
+                      \$next\rdata_v  = \$signal$9 ;
+                  3'h3:
+                      \$next\rdata_v  = \$signal$10 ;
+                  3'h4:
+                      \$next\rdata_v  = \$signal$11 ;
+                  3'h5:
+                      \$next\rdata_v  = \$signal$12 ;
+                  3'h6:
+                      \$next\rdata_v  = \$signal$13 ;
+                  3'hz:
+                      \$next\rdata_v  = \$signal$14 ;
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\rdata_v  = 32'd0;
+    endcase
+  end
+  always @* begin
+    \$next\rresp_v  = rresp_v;
+    casez (fsm_state)
+      4'h5:
+          casez ({ \$71 , \$69 , \$67  })
+            3'bzz1:
+                \$next\rresp_v  = 2'h0;
+            3'bz1z:
+                casez (\$73 )
+                  1'h1:
+                      \$next\rresp_v  = 2'h0;
+                  1'hz:
+                      \$next\rresp_v  = 2'h0;
+                endcase
+            3'b1zz:
+                \$next\rresp_v  = 2'h0;
+            3'hz:
+                \$next\rresp_v  = 2'h3;
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\rresp_v  = 2'h0;
+    endcase
+  end
+  always @* begin
+    \$next\awready_v  = awready_v;
+    casez (fsm_state)
+      4'h2:
+          \$next\awready_v  = 1'h1;
+      4'h6:
+          \$next\awready_v  = 1'h0;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\awready_v  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\wready_v  = wready_v;
+    casez (fsm_state)
+      4'h8:
+          \$next\wready_v  = 1'h1;
+      4'h9:
+          \$next\wready_v  = 1'h0;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\wready_v  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\wp_addr  = wp_addr;
+    casez (fsm_state)
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                casez ({ \$83 , \$81 , \$79  })
+                  3'bzz1:
+                      \$next\wp_addr  = \$85 [4:0];
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\wp_addr  = 5'h00;
+    endcase
+  end
+  always @* begin
+    \$next$signal$9  = 32'd0;
+    \$next$signal$9  = \debug_module_$signal$2 ;
+  end
+  always @* begin
+    \$next\wp_data  = wp_data;
+    casez (fsm_state)
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                casez ({ \$96 , \$94 , \$92  })
+                  3'bzz1:
+                      \$next\wp_data  = rp_data64_in[32:0];
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\wp_data  = 33'h000000000;
+    endcase
+  end
+  always @* begin
+    \$next\wp_en  = wp_en;
+    casez (fsm_state)
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                casez ({ \$106 , \$104 , \$102  })
+                  3'bzz1:
+                      \$next\wp_en  = 1'h1;
+                endcase
+          endcase
+      4'h9:
+          \$next\wp_en  = 1'h0;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\wp_en  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\bresp_v  = bresp_v;
+    casez (fsm_state)
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                casez ({ \$116 , \$114 , \$112  })
+                  3'bzz1:
+                      \$next\bresp_v  = 2'h0;
+                  3'bz1z:
+                      \$next\bresp_v  = 2'h0;
+                  3'b1zz:
+                      \$next\bresp_v  = 2'h2;
+                  3'hz:
+                      \$next\bresp_v  = 2'h3;
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\bresp_v  = 2'h0;
+    endcase
+  end
+  always @* begin
+    \$next\height_width  = height_width;
+    casez (fsm_state)
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                casez ({ \$126 , \$124 , \$122  })
+                  3'bzz1:
+                      /* empty */;
+                  3'bz1z:
+                    begin
+                      casez (wstrb_v[0])
+                        1'h1:
+                            casez (\$128 )
+                              1'h1:
+                                  \$next\height_width [7:0] = wdata_v[7:0];
+                            endcase
+                      endcase
+                      casez (wstrb_v[1])
+                        1'h1:
+                            casez (\$130 )
+                              1'h1:
+                                  \$next\height_width [15:8] = wdata_v[15:8];
+                            endcase
+                      endcase
+                      casez (wstrb_v[2])
+                        1'h1:
+                            casez (\$132 )
+                              1'h1:
+                                  \$next\height_width [23:16] = wdata_v[23:16];
+                            endcase
+                      endcase
+                      casez (wstrb_v[3])
+                        1'h1:
+                            casez (\$134 )
+                              1'h1:
+                                  \$next\height_width [31:24] = wdata_v[31:24];
+                            endcase
+                      endcase
+                    end
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\height_width  = 32'd0;
+    endcase
+  end
+  always @* begin
+    \$next\allowed_cycles  = allowed_cycles;
+    casez (fsm_state)
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                casez ({ \$144 , \$142 , \$140  })
+                  3'bzz1:
+                      /* empty */;
+                  3'bz1z:
+                    begin
+                      casez (wstrb_v[0])
+                        1'h1:
+                            casez (\$146 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\allowed_cycles [7:0] = wdata_v[7:0];
+                            endcase
+                      endcase
+                      casez (wstrb_v[1])
+                        1'h1:
+                            casez (\$148 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\allowed_cycles [15:8] = wdata_v[15:8];
+                            endcase
+                      endcase
+                      casez (wstrb_v[2])
+                        1'h1:
+                            casez (\$150 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\allowed_cycles [23:16] = wdata_v[23:16];
+                            endcase
+                      endcase
+                    end
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\allowed_cycles  = 24'h000000;
+    endcase
+  end
+  always @* begin
+    \$next\s_axi_ro__arready  = 1'h0;
+    \$next\s_axi_ro__arready  = arready_v;
+  end
+  always @* begin
+    \$next\s_axi_ro__rvalid  = 1'h0;
+    \$next\s_axi_ro__rvalid  = rvalid_v;
+  end
+  always @* begin
+    \$next\s_axi_wo__awready  = 1'h0;
+    \$next\s_axi_wo__awready  = awready_v;
+  end
+  always @* begin
+    \$next\s_axi_wo__wready  = 1'h0;
+    \$next\s_axi_wo__wready  = wready_v;
+  end
+  always @* begin
+    \$next\s_axi_wo__bvalid  = 1'h0;
+    \$next\s_axi_wo__bvalid  = bvalid_v;
+  end
+  always @* begin
+    \$next$signal$10  = 32'd0;
+    \$next$signal$10  = \debug_module_$signal$3 ;
+  end
+  always @* begin
+    \$next\s_axi_ro__rdata  = 32'd0;
+    \$next\s_axi_ro__rdata  = rdata_v;
+  end
+  always @* begin
+    \$next\s_axi_ro__rresp  = 2'h0;
+    \$next\s_axi_ro__rresp  = rresp_v;
+  end
+  always @* begin
+    \$next\s_axi_wo__bresp  = 2'h0;
+    \$next\s_axi_wo__bresp  = bresp_v;
+  end
+  always @* begin
+    \$next\height  = 16'h0000;
+    \$next\height  = height_width[15:0];
+  end
+  always @* begin
+    \$next\width  = 16'h0000;
+    \$next\width  = height_width[31:16];
+  end
+  always @* begin
+    \$next$signal$11  = 32'd0;
+    \$next$signal$11  = \debug_module_$signal$4 ;
+  end
+  always @* begin
+    \$next$signal$12  = 32'd0;
+    \$next$signal$12  = \debug_module_$signal$5 ;
+  end
+  always @* begin
+    \$next$signal$13  = 32'd0;
+    \$next$signal$13  = \debug_module_$signal$6 ;
+  end
+  always @* begin
+    \$next$signal$14  = 32'd0;
+    \$next$signal$14  = \debug_module_$signal$7 ;
+  end
+  always @* begin
+    \$next\wdata_v  = 32'd0;
+    \$next\wdata_v  = 32'd0;
+    casez (fsm_state)
+      4'h8:
+          casez (s_axi_wi__wvalid)
+            1'h1:
+                \$next\wdata_v  = s_axi_wi__wdata;
+          endcase
+    endcase
+  end
+  assign \$41  = \$42 ;
+  assign \$44  = \$45 ;
+  assign \$85  = \$86 ;
+  assign width = \$next\width ;
+  assign height = \$next\height ;
+  assign s_axi_wo__bresp = \$next\s_axi_wo__bresp ;
+  assign s_axi_ro__rresp = \$next\s_axi_ro__rresp ;
+  assign s_axi_ro__rdata = \$next\s_axi_ro__rdata ;
+  assign s_axi_wo__bvalid = \$next\s_axi_wo__bvalid ;
+  assign s_axi_wo__wready = \$next\s_axi_wo__wready ;
+  assign s_axi_wo__awready = \$next\s_axi_wo__awready ;
+  assign s_axi_ro__rvalid = \$next\s_axi_ro__rvalid ;
+  assign s_axi_ro__arready = \$next\s_axi_ro__arready ;
+  assign rp_data64_in = \$next\rp_data64_in ;
+  assign rp_data64 = \$next\rp_data64 ;
+  assign hw_index = \$next\hw_index ;
+  assign debug_index = \$next\debug_index ;
+  assign ssss_index = \$next\ssss_index ;
+  assign debug_enable = \$next\debug_enable ;
+  assign hw_enable = \$next\hw_enable ;
+  assign ssss_enable = \$next\ssss_enable ;
+  assign wstrb_v = \$next\wstrb_v ;
+  assign wdata_v = \$next\wdata_v ;
+  assign \$signal$14  = \$next$signal$14 ;
+  assign \$signal$13  = \$next$signal$13 ;
+  assign \$signal$12  = \$next$signal$12 ;
+  assign \$signal$11  = \$next$signal$11 ;
+  assign \$signal$10  = \$next$signal$10 ;
+  assign \$signal$9  = \$next$signal$9 ;
+  assign \$signal$8  = \$next$signal$8 ;
+  assign \$signal  = \$next$signal ;
+  assign debug_module_regs_en = \$next\debug_module_regs_en ;
 endmodule
 
-(* \nmigen.hierarchy  = "top.integration_3.integration_2.converter_reg" *)
+(* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.core_axi_lite.debug_module" *)
 (* generator = "nMigen" *)
-module converter_reg(left_enc_ctr, left_end, left_valid, right_close_full, right_enc, right_enc_ctr, right_end, right_valid, left_close_full, left_enc);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:23" *)
-  reg \$next\left_close_full ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:26" *)
-  reg [11:0] \$next\right_enc ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:27" *)
-  reg [3:0] \$next\right_enc_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:28" *)
-  reg \$next\right_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:29" *)
-  reg \$next\right_valid ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:23" *)
-  output left_close_full;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:19" *)
-  input [11:0] left_enc;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:20" *)
-  input [3:0] left_enc_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:21" *)
-  input left_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:22" *)
-  input left_valid;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:30" *)
-  input right_close_full;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:26" *)
-  output [11:0] right_enc;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:27" *)
-  output [3:0] right_enc_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:28" *)
-  output right_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:29" *)
-  output right_valid;
+module debug_module(rst, clk, \$signal , \$signal$1 , \$signal$2 , \$signal$3 , \$signal$4 , \$signal$5 , \$signal$6 , \$signal$7 , regs_en);
+  wire [32:0] \$11 ;
+  wire [32:0] \$12 ;
+  wire [32:0] \$14 ;
+  wire [32:0] \$15 ;
+  wire [32:0] \$17 ;
+  wire [32:0] \$18 ;
+  wire [32:0] \$20 ;
+  wire [32:0] \$21 ;
+  wire [32:0] \$23 ;
+  wire [32:0] \$24 ;
+  wire [32:0] \$26 ;
+  wire [32:0] \$27 ;
+  wire [32:0] \$29 ;
+  wire [32:0] \$30 ;
+  wire [32:0] \$8 ;
+  wire [32:0] \$9 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  reg [31:0] \$next$signal ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  reg [31:0] \$next$signal$1 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  reg [31:0] \$next$signal$2 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  reg [31:0] \$next$signal$3 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  reg [31:0] \$next$signal$4 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  reg [31:0] \$next$signal$5 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  reg [31:0] \$next$signal$6 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  reg [31:0] \$next$signal$7 ;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  output [31:0] \$signal ;
+  reg [31:0] \$signal  = 32'd0;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  output [31:0] \$signal$1 ;
+  reg [31:0] \$signal$1  = 32'd0;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  output [31:0] \$signal$2 ;
+  reg [31:0] \$signal$2  = 32'd0;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  output [31:0] \$signal$3 ;
+  reg [31:0] \$signal$3  = 32'd0;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  output [31:0] \$signal$4 ;
+  reg [31:0] \$signal$4  = 32'd0;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  output [31:0] \$signal$5 ;
+  reg [31:0] \$signal$5  = 32'd0;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  output [31:0] \$signal$6 ;
+  reg [31:0] \$signal$6  = 32'd0;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
+  output [31:0] \$signal$7 ;
+  reg [31:0] \$signal$7  = 32'd0;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
+  input clk;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:36" *)
+  input [7:0] regs_en;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  input rst;
+  assign \$9  = \$signal  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
+  assign \$12  = \$signal$1  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
+  assign \$15  = \$signal$2  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
+  assign \$18  = \$signal$3  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
+  assign \$21  = \$signal$4  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
+  assign \$24  = \$signal$5  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
+  assign \$27  = \$signal$6  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
+  assign \$30  = \$signal$7  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
+  always @(posedge clk)
+      \$signal$7  <= \$next$signal$7 ;
+  always @(posedge clk)
+      \$signal$6  <= \$next$signal$6 ;
+  always @(posedge clk)
+      \$signal$5  <= \$next$signal$5 ;
+  always @(posedge clk)
+      \$signal$4  <= \$next$signal$4 ;
+  always @(posedge clk)
+      \$signal$3  <= \$next$signal$3 ;
+  always @(posedge clk)
+      \$signal$2  <= \$next$signal$2 ;
+  always @(posedge clk)
+      \$signal$1  <= \$next$signal$1 ;
+  always @(posedge clk)
+      \$signal  <= \$next$signal ;
   always @* begin
-    \$next\right_enc  = 12'h000;
-    \$next\right_enc  = left_enc;
+    \$next$signal  = \$signal ;
+    casez (regs_en[0])
+      1'h1:
+          \$next$signal  = \$8 [31:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next$signal  = 32'd0;
+    endcase
   end
   always @* begin
-    \$next\right_enc_ctr  = 4'h0;
-    \$next\right_enc_ctr  = left_enc_ctr;
+    \$next$signal$1  = \$signal$1 ;
+    casez (regs_en[1])
+      1'h1:
+          \$next$signal$1  = \$11 [31:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next$signal$1  = 32'd0;
+    endcase
   end
   always @* begin
-    \$next\right_end  = 1'h0;
-    \$next\right_end  = left_end;
+    \$next$signal$2  = \$signal$2 ;
+    casez (regs_en[2])
+      1'h1:
+          \$next$signal$2  = \$14 [31:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next$signal$2  = 32'd0;
+    endcase
   end
   always @* begin
-    \$next\right_valid  = 1'h0;
-    \$next\right_valid  = left_valid;
+    \$next$signal$3  = \$signal$3 ;
+    casez (regs_en[3])
+      1'h1:
+          \$next$signal$3  = \$17 [31:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next$signal$3  = 32'd0;
+    endcase
   end
   always @* begin
-    \$next\left_close_full  = 1'h0;
-    \$next\left_close_full  = right_close_full;
+    \$next$signal$4  = \$signal$4 ;
+    casez (regs_en[4])
+      1'h1:
+          \$next$signal$4  = \$20 [31:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next$signal$4  = 32'd0;
+    endcase
   end
-  assign left_close_full = \$next\left_close_full ;
-  assign right_valid = \$next\right_valid ;
-  assign right_end = \$next\right_end ;
-  assign right_enc_ctr = \$next\right_enc_ctr ;
-  assign right_enc = \$next\right_enc ;
+  always @* begin
+    \$next$signal$5  = \$signal$5 ;
+    casez (regs_en[5])
+      1'h1:
+          \$next$signal$5  = \$23 [31:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next$signal$5  = 32'd0;
+    endcase
+  end
+  always @* begin
+    \$next$signal$6  = \$signal$6 ;
+    casez (regs_en[6])
+      1'h1:
+          \$next$signal$6  = \$26 [31:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next$signal$6  = 32'd0;
+    endcase
+  end
+  always @* begin
+    \$next$signal$7  = \$signal$7 ;
+    casez (regs_en[7])
+      1'h1:
+          \$next$signal$7  = \$29 [31:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next$signal$7  = 32'd0;
+    endcase
+  end
+  assign \$8  = \$9 ;
+  assign \$11  = \$12 ;
+  assign \$14  = \$15 ;
+  assign \$17  = \$18 ;
+  assign \$20  = \$21 ;
+  assign \$23  = \$24 ;
+  assign \$26  = \$27 ;
+  assign \$29  = \$30 ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.difference" *)
 (* generator = "nMigen" *)
-module difference(pixel_in, predic_in, rst, clk, val_out, \val_out$1 , valid_out, valid_in);
+module difference(pixel_in, predic_in, end_in, rst, clk, val_out, \val_out$1 , valid_out, end_out, valid_in);
   wire [12:0] \$2 ;
   wire [13:0] \$4 ;
   wire [12:0] \$5 ;
   wire [13:0] \$7 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:23" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:72" *)
+  reg \$next\end_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:61" *)
   reg [12:0] \$next\val_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:24" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:64" *)
   reg [12:0] \$next\val_out$1 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:27" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:68" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:21" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:71" *)
+  input end_in;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:72" *)
+  output end_out;
+  reg end_out = 1'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:55" *)
   input [11:0] pixel_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:22" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:58" *)
   input [11:0] predic_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 13'h0000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:23" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:61" *)
   output [12:0] val_out;
   reg [12:0] val_out = 13'h0000;
   (* init = 13'h0000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:24" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:64" *)
   output [12:0] \val_out$1 ;
   reg [12:0] \val_out$1  = 13'h0000;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:26" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:67" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:27" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:68" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$2  = pixel_in - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:43" *) predic_in;
-  assign \$5  = pixel_in - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:44" *) predic_in;
-  assign \$7  = \$5  - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:44" *) 1'h1;
+  assign \$2  = pixel_in - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:89" *) predic_in;
+  assign \$5  = pixel_in - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:90" *) predic_in;
+  assign \$7  = \$5  - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:90" *) 1'h1;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
   always @(posedge clk)
       valid_out <= \$next\valid_out ;
   always @(posedge clk)
@@ -1185,84 +2383,108 @@ module difference(pixel_in, predic_in, rst, clk, val_out, \val_out$1 , valid_out
           \$next\valid_out  = 1'h0;
     endcase
   end
+  always @* begin
+    \$next\end_out  = end_out;
+    \$next\end_out  = end_in;
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
+    endcase
+  end
   assign \$4  = \$7 ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.encode" *)
 (* generator = "nMigen" *)
-module encode(valid_in, ssss, rst, clk, enc_out, enc_ctr, valid_out, val_in);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:110" *)
+module encode(end_in, valid_in, ssss, rst, clk, mem_r_addr, mem_w_en, mem_w_addr, mem_w_data, enc_out, enc_ctr, valid_out, end_out, mem_r_data, val_in);
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:184" *)
   reg [4:0] \$next\enc_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:109" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:182" *)
   reg [27:0] \$next\enc_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:106" *)
+  reg \$next\end_in$2 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:192" *)
+  reg \$next\end_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
-  reg [3:0] \$next\mem_r_addr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:39" *)
+  reg [3:0] \$next\mem_r_addr$11 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:89" *)
   reg [32:0] \$next\rp_data ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:42" *)
-  reg [4:0] \$next\ssss$1 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:41" *)
-  reg [11:0] \$next\val_in$2 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:45" *)
-  reg \$next\valid ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:146" *)
-  reg \$next\valid_late ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:113" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:94" *)
+  reg [4:0] \$next\ssss$3 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:92" *)
+  reg [11:0] \$next\val_in$4 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:102" *)
+  reg \$next\valid_in$1 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:188" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:110" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:184" *)
   output [4:0] enc_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:44" *)
-  wire [4:0] \enc_ctr$4 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:109" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:99" *)
+  wire [4:0] \enc_ctr$8 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:182" *)
   output [27:0] enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:43" *)
-  wire [27:0] \enc_out$3 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:97" *)
+  wire [27:0] \enc_out$7 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:191" *)
+  input end_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:106" *)
+  wire \end_in$2 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:192" *)
+  output end_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:107" *)
+  wire \end_out$6 ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
-  wire [3:0] mem_r_addr;
+  input [3:0] mem_r_addr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
+  wire [3:0] \mem_r_addr$11 ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:83" *)
-  wire [32:0] mem_r_data;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:38" *)
+  output [32:0] mem_r_data;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:83" *)
+  wire [32:0] \mem_r_data$12 ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
+  input [3:0] mem_w_addr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
+  input [32:0] mem_w_data;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
+  input mem_w_en;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:88" *)
   wire [4:0] rp_addr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:39" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:89" *)
   wire [32:0] rp_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:106" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:179" *)
   input [4:0] ssss;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:42" *)
-  wire [4:0] \ssss$1 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:105" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:94" *)
+  wire [4:0] \ssss$3 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:177" *)
   input [11:0] val_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:41" *)
-  wire [11:0] \val_in$2 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:45" *)
-  wire valid;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:112" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:92" *)
+  wire [11:0] \val_in$4 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:187" *)
   input valid_in;
-  (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:146" *)
-  reg valid_late = 1'h0;
-  (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:113" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:102" *)
+  wire \valid_in$1 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:188" *)
   output valid_out;
-  reg valid_out = 1'h0;
-  \anonymous$1  \$5  (
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:103" *)
+  wire \valid_out$5 ;
+  \anonymous$1  \$9  (
     .clk(clk),
-    .enc_ctr(\enc_ctr$4 ),
-    .enc_out(\enc_out$3 ),
+    .enc_ctr(\enc_ctr$8 ),
+    .enc_out(\enc_out$7 ),
+    .end_in(\end_in$2 ),
+    .end_out(\end_out$6 ),
     .rp_addr(rp_addr),
     .rp_data(rp_data),
     .rst(rst),
-    .ssss(\ssss$1 ),
-    .val_in(\val_in$2 ),
-    .valid(valid)
+    .ssss(\ssss$3 ),
+    .val_in(\val_in$4 ),
+    .valid_in(\valid_in$1 ),
+    .valid_out(\valid_out$5 )
   );
-  always @(posedge clk)
-      valid_out <= \$next\valid_out ;
-  always @(posedge clk)
-      valid_late <= \$next\valid_late ;
   reg [32:0] mem [12:0];
   initial begin
     mem[0] = 33'h04000000e;
@@ -1280,140 +2502,64 @@ module encode(valid_in, ssss, rst, clk, enc_out, enc_ctr, valid_out, val_in);
     mem[12] = 33'h0901fe000;
   end
   reg [3:0] _0_;
+  reg [3:0] _1_;
   always @(posedge clk) begin
-    _0_ <= \$next\mem_r_addr ;
+    _0_ <= \$next\mem_r_addr$11 ;
+    _1_ <= mem_r_addr;
+    if (mem_w_en) mem[mem_w_addr] <= mem_w_data;
   end
-  assign mem_r_data = mem[_0_];
+  assign \mem_r_data$12  = mem[_0_];
+  assign mem_r_data = mem[_1_];
   always @* begin
-    \$next\val_in$2  = 12'h000;
-    \$next\val_in$2  = val_in;
-  end
-  always @* begin
-    \$next\valid  = 1'h0;
-    \$next\valid  = valid_in;
-  end
-  always @* begin
-    \$next\ssss$1  = 5'h00;
-    \$next\ssss$1  = ssss;
+    \$next\val_in$4  = 12'h000;
+    \$next\val_in$4  = val_in;
   end
   always @* begin
-    \$next\mem_r_addr  = 4'h0;
-    \$next\mem_r_addr  = rp_addr[3:0];
+    \$next\end_in$2  = 1'h0;
+    \$next\end_in$2  = end_in;
+  end
+  always @* begin
+    \$next\valid_in$1  = 1'h0;
+    \$next\valid_in$1  = valid_in;
+  end
+  always @* begin
+    \$next\ssss$3  = 5'h00;
+    \$next\ssss$3  = ssss;
+  end
+  always @* begin
+    \$next\mem_r_addr$11  = 4'h0;
+    \$next\mem_r_addr$11  = rp_addr[3:0];
   end
   always @* begin
     \$next\rp_data  = 33'h000000000;
-    \$next\rp_data  = mem_r_data;
+    \$next\rp_data  = \mem_r_data$12 ;
   end
   always @* begin
     \$next\enc_out  = 28'h0000000;
-    \$next\enc_out  = \enc_out$3 ;
+    \$next\enc_out  = \enc_out$7 ;
   end
   always @* begin
     \$next\enc_ctr  = 5'h00;
-    \$next\enc_ctr  = \enc_ctr$4 ;
+    \$next\enc_ctr  = \enc_ctr$8 ;
   end
   always @* begin
-    \$next\valid_late  = valid_late;
-    \$next\valid_late  = valid_in;
-    casez (rst)
-      1'h1:
-          \$next\valid_late  = 1'h0;
-    endcase
+    \$next\valid_out  = 1'h0;
+    \$next\valid_out  = \valid_out$5 ;
   end
   always @* begin
-    \$next\valid_out  = valid_out;
-    \$next\valid_out  = valid_late;
-    casez (rst)
-      1'h1:
-          \$next\valid_out  = 1'h0;
-    endcase
+    \$next\end_out  = 1'h0;
+    \$next\end_out  = \end_out$6 ;
   end
+  assign end_out = \$next\end_out ;
+  assign valid_out = \$next\valid_out ;
   assign enc_ctr = \$next\enc_ctr ;
   assign enc_out = \$next\enc_out ;
   assign rp_data = \$next\rp_data ;
-  assign mem_r_addr = \$next\mem_r_addr ;
-  assign \ssss$1  = \$next\ssss$1 ;
-  assign valid = \$next\valid ;
-  assign \val_in$2  = \$next\val_in$2 ;
-endmodule
-
-(* \nmigen.hierarchy  = "top.integration_3.integration_2.end_delayer" *)
-(* generator = "nMigen" *)
-module end_delayer(rst, clk, out_sig, in_sig);
-  wire [3:0] \$1 ;
-  wire [3:0] \$2 ;
-  wire \$4 ;
-  wire \$6 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:11" *)
-  reg \$next\out_sig ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:19" *)
-  reg \$next\out_val ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:12" *)
-  reg [2:0] \$next\timer ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:18" *)
-  reg \$next\timer_start ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
-  input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:10" *)
-  input in_sig;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:11" *)
-  output out_sig;
-  (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:19" *)
-  reg out_val = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
-  input rst;
-  (* init = 3'h4 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:12" *)
-  reg [2:0] timer = 3'h4;
-  (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:18" *)
-  reg timer_start = 1'h0;
-  assign \$2  = timer - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:27" *) 1'h1;
-  assign \$4  = timer == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:29" *) 1'h0;
-  assign \$6  = \$4  | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:29" *) out_val;
-  always @(posedge clk)
-      out_val <= \$next\out_val ;
-  always @(posedge clk)
-      timer <= \$next\timer ;
-  always @(posedge clk)
-      timer_start <= \$next\timer_start ;
-  always @* begin
-    \$next\timer_start  = timer_start;
-    casez (in_sig)
-      1'h1:
-          \$next\timer_start  = 1'h1;
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\timer_start  = 1'h0;
-    endcase
-  end
-  always @* begin
-    \$next\timer  = timer;
-    casez (timer_start)
-      1'h1:
-          \$next\timer  = \$1 [2:0];
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\timer  = 3'h4;
-    endcase
-  end
-  always @* begin
-    \$next\out_val  = out_val;
-    \$next\out_val  = \$6 ;
-    casez (rst)
-      1'h1:
-          \$next\out_val  = 1'h0;
-    endcase
-  end
-  always @* begin
-    \$next\out_sig  = 1'h0;
-    \$next\out_sig  = out_val;
-  end
-  assign \$1  = \$2 ;
-  assign out_sig = \$next\out_sig ;
+  assign \mem_r_addr$11  = \$next\mem_r_addr$11 ;
+  assign \ssss$3  = \$next\ssss$3 ;
+  assign \valid_in$1  = \$next\valid_in$1 ;
+  assign \end_in$2  = \$next\end_in$2 ;
+  assign \val_in$4  = \$next\val_in$4 ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.lj92_pipeline_fifo.fifo" *)
@@ -1554,13 +2700,13 @@ module \fifo$2 (we, re, rst, clk, writable, dout, readable, level, din);
   wire \$5 ;
   wire [10:0] \$7 ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  reg [16:0] \$next\dout ;
+  reg [19:0] \$next\dout ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:238" *)
   reg [10:0] \$next\level ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:70" *)
   reg \$next\readable ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  reg [16:0] \$next\unbuffered_din ;
+  reg [19:0] \$next\unbuffered_din ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
   reg \$next\unbuffered_re ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:139" *)
@@ -1574,9 +2720,9 @@ module \fifo$2 (we, re, rst, clk, writable, dout, readable, level, din);
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  input [16:0] din;
+  input [19:0] din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  output [16:0] dout;
+  output [19:0] dout;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:238" *)
   output [10:0] level;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -1588,9 +2734,9 @@ module \fifo$2 (we, re, rst, clk, writable, dout, readable, level, din);
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  wire [16:0] unbuffered_din;
+  wire [19:0] unbuffered_din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  wire [16:0] unbuffered_dout;
+  wire [19:0] unbuffered_dout;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
   wire [9:0] unbuffered_level;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -1626,7 +2772,7 @@ module \fifo$2 (we, re, rst, clk, writable, dout, readable, level, din);
     .writable(unbuffered_writable)
   );
   always @* begin
-    \$next\unbuffered_din  = 17'h00000;
+    \$next\unbuffered_din  = 20'h00000;
     \$next\unbuffered_din  = din;
   end
   always @* begin
@@ -1643,7 +2789,7 @@ module \fifo$2 (we, re, rst, clk, writable, dout, readable, level, din);
     \$verilog_initial_trigger  = \$verilog_initial_trigger ;
   end
   always @* begin
-    \$next\dout  = 17'h00000;
+    \$next\dout  = 20'h00000;
     \$next\dout  = unbuffered_dout;
   end
   always @* begin
@@ -1678,7 +2824,7 @@ endmodule
 
 (* \nmigen.hierarchy  = "top.fix_0xff" *)
 (* generator = "nMigen" *)
-module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, data_out_ctr, o_busy, i_busy);
+module fix_0xff(valid_in, end_in, data_in, rst, clk, valid_out, data_out, data_out_ctr, o_busy, i_busy);
   wire \$1 ;
   wire \$101 ;
   wire \$103 ;
@@ -1687,14 +2833,21 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   wire \$109 ;
   wire \$11 ;
   wire \$111 ;
-  wire [31:0] \$113 ;
-  wire [31:0] \$115 ;
-  wire [31:0] \$117 ;
+  wire \$113 ;
+  wire \$115 ;
+  wire \$117 ;
   wire \$119 ;
   wire \$121 ;
   wire \$123 ;
-  wire \$125 ;
+  wire [31:0] \$125 ;
+  wire [31:0] \$127 ;
+  wire [31:0] \$129 ;
   wire \$13 ;
+  wire \$131 ;
+  wire \$133 ;
+  wire \$135 ;
+  wire \$137 ;
+  wire \$139 ;
   wire \$15 ;
   wire \$17 ;
   wire \$19 ;
@@ -1704,9 +2857,9 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   wire \$27 ;
   wire \$29 ;
   wire \$3 ;
-  wire [31:0] \$31 ;
-  wire [31:0] \$33 ;
-  wire [31:0] \$35 ;
+  wire \$31 ;
+  wire \$33 ;
+  wire \$35 ;
   wire \$37 ;
   wire \$39 ;
   wire \$41 ;
@@ -1717,9 +2870,9 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   wire \$5 ;
   wire \$51 ;
   wire \$53 ;
-  wire \$55 ;
-  wire \$57 ;
-  wire \$59 ;
+  wire [31:0] \$55 ;
+  wire [31:0] \$57 ;
+  wire [31:0] \$59 ;
   wire \$61 ;
   wire \$63 ;
   wire \$65 ;
@@ -1742,122 +2895,151 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   wire \$95 ;
   wire \$97 ;
   wire \$99 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:40" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:72" *)
   reg [31:0] \$next\data_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:41" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:73" *)
   reg [2:0] \$next\data_out_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:60" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:99" *)
   reg [2:0] \$next\data_out_ctr_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:59" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:97" *)
   reg [31:0] \$next\data_out_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:61" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:100" *)
   reg \$next\data_out_valid ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:46" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:82" *)
+  reg \$next\end_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:98" *)
+  reg \$next\end_out_reg ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:78" *)
   reg \$next\o_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:45" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:93" *)
+  reg [7:0] \$next\ones ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:77" *)
   reg \$next\valid_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:92" *)
+  reg [7:0] \$next\zeros ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:37" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:69" *)
   input [15:0] data_in;
   (* init = 32'd0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:40" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:72" *)
   output [31:0] data_out;
   reg [31:0] data_out = 32'd0;
   (* init = 3'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:41" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:73" *)
   output [2:0] data_out_ctr;
   reg [2:0] data_out_ctr = 3'h0;
   (* init = 3'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:60" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:99" *)
   reg [2:0] data_out_ctr_reg = 3'h0;
   (* init = 32'd0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:59" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:97" *)
   reg [31:0] data_out_reg = 32'd0;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:61" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:100" *)
   reg data_out_valid = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:47" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:81" *)
+  input end_in;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:82" *)
+  reg end_out = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:98" *)
+  reg end_out_reg = 1'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:79" *)
   input i_busy;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:46" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:78" *)
   output o_busy;
   reg o_busy = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:57" *)
-  input [7:0] ones;
+  (* init = 8'hff *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:93" *)
+  reg [7:0] ones = 8'hff;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:44" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:76" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:45" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:77" *)
   output valid_out;
   reg valid_out = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:56" *)
-  input [7:0] zeros;
-  assign \$9  = \$5  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) \$7 ;
-  assign \$99  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:93" *) 1'h1;
-  assign \$101  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:93" *) 1'h1;
-  assign \$103  = \$99  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:93" *) \$101 ;
-  assign \$105  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:97" *) 1'h0;
-  assign \$107  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:9" *) 16'hffff;
-  assign \$109  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:15" *) 8'hff;
-  assign \$111  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:21" *) 8'hff;
-  assign \$113  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:17" *) { data_in[15:8], ones, zeros };
-  assign \$115  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:23" *) { ones, zeros, data_in[7:0] };
-  assign \$117  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:37" *) data_in;
-  assign \$11  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:68" *) 1'h0;
-  assign \$119  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:97" *) 1'h0;
-  assign \$121  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:9" *) 16'hffff;
-  assign \$123  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:15" *) 8'hff;
-  assign \$125  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:21" *) 8'hff;
-  assign \$13  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:67" *) 1'h0;
-  assign \$15  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:82" *) 1'h0;
-  assign \$17  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h1;
-  assign \$1  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:67" *) 1'h0;
-  assign \$19  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h0;
-  assign \$21  = \$17  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) \$19 ;
-  assign \$23  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:68" *) 1'h0;
-  assign \$25  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:9" *) 16'hffff;
-  assign \$27  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:15" *) 8'hff;
-  assign \$29  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:21" *) 8'hff;
-  assign \$31  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:17" *) { data_in[15:8], ones, zeros };
-  assign \$33  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:23" *) { ones, zeros, data_in[7:0] };
-  assign \$35  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:37" *) data_in;
-  assign \$37  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:9" *) 16'hffff;
-  assign \$3  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:82" *) 1'h0;
-  assign \$39  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:15" *) 8'hff;
-  assign \$41  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:21" *) 8'hff;
-  assign \$43  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:17" *) { data_in[15:8], ones, zeros };
-  assign \$45  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:23" *) { ones, zeros, data_in[7:0] };
-  assign \$47  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:37" *) data_in;
-  assign \$49  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:67" *) 1'h0;
-  assign \$51  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:82" *) 1'h0;
-  assign \$53  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h1;
-  assign \$55  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h0;
-  assign \$57  = \$53  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) \$55 ;
-  assign \$5  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h1;
-  assign \$59  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:68" *) 1'h0;
-  assign \$61  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:9" *) 16'hffff;
-  assign \$63  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:15" *) 8'hff;
-  assign \$65  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:21" *) 8'hff;
-  assign \$67  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:9" *) 16'hffff;
-  assign \$69  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:15" *) 8'hff;
-  assign \$71  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:21" *) 8'hff;
-  assign \$73  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:67" *) 1'h0;
-  assign \$75  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:82" *) 1'h0;
-  assign \$77  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h1;
-  assign \$7  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h0;
-  assign \$79  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h0;
-  assign \$81  = \$77  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) \$79 ;
-  assign \$83  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:94" *) 1'h1;
-  assign \$85  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:94" *) 1'h1;
-  assign \$87  = \$83  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:94" *) \$85 ;
-  assign \$89  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:67" *) 1'h0;
-  assign \$91  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:82" *) 1'h0;
-  assign \$93  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h1;
-  assign \$95  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) 1'h0;
-  assign \$97  = \$93  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:91" *) \$95 ;
+  (* init = 8'h00 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:92" *)
+  reg [7:0] zeros = 8'h00;
+  assign \$9  = \$5  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) \$7 ;
+  assign \$99  = \$95  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:138" *) \$97 ;
+  assign \$101  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:106" *) 1'h0;
+  assign \$103  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:125" *) 1'h0;
+  assign \$105  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h1;
+  assign \$107  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h0;
+  assign \$109  = \$105  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) \$107 ;
+  assign \$111  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:137" *) 1'h1;
+  assign \$113  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:137" *) 1'h1;
+  assign \$115  = \$111  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:137" *) \$113 ;
+  assign \$117  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:141" *) 1'h0;
+  assign \$11  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:107" *) 1'h0;
+  assign \$119  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:41" *) 16'hffff;
+  assign \$121  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:47" *) 8'hff;
+  assign \$123  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:53" *) 8'hff;
+  assign \$125  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:49" *) { data_in[15:8], ones, zeros };
+  assign \$127  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:55" *) { ones, zeros, data_in[7:0] };
+  assign \$129  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:69" *) data_in;
+  assign \$131  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:141" *) 1'h0;
+  assign \$133  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:41" *) 16'hffff;
+  assign \$135  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:47" *) 8'hff;
+  assign \$137  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:53" *) 8'hff;
+  assign \$13  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:106" *) 1'h0;
+  assign \$139  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:141" *) 1'h0;
+  assign \$15  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:125" *) 1'h0;
+  assign \$17  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h1;
+  assign \$1  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:106" *) 1'h0;
+  assign \$19  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h0;
+  assign \$21  = \$17  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) \$19 ;
+  assign \$23  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:107" *) 1'h0;
+  assign \$25  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:106" *) 1'h0;
+  assign \$27  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:125" *) 1'h0;
+  assign \$29  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h1;
+  assign \$31  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h0;
+  assign \$33  = \$29  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) \$31 ;
+  assign \$35  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:107" *) 1'h0;
+  assign \$37  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:41" *) 16'hffff;
+  assign \$3  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:125" *) 1'h0;
+  assign \$39  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:47" *) 8'hff;
+  assign \$41  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:53" *) 8'hff;
+  assign \$43  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:49" *) { data_in[15:8], ones, zeros };
+  assign \$45  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:55" *) { ones, zeros, data_in[7:0] };
+  assign \$47  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:69" *) data_in;
+  assign \$49  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:41" *) 16'hffff;
+  assign \$51  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:47" *) 8'hff;
+  assign \$53  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:53" *) 8'hff;
+  assign \$55  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:49" *) { data_in[15:8], ones, zeros };
+  assign \$57  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:55" *) { ones, zeros, data_in[7:0] };
+  assign \$5  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h1;
+  assign \$59  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:69" *) data_in;
+  assign \$61  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:106" *) 1'h0;
+  assign \$63  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:125" *) 1'h0;
+  assign \$65  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h1;
+  assign \$67  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h0;
+  assign \$69  = \$65  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) \$67 ;
+  assign \$71  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:107" *) 1'h0;
+  assign \$73  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:41" *) 16'hffff;
+  assign \$75  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:47" *) 8'hff;
+  assign \$77  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:53" *) 8'hff;
+  assign \$7  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h0;
+  assign \$79  = data_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:41" *) 16'hffff;
+  assign \$81  = data_in[7:0] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:47" *) 8'hff;
+  assign \$83  = data_in[15:8] == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:53" *) 8'hff;
+  assign \$85  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:106" *) 1'h0;
+  assign \$87  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:125" *) 1'h0;
+  assign \$89  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h1;
+  assign \$91  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) 1'h0;
+  assign \$93  = \$89  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:135" *) \$91 ;
+  assign \$95  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:138" *) 1'h1;
+  assign \$97  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:138" *) 1'h1;
+  always @(posedge clk)
+      end_out_reg <= \$next\end_out_reg ;
+  always @(posedge clk)
+      data_out_ctr_reg <= \$next\data_out_ctr_reg ;
   always @(posedge clk)
       data_out_reg <= \$next\data_out_reg ;
   always @(posedge clk)
@@ -1869,9 +3051,40 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   always @(posedge clk)
       data_out <= \$next\data_out ;
   always @(posedge clk)
+      end_out <= \$next\end_out ;
+  always @(posedge clk)
       valid_out <= \$next\valid_out ;
   always @(posedge clk)
-      data_out_ctr_reg <= \$next\data_out_ctr_reg ;
+      zeros <= \$next\zeros ;
+  always @(posedge clk)
+      ones <= \$next\ones ;
+  always @* begin
+    \$next\ones  = ones;
+    \$next\ones  = 8'hff;
+    casez (rst)
+      1'h1:
+          \$next\ones  = 8'hff;
+    endcase
+  end
+  always @* begin
+    \$next\zeros  = zeros;
+    \$next\zeros  = 8'h00;
+    casez (rst)
+      1'h1:
+          \$next\zeros  = 8'h00;
+    endcase
+  end
+  always @* begin
+    \$next\end_out_reg  = end_out_reg;
+    casez (\$139 )
+      1'h1:
+          \$next\end_out_reg  = end_in;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\end_out_reg  = 1'h0;
+    endcase
+  end
   always @* begin
     \$next\valid_out  = valid_out;
     casez ({ \$9 , \$3 , \$1  })
@@ -1891,34 +3104,52 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
     endcase
   end
   always @* begin
-    \$next\data_out  = data_out;
+    \$next\end_out  = end_out;
     casez ({ \$21 , \$15 , \$13  })
       3'bzz1:
           casez (\$23 )
             1'h1:
-                casez ({ \$29 , \$27 , \$25  })
+                \$next\end_out  = end_in;
+            1'hz:
+                \$next\end_out  = end_out_reg;
+          endcase
+      3'bz1z:
+          \$next\end_out  = end_in;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\data_out  = data_out;
+    casez ({ \$33 , \$27 , \$25  })
+      3'bzz1:
+          casez (\$35 )
+            1'h1:
+                casez ({ \$41 , \$39 , \$37  })
                   3'bzz1:
                       \$next\data_out  = { ones, zeros, ones, zeros };
                   3'bz1z:
-                      \$next\data_out  = \$31 ;
+                      \$next\data_out  = \$43 ;
                   3'b1zz:
-                      \$next\data_out  = \$33 ;
+                      \$next\data_out  = \$45 ;
                   3'hz:
-                      \$next\data_out  = \$35 ;
+                      \$next\data_out  = \$47 ;
                 endcase
             1'hz:
                 \$next\data_out  = data_out_reg;
           endcase
       3'bz1z:
-          casez ({ \$41 , \$39 , \$37  })
+          casez ({ \$53 , \$51 , \$49  })
             3'bzz1:
                 \$next\data_out  = { ones, zeros, ones, zeros };
             3'bz1z:
-                \$next\data_out  = \$43 ;
+                \$next\data_out  = \$55 ;
             3'b1zz:
-                \$next\data_out  = \$45 ;
+                \$next\data_out  = \$57 ;
             3'hz:
-                \$next\data_out  = \$47 ;
+                \$next\data_out  = \$59 ;
           endcase
     endcase
     casez (rst)
@@ -1928,11 +3159,11 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   end
   always @* begin
     \$next\data_out_ctr  = data_out_ctr;
-    casez ({ \$57 , \$51 , \$49  })
+    casez ({ \$69 , \$63 , \$61  })
       3'bzz1:
-          casez (\$59 )
+          casez (\$71 )
             1'h1:
-                casez ({ \$65 , \$63 , \$61  })
+                casez ({ \$77 , \$75 , \$73  })
                   3'bzz1:
                       \$next\data_out_ctr  = 3'h4;
                   3'bz1z:
@@ -1946,7 +3177,7 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
                 \$next\data_out_ctr  = data_out_ctr_reg;
           endcase
       3'bz1z:
-          casez ({ \$71 , \$69 , \$67  })
+          casez ({ \$83 , \$81 , \$79  })
             3'bzz1:
                 \$next\data_out_ctr  = 3'h4;
             3'bz1z:
@@ -1964,13 +3195,13 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   end
   always @* begin
     \$next\o_busy  = o_busy;
-    casez ({ \$81 , \$75 , \$73  })
+    casez ({ \$93 , \$87 , \$85  })
       3'bzz1:
           \$next\o_busy  = 1'h0;
       3'bz1z:
           \$next\o_busy  = 1'h0;
       3'b1zz:
-          \$next\o_busy  = \$87 ;
+          \$next\o_busy  = \$99 ;
     endcase
     casez (rst)
       1'h1:
@@ -1979,13 +3210,13 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   end
   always @* begin
     \$next\data_out_valid  = data_out_valid;
-    casez ({ \$97 , \$91 , \$89  })
+    casez ({ \$109 , \$103 , \$101  })
       3'bzz1:
           \$next\data_out_valid  = 1'h0;
       3'bz1z:
           \$next\data_out_valid  = 1'h0;
       3'b1zz:
-          \$next\data_out_valid  = \$103 ;
+          \$next\data_out_valid  = \$115 ;
     endcase
     casez (rst)
       1'h1:
@@ -1994,17 +3225,17 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   end
   always @* begin
     \$next\data_out_reg  = data_out_reg;
-    casez (\$105 )
+    casez (\$117 )
       1'h1:
-          casez ({ \$111 , \$109 , \$107  })
+          casez ({ \$123 , \$121 , \$119  })
             3'bzz1:
                 \$next\data_out_reg  = { ones, zeros, ones, zeros };
             3'bz1z:
-                \$next\data_out_reg  = \$113 ;
+                \$next\data_out_reg  = \$125 ;
             3'b1zz:
-                \$next\data_out_reg  = \$115 ;
+                \$next\data_out_reg  = \$127 ;
             3'hz:
-                \$next\data_out_reg  = \$117 ;
+                \$next\data_out_reg  = \$129 ;
           endcase
     endcase
     casez (rst)
@@ -2014,9 +3245,9 @@ module fix_0xff(valid_in, data_in, zeros, ones, rst, clk, valid_out, data_out, d
   end
   always @* begin
     \$next\data_out_ctr_reg  = data_out_ctr_reg;
-    casez (\$119 )
+    casez (\$131 )
       1'h1:
-          casez ({ \$125 , \$123 , \$121  })
+          casez ({ \$137 , \$135 , \$133  })
             3'bzz1:
                 \$next\data_out_ctr_reg  = 3'h4;
             3'bz1z:
@@ -2036,7 +3267,7 @@ endmodule
 
 (* \nmigen.hierarchy  = "top.fix_0xff2" *)
 (* generator = "nMigen" *)
-module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, o_busy, i_busy);
+module fix_0xff2(valid_in, data_in_ctr, data_in, end_in, rst, clk, valid_out, data_out, o_busy, i_busy);
   wire \$1 ;
   wire \$101 ;
   wire \$103 ;
@@ -2070,12 +3301,72 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   wire \$153 ;
   wire \$155 ;
   wire \$157 ;
+  wire \$159 ;
+  wire \$161 ;
+  wire \$163 ;
+  wire \$165 ;
+  wire \$167 ;
+  wire \$169 ;
   wire \$17 ;
+  wire \$171 ;
+  wire \$173 ;
+  wire \$175 ;
+  wire \$177 ;
+  wire \$179 ;
+  wire \$181 ;
+  wire \$183 ;
+  wire \$185 ;
+  wire \$187 ;
+  wire \$189 ;
   wire \$19 ;
+  wire \$191 ;
+  wire \$193 ;
+  wire \$195 ;
+  wire \$197 ;
+  wire \$199 ;
+  wire \$201 ;
+  wire \$203 ;
+  wire \$205 ;
+  wire \$207 ;
+  wire \$209 ;
   wire \$21 ;
+  wire \$211 ;
+  wire \$213 ;
+  wire \$215 ;
+  wire \$217 ;
+  wire \$219 ;
+  wire \$221 ;
+  wire \$223 ;
+  wire \$225 ;
+  wire \$227 ;
+  wire \$229 ;
   wire \$23 ;
+  wire \$231 ;
+  wire \$233 ;
+  wire \$235 ;
+  wire \$237 ;
+  wire \$239 ;
+  wire \$241 ;
+  wire \$243 ;
+  wire \$245 ;
+  wire \$247 ;
+  wire \$249 ;
   wire \$25 ;
+  wire \$251 ;
+  wire \$253 ;
+  wire \$255 ;
+  wire \$257 ;
+  wire \$259 ;
+  wire \$261 ;
+  wire \$263 ;
+  wire \$265 ;
+  wire \$267 ;
+  wire \$269 ;
   wire \$27 ;
+  wire \$271 ;
+  wire \$273 ;
+  wire \$275 ;
+  wire \$277 ;
   wire \$29 ;
   wire \$3 ;
   wire \$31 ;
@@ -2085,8 +3376,8 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   wire \$39 ;
   wire \$41 ;
   wire \$43 ;
-  wire [23:0] \$45 ;
-  wire [23:0] \$47 ;
+  wire \$45 ;
+  wire \$47 ;
   wire [23:0] \$49 ;
   wire \$5 ;
   wire [23:0] \$51 ;
@@ -2094,17 +3385,17 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   wire [23:0] \$55 ;
   wire [23:0] \$57 ;
   wire [23:0] \$59 ;
-  wire \$61 ;
+  wire [23:0] \$61 ;
   wire [23:0] \$63 ;
-  wire [23:0] \$65 ;
+  wire \$65 ;
   wire [23:0] \$67 ;
   wire [23:0] \$69 ;
   wire \$7 ;
-  wire \$71 ;
-  wire \$73 ;
-  wire [23:0] \$75 ;
+  wire [23:0] \$71 ;
+  wire [23:0] \$73 ;
+  wire \$75 ;
   wire \$77 ;
-  wire \$79 ;
+  wire [23:0] \$79 ;
   wire \$81 ;
   wire \$83 ;
   wire \$85 ;
@@ -2116,144 +3407,231 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   wire \$95 ;
   wire \$97 ;
   wire \$99 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:110" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:170" *)
   reg [1:0] \$next\buffer_count ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:109" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:169" *)
   reg [23:0] \$next\buffer_data ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:94" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:149" *)
   reg [15:0] \$next\data_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:112" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:172" *)
   reg [15:0] \$next\data_out_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:113" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:174" *)
   reg \$next\data_out_valid ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:156" *)
+  reg \$next\end_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:173" *)
+  reg \$next\end_out_reg ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:176" *)
+  reg \$next\end_reg ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg \$next\fsm_state ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:99" *)
+  reg [1:0] \$next\fsm_state ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:158" *)
   reg \$next\o_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:153" *)
   reg \$next\valid_out ;
   (* init = 2'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:110" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:170" *)
   reg [1:0] buffer_count = 2'h0;
   (* init = 24'h000000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:109" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:169" *)
   reg [23:0] buffer_data = 24'h000000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:90" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:145" *)
   input [31:0] data_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:91" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:146" *)
   input [2:0] data_in_ctr;
   (* init = 16'h0000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:94" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:149" *)
   output [15:0] data_out;
   reg [15:0] data_out = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:112" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:172" *)
   reg [15:0] data_out_reg = 16'h0000;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:113" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:174" *)
   reg data_out_valid = 1'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:155" *)
+  input end_in;
   (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:156" *)
+  reg end_out = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:173" *)
+  reg end_out_reg = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:176" *)
+  reg end_reg = 1'h0;
+  (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg fsm_state = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:100" *)
+  reg [1:0] fsm_state = 2'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:159" *)
   input i_busy;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:99" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:158" *)
   output o_busy;
   reg o_busy = 1'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:97" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:152" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:153" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$9  = \$5  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) \$7 ;
-  assign \$99  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$101  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$103  = \$99  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) \$101 ;
-  assign \$105  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$107  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:143" *) 1'h1;
-  assign \$109  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:143" *) 1'h1;
-  assign \$111  = \$107  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:143" *) \$109 ;
-  assign \$113  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$115  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$117  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$11  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$119  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$121  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$123  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$125  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$127  = \$123  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) \$125 ;
-  assign \$129  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$131  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$133  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$135  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$137  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$13  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$139  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$141  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$143  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$145  = \$141  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) \$143 ;
-  assign \$147  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:142" *) 1'h1;
-  assign \$149  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:142" *) 1'h1;
-  assign \$151  = \$147  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:142" *) \$149 ;
-  assign \$153  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$155  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$157  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$15  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$17  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$1  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$19  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$21  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$23  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$25  = \$21  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) \$23 ;
-  assign \$27  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$29  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$31  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$33  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$35  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$37  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$3  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$39  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$41  = \$37  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) \$39 ;
-  assign \$43  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$45  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$47  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$9  = \$5  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) \$7 ;
+  assign \$99  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$101  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$103  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$105  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$107  = \$103  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) \$105 ;
+  assign \$109  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$111  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$113  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$115  = \$111  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$113 ;
+  assign \$117  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$11  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$119  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$121  = \$117  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$119 ;
+  assign \$123  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:207" *) 1'h1;
+  assign \$125  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:207" *) 1'h1;
+  assign \$127  = \$123  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:207" *) \$125 ;
+  assign \$129  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$131  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$133  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$135  = \$131  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$133 ;
+  assign \$137  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$13  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$139  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$141  = end_reg == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:218" *) 1'h0;
+  assign \$143  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$145  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$147  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$149  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$151  = \$147  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) \$149 ;
+  assign \$153  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$155  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$157  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$15  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$159  = \$155  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$157 ;
+  assign \$161  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$163  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$165  = \$161  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$163 ;
+  assign \$167  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$169  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$171  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$173  = \$169  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$171 ;
+  assign \$175  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$177  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$17  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:230" *) 1'h0;
+  assign \$179  = buffer_count <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:136" *) 2'h2;
+  assign \$181  = end_reg == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:218" *) 1'h0;
+  assign \$183  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:230" *) 1'h0;
+  assign \$185  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$187  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$189  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$191  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$193  = \$189  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) \$191 ;
+  assign \$195  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$197  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$1  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$19  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$199  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$201  = \$197  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$199 ;
+  assign \$203  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$205  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$207  = \$203  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$205 ;
+  assign \$209  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$211  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$213  = buffer_count <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:136" *) 2'h2;
+  assign \$215  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:230" *) 1'h0;
+  assign \$217  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$21  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$219  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$221  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$223  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$225  = \$221  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) \$223 ;
+  assign \$227  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$229  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$231  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$233  = \$229  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$231 ;
+  assign \$235  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$237  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$23  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$239  = \$235  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$237 ;
+  assign \$241  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$243  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$245  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$247  = \$243  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$245 ;
+  assign \$249  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$251  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$253  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$255  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$257  = \$253  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) \$255 ;
+  assign \$25  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$259  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:206" *) 1'h1;
+  assign \$261  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:206" *) 1'h1;
+  assign \$263  = \$259  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:206" *) \$261 ;
+  assign \$265  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$267  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$269  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$271  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$273  = buffer_count == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 1'h0;
+  assign \$275  = data_in_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) 2'h2;
+  assign \$277  = \$273  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *) \$275 ;
+  assign \$27  = \$23  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) \$25 ;
+  assign \$29  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$31  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$33  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$35  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:230" *) 1'h0;
+  assign \$37  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$3  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$39  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$41  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$43  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$45  = \$41  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) \$43 ;
+  assign \$47  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:181" *) 1'h0;
   assign \$49  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
   assign \$51  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
   assign \$53  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
   assign \$55  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
   assign \$57  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$5  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h1;
+  assign \$5  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h1;
   assign \$59  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$61  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$63  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$65  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$61  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$63  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$65  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:210" *) 1'h0;
   assign \$67  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
   assign \$69  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$71  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$73  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$75  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) buffer_data[7:0];
-  assign \$77  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$7  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$79  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:131" *) 1'h0;
-  assign \$81  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h1;
-  assign \$83  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) 1'h0;
-  assign \$85  = \$81  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:140" *) \$83 ;
-  assign \$87  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:118" *) 1'h0;
-  assign \$89  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:146" *) 1'h0;
-  assign \$91  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:150" *) 1'h0;
-  assign \$93  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:151" *) 1'h0;
-  assign \$95  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:117" *) 1'h0;
-  assign \$97  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:131" *) 1'h0;
+  assign \$71  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$73  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$75  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$77  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:215" *) 1'h0;
+  assign \$7  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$79  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) buffer_data[7:0];
+  assign \$81  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:180" *) 1'h0;
+  assign \$83  = valid_out == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:195" *) 1'h0;
+  assign \$85  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h1;
+  assign \$87  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) 1'h0;
+  assign \$89  = \$85  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:204" *) \$87 ;
+  assign \$91  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:181" *) 1'h0;
+  assign \$93  = o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:210" *) 1'h0;
+  assign \$95  = i_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:214" *) 1'h0;
+  assign \$97  = data_out_valid == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:215" *) 1'h0;
+  always @(posedge clk)
+      end_out_reg <= \$next\end_out_reg ;
+  always @(posedge clk)
+      data_out <= \$next\data_out ;
+  always @(posedge clk)
+      valid_out <= \$next\valid_out ;
   always @(posedge clk)
       data_out_reg <= \$next\data_out_reg ;
   always @(posedge clk)
       data_out_valid <= \$next\data_out_valid ;
+  always @(posedge clk)
+      end_reg <= \$next\end_reg ;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
   always @(posedge clk)
       fsm_state <= \$next\fsm_state ;
   always @(posedge clk)
@@ -2262,14 +3640,10 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
       buffer_count <= \$next\buffer_count ;
   always @(posedge clk)
       buffer_data <= \$next\buffer_data ;
-  always @(posedge clk)
-      data_out <= \$next\data_out ;
-  always @(posedge clk)
-      valid_out <= \$next\valid_out ;
   always @* begin
     \$next\valid_out  = valid_out;
     casez (fsm_state)
-      1'h0:
+      2'h0:
           casez ({ \$9 , \$3 , \$1  })
             3'bzz1:
                 casez (\$11 )
@@ -2281,13 +3655,21 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
             3'bz1z:
                 \$next\valid_out  = valid_in;
           endcase
-      1'h1:
+      2'h1:
           casez (\$13 )
             1'h1:
                 casez (\$15 )
                   1'h1:
                       \$next\valid_out  = 1'h1;
                   1'hz:
+                      \$next\valid_out  = 1'h1;
+                endcase
+          endcase
+      2'h2:
+          casez (\$17 )
+            1'h1:
+                casez (data_out_valid)
+                  1'h1:
                       \$next\valid_out  = 1'h1;
                 endcase
           endcase
@@ -2300,10 +3682,10 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   always @* begin
     \$next\data_out  = data_out;
     casez (fsm_state)
-      1'h0:
-          casez ({ \$25 , \$19 , \$17  })
+      2'h0:
+          casez ({ \$27 , \$21 , \$19  })
             3'bzz1:
-                casez (\$27 )
+                casez (\$29 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
@@ -2356,18 +3738,31 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                       endcase
                 endcase
           endcase
-      1'h1:
-          casez (\$29 )
+      2'h1:
+          casez (\$31 )
             1'h1:
-                casez (\$31 )
+                casez (\$33 )
                   1'h1:
                       casez (buffer_count)
+                        2'h1:
+                          begin
+                            \$next\data_out [15:8] = buffer_data[7:0];
+                            \$next\data_out [7:0] = 8'h00;
+                          end
                         2'h2:
                             \$next\data_out  = buffer_data[15:0];
                         2'h3:
                             \$next\data_out  = buffer_data[23:8];
                       endcase
                   1'hz:
+                      \$next\data_out  = data_out_reg;
+                endcase
+          endcase
+      2'h2:
+          casez (\$35 )
+            1'h1:
+                casez (data_out_valid)
+                  1'h1:
                       \$next\data_out  = data_out_reg;
                 endcase
           endcase
@@ -2378,13 +3773,36 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
     endcase
   end
   always @* begin
+    \$next\end_out_reg  = end_out_reg;
+    casez (fsm_state)
+      2'h0:
+          casez (\$271 )
+            1'h1:
+                casez (valid_in)
+                  1'h1:
+                      casez (end_in)
+                        1'h1:
+                            casez (\$277 )
+                              1'h1:
+                                  \$next\end_out_reg  = 1'h1;
+                            endcase
+                      endcase
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\end_out_reg  = 1'h0;
+    endcase
+  end
+  always @* begin
     \$next\buffer_data  = buffer_data;
     casez (fsm_state)
-      1'h0:
+      2'h0:
         begin
-          casez ({ \$41 , \$35 , \$33  })
+          casez ({ \$45 , \$39 , \$37  })
             3'bzz1:
-                casez (\$43 )
+                casez (\$47 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
@@ -2392,16 +3810,16 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                               2'h0:
                                   casez (data_in_ctr)
                                     3'h3:
-                                        \$next\buffer_data  = \$45 ;
+                                        \$next\buffer_data  = \$49 ;
                                     3'h4:
-                                        \$next\buffer_data  = \$47 ;
+                                        \$next\buffer_data  = \$51 ;
                                   endcase
                               2'h1:
                                   casez (data_in_ctr)
                                     3'h2:
-                                        \$next\buffer_data  = \$49 ;
+                                        \$next\buffer_data  = \$53 ;
                                     3'h3:
-                                        \$next\buffer_data  = \$51 ;
+                                        \$next\buffer_data  = \$55 ;
                                     3'h4:
                                         \$next\buffer_data  = data_in[23:0];
                                   endcase
@@ -2415,23 +3833,23 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                         2'h0:
                             casez (data_in_ctr)
                               3'h3:
-                                  \$next\buffer_data  = \$53 ;
+                                  \$next\buffer_data  = \$57 ;
                               3'h4:
-                                  \$next\buffer_data  = \$55 ;
+                                  \$next\buffer_data  = \$59 ;
                             endcase
                         2'h1:
                             casez (data_in_ctr)
                               3'h2:
-                                  \$next\buffer_data  = \$57 ;
+                                  \$next\buffer_data  = \$61 ;
                               3'h3:
-                                  \$next\buffer_data  = \$59 ;
+                                  \$next\buffer_data  = \$63 ;
                               3'h4:
                                   \$next\buffer_data  = data_in[23:0];
                             endcase
                       endcase
                 endcase
           endcase
-          casez (\$61 )
+          casez (\$65 )
             1'h1:
                 casez (valid_in)
                   1'h1:
@@ -2439,16 +3857,16 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                         2'h0:
                             casez (data_in_ctr)
                               3'h3:
-                                  \$next\buffer_data  = \$63 ;
+                                  \$next\buffer_data  = \$67 ;
                               3'h4:
-                                  \$next\buffer_data  = \$65 ;
+                                  \$next\buffer_data  = \$69 ;
                             endcase
                         2'h1:
                             casez (data_in_ctr)
                               3'h2:
-                                  \$next\buffer_data  = \$67 ;
+                                  \$next\buffer_data  = \$71 ;
                               3'h3:
-                                  \$next\buffer_data  = \$69 ;
+                                  \$next\buffer_data  = \$73 ;
                               3'h4:
                                   \$next\buffer_data  = data_in[23:0];
                             endcase
@@ -2456,14 +3874,14 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                 endcase
           endcase
         end
-      1'h1:
-          casez (\$71 )
+      2'h1:
+          casez (\$75 )
             1'h1:
-                casez (\$73 )
+                casez (\$77 )
                   1'h1:
                       casez (buffer_count)
                         2'h3:
-                            \$next\buffer_data  = \$75 ;
+                            \$next\buffer_data  = \$79 ;
                       endcase
                 endcase
           endcase
@@ -2476,11 +3894,11 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   always @* begin
     \$next\buffer_count  = buffer_count;
     casez (fsm_state)
-      1'h0:
+      2'h0:
         begin
-          casez ({ \$85 , \$79 , \$77  })
+          casez ({ \$89 , \$83 , \$81  })
             3'bzz1:
-                casez (\$87 )
+                casez (\$91 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
@@ -2527,7 +3945,7 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                       endcase
                 endcase
           endcase
-          casez (\$89 )
+          casez (\$93 )
             1'h1:
                 casez (valid_in)
                   1'h1:
@@ -2552,12 +3970,14 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                 endcase
           endcase
         end
-      1'h1:
-          casez (\$91 )
+      2'h1:
+          casez (\$95 )
             1'h1:
-                casez (\$93 )
+                casez (\$97 )
                   1'h1:
                       casez (buffer_count)
+                        2'h1:
+                            \$next\buffer_count  = 2'h0;
                         2'h2:
                             \$next\buffer_count  = 2'h0;
                         2'h3:
@@ -2574,16 +3994,17 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   always @* begin
     \$next\o_busy  = o_busy;
     casez (fsm_state)
-      1'h0:
+      2'h0:
         begin
-          casez ({ \$103 , \$97 , \$95  })
+          casez ({ \$107 , \$101 , \$99  })
             3'bzz1:
               begin
                 \$next\o_busy  = 1'h0;
-                casez (\$105 )
+                casez (\$109 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
+                          begin
                             casez (buffer_count)
                               2'h0:
                                   casez (data_in_ctr)
@@ -2598,6 +4019,16 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                                         \$next\o_busy  = 1'h1;
                                   endcase
                             endcase
+                            casez (end_in)
+                              1'h1:
+                                  casez (\$115 )
+                                    1'h1:
+                                        /* empty */;
+                                    1'hz:
+                                        \$next\o_busy  = 1'h1;
+                                  endcase
+                            endcase
+                          end
                       endcase
                 endcase
               end
@@ -2606,6 +4037,7 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                 \$next\o_busy  = 1'h0;
                 casez (valid_in)
                   1'h1:
+                    begin
                       casez (buffer_count)
                         2'h0:
                             casez (data_in_ctr)
@@ -2620,15 +4052,26 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                                   \$next\o_busy  = 1'h1;
                             endcase
                       endcase
+                      casez (end_in)
+                        1'h1:
+                            casez (\$121 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\o_busy  = 1'h1;
+                            endcase
+                      endcase
+                    end
                 endcase
               end
             3'b1zz:
-                \$next\o_busy  = \$111 ;
+                \$next\o_busy  = \$127 ;
           endcase
-          casez (\$113 )
+          casez (\$129 )
             1'h1:
                 casez (valid_in)
                   1'h1:
+                    begin
                       casez (buffer_count)
                         2'h0:
                             casez (data_in_ctr)
@@ -2643,15 +4086,28 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
                                   \$next\o_busy  = 1'h1;
                             endcase
                       endcase
+                      casez (end_in)
+                        1'h1:
+                            casez (\$135 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\o_busy  = 1'h1;
+                            endcase
+                      endcase
+                    end
                 endcase
           endcase
         end
-      1'h1:
-          casez (\$115 )
+      2'h1:
+          casez (\$137 )
             1'h1:
-                casez (\$117 )
+                casez (\$139 )
                   1'h1:
-                      \$next\o_busy  = 1'h0;
+                      casez (\$141 )
+                        1'h1:
+                            \$next\o_busy  = 1'h0;
+                      endcase
                 endcase
           endcase
     endcase
@@ -2663,100 +4119,271 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   always @* begin
     \$next\fsm_state  = fsm_state;
     casez (fsm_state)
-      1'h0:
+      2'h0:
         begin
-          casez ({ \$127 , \$121 , \$119  })
+          casez ({ \$151 , \$145 , \$143  })
             3'bzz1:
-                casez (\$129 )
+                casez (\$153 )
                   1'h1:
                       casez (valid_in)
                         1'h1:
+                          begin
                             casez (buffer_count)
                               2'h0:
                                   casez (data_in_ctr)
                                     3'h4:
-                                        \$next\fsm_state  = 1'h1;
+                                        \$next\fsm_state  = 2'h1;
                                   endcase
                               2'h1:
                                   casez (data_in_ctr)
                                     3'h3:
-                                        \$next\fsm_state  = 1'h1;
+                                        \$next\fsm_state  = 2'h1;
                                     3'h4:
-                                        \$next\fsm_state  = 1'h1;
+                                        \$next\fsm_state  = 2'h1;
                                   endcase
                             endcase
+                            casez (end_in)
+                              1'h1:
+                                  casez (\$159 )
+                                    1'h1:
+                                        \$next\fsm_state  = 2'h2;
+                                    1'hz:
+                                        \$next\fsm_state  = 2'h1;
+                                  endcase
+                            endcase
+                          end
                       endcase
                 endcase
             3'bz1z:
                 casez (valid_in)
                   1'h1:
+                    begin
                       casez (buffer_count)
                         2'h0:
                             casez (data_in_ctr)
                               3'h4:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                             endcase
                         2'h1:
                             casez (data_in_ctr)
                               3'h3:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                               3'h4:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                             endcase
                       endcase
+                      casez (end_in)
+                        1'h1:
+                            casez (\$165 )
+                              1'h1:
+                                  \$next\fsm_state  = 2'h2;
+                              1'hz:
+                                  \$next\fsm_state  = 2'h1;
+                            endcase
+                      endcase
+                    end
                 endcase
           endcase
-          casez (\$131 )
+          casez (\$167 )
             1'h1:
                 casez (valid_in)
                   1'h1:
+                    begin
                       casez (buffer_count)
                         2'h0:
                             casez (data_in_ctr)
                               3'h4:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                             endcase
                         2'h1:
                             casez (data_in_ctr)
                               3'h3:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
                               3'h4:
-                                  \$next\fsm_state  = 1'h1;
+                                  \$next\fsm_state  = 2'h1;
+                            endcase
+                      endcase
+                      casez (end_in)
+                        1'h1:
+                            casez (\$173 )
+                              1'h1:
+                                  \$next\fsm_state  = 2'h2;
+                              1'hz:
+                                  \$next\fsm_state  = 2'h1;
+                            endcase
+                      endcase
+                    end
+                endcase
+          endcase
+        end
+      2'h1:
+          casez (\$175 )
+            1'h1:
+                casez (\$177 )
+                  1'h1:
+                    begin
+                      casez (end_reg)
+                        1'h1:
+                            casez (\$179 )
+                              1'h1:
+                                  \$next\fsm_state  = 2'h3;
+                            endcase
+                      endcase
+                      casez (\$181 )
+                        1'h1:
+                            \$next\fsm_state  = 2'h0;
+                      endcase
+                    end
+                endcase
+          endcase
+      2'h2:
+          casez (\$183 )
+            1'h1:
+                \$next\fsm_state  = 2'h3;
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\fsm_state  = 2'h0;
+    endcase
+  end
+  always @* begin
+    \$next\end_out  = end_out;
+    casez (fsm_state)
+      2'h0:
+          casez ({ \$193 , \$187 , \$185  })
+            3'bzz1:
+                casez (\$195 )
+                  1'h1:
+                      casez (valid_in)
+                        1'h1:
+                            casez (end_in)
+                              1'h1:
+                                  casez (\$201 )
+                                    1'h1:
+                                        \$next\end_out  = 1'h1;
+                                  endcase
+                            endcase
+                      endcase
+                  1'hz:
+                      \$next\end_out  = end_out_reg;
+                endcase
+            3'bz1z:
+                casez (valid_in)
+                  1'h1:
+                      casez (end_in)
+                        1'h1:
+                            casez (\$207 )
+                              1'h1:
+                                  \$next\end_out  = 1'h1;
                             endcase
                       endcase
                 endcase
           endcase
-        end
-      1'h1:
-          casez (\$133 )
+      2'h1:
+          casez (\$209 )
             1'h1:
-                casez (\$135 )
+                casez (\$211 )
                   1'h1:
-                      \$next\fsm_state  = 1'h0;
+                      casez (end_reg)
+                        1'h1:
+                            casez (\$213 )
+                              1'h1:
+                                  \$next\end_out  = 1'h1;
+                            endcase
+                      endcase
+                  1'hz:
+                      \$next\end_out  = end_out_reg;
+                endcase
+          endcase
+      2'h2:
+          casez (\$215 )
+            1'h1:
+                casez (data_out_valid)
+                  1'h1:
+                      \$next\end_out  = 1'h1;
                 endcase
           endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\fsm_state  = 1'h0;
+          \$next\end_out  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\end_reg  = end_reg;
+    casez (fsm_state)
+      2'h0:
+        begin
+          casez ({ \$225 , \$219 , \$217  })
+            3'bzz1:
+                casez (\$227 )
+                  1'h1:
+                      casez (valid_in)
+                        1'h1:
+                            casez (end_in)
+                              1'h1:
+                                  casez (\$233 )
+                                    1'h1:
+                                        /* empty */;
+                                    1'hz:
+                                        \$next\end_reg  = 1'h1;
+                                  endcase
+                            endcase
+                      endcase
+                endcase
+            3'bz1z:
+                casez (valid_in)
+                  1'h1:
+                      casez (end_in)
+                        1'h1:
+                            casez (\$239 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\end_reg  = 1'h1;
+                            endcase
+                      endcase
+                endcase
+          endcase
+          casez (\$241 )
+            1'h1:
+                casez (valid_in)
+                  1'h1:
+                      casez (end_in)
+                        1'h1:
+                            casez (\$247 )
+                              1'h1:
+                                  /* empty */;
+                              1'hz:
+                                  \$next\end_reg  = 1'h1;
+                            endcase
+                      endcase
+                endcase
+          endcase
+        end
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\end_reg  = 1'h0;
     endcase
   end
   always @* begin
     \$next\data_out_valid  = data_out_valid;
     casez (fsm_state)
-      1'h0:
-          casez ({ \$145 , \$139 , \$137  })
+      2'h0:
+          casez ({ \$257 , \$251 , \$249  })
             3'bzz1:
                 \$next\data_out_valid  = 1'h0;
             3'bz1z:
                 \$next\data_out_valid  = 1'h0;
             3'b1zz:
-                \$next\data_out_valid  = \$151 ;
+                \$next\data_out_valid  = \$263 ;
           endcase
-      1'h1:
-          casez (\$153 )
+      2'h1:
+          casez (\$265 )
             1'h1:
-                casez (\$155 )
+                casez (\$267 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -2772,8 +4399,8 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   always @* begin
     \$next\data_out_reg  = data_out_reg;
     casez (fsm_state)
-      1'h0:
-          casez (\$157 )
+      2'h0:
+          casez (\$269 )
             1'h1:
                 casez (valid_in)
                   1'h1:
@@ -2807,131 +4434,289 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, rst, clk, valid_out, data_out, 
   end
 endmodule
 
+(* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.force_end" *)
+(* generator = "nMigen" *)
+module force_end(allowed_cycles, rst, clk, fend, valid_in);
+  wire \$1 ;
+  wire [24:0] \$3 ;
+  wire [24:0] \$4 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:51" *)
+  reg [23:0] \$next\counter ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:41" *)
+  reg \$next\fend ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  reg [1:0] \$next\fsm_state ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:39" *)
+  input [23:0] allowed_cycles;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
+  input clk;
+  (* init = 24'h000000 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:51" *)
+  reg [23:0] counter = 24'h000000;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:41" *)
+  output fend;
+  reg fend = 1'h0;
+  (* init = 2'h0 *)
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  reg [1:0] fsm_state = 2'h0;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  input rst;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:38" *)
+  input valid_in;
+  assign \$1  = counter == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:61" *) allowed_cycles;
+  assign \$4  = counter + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:60" *) 1'h1;
+  always @(posedge clk)
+      fend <= \$next\fend ;
+  always @(posedge clk)
+      counter <= \$next\counter ;
+  always @(posedge clk)
+      fsm_state <= \$next\fsm_state ;
+  always @* begin
+    \$next\fsm_state  = fsm_state;
+    casez (fsm_state)
+      2'h0:
+          casez (valid_in)
+            1'h1:
+                \$next\fsm_state  = 2'h1;
+          endcase
+      2'h1:
+          casez (\$1 )
+            1'h1:
+                \$next\fsm_state  = 2'h2;
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\fsm_state  = 2'h0;
+    endcase
+  end
+  always @* begin
+    \$next\counter  = counter;
+    casez (fsm_state)
+      2'h1:
+          \$next\counter  = \$3 [23:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\counter  = 24'h000000;
+    endcase
+  end
+  always @* begin
+    \$next\fend  = fend;
+    casez (fsm_state)
+      2'h2:
+          \$next\fend  = 1'h1;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\fend  = 1'h0;
+    endcase
+  end
+  assign \$3  = \$4 ;
+endmodule
+
 (* \nmigen.hierarchy  = "top.integration_3.vbits_to_cbits.input_handler" *)
 (* generator = "nMigen" *)
-module input_handler(enc_in, enc_in_ctr, in_end, dec_buff, rst, clk, new_buff_consum_actv, latch_input, buffer, end_out, new_buff_consum, buff_consum, valid_in);
+module input_handler(valid_in, enc_in, enc_in_ctr, in_end, rst, clk, latch_input, buffer, end_out, new_buff_consum, buff_consum, dec_buff);
   wire \$1 ;
-  wire [56:0] \$11 ;
-  wire [56:0] \$12 ;
-  wire [56:0] \$14 ;
-  wire \$16 ;
-  wire [7:0] \$18 ;
-  wire [6:0] \$19 ;
-  wire [7:0] \$21 ;
-  wire [6:0] \$23 ;
-  wire [6:0] \$24 ;
-  wire [6:0] \$26 ;
-  wire [6:0] \$27 ;
-  wire \$29 ;
-  wire [6:0] \$3 ;
-  wire \$31 ;
+  wire \$11 ;
+  wire \$13 ;
+  wire \$15 ;
+  wire \$17 ;
+  wire \$19 ;
+  wire \$21 ;
+  wire \$23 ;
+  wire \$25 ;
+  wire [55:0] \$27 ;
+  wire [55:0] \$28 ;
+  wire \$3 ;
+  wire [55:0] \$30 ;
+  wire \$32 ;
+  wire [55:0] \$34 ;
+  wire [55:0] \$35 ;
+  wire [55:0] \$37 ;
+  wire \$39 ;
+  wire \$41 ;
+  wire [7:0] \$43 ;
+  wire [6:0] \$44 ;
+  wire [7:0] \$46 ;
+  wire [6:0] \$48 ;
+  wire [6:0] \$49 ;
   wire \$5 ;
-  wire [6:0] \$7 ;
+  wire [6:0] \$51 ;
+  wire [6:0] \$52 ;
+  wire \$54 ;
+  wire [7:0] \$56 ;
+  wire [6:0] \$57 ;
+  wire [7:0] \$59 ;
+  wire [6:0] \$61 ;
+  wire [6:0] \$62 ;
+  wire [6:0] \$64 ;
+  wire [6:0] \$65 ;
+  wire \$7 ;
   wire \$9 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:171" *)
+  reg \$next\buff_change ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:146" *)
   reg [5:0] \$next\buff_consum ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:113" *)
-  reg [41:0] \$next\buffer ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:139" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:166" *)
+  reg [5:0] \$next\buff_free ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:192" *)
+  reg \$next\buff_reg ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:145" *)
+  reg [40:0] \$next\buffer ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:186" *)
+  reg [14:0] \$next\enc_in_buff ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:187" *)
+  reg [3:0] \$next\enc_in_ctr_buff ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:181" *)
   reg [3:0] \$next\enc_in_ctr_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:138" *)
-  reg [11:0] \$next\enc_in_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:122" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:180" *)
+  reg [14:0] \$next\enc_in_reg ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:153" *)
   reg \$next\end_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:140" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:188" *)
+  reg \$next\in_end_buff ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:182" *)
   reg \$next\in_end_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:134" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:170" *)
   reg \$next\inc_buff ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:106" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:138" *)
   reg \$next\latch_input ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:115" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:147" *)
   reg [5:0] \$next\new_buff_consum ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:116" *)
-  reg \$next\new_buff_consum_actv ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:145" *)
-  reg \$next\normal_cond ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:141" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:167" *)
+  reg [5:0] \$next\new_buff_free ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:165" *)
+  reg \$next\start ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:189" *)
+  reg \$next\valid_in_buff ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:176" *)
+  reg \$next\valid_in_late ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:183" *)
   reg \$next\valid_in_reg ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:171" *)
+  wire buff_change;
   (* init = 6'h00 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:146" *)
   output [5:0] buff_consum;
   reg [5:0] buff_consum = 6'h00;
-  (* init = 42'h00000000000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:113" *)
-  output [41:0] buffer;
-  reg [41:0] buffer = 42'h00000000000;
+  (* init = 6'h00 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:166" *)
+  reg [5:0] buff_free = 6'h00;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:192" *)
+  wire buff_reg;
+  (* init = 41'h00000000000 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:145" *)
+  output [40:0] buffer;
+  reg [40:0] buffer = 41'h00000000000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:119" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:150" *)
   input dec_buff;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:107" *)
-  input [11:0] enc_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:139" *)
+  input [14:0] enc_in;
+  (* init = 15'h0000 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:186" *)
+  reg [14:0] enc_in_buff = 15'h0000;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:140" *)
   input [3:0] enc_in_ctr;
   (* init = 4'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:139" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:187" *)
+  reg [3:0] enc_in_ctr_buff = 4'h0;
+  (* init = 4'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:181" *)
   reg [3:0] enc_in_ctr_reg = 4'h0;
-  (* init = 12'h000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:138" *)
-  reg [11:0] enc_in_reg = 12'h000;
+  (* init = 15'h0000 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:180" *)
+  reg [14:0] enc_in_reg = 15'h0000;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:122" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:153" *)
   output end_out;
   reg end_out = 1'h0;
   (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:109" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:141" *)
   input in_end;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:140" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:188" *)
+  reg in_end_buff = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:182" *)
   reg in_end_reg = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:134" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:170" *)
   wire inc_buff;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:106" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:138" *)
   output latch_input;
   reg latch_input = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:115" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:147" *)
   output [5:0] new_buff_consum;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:116" *)
-  output new_buff_consum_actv;
-  (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:145" *)
-  reg normal_cond = 1'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:167" *)
+  wire [5:0] new_buff_free;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:110" *)
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:165" *)
+  reg start = 1'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:142" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:141" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:189" *)
+  reg valid_in_buff = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:176" *)
+  reg valid_in_late = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:183" *)
   reg valid_in_reg = 1'h0;
-  assign \$9  = \$7  <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:191" *) 5'h1e;
-  assign \$12  = buffer <<< (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:160" *) enc_in_ctr_reg;
-  assign \$14  = \$12  | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:160" *) enc_in_reg;
-  assign \$16  = inc_buff & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:197" *) dec_buff;
-  assign \$1  = inc_buff | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:204" *) dec_buff;
-  assign \$19  = buff_consum - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:198" *) 5'h10;
-  assign \$21  = \$19  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:198" *) enc_in_ctr_reg;
-  assign \$24  = buff_consum - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:200" *) 5'h10;
-  assign \$27  = buff_consum + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:202" *) enc_in_ctr_reg;
-  assign \$29  = inc_buff | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:204" *) dec_buff;
-  assign \$31  = new_buff_consum <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:208" *) 5'h1e;
-  assign \$3  = buff_consum + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:191" *) enc_in_ctr_reg;
-  assign \$5  = \$3  <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:191" *) 5'h1e;
-  assign \$7  = buff_consum + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:191" *) enc_in_ctr_reg;
-  always @(posedge clk)
-      normal_cond <= \$next\normal_cond ;
+  assign \$9  = enc_in_ctr_buff <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$11  = enc_in_ctr_buff <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$13  = enc_in_ctr_buff <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$15  = enc_in_ctr_buff <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$17  = enc_in_ctr_buff <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$1  = enc_in_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$19  = enc_in_ctr_buff <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$21  = enc_in_ctr_buff <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:243" *) buff_free;
+  assign \$23  = enc_in_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$25  = enc_in_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$28  = buffer <<< (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:206" *) enc_in_ctr_reg;
+  assign \$30  = \$28  | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:206" *) enc_in_reg;
+  assign \$32  = enc_in_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$35  = buffer <<< (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:206" *) enc_in_ctr_reg;
+  assign \$37  = \$35  | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:206" *) enc_in_reg;
+  assign \$3  = inc_buff | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:173" *) dec_buff;
+  assign \$39  = enc_in_ctr_reg <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:281" *) buff_free;
+  assign \$41  = inc_buff & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:289" *) dec_buff;
+  assign \$44  = buff_free + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:290" *) 5'h10;
+  assign \$46  = \$44  - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:290" *) enc_in_ctr_reg;
+  assign \$49  = buff_free + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:293" *) 5'h10;
+  assign \$52  = buff_free - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:295" *) enc_in_ctr_reg;
+  assign \$54  = inc_buff & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:298" *) dec_buff;
+  assign \$57  = buff_consum - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:299" *) 5'h10;
+  assign \$5  = start == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:232" *) 1'h0;
+  assign \$59  = \$57  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:299" *) enc_in_ctr_reg;
+  assign \$62  = buff_consum - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:302" *) 5'h10;
+  assign \$65  = buff_consum + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:304" *) enc_in_ctr_reg;
+  assign \$7  = start == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:232" *) 1'h0;
   always @(posedge clk)
       buff_consum <= \$next\buff_consum ;
+  always @(posedge clk)
+      valid_in_reg <= \$next\valid_in_reg ;
   always @(posedge clk)
       end_out <= \$next\end_out ;
   always @(posedge clk)
       buffer <= \$next\buffer ;
   always @(posedge clk)
-      valid_in_reg <= \$next\valid_in_reg ;
+      valid_in_buff <= \$next\valid_in_buff ;
+  always @(posedge clk)
+      latch_input <= \$next\latch_input ;
+  always @(posedge clk)
+      fsm_state <= \$next\fsm_state ;
   always @(posedge clk)
       in_end_reg <= \$next\in_end_reg ;
   always @(posedge clk)
@@ -2939,106 +4724,111 @@ module input_handler(enc_in, enc_in_ctr, in_end, dec_buff, rst, clk, new_buff_co
   always @(posedge clk)
       enc_in_reg <= \$next\enc_in_reg ;
   always @(posedge clk)
-      fsm_state <= \$next\fsm_state ;
+      in_end_buff <= \$next\in_end_buff ;
   always @(posedge clk)
-      latch_input <= \$next\latch_input ;
+      enc_in_ctr_buff <= \$next\enc_in_ctr_buff ;
+  always @(posedge clk)
+      enc_in_buff <= \$next\enc_in_buff ;
+  always @(posedge clk)
+      start <= \$next\start ;
+  always @(posedge clk)
+      buff_free <= \$next\buff_free ;
+  always @(posedge clk)
+      valid_in_late <= \$next\valid_in_late ;
   always @* begin
     \$next\inc_buff  = 1'h0;
     \$next\inc_buff  = 1'h0;
     casez (fsm_state)
       2'h1:
+          \$next\inc_buff  = 1'h1;
+      2'h2:
           casez (valid_in_reg)
             1'h1:
-                \$next\inc_buff  = 1'h1;
+                casez (\$1 )
+                  1'h1:
+                      \$next\inc_buff  = 1'h1;
+                endcase
           endcase
     endcase
   end
   always @* begin
-    \$next\new_buff_consum_actv  = 1'h0;
-    \$next\new_buff_consum_actv  = 1'h0;
-    casez (\$1 )
-      1'h1:
-          \$next\new_buff_consum_actv  = 1'h1;
-    endcase
+    \$next\buff_change  = 1'h0;
+    \$next\buff_change  = \$3 ;
   end
   always @* begin
-    \$next\new_buff_consum  = 6'h00;
-    casez ({ inc_buff, dec_buff, \$16  })
-      3'bzz1:
-          \$next\new_buff_consum  = \$18 [5:0];
-      3'bz1z:
-          \$next\new_buff_consum  = \$23 [5:0];
-      3'b1zz:
-          \$next\new_buff_consum  = \$26 [5:0];
-    endcase
-  end
-  always @* begin
-    \$next\buff_consum  = buff_consum;
-    casez (\$29 )
-      1'h1:
-          \$next\buff_consum  = new_buff_consum;
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\buff_consum  = 6'h00;
-    endcase
-  end
-  always @* begin
-    \$next\normal_cond  = normal_cond;
-    \$next\normal_cond  = \$31 ;
-    casez (rst)
-      1'h1:
-          \$next\normal_cond  = 1'h0;
-    endcase
-  end
-  always @* begin
-    \$next\latch_input  = latch_input;
+    \$next\enc_in_ctr_reg  = enc_in_ctr_reg;
     casez (fsm_state)
       2'h0:
-          casez (normal_cond)
-            1'h1:
-                casez ({ valid_in, valid_in_reg })
-                  2'bz1:
-                      \$next\latch_input  = 1'h1;
-                  2'b1z:
-                      \$next\latch_input  = 1'h1;
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$17 )
+                  1'h1:
+                      \$next\enc_in_ctr_reg  = enc_in_ctr_buff;
                 endcase
           endcase
       2'h1:
-          casez (valid_in_reg)
-            1'h1:
-                casez (\$5 )
-                  1'h1:
-                      \$next\latch_input  = 1'h1;
-                  1'hz:
-                      \$next\latch_input  = 1'h0;
-                endcase
-          endcase
+          \$next\enc_in_ctr_reg  = enc_in_ctr_buff;
+      2'h3:
+          \$next\enc_in_ctr_reg  = enc_in_ctr;
+      2'h2:
+          \$next\enc_in_ctr_reg  = enc_in_ctr;
     endcase
     casez (rst)
       1'h1:
-          \$next\latch_input  = 1'h0;
+          \$next\enc_in_ctr_reg  = 4'h0;
+    endcase
+  end
+  always @* begin
+    \$next\in_end_reg  = in_end_reg;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$19 )
+                  1'h1:
+                      \$next\in_end_reg  = in_end_buff;
+                endcase
+          endcase
+      2'h1:
+          \$next\in_end_reg  = in_end_buff;
+      2'h3:
+          \$next\in_end_reg  = in_end;
+      2'h2:
+          \$next\in_end_reg  = in_end;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\in_end_reg  = 1'h0;
     endcase
   end
   always @* begin
     \$next\fsm_state  = fsm_state;
     casez (fsm_state)
       2'h0:
-          casez (normal_cond)
-            1'h1:
-                casez ({ valid_in, valid_in_reg })
-                  2'bz1:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$21 )
+                  1'h1:
                       \$next\fsm_state  = 2'h1;
-                  2'b1z:
-                      \$next\fsm_state  = 2'h2;
                 endcase
+            2'b1z:
+                \$next\fsm_state  = 2'h2;
+            2'hz:
+                \$next\fsm_state  = 2'h3;
           endcase
-      2'h2:
-          \$next\fsm_state  = 2'h1;
       2'h1:
           casez (valid_in_reg)
             1'h1:
-                casez (\$9 )
+                \$next\fsm_state  = 2'h2;
+            1'hz:
+                \$next\fsm_state  = 2'h3;
+          endcase
+      2'h3:
+          \$next\fsm_state  = 2'h2;
+      2'h2:
+          casez (valid_in_reg)
+            1'h1:
+                casez (\$23 )
                   1'h1:
                       /* empty */;
                   1'hz:
@@ -3052,50 +4842,97 @@ module input_handler(enc_in, enc_in_ctr, in_end, dec_buff, rst, clk, new_buff_co
     endcase
   end
   always @* begin
-    \$next\enc_in_reg  = enc_in_reg;
+    \$next\latch_input  = latch_input;
     casez (fsm_state)
-      2'h2:
-          \$next\enc_in_reg  = enc_in;
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                /* empty */;
+            2'b1z:
+                \$next\latch_input  = 1'h1;
+            2'hz:
+                \$next\latch_input  = 1'h1;
+          endcase
       2'h1:
-          \$next\enc_in_reg  = enc_in;
+          casez (valid_in_reg)
+            1'h1:
+                \$next\latch_input  = 1'h1;
+            1'hz:
+                \$next\latch_input  = 1'h1;
+          endcase
+      2'h2:
+          casez (valid_in_reg)
+            1'h1:
+                casez (\$25 )
+                  1'h1:
+                      \$next\latch_input  = 1'h1;
+                  1'hz:
+                      \$next\latch_input  = 1'h0;
+                endcase
+          endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\enc_in_reg  = 12'h000;
+          \$next\latch_input  = 1'h0;
     endcase
   end
   always @* begin
-    \$next\enc_in_ctr_reg  = enc_in_ctr_reg;
+    \$next\valid_in_buff  = valid_in_buff;
     casez (fsm_state)
-      2'h2:
-          \$next\enc_in_ctr_reg  = enc_in_ctr;
       2'h1:
-          \$next\enc_in_ctr_reg  = enc_in_ctr;
+          \$next\valid_in_buff  = 1'h0;
+      2'h2:
+          \$next\valid_in_buff  = valid_in_reg;
     endcase
     casez (rst)
       1'h1:
-          \$next\enc_in_ctr_reg  = 4'h0;
+          \$next\valid_in_buff  = 1'h0;
     endcase
   end
   always @* begin
-    \$next\in_end_reg  = in_end_reg;
+    \$next\buffer  = buffer;
     casez (fsm_state)
-      2'h2:
-          \$next\in_end_reg  = in_end;
       2'h1:
-          \$next\in_end_reg  = in_end;
+          \$next\buffer  = \$27 [40:0];
+      2'h2:
+          casez (valid_in_reg)
+            1'h1:
+                casez (\$32 )
+                  1'h1:
+                      \$next\buffer  = \$34 [40:0];
+                endcase
+          endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\in_end_reg  = 1'h0;
+          \$next\buffer  = 41'h00000000000;
+    endcase
+  end
+  always @* begin
+    \$next\end_out  = end_out;
+    casez (fsm_state)
+      2'h1:
+          \$next\end_out  = in_end_reg;
+      2'h2:
+          casez (valid_in_reg)
+            1'h1:
+                casez (\$39 )
+                  1'h1:
+                      \$next\end_out  = in_end_reg;
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
     endcase
   end
   always @* begin
     \$next\valid_in_reg  = valid_in_reg;
     casez (fsm_state)
-      2'h2:
+      2'h3:
           \$next\valid_in_reg  = valid_in;
-      2'h1:
+      2'h2:
           \$next\valid_in_reg  = valid_in;
     endcase
     casez (rst)
@@ -3104,177 +4941,424 @@ module input_handler(enc_in, enc_in_ctr, in_end, dec_buff, rst, clk, new_buff_co
     endcase
   end
   always @* begin
-    \$next\buffer  = buffer;
-    casez (fsm_state)
-      2'h1:
-          casez (valid_in_reg)
-            1'h1:
-                \$next\buffer  = \$11 [41:0];
-          endcase
-    endcase
-    casez (rst)
+    \$next\new_buff_free  = 6'h00;
+    casez (\$41 )
       1'h1:
-          \$next\buffer  = 42'h00000000000;
+          \$next\new_buff_free  = \$43 [5:0];
+      1'hz:
+          casez ({ inc_buff, dec_buff })
+            2'bz1:
+                \$next\new_buff_free  = \$48 [5:0];
+            2'b1z:
+                \$next\new_buff_free  = \$51 [5:0];
+          endcase
     endcase
   end
   always @* begin
-    \$next\end_out  = end_out;
-    casez (fsm_state)
-      2'h1:
-          casez (valid_in_reg)
-            1'h1:
-                \$next\end_out  = in_end_reg;
+    \$next\new_buff_consum  = 6'h00;
+    casez (\$54 )
+      1'h1:
+          \$next\new_buff_consum  = \$56 [5:0];
+      1'hz:
+          casez ({ inc_buff, dec_buff })
+            2'bz1:
+                \$next\new_buff_consum  = \$61 [5:0];
+            2'b1z:
+                \$next\new_buff_consum  = \$64 [5:0];
           endcase
+    endcase
+  end
+  always @* begin
+    \$next\valid_in_late  = valid_in_late;
+    \$next\valid_in_late  = valid_in;
+    casez (rst)
+      1'h1:
+          \$next\valid_in_late  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\buff_consum  = buff_consum;
+    casez (buff_change)
+      1'h1:
+          \$next\buff_consum  = new_buff_consum;
     endcase
     casez (rst)
       1'h1:
-          \$next\end_out  = 1'h0;
+          \$next\buff_consum  = 6'h00;
     endcase
   end
-  assign \$11  = \$14 ;
-  assign \$18  = \$21 ;
-  assign \$23  = \$24 ;
-  assign \$26  = \$27 ;
+  always @* begin
+    \$next\buff_reg  = 1'h0;
+    \$next\buff_reg  = 1'h0;
+    casez (fsm_state)
+      2'h3:
+          \$next\buff_reg  = 1'h1;
+      2'h2:
+          \$next\buff_reg  = 1'h1;
+    endcase
+  end
+  always @* begin
+    \$next\buff_free  = buff_free;
+    casez (\$5 )
+      1'h1:
+          \$next\buff_free  = 6'h29;
+    endcase
+    casez (buff_change)
+      1'h1:
+          \$next\buff_free  = new_buff_free;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\buff_free  = 6'h00;
+    endcase
+  end
+  always @* begin
+    \$next\start  = start;
+    casez (\$7 )
+      1'h1:
+          \$next\start  = 1'h1;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\start  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\enc_in_buff  = enc_in_buff;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$9 )
+                  1'h1:
+                      \$next\enc_in_buff  = enc_in_reg;
+                endcase
+          endcase
+      2'h1:
+          \$next\enc_in_buff  = enc_in_reg;
+      2'h2:
+          \$next\enc_in_buff  = enc_in_reg;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\enc_in_buff  = 15'h0000;
+    endcase
+  end
+  always @* begin
+    \$next\enc_in_ctr_buff  = enc_in_ctr_buff;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$11 )
+                  1'h1:
+                      \$next\enc_in_ctr_buff  = enc_in_ctr_reg;
+                endcase
+          endcase
+      2'h1:
+          \$next\enc_in_ctr_buff  = enc_in_ctr_reg;
+      2'h2:
+          \$next\enc_in_ctr_buff  = enc_in_ctr_reg;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\enc_in_ctr_buff  = 4'h0;
+    endcase
+  end
+  always @* begin
+    \$next\in_end_buff  = in_end_buff;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$13 )
+                  1'h1:
+                      \$next\in_end_buff  = in_end_reg;
+                endcase
+          endcase
+      2'h1:
+          \$next\in_end_buff  = in_end_reg;
+      2'h2:
+          \$next\in_end_buff  = in_end_reg;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\in_end_buff  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\enc_in_reg  = enc_in_reg;
+    casez (fsm_state)
+      2'h0:
+          casez ({ valid_in_reg, valid_in_buff })
+            2'bz1:
+                casez (\$15 )
+                  1'h1:
+                      \$next\enc_in_reg  = enc_in_buff;
+                endcase
+          endcase
+      2'h1:
+          \$next\enc_in_reg  = enc_in_buff;
+      2'h3:
+          \$next\enc_in_reg  = enc_in;
+      2'h2:
+          \$next\enc_in_reg  = enc_in;
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\enc_in_reg  = 15'h0000;
+    endcase
+  end
+  assign \$27  = \$30 ;
+  assign \$34  = \$37 ;
+  assign \$43  = \$46 ;
+  assign \$48  = \$49 ;
+  assign \$51  = \$52 ;
+  assign \$56  = \$59 ;
+  assign \$61  = \$62 ;
+  assign \$64  = \$65 ;
   assign new_buff_consum = \$next\new_buff_consum ;
-  assign new_buff_consum_actv = \$next\new_buff_consum_actv ;
+  assign new_buff_free = \$next\new_buff_free ;
+  assign buff_reg = \$next\buff_reg ;
+  assign buff_change = \$next\buff_change ;
   assign inc_buff = \$next\inc_buff ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1" *)
 (* generator = "nMigen" *)
-module integration_1(pixel_in, rst, clk, enc_out, enc_out_ctr, valid_out, end_of_frame, valid_in);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:21" *)
+module integration_1(pixel_in, rst, clk, debug_en, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_axi_ri__rready, s_axi_wi__awaddr, s_axi_wi__wvalid, s_axi_wi__wdata, s_axi_wi__wstrb, s_axi_wi__bready, enc_out, enc_out_ctr, valid_out, end_out, valid_in);
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:100" *)
+  reg [32:0] \$next\core_axi_lite_rp_data ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:71" *)
+  reg \$next\difference_end_in ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:55" *)
   reg [11:0] \$next\difference_pixel_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:22" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:58" *)
   reg [11:0] \$next\difference_predic_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:26" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:67" *)
   reg \$next\difference_valid_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:24" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:26" *)
   reg [27:0] \$next\enc_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:25" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:27" *)
   reg [4:0] \$next\enc_out_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:106" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:191" *)
+  reg \$next\encode_end_in ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
+  reg [3:0] \$next\encode_mem_r_addr ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
+  reg [3:0] \$next\encode_mem_w_addr ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
+  reg [32:0] \$next\encode_mem_w_data ;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
+  reg \$next\encode_mem_w_en ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:179" *)
   reg [4:0] \$next\encode_ssss ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:105" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:177" *)
   reg [11:0] \$next\encode_val_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:112" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:187" *)
   reg \$next\encode_valid_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:122" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:34" *)
+  reg \$next\end_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:35" *)
+  reg \$next\fend_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:39" *)
+  reg [23:0] \$next\force_end_allowed_cycles ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:38" *)
+  reg \$next\force_end_valid_in ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:207" *)
+  reg \$next\normalize_end_in ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:194" *)
   reg [12:0] \$next\normalize_val_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:127" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:203" *)
   reg \$next\normalize_valid_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:123" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:196" *)
   reg [12:0] \$next\normalize_vals_in_mns ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:24" *)
-  reg [27:0] \$next\pipeline_reg_enc_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:25" *)
-  reg [4:0] \$next\pipeline_reg_enc_left_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:31" *)
-  reg \$next\pipeline_reg_valid_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:40" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:80" *)
+  reg \$next\predictor_end_in ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:73" *)
   reg \$next\predictor_new_row ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:64" *)
   reg [11:0] \$next\predictor_pixel_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:43" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:76" *)
   reg \$next\predictor_valid_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:17" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:41" *)
   reg [15:0] \$next\signals_height ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:19" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:43" *)
   reg \$next\signals_new_input ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:18" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:42" *)
   reg [15:0] \$next\signals_width ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:31" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:21" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:83" *)
+  wire [23:0] core_axi_lite_allowed_cycles;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:79" *)
+  wire [15:0] core_axi_lite_height;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:99" *)
+  wire [4:0] core_axi_lite_rp_addr;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:100" *)
+  wire [32:0] core_axi_lite_rp_data;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:80" *)
+  wire [15:0] core_axi_lite_width;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:94" *)
+  wire [4:0] core_axi_lite_wp_addr;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:95" *)
+  wire [32:0] core_axi_lite_wp_data;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:96" *)
+  wire core_axi_lite_wp_en;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:107" *)
+  input [7:0] debug_en;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:71" *)
+  wire difference_end_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:72" *)
+  wire difference_end_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:55" *)
   wire [11:0] difference_pixel_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:22" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:58" *)
   wire [11:0] difference_predic_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:23" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:61" *)
   wire [12:0] difference_val_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:24" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:64" *)
   wire [12:0] \difference_val_out$1 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:26" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:67" *)
   wire difference_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:27" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/difference.py:68" *)
   wire difference_valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:24" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:26" *)
   output [27:0] enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:25" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:27" *)
   output [4:0] enc_out_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:110" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:184" *)
   wire [4:0] encode_enc_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:109" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:182" *)
   wire [27:0] encode_enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:106" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:191" *)
+  wire encode_end_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:192" *)
+  wire encode_end_out;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
+  wire [3:0] encode_mem_r_addr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:83" *)
+  wire [32:0] encode_mem_r_data;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
+  wire [3:0] encode_mem_w_addr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
+  wire [32:0] encode_mem_w_data;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
+  wire encode_mem_w_en;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:179" *)
   wire [4:0] encode_ssss;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:105" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:177" *)
   wire [11:0] encode_val_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:112" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:187" *)
   wire encode_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:113" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/encode.py:188" *)
   wire encode_valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:21" *)
-  output end_of_frame;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:125" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:34" *)
+  output end_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:35" *)
+  wire fend_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:39" *)
+  wire [23:0] force_end_allowed_cycles;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:41" *)
+  wire force_end_fend;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:38" *)
+  wire force_end_valid_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:207" *)
+  wire normalize_end_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:208" *)
+  wire normalize_end_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:201" *)
   wire [4:0] normalize_ssss;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:122" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:194" *)
   wire [12:0] normalize_val_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:124" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:199" *)
   wire [11:0] normalize_val_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:127" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:203" *)
   wire normalize_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:128" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:204" *)
   wire normalize_valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:123" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:196" *)
   wire [12:0] normalize_vals_in_mns;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:24" *)
-  wire [27:0] pipeline_reg_enc_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:25" *)
-  wire [4:0] pipeline_reg_enc_left_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:28" *)
-  wire [27:0] pipeline_reg_enc_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:29" *)
-  wire [4:0] pipeline_reg_enc_right_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:31" *)
-  wire pipeline_reg_valid_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:32" *)
-  wire pipeline_reg_valid_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:21" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:23" *)
   input [11:0] pixel_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:40" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:80" *)
+  wire predictor_end_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:81" *)
+  wire predictor_end_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:73" *)
   wire predictor_new_row;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:64" *)
   wire [11:0] predictor_pixel_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:34" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:67" *)
   wire [11:0] predictor_pixel_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:37" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:70" *)
   wire [11:0] predictor_predic_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:43" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:76" *)
   wire predictor_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:44" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:77" *)
   wire predictor_valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:10" *)
-  wire [15:0] register_file_height;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:11" *)
-  wire [15:0] register_file_width;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:17" *)
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_ri__araddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__arvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__rready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__awaddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__awvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__bready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__wdata;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [3:0] s_axi_wi__wstrb;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__wvalid;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:45" *)
+  wire signals_end_of_frame;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:41" *)
   wire [15:0] signals_height;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:19" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:43" *)
   wire signals_new_input;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:22" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:46" *)
   wire signals_new_row;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:18" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:42" *)
   wire [15:0] signals_width;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:30" *)
   input valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:31" *)
   output valid_out;
+  core_axi_lite core_axi_lite (
+    .allowed_cycles(core_axi_lite_allowed_cycles),
+    .clk(clk),
+    .debug_en(debug_en),
+    .height(core_axi_lite_height),
+    .rp_addr(core_axi_lite_rp_addr),
+    .rp_data(core_axi_lite_rp_data),
+    .rst(rst),
+    .s_axi_ri__araddr(s_axi_ri__araddr),
+    .s_axi_ri__arvalid(s_axi_ri__arvalid),
+    .s_axi_ri__rready(s_axi_ri__rready),
+    .s_axi_wi__awaddr(s_axi_wi__awaddr),
+    .s_axi_wi__awvalid(s_axi_wi__awvalid),
+    .s_axi_wi__bready(s_axi_wi__bready),
+    .s_axi_wi__wdata(s_axi_wi__wdata),
+    .s_axi_wi__wstrb(s_axi_wi__wstrb),
+    .s_axi_wi__wvalid(s_axi_wi__wvalid),
+    .width(core_axi_lite_width),
+    .wp_addr(core_axi_lite_wp_addr),
+    .wp_data(core_axi_lite_wp_data),
+    .wp_en(core_axi_lite_wp_en)
+  );
   difference difference (
     .clk(clk),
+    .end_in(difference_end_in),
+    .end_out(difference_end_out),
     .pixel_in(difference_pixel_in),
     .predic_in(difference_predic_in),
     .rst(rst),
@@ -3287,14 +5371,30 @@ module integration_1(pixel_in, rst, clk, enc_out, enc_out_ctr, valid_out, end_of
     .clk(clk),
     .enc_ctr(encode_enc_ctr),
     .enc_out(encode_enc_out),
+    .end_in(encode_end_in),
+    .end_out(encode_end_out),
+    .mem_r_addr(encode_mem_r_addr),
+    .mem_r_data(encode_mem_r_data),
+    .mem_w_addr(encode_mem_w_addr),
+    .mem_w_data(encode_mem_w_data),
+    .mem_w_en(encode_mem_w_en),
     .rst(rst),
     .ssss(encode_ssss),
     .val_in(encode_val_in),
     .valid_in(encode_valid_in),
     .valid_out(encode_valid_out)
   );
+  force_end force_end (
+    .allowed_cycles(force_end_allowed_cycles),
+    .clk(clk),
+    .fend(force_end_fend),
+    .rst(rst),
+    .valid_in(force_end_valid_in)
+  );
   normalize normalize (
     .clk(clk),
+    .end_in(normalize_end_in),
+    .end_out(normalize_end_out),
     .rst(rst),
     .ssss(normalize_ssss),
     .val_in(normalize_val_in),
@@ -3303,16 +5403,10 @@ module integration_1(pixel_in, rst, clk, enc_out, enc_out_ctr, valid_out, end_of
     .valid_out(normalize_valid_out),
     .vals_in_mns(normalize_vals_in_mns)
   );
-  pipeline_reg pipeline_reg (
-    .enc_left(pipeline_reg_enc_left),
-    .enc_left_ctr(pipeline_reg_enc_left_ctr),
-    .enc_right(pipeline_reg_enc_right),
-    .enc_right_ctr(pipeline_reg_enc_right_ctr),
-    .valid_left(pipeline_reg_valid_left),
-    .valid_right(pipeline_reg_valid_right)
-  );
   predictor predictor (
     .clk(clk),
+    .end_in(predictor_end_in),
+    .end_out(predictor_end_out),
     .new_row(predictor_new_row),
     .pixel_in(predictor_pixel_in),
     .pixel_out(predictor_pixel_out),
@@ -3321,15 +5415,9 @@ module integration_1(pixel_in, rst, clk, enc_out, enc_out_ctr, valid_out, end_of
     .valid_in(predictor_valid_in),
     .valid_out(predictor_valid_out)
   );
-  register_file register_file (
-    .clk(clk),
-    .height(register_file_height),
-    .rst(rst),
-    .width(register_file_width)
-  );
   signals signals (
     .clk(clk),
-    .end_of_frame(end_of_frame),
+    .end_of_frame(signals_end_of_frame),
     .height(signals_height),
     .new_input(signals_new_input),
     .new_row(signals_new_row),
@@ -3338,71 +5426,11 @@ module integration_1(pixel_in, rst, clk, enc_out, enc_out_ctr, valid_out, end_of
   );
   always @* begin
     \$next\signals_height  = 16'h0000;
-    \$next\signals_height  = register_file_height;
+    \$next\signals_height  = core_axi_lite_height;
   end
   always @* begin
     \$next\signals_width  = 16'h0000;
-    \$next\signals_width  = register_file_width;
-  end
-  always @* begin
-    \$next\normalize_vals_in_mns  = 13'h0000;
-    \$next\normalize_vals_in_mns  = \difference_val_out$1 ;
-  end
-  always @* begin
-    \$next\normalize_valid_in  = 1'h0;
-    \$next\normalize_valid_in  = difference_valid_out;
-  end
-  always @* begin
-    \$next\encode_val_in  = 12'h000;
-    \$next\encode_val_in  = normalize_val_out;
-  end
-  always @* begin
-    \$next\encode_ssss  = 5'h00;
-    \$next\encode_ssss  = normalize_ssss;
-  end
-  always @* begin
-    \$next\encode_valid_in  = 1'h0;
-    \$next\encode_valid_in  = normalize_valid_out;
-  end
-  always @* begin
-    \$next\pipeline_reg_enc_left  = 28'h0000000;
-    \$next\pipeline_reg_enc_left  = encode_enc_out;
-  end
-  always @* begin
-    \$next\pipeline_reg_enc_left_ctr  = 5'h00;
-    \$next\pipeline_reg_enc_left_ctr  = encode_enc_ctr;
-  end
-  always @* begin
-    \$next\pipeline_reg_valid_left  = 1'h0;
-    \$next\pipeline_reg_valid_left  = encode_valid_out;
-  end
-  always @* begin
-    \$next\enc_out  = 28'h0000000;
-    \$next\enc_out  = pipeline_reg_enc_right;
-  end
-  always @* begin
-    \$next\enc_out_ctr  = 5'h00;
-    \$next\enc_out_ctr  = pipeline_reg_enc_right_ctr;
-  end
-  always @* begin
-    \$next\signals_new_input  = 1'h0;
-    \$next\signals_new_input  = valid_in;
-  end
-  always @* begin
-    \$next\valid_out  = 1'h0;
-    \$next\valid_out  = pipeline_reg_valid_right;
-  end
-  always @* begin
-    \$next\predictor_pixel_in  = 12'h000;
-    \$next\predictor_pixel_in  = pixel_in;
-  end
-  always @* begin
-    \$next\predictor_new_row  = 1'h0;
-    \$next\predictor_new_row  = signals_new_row;
-  end
-  always @* begin
-    \$next\predictor_valid_in  = 1'h0;
-    \$next\predictor_valid_in  = valid_in;
+    \$next\signals_width  = core_axi_lite_width;
   end
   always @* begin
     \$next\difference_pixel_in  = 12'h000;
@@ -3417,285 +5445,311 @@ module integration_1(pixel_in, rst, clk, enc_out, enc_out_ctr, valid_out, end_of
     \$next\difference_valid_in  = predictor_valid_out;
   end
   always @* begin
+    \$next\difference_end_in  = 1'h0;
+    \$next\difference_end_in  = predictor_end_out;
+  end
+  always @* begin
     \$next\normalize_val_in  = 13'h0000;
     \$next\normalize_val_in  = difference_val_out;
   end
+  always @* begin
+    \$next\normalize_vals_in_mns  = 13'h0000;
+    \$next\normalize_vals_in_mns  = \difference_val_out$1 ;
+  end
+  always @* begin
+    \$next\normalize_valid_in  = 1'h0;
+    \$next\normalize_valid_in  = difference_valid_out;
+  end
+  always @* begin
+    \$next\normalize_end_in  = 1'h0;
+    \$next\normalize_end_in  = difference_end_out;
+  end
+  always @* begin
+    \$next\encode_val_in  = 12'h000;
+    \$next\encode_val_in  = normalize_val_out;
+  end
+  always @* begin
+    \$next\encode_ssss  = 5'h00;
+    \$next\encode_ssss  = normalize_ssss;
+  end
+  always @* begin
+    \$next\force_end_allowed_cycles  = 24'h000000;
+    \$next\force_end_allowed_cycles  = core_axi_lite_allowed_cycles;
+  end
+  always @* begin
+    \$next\encode_valid_in  = 1'h0;
+    \$next\encode_valid_in  = normalize_valid_out;
+  end
+  always @* begin
+    \$next\encode_end_in  = 1'h0;
+    \$next\encode_end_in  = normalize_end_out;
+  end
+  always @* begin
+    \$next\core_axi_lite_rp_data  = 33'h000000000;
+    \$next\core_axi_lite_rp_data  = encode_mem_r_data;
+  end
+  always @* begin
+    \$next\encode_mem_r_addr  = 4'h0;
+    \$next\encode_mem_r_addr  = core_axi_lite_rp_addr[3:0];
+  end
+  always @* begin
+    \$next\encode_mem_w_addr  = 4'h0;
+    \$next\encode_mem_w_addr  = core_axi_lite_wp_addr[3:0];
+  end
+  always @* begin
+    \$next\encode_mem_w_data  = 33'h000000000;
+    \$next\encode_mem_w_data  = core_axi_lite_wp_data;
+  end
+  always @* begin
+    \$next\encode_mem_w_en  = 1'h0;
+    \$next\encode_mem_w_en  = core_axi_lite_wp_en;
+  end
+  always @* begin
+    \$next\enc_out  = 28'h0000000;
+    \$next\enc_out  = encode_enc_out;
+  end
+  always @* begin
+    \$next\enc_out_ctr  = 5'h00;
+    \$next\enc_out_ctr  = encode_enc_ctr;
+  end
+  always @* begin
+    \$next\valid_out  = 1'h0;
+    \$next\valid_out  = encode_valid_out;
+  end
+  always @* begin
+    \$next\force_end_valid_in  = 1'h0;
+    \$next\force_end_valid_in  = valid_in;
+  end
+  always @* begin
+    \$next\end_out  = 1'h0;
+    \$next\end_out  = encode_end_out;
+  end
+  always @* begin
+    \$next\fend_out  = 1'h0;
+    \$next\fend_out  = force_end_fend;
+  end
+  always @* begin
+    \$next\signals_new_input  = 1'h0;
+    \$next\signals_new_input  = valid_in;
+  end
+  always @* begin
+    \$next\predictor_pixel_in  = 12'h000;
+    \$next\predictor_pixel_in  = pixel_in;
+  end
+  always @* begin
+    \$next\predictor_new_row  = 1'h0;
+    \$next\predictor_new_row  = signals_new_row;
+  end
+  always @* begin
+    \$next\predictor_end_in  = 1'h0;
+    \$next\predictor_end_in  = signals_end_of_frame;
+  end
+  always @* begin
+    \$next\predictor_valid_in  = 1'h0;
+    \$next\predictor_valid_in  = valid_in;
+  end
+  assign end_out = \$next\end_out ;
   assign valid_out = \$next\valid_out ;
   assign enc_out_ctr = \$next\enc_out_ctr ;
   assign enc_out = \$next\enc_out ;
-  assign pipeline_reg_valid_left = \$next\pipeline_reg_valid_left ;
-  assign pipeline_reg_enc_left_ctr = \$next\pipeline_reg_enc_left_ctr ;
-  assign pipeline_reg_enc_left = \$next\pipeline_reg_enc_left ;
+  assign encode_mem_w_en = \$next\encode_mem_w_en ;
+  assign encode_mem_w_data = \$next\encode_mem_w_data ;
+  assign encode_mem_w_addr = \$next\encode_mem_w_addr ;
+  assign encode_mem_r_addr = \$next\encode_mem_r_addr ;
+  assign core_axi_lite_rp_data = \$next\core_axi_lite_rp_data ;
+  assign encode_end_in = \$next\encode_end_in ;
   assign encode_valid_in = \$next\encode_valid_in ;
   assign encode_ssss = \$next\encode_ssss ;
   assign encode_val_in = \$next\encode_val_in ;
+  assign normalize_end_in = \$next\normalize_end_in ;
   assign normalize_valid_in = \$next\normalize_valid_in ;
   assign normalize_vals_in_mns = \$next\normalize_vals_in_mns ;
   assign normalize_val_in = \$next\normalize_val_in ;
+  assign difference_end_in = \$next\difference_end_in ;
   assign difference_valid_in = \$next\difference_valid_in ;
   assign difference_predic_in = \$next\difference_predic_in ;
   assign difference_pixel_in = \$next\difference_pixel_in ;
   assign predictor_valid_in = \$next\predictor_valid_in ;
+  assign predictor_end_in = \$next\predictor_end_in ;
   assign predictor_new_row = \$next\predictor_new_row ;
   assign predictor_pixel_in = \$next\predictor_pixel_in ;
   assign signals_new_input = \$next\signals_new_input ;
+  assign fend_out = \$next\fend_out ;
+  assign force_end_valid_in = \$next\force_end_valid_in ;
+  assign force_end_allowed_cycles = \$next\force_end_allowed_cycles ;
   assign signals_width = \$next\signals_width ;
   assign signals_height = \$next\signals_height ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2" *)
 (* generator = "nMigen" *)
-module integration_2(valid_in, latch_output, rst, clk, nready, enc_out, enc_out_ctr, valid_out, out_end, pixel_in);
+module integration_2(valid_in, latch_output, rst, clk, debug_en, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_axi_ri__rready, s_axi_wi__awaddr, s_axi_wi__wvalid, s_axi_wi__wdata, s_axi_wi__wstrb, s_axi_wi__bready, nready, enc_out, enc_out_ctr, valid_out, out_end, pixel_in);
   wire \$1 ;
-  wire \$11 ;
-  wire [27:0] \$13 ;
-  wire [4:0] \$15 ;
-  wire \$17 ;
   wire \$3 ;
   wire \$5 ;
-  wire \$7 ;
-  wire \$9 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:36" *)
+  wire [27:0] \$7 ;
+  wire [4:0] \$9 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:70" *)
   reg \$next\converter_close_full ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:26" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:60" *)
   reg [27:0] \$next\converter_enc_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:27" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:61" *)
   reg [4:0] \$next\converter_enc_out_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:28" *)
-  reg [11:0] \$next\converter_fifo_enc_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:56" *)
+  reg [14:0] \$next\converter_fifo_enc_in ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:57" *)
   reg [3:0] \$next\converter_fifo_enc_in_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:30" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:58" *)
   reg \$next\converter_fifo_in_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:36" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:64" *)
   reg \$next\converter_fifo_latch_output ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:23" *)
-  reg [3:0] \$next\converter_fifo_reg_enc_ctr_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:22" *)
-  reg [11:0] \$next\converter_fifo_reg_enc_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:28" *)
-  reg \$next\converter_fifo_reg_i_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:24" *)
-  reg \$next\converter_fifo_reg_out_end_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:25" *)
-  reg \$next\converter_fifo_reg_valid_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:59" *)
   reg \$next\converter_fifo_valid_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:62" *)
   reg \$next\converter_out_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:19" *)
-  reg [11:0] \$next\converter_reg_left_enc ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:20" *)
-  reg [3:0] \$next\converter_reg_left_enc_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:21" *)
-  reg \$next\converter_reg_left_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:22" *)
-  reg \$next\converter_reg_left_valid ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:30" *)
-  reg \$next\converter_reg_right_close_full ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:63" *)
   reg \$next\converter_valid_out ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:24" *)
   reg [27:0] \$next\enc_out ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:25" *)
   reg [4:0] \$next\enc_out_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:10" *)
-  reg \$next\end_delayer_in_sig ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:21" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:23" *)
   reg [11:0] \$next\integration_1_pixel_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:30" *)
   reg \$next\integration_1_valid_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:26" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:54" *)
   reg [27:0] \$next\lj92_pipeline_fifo_enc_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:27" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:55" *)
   reg [4:0] \$next\lj92_pipeline_fifo_enc_in_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:56" *)
   reg \$next\lj92_pipeline_fifo_in_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:59" *)
   reg \$next\lj92_pipeline_fifo_latch_output ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:57" *)
   reg \$next\lj92_pipeline_fifo_valid_in ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:29" *)
   reg \$next\nready ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:32" *)
   reg \$next\out_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:23" *)
-  reg [4:0] \$next\pipeline_fifo_reg_enc_ctr_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:22" *)
-  reg [27:0] \$next\pipeline_fifo_reg_enc_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:28" *)
-  reg \$next\pipeline_fifo_reg_i_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:24" *)
-  reg \$next\pipeline_fifo_reg_out_end_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:25" *)
-  reg \$next\pipeline_fifo_reg_valid_left ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:31" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:36" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:70" *)
   wire converter_close_full;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:32" *)
-  wire [11:0] converter_enc_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:66" *)
+  wire [14:0] converter_enc_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:67" *)
   wire [3:0] converter_enc_in_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:26" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:60" *)
   wire [27:0] converter_enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:27" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:61" *)
   wire [4:0] converter_enc_out_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:61" *)
   wire converter_fifo_close_full;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:28" *)
-  wire [11:0] converter_fifo_enc_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:56" *)
+  wire [14:0] converter_fifo_enc_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:57" *)
   wire [3:0] converter_fifo_enc_in_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:37" *)
-  wire [11:0] converter_fifo_enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:38" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:65" *)
+  wire [14:0] converter_fifo_enc_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:66" *)
   wire [3:0] converter_fifo_enc_out_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:30" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:58" *)
   wire converter_fifo_in_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:36" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:64" *)
   wire converter_fifo_latch_output;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:39" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:67" *)
   wire converter_fifo_out_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:23" *)
-  wire [3:0] converter_fifo_reg_enc_ctr_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:30" *)
-  wire [3:0] converter_fifo_reg_enc_ctr_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:22" *)
-  wire [11:0] converter_fifo_reg_enc_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:29" *)
-  wire [11:0] converter_fifo_reg_enc_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:28" *)
-  wire converter_fifo_reg_i_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:21" *)
-  wire converter_fifo_reg_o_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:24" *)
-  wire converter_fifo_reg_out_end_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:31" *)
-  wire converter_fifo_reg_out_end_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:25" *)
-  wire converter_fifo_reg_valid_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:32" *)
-  wire converter_fifo_reg_valid_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:59" *)
   wire converter_fifo_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:40" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:68" *)
   wire converter_fifo_valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:34" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:68" *)
   wire converter_in_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:25" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:59" *)
   wire converter_latch_output;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:62" *)
   wire converter_out_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:23" *)
-  wire converter_reg_left_close_full;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:19" *)
-  wire [11:0] converter_reg_left_enc;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:20" *)
-  wire [3:0] converter_reg_left_enc_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:21" *)
-  wire converter_reg_left_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:22" *)
-  wire converter_reg_left_valid;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:30" *)
-  wire converter_reg_right_close_full;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:26" *)
-  wire [11:0] converter_reg_right_enc;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:27" *)
-  wire [3:0] converter_reg_right_enc_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:28" *)
-  wire converter_reg_right_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_reg.py:29" *)
-  wire converter_reg_right_valid;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:35" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:69" *)
   wire converter_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter.py:63" *)
   wire converter_valid_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:107" *)
+  input [7:0] debug_en;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:24" *)
   output [27:0] enc_out;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:25" *)
   output [4:0] enc_out_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:10" *)
-  wire end_delayer_in_sig;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/delayer.py:11" *)
-  wire end_delayer_out_sig;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:24" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:26" *)
   wire [27:0] integration_1_enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:25" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:27" *)
   wire [4:0] integration_1_enc_out_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:21" *)
-  wire integration_1_end_of_frame;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:21" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:34" *)
+  wire integration_1_end_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:23" *)
   wire [11:0] integration_1_pixel_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:30" *)
   wire integration_1_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_1.py:31" *)
   wire integration_1_valid_out;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:26" *)
   input latch_output;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:39" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:67" *)
   wire lj92_pipeline_fifo_close_full;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:26" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:54" *)
   wire [27:0] lj92_pipeline_fifo_enc_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:27" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:55" *)
   wire [4:0] lj92_pipeline_fifo_enc_in_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:32" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:60" *)
   wire [27:0] lj92_pipeline_fifo_enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:61" *)
   wire [4:0] lj92_pipeline_fifo_enc_out_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:56" *)
   wire lj92_pipeline_fifo_in_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:59" *)
   wire lj92_pipeline_fifo_latch_output;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:34" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:62" *)
   wire lj92_pipeline_fifo_out_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:57" *)
   wire lj92_pipeline_fifo_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:35" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:63" *)
   wire lj92_pipeline_fifo_valid_out;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:29" *)
   output nready;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:32" *)
   output out_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:23" *)
-  wire [4:0] pipeline_fifo_reg_enc_ctr_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:30" *)
-  wire [4:0] pipeline_fifo_reg_enc_ctr_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:22" *)
-  wire [27:0] pipeline_fifo_reg_enc_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:29" *)
-  wire [27:0] pipeline_fifo_reg_enc_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:28" *)
-  wire pipeline_fifo_reg_i_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:21" *)
-  wire pipeline_fifo_reg_o_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:24" *)
-  wire pipeline_fifo_reg_out_end_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:31" *)
-  wire pipeline_fifo_reg_out_end_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:25" *)
-  wire pipeline_fifo_reg_valid_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:32" *)
-  wire pipeline_fifo_reg_valid_right;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:22" *)
   input [11:0] pixel_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_ri__araddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__arvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__rready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__awaddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__awvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__bready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__wdata;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [3:0] s_axi_wi__wstrb;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__wvalid;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:30" *)
   input valid_in;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:31" *)
   output valid_out;
-  assign \$9  = converter_latch_output == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:93" *) 1'h0;
-  assign \$11  = converter_fifo_reg_o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:124" *) 1'h0;
-  assign \$13  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:29" *) converter_fifo_reg_enc_right;
-  assign \$15  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo_reg.py:30" *) converter_fifo_reg_enc_ctr_right;
-  assign \$17  = latch_output == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:133" *) 1'h0;
-  assign \$1  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:65" *) 1'h1;
-  assign \$3  = lj92_pipeline_fifo_close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:65" *) 1'h0;
-  assign \$5  = \$1  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:65" *) \$3 ;
-  assign \$7  = pipeline_fifo_reg_o_busy == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:84" *) 1'h0;
+  assign \$9  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:66" *) converter_fifo_enc_out_ctr;
+  assign \$1  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:57" *) 1'h1;
+  assign \$3  = lj92_pipeline_fifo_close_full == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:57" *) 1'h0;
+  assign \$5  = \$1  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:57" *) \$3 ;
+  assign \$7  = + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/converter_fifo.py:65" *) converter_fifo_enc_out;
   converter converter (
     .clk(clk),
     .close_full(converter_close_full),
@@ -3724,43 +5778,23 @@ module integration_2(valid_in, latch_output, rst, clk, nready, enc_out, enc_out_
     .valid_in(converter_fifo_valid_in),
     .valid_out(converter_fifo_valid_out)
   );
-  converter_fifo_reg converter_fifo_reg (
-    .enc_ctr_left(converter_fifo_reg_enc_ctr_left),
-    .enc_ctr_right(converter_fifo_reg_enc_ctr_right),
-    .enc_left(converter_fifo_reg_enc_left),
-    .enc_right(converter_fifo_reg_enc_right),
-    .i_busy(converter_fifo_reg_i_busy),
-    .o_busy(converter_fifo_reg_o_busy),
-    .out_end_left(converter_fifo_reg_out_end_left),
-    .out_end_right(converter_fifo_reg_out_end_right),
-    .valid_left(converter_fifo_reg_valid_left),
-    .valid_right(converter_fifo_reg_valid_right)
-  );
-  converter_reg converter_reg (
-    .left_close_full(converter_reg_left_close_full),
-    .left_enc(converter_reg_left_enc),
-    .left_enc_ctr(converter_reg_left_enc_ctr),
-    .left_end(converter_reg_left_end),
-    .left_valid(converter_reg_left_valid),
-    .right_close_full(converter_reg_right_close_full),
-    .right_enc(converter_reg_right_enc),
-    .right_enc_ctr(converter_reg_right_enc_ctr),
-    .right_end(converter_reg_right_end),
-    .right_valid(converter_reg_right_valid)
-  );
-  end_delayer end_delayer (
-    .clk(clk),
-    .in_sig(end_delayer_in_sig),
-    .out_sig(end_delayer_out_sig),
-    .rst(rst)
-  );
   integration_1 integration_1 (
     .clk(clk),
+    .debug_en(debug_en),
     .enc_out(integration_1_enc_out),
     .enc_out_ctr(integration_1_enc_out_ctr),
-    .end_of_frame(integration_1_end_of_frame),
+    .end_out(integration_1_end_out),
     .pixel_in(integration_1_pixel_in),
     .rst(rst),
+    .s_axi_ri__araddr(s_axi_ri__araddr),
+    .s_axi_ri__arvalid(s_axi_ri__arvalid),
+    .s_axi_ri__rready(s_axi_ri__rready),
+    .s_axi_wi__awaddr(s_axi_wi__awaddr),
+    .s_axi_wi__awvalid(s_axi_wi__awvalid),
+    .s_axi_wi__bready(s_axi_wi__bready),
+    .s_axi_wi__wdata(s_axi_wi__wdata),
+    .s_axi_wi__wstrb(s_axi_wi__wstrb),
+    .s_axi_wi__wvalid(s_axi_wi__wvalid),
     .valid_in(integration_1_valid_in),
     .valid_out(integration_1_valid_out)
   );
@@ -3778,18 +5812,6 @@ module integration_2(valid_in, latch_output, rst, clk, nready, enc_out, enc_out_
     .valid_in(lj92_pipeline_fifo_valid_in),
     .valid_out(lj92_pipeline_fifo_valid_out)
   );
-  pipeline_fifo_reg pipeline_fifo_reg (
-    .enc_ctr_left(pipeline_fifo_reg_enc_ctr_left),
-    .enc_ctr_right(pipeline_fifo_reg_enc_ctr_right),
-    .enc_left(pipeline_fifo_reg_enc_left),
-    .enc_right(pipeline_fifo_reg_enc_right),
-    .i_busy(pipeline_fifo_reg_i_busy),
-    .o_busy(pipeline_fifo_reg_o_busy),
-    .out_end_left(pipeline_fifo_reg_out_end_left),
-    .out_end_right(pipeline_fifo_reg_out_end_right),
-    .valid_left(pipeline_fifo_reg_valid_left),
-    .valid_right(pipeline_fifo_reg_valid_right)
-  );
   always @* begin
     \$next\integration_1_pixel_in  = 12'h000;
     \$next\integration_1_pixel_in  = pixel_in;
@@ -3799,128 +5821,56 @@ module integration_2(valid_in, latch_output, rst, clk, nready, enc_out, enc_out_
     \$next\integration_1_valid_in  = \$5 ;
   end
   always @* begin
-    \$next\pipeline_fifo_reg_enc_ctr_left  = 5'h00;
-    \$next\pipeline_fifo_reg_enc_ctr_left  = lj92_pipeline_fifo_enc_out_ctr;
-  end
-  always @* begin
-    \$next\pipeline_fifo_reg_out_end_left  = 1'h0;
-    \$next\pipeline_fifo_reg_out_end_left  = lj92_pipeline_fifo_out_end;
-  end
-  always @* begin
-    \$next\pipeline_fifo_reg_valid_left  = 1'h0;
-    \$next\pipeline_fifo_reg_valid_left  = lj92_pipeline_fifo_valid_out;
-  end
-  always @* begin
-    \$next\pipeline_fifo_reg_i_busy  = 1'h0;
-    \$next\pipeline_fifo_reg_i_busy  = \$9 ;
-  end
-  always @* begin
-    \$next\converter_enc_out  = 28'h0000000;
-    \$next\converter_enc_out  = pipeline_fifo_reg_enc_right;
-  end
-  always @* begin
-    \$next\converter_enc_out_ctr  = 5'h00;
-    \$next\converter_enc_out_ctr  = pipeline_fifo_reg_enc_ctr_right;
-  end
-  always @* begin
     \$next\converter_out_end  = 1'h0;
-    \$next\converter_out_end  = pipeline_fifo_reg_out_end_right;
+    \$next\converter_out_end  = lj92_pipeline_fifo_out_end;
   end
   always @* begin
     \$next\converter_valid_out  = 1'h0;
-    \$next\converter_valid_out  = pipeline_fifo_reg_valid_right;
+    \$next\converter_valid_out  = lj92_pipeline_fifo_valid_out;
   end
   always @* begin
-    \$next\converter_reg_left_enc  = 12'h000;
-    \$next\converter_reg_left_enc  = converter_enc_in;
-  end
-  always @* begin
-    \$next\converter_reg_left_enc_ctr  = 4'h0;
-    \$next\converter_reg_left_enc_ctr  = converter_enc_in_ctr;
-  end
-  always @* begin
-    \$next\end_delayer_in_sig  = 1'h0;
-    \$next\end_delayer_in_sig  = integration_1_end_of_frame;
-  end
-  always @* begin
-    \$next\converter_reg_left_end  = 1'h0;
-    \$next\converter_reg_left_end  = converter_in_end;
-  end
-  always @* begin
-    \$next\converter_reg_left_valid  = 1'h0;
-    \$next\converter_reg_left_valid  = converter_valid_in;
-  end
-  always @* begin
-    \$next\converter_close_full  = 1'h0;
-    \$next\converter_close_full  = converter_reg_left_close_full;
-  end
-  always @* begin
-    \$next\converter_fifo_enc_in  = 12'h000;
-    \$next\converter_fifo_enc_in  = converter_reg_right_enc;
+    \$next\converter_fifo_enc_in  = 15'h0000;
+    \$next\converter_fifo_enc_in  = converter_enc_in;
   end
   always @* begin
     \$next\converter_fifo_enc_in_ctr  = 4'h0;
-    \$next\converter_fifo_enc_in_ctr  = converter_reg_right_enc_ctr;
+    \$next\converter_fifo_enc_in_ctr  = converter_enc_in_ctr;
   end
   always @* begin
     \$next\converter_fifo_in_end  = 1'h0;
-    \$next\converter_fifo_in_end  = converter_reg_right_end;
+    \$next\converter_fifo_in_end  = converter_in_end;
   end
   always @* begin
     \$next\converter_fifo_valid_in  = 1'h0;
-    \$next\converter_fifo_valid_in  = converter_reg_right_valid;
+    \$next\converter_fifo_valid_in  = converter_valid_in;
   end
   always @* begin
-    \$next\converter_reg_right_close_full  = 1'h0;
-    \$next\converter_reg_right_close_full  = converter_fifo_close_full;
-  end
-  always @* begin
-    \$next\converter_fifo_reg_enc_left  = 12'h000;
-    \$next\converter_fifo_reg_enc_left  = converter_fifo_enc_out;
-  end
-  always @* begin
-    \$next\converter_fifo_reg_enc_ctr_left  = 4'h0;
-    \$next\converter_fifo_reg_enc_ctr_left  = converter_fifo_enc_out_ctr;
-  end
-  always @* begin
-    \$next\lj92_pipeline_fifo_in_end  = 1'h0;
-    \$next\lj92_pipeline_fifo_in_end  = end_delayer_out_sig;
-  end
-  always @* begin
-    \$next\converter_fifo_reg_valid_left  = 1'h0;
-    \$next\converter_fifo_reg_valid_left  = converter_fifo_valid_out;
-  end
-  always @* begin
-    \$next\converter_fifo_reg_out_end_left  = 1'h0;
-    \$next\converter_fifo_reg_out_end_left  = converter_fifo_out_end;
-  end
-  always @* begin
-    \$next\converter_fifo_latch_output  = 1'h0;
-    \$next\converter_fifo_latch_output  = \$11 ;
+    \$next\converter_close_full  = 1'h0;
+    \$next\converter_close_full  = converter_fifo_close_full;
   end
   always @* begin
     \$next\enc_out  = 28'h0000000;
-    \$next\enc_out  = \$13 ;
+    \$next\enc_out  = \$7 ;
   end
   always @* begin
     \$next\enc_out_ctr  = 5'h00;
-    \$next\enc_out_ctr  = \$15 ;
+    \$next\enc_out_ctr  = \$9 ;
   end
   always @* begin
     \$next\valid_out  = 1'h0;
-    \$next\valid_out  = converter_fifo_reg_valid_right;
-  end
-  always @* begin
-    \$next\out_end  = 1'h0;
-    \$next\out_end  = converter_fifo_reg_out_end_right;
-  end
-  always @* begin
-    \$next\converter_fifo_reg_i_busy  = 1'h0;
-    \$next\converter_fifo_reg_i_busy  = \$17 ;
+    \$next\valid_out  = converter_fifo_valid_out;
   end
   always @* begin
     \$next\lj92_pipeline_fifo_enc_in  = 28'h0000000;
     \$next\lj92_pipeline_fifo_enc_in  = integration_1_enc_out;
+  end
+  always @* begin
+    \$next\out_end  = 1'h0;
+    \$next\out_end  = converter_fifo_out_end;
+  end
+  always @* begin
+    \$next\converter_fifo_latch_output  = 1'h0;
+    \$next\converter_fifo_latch_output  = latch_output;
   end
   always @* begin
     \$next\lj92_pipeline_fifo_enc_in_ctr  = 5'h00;
@@ -3931,60 +5881,52 @@ module integration_2(valid_in, latch_output, rst, clk, nready, enc_out, enc_out_
     \$next\lj92_pipeline_fifo_valid_in  = integration_1_valid_out;
   end
   always @* begin
+    \$next\lj92_pipeline_fifo_in_end  = 1'h0;
+    \$next\lj92_pipeline_fifo_in_end  = integration_1_end_out;
+  end
+  always @* begin
     \$next\nready  = 1'h0;
     \$next\nready  = lj92_pipeline_fifo_close_full;
   end
   always @* begin
     \$next\lj92_pipeline_fifo_latch_output  = 1'h0;
-    \$next\lj92_pipeline_fifo_latch_output  = \$7 ;
+    \$next\lj92_pipeline_fifo_latch_output  = converter_latch_output;
   end
   always @* begin
-    \$next\pipeline_fifo_reg_enc_left  = 28'h0000000;
-    \$next\pipeline_fifo_reg_enc_left  = lj92_pipeline_fifo_enc_out;
+    \$next\converter_enc_out  = 28'h0000000;
+    \$next\converter_enc_out  = lj92_pipeline_fifo_enc_out;
   end
-  assign converter_fifo_reg_i_busy = \$next\converter_fifo_reg_i_busy ;
+  always @* begin
+    \$next\converter_enc_out_ctr  = 5'h00;
+    \$next\converter_enc_out_ctr  = lj92_pipeline_fifo_enc_out_ctr;
+  end
+  assign converter_fifo_latch_output = \$next\converter_fifo_latch_output ;
   assign out_end = \$next\out_end ;
   assign valid_out = \$next\valid_out ;
   assign enc_out_ctr = \$next\enc_out_ctr ;
   assign enc_out = \$next\enc_out ;
-  assign converter_fifo_latch_output = \$next\converter_fifo_latch_output ;
-  assign converter_fifo_reg_out_end_left = \$next\converter_fifo_reg_out_end_left ;
-  assign converter_fifo_reg_valid_left = \$next\converter_fifo_reg_valid_left ;
-  assign converter_fifo_reg_enc_ctr_left = \$next\converter_fifo_reg_enc_ctr_left ;
-  assign converter_fifo_reg_enc_left = \$next\converter_fifo_reg_enc_left ;
-  assign converter_reg_right_close_full = \$next\converter_reg_right_close_full ;
+  assign converter_close_full = \$next\converter_close_full ;
   assign converter_fifo_valid_in = \$next\converter_fifo_valid_in ;
   assign converter_fifo_in_end = \$next\converter_fifo_in_end ;
   assign converter_fifo_enc_in_ctr = \$next\converter_fifo_enc_in_ctr ;
   assign converter_fifo_enc_in = \$next\converter_fifo_enc_in ;
-  assign converter_close_full = \$next\converter_close_full ;
-  assign converter_reg_left_valid = \$next\converter_reg_left_valid ;
-  assign converter_reg_left_end = \$next\converter_reg_left_end ;
-  assign converter_reg_left_enc_ctr = \$next\converter_reg_left_enc_ctr ;
-  assign converter_reg_left_enc = \$next\converter_reg_left_enc ;
   assign converter_valid_out = \$next\converter_valid_out ;
   assign converter_out_end = \$next\converter_out_end ;
   assign converter_enc_out_ctr = \$next\converter_enc_out_ctr ;
   assign converter_enc_out = \$next\converter_enc_out ;
-  assign pipeline_fifo_reg_i_busy = \$next\pipeline_fifo_reg_i_busy ;
-  assign pipeline_fifo_reg_valid_left = \$next\pipeline_fifo_reg_valid_left ;
-  assign pipeline_fifo_reg_out_end_left = \$next\pipeline_fifo_reg_out_end_left ;
-  assign pipeline_fifo_reg_enc_ctr_left = \$next\pipeline_fifo_reg_enc_ctr_left ;
-  assign pipeline_fifo_reg_enc_left = \$next\pipeline_fifo_reg_enc_left ;
   assign lj92_pipeline_fifo_latch_output = \$next\lj92_pipeline_fifo_latch_output ;
   assign nready = \$next\nready ;
+  assign lj92_pipeline_fifo_in_end = \$next\lj92_pipeline_fifo_in_end ;
   assign lj92_pipeline_fifo_valid_in = \$next\lj92_pipeline_fifo_valid_in ;
   assign lj92_pipeline_fifo_enc_in_ctr = \$next\lj92_pipeline_fifo_enc_in_ctr ;
   assign lj92_pipeline_fifo_enc_in = \$next\lj92_pipeline_fifo_enc_in ;
-  assign lj92_pipeline_fifo_in_end = \$next\lj92_pipeline_fifo_in_end ;
-  assign end_delayer_in_sig = \$next\end_delayer_in_sig ;
   assign integration_1_valid_in = \$next\integration_1_valid_in ;
   assign integration_1_pixel_in = \$next\integration_1_pixel_in ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3" *)
 (* generator = "nMigen" *)
-module integration_3(valid_in, busy_in, rst, clk, data_out, valid_out, end_out, nready, pixel_in);
+module integration_3(valid_in, busy_in, rst, clk, debug_en, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_axi_ri__rready, s_axi_wi__awaddr, s_axi_wi__wvalid, s_axi_wi__wdata, s_axi_wi__wstrb, s_axi_wi__bready, data_out, valid_out, end_out, nready, pixel_in);
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:25" *)
   reg [15:0] \$next\data_out ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:30" *)
@@ -3999,23 +5941,15 @@ module integration_3(valid_in, busy_in, rst, clk, data_out, valid_out, end_out, 
   reg \$next\nready ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:29" *)
   reg \$next\valid_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:236" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:335" *)
   reg \$next\vbits_to_cbits_busy_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:228" *)
-  reg [11:0] \$next\vbits_to_cbits_enc_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:229" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:327" *)
+  reg [14:0] \$next\vbits_to_cbits_enc_in ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:328" *)
   reg [3:0] \$next\vbits_to_cbits_enc_in_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:230" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:329" *)
   reg \$next\vbits_to_cbits_in_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:20" *)
-  reg [15:0] \$next\vbits_to_cbits_reg_data_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:22" *)
-  reg \$next\vbits_to_cbits_reg_end_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:25" *)
-  reg \$next\vbits_to_cbits_reg_i_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:21" *)
-  reg \$next\vbits_to_cbits_reg_valid_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:231" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:330" *)
   reg \$next\vbits_to_cbits_valid_in ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:32" *)
   input busy_in;
@@ -4023,6 +5957,8 @@ module integration_3(valid_in, busy_in, rst, clk, data_out, valid_out, end_out, 
   input clk;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:25" *)
   output [15:0] data_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:107" *)
+  input [7:0] debug_en;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:30" *)
   output end_out;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_2.py:24" *)
@@ -4047,46 +5983,49 @@ module integration_3(valid_in, busy_in, rst, clk, data_out, valid_out, end_out, 
   input [11:0] pixel_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_ri__araddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__arvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__rready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__awaddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__awvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__bready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__wdata;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [3:0] s_axi_wi__wstrb;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__wvalid;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:28" *)
   input valid_in;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:29" *)
   output valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:236" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:335" *)
   wire vbits_to_cbits_busy_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:233" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:332" *)
   wire [15:0] vbits_to_cbits_data_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:228" *)
-  wire [11:0] vbits_to_cbits_enc_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:229" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:327" *)
+  wire [14:0] vbits_to_cbits_enc_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:328" *)
   wire [3:0] vbits_to_cbits_enc_in_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:235" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:334" *)
   wire vbits_to_cbits_end_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:230" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:329" *)
   wire vbits_to_cbits_in_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:227" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:326" *)
   wire vbits_to_cbits_latch_input;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:20" *)
-  wire [15:0] vbits_to_cbits_reg_data_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:26" *)
-  wire [15:0] vbits_to_cbits_reg_data_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:22" *)
-  wire vbits_to_cbits_reg_end_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:28" *)
-  wire vbits_to_cbits_reg_end_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:25" *)
-  wire vbits_to_cbits_reg_i_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:19" *)
-  wire vbits_to_cbits_reg_o_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:21" *)
-  wire vbits_to_cbits_reg_valid_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:27" *)
-  wire vbits_to_cbits_reg_valid_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:231" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:330" *)
   wire vbits_to_cbits_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:234" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:333" *)
   wire vbits_to_cbits_valid_out;
   integration_2 integration_2 (
     .clk(clk),
+    .debug_en(debug_en),
     .enc_out(integration_2_enc_out),
     .enc_out_ctr(integration_2_enc_out_ctr),
     .latch_output(integration_2_latch_output),
@@ -4094,6 +6033,15 @@ module integration_3(valid_in, busy_in, rst, clk, data_out, valid_out, end_out, 
     .out_end(integration_2_out_end),
     .pixel_in(integration_2_pixel_in),
     .rst(rst),
+    .s_axi_ri__araddr(s_axi_ri__araddr),
+    .s_axi_ri__arvalid(s_axi_ri__arvalid),
+    .s_axi_ri__rready(s_axi_ri__rready),
+    .s_axi_wi__awaddr(s_axi_wi__awaddr),
+    .s_axi_wi__awvalid(s_axi_wi__awvalid),
+    .s_axi_wi__bready(s_axi_wi__bready),
+    .s_axi_wi__wdata(s_axi_wi__wdata),
+    .s_axi_wi__wstrb(s_axi_wi__wstrb),
+    .s_axi_wi__wvalid(s_axi_wi__wvalid),
     .valid_in(integration_2_valid_in),
     .valid_out(integration_2_valid_out)
   );
@@ -4110,16 +6058,6 @@ module integration_3(valid_in, busy_in, rst, clk, data_out, valid_out, end_out, 
     .valid_in(vbits_to_cbits_valid_in),
     .valid_out(vbits_to_cbits_valid_out)
   );
-  vbits_to_cbits_reg vbits_to_cbits_reg (
-    .data_left(vbits_to_cbits_reg_data_left),
-    .data_right(vbits_to_cbits_reg_data_right),
-    .end_left(vbits_to_cbits_reg_end_left),
-    .end_right(vbits_to_cbits_reg_end_right),
-    .i_busy(vbits_to_cbits_reg_i_busy),
-    .o_busy(vbits_to_cbits_reg_o_busy),
-    .valid_left(vbits_to_cbits_reg_valid_left),
-    .valid_right(vbits_to_cbits_reg_valid_right)
-  );
   always @* begin
     \$next\integration_2_pixel_in  = 12'h000;
     \$next\integration_2_pixel_in  = pixel_in;
@@ -4129,24 +6067,8 @@ module integration_3(valid_in, busy_in, rst, clk, data_out, valid_out, end_out, 
     \$next\integration_2_valid_in  = valid_in;
   end
   always @* begin
-    \$next\vbits_to_cbits_reg_valid_left  = 1'h0;
-    \$next\vbits_to_cbits_reg_valid_left  = vbits_to_cbits_valid_out;
-  end
-  always @* begin
-    \$next\vbits_to_cbits_reg_end_left  = 1'h0;
-    \$next\vbits_to_cbits_reg_end_left  = vbits_to_cbits_end_out;
-  end
-  always @* begin
-    \$next\data_out  = 16'h0000;
-    \$next\data_out  = vbits_to_cbits_reg_data_right;
-  end
-  always @* begin
-    \$next\valid_out  = 1'h0;
-    \$next\valid_out  = vbits_to_cbits_reg_valid_right;
-  end
-  always @* begin
     \$next\end_out  = 1'h0;
-    \$next\end_out  = vbits_to_cbits_reg_end_right;
+    \$next\end_out  = vbits_to_cbits_end_out;
   end
   always @* begin
     \$next\nready  = 1'h0;
@@ -4157,8 +6079,8 @@ module integration_3(valid_in, busy_in, rst, clk, data_out, valid_out, end_out, 
     \$next\integration_2_latch_output  = vbits_to_cbits_latch_input;
   end
   always @* begin
-    \$next\vbits_to_cbits_enc_in  = 12'h000;
-    \$next\vbits_to_cbits_enc_in  = integration_2_enc_out[11:0];
+    \$next\vbits_to_cbits_enc_in  = 15'h0000;
+    \$next\vbits_to_cbits_enc_in  = integration_2_enc_out[14:0];
   end
   always @* begin
     \$next\vbits_to_cbits_enc_in_ctr  = 4'h0;
@@ -4174,24 +6096,20 @@ module integration_3(valid_in, busy_in, rst, clk, data_out, valid_out, end_out, 
   end
   always @* begin
     \$next\vbits_to_cbits_busy_in  = 1'h0;
-    \$next\vbits_to_cbits_busy_in  = vbits_to_cbits_reg_o_busy;
+    \$next\vbits_to_cbits_busy_in  = busy_in;
   end
   always @* begin
-    \$next\vbits_to_cbits_reg_i_busy  = 1'h0;
-    \$next\vbits_to_cbits_reg_i_busy  = busy_in;
+    \$next\data_out  = 16'h0000;
+    \$next\data_out  = vbits_to_cbits_data_out;
   end
   always @* begin
-    \$next\vbits_to_cbits_reg_data_left  = 16'h0000;
-    \$next\vbits_to_cbits_reg_data_left  = vbits_to_cbits_data_out;
+    \$next\valid_out  = 1'h0;
+    \$next\valid_out  = vbits_to_cbits_valid_out;
   end
   assign nready = \$next\nready ;
   assign end_out = \$next\end_out ;
   assign valid_out = \$next\valid_out ;
   assign data_out = \$next\data_out ;
-  assign vbits_to_cbits_reg_end_left = \$next\vbits_to_cbits_reg_end_left ;
-  assign vbits_to_cbits_reg_valid_left = \$next\vbits_to_cbits_reg_valid_left ;
-  assign vbits_to_cbits_reg_data_left = \$next\vbits_to_cbits_reg_data_left ;
-  assign vbits_to_cbits_reg_i_busy = \$next\vbits_to_cbits_reg_i_busy ;
   assign vbits_to_cbits_busy_in = \$next\vbits_to_cbits_busy_in ;
   assign vbits_to_cbits_valid_in = \$next\vbits_to_cbits_valid_in ;
   assign vbits_to_cbits_in_end = \$next\vbits_to_cbits_in_end ;
@@ -4206,11 +6124,11 @@ endmodule
 (* generator = "nMigen" *)
 module lj92_pipeline_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, valid_out, enc_out, enc_out_ctr, out_end, close_full, valid_in);
   wire \$1 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:39" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:67" *)
   reg \$next\close_full ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:32" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:60" *)
   reg [27:0] \$next\enc_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:61" *)
   reg [4:0] \$next\enc_out_ctr ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
   reg [33:0] \$next\fifo_din ;
@@ -4218,23 +6136,23 @@ module lj92_pipeline_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, va
   reg \$next\fifo_re ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
   reg \$next\fifo_we ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:34" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:62" *)
   reg \$next\out_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:35" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:63" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:39" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:67" *)
   output close_full;
   reg close_full = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:26" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:54" *)
   input [27:0] enc_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:27" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:55" *)
   input [4:0] enc_in_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:32" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:60" *)
   output [27:0] enc_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:61" *)
   output [4:0] enc_out_ctr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
   wire [33:0] fifo_din;
@@ -4248,19 +6166,19 @@ module lj92_pipeline_fifo(enc_in, enc_in_ctr, in_end, latch_output, rst, clk, va
   wire fifo_readable;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
   wire fifo_we;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:56" *)
   input in_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:59" *)
   input latch_output;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:34" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:62" *)
   output out_end;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:29" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:57" *)
   input valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:35" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:63" *)
   output valid_out;
-  assign \$1  = fifo_level > (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:71" *) 9'h1ec;
+  assign \$1  = fifo_level >= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/lj92_pipeline_fifo.py:99" *) 9'h1f6;
   always @(posedge clk)
       close_full <= \$next\close_full ;
   fifo fifo (
@@ -4320,54 +6238,68 @@ endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.normalize" *)
 (* generator = "nMigen" *)
-module normalize(valid_in, vals_in_mns, rst, clk, ssss, val_out, valid_out, val_in);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:125" *)
+module normalize(valid_in, end_in, vals_in_mns, rst, clk, ssss, val_out, valid_out, end_out, val_in);
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:132" *)
+  reg \$next\end_in$2 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:208" *)
+  reg \$next\end_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:201" *)
   reg [4:0] \$next\ssss ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:68" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:119" *)
   reg [12:0] \$next\val_in$1 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:73" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:121" *)
   reg [12:0] \$next\val_in_mns ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:124" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:199" *)
   reg [11:0] \$next\val_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:71" *)
-  reg \$next\valid ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:128" *)
+  reg \$next\valid ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:204" *)
   reg \$next\valid_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:207" *)
+  input end_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:132" *)
+  wire \end_in$2 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:208" *)
+  output end_out;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:133" *)
+  wire \end_out$5 ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:125" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:201" *)
   output [4:0] ssss;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:70" *)
-  wire [4:0] \ssss$3 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:122" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:126" *)
+  wire [4:0] \ssss$4 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:194" *)
   input [12:0] val_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:68" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:119" *)
   wire [12:0] \val_in$1 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:73" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:121" *)
   wire [12:0] val_in_mns;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:124" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:199" *)
   output [11:0] val_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:69" *)
-  wire [11:0] \val_out$2 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:71" *)
-  wire valid;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:127" *)
-  input valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:72" *)
-  wire valid_o;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:124" *)
+  wire [11:0] \val_out$3 ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:128" *)
+  wire valid;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:203" *)
+  input valid_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:129" *)
+  wire valid_o;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:204" *)
   output valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:123" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/normalize.py:196" *)
   input [12:0] vals_in_mns;
-  anonymous \$4  (
+  anonymous \$6  (
     .clk(clk),
+    .end_in(\end_in$2 ),
+    .end_out(\end_out$5 ),
     .rst(rst),
-    .ssss(\ssss$3 ),
+    .ssss(\ssss$4 ),
     .val_in(\val_in$1 ),
     .val_in_mns(val_in_mns),
-    .val_out(\val_out$2 ),
+    .val_out(\val_out$3 ),
     .valid(valid),
     .valid_o(valid_o)
   );
@@ -4380,32 +6312,42 @@ module normalize(valid_in, vals_in_mns, rst, clk, ssss, val_out, valid_out, val_
     \$next\valid  = valid_in;
   end
   always @* begin
+    \$next\end_in$2  = 1'h0;
+    \$next\end_in$2  = end_in;
+  end
+  always @* begin
     \$next\val_in_mns  = 13'h0000;
     \$next\val_in_mns  = vals_in_mns;
   end
   always @* begin
     \$next\ssss  = 5'h00;
-    \$next\ssss  = \ssss$3 ;
+    \$next\ssss  = \ssss$4 ;
   end
   always @* begin
     \$next\val_out  = 12'h000;
-    \$next\val_out  = \val_out$2 ;
+    \$next\val_out  = \val_out$3 ;
   end
   always @* begin
     \$next\valid_out  = 1'h0;
     \$next\valid_out  = valid_o;
   end
+  always @* begin
+    \$next\end_out  = 1'h0;
+    \$next\end_out  = \end_out$5 ;
+  end
+  assign end_out = \$next\end_out ;
   assign valid_out = \$next\valid_out ;
   assign val_out = \$next\val_out ;
   assign ssss = \$next\ssss ;
   assign val_in_mns = \$next\val_in_mns ;
+  assign \end_in$2  = \$next\end_in$2 ;
   assign valid = \$next\valid ;
   assign \val_in$1  = \$next\val_in$1 ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.vbits_to_cbits.output_handler" *)
 (* generator = "nMigen" *)
-module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, busy_in, rst, clk, dec_buff_out, data_out, valid_out, end_out, buff_consum);
+module output_handler(end_in, buffer, busy_in, rst, clk, dec_buff_out, data_out, end_out, valid_out, buff_consum);
   wire [6:0] \$1 ;
   wire \$11 ;
   wire \$13 ;
@@ -4415,154 +6357,158 @@ module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, bus
   wire [6:0] \$2 ;
   wire \$21 ;
   wire \$23 ;
-  wire [41:0] \$25 ;
-  wire [41:0] \$26 ;
-  wire [72:0] \$28 ;
-  wire [72:0] \$29 ;
+  wire \$25 ;
+  wire \$27 ;
+  wire \$29 ;
   wire \$31 ;
   wire \$33 ;
   wire \$35 ;
-  wire [41:0] \$37 ;
-  wire [41:0] \$38 ;
+  wire \$37 ;
+  wire [40:0] \$39 ;
   wire [6:0] \$4 ;
-  wire [72:0] \$40 ;
-  wire [72:0] \$41 ;
-  wire \$43 ;
+  wire [40:0] \$40 ;
+  wire [55:0] \$42 ;
+  wire [55:0] \$43 ;
   wire \$45 ;
   wire \$47 ;
   wire \$49 ;
   wire [6:0] \$5 ;
-  wire \$51 ;
-  wire \$53 ;
-  wire \$55 ;
+  wire [40:0] \$51 ;
+  wire [40:0] \$52 ;
+  wire [55:0] \$54 ;
+  wire [55:0] \$55 ;
   wire \$57 ;
   wire \$59 ;
   wire \$61 ;
   wire \$63 ;
   wire \$65 ;
+  wire \$67 ;
+  wire \$69 ;
   wire \$7 ;
+  wire \$71 ;
+  wire \$73 ;
+  wire \$75 ;
+  wire \$77 ;
+  wire \$79 ;
   wire \$9 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:49" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:84" *)
   reg \$next\buff_consum_greater_eq ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:48" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:83" *)
   reg \$next\buff_consum_less_eq ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:17" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:52" *)
   reg [15:0] \$next\data_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:63" *)
   reg \$next\dec_buff_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:19" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:54" *)
   reg \$next\end_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg \$next\fsm_state ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:40" *)
-  reg [4:0] \$next\shift_left ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:39" *)
+  reg [1:0] \$next\fsm_state ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:75" *)
+  reg [3:0] \$next\shift_left ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:74" *)
   reg [4:0] \$next\shift_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:18" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:53" *)
   reg \$next\valid_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:24" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:59" *)
   input [5:0] buff_consum;
-  (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:49" *)
-  reg buff_consum_greater_eq = 1'h0;
-  (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:48" *)
-  reg buff_consum_less_eq = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:23" *)
-  input [41:0] buffer;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:20" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:84" *)
+  wire buff_consum_greater_eq;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:83" *)
+  wire buff_consum_less_eq;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:58" *)
+  input [40:0] buffer;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:55" *)
   input busy_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* init = 16'h0000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:17" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:52" *)
   output [15:0] data_out;
   reg [15:0] data_out = 16'h0000;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:63" *)
   output dec_buff_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:66" *)
   input end_in;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:19" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:54" *)
   output end_out;
   reg end_out = 1'h0;
-  (* init = 1'h0 *)
+  (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
-  reg fsm_state = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:25" *)
-  input [5:0] new_buff_consum;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:26" *)
-  input new_buff_consum_actv;
+  reg [1:0] fsm_state = 2'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:40" *)
-  wire [4:0] shift_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:39" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:75" *)
+  wire [3:0] shift_left;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:74" *)
   wire [4:0] shift_right;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:18" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:53" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$9  = buff_consum_greater_eq | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:73" *) \$7 ;
-  assign \$11  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:82" *) 1'h0;
-  assign \$13  = \$11  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:82" *) buff_consum_greater_eq;
-  assign \$15  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:85" *) 1'h0;
-  assign \$17  = new_buff_consum >= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:53" *) 5'h10;
-  assign \$19  = new_buff_consum <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:54" *) 5'h10;
-  assign \$21  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:73" *) end_in;
-  assign \$23  = buff_consum_greater_eq | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:73" *) \$21 ;
-  assign \$26  = buffer >>> (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:59" *) shift_right;
-  assign \$2  = buff_consum - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:41" *) 5'h10;
-  assign \$29  = buffer <<< (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:61" *) shift_left;
-  assign \$31  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:82" *) 1'h0;
-  assign \$33  = \$31  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:82" *) buff_consum_greater_eq;
-  assign \$35  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:85" *) 1'h0;
-  assign \$38  = buffer >>> (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:59" *) shift_right;
-  assign \$41  = buffer <<< (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:61" *) shift_left;
-  assign \$43  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:73" *) end_in;
-  assign \$45  = buff_consum_greater_eq | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:73" *) \$43 ;
-  assign \$47  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:82" *) 1'h0;
-  assign \$49  = \$47  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:82" *) buff_consum_greater_eq;
-  assign \$51  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:85" *) 1'h0;
-  assign \$53  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:73" *) end_in;
-  assign \$55  = buff_consum_greater_eq | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:73" *) \$53 ;
-  assign \$57  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:82" *) 1'h0;
-  assign \$5  = 5'h10 - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:42" *) buff_consum;
-  assign \$59  = \$57  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:82" *) buff_consum_greater_eq;
-  assign \$61  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:85" *) 1'h0;
-  assign \$63  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:77" *) end_in;
-  assign \$65  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:92" *) end_in;
-  assign \$7  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:73" *) end_in;
-  always @(posedge clk)
-      end_out <= \$next\end_out ;
-  always @(posedge clk)
-      fsm_state <= \$next\fsm_state ;
+  assign \$9  = buff_consum_greater_eq | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) \$7 ;
+  assign \$11  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$13  = \$11  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$15  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:117" *) 1'h0;
+  assign \$17  = buff_consum >= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:87" *) 5'h10;
+  assign \$19  = buff_consum <= (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:88" *) 5'h10;
+  assign \$21  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$23  = buff_consum_greater_eq | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) \$21 ;
+  assign \$25  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:97" *) end_in;
+  assign \$27  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$2  = buff_consum - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:76" *) 5'h10;
+  assign \$29  = \$27  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$31  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:117" *) 1'h0;
+  assign \$33  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:97" *) end_in;
+  assign \$35  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$37  = buff_consum_greater_eq | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) \$35 ;
+  assign \$40  = buffer >>> (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:93" *) shift_right;
+  assign \$43  = buffer <<< (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:95" *) shift_left;
+  assign \$45  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$47  = \$45  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$49  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:117" *) 1'h0;
+  assign \$52  = buffer >>> (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:93" *) shift_right;
+  assign \$55  = buffer <<< (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:95" *) shift_left;
+  assign \$57  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$5  = 5'h10 - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:77" *) buff_consum;
+  assign \$59  = buff_consum_greater_eq | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) \$57 ;
+  assign \$61  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:97" *) end_in;
+  assign \$63  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$65  = \$63  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$67  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:117" *) 1'h0;
+  assign \$69  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:97" *) end_in;
+  assign \$71  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$73  = buff_consum_greater_eq | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) \$71 ;
+  assign \$75  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) 1'h0;
+  assign \$77  = \$75  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$7  = buff_consum_less_eq & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *) end_in;
+  assign \$79  = busy_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:117" *) 1'h0;
   always @(posedge clk)
       valid_out <= \$next\valid_out ;
   always @(posedge clk)
+      end_out <= \$next\end_out ;
+  always @(posedge clk)
       data_out <= \$next\data_out ;
   always @(posedge clk)
-      buff_consum_less_eq <= \$next\buff_consum_less_eq ;
-  always @(posedge clk)
-      buff_consum_greater_eq <= \$next\buff_consum_greater_eq ;
+      fsm_state <= \$next\fsm_state ;
   always @* begin
     \$next\shift_right  = 5'h00;
     \$next\shift_right  = \$1 [4:0];
   end
   always @* begin
-    \$next\shift_left  = 5'h00;
-    \$next\shift_left  = \$4 [4:0];
+    \$next\shift_left  = 4'h0;
+    \$next\shift_left  = \$4 [3:0];
   end
   always @* begin
     \$next\dec_buff_out  = 1'h0;
     \$next\dec_buff_out  = 1'h0;
     casez (fsm_state)
-      1'h0:
+      2'h0:
           casez (\$9 )
             1'h1:
                 \$next\dec_buff_out  = 1'h1;
           endcase
-      1'h1:
+      2'h1:
           casez ({ \$15 , \$13  })
             2'bz1:
                 \$next\dec_buff_out  = 1'h1;
@@ -4570,48 +6516,64 @@ module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, bus
     endcase
   end
   always @* begin
-    \$next\buff_consum_greater_eq  = buff_consum_greater_eq;
-    casez (new_buff_consum_actv)
-      1'h1:
-          \$next\buff_consum_greater_eq  = \$17 ;
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\buff_consum_greater_eq  = 1'h0;
-    endcase
+    \$next\buff_consum_greater_eq  = 1'h0;
+    \$next\buff_consum_greater_eq  = \$17 ;
   end
   always @* begin
-    \$next\buff_consum_less_eq  = buff_consum_less_eq;
-    casez (new_buff_consum_actv)
-      1'h1:
-          \$next\buff_consum_less_eq  = \$19 ;
+    \$next\buff_consum_less_eq  = 1'h0;
+    \$next\buff_consum_less_eq  = \$19 ;
+  end
+  always @* begin
+    \$next\fsm_state  = fsm_state;
+    casez (fsm_state)
+      2'h0:
+          casez (\$23 )
+            1'h1:
+              begin
+                \$next\fsm_state  = 2'h1;
+                casez (\$25 )
+                  1'h1:
+                      \$next\fsm_state  = 2'h2;
+                endcase
+              end
+          endcase
+      2'h1:
+          casez ({ \$31 , \$29  })
+            2'bz1:
+                casez (\$33 )
+                  1'h1:
+                      \$next\fsm_state  = 2'h2;
+                endcase
+            2'b1z:
+                \$next\fsm_state  = 2'h0;
+          endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\buff_consum_less_eq  = 1'h0;
+          \$next\fsm_state  = 2'h0;
     endcase
   end
   always @* begin
     \$next\data_out  = data_out;
     casez (fsm_state)
-      1'h0:
-          casez (\$23 )
+      2'h0:
+          casez (\$37 )
             1'h1:
                 casez (buff_consum_greater_eq)
                   1'h1:
-                      \$next\data_out  = \$25 [15:0];
+                      \$next\data_out  = \$39 [15:0];
                   1'hz:
-                      \$next\data_out  = \$28 [15:0];
+                      \$next\data_out  = \$42 [15:0];
                 endcase
           endcase
-      1'h1:
-          casez ({ \$35 , \$33  })
+      2'h1:
+          casez ({ \$49 , \$47  })
             2'bz1:
                 casez (buff_consum_greater_eq)
                   1'h1:
-                      \$next\data_out  = \$37 [15:0];
+                      \$next\data_out  = \$51 [15:0];
                   1'hz:
-                      \$next\data_out  = \$40 [15:0];
+                      \$next\data_out  = \$54 [15:0];
                 endcase
           endcase
     endcase
@@ -4621,15 +6583,40 @@ module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, bus
     endcase
   end
   always @* begin
+    \$next\end_out  = end_out;
+    casez (fsm_state)
+      2'h0:
+          casez (\$59 )
+            1'h1:
+                casez (\$61 )
+                  1'h1:
+                      \$next\end_out  = 1'h1;
+                endcase
+          endcase
+      2'h1:
+          casez ({ \$67 , \$65  })
+            2'bz1:
+                casez (\$69 )
+                  1'h1:
+                      \$next\end_out  = 1'h1;
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
+    endcase
+  end
+  always @* begin
     \$next\valid_out  = valid_out;
     casez (fsm_state)
-      1'h0:
-          casez (\$45 )
+      2'h0:
+          casez (\$73 )
             1'h1:
                 \$next\valid_out  = 1'h1;
           endcase
-      1'h1:
-          casez ({ \$51 , \$49  })
+      2'h1:
+          casez ({ \$79 , \$77  })
             2'bz1:
                 \$next\valid_out  = 1'h1;
             2'b1z:
@@ -4641,291 +6628,175 @@ module output_handler(new_buff_consum_actv, new_buff_consum, end_in, buffer, bus
           \$next\valid_out  = 1'h0;
     endcase
   end
-  always @* begin
-    \$next\fsm_state  = fsm_state;
-    casez (fsm_state)
-      1'h0:
-          casez (\$55 )
-            1'h1:
-                \$next\fsm_state  = 1'h1;
-          endcase
-      1'h1:
-          casez ({ \$61 , \$59  })
-            2'bz1:
-                /* empty */;
-            2'b1z:
-                \$next\fsm_state  = 1'h0;
-          endcase
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\fsm_state  = 1'h0;
-    endcase
-  end
-  always @* begin
-    \$next\end_out  = end_out;
-    casez (fsm_state)
-      1'h0:
-          casez (\$63 )
-            1'h1:
-                \$next\end_out  = 1'h1;
-          endcase
-      1'h1:
-          casez (\$65 )
-            1'h1:
-                \$next\end_out  = 1'h1;
-          endcase
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\end_out  = 1'h0;
-    endcase
-  end
   assign \$1  = \$2 ;
   assign \$4  = \$5 ;
-  assign \$25  = \$26 ;
-  assign \$28  = \$29 ;
-  assign \$37  = \$38 ;
-  assign \$40  = \$41 ;
+  assign \$39  = \$40 ;
+  assign \$42  = \$43 ;
+  assign \$51  = \$52 ;
+  assign \$54  = \$55 ;
+  assign buff_consum_less_eq = \$next\buff_consum_less_eq ;
+  assign buff_consum_greater_eq = \$next\buff_consum_greater_eq ;
   assign dec_buff_out = \$next\dec_buff_out ;
   assign shift_left = \$next\shift_left ;
   assign shift_right = \$next\shift_right ;
 endmodule
 
-(* \nmigen.hierarchy  = "top.integration_3.integration_2.pipeline_fifo_reg" *)
-(* generator = "nMigen" *)
-module pipeline_fifo_reg(enc_left, enc_ctr_left, out_end_left, valid_left, o_busy, enc_right, enc_ctr_right, out_end_right, valid_right, i_busy);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:30" *)
-  reg [4:0] \$next\enc_ctr_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:29" *)
-  reg [27:0] \$next\enc_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:21" *)
-  reg \$next\o_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:31" *)
-  reg \$next\out_end_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:32" *)
-  reg \$next\valid_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:23" *)
-  input [4:0] enc_ctr_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:30" *)
-  output [4:0] enc_ctr_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:22" *)
-  input [27:0] enc_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:29" *)
-  output [27:0] enc_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:28" *)
-  input i_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:21" *)
-  output o_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:24" *)
-  input out_end_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:31" *)
-  output out_end_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:25" *)
-  input valid_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_fifo_reg.py:32" *)
-  output valid_right;
-  always @* begin
-    \$next\o_busy  = 1'h0;
-    \$next\o_busy  = i_busy;
-  end
-  always @* begin
-    \$next\enc_right  = 28'h0000000;
-    \$next\enc_right  = enc_left;
-  end
-  always @* begin
-    \$next\enc_ctr_right  = 5'h00;
-    \$next\enc_ctr_right  = enc_ctr_left;
-  end
-  always @* begin
-    \$next\out_end_right  = 1'h0;
-    \$next\out_end_right  = out_end_left;
-  end
-  always @* begin
-    \$next\valid_right  = 1'h0;
-    \$next\valid_right  = valid_left;
-  end
-  assign valid_right = \$next\valid_right ;
-  assign out_end_right = \$next\out_end_right ;
-  assign enc_ctr_right = \$next\enc_ctr_right ;
-  assign enc_right = \$next\enc_right ;
-  assign o_busy = \$next\o_busy ;
-endmodule
-
-(* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.pipeline_reg" *)
-(* generator = "nMigen" *)
-module pipeline_reg(enc_left_ctr, valid_left, enc_right, enc_right_ctr, valid_right, enc_left);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:28" *)
-  reg [27:0] \$next\enc_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:29" *)
-  reg [4:0] \$next\enc_right_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:32" *)
-  reg \$next\valid_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:24" *)
-  input [27:0] enc_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:25" *)
-  input [4:0] enc_left_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:28" *)
-  output [27:0] enc_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:29" *)
-  output [4:0] enc_right_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:31" *)
-  input valid_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/pipeline_reg.py:32" *)
-  output valid_right;
-  always @* begin
-    \$next\enc_right  = 28'h0000000;
-    \$next\enc_right  = enc_left;
-  end
-  always @* begin
-    \$next\enc_right_ctr  = 5'h00;
-    \$next\enc_right_ctr  = enc_left_ctr;
-  end
-  always @* begin
-    \$next\valid_right  = 1'h0;
-    \$next\valid_right  = valid_left;
-  end
-  assign valid_right = \$next\valid_right ;
-  assign enc_right_ctr = \$next\enc_right_ctr ;
-  assign enc_right = \$next\enc_right ;
-endmodule
-
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.predictor" *)
 (* generator = "nMigen" *)
-module predictor(new_row, pixel_in, rst, clk, pixel_out, predic_out, valid_out, valid_in);
+module predictor(new_row, pixel_in, end_in, rst, clk, pixel_out, predic_out, valid_out, end_out, valid_in);
   wire \$1 ;
   wire \$11 ;
   wire \$13 ;
-  wire [2:0] \$15 ;
-  wire [2:0] \$16 ;
-  wire [2:0] \$21 ;
-  wire [2:0] \$22 ;
+  wire [32:0] \$15 ;
+  wire [32:0] \$16 ;
+  wire [2:0] \$18 ;
+  wire [2:0] \$19 ;
+  wire [2:0] \$24 ;
+  wire [2:0] \$25 ;
   wire \$3 ;
   wire \$5 ;
   wire \$7 ;
   wire \$9 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:57" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:100" *)
   reg [11:0] \$next\buff ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:57" *)
-  reg [11:0] \$next\buff$18 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:57" *)
-  reg [11:0] \$next\buff$19 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:57" *)
-  reg [11:0] \$next\buff$20 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:62" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  reg [11:0] \$next\buff$21 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  reg [11:0] \$next\buff$22 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  reg [11:0] \$next\buff$23 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:108" *)
   reg [1:0] \$next\buff_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:60" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:84" *)
+  reg [31:0] \$next\debug_counter ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:81" *)
+  reg \$next\end_out ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:106" *)
   reg [11:0] \$next\lbuff ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:60" *)
-  reg [11:0] \$next\lbuff$24 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:60" *)
-  reg [11:0] \$next\lbuff$25 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:60" *)
-  reg [11:0] \$next\lbuff$26 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:63" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  reg [11:0] \$next\lbuff$27 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  reg [11:0] \$next\lbuff$28 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  reg [11:0] \$next\lbuff$29 ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:109" *)
   reg [1:0] \$next\lbuff_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:66" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:112" *)
   reg \$next\new_row_latch ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:65" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:111" *)
   reg \$next\new_row_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:34" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:67" *)
   reg [11:0] \$next\pixel_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:37" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:70" *)
   reg [11:0] \$next\predic_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:44" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:77" *)
   reg \$next\valid_out ;
   (* init = 12'h800 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:57" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:100" *)
   reg [11:0] buff = 12'h800;
   (* init = 12'h800 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:57" *)
-  reg [11:0] \buff$18  = 12'h800;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  reg [11:0] \buff$21  = 12'h800;
   (* init = 12'h800 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:57" *)
-  reg [11:0] \buff$19  = 12'h800;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  reg [11:0] \buff$22  = 12'h800;
   (* init = 12'h800 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:57" *)
-  reg [11:0] \buff$20  = 12'h800;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  reg [11:0] \buff$23  = 12'h800;
   (* init = 2'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:62" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:108" *)
   reg [1:0] buff_ctr = 2'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
+  (* init = 32'd0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:84" *)
+  reg [31:0] debug_counter = 32'd0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:80" *)
+  input end_in;
+  (* init = 1'h0 *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:81" *)
+  output end_out;
+  reg end_out = 1'h0;
   (* init = 12'h800 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:60" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:106" *)
   reg [11:0] lbuff = 12'h800;
   (* init = 12'h800 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:60" *)
-  reg [11:0] \lbuff$24  = 12'h800;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  reg [11:0] \lbuff$27  = 12'h800;
   (* init = 12'h800 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:60" *)
-  reg [11:0] \lbuff$25  = 12'h800;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  reg [11:0] \lbuff$28  = 12'h800;
   (* init = 12'h800 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:60" *)
-  reg [11:0] \lbuff$26  = 12'h800;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  reg [11:0] \lbuff$29  = 12'h800;
   (* init = 2'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:63" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:109" *)
   reg [1:0] lbuff_ctr = 2'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:40" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:73" *)
   input new_row;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:66" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:112" *)
   wire new_row_latch;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:65" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:111" *)
   reg new_row_reg = 1'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:64" *)
   input [11:0] pixel_in;
   (* init = 12'h000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:34" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:67" *)
   output [11:0] pixel_out;
   reg [11:0] pixel_out = 12'h000;
   (* init = 12'h000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:37" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:70" *)
   output [11:0] predic_out;
   reg [11:0] predic_out = 12'h000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:43" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:76" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:44" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:77" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$9  = lbuff_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:71" *) 2'h3;
-  assign \$11  = \$7  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:71" *) \$9 ;
-  assign \$13  = new_row | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:73" *) new_row_reg;
-  assign \$16  = buff_ctr + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:82" *) 1'h1;
-  assign \$1  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:69" *) 1'h1;
-  assign \$22  = lbuff_ctr + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:91" *) 1'h1;
-  assign \$3  = new_row == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:69" *) 1'h1;
-  assign \$5  = \$1  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:69" *) \$3 ;
-  assign \$7  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:71" *) 1'h1;
+  assign \$9  = lbuff_ctr == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:117" *) 2'h3;
+  assign \$11  = \$7  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:117" *) \$9 ;
+  assign \$13  = new_row | (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:119" *) new_row_reg;
+  assign \$16  = debug_counter + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:124" *) 1'h1;
+  assign \$1  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:115" *) 1'h1;
+  assign \$19  = buff_ctr + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:130" *) 1'h1;
+  assign \$25  = lbuff_ctr + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:138" *) 1'h1;
+  assign \$3  = new_row == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:115" *) 1'h1;
+  assign \$5  = \$1  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:115" *) \$3 ;
+  assign \$7  = valid_in == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/predictor_p1_c4_pix1_2.py:117" *) 1'h1;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
   always @(posedge clk)
       valid_out <= \$next\valid_out ;
   always @(posedge clk)
       predic_out <= \$next\predic_out ;
   always @(posedge clk)
-      \lbuff$26  <= \$next\lbuff$26 ;
+      \lbuff$29  <= \$next\lbuff$29 ;
   always @(posedge clk)
-      \lbuff$25  <= \$next\lbuff$25 ;
+      \lbuff$28  <= \$next\lbuff$28 ;
   always @(posedge clk)
-      \lbuff$24  <= \$next\lbuff$24 ;
+      \lbuff$27  <= \$next\lbuff$27 ;
   always @(posedge clk)
       lbuff <= \$next\lbuff ;
   always @(posedge clk)
       lbuff_ctr <= \$next\lbuff_ctr ;
   always @(posedge clk)
-      \buff$20  <= \$next\buff$20 ;
+      \buff$23  <= \$next\buff$23 ;
   always @(posedge clk)
-      \buff$19  <= \$next\buff$19 ;
+      \buff$22  <= \$next\buff$22 ;
   always @(posedge clk)
-      \buff$18  <= \$next\buff$18 ;
+      \buff$21  <= \$next\buff$21 ;
   always @(posedge clk)
       buff <= \$next\buff ;
   always @(posedge clk)
       buff_ctr <= \$next\buff_ctr ;
   always @(posedge clk)
       pixel_out <= \$next\pixel_out ;
+  always @(posedge clk)
+      debug_counter <= \$next\debug_counter ;
   always @(posedge clk)
       new_row_reg <= \$next\new_row_reg ;
   always @* begin
@@ -4946,54 +6817,71 @@ module predictor(new_row, pixel_in, rst, clk, pixel_out, predic_out, valid_out, 
     \$next\new_row_latch  = \$13 ;
   end
   always @* begin
-    \$next\lbuff$24  = \lbuff$24 ;
+    \$next\lbuff  = lbuff;
+    casez (valid_in)
+      1'h1:
+          casez (new_row_latch)
+            1'h1:
+                casez (lbuff_ctr)
+                  2'h0:
+                      \$next\lbuff  = pixel_in;
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\lbuff  = 12'h800;
+    endcase
+  end
+  always @* begin
+    \$next\lbuff$27  = \lbuff$27 ;
     casez (valid_in)
       1'h1:
           casez (new_row_latch)
             1'h1:
                 casez (lbuff_ctr)
                   2'h1:
-                      \$next\lbuff$24  = pixel_in;
+                      \$next\lbuff$27  = pixel_in;
                 endcase
           endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\lbuff$24  = 12'h800;
+          \$next\lbuff$27  = 12'h800;
     endcase
   end
   always @* begin
-    \$next\lbuff$25  = \lbuff$25 ;
+    \$next\lbuff$28  = \lbuff$28 ;
     casez (valid_in)
       1'h1:
           casez (new_row_latch)
             1'h1:
                 casez (lbuff_ctr)
                   2'h2:
-                      \$next\lbuff$25  = pixel_in;
+                      \$next\lbuff$28  = pixel_in;
                 endcase
           endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\lbuff$25  = 12'h800;
+          \$next\lbuff$28  = 12'h800;
     endcase
   end
   always @* begin
-    \$next\lbuff$26  = \lbuff$26 ;
+    \$next\lbuff$29  = \lbuff$29 ;
     casez (valid_in)
       1'h1:
           casez (new_row_latch)
             1'h1:
                 casez (lbuff_ctr)
                   2'h3:
-                      \$next\lbuff$26  = pixel_in;
+                      \$next\lbuff$29  = pixel_in;
                 endcase
           endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\lbuff$26  = 12'h800;
+          \$next\lbuff$29  = 12'h800;
     endcase
   end
   always @* begin
@@ -5006,22 +6894,22 @@ module predictor(new_row, pixel_in, rst, clk, pixel_out, predic_out, valid_out, 
                   2'h0:
                       \$next\predic_out  = lbuff;
                   2'h1:
-                      \$next\predic_out  = \lbuff$24 ;
+                      \$next\predic_out  = \lbuff$27 ;
                   2'h2:
-                      \$next\predic_out  = \lbuff$25 ;
+                      \$next\predic_out  = \lbuff$28 ;
                   2'h3:
-                      \$next\predic_out  = \lbuff$26 ;
+                      \$next\predic_out  = \lbuff$29 ;
                 endcase
             1'hz:
                 casez (buff_ctr)
                   2'h0:
                       \$next\predic_out  = buff;
                   2'h1:
-                      \$next\predic_out  = \buff$18 ;
+                      \$next\predic_out  = \buff$21 ;
                   2'h2:
-                      \$next\predic_out  = \buff$19 ;
+                      \$next\predic_out  = \buff$22 ;
                   2'h3:
-                      \$next\predic_out  = \buff$20 ;
+                      \$next\predic_out  = \buff$23 ;
                 endcase
           endcase
     endcase
@@ -5039,6 +6927,25 @@ module predictor(new_row, pixel_in, rst, clk, pixel_out, predic_out, valid_out, 
     endcase
   end
   always @* begin
+    \$next\end_out  = end_out;
+    \$next\end_out  = end_in;
+    casez (rst)
+      1'h1:
+          \$next\end_out  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\debug_counter  = debug_counter;
+    casez (valid_in)
+      1'h1:
+          \$next\debug_counter  = \$15 [31:0];
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\debug_counter  = 32'd0;
+    endcase
+  end
+  always @* begin
     \$next\pixel_out  = pixel_out;
     casez (valid_in)
       1'h1:
@@ -5053,7 +6960,7 @@ module predictor(new_row, pixel_in, rst, clk, pixel_out, predic_out, valid_out, 
     \$next\buff_ctr  = buff_ctr;
     casez (valid_in)
       1'h1:
-          \$next\buff_ctr  = \$15 [1:0];
+          \$next\buff_ctr  = \$18 [1:0];
     endcase
     casez (rst)
       1'h1:
@@ -5075,45 +6982,45 @@ module predictor(new_row, pixel_in, rst, clk, pixel_out, predic_out, valid_out, 
     endcase
   end
   always @* begin
-    \$next\buff$18  = \buff$18 ;
+    \$next\buff$21  = \buff$21 ;
     casez (valid_in)
       1'h1:
           casez (buff_ctr)
             2'h1:
-                \$next\buff$18  = pixel_in;
+                \$next\buff$21  = pixel_in;
           endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\buff$18  = 12'h800;
+          \$next\buff$21  = 12'h800;
     endcase
   end
   always @* begin
-    \$next\buff$19  = \buff$19 ;
+    \$next\buff$22  = \buff$22 ;
     casez (valid_in)
       1'h1:
           casez (buff_ctr)
             2'h2:
-                \$next\buff$19  = pixel_in;
+                \$next\buff$22  = pixel_in;
           endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\buff$19  = 12'h800;
+          \$next\buff$22  = 12'h800;
     endcase
   end
   always @* begin
-    \$next\buff$20  = \buff$20 ;
+    \$next\buff$23  = \buff$23 ;
     casez (valid_in)
       1'h1:
           casez (buff_ctr)
             2'h3:
-                \$next\buff$20  = pixel_in;
+                \$next\buff$23  = pixel_in;
           endcase
     endcase
     casez (rst)
       1'h1:
-          \$next\buff$20  = 12'h800;
+          \$next\buff$23  = 12'h800;
     endcase
   end
   always @* begin
@@ -5122,7 +7029,7 @@ module predictor(new_row, pixel_in, rst, clk, pixel_out, predic_out, valid_out, 
       1'h1:
           casez (new_row_latch)
             1'h1:
-                \$next\lbuff_ctr  = \$21 [1:0];
+                \$next\lbuff_ctr  = \$24 [1:0];
           endcase
     endcase
     casez (rst)
@@ -5130,83 +7037,10 @@ module predictor(new_row, pixel_in, rst, clk, pixel_out, predic_out, valid_out, 
           \$next\lbuff_ctr  = 2'h0;
     endcase
   end
-  always @* begin
-    \$next\lbuff  = lbuff;
-    casez (valid_in)
-      1'h1:
-          casez (new_row_latch)
-            1'h1:
-                casez (lbuff_ctr)
-                  2'h0:
-                      \$next\lbuff  = pixel_in;
-                endcase
-          endcase
-    endcase
-    casez (rst)
-      1'h1:
-          \$next\lbuff  = 12'h800;
-    endcase
-  end
   assign \$15  = \$16 ;
-  assign \$21  = \$22 ;
+  assign \$18  = \$19 ;
+  assign \$24  = \$25 ;
   assign new_row_latch = \$next\new_row_latch ;
-endmodule
-
-(* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.register_file" *)
-(* generator = "nMigen" *)
-module register_file(clk, width, height, rst);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:10" *)
-  reg [15:0] \$next\height ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:21" *)
-  reg [15:0] \$next\height_reg ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:11" *)
-  reg [15:0] \$next\width ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:20" *)
-  reg [15:0] \$next\width_reg ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
-  input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:10" *)
-  output [15:0] height;
-  (* init = 16'h0000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:21" *)
-  reg [15:0] height_reg = 16'h0000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
-  input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:11" *)
-  output [15:0] width;
-  (* init = 16'h0000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/register_file.py:20" *)
-  reg [15:0] width_reg = 16'h0000;
-  always @(posedge clk)
-      height_reg <= \$next\height_reg ;
-  always @(posedge clk)
-      width_reg <= \$next\width_reg ;
-  always @* begin
-    \$next\width_reg  = width_reg;
-    \$next\width_reg  = 16'h1000;
-    casez (rst)
-      1'h1:
-          \$next\width_reg  = 16'h0000;
-    endcase
-  end
-  always @* begin
-    \$next\height_reg  = height_reg;
-    \$next\height_reg  = 16'h0c00;
-    casez (rst)
-      1'h1:
-          \$next\height_reg  = 16'h0000;
-    endcase
-  end
-  always @* begin
-    \$next\width  = 16'h0000;
-    \$next\width  = width_reg;
-  end
-  always @* begin
-    \$next\height  = 16'h0000;
-    \$next\height  = height_reg;
-  end
-  assign height = \$next\height ;
-  assign width = \$next\width ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.integration_3.integration_2.integration_1.signals" *)
@@ -5229,56 +7063,56 @@ module signals(width, height, rst, clk, new_row, end_of_frame, new_input);
   wire [16:0] \$6 ;
   wire [16:0] \$7 ;
   wire [16:0] \$9 ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:21" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:45" *)
   reg \$next\end_of_frame ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:57" *)
   reg [15:0] \$next\height_temp ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:22" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:46" *)
   reg \$next\new_row ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:32" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:56" *)
   reg [15:0] \$next\width_temp ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
   (* init = 1'h0 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:21" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:45" *)
   output end_of_frame;
   reg end_of_frame = 1'h0;
   (* init = 2'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:17" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:41" *)
   input [15:0] height;
   (* init = 16'h0000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:33" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:57" *)
   reg [15:0] height_temp = 16'h0000;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:19" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:43" *)
   input new_input;
   (* init = 1'h1 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:22" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:46" *)
   output new_row;
   reg new_row = 1'h1;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:18" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:42" *)
   input [15:0] width;
   (* init = 16'h0000 *)
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:32" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:56" *)
   reg [15:0] width_temp = 16'h0000;
-  assign \$10  = height - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:42" *) 1'h1;
-  assign \$12  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:49" *) 1'h1;
-  assign \$15  = height_temp - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:52" *) 1'h1;
-  assign \$17  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:49" *) 1'h1;
-  assign \$19  = height_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:60" *) 1'h0;
-  assign \$21  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:60" *) 1'h1;
-  assign \$23  = \$19  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:60" *) \$21 ;
-  assign \$25  = height_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:60" *) 1'h0;
-  assign \$27  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:60" *) 1'h1;
-  assign \$2  = width - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:41" *) 1'h1;
-  assign \$29  = \$25  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:60" *) \$27 ;
-  assign \$4  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:49" *) 1'h1;
-  assign \$7  = width_temp - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:57" *) 1'h1;
+  assign \$10  = height - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:66" *) 1'h1;
+  assign \$12  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:73" *) 1'h1;
+  assign \$15  = height_temp - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:76" *) 1'h1;
+  assign \$17  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:73" *) 1'h1;
+  assign \$19  = height_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:84" *) 1'h0;
+  assign \$21  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:84" *) 2'h2;
+  assign \$23  = \$19  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:84" *) \$21 ;
+  assign \$25  = height_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:84" *) 1'h0;
+  assign \$27  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:84" *) 2'h2;
+  assign \$2  = width - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:65" *) 1'h1;
+  assign \$29  = \$25  & (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:84" *) \$27 ;
+  assign \$4  = width_temp == (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:73" *) 1'h1;
+  assign \$7  = width_temp - (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/signals.py:81" *) 1'h1;
   always @(posedge clk)
       end_of_frame <= \$next\end_of_frame ;
   always @(posedge clk)
@@ -5409,24 +7243,24 @@ endmodule
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(valid_in, busy_in, rst, clk, zeros, ones, valid_out, end_out, data_out, nready, pixel_in);
-  (* src = "./migen_src/micro_integration.py:36" *)
+module top(valid_in, busy_in, rst, clk, debug_en, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_axi_ri__rready, s_axi_wi__awaddr, s_axi_wi__wvalid, s_axi_wi__wdata, s_axi_wi__wstrb, s_axi_wi__bready, end_in, \end_in$1 , valid_out, end_out, data_out, nready, pixel_in);
+  (* src = "./migen_src/micro_integration.py:32" *)
   reg [15:0] \$next\data_out ;
-  (* src = "./migen_src/micro_integration.py:41" *)
+  (* src = "./migen_src/micro_integration.py:37" *)
   reg \$next\end_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:90" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:145" *)
   reg [31:0] \$next\fix_0xff2_data_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:91" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:146" *)
   reg [2:0] \$next\fix_0xff2_data_in_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:100" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:159" *)
   reg \$next\fix_0xff2_i_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:97" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:152" *)
   reg \$next\fix_0xff2_valid_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:37" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:69" *)
   reg [15:0] \$next\fix_0xff_data_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:47" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:79" *)
   reg \$next\fix_0xff_i_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:44" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:76" *)
   reg \$next\fix_0xff_valid_in ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:32" *)
   reg \$next\integration_3_busy_in ;
@@ -5434,45 +7268,51 @@ module top(valid_in, busy_in, rst, clk, zeros, ones, valid_out, end_out, data_ou
   reg [11:0] \$next\integration_3_pixel_in ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:28" *)
   reg \$next\integration_3_valid_in ;
-  (* src = "./migen_src/micro_integration.py:42" *)
+  (* src = "./migen_src/micro_integration.py:38" *)
   reg \$next\nready ;
-  (* src = "./migen_src/micro_integration.py:40" *)
+  (* src = "./migen_src/micro_integration.py:36" *)
   reg \$next\valid_out ;
-  (* src = "./migen_src/micro_integration.py:43" *)
+  (* src = "./migen_src/micro_integration.py:39" *)
   input busy_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "./migen_src/micro_integration.py:36" *)
+  (* src = "./migen_src/micro_integration.py:32" *)
   output [15:0] data_out;
-  (* src = "./migen_src/micro_integration.py:41" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/core_axi_lite.py:107" *)
+  input [7:0] debug_en;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:81" *)
+  input end_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:155" *)
+  input \end_in$1 ;
+  (* src = "./migen_src/micro_integration.py:37" *)
   output end_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:90" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:145" *)
   wire [31:0] fix_0xff2_data_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:91" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:146" *)
   wire [2:0] fix_0xff2_data_in_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:94" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:149" *)
   wire [15:0] fix_0xff2_data_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:100" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:159" *)
   wire fix_0xff2_i_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:99" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:158" *)
   wire fix_0xff2_o_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:97" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:152" *)
   wire fix_0xff2_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:98" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff2.py:153" *)
   wire fix_0xff2_valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:37" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:69" *)
   wire [15:0] fix_0xff_data_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:40" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:72" *)
   wire [31:0] fix_0xff_data_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:41" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:73" *)
   wire [2:0] fix_0xff_data_out_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:47" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:79" *)
   wire fix_0xff_i_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:46" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:78" *)
   wire fix_0xff_o_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:44" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:76" *)
   wire fix_0xff_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:45" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:77" *)
   wire fix_0xff_valid_out;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:32" *)
   wire integration_3_busy_in;
@@ -5488,38 +7328,52 @@ module top(valid_in, busy_in, rst, clk, zeros, ones, valid_out, end_out, data_ou
   wire integration_3_valid_in;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/integration_3.py:29" *)
   wire integration_3_valid_out;
-  (* src = "./migen_src/micro_integration.py:42" *)
+  (* src = "./migen_src/micro_integration.py:38" *)
   output nready;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:57" *)
-  input [7:0] ones;
-  (* src = "./migen_src/micro_integration.py:33" *)
+  (* src = "./migen_src/micro_integration.py:29" *)
   input [11:0] pixel_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/micro_integration.py:39" *)
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_ri__araddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__arvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_ri__rready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__awaddr;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__awvalid;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__bready;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [31:0] s_axi_wi__wdata;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input [3:0] s_axi_wi__wstrb;
+  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  input s_axi_wi__wvalid;
+  (* src = "./migen_src/micro_integration.py:35" *)
   input valid_in;
-  (* src = "./migen_src/micro_integration.py:40" *)
+  (* src = "./migen_src/micro_integration.py:36" *)
   output valid_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/fix_0xff.py:56" *)
-  input [7:0] zeros;
   fix_0xff fix_0xff (
     .clk(clk),
     .data_in(fix_0xff_data_in),
     .data_out(fix_0xff_data_out),
     .data_out_ctr(fix_0xff_data_out_ctr),
+    .end_in(end_in),
     .i_busy(fix_0xff_i_busy),
     .o_busy(fix_0xff_o_busy),
-    .ones(ones),
     .rst(rst),
     .valid_in(fix_0xff_valid_in),
-    .valid_out(fix_0xff_valid_out),
-    .zeros(zeros)
+    .valid_out(fix_0xff_valid_out)
   );
   fix_0xff2 fix_0xff2 (
     .clk(clk),
     .data_in(fix_0xff2_data_in),
     .data_in_ctr(fix_0xff2_data_in_ctr),
     .data_out(fix_0xff2_data_out),
+    .end_in(\end_in$1 ),
     .i_busy(fix_0xff2_i_busy),
     .o_busy(fix_0xff2_o_busy),
     .rst(rst),
@@ -5530,10 +7384,20 @@ module top(valid_in, busy_in, rst, clk, zeros, ones, valid_out, end_out, data_ou
     .busy_in(integration_3_busy_in),
     .clk(clk),
     .data_out(integration_3_data_out),
+    .debug_en(debug_en),
     .end_out(integration_3_end_out),
     .nready(integration_3_nready),
     .pixel_in(integration_3_pixel_in),
     .rst(rst),
+    .s_axi_ri__araddr(s_axi_ri__araddr),
+    .s_axi_ri__arvalid(s_axi_ri__arvalid),
+    .s_axi_ri__rready(s_axi_ri__rready),
+    .s_axi_wi__awaddr(s_axi_wi__awaddr),
+    .s_axi_wi__awvalid(s_axi_wi__awvalid),
+    .s_axi_wi__bready(s_axi_wi__bready),
+    .s_axi_wi__wdata(s_axi_wi__wdata),
+    .s_axi_wi__wstrb(s_axi_wi__wstrb),
+    .s_axi_wi__wvalid(s_axi_wi__wvalid),
     .valid_in(integration_3_valid_in),
     .valid_out(integration_3_valid_out)
   );
@@ -6397,7 +8261,7 @@ module \unbuffered$3 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
   reg [9:0] \$next\consume ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  reg [16:0] \$next\dout ;
+  reg [19:0] \$next\dout ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
   reg [9:0] \$next\level ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:155" *)
@@ -6413,7 +8277,7 @@ module \unbuffered$3 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
   reg [9:0] \$next\wrport_storage_w_addr ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
-  reg [16:0] \$next\wrport_storage_w_data ;
+  reg [19:0] \$next\wrport_storage_w_data ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
   reg \$next\wrport_storage_w_en ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
@@ -6422,9 +8286,9 @@ module \unbuffered$3 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
   reg [9:0] consume = 10'h000;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
-  input [16:0] din;
+  input [19:0] din;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
-  output [16:0] dout;
+  output [19:0] dout;
   (* init = 10'h000 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
   output [9:0] level;
@@ -6435,7 +8299,7 @@ module \unbuffered$3 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
   wire [9:0] rdport_storage_r_addr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:83" *)
-  wire [16:0] rdport_storage_r_data;
+  wire [19:0] rdport_storage_r_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:85" *)
   wire rdport_storage_r_en;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
@@ -6453,7 +8317,7 @@ module \unbuffered$3 (we, replace, re, rst, clk, writable, readable, dout, level
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
   wire [9:0] wrport_storage_w_addr;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
-  wire [16:0] wrport_storage_w_data;
+  wire [19:0] wrport_storage_w_data;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
   wire wrport_storage_w_en;
   assign \$10  = produce == (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:102" *) 1'h0;
@@ -6493,1033 +8357,1033 @@ module \unbuffered$3 (we, replace, re, rst, clk, writable, readable, dout, level
       consume <= \$next\consume ;
   always @(posedge clk)
       produce <= \$next\produce ;
-  reg [16:0] storage [1022:0];
+  reg [19:0] storage [1022:0];
   initial begin
-    storage[0] = 17'h00000;
-    storage[1] = 17'h00000;
-    storage[2] = 17'h00000;
-    storage[3] = 17'h00000;
-    storage[4] = 17'h00000;
-    storage[5] = 17'h00000;
-    storage[6] = 17'h00000;
-    storage[7] = 17'h00000;
-    storage[8] = 17'h00000;
-    storage[9] = 17'h00000;
-    storage[10] = 17'h00000;
-    storage[11] = 17'h00000;
-    storage[12] = 17'h00000;
-    storage[13] = 17'h00000;
-    storage[14] = 17'h00000;
-    storage[15] = 17'h00000;
-    storage[16] = 17'h00000;
-    storage[17] = 17'h00000;
-    storage[18] = 17'h00000;
-    storage[19] = 17'h00000;
-    storage[20] = 17'h00000;
-    storage[21] = 17'h00000;
-    storage[22] = 17'h00000;
-    storage[23] = 17'h00000;
-    storage[24] = 17'h00000;
-    storage[25] = 17'h00000;
-    storage[26] = 17'h00000;
-    storage[27] = 17'h00000;
-    storage[28] = 17'h00000;
-    storage[29] = 17'h00000;
-    storage[30] = 17'h00000;
-    storage[31] = 17'h00000;
-    storage[32] = 17'h00000;
-    storage[33] = 17'h00000;
-    storage[34] = 17'h00000;
-    storage[35] = 17'h00000;
-    storage[36] = 17'h00000;
-    storage[37] = 17'h00000;
-    storage[38] = 17'h00000;
-    storage[39] = 17'h00000;
-    storage[40] = 17'h00000;
-    storage[41] = 17'h00000;
-    storage[42] = 17'h00000;
-    storage[43] = 17'h00000;
-    storage[44] = 17'h00000;
-    storage[45] = 17'h00000;
-    storage[46] = 17'h00000;
-    storage[47] = 17'h00000;
-    storage[48] = 17'h00000;
-    storage[49] = 17'h00000;
-    storage[50] = 17'h00000;
-    storage[51] = 17'h00000;
-    storage[52] = 17'h00000;
-    storage[53] = 17'h00000;
-    storage[54] = 17'h00000;
-    storage[55] = 17'h00000;
-    storage[56] = 17'h00000;
-    storage[57] = 17'h00000;
-    storage[58] = 17'h00000;
-    storage[59] = 17'h00000;
-    storage[60] = 17'h00000;
-    storage[61] = 17'h00000;
-    storage[62] = 17'h00000;
-    storage[63] = 17'h00000;
-    storage[64] = 17'h00000;
-    storage[65] = 17'h00000;
-    storage[66] = 17'h00000;
-    storage[67] = 17'h00000;
-    storage[68] = 17'h00000;
-    storage[69] = 17'h00000;
-    storage[70] = 17'h00000;
-    storage[71] = 17'h00000;
-    storage[72] = 17'h00000;
-    storage[73] = 17'h00000;
-    storage[74] = 17'h00000;
-    storage[75] = 17'h00000;
-    storage[76] = 17'h00000;
-    storage[77] = 17'h00000;
-    storage[78] = 17'h00000;
-    storage[79] = 17'h00000;
-    storage[80] = 17'h00000;
-    storage[81] = 17'h00000;
-    storage[82] = 17'h00000;
-    storage[83] = 17'h00000;
-    storage[84] = 17'h00000;
-    storage[85] = 17'h00000;
-    storage[86] = 17'h00000;
-    storage[87] = 17'h00000;
-    storage[88] = 17'h00000;
-    storage[89] = 17'h00000;
-    storage[90] = 17'h00000;
-    storage[91] = 17'h00000;
-    storage[92] = 17'h00000;
-    storage[93] = 17'h00000;
-    storage[94] = 17'h00000;
-    storage[95] = 17'h00000;
-    storage[96] = 17'h00000;
-    storage[97] = 17'h00000;
-    storage[98] = 17'h00000;
-    storage[99] = 17'h00000;
-    storage[100] = 17'h00000;
-    storage[101] = 17'h00000;
-    storage[102] = 17'h00000;
-    storage[103] = 17'h00000;
-    storage[104] = 17'h00000;
-    storage[105] = 17'h00000;
-    storage[106] = 17'h00000;
-    storage[107] = 17'h00000;
-    storage[108] = 17'h00000;
-    storage[109] = 17'h00000;
-    storage[110] = 17'h00000;
-    storage[111] = 17'h00000;
-    storage[112] = 17'h00000;
-    storage[113] = 17'h00000;
-    storage[114] = 17'h00000;
-    storage[115] = 17'h00000;
-    storage[116] = 17'h00000;
-    storage[117] = 17'h00000;
-    storage[118] = 17'h00000;
-    storage[119] = 17'h00000;
-    storage[120] = 17'h00000;
-    storage[121] = 17'h00000;
-    storage[122] = 17'h00000;
-    storage[123] = 17'h00000;
-    storage[124] = 17'h00000;
-    storage[125] = 17'h00000;
-    storage[126] = 17'h00000;
-    storage[127] = 17'h00000;
-    storage[128] = 17'h00000;
-    storage[129] = 17'h00000;
-    storage[130] = 17'h00000;
-    storage[131] = 17'h00000;
-    storage[132] = 17'h00000;
-    storage[133] = 17'h00000;
-    storage[134] = 17'h00000;
-    storage[135] = 17'h00000;
-    storage[136] = 17'h00000;
-    storage[137] = 17'h00000;
-    storage[138] = 17'h00000;
-    storage[139] = 17'h00000;
-    storage[140] = 17'h00000;
-    storage[141] = 17'h00000;
-    storage[142] = 17'h00000;
-    storage[143] = 17'h00000;
-    storage[144] = 17'h00000;
-    storage[145] = 17'h00000;
-    storage[146] = 17'h00000;
-    storage[147] = 17'h00000;
-    storage[148] = 17'h00000;
-    storage[149] = 17'h00000;
-    storage[150] = 17'h00000;
-    storage[151] = 17'h00000;
-    storage[152] = 17'h00000;
-    storage[153] = 17'h00000;
-    storage[154] = 17'h00000;
-    storage[155] = 17'h00000;
-    storage[156] = 17'h00000;
-    storage[157] = 17'h00000;
-    storage[158] = 17'h00000;
-    storage[159] = 17'h00000;
-    storage[160] = 17'h00000;
-    storage[161] = 17'h00000;
-    storage[162] = 17'h00000;
-    storage[163] = 17'h00000;
-    storage[164] = 17'h00000;
-    storage[165] = 17'h00000;
-    storage[166] = 17'h00000;
-    storage[167] = 17'h00000;
-    storage[168] = 17'h00000;
-    storage[169] = 17'h00000;
-    storage[170] = 17'h00000;
-    storage[171] = 17'h00000;
-    storage[172] = 17'h00000;
-    storage[173] = 17'h00000;
-    storage[174] = 17'h00000;
-    storage[175] = 17'h00000;
-    storage[176] = 17'h00000;
-    storage[177] = 17'h00000;
-    storage[178] = 17'h00000;
-    storage[179] = 17'h00000;
-    storage[180] = 17'h00000;
-    storage[181] = 17'h00000;
-    storage[182] = 17'h00000;
-    storage[183] = 17'h00000;
-    storage[184] = 17'h00000;
-    storage[185] = 17'h00000;
-    storage[186] = 17'h00000;
-    storage[187] = 17'h00000;
-    storage[188] = 17'h00000;
-    storage[189] = 17'h00000;
-    storage[190] = 17'h00000;
-    storage[191] = 17'h00000;
-    storage[192] = 17'h00000;
-    storage[193] = 17'h00000;
-    storage[194] = 17'h00000;
-    storage[195] = 17'h00000;
-    storage[196] = 17'h00000;
-    storage[197] = 17'h00000;
-    storage[198] = 17'h00000;
-    storage[199] = 17'h00000;
-    storage[200] = 17'h00000;
-    storage[201] = 17'h00000;
-    storage[202] = 17'h00000;
-    storage[203] = 17'h00000;
-    storage[204] = 17'h00000;
-    storage[205] = 17'h00000;
-    storage[206] = 17'h00000;
-    storage[207] = 17'h00000;
-    storage[208] = 17'h00000;
-    storage[209] = 17'h00000;
-    storage[210] = 17'h00000;
-    storage[211] = 17'h00000;
-    storage[212] = 17'h00000;
-    storage[213] = 17'h00000;
-    storage[214] = 17'h00000;
-    storage[215] = 17'h00000;
-    storage[216] = 17'h00000;
-    storage[217] = 17'h00000;
-    storage[218] = 17'h00000;
-    storage[219] = 17'h00000;
-    storage[220] = 17'h00000;
-    storage[221] = 17'h00000;
-    storage[222] = 17'h00000;
-    storage[223] = 17'h00000;
-    storage[224] = 17'h00000;
-    storage[225] = 17'h00000;
-    storage[226] = 17'h00000;
-    storage[227] = 17'h00000;
-    storage[228] = 17'h00000;
-    storage[229] = 17'h00000;
-    storage[230] = 17'h00000;
-    storage[231] = 17'h00000;
-    storage[232] = 17'h00000;
-    storage[233] = 17'h00000;
-    storage[234] = 17'h00000;
-    storage[235] = 17'h00000;
-    storage[236] = 17'h00000;
-    storage[237] = 17'h00000;
-    storage[238] = 17'h00000;
-    storage[239] = 17'h00000;
-    storage[240] = 17'h00000;
-    storage[241] = 17'h00000;
-    storage[242] = 17'h00000;
-    storage[243] = 17'h00000;
-    storage[244] = 17'h00000;
-    storage[245] = 17'h00000;
-    storage[246] = 17'h00000;
-    storage[247] = 17'h00000;
-    storage[248] = 17'h00000;
-    storage[249] = 17'h00000;
-    storage[250] = 17'h00000;
-    storage[251] = 17'h00000;
-    storage[252] = 17'h00000;
-    storage[253] = 17'h00000;
-    storage[254] = 17'h00000;
-    storage[255] = 17'h00000;
-    storage[256] = 17'h00000;
-    storage[257] = 17'h00000;
-    storage[258] = 17'h00000;
-    storage[259] = 17'h00000;
-    storage[260] = 17'h00000;
-    storage[261] = 17'h00000;
-    storage[262] = 17'h00000;
-    storage[263] = 17'h00000;
-    storage[264] = 17'h00000;
-    storage[265] = 17'h00000;
-    storage[266] = 17'h00000;
-    storage[267] = 17'h00000;
-    storage[268] = 17'h00000;
-    storage[269] = 17'h00000;
-    storage[270] = 17'h00000;
-    storage[271] = 17'h00000;
-    storage[272] = 17'h00000;
-    storage[273] = 17'h00000;
-    storage[274] = 17'h00000;
-    storage[275] = 17'h00000;
-    storage[276] = 17'h00000;
-    storage[277] = 17'h00000;
-    storage[278] = 17'h00000;
-    storage[279] = 17'h00000;
-    storage[280] = 17'h00000;
-    storage[281] = 17'h00000;
-    storage[282] = 17'h00000;
-    storage[283] = 17'h00000;
-    storage[284] = 17'h00000;
-    storage[285] = 17'h00000;
-    storage[286] = 17'h00000;
-    storage[287] = 17'h00000;
-    storage[288] = 17'h00000;
-    storage[289] = 17'h00000;
-    storage[290] = 17'h00000;
-    storage[291] = 17'h00000;
-    storage[292] = 17'h00000;
-    storage[293] = 17'h00000;
-    storage[294] = 17'h00000;
-    storage[295] = 17'h00000;
-    storage[296] = 17'h00000;
-    storage[297] = 17'h00000;
-    storage[298] = 17'h00000;
-    storage[299] = 17'h00000;
-    storage[300] = 17'h00000;
-    storage[301] = 17'h00000;
-    storage[302] = 17'h00000;
-    storage[303] = 17'h00000;
-    storage[304] = 17'h00000;
-    storage[305] = 17'h00000;
-    storage[306] = 17'h00000;
-    storage[307] = 17'h00000;
-    storage[308] = 17'h00000;
-    storage[309] = 17'h00000;
-    storage[310] = 17'h00000;
-    storage[311] = 17'h00000;
-    storage[312] = 17'h00000;
-    storage[313] = 17'h00000;
-    storage[314] = 17'h00000;
-    storage[315] = 17'h00000;
-    storage[316] = 17'h00000;
-    storage[317] = 17'h00000;
-    storage[318] = 17'h00000;
-    storage[319] = 17'h00000;
-    storage[320] = 17'h00000;
-    storage[321] = 17'h00000;
-    storage[322] = 17'h00000;
-    storage[323] = 17'h00000;
-    storage[324] = 17'h00000;
-    storage[325] = 17'h00000;
-    storage[326] = 17'h00000;
-    storage[327] = 17'h00000;
-    storage[328] = 17'h00000;
-    storage[329] = 17'h00000;
-    storage[330] = 17'h00000;
-    storage[331] = 17'h00000;
-    storage[332] = 17'h00000;
-    storage[333] = 17'h00000;
-    storage[334] = 17'h00000;
-    storage[335] = 17'h00000;
-    storage[336] = 17'h00000;
-    storage[337] = 17'h00000;
-    storage[338] = 17'h00000;
-    storage[339] = 17'h00000;
-    storage[340] = 17'h00000;
-    storage[341] = 17'h00000;
-    storage[342] = 17'h00000;
-    storage[343] = 17'h00000;
-    storage[344] = 17'h00000;
-    storage[345] = 17'h00000;
-    storage[346] = 17'h00000;
-    storage[347] = 17'h00000;
-    storage[348] = 17'h00000;
-    storage[349] = 17'h00000;
-    storage[350] = 17'h00000;
-    storage[351] = 17'h00000;
-    storage[352] = 17'h00000;
-    storage[353] = 17'h00000;
-    storage[354] = 17'h00000;
-    storage[355] = 17'h00000;
-    storage[356] = 17'h00000;
-    storage[357] = 17'h00000;
-    storage[358] = 17'h00000;
-    storage[359] = 17'h00000;
-    storage[360] = 17'h00000;
-    storage[361] = 17'h00000;
-    storage[362] = 17'h00000;
-    storage[363] = 17'h00000;
-    storage[364] = 17'h00000;
-    storage[365] = 17'h00000;
-    storage[366] = 17'h00000;
-    storage[367] = 17'h00000;
-    storage[368] = 17'h00000;
-    storage[369] = 17'h00000;
-    storage[370] = 17'h00000;
-    storage[371] = 17'h00000;
-    storage[372] = 17'h00000;
-    storage[373] = 17'h00000;
-    storage[374] = 17'h00000;
-    storage[375] = 17'h00000;
-    storage[376] = 17'h00000;
-    storage[377] = 17'h00000;
-    storage[378] = 17'h00000;
-    storage[379] = 17'h00000;
-    storage[380] = 17'h00000;
-    storage[381] = 17'h00000;
-    storage[382] = 17'h00000;
-    storage[383] = 17'h00000;
-    storage[384] = 17'h00000;
-    storage[385] = 17'h00000;
-    storage[386] = 17'h00000;
-    storage[387] = 17'h00000;
-    storage[388] = 17'h00000;
-    storage[389] = 17'h00000;
-    storage[390] = 17'h00000;
-    storage[391] = 17'h00000;
-    storage[392] = 17'h00000;
-    storage[393] = 17'h00000;
-    storage[394] = 17'h00000;
-    storage[395] = 17'h00000;
-    storage[396] = 17'h00000;
-    storage[397] = 17'h00000;
-    storage[398] = 17'h00000;
-    storage[399] = 17'h00000;
-    storage[400] = 17'h00000;
-    storage[401] = 17'h00000;
-    storage[402] = 17'h00000;
-    storage[403] = 17'h00000;
-    storage[404] = 17'h00000;
-    storage[405] = 17'h00000;
-    storage[406] = 17'h00000;
-    storage[407] = 17'h00000;
-    storage[408] = 17'h00000;
-    storage[409] = 17'h00000;
-    storage[410] = 17'h00000;
-    storage[411] = 17'h00000;
-    storage[412] = 17'h00000;
-    storage[413] = 17'h00000;
-    storage[414] = 17'h00000;
-    storage[415] = 17'h00000;
-    storage[416] = 17'h00000;
-    storage[417] = 17'h00000;
-    storage[418] = 17'h00000;
-    storage[419] = 17'h00000;
-    storage[420] = 17'h00000;
-    storage[421] = 17'h00000;
-    storage[422] = 17'h00000;
-    storage[423] = 17'h00000;
-    storage[424] = 17'h00000;
-    storage[425] = 17'h00000;
-    storage[426] = 17'h00000;
-    storage[427] = 17'h00000;
-    storage[428] = 17'h00000;
-    storage[429] = 17'h00000;
-    storage[430] = 17'h00000;
-    storage[431] = 17'h00000;
-    storage[432] = 17'h00000;
-    storage[433] = 17'h00000;
-    storage[434] = 17'h00000;
-    storage[435] = 17'h00000;
-    storage[436] = 17'h00000;
-    storage[437] = 17'h00000;
-    storage[438] = 17'h00000;
-    storage[439] = 17'h00000;
-    storage[440] = 17'h00000;
-    storage[441] = 17'h00000;
-    storage[442] = 17'h00000;
-    storage[443] = 17'h00000;
-    storage[444] = 17'h00000;
-    storage[445] = 17'h00000;
-    storage[446] = 17'h00000;
-    storage[447] = 17'h00000;
-    storage[448] = 17'h00000;
-    storage[449] = 17'h00000;
-    storage[450] = 17'h00000;
-    storage[451] = 17'h00000;
-    storage[452] = 17'h00000;
-    storage[453] = 17'h00000;
-    storage[454] = 17'h00000;
-    storage[455] = 17'h00000;
-    storage[456] = 17'h00000;
-    storage[457] = 17'h00000;
-    storage[458] = 17'h00000;
-    storage[459] = 17'h00000;
-    storage[460] = 17'h00000;
-    storage[461] = 17'h00000;
-    storage[462] = 17'h00000;
-    storage[463] = 17'h00000;
-    storage[464] = 17'h00000;
-    storage[465] = 17'h00000;
-    storage[466] = 17'h00000;
-    storage[467] = 17'h00000;
-    storage[468] = 17'h00000;
-    storage[469] = 17'h00000;
-    storage[470] = 17'h00000;
-    storage[471] = 17'h00000;
-    storage[472] = 17'h00000;
-    storage[473] = 17'h00000;
-    storage[474] = 17'h00000;
-    storage[475] = 17'h00000;
-    storage[476] = 17'h00000;
-    storage[477] = 17'h00000;
-    storage[478] = 17'h00000;
-    storage[479] = 17'h00000;
-    storage[480] = 17'h00000;
-    storage[481] = 17'h00000;
-    storage[482] = 17'h00000;
-    storage[483] = 17'h00000;
-    storage[484] = 17'h00000;
-    storage[485] = 17'h00000;
-    storage[486] = 17'h00000;
-    storage[487] = 17'h00000;
-    storage[488] = 17'h00000;
-    storage[489] = 17'h00000;
-    storage[490] = 17'h00000;
-    storage[491] = 17'h00000;
-    storage[492] = 17'h00000;
-    storage[493] = 17'h00000;
-    storage[494] = 17'h00000;
-    storage[495] = 17'h00000;
-    storage[496] = 17'h00000;
-    storage[497] = 17'h00000;
-    storage[498] = 17'h00000;
-    storage[499] = 17'h00000;
-    storage[500] = 17'h00000;
-    storage[501] = 17'h00000;
-    storage[502] = 17'h00000;
-    storage[503] = 17'h00000;
-    storage[504] = 17'h00000;
-    storage[505] = 17'h00000;
-    storage[506] = 17'h00000;
-    storage[507] = 17'h00000;
-    storage[508] = 17'h00000;
-    storage[509] = 17'h00000;
-    storage[510] = 17'h00000;
-    storage[511] = 17'h00000;
-    storage[512] = 17'h00000;
-    storage[513] = 17'h00000;
-    storage[514] = 17'h00000;
-    storage[515] = 17'h00000;
-    storage[516] = 17'h00000;
-    storage[517] = 17'h00000;
-    storage[518] = 17'h00000;
-    storage[519] = 17'h00000;
-    storage[520] = 17'h00000;
-    storage[521] = 17'h00000;
-    storage[522] = 17'h00000;
-    storage[523] = 17'h00000;
-    storage[524] = 17'h00000;
-    storage[525] = 17'h00000;
-    storage[526] = 17'h00000;
-    storage[527] = 17'h00000;
-    storage[528] = 17'h00000;
-    storage[529] = 17'h00000;
-    storage[530] = 17'h00000;
-    storage[531] = 17'h00000;
-    storage[532] = 17'h00000;
-    storage[533] = 17'h00000;
-    storage[534] = 17'h00000;
-    storage[535] = 17'h00000;
-    storage[536] = 17'h00000;
-    storage[537] = 17'h00000;
-    storage[538] = 17'h00000;
-    storage[539] = 17'h00000;
-    storage[540] = 17'h00000;
-    storage[541] = 17'h00000;
-    storage[542] = 17'h00000;
-    storage[543] = 17'h00000;
-    storage[544] = 17'h00000;
-    storage[545] = 17'h00000;
-    storage[546] = 17'h00000;
-    storage[547] = 17'h00000;
-    storage[548] = 17'h00000;
-    storage[549] = 17'h00000;
-    storage[550] = 17'h00000;
-    storage[551] = 17'h00000;
-    storage[552] = 17'h00000;
-    storage[553] = 17'h00000;
-    storage[554] = 17'h00000;
-    storage[555] = 17'h00000;
-    storage[556] = 17'h00000;
-    storage[557] = 17'h00000;
-    storage[558] = 17'h00000;
-    storage[559] = 17'h00000;
-    storage[560] = 17'h00000;
-    storage[561] = 17'h00000;
-    storage[562] = 17'h00000;
-    storage[563] = 17'h00000;
-    storage[564] = 17'h00000;
-    storage[565] = 17'h00000;
-    storage[566] = 17'h00000;
-    storage[567] = 17'h00000;
-    storage[568] = 17'h00000;
-    storage[569] = 17'h00000;
-    storage[570] = 17'h00000;
-    storage[571] = 17'h00000;
-    storage[572] = 17'h00000;
-    storage[573] = 17'h00000;
-    storage[574] = 17'h00000;
-    storage[575] = 17'h00000;
-    storage[576] = 17'h00000;
-    storage[577] = 17'h00000;
-    storage[578] = 17'h00000;
-    storage[579] = 17'h00000;
-    storage[580] = 17'h00000;
-    storage[581] = 17'h00000;
-    storage[582] = 17'h00000;
-    storage[583] = 17'h00000;
-    storage[584] = 17'h00000;
-    storage[585] = 17'h00000;
-    storage[586] = 17'h00000;
-    storage[587] = 17'h00000;
-    storage[588] = 17'h00000;
-    storage[589] = 17'h00000;
-    storage[590] = 17'h00000;
-    storage[591] = 17'h00000;
-    storage[592] = 17'h00000;
-    storage[593] = 17'h00000;
-    storage[594] = 17'h00000;
-    storage[595] = 17'h00000;
-    storage[596] = 17'h00000;
-    storage[597] = 17'h00000;
-    storage[598] = 17'h00000;
-    storage[599] = 17'h00000;
-    storage[600] = 17'h00000;
-    storage[601] = 17'h00000;
-    storage[602] = 17'h00000;
-    storage[603] = 17'h00000;
-    storage[604] = 17'h00000;
-    storage[605] = 17'h00000;
-    storage[606] = 17'h00000;
-    storage[607] = 17'h00000;
-    storage[608] = 17'h00000;
-    storage[609] = 17'h00000;
-    storage[610] = 17'h00000;
-    storage[611] = 17'h00000;
-    storage[612] = 17'h00000;
-    storage[613] = 17'h00000;
-    storage[614] = 17'h00000;
-    storage[615] = 17'h00000;
-    storage[616] = 17'h00000;
-    storage[617] = 17'h00000;
-    storage[618] = 17'h00000;
-    storage[619] = 17'h00000;
-    storage[620] = 17'h00000;
-    storage[621] = 17'h00000;
-    storage[622] = 17'h00000;
-    storage[623] = 17'h00000;
-    storage[624] = 17'h00000;
-    storage[625] = 17'h00000;
-    storage[626] = 17'h00000;
-    storage[627] = 17'h00000;
-    storage[628] = 17'h00000;
-    storage[629] = 17'h00000;
-    storage[630] = 17'h00000;
-    storage[631] = 17'h00000;
-    storage[632] = 17'h00000;
-    storage[633] = 17'h00000;
-    storage[634] = 17'h00000;
-    storage[635] = 17'h00000;
-    storage[636] = 17'h00000;
-    storage[637] = 17'h00000;
-    storage[638] = 17'h00000;
-    storage[639] = 17'h00000;
-    storage[640] = 17'h00000;
-    storage[641] = 17'h00000;
-    storage[642] = 17'h00000;
-    storage[643] = 17'h00000;
-    storage[644] = 17'h00000;
-    storage[645] = 17'h00000;
-    storage[646] = 17'h00000;
-    storage[647] = 17'h00000;
-    storage[648] = 17'h00000;
-    storage[649] = 17'h00000;
-    storage[650] = 17'h00000;
-    storage[651] = 17'h00000;
-    storage[652] = 17'h00000;
-    storage[653] = 17'h00000;
-    storage[654] = 17'h00000;
-    storage[655] = 17'h00000;
-    storage[656] = 17'h00000;
-    storage[657] = 17'h00000;
-    storage[658] = 17'h00000;
-    storage[659] = 17'h00000;
-    storage[660] = 17'h00000;
-    storage[661] = 17'h00000;
-    storage[662] = 17'h00000;
-    storage[663] = 17'h00000;
-    storage[664] = 17'h00000;
-    storage[665] = 17'h00000;
-    storage[666] = 17'h00000;
-    storage[667] = 17'h00000;
-    storage[668] = 17'h00000;
-    storage[669] = 17'h00000;
-    storage[670] = 17'h00000;
-    storage[671] = 17'h00000;
-    storage[672] = 17'h00000;
-    storage[673] = 17'h00000;
-    storage[674] = 17'h00000;
-    storage[675] = 17'h00000;
-    storage[676] = 17'h00000;
-    storage[677] = 17'h00000;
-    storage[678] = 17'h00000;
-    storage[679] = 17'h00000;
-    storage[680] = 17'h00000;
-    storage[681] = 17'h00000;
-    storage[682] = 17'h00000;
-    storage[683] = 17'h00000;
-    storage[684] = 17'h00000;
-    storage[685] = 17'h00000;
-    storage[686] = 17'h00000;
-    storage[687] = 17'h00000;
-    storage[688] = 17'h00000;
-    storage[689] = 17'h00000;
-    storage[690] = 17'h00000;
-    storage[691] = 17'h00000;
-    storage[692] = 17'h00000;
-    storage[693] = 17'h00000;
-    storage[694] = 17'h00000;
-    storage[695] = 17'h00000;
-    storage[696] = 17'h00000;
-    storage[697] = 17'h00000;
-    storage[698] = 17'h00000;
-    storage[699] = 17'h00000;
-    storage[700] = 17'h00000;
-    storage[701] = 17'h00000;
-    storage[702] = 17'h00000;
-    storage[703] = 17'h00000;
-    storage[704] = 17'h00000;
-    storage[705] = 17'h00000;
-    storage[706] = 17'h00000;
-    storage[707] = 17'h00000;
-    storage[708] = 17'h00000;
-    storage[709] = 17'h00000;
-    storage[710] = 17'h00000;
-    storage[711] = 17'h00000;
-    storage[712] = 17'h00000;
-    storage[713] = 17'h00000;
-    storage[714] = 17'h00000;
-    storage[715] = 17'h00000;
-    storage[716] = 17'h00000;
-    storage[717] = 17'h00000;
-    storage[718] = 17'h00000;
-    storage[719] = 17'h00000;
-    storage[720] = 17'h00000;
-    storage[721] = 17'h00000;
-    storage[722] = 17'h00000;
-    storage[723] = 17'h00000;
-    storage[724] = 17'h00000;
-    storage[725] = 17'h00000;
-    storage[726] = 17'h00000;
-    storage[727] = 17'h00000;
-    storage[728] = 17'h00000;
-    storage[729] = 17'h00000;
-    storage[730] = 17'h00000;
-    storage[731] = 17'h00000;
-    storage[732] = 17'h00000;
-    storage[733] = 17'h00000;
-    storage[734] = 17'h00000;
-    storage[735] = 17'h00000;
-    storage[736] = 17'h00000;
-    storage[737] = 17'h00000;
-    storage[738] = 17'h00000;
-    storage[739] = 17'h00000;
-    storage[740] = 17'h00000;
-    storage[741] = 17'h00000;
-    storage[742] = 17'h00000;
-    storage[743] = 17'h00000;
-    storage[744] = 17'h00000;
-    storage[745] = 17'h00000;
-    storage[746] = 17'h00000;
-    storage[747] = 17'h00000;
-    storage[748] = 17'h00000;
-    storage[749] = 17'h00000;
-    storage[750] = 17'h00000;
-    storage[751] = 17'h00000;
-    storage[752] = 17'h00000;
-    storage[753] = 17'h00000;
-    storage[754] = 17'h00000;
-    storage[755] = 17'h00000;
-    storage[756] = 17'h00000;
-    storage[757] = 17'h00000;
-    storage[758] = 17'h00000;
-    storage[759] = 17'h00000;
-    storage[760] = 17'h00000;
-    storage[761] = 17'h00000;
-    storage[762] = 17'h00000;
-    storage[763] = 17'h00000;
-    storage[764] = 17'h00000;
-    storage[765] = 17'h00000;
-    storage[766] = 17'h00000;
-    storage[767] = 17'h00000;
-    storage[768] = 17'h00000;
-    storage[769] = 17'h00000;
-    storage[770] = 17'h00000;
-    storage[771] = 17'h00000;
-    storage[772] = 17'h00000;
-    storage[773] = 17'h00000;
-    storage[774] = 17'h00000;
-    storage[775] = 17'h00000;
-    storage[776] = 17'h00000;
-    storage[777] = 17'h00000;
-    storage[778] = 17'h00000;
-    storage[779] = 17'h00000;
-    storage[780] = 17'h00000;
-    storage[781] = 17'h00000;
-    storage[782] = 17'h00000;
-    storage[783] = 17'h00000;
-    storage[784] = 17'h00000;
-    storage[785] = 17'h00000;
-    storage[786] = 17'h00000;
-    storage[787] = 17'h00000;
-    storage[788] = 17'h00000;
-    storage[789] = 17'h00000;
-    storage[790] = 17'h00000;
-    storage[791] = 17'h00000;
-    storage[792] = 17'h00000;
-    storage[793] = 17'h00000;
-    storage[794] = 17'h00000;
-    storage[795] = 17'h00000;
-    storage[796] = 17'h00000;
-    storage[797] = 17'h00000;
-    storage[798] = 17'h00000;
-    storage[799] = 17'h00000;
-    storage[800] = 17'h00000;
-    storage[801] = 17'h00000;
-    storage[802] = 17'h00000;
-    storage[803] = 17'h00000;
-    storage[804] = 17'h00000;
-    storage[805] = 17'h00000;
-    storage[806] = 17'h00000;
-    storage[807] = 17'h00000;
-    storage[808] = 17'h00000;
-    storage[809] = 17'h00000;
-    storage[810] = 17'h00000;
-    storage[811] = 17'h00000;
-    storage[812] = 17'h00000;
-    storage[813] = 17'h00000;
-    storage[814] = 17'h00000;
-    storage[815] = 17'h00000;
-    storage[816] = 17'h00000;
-    storage[817] = 17'h00000;
-    storage[818] = 17'h00000;
-    storage[819] = 17'h00000;
-    storage[820] = 17'h00000;
-    storage[821] = 17'h00000;
-    storage[822] = 17'h00000;
-    storage[823] = 17'h00000;
-    storage[824] = 17'h00000;
-    storage[825] = 17'h00000;
-    storage[826] = 17'h00000;
-    storage[827] = 17'h00000;
-    storage[828] = 17'h00000;
-    storage[829] = 17'h00000;
-    storage[830] = 17'h00000;
-    storage[831] = 17'h00000;
-    storage[832] = 17'h00000;
-    storage[833] = 17'h00000;
-    storage[834] = 17'h00000;
-    storage[835] = 17'h00000;
-    storage[836] = 17'h00000;
-    storage[837] = 17'h00000;
-    storage[838] = 17'h00000;
-    storage[839] = 17'h00000;
-    storage[840] = 17'h00000;
-    storage[841] = 17'h00000;
-    storage[842] = 17'h00000;
-    storage[843] = 17'h00000;
-    storage[844] = 17'h00000;
-    storage[845] = 17'h00000;
-    storage[846] = 17'h00000;
-    storage[847] = 17'h00000;
-    storage[848] = 17'h00000;
-    storage[849] = 17'h00000;
-    storage[850] = 17'h00000;
-    storage[851] = 17'h00000;
-    storage[852] = 17'h00000;
-    storage[853] = 17'h00000;
-    storage[854] = 17'h00000;
-    storage[855] = 17'h00000;
-    storage[856] = 17'h00000;
-    storage[857] = 17'h00000;
-    storage[858] = 17'h00000;
-    storage[859] = 17'h00000;
-    storage[860] = 17'h00000;
-    storage[861] = 17'h00000;
-    storage[862] = 17'h00000;
-    storage[863] = 17'h00000;
-    storage[864] = 17'h00000;
-    storage[865] = 17'h00000;
-    storage[866] = 17'h00000;
-    storage[867] = 17'h00000;
-    storage[868] = 17'h00000;
-    storage[869] = 17'h00000;
-    storage[870] = 17'h00000;
-    storage[871] = 17'h00000;
-    storage[872] = 17'h00000;
-    storage[873] = 17'h00000;
-    storage[874] = 17'h00000;
-    storage[875] = 17'h00000;
-    storage[876] = 17'h00000;
-    storage[877] = 17'h00000;
-    storage[878] = 17'h00000;
-    storage[879] = 17'h00000;
-    storage[880] = 17'h00000;
-    storage[881] = 17'h00000;
-    storage[882] = 17'h00000;
-    storage[883] = 17'h00000;
-    storage[884] = 17'h00000;
-    storage[885] = 17'h00000;
-    storage[886] = 17'h00000;
-    storage[887] = 17'h00000;
-    storage[888] = 17'h00000;
-    storage[889] = 17'h00000;
-    storage[890] = 17'h00000;
-    storage[891] = 17'h00000;
-    storage[892] = 17'h00000;
-    storage[893] = 17'h00000;
-    storage[894] = 17'h00000;
-    storage[895] = 17'h00000;
-    storage[896] = 17'h00000;
-    storage[897] = 17'h00000;
-    storage[898] = 17'h00000;
-    storage[899] = 17'h00000;
-    storage[900] = 17'h00000;
-    storage[901] = 17'h00000;
-    storage[902] = 17'h00000;
-    storage[903] = 17'h00000;
-    storage[904] = 17'h00000;
-    storage[905] = 17'h00000;
-    storage[906] = 17'h00000;
-    storage[907] = 17'h00000;
-    storage[908] = 17'h00000;
-    storage[909] = 17'h00000;
-    storage[910] = 17'h00000;
-    storage[911] = 17'h00000;
-    storage[912] = 17'h00000;
-    storage[913] = 17'h00000;
-    storage[914] = 17'h00000;
-    storage[915] = 17'h00000;
-    storage[916] = 17'h00000;
-    storage[917] = 17'h00000;
-    storage[918] = 17'h00000;
-    storage[919] = 17'h00000;
-    storage[920] = 17'h00000;
-    storage[921] = 17'h00000;
-    storage[922] = 17'h00000;
-    storage[923] = 17'h00000;
-    storage[924] = 17'h00000;
-    storage[925] = 17'h00000;
-    storage[926] = 17'h00000;
-    storage[927] = 17'h00000;
-    storage[928] = 17'h00000;
-    storage[929] = 17'h00000;
-    storage[930] = 17'h00000;
-    storage[931] = 17'h00000;
-    storage[932] = 17'h00000;
-    storage[933] = 17'h00000;
-    storage[934] = 17'h00000;
-    storage[935] = 17'h00000;
-    storage[936] = 17'h00000;
-    storage[937] = 17'h00000;
-    storage[938] = 17'h00000;
-    storage[939] = 17'h00000;
-    storage[940] = 17'h00000;
-    storage[941] = 17'h00000;
-    storage[942] = 17'h00000;
-    storage[943] = 17'h00000;
-    storage[944] = 17'h00000;
-    storage[945] = 17'h00000;
-    storage[946] = 17'h00000;
-    storage[947] = 17'h00000;
-    storage[948] = 17'h00000;
-    storage[949] = 17'h00000;
-    storage[950] = 17'h00000;
-    storage[951] = 17'h00000;
-    storage[952] = 17'h00000;
-    storage[953] = 17'h00000;
-    storage[954] = 17'h00000;
-    storage[955] = 17'h00000;
-    storage[956] = 17'h00000;
-    storage[957] = 17'h00000;
-    storage[958] = 17'h00000;
-    storage[959] = 17'h00000;
-    storage[960] = 17'h00000;
-    storage[961] = 17'h00000;
-    storage[962] = 17'h00000;
-    storage[963] = 17'h00000;
-    storage[964] = 17'h00000;
-    storage[965] = 17'h00000;
-    storage[966] = 17'h00000;
-    storage[967] = 17'h00000;
-    storage[968] = 17'h00000;
-    storage[969] = 17'h00000;
-    storage[970] = 17'h00000;
-    storage[971] = 17'h00000;
-    storage[972] = 17'h00000;
-    storage[973] = 17'h00000;
-    storage[974] = 17'h00000;
-    storage[975] = 17'h00000;
-    storage[976] = 17'h00000;
-    storage[977] = 17'h00000;
-    storage[978] = 17'h00000;
-    storage[979] = 17'h00000;
-    storage[980] = 17'h00000;
-    storage[981] = 17'h00000;
-    storage[982] = 17'h00000;
-    storage[983] = 17'h00000;
-    storage[984] = 17'h00000;
-    storage[985] = 17'h00000;
-    storage[986] = 17'h00000;
-    storage[987] = 17'h00000;
-    storage[988] = 17'h00000;
-    storage[989] = 17'h00000;
-    storage[990] = 17'h00000;
-    storage[991] = 17'h00000;
-    storage[992] = 17'h00000;
-    storage[993] = 17'h00000;
-    storage[994] = 17'h00000;
-    storage[995] = 17'h00000;
-    storage[996] = 17'h00000;
-    storage[997] = 17'h00000;
-    storage[998] = 17'h00000;
-    storage[999] = 17'h00000;
-    storage[1000] = 17'h00000;
-    storage[1001] = 17'h00000;
-    storage[1002] = 17'h00000;
-    storage[1003] = 17'h00000;
-    storage[1004] = 17'h00000;
-    storage[1005] = 17'h00000;
-    storage[1006] = 17'h00000;
-    storage[1007] = 17'h00000;
-    storage[1008] = 17'h00000;
-    storage[1009] = 17'h00000;
-    storage[1010] = 17'h00000;
-    storage[1011] = 17'h00000;
-    storage[1012] = 17'h00000;
-    storage[1013] = 17'h00000;
-    storage[1014] = 17'h00000;
-    storage[1015] = 17'h00000;
-    storage[1016] = 17'h00000;
-    storage[1017] = 17'h00000;
-    storage[1018] = 17'h00000;
-    storage[1019] = 17'h00000;
-    storage[1020] = 17'h00000;
-    storage[1021] = 17'h00000;
-    storage[1022] = 17'h00000;
+    storage[0] = 20'h00000;
+    storage[1] = 20'h00000;
+    storage[2] = 20'h00000;
+    storage[3] = 20'h00000;
+    storage[4] = 20'h00000;
+    storage[5] = 20'h00000;
+    storage[6] = 20'h00000;
+    storage[7] = 20'h00000;
+    storage[8] = 20'h00000;
+    storage[9] = 20'h00000;
+    storage[10] = 20'h00000;
+    storage[11] = 20'h00000;
+    storage[12] = 20'h00000;
+    storage[13] = 20'h00000;
+    storage[14] = 20'h00000;
+    storage[15] = 20'h00000;
+    storage[16] = 20'h00000;
+    storage[17] = 20'h00000;
+    storage[18] = 20'h00000;
+    storage[19] = 20'h00000;
+    storage[20] = 20'h00000;
+    storage[21] = 20'h00000;
+    storage[22] = 20'h00000;
+    storage[23] = 20'h00000;
+    storage[24] = 20'h00000;
+    storage[25] = 20'h00000;
+    storage[26] = 20'h00000;
+    storage[27] = 20'h00000;
+    storage[28] = 20'h00000;
+    storage[29] = 20'h00000;
+    storage[30] = 20'h00000;
+    storage[31] = 20'h00000;
+    storage[32] = 20'h00000;
+    storage[33] = 20'h00000;
+    storage[34] = 20'h00000;
+    storage[35] = 20'h00000;
+    storage[36] = 20'h00000;
+    storage[37] = 20'h00000;
+    storage[38] = 20'h00000;
+    storage[39] = 20'h00000;
+    storage[40] = 20'h00000;
+    storage[41] = 20'h00000;
+    storage[42] = 20'h00000;
+    storage[43] = 20'h00000;
+    storage[44] = 20'h00000;
+    storage[45] = 20'h00000;
+    storage[46] = 20'h00000;
+    storage[47] = 20'h00000;
+    storage[48] = 20'h00000;
+    storage[49] = 20'h00000;
+    storage[50] = 20'h00000;
+    storage[51] = 20'h00000;
+    storage[52] = 20'h00000;
+    storage[53] = 20'h00000;
+    storage[54] = 20'h00000;
+    storage[55] = 20'h00000;
+    storage[56] = 20'h00000;
+    storage[57] = 20'h00000;
+    storage[58] = 20'h00000;
+    storage[59] = 20'h00000;
+    storage[60] = 20'h00000;
+    storage[61] = 20'h00000;
+    storage[62] = 20'h00000;
+    storage[63] = 20'h00000;
+    storage[64] = 20'h00000;
+    storage[65] = 20'h00000;
+    storage[66] = 20'h00000;
+    storage[67] = 20'h00000;
+    storage[68] = 20'h00000;
+    storage[69] = 20'h00000;
+    storage[70] = 20'h00000;
+    storage[71] = 20'h00000;
+    storage[72] = 20'h00000;
+    storage[73] = 20'h00000;
+    storage[74] = 20'h00000;
+    storage[75] = 20'h00000;
+    storage[76] = 20'h00000;
+    storage[77] = 20'h00000;
+    storage[78] = 20'h00000;
+    storage[79] = 20'h00000;
+    storage[80] = 20'h00000;
+    storage[81] = 20'h00000;
+    storage[82] = 20'h00000;
+    storage[83] = 20'h00000;
+    storage[84] = 20'h00000;
+    storage[85] = 20'h00000;
+    storage[86] = 20'h00000;
+    storage[87] = 20'h00000;
+    storage[88] = 20'h00000;
+    storage[89] = 20'h00000;
+    storage[90] = 20'h00000;
+    storage[91] = 20'h00000;
+    storage[92] = 20'h00000;
+    storage[93] = 20'h00000;
+    storage[94] = 20'h00000;
+    storage[95] = 20'h00000;
+    storage[96] = 20'h00000;
+    storage[97] = 20'h00000;
+    storage[98] = 20'h00000;
+    storage[99] = 20'h00000;
+    storage[100] = 20'h00000;
+    storage[101] = 20'h00000;
+    storage[102] = 20'h00000;
+    storage[103] = 20'h00000;
+    storage[104] = 20'h00000;
+    storage[105] = 20'h00000;
+    storage[106] = 20'h00000;
+    storage[107] = 20'h00000;
+    storage[108] = 20'h00000;
+    storage[109] = 20'h00000;
+    storage[110] = 20'h00000;
+    storage[111] = 20'h00000;
+    storage[112] = 20'h00000;
+    storage[113] = 20'h00000;
+    storage[114] = 20'h00000;
+    storage[115] = 20'h00000;
+    storage[116] = 20'h00000;
+    storage[117] = 20'h00000;
+    storage[118] = 20'h00000;
+    storage[119] = 20'h00000;
+    storage[120] = 20'h00000;
+    storage[121] = 20'h00000;
+    storage[122] = 20'h00000;
+    storage[123] = 20'h00000;
+    storage[124] = 20'h00000;
+    storage[125] = 20'h00000;
+    storage[126] = 20'h00000;
+    storage[127] = 20'h00000;
+    storage[128] = 20'h00000;
+    storage[129] = 20'h00000;
+    storage[130] = 20'h00000;
+    storage[131] = 20'h00000;
+    storage[132] = 20'h00000;
+    storage[133] = 20'h00000;
+    storage[134] = 20'h00000;
+    storage[135] = 20'h00000;
+    storage[136] = 20'h00000;
+    storage[137] = 20'h00000;
+    storage[138] = 20'h00000;
+    storage[139] = 20'h00000;
+    storage[140] = 20'h00000;
+    storage[141] = 20'h00000;
+    storage[142] = 20'h00000;
+    storage[143] = 20'h00000;
+    storage[144] = 20'h00000;
+    storage[145] = 20'h00000;
+    storage[146] = 20'h00000;
+    storage[147] = 20'h00000;
+    storage[148] = 20'h00000;
+    storage[149] = 20'h00000;
+    storage[150] = 20'h00000;
+    storage[151] = 20'h00000;
+    storage[152] = 20'h00000;
+    storage[153] = 20'h00000;
+    storage[154] = 20'h00000;
+    storage[155] = 20'h00000;
+    storage[156] = 20'h00000;
+    storage[157] = 20'h00000;
+    storage[158] = 20'h00000;
+    storage[159] = 20'h00000;
+    storage[160] = 20'h00000;
+    storage[161] = 20'h00000;
+    storage[162] = 20'h00000;
+    storage[163] = 20'h00000;
+    storage[164] = 20'h00000;
+    storage[165] = 20'h00000;
+    storage[166] = 20'h00000;
+    storage[167] = 20'h00000;
+    storage[168] = 20'h00000;
+    storage[169] = 20'h00000;
+    storage[170] = 20'h00000;
+    storage[171] = 20'h00000;
+    storage[172] = 20'h00000;
+    storage[173] = 20'h00000;
+    storage[174] = 20'h00000;
+    storage[175] = 20'h00000;
+    storage[176] = 20'h00000;
+    storage[177] = 20'h00000;
+    storage[178] = 20'h00000;
+    storage[179] = 20'h00000;
+    storage[180] = 20'h00000;
+    storage[181] = 20'h00000;
+    storage[182] = 20'h00000;
+    storage[183] = 20'h00000;
+    storage[184] = 20'h00000;
+    storage[185] = 20'h00000;
+    storage[186] = 20'h00000;
+    storage[187] = 20'h00000;
+    storage[188] = 20'h00000;
+    storage[189] = 20'h00000;
+    storage[190] = 20'h00000;
+    storage[191] = 20'h00000;
+    storage[192] = 20'h00000;
+    storage[193] = 20'h00000;
+    storage[194] = 20'h00000;
+    storage[195] = 20'h00000;
+    storage[196] = 20'h00000;
+    storage[197] = 20'h00000;
+    storage[198] = 20'h00000;
+    storage[199] = 20'h00000;
+    storage[200] = 20'h00000;
+    storage[201] = 20'h00000;
+    storage[202] = 20'h00000;
+    storage[203] = 20'h00000;
+    storage[204] = 20'h00000;
+    storage[205] = 20'h00000;
+    storage[206] = 20'h00000;
+    storage[207] = 20'h00000;
+    storage[208] = 20'h00000;
+    storage[209] = 20'h00000;
+    storage[210] = 20'h00000;
+    storage[211] = 20'h00000;
+    storage[212] = 20'h00000;
+    storage[213] = 20'h00000;
+    storage[214] = 20'h00000;
+    storage[215] = 20'h00000;
+    storage[216] = 20'h00000;
+    storage[217] = 20'h00000;
+    storage[218] = 20'h00000;
+    storage[219] = 20'h00000;
+    storage[220] = 20'h00000;
+    storage[221] = 20'h00000;
+    storage[222] = 20'h00000;
+    storage[223] = 20'h00000;
+    storage[224] = 20'h00000;
+    storage[225] = 20'h00000;
+    storage[226] = 20'h00000;
+    storage[227] = 20'h00000;
+    storage[228] = 20'h00000;
+    storage[229] = 20'h00000;
+    storage[230] = 20'h00000;
+    storage[231] = 20'h00000;
+    storage[232] = 20'h00000;
+    storage[233] = 20'h00000;
+    storage[234] = 20'h00000;
+    storage[235] = 20'h00000;
+    storage[236] = 20'h00000;
+    storage[237] = 20'h00000;
+    storage[238] = 20'h00000;
+    storage[239] = 20'h00000;
+    storage[240] = 20'h00000;
+    storage[241] = 20'h00000;
+    storage[242] = 20'h00000;
+    storage[243] = 20'h00000;
+    storage[244] = 20'h00000;
+    storage[245] = 20'h00000;
+    storage[246] = 20'h00000;
+    storage[247] = 20'h00000;
+    storage[248] = 20'h00000;
+    storage[249] = 20'h00000;
+    storage[250] = 20'h00000;
+    storage[251] = 20'h00000;
+    storage[252] = 20'h00000;
+    storage[253] = 20'h00000;
+    storage[254] = 20'h00000;
+    storage[255] = 20'h00000;
+    storage[256] = 20'h00000;
+    storage[257] = 20'h00000;
+    storage[258] = 20'h00000;
+    storage[259] = 20'h00000;
+    storage[260] = 20'h00000;
+    storage[261] = 20'h00000;
+    storage[262] = 20'h00000;
+    storage[263] = 20'h00000;
+    storage[264] = 20'h00000;
+    storage[265] = 20'h00000;
+    storage[266] = 20'h00000;
+    storage[267] = 20'h00000;
+    storage[268] = 20'h00000;
+    storage[269] = 20'h00000;
+    storage[270] = 20'h00000;
+    storage[271] = 20'h00000;
+    storage[272] = 20'h00000;
+    storage[273] = 20'h00000;
+    storage[274] = 20'h00000;
+    storage[275] = 20'h00000;
+    storage[276] = 20'h00000;
+    storage[277] = 20'h00000;
+    storage[278] = 20'h00000;
+    storage[279] = 20'h00000;
+    storage[280] = 20'h00000;
+    storage[281] = 20'h00000;
+    storage[282] = 20'h00000;
+    storage[283] = 20'h00000;
+    storage[284] = 20'h00000;
+    storage[285] = 20'h00000;
+    storage[286] = 20'h00000;
+    storage[287] = 20'h00000;
+    storage[288] = 20'h00000;
+    storage[289] = 20'h00000;
+    storage[290] = 20'h00000;
+    storage[291] = 20'h00000;
+    storage[292] = 20'h00000;
+    storage[293] = 20'h00000;
+    storage[294] = 20'h00000;
+    storage[295] = 20'h00000;
+    storage[296] = 20'h00000;
+    storage[297] = 20'h00000;
+    storage[298] = 20'h00000;
+    storage[299] = 20'h00000;
+    storage[300] = 20'h00000;
+    storage[301] = 20'h00000;
+    storage[302] = 20'h00000;
+    storage[303] = 20'h00000;
+    storage[304] = 20'h00000;
+    storage[305] = 20'h00000;
+    storage[306] = 20'h00000;
+    storage[307] = 20'h00000;
+    storage[308] = 20'h00000;
+    storage[309] = 20'h00000;
+    storage[310] = 20'h00000;
+    storage[311] = 20'h00000;
+    storage[312] = 20'h00000;
+    storage[313] = 20'h00000;
+    storage[314] = 20'h00000;
+    storage[315] = 20'h00000;
+    storage[316] = 20'h00000;
+    storage[317] = 20'h00000;
+    storage[318] = 20'h00000;
+    storage[319] = 20'h00000;
+    storage[320] = 20'h00000;
+    storage[321] = 20'h00000;
+    storage[322] = 20'h00000;
+    storage[323] = 20'h00000;
+    storage[324] = 20'h00000;
+    storage[325] = 20'h00000;
+    storage[326] = 20'h00000;
+    storage[327] = 20'h00000;
+    storage[328] = 20'h00000;
+    storage[329] = 20'h00000;
+    storage[330] = 20'h00000;
+    storage[331] = 20'h00000;
+    storage[332] = 20'h00000;
+    storage[333] = 20'h00000;
+    storage[334] = 20'h00000;
+    storage[335] = 20'h00000;
+    storage[336] = 20'h00000;
+    storage[337] = 20'h00000;
+    storage[338] = 20'h00000;
+    storage[339] = 20'h00000;
+    storage[340] = 20'h00000;
+    storage[341] = 20'h00000;
+    storage[342] = 20'h00000;
+    storage[343] = 20'h00000;
+    storage[344] = 20'h00000;
+    storage[345] = 20'h00000;
+    storage[346] = 20'h00000;
+    storage[347] = 20'h00000;
+    storage[348] = 20'h00000;
+    storage[349] = 20'h00000;
+    storage[350] = 20'h00000;
+    storage[351] = 20'h00000;
+    storage[352] = 20'h00000;
+    storage[353] = 20'h00000;
+    storage[354] = 20'h00000;
+    storage[355] = 20'h00000;
+    storage[356] = 20'h00000;
+    storage[357] = 20'h00000;
+    storage[358] = 20'h00000;
+    storage[359] = 20'h00000;
+    storage[360] = 20'h00000;
+    storage[361] = 20'h00000;
+    storage[362] = 20'h00000;
+    storage[363] = 20'h00000;
+    storage[364] = 20'h00000;
+    storage[365] = 20'h00000;
+    storage[366] = 20'h00000;
+    storage[367] = 20'h00000;
+    storage[368] = 20'h00000;
+    storage[369] = 20'h00000;
+    storage[370] = 20'h00000;
+    storage[371] = 20'h00000;
+    storage[372] = 20'h00000;
+    storage[373] = 20'h00000;
+    storage[374] = 20'h00000;
+    storage[375] = 20'h00000;
+    storage[376] = 20'h00000;
+    storage[377] = 20'h00000;
+    storage[378] = 20'h00000;
+    storage[379] = 20'h00000;
+    storage[380] = 20'h00000;
+    storage[381] = 20'h00000;
+    storage[382] = 20'h00000;
+    storage[383] = 20'h00000;
+    storage[384] = 20'h00000;
+    storage[385] = 20'h00000;
+    storage[386] = 20'h00000;
+    storage[387] = 20'h00000;
+    storage[388] = 20'h00000;
+    storage[389] = 20'h00000;
+    storage[390] = 20'h00000;
+    storage[391] = 20'h00000;
+    storage[392] = 20'h00000;
+    storage[393] = 20'h00000;
+    storage[394] = 20'h00000;
+    storage[395] = 20'h00000;
+    storage[396] = 20'h00000;
+    storage[397] = 20'h00000;
+    storage[398] = 20'h00000;
+    storage[399] = 20'h00000;
+    storage[400] = 20'h00000;
+    storage[401] = 20'h00000;
+    storage[402] = 20'h00000;
+    storage[403] = 20'h00000;
+    storage[404] = 20'h00000;
+    storage[405] = 20'h00000;
+    storage[406] = 20'h00000;
+    storage[407] = 20'h00000;
+    storage[408] = 20'h00000;
+    storage[409] = 20'h00000;
+    storage[410] = 20'h00000;
+    storage[411] = 20'h00000;
+    storage[412] = 20'h00000;
+    storage[413] = 20'h00000;
+    storage[414] = 20'h00000;
+    storage[415] = 20'h00000;
+    storage[416] = 20'h00000;
+    storage[417] = 20'h00000;
+    storage[418] = 20'h00000;
+    storage[419] = 20'h00000;
+    storage[420] = 20'h00000;
+    storage[421] = 20'h00000;
+    storage[422] = 20'h00000;
+    storage[423] = 20'h00000;
+    storage[424] = 20'h00000;
+    storage[425] = 20'h00000;
+    storage[426] = 20'h00000;
+    storage[427] = 20'h00000;
+    storage[428] = 20'h00000;
+    storage[429] = 20'h00000;
+    storage[430] = 20'h00000;
+    storage[431] = 20'h00000;
+    storage[432] = 20'h00000;
+    storage[433] = 20'h00000;
+    storage[434] = 20'h00000;
+    storage[435] = 20'h00000;
+    storage[436] = 20'h00000;
+    storage[437] = 20'h00000;
+    storage[438] = 20'h00000;
+    storage[439] = 20'h00000;
+    storage[440] = 20'h00000;
+    storage[441] = 20'h00000;
+    storage[442] = 20'h00000;
+    storage[443] = 20'h00000;
+    storage[444] = 20'h00000;
+    storage[445] = 20'h00000;
+    storage[446] = 20'h00000;
+    storage[447] = 20'h00000;
+    storage[448] = 20'h00000;
+    storage[449] = 20'h00000;
+    storage[450] = 20'h00000;
+    storage[451] = 20'h00000;
+    storage[452] = 20'h00000;
+    storage[453] = 20'h00000;
+    storage[454] = 20'h00000;
+    storage[455] = 20'h00000;
+    storage[456] = 20'h00000;
+    storage[457] = 20'h00000;
+    storage[458] = 20'h00000;
+    storage[459] = 20'h00000;
+    storage[460] = 20'h00000;
+    storage[461] = 20'h00000;
+    storage[462] = 20'h00000;
+    storage[463] = 20'h00000;
+    storage[464] = 20'h00000;
+    storage[465] = 20'h00000;
+    storage[466] = 20'h00000;
+    storage[467] = 20'h00000;
+    storage[468] = 20'h00000;
+    storage[469] = 20'h00000;
+    storage[470] = 20'h00000;
+    storage[471] = 20'h00000;
+    storage[472] = 20'h00000;
+    storage[473] = 20'h00000;
+    storage[474] = 20'h00000;
+    storage[475] = 20'h00000;
+    storage[476] = 20'h00000;
+    storage[477] = 20'h00000;
+    storage[478] = 20'h00000;
+    storage[479] = 20'h00000;
+    storage[480] = 20'h00000;
+    storage[481] = 20'h00000;
+    storage[482] = 20'h00000;
+    storage[483] = 20'h00000;
+    storage[484] = 20'h00000;
+    storage[485] = 20'h00000;
+    storage[486] = 20'h00000;
+    storage[487] = 20'h00000;
+    storage[488] = 20'h00000;
+    storage[489] = 20'h00000;
+    storage[490] = 20'h00000;
+    storage[491] = 20'h00000;
+    storage[492] = 20'h00000;
+    storage[493] = 20'h00000;
+    storage[494] = 20'h00000;
+    storage[495] = 20'h00000;
+    storage[496] = 20'h00000;
+    storage[497] = 20'h00000;
+    storage[498] = 20'h00000;
+    storage[499] = 20'h00000;
+    storage[500] = 20'h00000;
+    storage[501] = 20'h00000;
+    storage[502] = 20'h00000;
+    storage[503] = 20'h00000;
+    storage[504] = 20'h00000;
+    storage[505] = 20'h00000;
+    storage[506] = 20'h00000;
+    storage[507] = 20'h00000;
+    storage[508] = 20'h00000;
+    storage[509] = 20'h00000;
+    storage[510] = 20'h00000;
+    storage[511] = 20'h00000;
+    storage[512] = 20'h00000;
+    storage[513] = 20'h00000;
+    storage[514] = 20'h00000;
+    storage[515] = 20'h00000;
+    storage[516] = 20'h00000;
+    storage[517] = 20'h00000;
+    storage[518] = 20'h00000;
+    storage[519] = 20'h00000;
+    storage[520] = 20'h00000;
+    storage[521] = 20'h00000;
+    storage[522] = 20'h00000;
+    storage[523] = 20'h00000;
+    storage[524] = 20'h00000;
+    storage[525] = 20'h00000;
+    storage[526] = 20'h00000;
+    storage[527] = 20'h00000;
+    storage[528] = 20'h00000;
+    storage[529] = 20'h00000;
+    storage[530] = 20'h00000;
+    storage[531] = 20'h00000;
+    storage[532] = 20'h00000;
+    storage[533] = 20'h00000;
+    storage[534] = 20'h00000;
+    storage[535] = 20'h00000;
+    storage[536] = 20'h00000;
+    storage[537] = 20'h00000;
+    storage[538] = 20'h00000;
+    storage[539] = 20'h00000;
+    storage[540] = 20'h00000;
+    storage[541] = 20'h00000;
+    storage[542] = 20'h00000;
+    storage[543] = 20'h00000;
+    storage[544] = 20'h00000;
+    storage[545] = 20'h00000;
+    storage[546] = 20'h00000;
+    storage[547] = 20'h00000;
+    storage[548] = 20'h00000;
+    storage[549] = 20'h00000;
+    storage[550] = 20'h00000;
+    storage[551] = 20'h00000;
+    storage[552] = 20'h00000;
+    storage[553] = 20'h00000;
+    storage[554] = 20'h00000;
+    storage[555] = 20'h00000;
+    storage[556] = 20'h00000;
+    storage[557] = 20'h00000;
+    storage[558] = 20'h00000;
+    storage[559] = 20'h00000;
+    storage[560] = 20'h00000;
+    storage[561] = 20'h00000;
+    storage[562] = 20'h00000;
+    storage[563] = 20'h00000;
+    storage[564] = 20'h00000;
+    storage[565] = 20'h00000;
+    storage[566] = 20'h00000;
+    storage[567] = 20'h00000;
+    storage[568] = 20'h00000;
+    storage[569] = 20'h00000;
+    storage[570] = 20'h00000;
+    storage[571] = 20'h00000;
+    storage[572] = 20'h00000;
+    storage[573] = 20'h00000;
+    storage[574] = 20'h00000;
+    storage[575] = 20'h00000;
+    storage[576] = 20'h00000;
+    storage[577] = 20'h00000;
+    storage[578] = 20'h00000;
+    storage[579] = 20'h00000;
+    storage[580] = 20'h00000;
+    storage[581] = 20'h00000;
+    storage[582] = 20'h00000;
+    storage[583] = 20'h00000;
+    storage[584] = 20'h00000;
+    storage[585] = 20'h00000;
+    storage[586] = 20'h00000;
+    storage[587] = 20'h00000;
+    storage[588] = 20'h00000;
+    storage[589] = 20'h00000;
+    storage[590] = 20'h00000;
+    storage[591] = 20'h00000;
+    storage[592] = 20'h00000;
+    storage[593] = 20'h00000;
+    storage[594] = 20'h00000;
+    storage[595] = 20'h00000;
+    storage[596] = 20'h00000;
+    storage[597] = 20'h00000;
+    storage[598] = 20'h00000;
+    storage[599] = 20'h00000;
+    storage[600] = 20'h00000;
+    storage[601] = 20'h00000;
+    storage[602] = 20'h00000;
+    storage[603] = 20'h00000;
+    storage[604] = 20'h00000;
+    storage[605] = 20'h00000;
+    storage[606] = 20'h00000;
+    storage[607] = 20'h00000;
+    storage[608] = 20'h00000;
+    storage[609] = 20'h00000;
+    storage[610] = 20'h00000;
+    storage[611] = 20'h00000;
+    storage[612] = 20'h00000;
+    storage[613] = 20'h00000;
+    storage[614] = 20'h00000;
+    storage[615] = 20'h00000;
+    storage[616] = 20'h00000;
+    storage[617] = 20'h00000;
+    storage[618] = 20'h00000;
+    storage[619] = 20'h00000;
+    storage[620] = 20'h00000;
+    storage[621] = 20'h00000;
+    storage[622] = 20'h00000;
+    storage[623] = 20'h00000;
+    storage[624] = 20'h00000;
+    storage[625] = 20'h00000;
+    storage[626] = 20'h00000;
+    storage[627] = 20'h00000;
+    storage[628] = 20'h00000;
+    storage[629] = 20'h00000;
+    storage[630] = 20'h00000;
+    storage[631] = 20'h00000;
+    storage[632] = 20'h00000;
+    storage[633] = 20'h00000;
+    storage[634] = 20'h00000;
+    storage[635] = 20'h00000;
+    storage[636] = 20'h00000;
+    storage[637] = 20'h00000;
+    storage[638] = 20'h00000;
+    storage[639] = 20'h00000;
+    storage[640] = 20'h00000;
+    storage[641] = 20'h00000;
+    storage[642] = 20'h00000;
+    storage[643] = 20'h00000;
+    storage[644] = 20'h00000;
+    storage[645] = 20'h00000;
+    storage[646] = 20'h00000;
+    storage[647] = 20'h00000;
+    storage[648] = 20'h00000;
+    storage[649] = 20'h00000;
+    storage[650] = 20'h00000;
+    storage[651] = 20'h00000;
+    storage[652] = 20'h00000;
+    storage[653] = 20'h00000;
+    storage[654] = 20'h00000;
+    storage[655] = 20'h00000;
+    storage[656] = 20'h00000;
+    storage[657] = 20'h00000;
+    storage[658] = 20'h00000;
+    storage[659] = 20'h00000;
+    storage[660] = 20'h00000;
+    storage[661] = 20'h00000;
+    storage[662] = 20'h00000;
+    storage[663] = 20'h00000;
+    storage[664] = 20'h00000;
+    storage[665] = 20'h00000;
+    storage[666] = 20'h00000;
+    storage[667] = 20'h00000;
+    storage[668] = 20'h00000;
+    storage[669] = 20'h00000;
+    storage[670] = 20'h00000;
+    storage[671] = 20'h00000;
+    storage[672] = 20'h00000;
+    storage[673] = 20'h00000;
+    storage[674] = 20'h00000;
+    storage[675] = 20'h00000;
+    storage[676] = 20'h00000;
+    storage[677] = 20'h00000;
+    storage[678] = 20'h00000;
+    storage[679] = 20'h00000;
+    storage[680] = 20'h00000;
+    storage[681] = 20'h00000;
+    storage[682] = 20'h00000;
+    storage[683] = 20'h00000;
+    storage[684] = 20'h00000;
+    storage[685] = 20'h00000;
+    storage[686] = 20'h00000;
+    storage[687] = 20'h00000;
+    storage[688] = 20'h00000;
+    storage[689] = 20'h00000;
+    storage[690] = 20'h00000;
+    storage[691] = 20'h00000;
+    storage[692] = 20'h00000;
+    storage[693] = 20'h00000;
+    storage[694] = 20'h00000;
+    storage[695] = 20'h00000;
+    storage[696] = 20'h00000;
+    storage[697] = 20'h00000;
+    storage[698] = 20'h00000;
+    storage[699] = 20'h00000;
+    storage[700] = 20'h00000;
+    storage[701] = 20'h00000;
+    storage[702] = 20'h00000;
+    storage[703] = 20'h00000;
+    storage[704] = 20'h00000;
+    storage[705] = 20'h00000;
+    storage[706] = 20'h00000;
+    storage[707] = 20'h00000;
+    storage[708] = 20'h00000;
+    storage[709] = 20'h00000;
+    storage[710] = 20'h00000;
+    storage[711] = 20'h00000;
+    storage[712] = 20'h00000;
+    storage[713] = 20'h00000;
+    storage[714] = 20'h00000;
+    storage[715] = 20'h00000;
+    storage[716] = 20'h00000;
+    storage[717] = 20'h00000;
+    storage[718] = 20'h00000;
+    storage[719] = 20'h00000;
+    storage[720] = 20'h00000;
+    storage[721] = 20'h00000;
+    storage[722] = 20'h00000;
+    storage[723] = 20'h00000;
+    storage[724] = 20'h00000;
+    storage[725] = 20'h00000;
+    storage[726] = 20'h00000;
+    storage[727] = 20'h00000;
+    storage[728] = 20'h00000;
+    storage[729] = 20'h00000;
+    storage[730] = 20'h00000;
+    storage[731] = 20'h00000;
+    storage[732] = 20'h00000;
+    storage[733] = 20'h00000;
+    storage[734] = 20'h00000;
+    storage[735] = 20'h00000;
+    storage[736] = 20'h00000;
+    storage[737] = 20'h00000;
+    storage[738] = 20'h00000;
+    storage[739] = 20'h00000;
+    storage[740] = 20'h00000;
+    storage[741] = 20'h00000;
+    storage[742] = 20'h00000;
+    storage[743] = 20'h00000;
+    storage[744] = 20'h00000;
+    storage[745] = 20'h00000;
+    storage[746] = 20'h00000;
+    storage[747] = 20'h00000;
+    storage[748] = 20'h00000;
+    storage[749] = 20'h00000;
+    storage[750] = 20'h00000;
+    storage[751] = 20'h00000;
+    storage[752] = 20'h00000;
+    storage[753] = 20'h00000;
+    storage[754] = 20'h00000;
+    storage[755] = 20'h00000;
+    storage[756] = 20'h00000;
+    storage[757] = 20'h00000;
+    storage[758] = 20'h00000;
+    storage[759] = 20'h00000;
+    storage[760] = 20'h00000;
+    storage[761] = 20'h00000;
+    storage[762] = 20'h00000;
+    storage[763] = 20'h00000;
+    storage[764] = 20'h00000;
+    storage[765] = 20'h00000;
+    storage[766] = 20'h00000;
+    storage[767] = 20'h00000;
+    storage[768] = 20'h00000;
+    storage[769] = 20'h00000;
+    storage[770] = 20'h00000;
+    storage[771] = 20'h00000;
+    storage[772] = 20'h00000;
+    storage[773] = 20'h00000;
+    storage[774] = 20'h00000;
+    storage[775] = 20'h00000;
+    storage[776] = 20'h00000;
+    storage[777] = 20'h00000;
+    storage[778] = 20'h00000;
+    storage[779] = 20'h00000;
+    storage[780] = 20'h00000;
+    storage[781] = 20'h00000;
+    storage[782] = 20'h00000;
+    storage[783] = 20'h00000;
+    storage[784] = 20'h00000;
+    storage[785] = 20'h00000;
+    storage[786] = 20'h00000;
+    storage[787] = 20'h00000;
+    storage[788] = 20'h00000;
+    storage[789] = 20'h00000;
+    storage[790] = 20'h00000;
+    storage[791] = 20'h00000;
+    storage[792] = 20'h00000;
+    storage[793] = 20'h00000;
+    storage[794] = 20'h00000;
+    storage[795] = 20'h00000;
+    storage[796] = 20'h00000;
+    storage[797] = 20'h00000;
+    storage[798] = 20'h00000;
+    storage[799] = 20'h00000;
+    storage[800] = 20'h00000;
+    storage[801] = 20'h00000;
+    storage[802] = 20'h00000;
+    storage[803] = 20'h00000;
+    storage[804] = 20'h00000;
+    storage[805] = 20'h00000;
+    storage[806] = 20'h00000;
+    storage[807] = 20'h00000;
+    storage[808] = 20'h00000;
+    storage[809] = 20'h00000;
+    storage[810] = 20'h00000;
+    storage[811] = 20'h00000;
+    storage[812] = 20'h00000;
+    storage[813] = 20'h00000;
+    storage[814] = 20'h00000;
+    storage[815] = 20'h00000;
+    storage[816] = 20'h00000;
+    storage[817] = 20'h00000;
+    storage[818] = 20'h00000;
+    storage[819] = 20'h00000;
+    storage[820] = 20'h00000;
+    storage[821] = 20'h00000;
+    storage[822] = 20'h00000;
+    storage[823] = 20'h00000;
+    storage[824] = 20'h00000;
+    storage[825] = 20'h00000;
+    storage[826] = 20'h00000;
+    storage[827] = 20'h00000;
+    storage[828] = 20'h00000;
+    storage[829] = 20'h00000;
+    storage[830] = 20'h00000;
+    storage[831] = 20'h00000;
+    storage[832] = 20'h00000;
+    storage[833] = 20'h00000;
+    storage[834] = 20'h00000;
+    storage[835] = 20'h00000;
+    storage[836] = 20'h00000;
+    storage[837] = 20'h00000;
+    storage[838] = 20'h00000;
+    storage[839] = 20'h00000;
+    storage[840] = 20'h00000;
+    storage[841] = 20'h00000;
+    storage[842] = 20'h00000;
+    storage[843] = 20'h00000;
+    storage[844] = 20'h00000;
+    storage[845] = 20'h00000;
+    storage[846] = 20'h00000;
+    storage[847] = 20'h00000;
+    storage[848] = 20'h00000;
+    storage[849] = 20'h00000;
+    storage[850] = 20'h00000;
+    storage[851] = 20'h00000;
+    storage[852] = 20'h00000;
+    storage[853] = 20'h00000;
+    storage[854] = 20'h00000;
+    storage[855] = 20'h00000;
+    storage[856] = 20'h00000;
+    storage[857] = 20'h00000;
+    storage[858] = 20'h00000;
+    storage[859] = 20'h00000;
+    storage[860] = 20'h00000;
+    storage[861] = 20'h00000;
+    storage[862] = 20'h00000;
+    storage[863] = 20'h00000;
+    storage[864] = 20'h00000;
+    storage[865] = 20'h00000;
+    storage[866] = 20'h00000;
+    storage[867] = 20'h00000;
+    storage[868] = 20'h00000;
+    storage[869] = 20'h00000;
+    storage[870] = 20'h00000;
+    storage[871] = 20'h00000;
+    storage[872] = 20'h00000;
+    storage[873] = 20'h00000;
+    storage[874] = 20'h00000;
+    storage[875] = 20'h00000;
+    storage[876] = 20'h00000;
+    storage[877] = 20'h00000;
+    storage[878] = 20'h00000;
+    storage[879] = 20'h00000;
+    storage[880] = 20'h00000;
+    storage[881] = 20'h00000;
+    storage[882] = 20'h00000;
+    storage[883] = 20'h00000;
+    storage[884] = 20'h00000;
+    storage[885] = 20'h00000;
+    storage[886] = 20'h00000;
+    storage[887] = 20'h00000;
+    storage[888] = 20'h00000;
+    storage[889] = 20'h00000;
+    storage[890] = 20'h00000;
+    storage[891] = 20'h00000;
+    storage[892] = 20'h00000;
+    storage[893] = 20'h00000;
+    storage[894] = 20'h00000;
+    storage[895] = 20'h00000;
+    storage[896] = 20'h00000;
+    storage[897] = 20'h00000;
+    storage[898] = 20'h00000;
+    storage[899] = 20'h00000;
+    storage[900] = 20'h00000;
+    storage[901] = 20'h00000;
+    storage[902] = 20'h00000;
+    storage[903] = 20'h00000;
+    storage[904] = 20'h00000;
+    storage[905] = 20'h00000;
+    storage[906] = 20'h00000;
+    storage[907] = 20'h00000;
+    storage[908] = 20'h00000;
+    storage[909] = 20'h00000;
+    storage[910] = 20'h00000;
+    storage[911] = 20'h00000;
+    storage[912] = 20'h00000;
+    storage[913] = 20'h00000;
+    storage[914] = 20'h00000;
+    storage[915] = 20'h00000;
+    storage[916] = 20'h00000;
+    storage[917] = 20'h00000;
+    storage[918] = 20'h00000;
+    storage[919] = 20'h00000;
+    storage[920] = 20'h00000;
+    storage[921] = 20'h00000;
+    storage[922] = 20'h00000;
+    storage[923] = 20'h00000;
+    storage[924] = 20'h00000;
+    storage[925] = 20'h00000;
+    storage[926] = 20'h00000;
+    storage[927] = 20'h00000;
+    storage[928] = 20'h00000;
+    storage[929] = 20'h00000;
+    storage[930] = 20'h00000;
+    storage[931] = 20'h00000;
+    storage[932] = 20'h00000;
+    storage[933] = 20'h00000;
+    storage[934] = 20'h00000;
+    storage[935] = 20'h00000;
+    storage[936] = 20'h00000;
+    storage[937] = 20'h00000;
+    storage[938] = 20'h00000;
+    storage[939] = 20'h00000;
+    storage[940] = 20'h00000;
+    storage[941] = 20'h00000;
+    storage[942] = 20'h00000;
+    storage[943] = 20'h00000;
+    storage[944] = 20'h00000;
+    storage[945] = 20'h00000;
+    storage[946] = 20'h00000;
+    storage[947] = 20'h00000;
+    storage[948] = 20'h00000;
+    storage[949] = 20'h00000;
+    storage[950] = 20'h00000;
+    storage[951] = 20'h00000;
+    storage[952] = 20'h00000;
+    storage[953] = 20'h00000;
+    storage[954] = 20'h00000;
+    storage[955] = 20'h00000;
+    storage[956] = 20'h00000;
+    storage[957] = 20'h00000;
+    storage[958] = 20'h00000;
+    storage[959] = 20'h00000;
+    storage[960] = 20'h00000;
+    storage[961] = 20'h00000;
+    storage[962] = 20'h00000;
+    storage[963] = 20'h00000;
+    storage[964] = 20'h00000;
+    storage[965] = 20'h00000;
+    storage[966] = 20'h00000;
+    storage[967] = 20'h00000;
+    storage[968] = 20'h00000;
+    storage[969] = 20'h00000;
+    storage[970] = 20'h00000;
+    storage[971] = 20'h00000;
+    storage[972] = 20'h00000;
+    storage[973] = 20'h00000;
+    storage[974] = 20'h00000;
+    storage[975] = 20'h00000;
+    storage[976] = 20'h00000;
+    storage[977] = 20'h00000;
+    storage[978] = 20'h00000;
+    storage[979] = 20'h00000;
+    storage[980] = 20'h00000;
+    storage[981] = 20'h00000;
+    storage[982] = 20'h00000;
+    storage[983] = 20'h00000;
+    storage[984] = 20'h00000;
+    storage[985] = 20'h00000;
+    storage[986] = 20'h00000;
+    storage[987] = 20'h00000;
+    storage[988] = 20'h00000;
+    storage[989] = 20'h00000;
+    storage[990] = 20'h00000;
+    storage[991] = 20'h00000;
+    storage[992] = 20'h00000;
+    storage[993] = 20'h00000;
+    storage[994] = 20'h00000;
+    storage[995] = 20'h00000;
+    storage[996] = 20'h00000;
+    storage[997] = 20'h00000;
+    storage[998] = 20'h00000;
+    storage[999] = 20'h00000;
+    storage[1000] = 20'h00000;
+    storage[1001] = 20'h00000;
+    storage[1002] = 20'h00000;
+    storage[1003] = 20'h00000;
+    storage[1004] = 20'h00000;
+    storage[1005] = 20'h00000;
+    storage[1006] = 20'h00000;
+    storage[1007] = 20'h00000;
+    storage[1008] = 20'h00000;
+    storage[1009] = 20'h00000;
+    storage[1010] = 20'h00000;
+    storage[1011] = 20'h00000;
+    storage[1012] = 20'h00000;
+    storage[1013] = 20'h00000;
+    storage[1014] = 20'h00000;
+    storage[1015] = 20'h00000;
+    storage[1016] = 20'h00000;
+    storage[1017] = 20'h00000;
+    storage[1018] = 20'h00000;
+    storage[1019] = 20'h00000;
+    storage[1020] = 20'h00000;
+    storage[1021] = 20'h00000;
+    storage[1022] = 20'h00000;
   end
-  reg [16:0] _0_;
+  reg [19:0] _0_;
   always @(posedge clk) begin
     if (\$next\rdport_storage_r_en ) _0_ <= storage[\$next\rdport_storage_r_addr ];
     if (\$next\wrport_storage_w_en ) storage[\$next\wrport_storage_w_addr ] <= \$next\wrport_storage_w_data ;
@@ -7557,7 +9421,7 @@ module \unbuffered$3 (we, replace, re, rst, clk, writable, readable, dout, level
     endcase
   end
   always @* begin
-    \$next\wrport_storage_w_data  = 17'h00000;
+    \$next\wrport_storage_w_data  = 20'h00000;
     \$next\wrport_storage_w_data  = din;
   end
   always @* begin
@@ -7580,7 +9444,7 @@ module \unbuffered$3 (we, replace, re, rst, clk, writable, readable, dout, level
     \$next\rdport_storage_r_addr  = consume;
   end
   always @* begin
-    \$next\dout  = 17'h00000;
+    \$next\dout  = 20'h00000;
     \$next\dout  = rdport_storage_r_data;
   end
   always @* begin
@@ -7616,99 +9480,93 @@ endmodule
 (* \nmigen.hierarchy  = "top.integration_3.vbits_to_cbits" *)
 (* generator = "nMigen" *)
 module vbits_to_cbits(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, latch_input, data_out, valid_out, end_out, enc_in);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:233" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:332" *)
   reg [15:0] \$next\data_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:235" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:334" *)
   reg \$next\end_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:119" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:150" *)
   reg \$next\input_handler_dec_buff ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:107" *)
-  reg [11:0] \$next\input_handler_enc_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:139" *)
+  reg [14:0] \$next\input_handler_enc_in ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:140" *)
   reg [3:0] \$next\input_handler_enc_in_ctr ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:109" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:141" *)
   reg \$next\input_handler_in_end ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:110" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:142" *)
   reg \$next\input_handler_valid_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:227" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:326" *)
   reg \$next\latch_input ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:24" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:60" *)
+  reg [5:0] \$next\new_buff_consum ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:59" *)
   reg [5:0] \$next\output_handler_buff_consum ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:23" *)
-  reg [41:0] \$next\output_handler_buffer ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:20" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:58" *)
+  reg [40:0] \$next\output_handler_buffer ;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:55" *)
   reg \$next\output_handler_busy_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:66" *)
   reg \$next\output_handler_end_in ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:25" *)
-  reg [5:0] \$next\output_handler_new_buff_consum ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:26" *)
-  reg \$next\output_handler_new_buff_consum_actv ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:234" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:333" *)
   reg \$next\valid_out ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:236" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:335" *)
   input busy_in;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:233" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:332" *)
   output [15:0] data_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:228" *)
-  input [11:0] enc_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:229" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:327" *)
+  input [14:0] enc_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:328" *)
   input [3:0] enc_in_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:235" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:334" *)
   output end_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:230" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:329" *)
   input in_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:114" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:146" *)
   wire [5:0] input_handler_buff_consum;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:113" *)
-  wire [41:0] input_handler_buffer;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:119" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:145" *)
+  wire [40:0] input_handler_buffer;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:150" *)
   wire input_handler_dec_buff;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:107" *)
-  wire [11:0] input_handler_enc_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:108" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:139" *)
+  wire [14:0] input_handler_enc_in;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:140" *)
   wire [3:0] input_handler_enc_in_ctr;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:122" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:153" *)
   wire input_handler_end_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:109" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:141" *)
   wire input_handler_in_end;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:106" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:138" *)
   wire input_handler_latch_input;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:115" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:147" *)
   wire [5:0] input_handler_new_buff_consum;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:116" *)
-  wire input_handler_new_buff_consum_actv;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:110" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:142" *)
   wire input_handler_valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:227" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:326" *)
   output latch_input;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:24" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:60" *)
+  wire [5:0] new_buff_consum;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:59" *)
   wire [5:0] output_handler_buff_consum;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:23" *)
-  wire [41:0] output_handler_buffer;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:20" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:58" *)
+  wire [40:0] output_handler_buffer;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:55" *)
   wire output_handler_busy_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:17" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:52" *)
   wire [15:0] output_handler_data_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:28" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:63" *)
   wire output_handler_dec_buff_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:31" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:66" *)
   wire output_handler_end_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:19" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:54" *)
   wire output_handler_end_out;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:25" *)
-  wire [5:0] output_handler_new_buff_consum;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:26" *)
-  wire output_handler_new_buff_consum_actv;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:18" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:53" *)
   wire output_handler_valid_out;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:231" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:330" *)
   input valid_in;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:234" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits.py:333" *)
   output valid_out;
   input_handler input_handler (
     .buff_consum(input_handler_buff_consum),
@@ -7721,7 +9579,6 @@ module vbits_to_cbits(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, latch_inp
     .in_end(input_handler_in_end),
     .latch_input(input_handler_latch_input),
     .new_buff_consum(input_handler_new_buff_consum),
-    .new_buff_consum_actv(input_handler_new_buff_consum_actv),
     .rst(rst),
     .valid_in(input_handler_valid_in)
   );
@@ -7734,8 +9591,6 @@ module vbits_to_cbits(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, latch_inp
     .dec_buff_out(output_handler_dec_buff_out),
     .end_in(output_handler_end_in),
     .end_out(output_handler_end_out),
-    .new_buff_consum(output_handler_new_buff_consum),
-    .new_buff_consum_actv(output_handler_new_buff_consum_actv),
     .rst(rst),
     .valid_out(output_handler_valid_out)
   );
@@ -7744,12 +9599,8 @@ module vbits_to_cbits(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, latch_inp
     \$next\latch_input  = input_handler_latch_input;
   end
   always @* begin
-    \$next\input_handler_enc_in  = 12'h000;
+    \$next\input_handler_enc_in  = 15'h0000;
     \$next\input_handler_enc_in  = enc_in;
-  end
-  always @* begin
-    \$next\output_handler_new_buff_consum_actv  = 1'h0;
-    \$next\output_handler_new_buff_consum_actv  = input_handler_new_buff_consum_actv;
   end
   always @* begin
     \$next\data_out  = 16'h0000;
@@ -7784,7 +9635,7 @@ module vbits_to_cbits(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, latch_inp
     \$next\input_handler_dec_buff  = output_handler_dec_buff_out;
   end
   always @* begin
-    \$next\output_handler_buffer  = 42'h00000000000;
+    \$next\output_handler_buffer  = 41'h00000000000;
     \$next\output_handler_buffer  = input_handler_buffer;
   end
   always @* begin
@@ -7792,20 +9643,19 @@ module vbits_to_cbits(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, latch_inp
     \$next\output_handler_buff_consum  = input_handler_buff_consum;
   end
   always @* begin
-    \$next\output_handler_end_in  = 1'h0;
-    \$next\output_handler_end_in  = input_handler_end_out;
+    \$next\new_buff_consum  = 6'h00;
+    \$next\new_buff_consum  = input_handler_new_buff_consum;
   end
   always @* begin
-    \$next\output_handler_new_buff_consum  = 6'h00;
-    \$next\output_handler_new_buff_consum  = input_handler_new_buff_consum;
+    \$next\output_handler_end_in  = 1'h0;
+    \$next\output_handler_end_in  = input_handler_end_out;
   end
   assign output_handler_busy_in = \$next\output_handler_busy_in ;
   assign end_out = \$next\end_out ;
   assign valid_out = \$next\valid_out ;
   assign data_out = \$next\data_out ;
-  assign output_handler_new_buff_consum_actv = \$next\output_handler_new_buff_consum_actv ;
-  assign output_handler_new_buff_consum = \$next\output_handler_new_buff_consum ;
   assign output_handler_end_in = \$next\output_handler_end_in ;
+  assign new_buff_consum = \$next\new_buff_consum ;
   assign output_handler_buff_consum = \$next\output_handler_buff_consum ;
   assign output_handler_buffer = \$next\output_handler_buffer ;
   assign input_handler_dec_buff = \$next\input_handler_dec_buff ;
@@ -7814,54 +9664,5 @@ module vbits_to_cbits(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, latch_inp
   assign input_handler_enc_in_ctr = \$next\input_handler_enc_in_ctr ;
   assign input_handler_enc_in = \$next\input_handler_enc_in ;
   assign latch_input = \$next\latch_input ;
-endmodule
-
-(* \nmigen.hierarchy  = "top.integration_3.vbits_to_cbits_reg" *)
-(* generator = "nMigen" *)
-module vbits_to_cbits_reg(data_left, valid_left, end_left, o_busy, data_right, valid_right, end_right, i_busy);
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:26" *)
-  reg [15:0] \$next\data_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:28" *)
-  reg \$next\end_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:19" *)
-  reg \$next\o_busy ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:27" *)
-  reg \$next\valid_right ;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:20" *)
-  input [15:0] data_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:26" *)
-  output [15:0] data_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:22" *)
-  input end_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:28" *)
-  output end_right;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:25" *)
-  input i_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:19" *)
-  output o_busy;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:21" *)
-  input valid_left;
-  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/vbits_to_cbits_reg.py:27" *)
-  output valid_right;
-  always @* begin
-    \$next\o_busy  = 1'h0;
-    \$next\o_busy  = i_busy;
-  end
-  always @* begin
-    \$next\data_right  = 16'h0000;
-    \$next\data_right  = data_left;
-  end
-  always @* begin
-    \$next\valid_right  = 1'h0;
-    \$next\valid_right  = valid_left;
-  end
-  always @* begin
-    \$next\end_right  = 1'h0;
-    \$next\end_right  = end_left;
-  end
-  assign end_right = \$next\end_right ;
-  assign valid_right = \$next\valid_right ;
-  assign data_right = \$next\data_right ;
-  assign o_busy = \$next\o_busy ;
 endmodule
 
