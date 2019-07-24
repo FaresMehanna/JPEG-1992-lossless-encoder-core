@@ -48,7 +48,7 @@ class ForceEnd(Elaboratable):
 
 		m = Module()
 
-		counter = Signal(24)
+		counter = Signal(25)
 
 		with m.FSM() as fsm:
 			
