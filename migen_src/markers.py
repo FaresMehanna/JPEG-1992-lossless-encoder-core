@@ -118,7 +118,7 @@ class Markers(Elaboratable):
             with m.State("FORCE_ENDING_MARKER"):
                 # handle output data
                 m.d.comb += [
-                    self.data_out.eq(0xFFEE),
+                    self.data_out.eq(0xFEFE),
                     self.valid_out.eq(1),
                 ]
                 # handle counter
