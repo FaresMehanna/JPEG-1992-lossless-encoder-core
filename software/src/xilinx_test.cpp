@@ -5,6 +5,7 @@
 #include "config.h"
 
 #include <time.h>
+#include <math.h>
 
 #include <algorithm>
 
@@ -72,10 +73,16 @@ int main(int argc, char** argv)
         c_axi.set_height(3072);
         log("width: " + to_string(c_axi.get_width()));
         log("height: " + to_string(c_axi.get_height()));
-        // log("Set allowed cycles.");
-        // c_axi.set_allowed_cycles(10^7);
-        // log("allowed_cycles: " + to_string(c_axi.get_allowed_cycles()));
         get_time();
+
+        log("Set allowed cycles.");
+        c_axi.set_allowed_cycles(pow(10, 7));
+        log("allowed_cycles: " + to_string(c_axi.get_allowed_cycles()));
+        get_time();
+
+        print_vector(c_axi.get_ssss(), "SSSS Data.");
+        get_time();
+
     } 
     else
     {
