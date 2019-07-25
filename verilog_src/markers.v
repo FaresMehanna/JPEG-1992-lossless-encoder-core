@@ -343,7 +343,7 @@ module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy,
       3'h3:
           \$next\data_out  = 16'hffff;
       3'h5:
-          \$next\data_out  = 16'hffee;
+          \$next\data_out  = 16'hfefe;
       3'h2:
           casez ({ force_end_in, \$84  })
             2'bz1:

@@ -67,11 +67,11 @@ module debug_module(rst, clk, \$signal , \$signal$1 , \$signal$2 , \$signal$3 , 
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
   output [31:0] \$signal$7 ;
   reg [31:0] \$signal$7  = 32'd0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/clk_domains.py:4" *)
   input clk;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:36" *)
   input [7:0] regs_en;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/clk_domains.py:4" *)
   input rst;
   assign \$9  = \$signal  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
   assign \$12  = \$signal$1  + (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:49" *) 1'h1;
@@ -198,7 +198,7 @@ endmodule
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_axi_ri__rready, s_axi_wi__awaddr, s_axi_wi__wvalid, s_axi_wi__wdata, s_axi_wi__wstrb, s_axi_wi__bready, rst, clk, height, width, allowed_cycles, wp_addr, wp_data, wp_en, rp_addr, s_axi_ro__arready, s_axi_ro__rdata, s_axi_ro__rresp, s_axi_ro__rvalid, s_axi_wo__awready, s_axi_wo__wready, s_axi_wo__bresp, s_axi_wo__bvalid, debug_en);
+module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_axi_ri__rready, s_axi_wi__awaddr, s_axi_wi__wvalid, s_axi_wi__wdata, s_axi_wi__wstrb, s_axi_wi__bready, axi_lite_rst, rst, axi_lite_clk, clk, height, width, allowed_cycles, wp_addr, wp_data, wp_en, rp_addr, s_axi_ro__arready, s_axi_ro__rdata, s_axi_ro__rresp, s_axi_ro__rvalid, s_axi_wo__awready, s_axi_wo__wready, s_axi_wo__bresp, s_axi_wo__bvalid, debug_en);
   wire \$100 ;
   wire \$102 ;
   wire \$104 ;
@@ -269,61 +269,61 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
   wire \$94 ;
   wire \$96 ;
   wire \$98 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   reg [31:0] \$next$signal ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   reg [31:0] \$next$signal$10 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   reg [31:0] \$next$signal$11 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   reg [31:0] \$next$signal$12 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   reg [31:0] \$next$signal$13 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   reg [31:0] \$next$signal$14 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   reg [31:0] \$next$signal$8 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   reg [31:0] \$next$signal$9 ;
-  (* src = "./migen_src/core_axi_lite.py:159" *)
+  (* src = "./migen_src/core_axi_lite.py:163" *)
   reg [31:0] \$next\addr_v ;
-  (* src = "./migen_src/core_axi_lite.py:83" *)
+  (* src = "./migen_src/core_axi_lite.py:84" *)
   reg [23:0] \$next\allowed_cycles ;
-  (* src = "./migen_src/core_axi_lite.py:161" *)
+  (* src = "./migen_src/core_axi_lite.py:165" *)
   reg \$next\arready_v ;
-  (* src = "./migen_src/core_axi_lite.py:164" *)
+  (* src = "./migen_src/core_axi_lite.py:168" *)
   reg \$next\awready_v ;
-  (* src = "./migen_src/core_axi_lite.py:171" *)
+  (* src = "./migen_src/core_axi_lite.py:175" *)
   reg [1:0] \$next\bresp_v ;
-  (* src = "./migen_src/core_axi_lite.py:166" *)
+  (* src = "./migen_src/core_axi_lite.py:170" *)
   reg \$next\bvalid_v ;
-  (* src = "./migen_src/core_axi_lite.py:185" *)
+  (* src = "./migen_src/core_axi_lite.py:189" *)
   reg \$next\debug_enable ;
-  (* src = "./migen_src/core_axi_lite.py:187" *)
+  (* src = "./migen_src/core_axi_lite.py:191" *)
   reg [2:0] \$next\debug_index ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:36" *)
   reg [7:0] \$next\debug_module_regs_en ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [3:0] \$next\fsm_state ;
-  (* src = "./migen_src/core_axi_lite.py:79" *)
+  (* src = "./migen_src/core_axi_lite.py:80" *)
   reg [15:0] \$next\height ;
-  (* src = "./migen_src/core_axi_lite.py:110" *)
+  (* src = "./migen_src/core_axi_lite.py:111" *)
   reg [31:0] \$next\height_width ;
-  (* src = "./migen_src/core_axi_lite.py:184" *)
-  reg \$next\hw_enable ;
   (* src = "./migen_src/core_axi_lite.py:188" *)
+  reg \$next\hw_enable ;
+  (* src = "./migen_src/core_axi_lite.py:192" *)
   reg \$next\hw_index ;
-  (* src = "./migen_src/core_axi_lite.py:168" *)
+  (* src = "./migen_src/core_axi_lite.py:172" *)
   reg [31:0] \$next\rdata_v ;
-  (* src = "./migen_src/core_axi_lite.py:99" *)
+  (* src = "./migen_src/core_axi_lite.py:100" *)
   reg [4:0] \$next\rp_addr ;
-  (* src = "./migen_src/core_axi_lite.py:204" *)
+  (* src = "./migen_src/core_axi_lite.py:208" *)
   reg [63:0] \$next\rp_data64 ;
-  (* src = "./migen_src/core_axi_lite.py:203" *)
+  (* src = "./migen_src/core_axi_lite.py:207" *)
   reg [63:0] \$next\rp_data64_in ;
-  (* src = "./migen_src/core_axi_lite.py:169" *)
+  (* src = "./migen_src/core_axi_lite.py:173" *)
   reg [1:0] \$next\rresp_v ;
-  (* src = "./migen_src/core_axi_lite.py:162" *)
+  (* src = "./migen_src/core_axi_lite.py:166" *)
   reg \$next\rvalid_v ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_ro__arready ;
@@ -341,66 +341,70 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
   reg \$next\s_axi_wo__bvalid ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_wo__wready ;
-  (* src = "./migen_src/core_axi_lite.py:183" *)
+  (* src = "./migen_src/core_axi_lite.py:187" *)
   reg \$next\ssss_enable ;
-  (* src = "./migen_src/core_axi_lite.py:186" *)
+  (* src = "./migen_src/core_axi_lite.py:190" *)
   reg [5:0] \$next\ssss_index ;
-  (* src = "./migen_src/core_axi_lite.py:174" *)
+  (* src = "./migen_src/core_axi_lite.py:178" *)
   reg [31:0] \$next\wdata_v ;
-  (* src = "./migen_src/core_axi_lite.py:80" *)
+  (* src = "./migen_src/core_axi_lite.py:81" *)
   reg [15:0] \$next\width ;
-  (* src = "./migen_src/core_axi_lite.py:94" *)
-  reg [4:0] \$next\wp_addr ;
   (* src = "./migen_src/core_axi_lite.py:95" *)
-  reg [32:0] \$next\wp_data ;
+  reg [4:0] \$next\wp_addr ;
   (* src = "./migen_src/core_axi_lite.py:96" *)
+  reg [32:0] \$next\wp_data ;
+  (* src = "./migen_src/core_axi_lite.py:97" *)
   reg \$next\wp_en ;
-  (* src = "./migen_src/core_axi_lite.py:165" *)
+  (* src = "./migen_src/core_axi_lite.py:169" *)
   reg \$next\wready_v ;
-  (* src = "./migen_src/core_axi_lite.py:175" *)
+  (* src = "./migen_src/core_axi_lite.py:179" *)
   reg [3:0] \$next\wstrb_v ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   wire [31:0] \$signal ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   wire [31:0] \$signal$10 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   wire [31:0] \$signal$11 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   wire [31:0] \$signal$12 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   wire [31:0] \$signal$13 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   wire [31:0] \$signal$14 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   wire [31:0] \$signal$8 ;
-  (* src = "./migen_src/core_axi_lite.py:151" *)
+  (* src = "./migen_src/core_axi_lite.py:152" *)
   wire [31:0] \$signal$9 ;
   (* init = 32'd0 *)
-  (* src = "./migen_src/core_axi_lite.py:159" *)
+  (* src = "./migen_src/core_axi_lite.py:163" *)
   reg [31:0] addr_v = 32'd0;
   (* init = 24'h000000 *)
-  (* src = "./migen_src/core_axi_lite.py:83" *)
+  (* src = "./migen_src/core_axi_lite.py:84" *)
   output [23:0] allowed_cycles;
   reg [23:0] allowed_cycles = 24'h000000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/core_axi_lite.py:161" *)
+  (* src = "./migen_src/core_axi_lite.py:165" *)
   reg arready_v = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/core_axi_lite.py:164" *)
+  (* src = "./migen_src/core_axi_lite.py:168" *)
   reg awready_v = 1'h0;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/clk_domains.py:3" *)
+  input axi_lite_clk;
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/clk_domains.py:3" *)
+  input axi_lite_rst;
   (* init = 2'h0 *)
-  (* src = "./migen_src/core_axi_lite.py:171" *)
+  (* src = "./migen_src/core_axi_lite.py:175" *)
   reg [1:0] bresp_v = 2'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/core_axi_lite.py:166" *)
+  (* src = "./migen_src/core_axi_lite.py:170" *)
   reg bvalid_v = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/clk_domains.py:4" *)
   input clk;
-  (* src = "./migen_src/core_axi_lite.py:107" *)
+  (* src = "./migen_src/core_axi_lite.py:108" *)
   input [7:0] debug_en;
-  (* src = "./migen_src/core_axi_lite.py:185" *)
+  (* src = "./migen_src/core_axi_lite.py:189" *)
   wire debug_enable;
-  (* src = "./migen_src/core_axi_lite.py:187" *)
+  (* src = "./migen_src/core_axi_lite.py:191" *)
   wire [2:0] debug_index;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/debug_module.py:35" *)
   wire [31:0] \debug_module_$signal ;
@@ -423,35 +427,35 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
   (* init = 4'h0 *)
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [3:0] fsm_state = 4'h0;
-  (* src = "./migen_src/core_axi_lite.py:79" *)
+  (* src = "./migen_src/core_axi_lite.py:80" *)
   output [15:0] height;
   (* init = 32'd0 *)
-  (* src = "./migen_src/core_axi_lite.py:110" *)
+  (* src = "./migen_src/core_axi_lite.py:111" *)
   reg [31:0] height_width = 32'd0;
-  (* src = "./migen_src/core_axi_lite.py:184" *)
-  wire hw_enable;
   (* src = "./migen_src/core_axi_lite.py:188" *)
+  wire hw_enable;
+  (* src = "./migen_src/core_axi_lite.py:192" *)
   wire hw_index;
   (* init = 32'd0 *)
-  (* src = "./migen_src/core_axi_lite.py:168" *)
+  (* src = "./migen_src/core_axi_lite.py:172" *)
   reg [31:0] rdata_v = 32'd0;
   (* init = 5'h00 *)
-  (* src = "./migen_src/core_axi_lite.py:99" *)
+  (* src = "./migen_src/core_axi_lite.py:100" *)
   output [4:0] rp_addr;
   reg [4:0] rp_addr = 5'h00;
-  (* src = "./migen_src/core_axi_lite.py:100" *)
+  (* src = "./migen_src/core_axi_lite.py:101" *)
   input [32:0] rp_data;
-  (* src = "./migen_src/core_axi_lite.py:204" *)
+  (* src = "./migen_src/core_axi_lite.py:208" *)
   wire [63:0] rp_data64;
-  (* src = "./migen_src/core_axi_lite.py:203" *)
+  (* src = "./migen_src/core_axi_lite.py:207" *)
   wire [63:0] rp_data64_in;
   (* init = 2'h0 *)
-  (* src = "./migen_src/core_axi_lite.py:169" *)
+  (* src = "./migen_src/core_axi_lite.py:173" *)
   reg [1:0] rresp_v = 2'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/clk_domains.py:4" *)
   input rst;
   (* init = 1'h0 *)
-  (* src = "./migen_src/core_axi_lite.py:162" *)
+  (* src = "./migen_src/core_axi_lite.py:166" *)
   reg rvalid_v = 1'h0;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
   input [31:0] s_axi_ri__araddr;
@@ -487,129 +491,129 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
   output s_axi_wo__bvalid;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
   output s_axi_wo__wready;
-  (* src = "./migen_src/core_axi_lite.py:183" *)
+  (* src = "./migen_src/core_axi_lite.py:187" *)
   wire ssss_enable;
-  (* src = "./migen_src/core_axi_lite.py:186" *)
+  (* src = "./migen_src/core_axi_lite.py:190" *)
   wire [5:0] ssss_index;
-  (* src = "./migen_src/core_axi_lite.py:174" *)
+  (* src = "./migen_src/core_axi_lite.py:178" *)
   wire [31:0] wdata_v;
-  (* src = "./migen_src/core_axi_lite.py:80" *)
+  (* src = "./migen_src/core_axi_lite.py:81" *)
   output [15:0] width;
   (* init = 5'h00 *)
-  (* src = "./migen_src/core_axi_lite.py:94" *)
+  (* src = "./migen_src/core_axi_lite.py:95" *)
   output [4:0] wp_addr;
   reg [4:0] wp_addr = 5'h00;
   (* init = 33'h000000000 *)
-  (* src = "./migen_src/core_axi_lite.py:95" *)
+  (* src = "./migen_src/core_axi_lite.py:96" *)
   output [32:0] wp_data;
   reg [32:0] wp_data = 33'h000000000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/core_axi_lite.py:96" *)
+  (* src = "./migen_src/core_axi_lite.py:97" *)
   output wp_en;
   reg wp_en = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/core_axi_lite.py:165" *)
+  (* src = "./migen_src/core_axi_lite.py:169" *)
   reg wready_v = 1'h0;
-  (* src = "./migen_src/core_axi_lite.py:175" *)
+  (* src = "./migen_src/core_axi_lite.py:179" *)
   wire [3:0] wstrb_v;
-  assign \$100  = ssss_index < (* src = "./migen_src/core_axi_lite.py:369" *) 5'h1a;
-  assign \$102  = \$98  & (* src = "./migen_src/core_axi_lite.py:369" *) \$100 ;
-  assign \$104  = hw_enable == (* src = "./migen_src/core_axi_lite.py:372" *) 1'h1;
-  assign \$106  = debug_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
-  assign \$108  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:369" *) 1'h1;
-  assign \$110  = ssss_index < (* src = "./migen_src/core_axi_lite.py:369" *) 5'h1a;
-  assign \$112  = \$108  & (* src = "./migen_src/core_axi_lite.py:369" *) \$110 ;
-  assign \$114  = hw_enable == (* src = "./migen_src/core_axi_lite.py:372" *) 1'h1;
-  assign \$116  = debug_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
-  assign \$118  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:369" *) 1'h1;
-  assign \$120  = ssss_index < (* src = "./migen_src/core_axi_lite.py:369" *) 5'h1a;
-  assign \$122  = \$118  & (* src = "./migen_src/core_axi_lite.py:369" *) \$120 ;
-  assign \$124  = hw_enable == (* src = "./migen_src/core_axi_lite.py:372" *) 1'h1;
-  assign \$126  = debug_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
-  assign \$128  = hw_index == (* src = "./migen_src/core_axi_lite.py:226" *) 1'h0;
-  assign \$130  = hw_index == (* src = "./migen_src/core_axi_lite.py:226" *) 1'h0;
-  assign \$132  = hw_index == (* src = "./migen_src/core_axi_lite.py:226" *) 1'h0;
-  assign \$134  = hw_index == (* src = "./migen_src/core_axi_lite.py:226" *) 1'h0;
-  assign \$136  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:369" *) 1'h1;
-  assign \$138  = ssss_index < (* src = "./migen_src/core_axi_lite.py:369" *) 5'h1a;
-  assign \$140  = \$136  & (* src = "./migen_src/core_axi_lite.py:369" *) \$138 ;
-  assign \$142  = hw_enable == (* src = "./migen_src/core_axi_lite.py:372" *) 1'h1;
-  assign \$144  = debug_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
-  assign \$146  = hw_index == (* src = "./migen_src/core_axi_lite.py:226" *) 1'h0;
-  assign \$148  = hw_index == (* src = "./migen_src/core_axi_lite.py:226" *) 1'h0;
-  assign \$150  = hw_index == (* src = "./migen_src/core_axi_lite.py:226" *) 1'h0;
-  assign \$15  = + (* src = "./migen_src/core_axi_lite.py:100" *) rp_data;
-  assign \$17  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:369" *) 1'h1;
-  assign \$19  = ssss_index < (* src = "./migen_src/core_axi_lite.py:369" *) 5'h1a;
-  assign \$21  = \$17  & (* src = "./migen_src/core_axi_lite.py:369" *) \$19 ;
-  assign \$23  = hw_enable == (* src = "./migen_src/core_axi_lite.py:372" *) 1'h1;
-  assign \$25  = debug_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
-  assign \$27  = ssss_index[0] == (* src = "./migen_src/core_axi_lite.py:248" *) 1'h0;
+  assign \$100  = ssss_index < (* src = "./migen_src/core_axi_lite.py:373" *) 5'h1a;
+  assign \$102  = \$98  & (* src = "./migen_src/core_axi_lite.py:373" *) \$100 ;
+  assign \$104  = hw_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$106  = debug_enable == (* src = "./migen_src/core_axi_lite.py:380" *) 1'h1;
+  assign \$108  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:373" *) 1'h1;
+  assign \$110  = ssss_index < (* src = "./migen_src/core_axi_lite.py:373" *) 5'h1a;
+  assign \$112  = \$108  & (* src = "./migen_src/core_axi_lite.py:373" *) \$110 ;
+  assign \$114  = hw_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$116  = debug_enable == (* src = "./migen_src/core_axi_lite.py:380" *) 1'h1;
+  assign \$118  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:373" *) 1'h1;
+  assign \$120  = ssss_index < (* src = "./migen_src/core_axi_lite.py:373" *) 5'h1a;
+  assign \$122  = \$118  & (* src = "./migen_src/core_axi_lite.py:373" *) \$120 ;
+  assign \$124  = hw_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$126  = debug_enable == (* src = "./migen_src/core_axi_lite.py:380" *) 1'h1;
+  assign \$128  = hw_index == (* src = "./migen_src/core_axi_lite.py:230" *) 1'h0;
+  assign \$130  = hw_index == (* src = "./migen_src/core_axi_lite.py:230" *) 1'h0;
+  assign \$132  = hw_index == (* src = "./migen_src/core_axi_lite.py:230" *) 1'h0;
+  assign \$134  = hw_index == (* src = "./migen_src/core_axi_lite.py:230" *) 1'h0;
+  assign \$136  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:373" *) 1'h1;
+  assign \$138  = ssss_index < (* src = "./migen_src/core_axi_lite.py:373" *) 5'h1a;
+  assign \$140  = \$136  & (* src = "./migen_src/core_axi_lite.py:373" *) \$138 ;
+  assign \$142  = hw_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$144  = debug_enable == (* src = "./migen_src/core_axi_lite.py:380" *) 1'h1;
+  assign \$146  = hw_index == (* src = "./migen_src/core_axi_lite.py:230" *) 1'h0;
+  assign \$148  = hw_index == (* src = "./migen_src/core_axi_lite.py:230" *) 1'h0;
+  assign \$150  = hw_index == (* src = "./migen_src/core_axi_lite.py:230" *) 1'h0;
+  assign \$15  = + (* src = "./migen_src/core_axi_lite.py:101" *) rp_data;
+  assign \$17  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:373" *) 1'h1;
+  assign \$19  = ssss_index < (* src = "./migen_src/core_axi_lite.py:373" *) 5'h1a;
+  assign \$21  = \$17  & (* src = "./migen_src/core_axi_lite.py:373" *) \$19 ;
+  assign \$23  = hw_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$25  = debug_enable == (* src = "./migen_src/core_axi_lite.py:380" *) 1'h1;
+  assign \$27  = ssss_index[0] == (* src = "./migen_src/core_axi_lite.py:252" *) 1'h0;
   assign \$29  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) "";
   assign \$31  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) "";
   assign \$33  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) "";
   assign \$35  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) "";
-  assign \$37  = s_axi_ri__araddr >>> (* src = "./migen_src/core_axi_lite.py:306" *) 2'h2;
-  assign \$39  = s_axi_wi__awaddr >>> (* src = "./migen_src/core_axi_lite.py:345" *) 2'h2;
-  assign \$42  = s_axi_ri__araddr >>> (* src = "./migen_src/core_axi_lite.py:307" *) 2'h3;
-  assign \$45  = s_axi_wi__awaddr >>> (* src = "./migen_src/core_axi_lite.py:346" *) 2'h3;
-  assign \$47  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:324" *) 1'h1;
-  assign \$49  = ssss_index < (* src = "./migen_src/core_axi_lite.py:324" *) 5'h1a;
-  assign \$51  = \$47  & (* src = "./migen_src/core_axi_lite.py:324" *) \$49 ;
-  assign \$53  = hw_enable == (* src = "./migen_src/core_axi_lite.py:327" *) 1'h1;
-  assign \$55  = debug_enable == (* src = "./migen_src/core_axi_lite.py:331" *) 1'h1;
-  assign \$57  = ssss_index[0] == (* src = "./migen_src/core_axi_lite.py:239" *) 1'h0;
-  assign \$59  = hw_index == (* src = "./migen_src/core_axi_lite.py:210" *) 1'h0;
-  assign \$61  = + (* src = "./migen_src/core_axi_lite.py:83" *) allowed_cycles;
-  assign \$63  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:324" *) 1'h1;
-  assign \$65  = ssss_index < (* src = "./migen_src/core_axi_lite.py:324" *) 5'h1a;
-  assign \$67  = \$63  & (* src = "./migen_src/core_axi_lite.py:324" *) \$65 ;
-  assign \$69  = hw_enable == (* src = "./migen_src/core_axi_lite.py:327" *) 1'h1;
-  assign \$71  = debug_enable == (* src = "./migen_src/core_axi_lite.py:331" *) 1'h1;
-  assign \$73  = hw_index == (* src = "./migen_src/core_axi_lite.py:210" *) 1'h0;
-  assign \$75  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:369" *) 1'h1;
-  assign \$77  = ssss_index < (* src = "./migen_src/core_axi_lite.py:369" *) 5'h1a;
-  assign \$79  = \$75  & (* src = "./migen_src/core_axi_lite.py:369" *) \$77 ;
-  assign \$81  = hw_enable == (* src = "./migen_src/core_axi_lite.py:372" *) 1'h1;
-  assign \$83  = debug_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
-  assign \$86  = ssss_index >>> (* src = "./migen_src/core_axi_lite.py:266" *) 1'h1;
-  assign \$88  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:369" *) 1'h1;
-  assign \$90  = ssss_index < (* src = "./migen_src/core_axi_lite.py:369" *) 5'h1a;
-  assign \$92  = \$88  & (* src = "./migen_src/core_axi_lite.py:369" *) \$90 ;
-  assign \$94  = hw_enable == (* src = "./migen_src/core_axi_lite.py:372" *) 1'h1;
-  assign \$96  = debug_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
-  assign \$98  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:369" *) 1'h1;
-  always @(posedge clk)
+  assign \$37  = s_axi_ri__araddr >>> (* src = "./migen_src/core_axi_lite.py:310" *) 2'h2;
+  assign \$39  = s_axi_wi__awaddr >>> (* src = "./migen_src/core_axi_lite.py:349" *) 2'h2;
+  assign \$42  = s_axi_ri__araddr >>> (* src = "./migen_src/core_axi_lite.py:311" *) 2'h3;
+  assign \$45  = s_axi_wi__awaddr >>> (* src = "./migen_src/core_axi_lite.py:350" *) 2'h3;
+  assign \$47  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:328" *) 1'h1;
+  assign \$49  = ssss_index < (* src = "./migen_src/core_axi_lite.py:328" *) 5'h1a;
+  assign \$51  = \$47  & (* src = "./migen_src/core_axi_lite.py:328" *) \$49 ;
+  assign \$53  = hw_enable == (* src = "./migen_src/core_axi_lite.py:331" *) 1'h1;
+  assign \$55  = debug_enable == (* src = "./migen_src/core_axi_lite.py:335" *) 1'h1;
+  assign \$57  = ssss_index[0] == (* src = "./migen_src/core_axi_lite.py:243" *) 1'h0;
+  assign \$59  = hw_index == (* src = "./migen_src/core_axi_lite.py:214" *) 1'h0;
+  assign \$61  = + (* src = "./migen_src/core_axi_lite.py:84" *) allowed_cycles;
+  assign \$63  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:328" *) 1'h1;
+  assign \$65  = ssss_index < (* src = "./migen_src/core_axi_lite.py:328" *) 5'h1a;
+  assign \$67  = \$63  & (* src = "./migen_src/core_axi_lite.py:328" *) \$65 ;
+  assign \$69  = hw_enable == (* src = "./migen_src/core_axi_lite.py:331" *) 1'h1;
+  assign \$71  = debug_enable == (* src = "./migen_src/core_axi_lite.py:335" *) 1'h1;
+  assign \$73  = hw_index == (* src = "./migen_src/core_axi_lite.py:214" *) 1'h0;
+  assign \$75  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:373" *) 1'h1;
+  assign \$77  = ssss_index < (* src = "./migen_src/core_axi_lite.py:373" *) 5'h1a;
+  assign \$79  = \$75  & (* src = "./migen_src/core_axi_lite.py:373" *) \$77 ;
+  assign \$81  = hw_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$83  = debug_enable == (* src = "./migen_src/core_axi_lite.py:380" *) 1'h1;
+  assign \$86  = ssss_index >>> (* src = "./migen_src/core_axi_lite.py:270" *) 1'h1;
+  assign \$88  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:373" *) 1'h1;
+  assign \$90  = ssss_index < (* src = "./migen_src/core_axi_lite.py:373" *) 5'h1a;
+  assign \$92  = \$88  & (* src = "./migen_src/core_axi_lite.py:373" *) \$90 ;
+  assign \$94  = hw_enable == (* src = "./migen_src/core_axi_lite.py:376" *) 1'h1;
+  assign \$96  = debug_enable == (* src = "./migen_src/core_axi_lite.py:380" *) 1'h1;
+  assign \$98  = ssss_enable == (* src = "./migen_src/core_axi_lite.py:373" *) 1'h1;
+  always @(posedge axi_lite_clk)
       allowed_cycles <= \$next\allowed_cycles ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       rdata_v <= \$next\rdata_v ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       arready_v <= \$next\arready_v ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       rp_addr <= \$next\rp_addr ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       addr_v <= \$next\addr_v ;
   always @(posedge clk)
       fsm_state <= \$next\fsm_state ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       bvalid_v <= \$next\bvalid_v ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       rvalid_v <= \$next\rvalid_v ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       height_width <= \$next\height_width ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       bresp_v <= \$next\bresp_v ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       wp_en <= \$next\wp_en ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       wp_data <= \$next\wp_data ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       wp_addr <= \$next\wp_addr ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       wready_v <= \$next\wready_v ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       awready_v <= \$next\awready_v ;
-  always @(posedge clk)
+  always @(posedge axi_lite_clk)
       rresp_v <= \$next\rresp_v ;
   debug_module debug_module (
     .\$signal (\debug_module_$signal ),
@@ -751,7 +755,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
                 \$next\rvalid_v  = 1'h1;
           endcase
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\rvalid_v  = 1'h0;
     endcase
@@ -771,7 +775,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
                 \$next\bvalid_v  = 1'h1;
           endcase
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\bvalid_v  = 1'h0;
     endcase
@@ -827,7 +831,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
       4'h2:
           \$next\addr_v  = \$39 ;
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\addr_v  = 32'd0;
     endcase
@@ -840,7 +844,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
       4'h2:
           \$next\rp_addr  = \$44 [4:0];
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\rp_addr  = 5'h00;
     endcase
@@ -853,7 +857,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
       4'h3:
           \$next\arready_v  = 1'h0;
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\arready_v  = 1'h0;
     endcase
@@ -898,7 +902,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
                 endcase
           endcase
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\rdata_v  = 32'd0;
     endcase
@@ -923,7 +927,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
                 \$next\rresp_v  = 2'h3;
           endcase
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\rresp_v  = 2'h0;
     endcase
@@ -936,7 +940,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
       4'h6:
           \$next\awready_v  = 1'h0;
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\awready_v  = 1'h0;
     endcase
@@ -949,7 +953,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
       4'h9:
           \$next\wready_v  = 1'h0;
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\wready_v  = 1'h0;
     endcase
@@ -966,7 +970,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
                 endcase
           endcase
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\wp_addr  = 5'h00;
     endcase
@@ -987,7 +991,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
                 endcase
           endcase
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\wp_data  = 33'h000000000;
     endcase
@@ -1006,7 +1010,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
       4'h9:
           \$next\wp_en  = 1'h0;
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\wp_en  = 1'h0;
     endcase
@@ -1029,7 +1033,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
                 endcase
           endcase
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\bresp_v  = 2'h0;
     endcase
@@ -1077,7 +1081,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
                 endcase
           endcase
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\height_width  = 32'd0;
     endcase
@@ -1124,7 +1128,7 @@ module top(rp_data, s_axi_ri__arvalid, s_axi_wi__awvalid, s_axi_ri__araddr, s_ax
                 endcase
           endcase
     endcase
-    casez (rst)
+    casez (axi_lite_rst)
       1'h1:
           \$next\allowed_cycles  = 24'h000000;
     endcase

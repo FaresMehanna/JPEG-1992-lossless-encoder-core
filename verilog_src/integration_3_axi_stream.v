@@ -3826,10 +3826,10 @@ endmodule
 (* generator = "nMigen" *)
 module force_end(allowed_cycles, rst, clk, fend, valid_in);
   wire \$1 ;
-  wire [24:0] \$3 ;
-  wire [24:0] \$4 ;
+  wire [25:0] \$3 ;
+  wire [25:0] \$4 ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:51" *)
-  reg [23:0] \$next\counter ;
+  reg [24:0] \$next\counter ;
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:41" *)
   reg \$next\fend ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
@@ -3838,9 +3838,9 @@ module force_end(allowed_cycles, rst, clk, fend, valid_in);
   input [23:0] allowed_cycles;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:97" *)
   input clk;
-  (* init = 24'h000000 *)
+  (* init = 25'h0000000 *)
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:51" *)
-  reg [23:0] counter = 24'h000000;
+  reg [24:0] counter = 25'h0000000;
   (* init = 1'h0 *)
   (* src = "/Users/faresmehanna/Projects/lj92/JPEG-1992-lossless-encoder-core/migen_src/force_end.py:41" *)
   output fend;
@@ -3883,11 +3883,11 @@ module force_end(allowed_cycles, rst, clk, fend, valid_in);
     \$next\counter  = counter;
     casez (fsm_state)
       2'h1:
-          \$next\counter  = \$3 [23:0];
+          \$next\counter  = \$3 [24:0];
     endcase
     casez (rst)
       1'h1:
-          \$next\counter  = 24'h000000;
+          \$next\counter  = 25'h0000000;
     endcase
   end
   always @* begin
