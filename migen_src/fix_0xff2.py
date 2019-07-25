@@ -94,6 +94,10 @@ def normal_logic(valid_in, data_in, data_in_ctr, data_out, end_in, end_out, buff
 							o_busy.eq(1),
 						]
 						m.next = "CLEAN"
+						
+		# end_out here is the output or the register,
+		# if the output then we are done, if the register
+		# then "PRE_END" will end it.
 		with m.If(end_in):
 			with m.If((buffer_count == 0) & (data_in_ctr == 2)):
 				m.d.sync += end_out.eq(1)
