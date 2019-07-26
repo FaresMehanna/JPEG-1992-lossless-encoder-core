@@ -185,10 +185,7 @@ void re_order_lj92(struct mem_data lj92)
 
 void zero_dest(volatile void* v_dest_addr)
 {
-    volatile uint32_t* v_dest_addr32 = (uint32_t*) v_dest_addr;
-    for(int i=0; i<0x800000; i++) {
-        v_dest_addr32[i] = 0;
-    }
+    memset(v_dest_addr, 0, 0x2000000);
 }
 
 uint32_t divisible_4(uint32_t num)
@@ -227,7 +224,7 @@ void check_last_marker(volatile void* v_dest_addr, uint32_t size)
     uint32_t offset = size + 16;
     for(int i=0; i<128; i++) {
         if(*((uint32_t*)(((uint8_t*)v_dest_addr) + offset)) == 0xFFFFFFFF ||
-           *((uint32_t*)(((uint8_t*)v_dest_addr) + offset)) == 0xFFFEFFFE ) {
+           *((uint32_t*)(((uint8_t*)v_dest_addr) + offset)) == __builtin_bswap32(0xFFFEFFFE)) {
             break;
         }
         offset++;
@@ -236,7 +233,7 @@ void check_last_marker(volatile void* v_dest_addr, uint32_t size)
     bool found = true;
     for(int i=0; i<4; i++) {
         if(start_addr[i] != 0xFFFFFFFF &&
-           start_addr[i] != 0xFFFEFFFE ) {
+           start_addr[i] != __builtin_bswap32(0xFFFEFFFE)) {
             log("No marker found.");
             found = false;
             break;
