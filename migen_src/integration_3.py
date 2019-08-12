@@ -37,8 +37,9 @@ class Integration3(Elaboratable):
 		self.ios = \
 			[self.valid_in, self.valid_out, self.end_out] + \
 			[self.data_out, self.busy_in, self.nready] + \
-			[pixel_in for pixel_in in self.pixels_in]
-			
+			[pixel_in for pixel_in in self.pixels_in] + \
+			[self.integration_2.integration_1.fend_out]
+
 	def elaborate(self, platform):
 
 		m = Module()

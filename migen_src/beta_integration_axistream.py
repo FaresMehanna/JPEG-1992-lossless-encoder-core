@@ -47,8 +47,8 @@ class BetaIntegrationAxiStream(Elaboratable):
 
 		# slave interface
 		m.d.comb += [
-			top.pixel_in1.eq(self.s_tdata[0:12]),
-			top.pixel_in2.eq(self.s_tdata[12:24]),
+			top.pixel_in1.eq(self.s_tdata[20:32]),
+			top.pixel_in2.eq(self.s_tdata[8:20]),
 			self.s_tready.eq(top.nready==0),
 			s_end.eq(self.s_tlast),
 			top.valid_in.eq(self.s_tvalid),

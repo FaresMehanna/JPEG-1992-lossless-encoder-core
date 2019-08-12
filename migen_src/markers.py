@@ -70,11 +70,25 @@ class Markers(Elaboratable):
         late_busy_i = Signal(1)
         late_valid_i = Signal(1)
         late_end_i = Signal(1)
+        late_data_i = Signal(16)
+
+        late2_busy_i = Signal(1)
+        late2_valid_i = Signal(1)
+        late2_end_i = Signal(1)
+
         m.d.sync += [
             late_busy_i.eq(self.i_busy),
             late_valid_i.eq(self.valid_in),
             late_end_i.eq(self.end_in),
+            late_data_i.eq(self.data_in),
         ]
+
+        m.d.sync += [
+            late2_busy_i.eq(late_busy_i),
+            late2_valid_i.eq(late2_valid_i),
+            late2_end_i.eq(late2_end_i),
+        ]
+
 
         with m.FSM() as fsm:
 
@@ -113,7 +127,7 @@ class Markers(Elaboratable):
                     # handle end signals
                     with m.If(counter==1):
                         m.d.comb += self.end_out.eq(1)
-                        m.next = "DONE"
+                        m.next = "DONE_NORMAL"
 
             with m.State("FORCE_ENDING_MARKER"):
                 # handle output data
@@ -127,27 +141,34 @@ class Markers(Elaboratable):
                     # handle end signals
                     with m.If(counter==1):
                         m.d.comb += self.end_out.eq(1)
-                        m.next = "DONE"
+                        m.next = "DONE_FORCE"
 
             with m.State("FRAME_HANDLING"):
                 #end detection
-                with m.If((late_busy_i==0)&(late_valid_i==1)&(late_end_i==1)):
+                with m.If((late2_busy_i==0)&(late2_valid_i==1)&(late2_end_i==1)):
                     m.next = "ENDING_MARKER"
                 with m.Elif(self.force_end_in):
                     m.next = "FORCE_ENDING_MARKER"
                 with m.Else():
                     m.d.comb += [
-                        self.data_out.eq(self.data_in),
-                        self.valid_out.eq(self.valid_in),
-                        self.o_busy.eq(self.i_busy),
+                        self.data_out.eq(late_data_i),
+                        self.valid_out.eq(late_valid_i),
+                        self.o_busy.eq(late_busy_i),
                     ]
 
-            with m.State("DONE"):
+            with m.State("DONE_NORMAL"):
                 m.d.comb += [
                     self.data_out.eq(0xFFFF),
                     self.valid_out.eq(1),
                     self.end_out.eq(1),
                 ]
+
+            with m.State("DONE_FORCE"):
+                m.d.comb += [
+                    self.data_out.eq(0xFFFE),
+                    self.valid_out.eq(1),
+                    self.end_out.eq(1),
+                ]                
 
         return m
 

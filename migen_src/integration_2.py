@@ -40,7 +40,8 @@ class Integration2(Elaboratable):
 			[pixel_in for pixel_in in self.pixels_in] + \
 			[self.enc_out, self.enc_out_ctr] + \
 			[self.latch_output, self.nready] + \
-			[self.valid_in, self.valid_out]
+			[self.valid_in, self.valid_out] + \
+			[self.integration_1.fend_out]
 			
 	def elaborate(self, platform):
 

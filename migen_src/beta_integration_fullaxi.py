@@ -69,15 +69,22 @@ class BetaIntegrationFullAxi(Elaboratable):
 		read_end = Signal(1)
 		write_end = Signal(1)
 
+		m.d.comb += [
+			read_end.eq(0),
+			write_end.eq(0),
+		]
+
 		with m.If((address_gen_read.address_valid==1)&(axihp_reader.addr_enable==1)):
-			m.d.sync += counter_read.eq(counter_read + 1)
-			with m.If(counter_read==196609):
-				m.d.sync += read_end.eq(1)
+			with m.If(counter_read==196608):
+				m.d.comb += read_end.eq(1)
+			with m.Else():
+				m.d.sync += counter_read.eq(counter_read + 1)
 
 		with m.If((address_gen_write.address_valid==1)&(axihp_writer.addr_enable==1)):
-			m.d.sync += counter_write.eq(counter_write + 1)
 			with m.If(counter_write==131072):
-				m.d.sync += write_end.eq(1)
+				m.d.comb += write_end.eq(1)
+			with m.Else():
+				m.d.sync += counter_write.eq(counter_write + 1)
 
 		# dma_axi_lite
 		m.d.comb += [

@@ -20,7 +20,7 @@ class BetaIntegration(Elaboratable):
 			"converter_fifo_depth": 512, #512 x 36 = RAM18
 			"vbits_to_cbits_buffer_size": 77,
 			"support_axi_lite": True,
-			"axi_lite_debug": True,
+			"axi_lite_debug": False,
 			"predictor_function": 1,
 			"num_of_components": 4,
 		}
@@ -102,6 +102,7 @@ class BetaIntegration(Elaboratable):
 		m.d.comb += [
 			markers.data_in.eq(fix_0xff2.data_out),
 			markers.valid_in.eq(fix_0xff2.valid_out),
+			markers.force_end_in.eq(integration_3.integration_2.integration_1.fend_out),
 			markers.end_in.eq(fix_0xff2.end_out),
 			markers.i_busy.eq(self.busy_in),
 		]
