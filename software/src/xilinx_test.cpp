@@ -11,7 +11,8 @@
 
 using namespace std;
 
-void re_order_set_raw12(volatile void* v_src_addr, struct mem_data raw12);
+void re_order_set_raw12_64bits(volatile void* v_src_addr, struct mem_data raw12);
+void re_order_set_raw12_32bits(volatile void* v_src_addr, struct mem_data raw12);
 void re_order_lj92(struct mem_data lj92);
 void zero_dest(volatile void* v_dest_addr);
 uint32_t divisible_2(uint32_t num);
@@ -21,11 +22,17 @@ void check_last_marker(volatile void* v_dest_addr, uint32_t size);
 void validate(volatile void* v_dest_addr, struct mem_data lj92);
 void print_vector(vector<string> vec, string title);
 
-clock_t t = clock();
+// timer
+timespec t;
 void get_time();
+void initiate_timer();
+double diff(timespec start, timespec end);
 
 int main(int argc, char** argv)
 {    
+    // initializing timer
+    initiate_timer();
+
     log("asserting argc&argv.");
     assert_term(3 == argc, "You must provide source image and compressed image as parameters.");
     
@@ -49,7 +56,10 @@ int main(int argc, char** argv)
     get_time();
 
     log("Re-order and set Raw12 into MMaped region.");
-    re_order_set_raw12(v_src_addr, raw12);
+    if (INPUT_LENGTH == 64)
+        re_order_set_raw12_64bits(v_src_addr, raw12);
+    else
+        re_order_set_raw12_32bits(v_src_addr, raw12);
     get_time();
 
     log("Remove Raw12 img form memory.");
@@ -76,7 +86,7 @@ int main(int argc, char** argv)
         get_time();
 
         log("Set allowed cycles.");
-        c_axi.set_allowed_cycles(pow(10, 7));
+        c_axi.set_allowed_cycles(0xFFFFFF);
         log("allowed_cycles: " + to_string(c_axi.get_allowed_cycles()));
         get_time();
 
@@ -154,7 +164,30 @@ int main(int argc, char** argv)
     }
 }
 
-void re_order_set_raw12(volatile void* v_src_addr, struct mem_data raw12)
+void re_order_set_raw12_64bits(volatile void* v_src_addr, struct mem_data raw12)
+{
+    int counter8 = 0, counter64 = 0;
+    
+    volatile uint8_t* base = (uint8_t*) raw12.pointer;
+    volatile uint64_t* base64 = (uint64_t*) v_src_addr;
+
+    for(int i=0; i<(4096*3072); i+=4)
+    {
+        uint64_t p1 = base[counter8]<<4 | (base[counter8+1] & 0xF0)>>4;
+        uint64_t p2 = (base[counter8+1] & 0x0F)<<8 | base[counter8+2];
+        counter8 += 3;
+
+        uint64_t p3 = base[counter8]<<4 | (base[counter8+1] & 0xF0)>>4;
+        uint64_t p4 = (base[counter8+1] & 0x0F)<<8 | base[counter8+2];
+        counter8 += 3;
+
+        uint64_t pixs4 = (p1 << 52) | (p2 << 40) | (p3 << 28) | (p4 << 16);
+
+        base64[counter64++] = pixs4;
+    }
+}
+
+void re_order_set_raw12_32bits(volatile void* v_src_addr, struct mem_data raw12)
 {
     int counter8 = 0, counter32 = 0;
     
@@ -163,12 +196,11 @@ void re_order_set_raw12(volatile void* v_src_addr, struct mem_data raw12)
 
     for(int i=0; i<(4096*3072); i+=2)
     {
-        int p1 = base[counter8]<<4 | (base[counter8+1] & 0xF0)>>4;
-        int p2 = (base[counter8+1] & 0x0F)<<8 | base[counter8+2];
+        uint32_t p1 = base[counter8]<<4 | (base[counter8+1] & 0xF0)>>4;
+        uint32_t p2 = (base[counter8+1] & 0x0F)<<8 | base[counter8+2];
         counter8 += 3;
 
-        uint32_t pixs2 = p2;
-        pixs2 = (pixs2 << 12) | p1;
+        uint32_t pixs2 = (p1 << 20) | (p2 << 8);
 
         base32[counter32++] = pixs2;
     }
@@ -185,7 +217,10 @@ void re_order_lj92(struct mem_data lj92)
 
 void zero_dest(volatile void* v_dest_addr)
 {
-    memset(v_dest_addr, 0, 0x2000000);
+    volatile uint32_t* v_dest_addr32 = (uint32_t*) v_dest_addr;
+    for(int i=0; i<0x800000; i++) { 
+        v_dest_addr32[i] = 0;   
+    }
 }
 
 uint32_t divisible_4(uint32_t num)
@@ -240,7 +275,10 @@ void check_last_marker(volatile void* v_dest_addr, uint32_t size)
         }
     }
     if(found){
-        log("marker found - offset is " + to_string((offset-size-16)) + ".");
+        if(start_addr[0] == 0xFFFFFFFF)
+            log("normal marker found - offset is " + to_string((offset-size-16)) + ".");
+        if(start_addr[0] == __builtin_bswap32(0xFFFEFFFE))
+            log("force marker found - offset is " + to_string((offset-size-16)) + ".");
     }
 }
 
@@ -295,8 +333,28 @@ void print_vector(vector<string> vec, string title)
     }
 }
 
+void initiate_timer()
+{
+    clock_gettime(CLOCK_MONOTONIC, &t);
+}
+
 void get_time()
 {
-    printf("Operation toke %lums.\n\n", ((clock()-t)/(CLOCKS_PER_SEC/1000)));
-    t = clock();
+    timespec t_now;
+    clock_gettime(CLOCK_MONOTONIC, &t_now);
+    printf("Operation toke %.3lfms.\n\n", diff(t, t_now));
+    clock_gettime(CLOCK_MONOTONIC, &t);
+}
+
+double diff(timespec start, timespec end)
+{
+    double temp = 0;
+    if ((end.tv_nsec-start.tv_nsec)<0) {
+        temp += (end.tv_sec-start.tv_sec-1)*1000;
+        temp += (1000000000+end.tv_nsec-start.tv_nsec)/1000000.0;
+    } else {
+        temp += (end.tv_sec-start.tv_sec)*1000;
+        temp += (end.tv_nsec-start.tv_nsec)/1000000.0;
+    }
+    return temp;
 }

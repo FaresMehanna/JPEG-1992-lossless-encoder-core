@@ -8,5 +8,6 @@
 #define AXI_LITE_BASE    (0x83C00000)
 #define DEBUG_REG_ENABLE (1)
 #define CORE_BIT_DEPTH   (12)
+#define INPUT_LENGTH     (64)
 
 #endif
