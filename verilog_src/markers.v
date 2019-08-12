@@ -3,7 +3,7 @@
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy, data_out, end_out, i_busy);
+module top(valid_in, end_in, data_in, force_end_in, rst, clk, valid_out, o_busy, data_out, end_out, i_busy);
   wire \$1 ;
   wire \$11 ;
   wire \$13 ;
@@ -56,8 +56,16 @@ module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy,
   reg \$next\end_out ;
   (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
   reg [2:0] \$next\fsm_state ;
+  (* src = "./migen_src/markers.py:75" *)
+  reg \$next\late2_busy_i ;
+  (* src = "./migen_src/markers.py:77" *)
+  reg \$next\late2_end_i ;
+  (* src = "./migen_src/markers.py:76" *)
+  reg \$next\late2_valid_i ;
   (* src = "./migen_src/markers.py:70" *)
   reg \$next\late_busy_i ;
+  (* src = "./migen_src/markers.py:73" *)
+  reg [15:0] \$next\late_data_i ;
   (* src = "./migen_src/markers.py:72" *)
   reg \$next\late_end_i ;
   (* src = "./migen_src/markers.py:71" *)
@@ -87,8 +95,20 @@ module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy,
   (* src = "./migen_src/markers.py:49" *)
   input i_busy;
   (* init = 1'h0 *)
+  (* src = "./migen_src/markers.py:75" *)
+  reg late2_busy_i = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/markers.py:77" *)
+  reg late2_end_i = 1'h0;
+  (* init = 1'h0 *)
+  (* src = "./migen_src/markers.py:76" *)
+  reg late2_valid_i = 1'h0;
+  (* init = 1'h0 *)
   (* src = "./migen_src/markers.py:70" *)
   reg late_busy_i = 1'h0;
+  (* init = 16'h0000 *)
+  (* src = "./migen_src/markers.py:73" *)
+  reg [15:0] late_data_i = 16'h0000;
   (* init = 1'h0 *)
   (* src = "./migen_src/markers.py:72" *)
   reg late_end_i = 1'h0;
@@ -103,51 +123,59 @@ module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy,
   input valid_in;
   (* src = "./migen_src/markers.py:42" *)
   output valid_out;
-  assign \$9  = \$5  & (* src = "./migen_src/markers.py:134" *) \$7 ;
-  assign \$11  = i_busy == (* src = "./migen_src/markers.py:93" *) 1'h0;
-  assign \$13  = counter == (* src = "./migen_src/markers.py:96" *) 1'h0;
-  assign \$15  = late_busy_i == (* src = "./migen_src/markers.py:134" *) 1'h0;
-  assign \$17  = late_valid_i == (* src = "./migen_src/markers.py:134" *) 1'h1;
-  assign \$1  = late_busy_i == (* src = "./migen_src/markers.py:134" *) 1'h0;
-  assign \$19  = \$15  & (* src = "./migen_src/markers.py:134" *) \$17 ;
-  assign \$21  = late_end_i == (* src = "./migen_src/markers.py:134" *) 1'h1;
-  assign \$23  = \$19  & (* src = "./migen_src/markers.py:134" *) \$21 ;
-  assign \$25  = i_busy == (* src = "./migen_src/markers.py:111" *) 1'h0;
-  assign \$27  = counter == (* src = "./migen_src/markers.py:114" *) 1'h1;
-  assign \$29  = i_busy == (* src = "./migen_src/markers.py:125" *) 1'h0;
-  assign \$31  = counter == (* src = "./migen_src/markers.py:128" *) 1'h1;
-  assign \$33  = i_busy == (* src = "./migen_src/markers.py:93" *) 1'h0;
-  assign \$36  = counter - (* src = "./migen_src/markers.py:94" *) 1'h1;
-  assign \$38  = counter == (* src = "./migen_src/markers.py:96" *) 1'h0;
-  assign \$3  = late_valid_i == (* src = "./migen_src/markers.py:134" *) 1'h1;
-  assign \$40  = i_busy == (* src = "./migen_src/markers.py:111" *) 1'h0;
-  assign \$43  = counter - (* src = "./migen_src/markers.py:112" *) 1'h1;
-  assign \$45  = i_busy == (* src = "./migen_src/markers.py:125" *) 1'h0;
-  assign \$48  = counter - (* src = "./migen_src/markers.py:126" *) 1'h1;
-  assign \$50  = i_busy == (* src = "./migen_src/markers.py:93" *) 1'h0;
-  assign \$52  = counter == (* src = "./migen_src/markers.py:96" *) 1'h0;
-  assign \$54  = i_busy == (* src = "./migen_src/markers.py:111" *) 1'h0;
-  assign \$56  = counter == (* src = "./migen_src/markers.py:114" *) 1'h1;
-  assign \$58  = i_busy == (* src = "./migen_src/markers.py:125" *) 1'h0;
-  assign \$5  = \$1  & (* src = "./migen_src/markers.py:134" *) \$3 ;
-  assign \$60  = counter == (* src = "./migen_src/markers.py:128" *) 1'h1;
-  assign \$62  = late_busy_i == (* src = "./migen_src/markers.py:134" *) 1'h0;
-  assign \$64  = late_valid_i == (* src = "./migen_src/markers.py:134" *) 1'h1;
-  assign \$66  = \$62  & (* src = "./migen_src/markers.py:134" *) \$64 ;
-  assign \$68  = late_end_i == (* src = "./migen_src/markers.py:134" *) 1'h1;
-  assign \$70  = \$66  & (* src = "./migen_src/markers.py:134" *) \$68 ;
-  assign \$72  = i_busy == (* src = "./migen_src/markers.py:93" *) 1'h0;
-  assign \$74  = counter == (* src = "./migen_src/markers.py:96" *) 1'h0;
-  assign \$76  = late_busy_i == (* src = "./migen_src/markers.py:134" *) 1'h0;
-  assign \$78  = late_valid_i == (* src = "./migen_src/markers.py:134" *) 1'h1;
-  assign \$7  = late_end_i == (* src = "./migen_src/markers.py:134" *) 1'h1;
-  assign \$80  = \$76  & (* src = "./migen_src/markers.py:134" *) \$78 ;
-  assign \$82  = late_end_i == (* src = "./migen_src/markers.py:134" *) 1'h1;
-  assign \$84  = \$80  & (* src = "./migen_src/markers.py:134" *) \$82 ;
+  assign \$9  = \$5  & (* src = "./migen_src/markers.py:148" *) \$7 ;
+  assign \$11  = i_busy == (* src = "./migen_src/markers.py:107" *) 1'h0;
+  assign \$13  = counter == (* src = "./migen_src/markers.py:110" *) 1'h0;
+  assign \$15  = late2_busy_i == (* src = "./migen_src/markers.py:148" *) 1'h0;
+  assign \$17  = late2_valid_i == (* src = "./migen_src/markers.py:148" *) 1'h1;
+  assign \$1  = late2_busy_i == (* src = "./migen_src/markers.py:148" *) 1'h0;
+  assign \$19  = \$15  & (* src = "./migen_src/markers.py:148" *) \$17 ;
+  assign \$21  = late2_end_i == (* src = "./migen_src/markers.py:148" *) 1'h1;
+  assign \$23  = \$19  & (* src = "./migen_src/markers.py:148" *) \$21 ;
+  assign \$25  = i_busy == (* src = "./migen_src/markers.py:125" *) 1'h0;
+  assign \$27  = counter == (* src = "./migen_src/markers.py:128" *) 1'h1;
+  assign \$29  = i_busy == (* src = "./migen_src/markers.py:139" *) 1'h0;
+  assign \$31  = counter == (* src = "./migen_src/markers.py:142" *) 1'h1;
+  assign \$33  = i_busy == (* src = "./migen_src/markers.py:107" *) 1'h0;
+  assign \$36  = counter - (* src = "./migen_src/markers.py:108" *) 1'h1;
+  assign \$38  = counter == (* src = "./migen_src/markers.py:110" *) 1'h0;
+  assign \$3  = late2_valid_i == (* src = "./migen_src/markers.py:148" *) 1'h1;
+  assign \$40  = i_busy == (* src = "./migen_src/markers.py:125" *) 1'h0;
+  assign \$43  = counter - (* src = "./migen_src/markers.py:126" *) 1'h1;
+  assign \$45  = i_busy == (* src = "./migen_src/markers.py:139" *) 1'h0;
+  assign \$48  = counter - (* src = "./migen_src/markers.py:140" *) 1'h1;
+  assign \$50  = i_busy == (* src = "./migen_src/markers.py:107" *) 1'h0;
+  assign \$52  = counter == (* src = "./migen_src/markers.py:110" *) 1'h0;
+  assign \$54  = i_busy == (* src = "./migen_src/markers.py:125" *) 1'h0;
+  assign \$56  = counter == (* src = "./migen_src/markers.py:128" *) 1'h1;
+  assign \$58  = i_busy == (* src = "./migen_src/markers.py:139" *) 1'h0;
+  assign \$5  = \$1  & (* src = "./migen_src/markers.py:148" *) \$3 ;
+  assign \$60  = counter == (* src = "./migen_src/markers.py:142" *) 1'h1;
+  assign \$62  = late2_busy_i == (* src = "./migen_src/markers.py:148" *) 1'h0;
+  assign \$64  = late2_valid_i == (* src = "./migen_src/markers.py:148" *) 1'h1;
+  assign \$66  = \$62  & (* src = "./migen_src/markers.py:148" *) \$64 ;
+  assign \$68  = late2_end_i == (* src = "./migen_src/markers.py:148" *) 1'h1;
+  assign \$70  = \$66  & (* src = "./migen_src/markers.py:148" *) \$68 ;
+  assign \$72  = i_busy == (* src = "./migen_src/markers.py:107" *) 1'h0;
+  assign \$74  = counter == (* src = "./migen_src/markers.py:110" *) 1'h0;
+  assign \$76  = late2_busy_i == (* src = "./migen_src/markers.py:148" *) 1'h0;
+  assign \$78  = late2_valid_i == (* src = "./migen_src/markers.py:148" *) 1'h1;
+  assign \$7  = late2_end_i == (* src = "./migen_src/markers.py:148" *) 1'h1;
+  assign \$80  = \$76  & (* src = "./migen_src/markers.py:148" *) \$78 ;
+  assign \$82  = late2_end_i == (* src = "./migen_src/markers.py:148" *) 1'h1;
+  assign \$84  = \$80  & (* src = "./migen_src/markers.py:148" *) \$82 ;
   always @(posedge clk)
       fsm_state <= \$next\fsm_state ;
   always @(posedge clk)
       counter <= \$next\counter ;
+  always @(posedge clk)
+      late2_end_i <= \$next\late2_end_i ;
+  always @(posedge clk)
+      late2_valid_i <= \$next\late2_valid_i ;
+  always @(posedge clk)
+      late2_busy_i <= \$next\late2_busy_i ;
+  always @(posedge clk)
+      late_data_i <= \$next\late_data_i ;
   always @(posedge clk)
       late_end_i <= \$next\late_end_i ;
   always @(posedge clk)
@@ -165,7 +193,7 @@ module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy,
             2'b1z:
                 /* empty */;
             2'hz:
-                \$next\o_busy  = i_busy;
+                \$next\o_busy  = late_busy_i;
           endcase
     endcase
   end
@@ -195,58 +223,12 @@ module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy,
             2'b1z:
                 /* empty */;
             2'hz:
-                \$next\valid_out  = valid_in;
+                \$next\valid_out  = late_valid_i;
           endcase
       3'h4:
           \$next\valid_out  = 1'h1;
-    endcase
-  end
-  always @* begin
-    \$next\end_out  = 1'h0;
-    \$next\end_out  = 1'h0;
-    casez (fsm_state)
-      3'h3:
-          casez (\$25 )
-            1'h1:
-                casez (\$27 )
-                  1'h1:
-                      \$next\end_out  = 1'h1;
-                endcase
-          endcase
-      3'h5:
-          casez (\$29 )
-            1'h1:
-                casez (\$31 )
-                  1'h1:
-                      \$next\end_out  = 1'h1;
-                endcase
-          endcase
-      3'h4:
-          \$next\end_out  = 1'h1;
-    endcase
-  end
-  always @* begin
-    \$next\late_busy_i  = late_busy_i;
-    \$next\late_busy_i  = i_busy;
-    casez (rst)
-      1'h1:
-          \$next\late_busy_i  = 1'h0;
-    endcase
-  end
-  always @* begin
-    \$next\late_valid_i  = late_valid_i;
-    \$next\late_valid_i  = valid_in;
-    casez (rst)
-      1'h1:
-          \$next\late_valid_i  = 1'h0;
-    endcase
-  end
-  always @* begin
-    \$next\late_end_i  = late_end_i;
-    \$next\late_end_i  = end_in;
-    casez (rst)
-      1'h1:
-          \$next\late_end_i  = 1'h0;
+      3'h6:
+          \$next\valid_out  = 1'h1;
     endcase
   end
   always @* begin
@@ -310,7 +292,7 @@ module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy,
             1'h1:
                 casez (\$60 )
                   1'h1:
-                      \$next\fsm_state  = 3'h4;
+                      \$next\fsm_state  = 3'h6;
                 endcase
           endcase
       3'h2:
@@ -343,7 +325,7 @@ module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy,
       3'h3:
           \$next\data_out  = 16'hffff;
       3'h5:
-          \$next\data_out  = 16'hfefe;
+          \$next\data_out  = 16'hfffe;
       3'h2:
           casez ({ force_end_in, \$84  })
             2'bz1:
@@ -351,10 +333,94 @@ module top(valid_in, end_in, force_end_in, data_in, rst, clk, valid_out, o_busy,
             2'b1z:
                 /* empty */;
             2'hz:
-                \$next\data_out  = data_in;
+                \$next\data_out  = late_data_i;
           endcase
       3'h4:
           \$next\data_out  = 16'hffff;
+      3'h6:
+          \$next\data_out  = 16'hfffe;
+    endcase
+  end
+  always @* begin
+    \$next\end_out  = 1'h0;
+    \$next\end_out  = 1'h0;
+    casez (fsm_state)
+      3'h3:
+          casez (\$25 )
+            1'h1:
+                casez (\$27 )
+                  1'h1:
+                      \$next\end_out  = 1'h1;
+                endcase
+          endcase
+      3'h5:
+          casez (\$29 )
+            1'h1:
+                casez (\$31 )
+                  1'h1:
+                      \$next\end_out  = 1'h1;
+                endcase
+          endcase
+      3'h4:
+          \$next\end_out  = 1'h1;
+      3'h6:
+          \$next\end_out  = 1'h1;
+    endcase
+  end
+  always @* begin
+    \$next\late_busy_i  = late_busy_i;
+    \$next\late_busy_i  = i_busy;
+    casez (rst)
+      1'h1:
+          \$next\late_busy_i  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\late_valid_i  = late_valid_i;
+    \$next\late_valid_i  = valid_in;
+    casez (rst)
+      1'h1:
+          \$next\late_valid_i  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\late_end_i  = late_end_i;
+    \$next\late_end_i  = end_in;
+    casez (rst)
+      1'h1:
+          \$next\late_end_i  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\late_data_i  = late_data_i;
+    \$next\late_data_i  = data_in;
+    casez (rst)
+      1'h1:
+          \$next\late_data_i  = 16'h0000;
+    endcase
+  end
+  always @* begin
+    \$next\late2_busy_i  = late2_busy_i;
+    \$next\late2_busy_i  = late_busy_i;
+    casez (rst)
+      1'h1:
+          \$next\late2_busy_i  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\late2_valid_i  = late2_valid_i;
+    \$next\late2_valid_i  = late2_valid_i;
+    casez (rst)
+      1'h1:
+          \$next\late2_valid_i  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\late2_end_i  = late2_end_i;
+    \$next\late2_end_i  = late2_end_i;
+    casez (rst)
+      1'h1:
+          \$next\late2_end_i  = 1'h0;
     endcase
   end
   assign \$35  = \$36 ;
