@@ -45,7 +45,7 @@ class Markers(Elaboratable):
         self.force_end_in = Signal(1)
         self.end_out = Signal(1)
 
-        self.o_busy = Signal(1) #I'm busy
+        self.o_busy = Signal(1) #prev busy
         self.i_busy = Signal(1) #next busy
 
         self.ios = \
@@ -67,28 +67,30 @@ class Markers(Elaboratable):
             self.end_out.eq(0),
         ]
 
-        late_busy_i = Signal(1)
-        late_valid_i = Signal(1)
-        late_end_i = Signal(1)
-        late_data_i = Signal(16)
+        # late_busy_i = Signal(1)
+        # late_valid_i = Signal(1)
+        # late_end_i = Signal(1)
+        # late_data_i = Signal(16)
 
-        late2_busy_i = Signal(1)
-        late2_valid_i = Signal(1)
-        late2_end_i = Signal(1)
+        end_cond = Signal(1)
+        m.d.sync += end_cond.eq((self.i_busy==0)&(self.valid_in==1)&(self.end_in==1))
 
-        m.d.sync += [
-            late_busy_i.eq(self.i_busy),
-            late_valid_i.eq(self.valid_in),
-            late_end_i.eq(self.end_in),
-            late_data_i.eq(self.data_in),
-        ]
+        # late2_busy_i = Signal(1)
+        # late2_valid_i = Signal(1)
+        # late2_end_i = Signal(1)
 
-        m.d.sync += [
-            late2_busy_i.eq(late_busy_i),
-            late2_valid_i.eq(late2_valid_i),
-            late2_end_i.eq(late2_end_i),
-        ]
+        # m.d.sync += [
+        #     late_busy_i.eq(self.i_busy),
+        #     late_valid_i.eq(self.valid_in),
+        #     late_end_i.eq(self.end_in),
+        #     ate_data_i.eq(self.data_in),
+        # ]
 
+        # m.d.sync += [
+        #     late2_busy_i.eq(late_busy_i),
+        #     late2_valid_i.eq(late2_valid_i),
+        #     late2_end_i.eq(late2_end_i),
+        # ]
 
         with m.FSM() as fsm:
 
@@ -145,15 +147,21 @@ class Markers(Elaboratable):
 
             with m.State("FRAME_HANDLING"):
                 #end detection
-                with m.If((late2_busy_i==0)&(late2_valid_i==1)&(late2_end_i==1)):
+                # with m.If((late2_busy_i==0)&(late2_valid_i==1)&(late2_end_i==1)):
+                with m.If(end_cond):
                     m.next = "ENDING_MARKER"
                 with m.Elif(self.force_end_in):
                     m.next = "FORCE_ENDING_MARKER"
                 with m.Else():
+                    # m.d.comb += [
+                    #     self.data_out.eq(late_data_i),
+                    #     self.valid_out.eq(late_valid_i),
+                    #     self.o_busy.eq(late_busy_i),
+                    # ]
                     m.d.comb += [
-                        self.data_out.eq(late_data_i),
-                        self.valid_out.eq(late_valid_i),
-                        self.o_busy.eq(late_busy_i),
+                        self.data_out.eq(self.data_in),
+                        self.valid_out.eq(self.valid_in),
+                        self.o_busy.eq(self.i_busy),
                     ]
 
             with m.State("DONE_NORMAL"):

@@ -29,6 +29,7 @@ Notes :
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
+import clk_domains
 
 class B64B32_2(Elaboratable):
 
@@ -55,34 +56,40 @@ class B64B32_2(Elaboratable):
 
         m = Module()
 
+        clk_domains.load_clk(m)
+
         # register to hold data
         reg = Signal(64)
         reg_valid = Signal(1)
         reg_tobe_invalid = Signal(1)
         half_latched = Signal(1)
 
+        # wire o_busy
+        wire_obusy = Signal(1)
+        m.d.full += self.o_busy.eq(wire_obusy)
+
         m.d.comb += [
             reg_tobe_invalid.eq(0),
             # ordinary this module is busy and will only go to un-busy
             # if data is present in fifo and the register is empty.
-            self.o_busy.eq(1),
+            wire_obusy.eq(1),
         ]
 
         # valid input data, and there is no data in register or this data
         # will not be needed next cycle, then register the data.
         with m.If((self.valid_in==1) & ((reg_valid==0) | (reg_tobe_invalid==1))):
-            m.d.sync += [
+            m.d.full += [
                 reg.eq(self.data_in),
                 reg_valid.eq(1),
             ]
             m.d.comb += [
-                self.o_busy.eq(0),
+                wire_obusy.eq(0),
             ]
 
         # if there is valid data in the register but there is no valid data in the
         # output, out the first half and set valid_out to 1.
         with m.If((reg_valid==1) & (self.valid_out==0) & (half_latched==0)):
-                m.d.sync += [
+                m.d.full += [
                     self.data_out.eq(reg[40:64]),
                     self.valid_out.eq(1),
                     half_latched.eq(1),
@@ -92,7 +99,7 @@ class B64B32_2(Elaboratable):
         # and there is valid data in register, then output the correct half.
         with m.If((reg_valid==1) & (self.i_busy==0) & (self.valid_out==1)):
             with m.If(half_latched==1):
-                m.d.sync += [
+                m.d.full += [
                     self.data_out.eq(reg[16:40]),
                     self.valid_out.eq(1),
                     half_latched.eq(0),
@@ -103,11 +110,11 @@ class B64B32_2(Elaboratable):
                     reg_tobe_invalid.eq(1),
                 ]
                 with m.If(self.valid_in==0):
-                    m.d.sync += [
+                    m.d.full += [
                         reg_valid.eq(0),
                     ]
             with m.Else():
-                m.d.sync += [
+                m.d.full += [
                     self.data_out.eq(reg[40:64]),
                     self.valid_out.eq(1),
                     half_latched.eq(1),
@@ -116,7 +123,7 @@ class B64B32_2(Elaboratable):
         # if output operation occurred, and the reg_valid remains 0, then
         # valid_out will turn to be 0.
         with m.If((reg_valid==0) & (self.i_busy==0) & (self.valid_out==1)):
-            m.d.sync += [
+            m.d.full += [
                 self.valid_out.eq(0),
             ]
 

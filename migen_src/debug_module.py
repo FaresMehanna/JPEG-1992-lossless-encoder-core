@@ -27,6 +27,7 @@ Notes :
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
+import clk_domains
 
 class DebugModule(Elaboratable):
 
@@ -44,9 +45,11 @@ class DebugModule(Elaboratable):
 
 		m = Module()
 
+		clk_domains.load_clk(m)
+
 		for i in range(8):
 			with m.If(self.regs_en[i]):
-				m.d.sync += self.registers[i].eq(self.registers[i] + 1)
+				m.d.full += self.registers[i].eq(self.registers[i] + 1)
 
 		return m
 

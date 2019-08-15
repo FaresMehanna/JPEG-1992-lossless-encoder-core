@@ -26,7 +26,7 @@ class Integration2(Elaboratable):
 		self.latch_output = Signal(1)
 
 		#valid in & out
-		self.nready = Signal(1)
+		self.nready = Signal(1, reset=1)
 		self.valid_in = Signal(1)
 		self.valid_out = Signal(1)
 		self.out_end = Signal(1)
@@ -52,10 +52,31 @@ class Integration2(Elaboratable):
 		m.submodules.converter = converter = self.converter
 		m.submodules.converter_fifo = converter_fifo = self.converter_fifo
 
+		# nready after end signal
+		nready_end_reg = Signal(1)		
+		nready_end_wire = Signal(1)
+		m.d.comb += nready_end_wire.eq(0)
+		nready_end = Signal(1)
+		m.d.sync += nready_end.eq((nready_end_wire==1)|(nready_end_reg==1))
+		with m.If((self.integration_1.signals.end_of_frame==1)&(self.valid_in==1)&(self.nready==0)):
+			m.d.sync += nready_end_reg.eq(1)
+			m.d.comb += nready_end_wire.eq(1)
+
+		# nready after reset signal
+		nready_reset = Signal(1)
+		nready_reset_counter = Signal(3)
+		m.d.sync += nready_reset_counter.eq(nready_reset_counter + 1)
+		with m.If(nready_reset_counter==7):
+			m.d.sync += nready_reset.eq(1)
+
+		# nready total signal
+		nready_signal = Signal(1)
+		m.d.comb += nready_signal.eq((lj92_pipeline_fifo.close_full==1)|(nready_end==1)|(nready_reset==0))
+
 		#integration_1 and this
 		m.d.comb += [integ_pixel_in.eq(pixel_in) for integ_pixel_in, pixel_in in zip(integration_1.pixels_in, self.pixels_in)]
 		m.d.comb += [
-			integration_1.valid_in.eq((self.valid_in == 1) & (lj92_pipeline_fifo.close_full == 0)),
+			integration_1.valid_in.eq((self.valid_in==1)&(nready_signal==0)),
 		]
 
 		# integration_1 and lj92_pipeline_fifo
@@ -64,7 +85,7 @@ class Integration2(Elaboratable):
 			lj92_pipeline_fifo.enc_in_ctr.eq(integration_1.enc_out_ctr),
 			lj92_pipeline_fifo.valid_in.eq(integration_1.valid_out),
 			lj92_pipeline_fifo.in_end.eq(integration_1.end_out),
-			self.nready.eq(lj92_pipeline_fifo.close_full),
+			self.nready.eq(nready_signal),
 		]
 
 		# lj92_pipeline_fifo and converter

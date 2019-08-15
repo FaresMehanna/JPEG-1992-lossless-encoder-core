@@ -6,6 +6,8 @@ import integration_3
 import constraints
 import fix_0xff, fix_0xff2
 import markers
+import auto_reset
+import clk_domains
 
 class BetaIntegration(Elaboratable):
 
@@ -20,7 +22,7 @@ class BetaIntegration(Elaboratable):
 			"converter_fifo_depth": 512, #512 x 36 = RAM18
 			"vbits_to_cbits_buffer_size": 77,
 			"support_axi_lite": True,
-			"axi_lite_debug": False,
+			"axi_lite_debug": True,
 			"predictor_function": 1,
 			"num_of_components": 4,
 		}
@@ -44,6 +46,7 @@ class BetaIntegration(Elaboratable):
 		self.fix_0xff = fix_0xff.Fix0xFF()
 		self.fix_0xff2 = fix_0xff2.Fix0xFF2()
 		self.markers = markers.Markers()
+		self.auto_reset = auto_reset.AutoReset()
 
 		self.ios = \
 			[self.valid_in, self.valid_out, self.end_out] + \
@@ -58,6 +61,20 @@ class BetaIntegration(Elaboratable):
 		m.submodules.fix_0xff = fix_0xff = self.fix_0xff
 		m.submodules.fix_0xff2 = fix_0xff2 = self.fix_0xff2
 		m.submodules.markers = markers = self.markers
+		m.submodules.auto_reset = auto_reset = self.auto_reset
+
+		clk_domains.load_clk(m)
+		# clk domain reset
+		m.d.comb += [
+			clk_domains.CORE.rst.eq((auto_reset.reset_out==1)|(clk_domains.FULL.rst==1)),
+		]
+
+		# auto reset
+		m.d.comb += [
+			auto_reset.end_in.eq(self.end_out),
+			auto_reset.hs1_in.eq(self.valid_out),
+			auto_reset.hs2_in.eq(self.busy_in==0),
+		]
 
 		if self.config['axi_lite_debug'] and self.config['support_axi_lite']:
 			# set debugging counters

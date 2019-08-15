@@ -156,8 +156,7 @@ class CoreAxiLite(Elaboratable):
 			m.d.comb += debug_module.regs_en.eq(self.debug_en)
 			m.d.comb += [m_reg.eq(d_reg) for m_reg, d_reg in zip(self.debug_regs, debug_module.registers)]
 
-		m.domains += clk_domains.SYNC
-		m.domains += clk_domains.CORE_AXI_LITE
+		clk_domains.load_clk(m)
 
 		# registers to hold data
 		addr_v = Signal(32)
@@ -212,12 +211,12 @@ class CoreAxiLite(Elaboratable):
 		# function that handle read/write operations on height and width register
 		def read_hw():
 			with m.If(hw_index==0):
-				m.d.axi_lite += [
+				m.d.full += [
 					rdata_v.eq(height_width),
 					rresp_v.eq(0),
 				]
 			with m.Else():
-				m.d.axi_lite += [
+				m.d.full += [
 					rdata_v.eq(self.allowed_cycles),
 					rresp_v.eq(0),
 				]
@@ -228,11 +227,11 @@ class CoreAxiLite(Elaboratable):
 				end = start+8
 				with m.If(wstrb_v[i]):
 					with m.If(hw_index==0):
-						m.d.axi_lite += height_width[start:end].eq(wdata_v[start:end])
+						m.d.full += height_width[start:end].eq(wdata_v[start:end])
 					with m.Else():
 						if end <= 24:
-							m.d.axi_lite += self.allowed_cycles[start:end].eq(wdata_v[start:end])
-			m.d.axi_lite += bresp_v.eq(0)
+							m.d.full += self.allowed_cycles[start:end].eq(wdata_v[start:end])
+			m.d.full += bresp_v.eq(0)
 
 		def clean_write_hw():
 			pass
@@ -241,11 +240,11 @@ class CoreAxiLite(Elaboratable):
 		def read_ssss():
 			# first 32 bits
 			with m.If(ssss_index[0]==0):
-				m.d.axi_lite += rdata_v.eq(rp_data64[0:32])
+				m.d.full += rdata_v.eq(rp_data64[0:32])
 			# second 32 bits
 			with m.Else():
-				m.d.axi_lite += rdata_v.eq(rp_data64[32:64])
-			m.d.axi_lite += rresp_v.eq(0)
+				m.d.full += rdata_v.eq(rp_data64[32:64])
+			m.d.full += rresp_v.eq(0)
 
 		def write_to_ssss():							
 			# first 32 bits
@@ -266,7 +265,7 @@ class CoreAxiLite(Elaboratable):
 						m.d.comb += rp_data64_in[start:end].eq(wdata_v[start:end])
 					with m.Else():
 						m.d.comb += rp_data64_in[start:end].eq(rp_data64[start:end])
-			m.d.axi_lite += [
+			m.d.full += [
 				self.wp_addr.eq((ssss_index >> 1)),
 				self.wp_data.eq(rp_data64_in),
 				self.wp_en.eq(1),
@@ -274,17 +273,17 @@ class CoreAxiLite(Elaboratable):
 			]
 
 		def clean_write_ssss():
-			m.d.axi_lite += self.wp_en.eq(0)
+			m.d.full += self.wp_en.eq(0)
 
 		# functions that handle read operation to debug.
 		def read_debug():
-			m.d.axi_lite += [
+			m.d.full += [
 				rdata_v.eq(self.debug_regs[debug_index]),
 				rresp_v.eq(0),
 			]
 
 		def write_to_debug():							
-			m.d.axi_lite += bresp_v.eq(2)
+			m.d.full += bresp_v.eq(2)
 
 		def clean_write_debug():
 			pass
@@ -293,7 +292,7 @@ class CoreAxiLite(Elaboratable):
 
 			with m.State("IDLE"):
 				#needed from other states
-				m.d.axi_lite += [
+				m.d.full += [
 					rvalid_v.eq(0),
 					bvalid_v.eq(0),
 				]
@@ -306,7 +305,7 @@ class CoreAxiLite(Elaboratable):
 
 			with m.State("READ_ADDRESS"):
 				# ack address, ready for transfer
-				m.d.axi_lite += [
+				m.d.full += [
 					addr_v.eq(self.s_axi_ri.araddr >> 2),
 					self.rp_addr.eq(self.s_axi_ri.araddr >> 3),
 					arready_v.eq(1),
@@ -315,7 +314,7 @@ class CoreAxiLite(Elaboratable):
 
 
 			with m.State("READ_DATA_DELAY1"):
-				m.d.axi_lite += arready_v.eq(0)	# done
+				m.d.full += arready_v.eq(0)	# done
 				m.next = "READ_DATA_DELAY2"
 
 
@@ -336,16 +335,16 @@ class CoreAxiLite(Elaboratable):
 						read_debug()
 				# decode error
 				with m.Else():
-					m.d.axi_lite += rresp_v.eq(3)
+					m.d.full += rresp_v.eq(3)
 				# to finish
 				with m.If(self.s_axi_ri.rready):
-					m.d.axi_lite += rvalid_v.eq(1)
+					m.d.full += rvalid_v.eq(1)
 					m.next = "IDLE"
 
 
 			with m.State("WRITE_ADDRESS"):
 				# ack address, ready for transfer
-				m.d.axi_lite += [
+				m.d.full += [
 					addr_v.eq(self.s_axi_wi.awaddr >> 2),
 					self.rp_addr.eq(self.s_axi_wi.awaddr >> 3),
 					awready_v.eq(1),
@@ -354,7 +353,7 @@ class CoreAxiLite(Elaboratable):
 
 
 			with m.State("WRITE_DATA_DELAY1"):
-				m.d.axi_lite += awready_v.eq(0)	# done
+				m.d.full += awready_v.eq(0)	# done
 				m.next = "WRITE_DATA_DELAY2"
 
 
@@ -363,7 +362,7 @@ class CoreAxiLite(Elaboratable):
 
 
 			with m.State("WRITE_DATA"):
-				m.d.axi_lite += wready_v.eq(1)	# ready for data
+				m.d.full += wready_v.eq(1)	# ready for data
 				with m.If(self.s_axi_wi.wvalid):
 					m.d.comb += [
 						wdata_v.eq(self.s_axi_wi.wdata),
@@ -381,7 +380,7 @@ class CoreAxiLite(Elaboratable):
 							write_to_debug()
 					# decode error
 					with m.Else():
-						m.d.axi_lite += bresp_v.eq(3)
+						m.d.full += bresp_v.eq(3)
 					m.next = "WRITE_RESPONSE"
 
 
@@ -390,9 +389,9 @@ class CoreAxiLite(Elaboratable):
 					clean_write_debug()
 				clean_write_hw()
 				clean_write_ssss()
-				m.d.axi_lite += wready_v.eq(0)
+				m.d.full += wready_v.eq(0)
 				with m.If(self.s_axi_wi.bready):
-					m.d.axi_lite += bvalid_v.eq(1)
+					m.d.full += bvalid_v.eq(1)
 					m.next = "IDLE"
 
 		m.d.comb += [
