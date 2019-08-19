@@ -27,6 +27,7 @@ from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
 from math import log, ceil
+import clk_domains
 
 class RegisterFile(Elaboratable):
 
@@ -41,13 +42,16 @@ class RegisterFile(Elaboratable):
 
 
 	def elaborate(self, platform):
+
 		m = Module()
+
+		clk_domains.load_clk(m)
 
 		width_reg = Signal(16)
 		height_reg = Signal(16)
 		allowed_cycles_reg = Signal(16)
 
-		m.d.sync += [
+		m.d.full += [
 			width_reg.eq(4096),
 			height_reg.eq(3072),
 			allowed_cycles_reg.eq(6666000),
