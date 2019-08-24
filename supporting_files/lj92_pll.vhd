@@ -15,6 +15,8 @@ entity lj92_pll is
     port (
 	ref_clk_in : in std_logic;		-- input clock to FPGA
 	--
+	pll_reset : in std_logic;		-- PLL reset
+	pll_pwrdwn : in std_logic;		-- PLL power down
 	pll_locked : out std_logic;		-- PLL locked
 	--
 	lj92_clk : out std_logic		-- regenerated clock
@@ -48,8 +50,8 @@ begin
 	CLKOUT0 => pll_lj92_clk,
 
 	LOCKED => pll_locked,
-	PWRDWN => '0',
-	RST => '0' );
+	PWRDWN => pll_pwrdwn,
+	RST => pll_reset );
 
     pll_fbin <= pll_fbout; -- internal feedback
 
@@ -86,8 +88,8 @@ begin
 	CLKOUT0 => pll_lj92_clk,
 
 	LOCKED => pll_locked,
-	PWRDWN => '0',
-	RST => '0' );
+	PWRDWN => pll_pwrdwn,
+	RST => pll_reset );
 
     pll_fbin <= pll_fbout; -- internal feedback
 
@@ -124,8 +126,8 @@ begin
 	CLKOUT0 => pll_lj92_clk,
 
 	LOCKED => pll_locked,
-	PWRDWN => '0',
-	RST => '0' );
+	PWRDWN => pll_pwrdwn,
+	RST => pll_reset );
 
     pll_fbin <= pll_fbout; -- internal feedback
 
