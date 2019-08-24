@@ -143,218 +143,218 @@ module top(valid_in, data_in_ctr, data_in, end_in, rst, clk, valid_out, o_busy, 
   wire \$95 ;
   wire \$97 ;
   wire \$99 ;
-  (* src = "./migen_src/fix_0xff2.py:174" *)
+  (* src = "fix_0xff2.py:174" *)
   reg [1:0] \$next\buffer_count ;
-  (* src = "./migen_src/fix_0xff2.py:173" *)
+  (* src = "fix_0xff2.py:173" *)
   reg [23:0] \$next\buffer_data ;
-  (* src = "./migen_src/fix_0xff2.py:153" *)
+  (* src = "fix_0xff2.py:153" *)
   reg [15:0] \$next\data_out ;
-  (* src = "./migen_src/fix_0xff2.py:176" *)
+  (* src = "fix_0xff2.py:176" *)
   reg [15:0] \$next\data_out_reg ;
-  (* src = "./migen_src/fix_0xff2.py:178" *)
+  (* src = "fix_0xff2.py:178" *)
   reg \$next\data_out_valid ;
-  (* src = "./migen_src/fix_0xff2.py:160" *)
+  (* src = "fix_0xff2.py:160" *)
   reg \$next\end_out ;
-  (* src = "./migen_src/fix_0xff2.py:177" *)
+  (* src = "fix_0xff2.py:177" *)
   reg \$next\end_out_reg ;
-  (* src = "./migen_src/fix_0xff2.py:180" *)
+  (* src = "fix_0xff2.py:180" *)
   reg \$next\end_reg ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "./migen_src/fix_0xff2.py:162" *)
+  (* src = "fix_0xff2.py:162" *)
   reg \$next\o_busy ;
-  (* src = "./migen_src/fix_0xff2.py:157" *)
+  (* src = "fix_0xff2.py:157" *)
   reg \$next\valid_out ;
   (* init = 2'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:174" *)
+  (* src = "fix_0xff2.py:174" *)
   reg [1:0] buffer_count = 2'h0;
   (* init = 24'h000000 *)
-  (* src = "./migen_src/fix_0xff2.py:173" *)
+  (* src = "fix_0xff2.py:173" *)
   reg [23:0] buffer_data = 24'h000000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/fix_0xff2.py:149" *)
+  (* src = "fix_0xff2.py:149" *)
   input [31:0] data_in;
-  (* src = "./migen_src/fix_0xff2.py:150" *)
+  (* src = "fix_0xff2.py:150" *)
   input [2:0] data_in_ctr;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/fix_0xff2.py:153" *)
+  (* src = "fix_0xff2.py:153" *)
   output [15:0] data_out;
   reg [15:0] data_out = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/fix_0xff2.py:176" *)
+  (* src = "fix_0xff2.py:176" *)
   reg [15:0] data_out_reg = 16'h0000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:178" *)
+  (* src = "fix_0xff2.py:178" *)
   reg data_out_valid = 1'h0;
-  (* src = "./migen_src/fix_0xff2.py:159" *)
+  (* src = "fix_0xff2.py:159" *)
   input end_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:160" *)
+  (* src = "fix_0xff2.py:160" *)
   output end_out;
   reg end_out = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:177" *)
+  (* src = "fix_0xff2.py:177" *)
   reg end_out_reg = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:180" *)
+  (* src = "fix_0xff2.py:180" *)
   reg end_reg = 1'h0;
   (* init = 2'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
-  (* src = "./migen_src/fix_0xff2.py:163" *)
+  (* src = "fix_0xff2.py:163" *)
   input i_busy;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:162" *)
+  (* src = "fix_0xff2.py:162" *)
   output o_busy;
   reg o_busy = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/fix_0xff2.py:156" *)
+  (* src = "fix_0xff2.py:156" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff2.py:157" *)
+  (* src = "fix_0xff2.py:157" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$9  = \$5  & (* src = "./migen_src/fix_0xff2.py:208" *) \$7 ;
-  assign \$99  = i_busy == (* src = "./migen_src/fix_0xff2.py:184" *) 1'h0;
-  assign \$101  = valid_out == (* src = "./migen_src/fix_0xff2.py:199" *) 1'h0;
-  assign \$103  = valid_in == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h1;
-  assign \$105  = o_busy == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h0;
-  assign \$107  = \$103  & (* src = "./migen_src/fix_0xff2.py:208" *) \$105 ;
-  assign \$109  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:185" *) 1'h0;
-  assign \$111  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$113  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$115  = \$111  & (* src = "./migen_src/fix_0xff2.py:102" *) \$113 ;
-  assign \$117  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$11  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:185" *) 1'h0;
-  assign \$119  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$121  = \$117  & (* src = "./migen_src/fix_0xff2.py:102" *) \$119 ;
-  assign \$123  = valid_in == (* src = "./migen_src/fix_0xff2.py:211" *) 1'h1;
-  assign \$125  = valid_out == (* src = "./migen_src/fix_0xff2.py:211" *) 1'h1;
-  assign \$127  = \$123  & (* src = "./migen_src/fix_0xff2.py:211" *) \$125 ;
-  assign \$129  = o_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
-  assign \$131  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$133  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$135  = \$131  & (* src = "./migen_src/fix_0xff2.py:102" *) \$133 ;
-  assign \$137  = i_busy == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
-  assign \$13  = i_busy == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
-  assign \$139  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:219" *) 1'h0;
-  assign \$141  = end_reg == (* src = "./migen_src/fix_0xff2.py:222" *) 1'h0;
-  assign \$143  = i_busy == (* src = "./migen_src/fix_0xff2.py:184" *) 1'h0;
-  assign \$145  = valid_out == (* src = "./migen_src/fix_0xff2.py:199" *) 1'h0;
-  assign \$147  = valid_in == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h1;
-  assign \$149  = o_busy == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h0;
-  assign \$151  = \$147  & (* src = "./migen_src/fix_0xff2.py:208" *) \$149 ;
-  assign \$153  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:185" *) 1'h0;
-  assign \$155  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$157  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$15  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:219" *) 1'h0;
-  assign \$159  = \$155  & (* src = "./migen_src/fix_0xff2.py:102" *) \$157 ;
-  assign \$161  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$163  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$165  = \$161  & (* src = "./migen_src/fix_0xff2.py:102" *) \$163 ;
-  assign \$167  = o_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
-  assign \$169  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$171  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$173  = \$169  & (* src = "./migen_src/fix_0xff2.py:102" *) \$171 ;
-  assign \$175  = i_busy == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
-  assign \$177  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:219" *) 1'h0;
-  assign \$17  = i_busy == (* src = "./migen_src/fix_0xff2.py:234" *) 1'h0;
-  assign \$179  = buffer_count <= (* src = "./migen_src/fix_0xff2.py:140" *) 2'h2;
-  assign \$181  = end_reg == (* src = "./migen_src/fix_0xff2.py:222" *) 1'h0;
-  assign \$183  = i_busy == (* src = "./migen_src/fix_0xff2.py:234" *) 1'h0;
-  assign \$185  = i_busy == (* src = "./migen_src/fix_0xff2.py:184" *) 1'h0;
-  assign \$187  = valid_out == (* src = "./migen_src/fix_0xff2.py:199" *) 1'h0;
-  assign \$189  = valid_in == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h1;
-  assign \$191  = o_busy == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h0;
-  assign \$193  = \$189  & (* src = "./migen_src/fix_0xff2.py:208" *) \$191 ;
-  assign \$195  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:185" *) 1'h0;
-  assign \$197  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$1  = i_busy == (* src = "./migen_src/fix_0xff2.py:184" *) 1'h0;
-  assign \$19  = i_busy == (* src = "./migen_src/fix_0xff2.py:184" *) 1'h0;
-  assign \$199  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$201  = \$197  & (* src = "./migen_src/fix_0xff2.py:102" *) \$199 ;
-  assign \$203  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$205  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$207  = \$203  & (* src = "./migen_src/fix_0xff2.py:102" *) \$205 ;
-  assign \$209  = i_busy == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
-  assign \$211  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:219" *) 1'h0;
-  assign \$213  = buffer_count <= (* src = "./migen_src/fix_0xff2.py:140" *) 2'h2;
-  assign \$215  = i_busy == (* src = "./migen_src/fix_0xff2.py:234" *) 1'h0;
-  assign \$217  = i_busy == (* src = "./migen_src/fix_0xff2.py:184" *) 1'h0;
-  assign \$21  = valid_out == (* src = "./migen_src/fix_0xff2.py:199" *) 1'h0;
-  assign \$219  = valid_out == (* src = "./migen_src/fix_0xff2.py:199" *) 1'h0;
-  assign \$221  = valid_in == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h1;
-  assign \$223  = o_busy == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h0;
-  assign \$225  = \$221  & (* src = "./migen_src/fix_0xff2.py:208" *) \$223 ;
-  assign \$227  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:185" *) 1'h0;
-  assign \$229  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$231  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$233  = \$229  & (* src = "./migen_src/fix_0xff2.py:102" *) \$231 ;
-  assign \$235  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$237  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$23  = valid_in == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h1;
-  assign \$239  = \$235  & (* src = "./migen_src/fix_0xff2.py:102" *) \$237 ;
-  assign \$241  = o_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
-  assign \$243  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$245  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$247  = \$243  & (* src = "./migen_src/fix_0xff2.py:102" *) \$245 ;
-  assign \$249  = i_busy == (* src = "./migen_src/fix_0xff2.py:184" *) 1'h0;
-  assign \$251  = valid_out == (* src = "./migen_src/fix_0xff2.py:199" *) 1'h0;
-  assign \$253  = valid_in == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h1;
-  assign \$255  = o_busy == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h0;
-  assign \$257  = \$253  & (* src = "./migen_src/fix_0xff2.py:208" *) \$255 ;
-  assign \$25  = o_busy == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h0;
-  assign \$259  = valid_in == (* src = "./migen_src/fix_0xff2.py:210" *) 1'h1;
-  assign \$261  = valid_out == (* src = "./migen_src/fix_0xff2.py:210" *) 1'h1;
-  assign \$263  = \$259  & (* src = "./migen_src/fix_0xff2.py:210" *) \$261 ;
-  assign \$265  = i_busy == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
-  assign \$267  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:219" *) 1'h0;
-  assign \$269  = o_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
-  assign \$271  = o_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
-  assign \$273  = buffer_count == (* src = "./migen_src/fix_0xff2.py:102" *) 1'h0;
-  assign \$275  = data_in_ctr == (* src = "./migen_src/fix_0xff2.py:102" *) 2'h2;
-  assign \$277  = \$273  & (* src = "./migen_src/fix_0xff2.py:102" *) \$275 ;
-  assign \$27  = \$23  & (* src = "./migen_src/fix_0xff2.py:208" *) \$25 ;
-  assign \$29  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:185" *) 1'h0;
-  assign \$31  = i_busy == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
-  assign \$33  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:219" *) 1'h0;
-  assign \$35  = i_busy == (* src = "./migen_src/fix_0xff2.py:234" *) 1'h0;
-  assign \$37  = i_busy == (* src = "./migen_src/fix_0xff2.py:184" *) 1'h0;
-  assign \$3  = valid_out == (* src = "./migen_src/fix_0xff2.py:199" *) 1'h0;
-  assign \$39  = valid_out == (* src = "./migen_src/fix_0xff2.py:199" *) 1'h0;
-  assign \$41  = valid_in == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h1;
-  assign \$43  = o_busy == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h0;
-  assign \$45  = \$41  & (* src = "./migen_src/fix_0xff2.py:208" *) \$43 ;
-  assign \$47  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:185" *) 1'h0;
-  assign \$49  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$51  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$53  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$55  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$57  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$5  = valid_in == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h1;
-  assign \$59  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$61  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$63  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$65  = o_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
-  assign \$67  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$69  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$71  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[7:0];
-  assign \$73  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) data_in[15:0];
-  assign \$75  = i_busy == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
-  assign \$77  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:219" *) 1'h0;
-  assign \$7  = o_busy == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h0;
-  assign \$79  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) buffer_data[7:0];
-  assign \$81  = i_busy == (* src = "./migen_src/fix_0xff2.py:184" *) 1'h0;
-  assign \$83  = valid_out == (* src = "./migen_src/fix_0xff2.py:199" *) 1'h0;
-  assign \$85  = valid_in == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h1;
-  assign \$87  = o_busy == (* src = "./migen_src/fix_0xff2.py:208" *) 1'h0;
-  assign \$89  = \$85  & (* src = "./migen_src/fix_0xff2.py:208" *) \$87 ;
-  assign \$91  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:185" *) 1'h0;
-  assign \$93  = o_busy == (* src = "./migen_src/fix_0xff2.py:214" *) 1'h0;
-  assign \$95  = i_busy == (* src = "./migen_src/fix_0xff2.py:218" *) 1'h0;
-  assign \$97  = data_out_valid == (* src = "./migen_src/fix_0xff2.py:219" *) 1'h0;
+  assign \$9  = \$5  & (* src = "fix_0xff2.py:208" *) \$7 ;
+  assign \$99  = i_busy == (* src = "fix_0xff2.py:184" *) 1'h0;
+  assign \$101  = valid_out == (* src = "fix_0xff2.py:199" *) 1'h0;
+  assign \$103  = valid_in == (* src = "fix_0xff2.py:208" *) 1'h1;
+  assign \$105  = o_busy == (* src = "fix_0xff2.py:208" *) 1'h0;
+  assign \$107  = \$103  & (* src = "fix_0xff2.py:208" *) \$105 ;
+  assign \$109  = data_out_valid == (* src = "fix_0xff2.py:185" *) 1'h0;
+  assign \$111  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$113  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$115  = \$111  & (* src = "fix_0xff2.py:102" *) \$113 ;
+  assign \$117  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$11  = data_out_valid == (* src = "fix_0xff2.py:185" *) 1'h0;
+  assign \$119  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$121  = \$117  & (* src = "fix_0xff2.py:102" *) \$119 ;
+  assign \$123  = valid_in == (* src = "fix_0xff2.py:211" *) 1'h1;
+  assign \$125  = valid_out == (* src = "fix_0xff2.py:211" *) 1'h1;
+  assign \$127  = \$123  & (* src = "fix_0xff2.py:211" *) \$125 ;
+  assign \$129  = o_busy == (* src = "fix_0xff2.py:214" *) 1'h0;
+  assign \$131  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$133  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$135  = \$131  & (* src = "fix_0xff2.py:102" *) \$133 ;
+  assign \$137  = i_busy == (* src = "fix_0xff2.py:218" *) 1'h0;
+  assign \$13  = i_busy == (* src = "fix_0xff2.py:218" *) 1'h0;
+  assign \$139  = data_out_valid == (* src = "fix_0xff2.py:219" *) 1'h0;
+  assign \$141  = end_reg == (* src = "fix_0xff2.py:222" *) 1'h0;
+  assign \$143  = i_busy == (* src = "fix_0xff2.py:184" *) 1'h0;
+  assign \$145  = valid_out == (* src = "fix_0xff2.py:199" *) 1'h0;
+  assign \$147  = valid_in == (* src = "fix_0xff2.py:208" *) 1'h1;
+  assign \$149  = o_busy == (* src = "fix_0xff2.py:208" *) 1'h0;
+  assign \$151  = \$147  & (* src = "fix_0xff2.py:208" *) \$149 ;
+  assign \$153  = data_out_valid == (* src = "fix_0xff2.py:185" *) 1'h0;
+  assign \$155  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$157  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$15  = data_out_valid == (* src = "fix_0xff2.py:219" *) 1'h0;
+  assign \$159  = \$155  & (* src = "fix_0xff2.py:102" *) \$157 ;
+  assign \$161  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$163  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$165  = \$161  & (* src = "fix_0xff2.py:102" *) \$163 ;
+  assign \$167  = o_busy == (* src = "fix_0xff2.py:214" *) 1'h0;
+  assign \$169  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$171  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$173  = \$169  & (* src = "fix_0xff2.py:102" *) \$171 ;
+  assign \$175  = i_busy == (* src = "fix_0xff2.py:218" *) 1'h0;
+  assign \$177  = data_out_valid == (* src = "fix_0xff2.py:219" *) 1'h0;
+  assign \$17  = i_busy == (* src = "fix_0xff2.py:234" *) 1'h0;
+  assign \$179  = buffer_count <= (* src = "fix_0xff2.py:140" *) 2'h2;
+  assign \$181  = end_reg == (* src = "fix_0xff2.py:222" *) 1'h0;
+  assign \$183  = i_busy == (* src = "fix_0xff2.py:234" *) 1'h0;
+  assign \$185  = i_busy == (* src = "fix_0xff2.py:184" *) 1'h0;
+  assign \$187  = valid_out == (* src = "fix_0xff2.py:199" *) 1'h0;
+  assign \$189  = valid_in == (* src = "fix_0xff2.py:208" *) 1'h1;
+  assign \$191  = o_busy == (* src = "fix_0xff2.py:208" *) 1'h0;
+  assign \$193  = \$189  & (* src = "fix_0xff2.py:208" *) \$191 ;
+  assign \$195  = data_out_valid == (* src = "fix_0xff2.py:185" *) 1'h0;
+  assign \$197  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$1  = i_busy == (* src = "fix_0xff2.py:184" *) 1'h0;
+  assign \$19  = i_busy == (* src = "fix_0xff2.py:184" *) 1'h0;
+  assign \$199  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$201  = \$197  & (* src = "fix_0xff2.py:102" *) \$199 ;
+  assign \$203  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$205  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$207  = \$203  & (* src = "fix_0xff2.py:102" *) \$205 ;
+  assign \$209  = i_busy == (* src = "fix_0xff2.py:218" *) 1'h0;
+  assign \$211  = data_out_valid == (* src = "fix_0xff2.py:219" *) 1'h0;
+  assign \$213  = buffer_count <= (* src = "fix_0xff2.py:140" *) 2'h2;
+  assign \$215  = i_busy == (* src = "fix_0xff2.py:234" *) 1'h0;
+  assign \$217  = i_busy == (* src = "fix_0xff2.py:184" *) 1'h0;
+  assign \$21  = valid_out == (* src = "fix_0xff2.py:199" *) 1'h0;
+  assign \$219  = valid_out == (* src = "fix_0xff2.py:199" *) 1'h0;
+  assign \$221  = valid_in == (* src = "fix_0xff2.py:208" *) 1'h1;
+  assign \$223  = o_busy == (* src = "fix_0xff2.py:208" *) 1'h0;
+  assign \$225  = \$221  & (* src = "fix_0xff2.py:208" *) \$223 ;
+  assign \$227  = data_out_valid == (* src = "fix_0xff2.py:185" *) 1'h0;
+  assign \$229  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$231  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$233  = \$229  & (* src = "fix_0xff2.py:102" *) \$231 ;
+  assign \$235  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$237  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$23  = valid_in == (* src = "fix_0xff2.py:208" *) 1'h1;
+  assign \$239  = \$235  & (* src = "fix_0xff2.py:102" *) \$237 ;
+  assign \$241  = o_busy == (* src = "fix_0xff2.py:214" *) 1'h0;
+  assign \$243  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$245  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$247  = \$243  & (* src = "fix_0xff2.py:102" *) \$245 ;
+  assign \$249  = i_busy == (* src = "fix_0xff2.py:184" *) 1'h0;
+  assign \$251  = valid_out == (* src = "fix_0xff2.py:199" *) 1'h0;
+  assign \$253  = valid_in == (* src = "fix_0xff2.py:208" *) 1'h1;
+  assign \$255  = o_busy == (* src = "fix_0xff2.py:208" *) 1'h0;
+  assign \$257  = \$253  & (* src = "fix_0xff2.py:208" *) \$255 ;
+  assign \$25  = o_busy == (* src = "fix_0xff2.py:208" *) 1'h0;
+  assign \$259  = valid_in == (* src = "fix_0xff2.py:210" *) 1'h1;
+  assign \$261  = valid_out == (* src = "fix_0xff2.py:210" *) 1'h1;
+  assign \$263  = \$259  & (* src = "fix_0xff2.py:210" *) \$261 ;
+  assign \$265  = i_busy == (* src = "fix_0xff2.py:218" *) 1'h0;
+  assign \$267  = data_out_valid == (* src = "fix_0xff2.py:219" *) 1'h0;
+  assign \$269  = o_busy == (* src = "fix_0xff2.py:214" *) 1'h0;
+  assign \$271  = o_busy == (* src = "fix_0xff2.py:214" *) 1'h0;
+  assign \$273  = buffer_count == (* src = "fix_0xff2.py:102" *) 1'h0;
+  assign \$275  = data_in_ctr == (* src = "fix_0xff2.py:102" *) 2'h2;
+  assign \$277  = \$273  & (* src = "fix_0xff2.py:102" *) \$275 ;
+  assign \$27  = \$23  & (* src = "fix_0xff2.py:208" *) \$25 ;
+  assign \$29  = data_out_valid == (* src = "fix_0xff2.py:185" *) 1'h0;
+  assign \$31  = i_busy == (* src = "fix_0xff2.py:218" *) 1'h0;
+  assign \$33  = data_out_valid == (* src = "fix_0xff2.py:219" *) 1'h0;
+  assign \$35  = i_busy == (* src = "fix_0xff2.py:234" *) 1'h0;
+  assign \$37  = i_busy == (* src = "fix_0xff2.py:184" *) 1'h0;
+  assign \$3  = valid_out == (* src = "fix_0xff2.py:199" *) 1'h0;
+  assign \$39  = valid_out == (* src = "fix_0xff2.py:199" *) 1'h0;
+  assign \$41  = valid_in == (* src = "fix_0xff2.py:208" *) 1'h1;
+  assign \$43  = o_busy == (* src = "fix_0xff2.py:208" *) 1'h0;
+  assign \$45  = \$41  & (* src = "fix_0xff2.py:208" *) \$43 ;
+  assign \$47  = data_out_valid == (* src = "fix_0xff2.py:185" *) 1'h0;
+  assign \$49  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$51  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$53  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$55  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$57  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$5  = valid_in == (* src = "fix_0xff2.py:208" *) 1'h1;
+  assign \$59  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$61  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$63  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$65  = o_busy == (* src = "fix_0xff2.py:214" *) 1'h0;
+  assign \$67  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$69  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$71  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[7:0];
+  assign \$73  = + (* src = "nmigen/hdl/ast.py:123" *) data_in[15:0];
+  assign \$75  = i_busy == (* src = "fix_0xff2.py:218" *) 1'h0;
+  assign \$77  = data_out_valid == (* src = "fix_0xff2.py:219" *) 1'h0;
+  assign \$7  = o_busy == (* src = "fix_0xff2.py:208" *) 1'h0;
+  assign \$79  = + (* src = "nmigen/hdl/ast.py:123" *) buffer_data[7:0];
+  assign \$81  = i_busy == (* src = "fix_0xff2.py:184" *) 1'h0;
+  assign \$83  = valid_out == (* src = "fix_0xff2.py:199" *) 1'h0;
+  assign \$85  = valid_in == (* src = "fix_0xff2.py:208" *) 1'h1;
+  assign \$87  = o_busy == (* src = "fix_0xff2.py:208" *) 1'h0;
+  assign \$89  = \$85  & (* src = "fix_0xff2.py:208" *) \$87 ;
+  assign \$91  = data_out_valid == (* src = "fix_0xff2.py:185" *) 1'h0;
+  assign \$93  = o_busy == (* src = "fix_0xff2.py:214" *) 1'h0;
+  assign \$95  = i_busy == (* src = "fix_0xff2.py:218" *) 1'h0;
+  assign \$97  = data_out_valid == (* src = "fix_0xff2.py:219" *) 1'h0;
   always @(posedge clk)
       end_out_reg <= \$next\end_out_reg ;
   always @(posedge clk)

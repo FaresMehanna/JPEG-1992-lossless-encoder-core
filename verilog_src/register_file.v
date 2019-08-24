@@ -3,50 +3,56 @@
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(clk, height, width, allowed_cycles, rst);
-  wire [23:0] \$1 ;
-  (* src = "./migen_src/register_file.py:37" *)
+module top(full_rst, height, width, allowed_cycles, full_clk);
+  (* src = "register_file.py:38" *)
   reg [23:0] \$next\allowed_cycles ;
-  (* src = "./migen_src/register_file.py:48" *)
-  reg [15:0] \$next\allowed_cycles_reg ;
-  (* src = "./migen_src/register_file.py:35" *)
+  (* src = "register_file.py:52" *)
+  reg [23:0] \$next\allowed_cycles_reg ;
+  (* src = "clk_domains.py:5" *)
+  reg \$next\clk ;
+  (* src = "register_file.py:36" *)
   reg [15:0] \$next\height ;
-  (* src = "./migen_src/register_file.py:47" *)
+  (* src = "register_file.py:51" *)
   reg [15:0] \$next\height_reg ;
-  (* src = "./migen_src/register_file.py:36" *)
+  (* src = "register_file.py:37" *)
   reg [15:0] \$next\width ;
-  (* src = "./migen_src/register_file.py:46" *)
+  (* src = "register_file.py:50" *)
   reg [15:0] \$next\width_reg ;
-  (* src = "./migen_src/register_file.py:37" *)
+  (* src = "register_file.py:38" *)
   output [23:0] allowed_cycles;
-  (* init = 16'h0000 *)
-  (* src = "./migen_src/register_file.py:48" *)
-  reg [15:0] allowed_cycles_reg = 16'h0000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
-  input clk;
-  (* src = "./migen_src/register_file.py:35" *)
+  (* init = 24'h000000 *)
+  (* src = "register_file.py:52" *)
+  reg [23:0] allowed_cycles_reg = 24'h000000;
+  (* src = "clk_domains.py:5" *)
+  wire clk;
+  (* src = "clk_domains.py:4" *)
+  input full_clk;
+  (* src = "clk_domains.py:4" *)
+  input full_rst;
+  (* src = "register_file.py:36" *)
   output [15:0] height;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/register_file.py:47" *)
+  (* src = "register_file.py:51" *)
   reg [15:0] height_reg = 16'h0000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
-  input rst;
-  (* src = "./migen_src/register_file.py:36" *)
+  (* src = "register_file.py:37" *)
   output [15:0] width;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/register_file.py:46" *)
+  (* src = "register_file.py:50" *)
   reg [15:0] width_reg = 16'h0000;
-  assign \$1  = + (* src = "./migen_src/register_file.py:48" *) allowed_cycles_reg;
-  always @(posedge clk)
+  always @(posedge full_clk)
       allowed_cycles_reg <= \$next\allowed_cycles_reg ;
-  always @(posedge clk)
+  always @(posedge full_clk)
       height_reg <= \$next\height_reg ;
-  always @(posedge clk)
+  always @(posedge full_clk)
       width_reg <= \$next\width_reg ;
+  always @* begin
+    \$next\clk  = 1'h0;
+    \$next\clk  = full_clk;
+  end
   always @* begin
     \$next\width_reg  = width_reg;
     \$next\width_reg  = 16'h1000;
-    casez (rst)
+    casez (full_rst)
       1'h1:
           \$next\width_reg  = 16'h0000;
     endcase
@@ -54,17 +60,17 @@ module top(clk, height, width, allowed_cycles, rst);
   always @* begin
     \$next\height_reg  = height_reg;
     \$next\height_reg  = 16'h0c00;
-    casez (rst)
+    casez (full_rst)
       1'h1:
           \$next\height_reg  = 16'h0000;
     endcase
   end
   always @* begin
     \$next\allowed_cycles_reg  = allowed_cycles_reg;
-    \$next\allowed_cycles_reg  = 16'hb710;
-    casez (rst)
+    \$next\allowed_cycles_reg  = 24'h65b710;
+    casez (full_rst)
       1'h1:
-          \$next\allowed_cycles_reg  = 16'h0000;
+          \$next\allowed_cycles_reg  = 24'h000000;
     endcase
   end
   always @* begin
@@ -77,10 +83,11 @@ module top(clk, height, width, allowed_cycles, rst);
   end
   always @* begin
     \$next\allowed_cycles  = 24'h000000;
-    \$next\allowed_cycles  = \$1 ;
+    \$next\allowed_cycles  = allowed_cycles_reg;
   end
   assign allowed_cycles = \$next\allowed_cycles ;
   assign height = \$next\height ;
   assign width = \$next\width ;
+  assign clk = \$next\clk ;
 endmodule
 

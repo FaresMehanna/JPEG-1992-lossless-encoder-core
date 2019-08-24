@@ -3,7 +3,7 @@
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(data_in, i_busy, rst, clk, valid_out, o_busy, data_out, valid_in);
+module top(valid_in, data_in, i_busy, full_rst, valid_out, o_busy, data_out, full_clk);
   wire \$1 ;
   wire \$101 ;
   wire \$103 ;
@@ -70,127 +70,151 @@ module top(data_in, i_busy, rst, clk, valid_out, o_busy, data_out, valid_in);
   wire \$95 ;
   wire \$97 ;
   wire \$99 ;
-  (* src = "./migen_src/b64_b32_2.py:41" *)
+  (* src = "clk_domains.py:5" *)
+  reg \$next\clk ;
+  (* src = "b64_b32_2.py:42" *)
   reg [23:0] \$next\data_out ;
-  (* src = "./migen_src/b64_b32_2.py:62" *)
+  (* src = "b64_b32_2.py:65" *)
   reg \$next\half_latched ;
-  (* src = "./migen_src/b64_b32_2.py:47" *)
+  (* src = "b64_b32_2.py:48" *)
   reg \$next\o_busy ;
-  (* src = "./migen_src/b64_b32_2.py:59" *)
+  (* src = "b64_b32_2.py:62" *)
   reg [63:0] \$next\reg ;
-  (* src = "./migen_src/b64_b32_2.py:61" *)
+  (* src = "b64_b32_2.py:64" *)
   reg \$next\reg_tobe_invalid ;
-  (* src = "./migen_src/b64_b32_2.py:60" *)
+  (* src = "b64_b32_2.py:63" *)
   reg \$next\reg_valid ;
-  (* src = "./migen_src/b64_b32_2.py:45" *)
+  (* src = "b64_b32_2.py:46" *)
   reg \$next\valid_out ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
-  input clk;
-  (* src = "./migen_src/b64_b32_2.py:38" *)
+  (* src = "b64_b32_2.py:68" *)
+  reg \$next\wire_obusy ;
+  (* src = "clk_domains.py:5" *)
+  wire clk;
+  (* src = "b64_b32_2.py:39" *)
   input [63:0] data_in;
   (* init = 24'h000000 *)
-  (* src = "./migen_src/b64_b32_2.py:41" *)
+  (* src = "b64_b32_2.py:42" *)
   output [23:0] data_out;
   reg [23:0] data_out = 24'h000000;
+  (* src = "clk_domains.py:4" *)
+  input full_clk;
+  (* src = "clk_domains.py:4" *)
+  input full_rst;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b64_b32_2.py:62" *)
+  (* src = "b64_b32_2.py:65" *)
   reg half_latched = 1'h0;
-  (* src = "./migen_src/b64_b32_2.py:48" *)
+  (* src = "b64_b32_2.py:49" *)
   input i_busy;
-  (* src = "./migen_src/b64_b32_2.py:47" *)
+  (* init = 1'h1 *)
+  (* src = "b64_b32_2.py:48" *)
   output o_busy;
+  reg o_busy = 1'h1;
   (* init = 64'h0000000000000000 *)
-  (* src = "./migen_src/b64_b32_2.py:59" *)
+  (* src = "b64_b32_2.py:62" *)
   reg [63:0] \reg  = 64'h0000000000000000;
-  (* src = "./migen_src/b64_b32_2.py:61" *)
+  (* src = "b64_b32_2.py:64" *)
   wire reg_tobe_invalid;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b64_b32_2.py:60" *)
+  (* src = "b64_b32_2.py:63" *)
   reg reg_valid = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
-  input rst;
-  (* src = "./migen_src/b64_b32_2.py:44" *)
+  (* src = "b64_b32_2.py:45" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b64_b32_2.py:45" *)
+  (* src = "b64_b32_2.py:46" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$9  = \$5  & (* src = "./migen_src/b64_b32_2.py:93" *) \$7 ;
-  assign \$99  = half_latched == (* src = "./migen_src/b64_b32_2.py:94" *) 1'h1;
-  assign \$101  = reg_valid == (* src = "./migen_src/b64_b32_2.py:118" *) 1'h0;
-  assign \$103  = i_busy == (* src = "./migen_src/b64_b32_2.py:118" *) 1'h0;
-  assign \$105  = \$101  & (* src = "./migen_src/b64_b32_2.py:118" *) \$103 ;
-  assign \$107  = valid_out == (* src = "./migen_src/b64_b32_2.py:118" *) 1'h1;
-  assign \$109  = \$105  & (* src = "./migen_src/b64_b32_2.py:118" *) \$107 ;
-  assign \$111  = reg_valid == (* src = "./migen_src/b64_b32_2.py:84" *) 1'h1;
-  assign \$113  = valid_out == (* src = "./migen_src/b64_b32_2.py:84" *) 1'h0;
-  assign \$115  = \$111  & (* src = "./migen_src/b64_b32_2.py:84" *) \$113 ;
-  assign \$117  = half_latched == (* src = "./migen_src/b64_b32_2.py:84" *) 1'h0;
-  assign \$11  = half_latched == (* src = "./migen_src/b64_b32_2.py:94" *) 1'h1;
-  assign \$119  = \$115  & (* src = "./migen_src/b64_b32_2.py:84" *) \$117 ;
-  assign \$121  = reg_valid == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$123  = i_busy == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h0;
-  assign \$125  = \$121  & (* src = "./migen_src/b64_b32_2.py:93" *) \$123 ;
-  assign \$127  = valid_out == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$129  = \$125  & (* src = "./migen_src/b64_b32_2.py:93" *) \$127 ;
-  assign \$131  = half_latched == (* src = "./migen_src/b64_b32_2.py:94" *) 1'h1;
-  assign \$13  = valid_in == (* src = "./migen_src/b64_b32_2.py:73" *) 1'h1;
-  assign \$15  = reg_valid == (* src = "./migen_src/b64_b32_2.py:73" *) 1'h0;
-  assign \$17  = reg_tobe_invalid == (* src = "./migen_src/b64_b32_2.py:73" *) 1'h1;
-  assign \$1  = reg_valid == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$19  = \$15  | (* src = "./migen_src/b64_b32_2.py:73" *) \$17 ;
-  assign \$21  = \$13  & (* src = "./migen_src/b64_b32_2.py:73" *) \$19 ;
-  assign \$23  = valid_in == (* src = "./migen_src/b64_b32_2.py:73" *) 1'h1;
-  assign \$25  = reg_valid == (* src = "./migen_src/b64_b32_2.py:73" *) 1'h0;
-  assign \$27  = reg_tobe_invalid == (* src = "./migen_src/b64_b32_2.py:73" *) 1'h1;
-  assign \$29  = \$25  | (* src = "./migen_src/b64_b32_2.py:73" *) \$27 ;
-  assign \$31  = \$23  & (* src = "./migen_src/b64_b32_2.py:73" *) \$29 ;
-  assign \$33  = valid_in == (* src = "./migen_src/b64_b32_2.py:73" *) 1'h1;
-  assign \$35  = reg_valid == (* src = "./migen_src/b64_b32_2.py:73" *) 1'h0;
-  assign \$37  = reg_tobe_invalid == (* src = "./migen_src/b64_b32_2.py:73" *) 1'h1;
-  assign \$3  = i_busy == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h0;
-  assign \$39  = \$35  | (* src = "./migen_src/b64_b32_2.py:73" *) \$37 ;
-  assign \$41  = \$33  & (* src = "./migen_src/b64_b32_2.py:73" *) \$39 ;
-  assign \$43  = reg_valid == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$45  = i_busy == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h0;
-  assign \$47  = \$43  & (* src = "./migen_src/b64_b32_2.py:93" *) \$45 ;
-  assign \$49  = valid_out == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$51  = \$47  & (* src = "./migen_src/b64_b32_2.py:93" *) \$49 ;
-  assign \$53  = half_latched == (* src = "./migen_src/b64_b32_2.py:94" *) 1'h1;
-  assign \$55  = valid_in == (* src = "./migen_src/b64_b32_2.py:105" *) 1'h0;
-  assign \$57  = reg_valid == (* src = "./migen_src/b64_b32_2.py:84" *) 1'h1;
-  assign \$5  = \$1  & (* src = "./migen_src/b64_b32_2.py:93" *) \$3 ;
-  assign \$59  = valid_out == (* src = "./migen_src/b64_b32_2.py:84" *) 1'h0;
-  assign \$61  = \$57  & (* src = "./migen_src/b64_b32_2.py:84" *) \$59 ;
-  assign \$63  = half_latched == (* src = "./migen_src/b64_b32_2.py:84" *) 1'h0;
-  assign \$65  = \$61  & (* src = "./migen_src/b64_b32_2.py:84" *) \$63 ;
-  assign \$67  = reg_valid == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$69  = i_busy == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h0;
-  assign \$71  = \$67  & (* src = "./migen_src/b64_b32_2.py:93" *) \$69 ;
-  assign \$73  = valid_out == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$75  = \$71  & (* src = "./migen_src/b64_b32_2.py:93" *) \$73 ;
-  assign \$77  = half_latched == (* src = "./migen_src/b64_b32_2.py:94" *) 1'h1;
-  assign \$7  = valid_out == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$79  = reg_valid == (* src = "./migen_src/b64_b32_2.py:84" *) 1'h1;
-  assign \$81  = valid_out == (* src = "./migen_src/b64_b32_2.py:84" *) 1'h0;
-  assign \$83  = \$79  & (* src = "./migen_src/b64_b32_2.py:84" *) \$81 ;
-  assign \$85  = half_latched == (* src = "./migen_src/b64_b32_2.py:84" *) 1'h0;
-  assign \$87  = \$83  & (* src = "./migen_src/b64_b32_2.py:84" *) \$85 ;
-  assign \$89  = reg_valid == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$91  = i_busy == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h0;
-  assign \$93  = \$89  & (* src = "./migen_src/b64_b32_2.py:93" *) \$91 ;
-  assign \$95  = valid_out == (* src = "./migen_src/b64_b32_2.py:93" *) 1'h1;
-  assign \$97  = \$93  & (* src = "./migen_src/b64_b32_2.py:93" *) \$95 ;
-  always @(posedge clk)
+  (* src = "b64_b32_2.py:68" *)
+  wire wire_obusy;
+  assign \$9  = \$5  & (* src = "b64_b32_2.py:100" *) \$7 ;
+  assign \$99  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$101  = reg_valid == (* src = "b64_b32_2.py:125" *) 1'h0;
+  assign \$103  = i_busy == (* src = "b64_b32_2.py:125" *) 1'h0;
+  assign \$105  = \$101  & (* src = "b64_b32_2.py:125" *) \$103 ;
+  assign \$107  = valid_out == (* src = "b64_b32_2.py:125" *) 1'h1;
+  assign \$109  = \$105  & (* src = "b64_b32_2.py:125" *) \$107 ;
+  assign \$111  = reg_valid == (* src = "b64_b32_2.py:91" *) 1'h1;
+  assign \$113  = valid_out == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$115  = \$111  & (* src = "b64_b32_2.py:91" *) \$113 ;
+  assign \$117  = half_latched == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$11  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$119  = \$115  & (* src = "b64_b32_2.py:91" *) \$117 ;
+  assign \$121  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$123  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$125  = \$121  & (* src = "b64_b32_2.py:100" *) \$123 ;
+  assign \$127  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$129  = \$125  & (* src = "b64_b32_2.py:100" *) \$127 ;
+  assign \$131  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$13  = valid_in == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$15  = reg_valid == (* src = "b64_b32_2.py:80" *) 1'h0;
+  assign \$17  = reg_tobe_invalid == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$1  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$19  = \$15  | (* src = "b64_b32_2.py:80" *) \$17 ;
+  assign \$21  = \$13  & (* src = "b64_b32_2.py:80" *) \$19 ;
+  assign \$23  = valid_in == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$25  = reg_valid == (* src = "b64_b32_2.py:80" *) 1'h0;
+  assign \$27  = reg_tobe_invalid == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$29  = \$25  | (* src = "b64_b32_2.py:80" *) \$27 ;
+  assign \$31  = \$23  & (* src = "b64_b32_2.py:80" *) \$29 ;
+  assign \$33  = valid_in == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$35  = reg_valid == (* src = "b64_b32_2.py:80" *) 1'h0;
+  assign \$37  = reg_tobe_invalid == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$3  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$39  = \$35  | (* src = "b64_b32_2.py:80" *) \$37 ;
+  assign \$41  = \$33  & (* src = "b64_b32_2.py:80" *) \$39 ;
+  assign \$43  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$45  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$47  = \$43  & (* src = "b64_b32_2.py:100" *) \$45 ;
+  assign \$49  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$51  = \$47  & (* src = "b64_b32_2.py:100" *) \$49 ;
+  assign \$53  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$55  = valid_in == (* src = "b64_b32_2.py:112" *) 1'h0;
+  assign \$57  = reg_valid == (* src = "b64_b32_2.py:91" *) 1'h1;
+  assign \$5  = \$1  & (* src = "b64_b32_2.py:100" *) \$3 ;
+  assign \$59  = valid_out == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$61  = \$57  & (* src = "b64_b32_2.py:91" *) \$59 ;
+  assign \$63  = half_latched == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$65  = \$61  & (* src = "b64_b32_2.py:91" *) \$63 ;
+  assign \$67  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$69  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$71  = \$67  & (* src = "b64_b32_2.py:100" *) \$69 ;
+  assign \$73  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$75  = \$71  & (* src = "b64_b32_2.py:100" *) \$73 ;
+  assign \$77  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$7  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$79  = reg_valid == (* src = "b64_b32_2.py:91" *) 1'h1;
+  assign \$81  = valid_out == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$83  = \$79  & (* src = "b64_b32_2.py:91" *) \$81 ;
+  assign \$85  = half_latched == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$87  = \$83  & (* src = "b64_b32_2.py:91" *) \$85 ;
+  assign \$89  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$91  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$93  = \$89  & (* src = "b64_b32_2.py:100" *) \$91 ;
+  assign \$95  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$97  = \$93  & (* src = "b64_b32_2.py:100" *) \$95 ;
+  always @(posedge full_clk)
       half_latched <= \$next\half_latched ;
-  always @(posedge clk)
+  always @(posedge full_clk)
       valid_out <= \$next\valid_out ;
-  always @(posedge clk)
+  always @(posedge full_clk)
       data_out <= \$next\data_out ;
-  always @(posedge clk)
+  always @(posedge full_clk)
       reg_valid <= \$next\reg_valid ;
-  always @(posedge clk)
+  always @(posedge full_clk)
       \reg  <= \$next\reg ;
+  always @(posedge full_clk)
+      o_busy <= \$next\o_busy ;
+  always @* begin
+    \$next\clk  = 1'h0;
+    \$next\clk  = full_clk;
+  end
+  always @* begin
+    \$next\o_busy  = o_busy;
+    \$next\o_busy  = wire_obusy;
+    casez (full_rst)
+      1'h1:
+          \$next\o_busy  = 1'h1;
+    endcase
+  end
   always @* begin
     \$next\reg_tobe_invalid  = 1'h0;
     \$next\reg_tobe_invalid  = 1'h0;
@@ -203,11 +227,11 @@ module top(data_in, i_busy, rst, clk, valid_out, o_busy, data_out, valid_in);
     endcase
   end
   always @* begin
-    \$next\o_busy  = 1'h1;
-    \$next\o_busy  = 1'h1;
+    \$next\wire_obusy  = 1'h0;
+    \$next\wire_obusy  = 1'h1;
     casez (\$21 )
       1'h1:
-          \$next\o_busy  = 1'h0;
+          \$next\wire_obusy  = 1'h0;
     endcase
   end
   always @* begin
@@ -216,7 +240,7 @@ module top(data_in, i_busy, rst, clk, valid_out, o_busy, data_out, valid_in);
       1'h1:
           \$next\reg  = data_in;
     endcase
-    casez (rst)
+    casez (full_rst)
       1'h1:
           \$next\reg  = 64'h0000000000000000;
     endcase
@@ -237,7 +261,7 @@ module top(data_in, i_busy, rst, clk, valid_out, o_busy, data_out, valid_in);
                 endcase
           endcase
     endcase
-    casez (rst)
+    casez (full_rst)
       1'h1:
           \$next\reg_valid  = 1'h0;
     endcase
@@ -257,7 +281,7 @@ module top(data_in, i_busy, rst, clk, valid_out, o_busy, data_out, valid_in);
                 \$next\data_out  = \reg [63:40];
           endcase
     endcase
-    casez (rst)
+    casez (full_rst)
       1'h1:
           \$next\data_out  = 24'h000000;
     endcase
@@ -281,7 +305,7 @@ module top(data_in, i_busy, rst, clk, valid_out, o_busy, data_out, valid_in);
       1'h1:
           \$next\valid_out  = 1'h0;
     endcase
-    casez (rst)
+    casez (full_rst)
       1'h1:
           \$next\valid_out  = 1'h0;
     endcase
@@ -301,12 +325,13 @@ module top(data_in, i_busy, rst, clk, valid_out, o_busy, data_out, valid_in);
                 \$next\half_latched  = 1'h1;
           endcase
     endcase
-    casez (rst)
+    casez (full_rst)
       1'h1:
           \$next\half_latched  = 1'h0;
     endcase
   end
-  assign o_busy = \$next\o_busy ;
+  assign wire_obusy = \$next\wire_obusy ;
   assign reg_tobe_invalid = \$next\reg_tobe_invalid ;
+  assign clk = \$next\clk ;
 endmodule
 

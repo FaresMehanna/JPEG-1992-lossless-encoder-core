@@ -67,90 +67,90 @@ module anonymous(val_in, val_in_mns, end_in, rst, clk, val_out, ssss, valid_o, e
   wire \$95 ;
   wire \$97 ;
   wire \$99 ;
-  (* src = "./migen_src/normalize.py:133" *)
+  (* src = "normalize.py:133" *)
   reg \$next\end_out ;
-  (* src = "./migen_src/normalize.py:126" *)
+  (* src = "normalize.py:126" *)
   reg [4:0] \$next\ssss ;
-  (* src = "./migen_src/normalize.py:124" *)
+  (* src = "normalize.py:124" *)
   reg [15:0] \$next\val_out ;
-  (* src = "./migen_src/normalize.py:129" *)
+  (* src = "normalize.py:129" *)
   reg \$next\valid_o ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/normalize.py:132" *)
+  (* src = "normalize.py:132" *)
   input end_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/normalize.py:133" *)
+  (* src = "normalize.py:133" *)
   output end_out;
   reg end_out = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 5'h00 *)
-  (* src = "./migen_src/normalize.py:126" *)
+  (* src = "normalize.py:126" *)
   output [4:0] ssss;
   reg [4:0] ssss = 5'h00;
-  (* src = "./migen_src/normalize.py:119" *)
+  (* src = "normalize.py:119" *)
   input [16:0] val_in;
-  (* src = "./migen_src/normalize.py:121" *)
+  (* src = "normalize.py:121" *)
   input [16:0] val_in_mns;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/normalize.py:124" *)
+  (* src = "normalize.py:124" *)
   output [15:0] val_out;
   reg [15:0] val_out = 16'h0000;
-  (* src = "./migen_src/normalize.py:128" *)
+  (* src = "normalize.py:128" *)
   input valid;
   (* init = 1'h0 *)
-  (* src = "./migen_src/normalize.py:129" *)
+  (* src = "normalize.py:129" *)
   output valid_o;
   reg valid_o = 1'h0;
-  assign \$9  = val_in_mns[16:1] == (* src = "./migen_src/normalize.py:65" *) 16'hffff;
-  assign \$99  = val_in_mns[16:12] == (* src = "./migen_src/normalize.py:81" *) 5'h1f;
-  assign \$101  = val_in_mns[16:10] == (* src = "./migen_src/normalize.py:81" *) 7'h7f;
-  assign \$103  = val_in_mns[16:9] == (* src = "./migen_src/normalize.py:65" *) 8'hff;
-  assign \$105  = val_in_mns[16:11] == (* src = "./migen_src/normalize.py:65" *) 6'h3f;
-  assign \$107  = val_in_mns[16:14] == (* src = "./migen_src/normalize.py:81" *) 3'h7;
-  assign \$109  = val_in_mns[16:13] == (* src = "./migen_src/normalize.py:65" *) 4'hf;
-  assign \$111  = val_in_mns[16:15] == (* src = "./migen_src/normalize.py:65" *) 2'h3;
-  assign \$12  = val_in + (* src = "./migen_src/normalize.py:67" *) 1'h1;
-  assign \$15  = val_in + (* src = "./migen_src/normalize.py:72" *) 2'h3;
-  assign \$17  = val_in_mns[16:3] == (* src = "./migen_src/normalize.py:65" *) 14'h3fff;
-  assign \$1  = val_in[16] == (* src = "./migen_src/normalize.py:156" *) 1'h1;
-  assign \$20  = val_in + (* src = "./migen_src/normalize.py:67" *) 3'h7;
-  assign \$23  = val_in + (* src = "./migen_src/normalize.py:72" *) 4'hf;
-  assign \$25  = val_in_mns[16:6] == (* src = "./migen_src/normalize.py:81" *) 11'h7ff;
-  assign \$27  = val_in_mns[16:5] == (* src = "./migen_src/normalize.py:65" *) 12'hfff;
-  assign \$30  = val_in + (* src = "./migen_src/normalize.py:67" *) 5'h1f;
-  assign \$33  = val_in + (* src = "./migen_src/normalize.py:72" *) 6'h3f;
-  assign \$35  = val_in_mns[16:7] == (* src = "./migen_src/normalize.py:65" *) 10'h3ff;
-  assign \$38  = val_in + (* src = "./migen_src/normalize.py:67" *) 7'h7f;
-  assign \$3  = val_in_mns[16:8] == (* src = "./migen_src/normalize.py:81" *) 9'h1ff;
-  assign \$41  = val_in + (* src = "./migen_src/normalize.py:72" *) 8'hff;
-  assign \$43  = val_in_mns[16:12] == (* src = "./migen_src/normalize.py:81" *) 5'h1f;
-  assign \$45  = val_in_mns[16:10] == (* src = "./migen_src/normalize.py:81" *) 7'h7f;
-  assign \$47  = val_in_mns[16:9] == (* src = "./migen_src/normalize.py:65" *) 8'hff;
-  assign \$50  = val_in + (* src = "./migen_src/normalize.py:67" *) 9'h1ff;
-  assign \$53  = val_in + (* src = "./migen_src/normalize.py:72" *) 10'h3ff;
-  assign \$55  = val_in_mns[16:11] == (* src = "./migen_src/normalize.py:65" *) 6'h3f;
-  assign \$58  = val_in + (* src = "./migen_src/normalize.py:67" *) 11'h7ff;
-  assign \$5  = val_in_mns[16:4] == (* src = "./migen_src/normalize.py:81" *) 13'h1fff;
-  assign \$61  = val_in + (* src = "./migen_src/normalize.py:72" *) 12'hfff;
-  assign \$63  = val_in_mns[16:14] == (* src = "./migen_src/normalize.py:81" *) 3'h7;
-  assign \$65  = val_in_mns[16:13] == (* src = "./migen_src/normalize.py:65" *) 4'hf;
-  assign \$68  = val_in + (* src = "./migen_src/normalize.py:67" *) 13'h1fff;
-  assign \$71  = val_in + (* src = "./migen_src/normalize.py:72" *) 14'h3fff;
-  assign \$73  = val_in_mns[16:15] == (* src = "./migen_src/normalize.py:65" *) 2'h3;
-  assign \$76  = val_in + (* src = "./migen_src/normalize.py:67" *) 15'h7fff;
-  assign \$7  = val_in_mns[16:2] == (* src = "./migen_src/normalize.py:81" *) 15'h7fff;
-  assign \$79  = val_in + (* src = "./migen_src/normalize.py:72" *) 16'hffff;
-  assign \$81  = val_in[16] == (* src = "./migen_src/normalize.py:156" *) 1'h1;
-  assign \$83  = val_in_mns[16:8] == (* src = "./migen_src/normalize.py:81" *) 9'h1ff;
-  assign \$85  = val_in_mns[16:4] == (* src = "./migen_src/normalize.py:81" *) 13'h1fff;
-  assign \$87  = val_in_mns[16:2] == (* src = "./migen_src/normalize.py:81" *) 15'h7fff;
-  assign \$89  = val_in_mns[16:1] == (* src = "./migen_src/normalize.py:65" *) 16'hffff;
-  assign \$91  = val_in_mns[16:3] == (* src = "./migen_src/normalize.py:65" *) 14'h3fff;
-  assign \$93  = val_in_mns[16:6] == (* src = "./migen_src/normalize.py:81" *) 11'h7ff;
-  assign \$95  = val_in_mns[16:5] == (* src = "./migen_src/normalize.py:65" *) 12'hfff;
-  assign \$97  = val_in_mns[16:7] == (* src = "./migen_src/normalize.py:65" *) 10'h3ff;
+  assign \$9  = val_in_mns[16:1] == (* src = "normalize.py:65" *) 16'hffff;
+  assign \$99  = val_in_mns[16:12] == (* src = "normalize.py:81" *) 5'h1f;
+  assign \$101  = val_in_mns[16:10] == (* src = "normalize.py:81" *) 7'h7f;
+  assign \$103  = val_in_mns[16:9] == (* src = "normalize.py:65" *) 8'hff;
+  assign \$105  = val_in_mns[16:11] == (* src = "normalize.py:65" *) 6'h3f;
+  assign \$107  = val_in_mns[16:14] == (* src = "normalize.py:81" *) 3'h7;
+  assign \$109  = val_in_mns[16:13] == (* src = "normalize.py:65" *) 4'hf;
+  assign \$111  = val_in_mns[16:15] == (* src = "normalize.py:65" *) 2'h3;
+  assign \$12  = val_in + (* src = "normalize.py:67" *) 1'h1;
+  assign \$15  = val_in + (* src = "normalize.py:72" *) 2'h3;
+  assign \$17  = val_in_mns[16:3] == (* src = "normalize.py:65" *) 14'h3fff;
+  assign \$1  = val_in[16] == (* src = "normalize.py:156" *) 1'h1;
+  assign \$20  = val_in + (* src = "normalize.py:67" *) 3'h7;
+  assign \$23  = val_in + (* src = "normalize.py:72" *) 4'hf;
+  assign \$25  = val_in_mns[16:6] == (* src = "normalize.py:81" *) 11'h7ff;
+  assign \$27  = val_in_mns[16:5] == (* src = "normalize.py:65" *) 12'hfff;
+  assign \$30  = val_in + (* src = "normalize.py:67" *) 5'h1f;
+  assign \$33  = val_in + (* src = "normalize.py:72" *) 6'h3f;
+  assign \$35  = val_in_mns[16:7] == (* src = "normalize.py:65" *) 10'h3ff;
+  assign \$38  = val_in + (* src = "normalize.py:67" *) 7'h7f;
+  assign \$3  = val_in_mns[16:8] == (* src = "normalize.py:81" *) 9'h1ff;
+  assign \$41  = val_in + (* src = "normalize.py:72" *) 8'hff;
+  assign \$43  = val_in_mns[16:12] == (* src = "normalize.py:81" *) 5'h1f;
+  assign \$45  = val_in_mns[16:10] == (* src = "normalize.py:81" *) 7'h7f;
+  assign \$47  = val_in_mns[16:9] == (* src = "normalize.py:65" *) 8'hff;
+  assign \$50  = val_in + (* src = "normalize.py:67" *) 9'h1ff;
+  assign \$53  = val_in + (* src = "normalize.py:72" *) 10'h3ff;
+  assign \$55  = val_in_mns[16:11] == (* src = "normalize.py:65" *) 6'h3f;
+  assign \$58  = val_in + (* src = "normalize.py:67" *) 11'h7ff;
+  assign \$5  = val_in_mns[16:4] == (* src = "normalize.py:81" *) 13'h1fff;
+  assign \$61  = val_in + (* src = "normalize.py:72" *) 12'hfff;
+  assign \$63  = val_in_mns[16:14] == (* src = "normalize.py:81" *) 3'h7;
+  assign \$65  = val_in_mns[16:13] == (* src = "normalize.py:65" *) 4'hf;
+  assign \$68  = val_in + (* src = "normalize.py:67" *) 13'h1fff;
+  assign \$71  = val_in + (* src = "normalize.py:72" *) 14'h3fff;
+  assign \$73  = val_in_mns[16:15] == (* src = "normalize.py:65" *) 2'h3;
+  assign \$76  = val_in + (* src = "normalize.py:67" *) 15'h7fff;
+  assign \$7  = val_in_mns[16:2] == (* src = "normalize.py:81" *) 15'h7fff;
+  assign \$79  = val_in + (* src = "normalize.py:72" *) 16'hffff;
+  assign \$81  = val_in[16] == (* src = "normalize.py:156" *) 1'h1;
+  assign \$83  = val_in_mns[16:8] == (* src = "normalize.py:81" *) 9'h1ff;
+  assign \$85  = val_in_mns[16:4] == (* src = "normalize.py:81" *) 13'h1fff;
+  assign \$87  = val_in_mns[16:2] == (* src = "normalize.py:81" *) 15'h7fff;
+  assign \$89  = val_in_mns[16:1] == (* src = "normalize.py:65" *) 16'hffff;
+  assign \$91  = val_in_mns[16:3] == (* src = "normalize.py:65" *) 14'h3fff;
+  assign \$93  = val_in_mns[16:6] == (* src = "normalize.py:81" *) 11'h7ff;
+  assign \$95  = val_in_mns[16:5] == (* src = "normalize.py:65" *) 12'hfff;
+  assign \$97  = val_in_mns[16:7] == (* src = "normalize.py:65" *) 10'h3ff;
   always @(posedge clk)
       end_out <= \$next\end_out ;
   always @(posedge clk)
@@ -415,57 +415,57 @@ endmodule
 (* top =  1  *)
 (* generator = "nMigen" *)
 module top(valid_in, end_in, vals_in_mns, rst, clk, val_out, valid_out, ssss, end_out, val_in);
-  (* src = "./migen_src/normalize.py:132" *)
+  (* src = "normalize.py:132" *)
   reg \$next\end_in$2 ;
-  (* src = "./migen_src/normalize.py:208" *)
+  (* src = "normalize.py:208" *)
   reg \$next\end_out ;
-  (* src = "./migen_src/normalize.py:201" *)
+  (* src = "normalize.py:201" *)
   reg [4:0] \$next\ssss ;
-  (* src = "./migen_src/normalize.py:119" *)
+  (* src = "normalize.py:119" *)
   reg [16:0] \$next\val_in$1 ;
-  (* src = "./migen_src/normalize.py:121" *)
+  (* src = "normalize.py:121" *)
   reg [16:0] \$next\val_in_mns ;
-  (* src = "./migen_src/normalize.py:199" *)
+  (* src = "normalize.py:199" *)
   reg [15:0] \$next\val_out ;
-  (* src = "./migen_src/normalize.py:128" *)
+  (* src = "normalize.py:128" *)
   reg \$next\valid ;
-  (* src = "./migen_src/normalize.py:204" *)
+  (* src = "normalize.py:204" *)
   reg \$next\valid_out ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/normalize.py:207" *)
+  (* src = "normalize.py:207" *)
   input end_in;
-  (* src = "./migen_src/normalize.py:132" *)
+  (* src = "normalize.py:132" *)
   wire \end_in$2 ;
-  (* src = "./migen_src/normalize.py:208" *)
+  (* src = "normalize.py:208" *)
   output end_out;
-  (* src = "./migen_src/normalize.py:133" *)
+  (* src = "normalize.py:133" *)
   wire \end_out$5 ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/normalize.py:201" *)
+  (* src = "normalize.py:201" *)
   output [4:0] ssss;
-  (* src = "./migen_src/normalize.py:126" *)
+  (* src = "normalize.py:126" *)
   wire [4:0] \ssss$4 ;
-  (* src = "./migen_src/normalize.py:194" *)
+  (* src = "normalize.py:194" *)
   input [16:0] val_in;
-  (* src = "./migen_src/normalize.py:119" *)
+  (* src = "normalize.py:119" *)
   wire [16:0] \val_in$1 ;
-  (* src = "./migen_src/normalize.py:121" *)
+  (* src = "normalize.py:121" *)
   wire [16:0] val_in_mns;
-  (* src = "./migen_src/normalize.py:199" *)
+  (* src = "normalize.py:199" *)
   output [15:0] val_out;
-  (* src = "./migen_src/normalize.py:124" *)
+  (* src = "normalize.py:124" *)
   wire [15:0] \val_out$3 ;
-  (* src = "./migen_src/normalize.py:128" *)
+  (* src = "normalize.py:128" *)
   wire valid;
-  (* src = "./migen_src/normalize.py:203" *)
+  (* src = "normalize.py:203" *)
   input valid_in;
-  (* src = "./migen_src/normalize.py:129" *)
+  (* src = "normalize.py:129" *)
   wire valid_o;
-  (* src = "./migen_src/normalize.py:204" *)
+  (* src = "normalize.py:204" *)
   output valid_out;
-  (* src = "./migen_src/normalize.py:196" *)
+  (* src = "normalize.py:196" *)
   input [16:0] vals_in_mns;
   anonymous \$6  (
     .clk(clk),

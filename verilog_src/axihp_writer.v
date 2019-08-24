@@ -55,215 +55,215 @@ module top(enable, addr_empty, addr_in, m_axi_wi__wready, data_empty, data_in, m
   wire \$92 ;
   wire \$94 ;
   wire \$96 ;
-  (* src = "./migen_src/axihp_writer.py:79" *)
+  (* src = "axihp_writer.py:79" *)
   reg [3:0] \$next\active ;
-  (* src = "./migen_src/axihp_writer.py:20" *)
+  (* src = "axihp_writer.py:20" *)
   reg \$next\addr_clk ;
-  (* src = "./migen_src/axihp_writer.py:88" *)
+  (* src = "axihp_writer.py:88" *)
   reg \$next\addr_en ;
-  (* src = "./migen_src/axihp_writer.py:21" *)
+  (* src = "axihp_writer.py:21" *)
   reg \$next\addr_enable ;
-  (* src = "./migen_src/axihp_writer.py:76" *)
+  (* src = "axihp_writer.py:76" *)
   reg [3:0] \$next\awlen_c ;
-  (* src = "./migen_src/axihp_writer.py:82" *)
+  (* src = "axihp_writer.py:82" *)
   reg \$next\awvalid ;
-  (* src = "./migen_src/axihp_writer.py:85" *)
+  (* src = "axihp_writer.py:85" *)
   reg \$next\bready ;
-  (* src = "./migen_src/axihp_writer.py:121" *)
+  (* src = "axihp_writer.py:121" *)
   reg [3:0] \$next\counter ;
-  (* src = "./migen_src/axihp_writer.py:25" *)
+  (* src = "axihp_writer.py:25" *)
   reg \$next\data_clk ;
-  (* src = "./migen_src/axihp_writer.py:87" *)
+  (* src = "axihp_writer.py:87" *)
   reg \$next\data_en ;
-  (* src = "./migen_src/axihp_writer.py:26" *)
+  (* src = "axihp_writer.py:26" *)
   reg \$next\data_enable ;
-  (* src = "./migen_src/axihp_writer.py:15" *)
+  (* src = "axihp_writer.py:15" *)
   reg \$next\inactive ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [31:0] \$next\m_axi_wo__awaddr ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [1:0] \$next\m_axi_wo__awburst ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [5:0] \$next\m_axi_wo__awid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [3:0] \$next\m_axi_wo__awlen ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [2:0] \$next\m_axi_wo__awprot ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [1:0] \$next\m_axi_wo__awsize ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_wo__awvalid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_wo__bready ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [63:0] \$next\m_axi_wo__wdata ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [5:0] \$next\m_axi_wo__wid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_wo__wlast ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [7:0] \$next\m_axi_wo__wstrb ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_wo__wvalid ;
-  (* src = "./migen_src/axihp_writer.py:89" *)
+  (* src = "axihp_writer.py:89" *)
   reg \$next\resp_en ;
-  (* src = "./migen_src/axihp_writer.py:80" *)
+  (* src = "axihp_writer.py:80" *)
   reg [3:0] \$next\unconf ;
-  (* src = "./migen_src/axihp_writer.py:84" *)
+  (* src = "axihp_writer.py:84" *)
   reg \$next\wlast ;
-  (* src = "./migen_src/axihp_writer.py:33" *)
+  (* src = "axihp_writer.py:33" *)
   reg [3:0] \$next\writer_active ;
-  (* src = "./migen_src/axihp_writer.py:32" *)
+  (* src = "axihp_writer.py:32" *)
   reg \$next\writer_error ;
-  (* src = "./migen_src/axihp_writer.py:34" *)
+  (* src = "axihp_writer.py:34" *)
   reg [3:0] \$next\writer_unconf ;
-  (* src = "./migen_src/axihp_writer.py:83" *)
+  (* src = "axihp_writer.py:83" *)
   reg \$next\wvalid ;
   (* init = 1'h0 *)
   reg \$verilog_initial_trigger  = 1'h0;
   (* init = 4'h0 *)
-  (* src = "./migen_src/axihp_writer.py:79" *)
+  (* src = "axihp_writer.py:79" *)
   reg [3:0] active = 4'h0;
-  (* src = "./migen_src/axihp_writer.py:20" *)
+  (* src = "axihp_writer.py:20" *)
   output addr_clk;
-  (* src = "./migen_src/axihp_writer.py:23" *)
+  (* src = "axihp_writer.py:23" *)
   input addr_empty;
-  (* src = "./migen_src/axihp_writer.py:88" *)
+  (* src = "axihp_writer.py:88" *)
   wire addr_en;
-  (* src = "./migen_src/axihp_writer.py:21" *)
+  (* src = "axihp_writer.py:21" *)
   output addr_enable;
-  (* src = "./migen_src/axihp_writer.py:22" *)
+  (* src = "axihp_writer.py:22" *)
   input [31:0] addr_in;
-  (* src = "./migen_src/axihp_writer.py:76" *)
+  (* src = "axihp_writer.py:76" *)
   wire [3:0] awlen_c;
   (* init = 1'h0 *)
-  (* src = "./migen_src/axihp_writer.py:82" *)
+  (* src = "axihp_writer.py:82" *)
   reg awvalid = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/axihp_writer.py:85" *)
+  (* src = "axihp_writer.py:85" *)
   reg bready = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
   (* init = 4'h0 *)
-  (* src = "./migen_src/axihp_writer.py:121" *)
+  (* src = "axihp_writer.py:121" *)
   reg [3:0] counter = 4'h0;
-  (* src = "./migen_src/axihp_writer.py:25" *)
+  (* src = "axihp_writer.py:25" *)
   output data_clk;
-  (* src = "./migen_src/axihp_writer.py:28" *)
+  (* src = "axihp_writer.py:28" *)
   input data_empty;
-  (* src = "./migen_src/axihp_writer.py:87" *)
+  (* src = "axihp_writer.py:87" *)
   wire data_en;
-  (* src = "./migen_src/axihp_writer.py:26" *)
+  (* src = "axihp_writer.py:26" *)
   output data_enable;
-  (* src = "./migen_src/axihp_writer.py:27" *)
+  (* src = "axihp_writer.py:27" *)
   input [63:0] data_in;
-  (* src = "./migen_src/axihp_writer.py:14" *)
+  (* src = "axihp_writer.py:14" *)
   input enable;
-  (* src = "./migen_src/axihp_writer.py:15" *)
+  (* src = "axihp_writer.py:15" *)
   output inactive;
-  (* src = "./migen_src/axihp_writer.py:12" *)
+  (* src = "axihp_writer.py:12" *)
   input m_axi_aclk;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_wi__awready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [1:0] m_axi_wi__bresp;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_wi__bvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_wi__wready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [31:0] m_axi_wo__awaddr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [1:0] m_axi_wo__awburst;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [5:0] m_axi_wo__awid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [3:0] m_axi_wo__awlen;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [2:0] m_axi_wo__awprot;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [1:0] m_axi_wo__awsize;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_wo__awvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_wo__bready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [63:0] m_axi_wo__wdata;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [5:0] m_axi_wo__wid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_wo__wlast;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [7:0] m_axi_wo__wstrb;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_wo__wvalid;
-  (* src = "./migen_src/axihp_writer.py:89" *)
+  (* src = "axihp_writer.py:89" *)
   wire resp_en;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 4'h0 *)
-  (* src = "./migen_src/axihp_writer.py:80" *)
+  (* src = "axihp_writer.py:80" *)
   reg [3:0] unconf = 4'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/axihp_writer.py:84" *)
+  (* src = "axihp_writer.py:84" *)
   reg wlast = 1'h0;
-  (* src = "./migen_src/axihp_writer.py:30" *)
+  (* src = "axihp_writer.py:30" *)
   input [7:0] write_strobe;
-  (* src = "./migen_src/axihp_writer.py:33" *)
+  (* src = "axihp_writer.py:33" *)
   output [3:0] writer_active;
-  (* src = "./migen_src/axihp_writer.py:32" *)
+  (* src = "axihp_writer.py:32" *)
   output writer_error;
-  (* src = "./migen_src/axihp_writer.py:34" *)
+  (* src = "axihp_writer.py:34" *)
   output [3:0] writer_unconf;
   (* init = 1'h0 *)
-  (* src = "./migen_src/axihp_writer.py:83" *)
+  (* src = "axihp_writer.py:83" *)
   reg wvalid = 1'h0;
-  assign \$9  = enable == (* src = "./migen_src/axihp_writer.py:101" *) 1'h1;
-  assign \$11  = addr_empty == (* src = "./migen_src/axihp_writer.py:101" *) 1'h0;
-  assign \$13  = \$9  & (* src = "./migen_src/axihp_writer.py:101" *) \$11 ;
-  assign \$15  = active[3] == (* src = "./migen_src/axihp_writer.py:101" *) 1'h0;
-  assign \$17  = \$13  & (* src = "./migen_src/axihp_writer.py:101" *) \$15 ;
-  assign \$1  = awvalid == (* src = "./migen_src/axihp_writer.py:96" *) 1'h1;
-  assign \$19  = counter == (* src = "./migen_src/axihp_writer.py:123" *) 4'hf;
-  assign \$22  = counter + (* src = "./migen_src/axihp_writer.py:131" *) 1'h1;
-  assign \$24  = counter == (* src = "./migen_src/axihp_writer.py:123" *) 4'hf;
-  assign \$26  = wvalid == (* src = "./migen_src/axihp_writer.py:134" *) 1'h1;
-  assign \$28  = m_axi_wi__wready == (* src = "./migen_src/axihp_writer.py:134" *) 1'h1;
-  assign \$30  = \$26  & (* src = "./migen_src/axihp_writer.py:134" *) \$28 ;
-  assign \$32  = wvalid == (* src = "./migen_src/axihp_writer.py:137" *) 1'h0;
-  assign \$34  = data_empty == (* src = "./migen_src/axihp_writer.py:139" *) 1'h0;
-  assign \$36  = active != (* src = "./migen_src/axihp_writer.py:139" *) 1'h0;
-  assign \$38  = \$34  & (* src = "./migen_src/axihp_writer.py:139" *) \$36 ;
-  assign \$3  = m_axi_wi__awready == (* src = "./migen_src/axihp_writer.py:96" *) 1'h1;
-  assign \$40  = bready == (* src = "./migen_src/axihp_writer.py:159" *) 1'h1;
-  assign \$42  = m_axi_wi__bvalid == (* src = "./migen_src/axihp_writer.py:159" *) 1'h1;
-  assign \$44  = \$40  & (* src = "./migen_src/axihp_writer.py:159" *) \$42 ;
-  assign \$46  = bready == (* src = "./migen_src/axihp_writer.py:162" *) 1'h0;
-  assign \$48  = unconf == (* src = "./migen_src/axihp_writer.py:169" *) 1'h0;
-  assign \$50  = resp_en == (* src = "./migen_src/axihp_writer.py:174" *) 1'h1;
-  assign \$52  = m_axi_wi__bresp != (* src = "./migen_src/axihp_writer.py:174" *) 1'h0;
-  assign \$54  = \$50  & (* src = "./migen_src/axihp_writer.py:174" *) \$52 ;
-  assign \$56  = addr_en == (* src = "./migen_src/axihp_writer.py:183" *) 1'h1;
-  assign \$58  = wlast == (* src = "./migen_src/axihp_writer.py:183" *) 1'h0;
-  assign \$5  = \$1  & (* src = "./migen_src/axihp_writer.py:96" *) \$3 ;
-  assign \$60  = \$56  & (* src = "./migen_src/axihp_writer.py:183" *) \$58 ;
-  assign \$62  = addr_en == (* src = "./migen_src/axihp_writer.py:187" *) 1'h0;
-  assign \$64  = wlast == (* src = "./migen_src/axihp_writer.py:187" *) 1'h1;
-  assign \$66  = \$62  & (* src = "./migen_src/axihp_writer.py:187" *) \$64 ;
-  assign \$69  = active + (* src = "./migen_src/axihp_writer.py:185" *) 1'h1;
-  assign \$72  = active - (* src = "./migen_src/axihp_writer.py:189" *) 1'h1;
-  assign \$74  = addr_en == (* src = "./migen_src/axihp_writer.py:192" *) 1'h1;
-  assign \$76  = resp_en == (* src = "./migen_src/axihp_writer.py:192" *) 1'h0;
-  assign \$78  = \$74  & (* src = "./migen_src/axihp_writer.py:192" *) \$76 ;
-  assign \$7  = awvalid == (* src = "./migen_src/axihp_writer.py:99" *) 1'h0;
-  assign \$80  = addr_en == (* src = "./migen_src/axihp_writer.py:196" *) 1'h0;
-  assign \$82  = resp_en == (* src = "./migen_src/axihp_writer.py:196" *) 1'h1;
-  assign \$84  = \$80  & (* src = "./migen_src/axihp_writer.py:196" *) \$82 ;
-  assign \$87  = unconf + (* src = "./migen_src/axihp_writer.py:194" *) 1'h1;
-  assign \$90  = unconf - (* src = "./migen_src/axihp_writer.py:198" *) 1'h1;
-  assign \$92  = active == (* src = "./migen_src/axihp_writer.py:200" *) 1'h0;
-  assign \$94  = unconf == (* src = "./migen_src/axihp_writer.py:200" *) 1'h0;
-  assign \$96  = \$92  & (* src = "./migen_src/axihp_writer.py:200" *) \$94 ;
+  assign \$9  = enable == (* src = "axihp_writer.py:101" *) 1'h1;
+  assign \$11  = addr_empty == (* src = "axihp_writer.py:101" *) 1'h0;
+  assign \$13  = \$9  & (* src = "axihp_writer.py:101" *) \$11 ;
+  assign \$15  = active[3] == (* src = "axihp_writer.py:101" *) 1'h0;
+  assign \$17  = \$13  & (* src = "axihp_writer.py:101" *) \$15 ;
+  assign \$1  = awvalid == (* src = "axihp_writer.py:96" *) 1'h1;
+  assign \$19  = counter == (* src = "axihp_writer.py:123" *) 4'hf;
+  assign \$22  = counter + (* src = "axihp_writer.py:131" *) 1'h1;
+  assign \$24  = counter == (* src = "axihp_writer.py:123" *) 4'hf;
+  assign \$26  = wvalid == (* src = "axihp_writer.py:134" *) 1'h1;
+  assign \$28  = m_axi_wi__wready == (* src = "axihp_writer.py:134" *) 1'h1;
+  assign \$30  = \$26  & (* src = "axihp_writer.py:134" *) \$28 ;
+  assign \$32  = wvalid == (* src = "axihp_writer.py:137" *) 1'h0;
+  assign \$34  = data_empty == (* src = "axihp_writer.py:139" *) 1'h0;
+  assign \$36  = active != (* src = "axihp_writer.py:139" *) 1'h0;
+  assign \$38  = \$34  & (* src = "axihp_writer.py:139" *) \$36 ;
+  assign \$3  = m_axi_wi__awready == (* src = "axihp_writer.py:96" *) 1'h1;
+  assign \$40  = bready == (* src = "axihp_writer.py:159" *) 1'h1;
+  assign \$42  = m_axi_wi__bvalid == (* src = "axihp_writer.py:159" *) 1'h1;
+  assign \$44  = \$40  & (* src = "axihp_writer.py:159" *) \$42 ;
+  assign \$46  = bready == (* src = "axihp_writer.py:162" *) 1'h0;
+  assign \$48  = unconf == (* src = "axihp_writer.py:169" *) 1'h0;
+  assign \$50  = resp_en == (* src = "axihp_writer.py:174" *) 1'h1;
+  assign \$52  = m_axi_wi__bresp != (* src = "axihp_writer.py:174" *) 1'h0;
+  assign \$54  = \$50  & (* src = "axihp_writer.py:174" *) \$52 ;
+  assign \$56  = addr_en == (* src = "axihp_writer.py:183" *) 1'h1;
+  assign \$58  = wlast == (* src = "axihp_writer.py:183" *) 1'h0;
+  assign \$5  = \$1  & (* src = "axihp_writer.py:96" *) \$3 ;
+  assign \$60  = \$56  & (* src = "axihp_writer.py:183" *) \$58 ;
+  assign \$62  = addr_en == (* src = "axihp_writer.py:187" *) 1'h0;
+  assign \$64  = wlast == (* src = "axihp_writer.py:187" *) 1'h1;
+  assign \$66  = \$62  & (* src = "axihp_writer.py:187" *) \$64 ;
+  assign \$69  = active + (* src = "axihp_writer.py:185" *) 1'h1;
+  assign \$72  = active - (* src = "axihp_writer.py:189" *) 1'h1;
+  assign \$74  = addr_en == (* src = "axihp_writer.py:192" *) 1'h1;
+  assign \$76  = resp_en == (* src = "axihp_writer.py:192" *) 1'h0;
+  assign \$78  = \$74  & (* src = "axihp_writer.py:192" *) \$76 ;
+  assign \$7  = awvalid == (* src = "axihp_writer.py:99" *) 1'h0;
+  assign \$80  = addr_en == (* src = "axihp_writer.py:196" *) 1'h0;
+  assign \$82  = resp_en == (* src = "axihp_writer.py:196" *) 1'h1;
+  assign \$84  = \$80  & (* src = "axihp_writer.py:196" *) \$82 ;
+  assign \$87  = unconf + (* src = "axihp_writer.py:194" *) 1'h1;
+  assign \$90  = unconf - (* src = "axihp_writer.py:198" *) 1'h1;
+  assign \$92  = active == (* src = "axihp_writer.py:200" *) 1'h0;
+  assign \$94  = unconf == (* src = "axihp_writer.py:200" *) 1'h0;
+  assign \$96  = \$92  & (* src = "axihp_writer.py:200" *) \$94 ;
   always @(posedge clk)
       unconf <= \$next\unconf ;
   always @(posedge clk)

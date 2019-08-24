@@ -8,33 +8,33 @@ module top(address_latch, rst, clk, address_o, address_valid, starting_address);
   wire [32:0] \$2 ;
   wire [32:0] \$4 ;
   wire [32:0] \$5 ;
-  (* src = "./migen_src/address_generator.py:35" *)
+  (* src = "address_generator.py:35" *)
   reg [31:0] \$next\address_o ;
-  (* src = "./migen_src/address_generator.py:36" *)
+  (* src = "address_generator.py:36" *)
   reg \$next\address_valid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg \$next\fsm_state ;
-  (* src = "./migen_src/address_generator.py:37" *)
+  (* src = "address_generator.py:37" *)
   input address_latch;
   (* init = 32'd0 *)
-  (* src = "./migen_src/address_generator.py:35" *)
+  (* src = "address_generator.py:35" *)
   output [31:0] address_o;
   reg [31:0] address_o = 32'd0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/address_generator.py:36" *)
+  (* src = "address_generator.py:36" *)
   output address_valid;
   reg address_valid = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
   (* init = 1'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg fsm_state = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/address_generator.py:39" *)
+  (* src = "address_generator.py:39" *)
   input [31:0] starting_address;
-  assign \$2  = address_o + (* src = "./migen_src/address_generator.py:58" *) 5'h10;
-  assign \$5  = address_o + (* src = "./migen_src/address_generator.py:64" *) 5'h10;
+  assign \$2  = address_o + (* src = "address_generator.py:58" *) 5'h10;
+  assign \$5  = address_o + (* src = "address_generator.py:64" *) 5'h10;
   always @(posedge clk)
       fsm_state <= \$next\fsm_state ;
   always @(posedge clk)

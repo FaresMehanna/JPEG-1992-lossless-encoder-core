@@ -33,88 +33,88 @@ module fifo32(we, replace, re, rst, clk, writable, readable, dout, din);
   wire [2:0] \$6 ;
   wire [2:0] \$7 ;
   wire \$9 ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
+  (* src = "nmigen/lib/fifo.py:156" *)
   reg [1:0] \$next\consume ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
+  (* src = "nmigen/lib/fifo.py:69" *)
   reg [31:0] \$next\dout ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
+  (* src = "nmigen/lib/fifo.py:138" *)
   reg [2:0] \$next\level ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:155" *)
+  (* src = "nmigen/lib/fifo.py:155" *)
   reg [1:0] \$next\produce ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
+  (* src = "nmigen/hdl/mem.py:81" *)
   reg [1:0] \$next\rdport_storage_r_addr ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:70" *)
+  (* src = "nmigen/lib/fifo.py:70" *)
   reg \$next\readable ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:66" *)
+  (* src = "nmigen/lib/fifo.py:66" *)
   reg \$next\writable ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
+  (* src = "nmigen/hdl/mem.py:146" *)
   reg [1:0] \$next\wrport_storage_w_addr ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
+  (* src = "nmigen/hdl/mem.py:148" *)
   reg [31:0] \$next\wrport_storage_w_data ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
+  (* src = "nmigen/hdl/mem.py:150" *)
   reg \$next\wrport_storage_w_en ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:160" *)
+  (* src = "nmigen/hdl/mem.py:160" *)
   input clk;
   (* init = 2'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
+  (* src = "nmigen/lib/fifo.py:156" *)
   reg [1:0] consume = 2'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
+  (* src = "nmigen/lib/fifo.py:65" *)
   input [31:0] din;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
+  (* src = "nmigen/lib/fifo.py:69" *)
   output [31:0] dout;
   (* init = 3'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
+  (* src = "nmigen/lib/fifo.py:138" *)
   reg [2:0] level = 3'h0;
   (* init = 2'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:155" *)
+  (* src = "nmigen/lib/fifo.py:155" *)
   reg [1:0] produce = 2'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
+  (* src = "nmigen/hdl/mem.py:81" *)
   wire [1:0] rdport_storage_r_addr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:83" *)
+  (* src = "nmigen/hdl/mem.py:83" *)
   wire [31:0] rdport_storage_r_data;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
+  (* src = "nmigen/lib/fifo.py:71" *)
   input re;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:70" *)
+  (* src = "nmigen/lib/fifo.py:70" *)
   output readable;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:139" *)
+  (* src = "nmigen/lib/fifo.py:139" *)
   input replace;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
+  (* src = "nmigen/lib/fifo.py:67" *)
   input we;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:66" *)
+  (* src = "nmigen/lib/fifo.py:66" *)
   output writable;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
+  (* src = "nmigen/hdl/mem.py:146" *)
   wire [1:0] wrport_storage_w_addr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
+  (* src = "nmigen/hdl/mem.py:148" *)
   wire [31:0] wrport_storage_w_data;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
+  (* src = "nmigen/hdl/mem.py:150" *)
   wire wrport_storage_w_en;
-  assign \$9  = writable | (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:161" *) replace;
-  assign \$11  = we & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:161" *) \$9 ;
-  assign \$13  = writable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) we;
-  assign \$15  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) replace;
-  assign \$17  = \$13  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) \$15 ;
-  assign \$20  = produce + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:93" *) 1'h1;
-  assign \$22  = readable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:148" *) re;
-  assign \$25  = consume + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:93" *) 1'h1;
-  assign \$27  = writable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) we;
-  assign \$2  = level != (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:144" *) 3'h4;
-  assign \$29  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) replace;
-  assign \$31  = \$27  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) \$29 ;
-  assign \$34  = readable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:148" *) re;
-  assign \$33  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:177" *) \$34 ;
-  assign \$37  = \$31  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:177" *) \$33 ;
-  assign \$40  = level + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:178" *) 1'h1;
-  assign \$42  = readable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:148" *) re;
-  assign \$45  = writable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) we;
-  assign \$47  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) replace;
-  assign \$4  = level != (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:145" *) 1'h0;
-  assign \$49  = \$45  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) \$47 ;
-  assign \$44  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:179" *) \$49 ;
-  assign \$52  = \$42  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:179" *) \$44 ;
-  assign \$55  = level - (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:180" *) 1'h1;
-  assign \$7  = produce - (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:100" *) 1'h1;
+  assign \$9  = writable | (* src = "nmigen/lib/fifo.py:161" *) replace;
+  assign \$11  = we & (* src = "nmigen/lib/fifo.py:161" *) \$9 ;
+  assign \$13  = writable & (* src = "nmigen/lib/fifo.py:149" *) we;
+  assign \$15  = ~ (* src = "nmigen/lib/fifo.py:149" *) replace;
+  assign \$17  = \$13  & (* src = "nmigen/lib/fifo.py:149" *) \$15 ;
+  assign \$20  = produce + (* src = "nmigen/lib/fifo.py:93" *) 1'h1;
+  assign \$22  = readable & (* src = "nmigen/lib/fifo.py:148" *) re;
+  assign \$25  = consume + (* src = "nmigen/lib/fifo.py:93" *) 1'h1;
+  assign \$27  = writable & (* src = "nmigen/lib/fifo.py:149" *) we;
+  assign \$2  = level != (* src = "nmigen/lib/fifo.py:144" *) 3'h4;
+  assign \$29  = ~ (* src = "nmigen/lib/fifo.py:149" *) replace;
+  assign \$31  = \$27  & (* src = "nmigen/lib/fifo.py:149" *) \$29 ;
+  assign \$34  = readable & (* src = "nmigen/lib/fifo.py:148" *) re;
+  assign \$33  = ~ (* src = "nmigen/lib/fifo.py:177" *) \$34 ;
+  assign \$37  = \$31  & (* src = "nmigen/lib/fifo.py:177" *) \$33 ;
+  assign \$40  = level + (* src = "nmigen/lib/fifo.py:178" *) 1'h1;
+  assign \$42  = readable & (* src = "nmigen/lib/fifo.py:148" *) re;
+  assign \$45  = writable & (* src = "nmigen/lib/fifo.py:149" *) we;
+  assign \$47  = ~ (* src = "nmigen/lib/fifo.py:149" *) replace;
+  assign \$4  = level != (* src = "nmigen/lib/fifo.py:145" *) 1'h0;
+  assign \$49  = \$45  & (* src = "nmigen/lib/fifo.py:149" *) \$47 ;
+  assign \$44  = ~ (* src = "nmigen/lib/fifo.py:179" *) \$49 ;
+  assign \$52  = \$42  & (* src = "nmigen/lib/fifo.py:179" *) \$44 ;
+  assign \$55  = level - (* src = "nmigen/lib/fifo.py:180" *) 1'h1;
+  assign \$7  = produce - (* src = "nmigen/lib/fifo.py:100" *) 1'h1;
   always @(posedge clk)
       level <= \$next\level ;
   always @(posedge clk)
@@ -248,88 +248,88 @@ module fifo64(we, replace, re, rst, clk, writable, readable, dout, din);
   wire [1:0] \$6 ;
   wire [1:0] \$7 ;
   wire \$9 ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
+  (* src = "nmigen/lib/fifo.py:156" *)
   reg \$next\consume ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
+  (* src = "nmigen/lib/fifo.py:69" *)
   reg [63:0] \$next\dout ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
+  (* src = "nmigen/lib/fifo.py:138" *)
   reg [1:0] \$next\level ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:155" *)
+  (* src = "nmigen/lib/fifo.py:155" *)
   reg \$next\produce ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
+  (* src = "nmigen/hdl/mem.py:81" *)
   reg \$next\rdport_storage_r_addr ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:70" *)
+  (* src = "nmigen/lib/fifo.py:70" *)
   reg \$next\readable ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:66" *)
+  (* src = "nmigen/lib/fifo.py:66" *)
   reg \$next\writable ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
+  (* src = "nmigen/hdl/mem.py:146" *)
   reg \$next\wrport_storage_w_addr ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
+  (* src = "nmigen/hdl/mem.py:148" *)
   reg [63:0] \$next\wrport_storage_w_data ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
+  (* src = "nmigen/hdl/mem.py:150" *)
   reg \$next\wrport_storage_w_en ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:160" *)
+  (* src = "nmigen/hdl/mem.py:160" *)
   input clk;
   (* init = 1'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:156" *)
+  (* src = "nmigen/lib/fifo.py:156" *)
   reg consume = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
+  (* src = "nmigen/lib/fifo.py:65" *)
   input [63:0] din;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
+  (* src = "nmigen/lib/fifo.py:69" *)
   output [63:0] dout;
   (* init = 2'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:138" *)
+  (* src = "nmigen/lib/fifo.py:138" *)
   reg [1:0] level = 2'h0;
   (* init = 1'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:155" *)
+  (* src = "nmigen/lib/fifo.py:155" *)
   reg produce = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:81" *)
+  (* src = "nmigen/hdl/mem.py:81" *)
   wire rdport_storage_r_addr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:83" *)
+  (* src = "nmigen/hdl/mem.py:83" *)
   wire [63:0] rdport_storage_r_data;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
+  (* src = "nmigen/lib/fifo.py:71" *)
   input re;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:70" *)
+  (* src = "nmigen/lib/fifo.py:70" *)
   output readable;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:139" *)
+  (* src = "nmigen/lib/fifo.py:139" *)
   input replace;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
+  (* src = "nmigen/lib/fifo.py:67" *)
   input we;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:66" *)
+  (* src = "nmigen/lib/fifo.py:66" *)
   output writable;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:146" *)
+  (* src = "nmigen/hdl/mem.py:146" *)
   wire wrport_storage_w_addr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:148" *)
+  (* src = "nmigen/hdl/mem.py:148" *)
   wire [63:0] wrport_storage_w_data;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:150" *)
+  (* src = "nmigen/hdl/mem.py:150" *)
   wire wrport_storage_w_en;
-  assign \$9  = writable | (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:161" *) replace;
-  assign \$11  = we & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:161" *) \$9 ;
-  assign \$13  = writable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) we;
-  assign \$15  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) replace;
-  assign \$17  = \$13  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) \$15 ;
-  assign \$20  = produce + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:93" *) 1'h1;
-  assign \$22  = readable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:148" *) re;
-  assign \$25  = consume + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:93" *) 1'h1;
-  assign \$27  = writable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) we;
-  assign \$2  = level != (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:144" *) 2'h2;
-  assign \$29  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) replace;
-  assign \$31  = \$27  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) \$29 ;
-  assign \$34  = readable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:148" *) re;
-  assign \$33  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:177" *) \$34 ;
-  assign \$37  = \$31  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:177" *) \$33 ;
-  assign \$40  = level + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:178" *) 1'h1;
-  assign \$42  = readable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:148" *) re;
-  assign \$45  = writable & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) we;
-  assign \$47  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) replace;
-  assign \$4  = level != (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:145" *) 1'h0;
-  assign \$49  = \$45  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:149" *) \$47 ;
-  assign \$44  = ~ (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:179" *) \$49 ;
-  assign \$52  = \$42  & (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:179" *) \$44 ;
-  assign \$55  = level - (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:180" *) 1'h1;
-  assign \$7  = produce - (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:100" *) 1'h1;
+  assign \$9  = writable | (* src = "nmigen/lib/fifo.py:161" *) replace;
+  assign \$11  = we & (* src = "nmigen/lib/fifo.py:161" *) \$9 ;
+  assign \$13  = writable & (* src = "nmigen/lib/fifo.py:149" *) we;
+  assign \$15  = ~ (* src = "nmigen/lib/fifo.py:149" *) replace;
+  assign \$17  = \$13  & (* src = "nmigen/lib/fifo.py:149" *) \$15 ;
+  assign \$20  = produce + (* src = "nmigen/lib/fifo.py:93" *) 1'h1;
+  assign \$22  = readable & (* src = "nmigen/lib/fifo.py:148" *) re;
+  assign \$25  = consume + (* src = "nmigen/lib/fifo.py:93" *) 1'h1;
+  assign \$27  = writable & (* src = "nmigen/lib/fifo.py:149" *) we;
+  assign \$2  = level != (* src = "nmigen/lib/fifo.py:144" *) 2'h2;
+  assign \$29  = ~ (* src = "nmigen/lib/fifo.py:149" *) replace;
+  assign \$31  = \$27  & (* src = "nmigen/lib/fifo.py:149" *) \$29 ;
+  assign \$34  = readable & (* src = "nmigen/lib/fifo.py:148" *) re;
+  assign \$33  = ~ (* src = "nmigen/lib/fifo.py:177" *) \$34 ;
+  assign \$37  = \$31  & (* src = "nmigen/lib/fifo.py:177" *) \$33 ;
+  assign \$40  = level + (* src = "nmigen/lib/fifo.py:178" *) 1'h1;
+  assign \$42  = readable & (* src = "nmigen/lib/fifo.py:148" *) re;
+  assign \$45  = writable & (* src = "nmigen/lib/fifo.py:149" *) we;
+  assign \$47  = ~ (* src = "nmigen/lib/fifo.py:149" *) replace;
+  assign \$4  = level != (* src = "nmigen/lib/fifo.py:145" *) 1'h0;
+  assign \$49  = \$45  & (* src = "nmigen/lib/fifo.py:149" *) \$47 ;
+  assign \$44  = ~ (* src = "nmigen/lib/fifo.py:179" *) \$49 ;
+  assign \$52  = \$42  & (* src = "nmigen/lib/fifo.py:179" *) \$44 ;
+  assign \$55  = level - (* src = "nmigen/lib/fifo.py:180" *) 1'h1;
+  assign \$7  = produce - (* src = "nmigen/lib/fifo.py:100" *) 1'h1;
   always @(posedge clk)
       level <= \$next\level ;
   always @(posedge clk)
@@ -448,117 +448,117 @@ module top(data_in, i_busy, rst, clk, valid_out, o_busy, data_out, valid_in);
   wire \$4 ;
   wire \$6 ;
   wire \$8 ;
-  (* src = "./migen_src/b64_b32.py:105" *)
+  (* src = "b64_b32.py:105" *)
   reg [31:0] \$next\buff ;
-  (* src = "./migen_src/b64_b32.py:38" *)
+  (* src = "b64_b32.py:38" *)
   reg [31:0] \$next\data_out ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
+  (* src = "nmigen/lib/fifo.py:65" *)
   reg [31:0] \$next\fifo32_din ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
+  (* src = "nmigen/lib/fifo.py:71" *)
   reg \$next\fifo32_re ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:139" *)
+  (* src = "nmigen/lib/fifo.py:139" *)
   reg \$next\fifo32_replace ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
+  (* src = "nmigen/lib/fifo.py:67" *)
   reg \$next\fifo32_we ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
+  (* src = "nmigen/lib/fifo.py:65" *)
   reg [63:0] \$next\fifo64_din ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
+  (* src = "nmigen/lib/fifo.py:71" *)
   reg \$next\fifo64_re ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:139" *)
+  (* src = "nmigen/lib/fifo.py:139" *)
   reg \$next\fifo64_replace ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
+  (* src = "nmigen/lib/fifo.py:67" *)
   reg \$next\fifo64_we ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg \$next\fsm_state$1 ;
-  (* src = "./migen_src/b64_b32.py:44" *)
+  (* src = "b64_b32.py:44" *)
   reg \$next\o_busy ;
-  (* src = "./migen_src/b64_b32.py:68" *)
+  (* src = "b64_b32.py:68" *)
   reg [63:0] \$next\reg ;
-  (* src = "./migen_src/b64_b32.py:42" *)
+  (* src = "b64_b32.py:42" *)
   reg \$next\valid_out ;
   (* init = 32'd0 *)
-  (* src = "./migen_src/b64_b32.py:105" *)
+  (* src = "b64_b32.py:105" *)
   reg [31:0] buff = 32'd0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/mem.py:160" *)
+  (* src = "nmigen/hdl/mem.py:160" *)
   input clk;
-  (* src = "./migen_src/b64_b32.py:35" *)
+  (* src = "b64_b32.py:35" *)
   input [63:0] data_in;
-  (* src = "./migen_src/b64_b32.py:38" *)
+  (* src = "b64_b32.py:38" *)
   output [31:0] data_out;
   (* init = 32'd0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
+  (* src = "nmigen/lib/fifo.py:65" *)
   reg [31:0] fifo32_din = 32'd0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
+  (* src = "nmigen/lib/fifo.py:69" *)
   wire [31:0] fifo32_dout;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
+  (* src = "nmigen/lib/fifo.py:71" *)
   wire fifo32_re;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:70" *)
+  (* src = "nmigen/lib/fifo.py:70" *)
   wire fifo32_readable;
   (* init = 1'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:139" *)
+  (* src = "nmigen/lib/fifo.py:139" *)
   reg fifo32_replace = 1'h0;
   (* init = 1'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
+  (* src = "nmigen/lib/fifo.py:67" *)
   reg fifo32_we = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:66" *)
+  (* src = "nmigen/lib/fifo.py:66" *)
   wire fifo32_writable;
   (* init = 64'h0000000000000000 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:65" *)
+  (* src = "nmigen/lib/fifo.py:65" *)
   reg [63:0] fifo64_din = 64'h0000000000000000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:69" *)
+  (* src = "nmigen/lib/fifo.py:69" *)
   wire [63:0] fifo64_dout;
   (* init = 1'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:71" *)
+  (* src = "nmigen/lib/fifo.py:71" *)
   reg fifo64_re = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:70" *)
+  (* src = "nmigen/lib/fifo.py:70" *)
   wire fifo64_readable;
   (* init = 1'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:139" *)
+  (* src = "nmigen/lib/fifo.py:139" *)
   reg fifo64_replace = 1'h0;
   (* init = 1'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:67" *)
+  (* src = "nmigen/lib/fifo.py:67" *)
   reg fifo64_we = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/lib/fifo.py:66" *)
+  (* src = "nmigen/lib/fifo.py:66" *)
   wire fifo64_writable;
   (* init = 2'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
   (* init = 1'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg \fsm_state$1  = 1'h0;
-  (* src = "./migen_src/b64_b32.py:45" *)
+  (* src = "b64_b32.py:45" *)
   input i_busy;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b64_b32.py:44" *)
+  (* src = "b64_b32.py:44" *)
   output o_busy;
   reg o_busy = 1'h0;
   (* init = 64'h0000000000000000 *)
-  (* src = "./migen_src/b64_b32.py:68" *)
+  (* src = "b64_b32.py:68" *)
   reg [63:0] \reg  = 64'h0000000000000000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/b64_b32.py:41" *)
+  (* src = "b64_b32.py:41" *)
   input valid_in;
-  (* src = "./migen_src/b64_b32.py:42" *)
+  (* src = "b64_b32.py:42" *)
   output valid_out;
-  assign \$10  = fifo64_readable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
-  assign \$12  = \$8  & (* src = "./migen_src/b64_b32.py:111" *) \$10 ;
-  assign \$14  = fifo32_writable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
-  assign \$16  = fifo64_readable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
-  assign \$18  = \$14  & (* src = "./migen_src/b64_b32.py:111" *) \$16 ;
-  assign \$20  = fifo32_writable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
-  assign \$22  = fifo64_readable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
-  assign \$24  = \$20  & (* src = "./migen_src/b64_b32.py:111" *) \$22 ;
-  assign \$26  = fifo32_writable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
-  assign \$28  = fifo64_readable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
-  assign \$2  = fifo32_writable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
-  assign \$30  = \$26  & (* src = "./migen_src/b64_b32.py:111" *) \$28 ;
-  assign \$32  = i_busy == (* src = "./migen_src/b64_b32.py:131" *) 1'h0;
-  assign \$4  = fifo64_readable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
-  assign \$6  = \$2  & (* src = "./migen_src/b64_b32.py:111" *) \$4 ;
-  assign \$8  = fifo32_writable == (* src = "./migen_src/b64_b32.py:111" *) 1'h1;
+  assign \$10  = fifo64_readable == (* src = "b64_b32.py:111" *) 1'h1;
+  assign \$12  = \$8  & (* src = "b64_b32.py:111" *) \$10 ;
+  assign \$14  = fifo32_writable == (* src = "b64_b32.py:111" *) 1'h1;
+  assign \$16  = fifo64_readable == (* src = "b64_b32.py:111" *) 1'h1;
+  assign \$18  = \$14  & (* src = "b64_b32.py:111" *) \$16 ;
+  assign \$20  = fifo32_writable == (* src = "b64_b32.py:111" *) 1'h1;
+  assign \$22  = fifo64_readable == (* src = "b64_b32.py:111" *) 1'h1;
+  assign \$24  = \$20  & (* src = "b64_b32.py:111" *) \$22 ;
+  assign \$26  = fifo32_writable == (* src = "b64_b32.py:111" *) 1'h1;
+  assign \$28  = fifo64_readable == (* src = "b64_b32.py:111" *) 1'h1;
+  assign \$2  = fifo32_writable == (* src = "b64_b32.py:111" *) 1'h1;
+  assign \$30  = \$26  & (* src = "b64_b32.py:111" *) \$28 ;
+  assign \$32  = i_busy == (* src = "b64_b32.py:131" *) 1'h0;
+  assign \$4  = fifo64_readable == (* src = "b64_b32.py:111" *) 1'h1;
+  assign \$6  = \$2  & (* src = "b64_b32.py:111" *) \$4 ;
+  assign \$8  = fifo32_writable == (* src = "b64_b32.py:111" *) 1'h1;
   always @(posedge clk)
       \fsm_state$1  <= \$next\fsm_state$1 ;
   always @(posedge clk)

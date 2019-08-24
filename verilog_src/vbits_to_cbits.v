@@ -40,153 +40,153 @@ module input_handler(valid_in, enc_in, enc_in_ctr, in_end, rst, clk, latch_input
   wire [8:0] \$65 ;
   wire \$7 ;
   wire \$9 ;
-  (* src = "./migen_src/vbits_to_cbits.py:171" *)
+  (* src = "vbits_to_cbits.py:171" *)
   reg \$next\buff_change ;
-  (* src = "./migen_src/vbits_to_cbits.py:146" *)
+  (* src = "vbits_to_cbits.py:146" *)
   reg [7:0] \$next\buff_consum ;
-  (* src = "./migen_src/vbits_to_cbits.py:166" *)
+  (* src = "vbits_to_cbits.py:166" *)
   reg [7:0] \$next\buff_free ;
-  (* src = "./migen_src/vbits_to_cbits.py:192" *)
+  (* src = "vbits_to_cbits.py:192" *)
   reg \$next\buff_reg ;
-  (* src = "./migen_src/vbits_to_cbits.py:145" *)
+  (* src = "vbits_to_cbits.py:145" *)
   reg [143:0] \$next\buffer ;
-  (* src = "./migen_src/vbits_to_cbits.py:186" *)
+  (* src = "vbits_to_cbits.py:186" *)
   reg [47:0] \$next\enc_in_buff ;
-  (* src = "./migen_src/vbits_to_cbits.py:187" *)
+  (* src = "vbits_to_cbits.py:187" *)
   reg [5:0] \$next\enc_in_ctr_buff ;
-  (* src = "./migen_src/vbits_to_cbits.py:181" *)
+  (* src = "vbits_to_cbits.py:181" *)
   reg [5:0] \$next\enc_in_ctr_reg ;
-  (* src = "./migen_src/vbits_to_cbits.py:180" *)
+  (* src = "vbits_to_cbits.py:180" *)
   reg [47:0] \$next\enc_in_reg ;
-  (* src = "./migen_src/vbits_to_cbits.py:153" *)
+  (* src = "vbits_to_cbits.py:153" *)
   reg \$next\end_out ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "./migen_src/vbits_to_cbits.py:188" *)
+  (* src = "vbits_to_cbits.py:188" *)
   reg \$next\in_end_buff ;
-  (* src = "./migen_src/vbits_to_cbits.py:182" *)
+  (* src = "vbits_to_cbits.py:182" *)
   reg \$next\in_end_reg ;
-  (* src = "./migen_src/vbits_to_cbits.py:170" *)
+  (* src = "vbits_to_cbits.py:170" *)
   reg \$next\inc_buff ;
-  (* src = "./migen_src/vbits_to_cbits.py:138" *)
+  (* src = "vbits_to_cbits.py:138" *)
   reg \$next\latch_input ;
-  (* src = "./migen_src/vbits_to_cbits.py:147" *)
+  (* src = "vbits_to_cbits.py:147" *)
   reg [7:0] \$next\new_buff_consum ;
-  (* src = "./migen_src/vbits_to_cbits.py:167" *)
+  (* src = "vbits_to_cbits.py:167" *)
   reg [7:0] \$next\new_buff_free ;
-  (* src = "./migen_src/vbits_to_cbits.py:165" *)
+  (* src = "vbits_to_cbits.py:165" *)
   reg \$next\start ;
-  (* src = "./migen_src/vbits_to_cbits.py:189" *)
+  (* src = "vbits_to_cbits.py:189" *)
   reg \$next\valid_in_buff ;
-  (* src = "./migen_src/vbits_to_cbits.py:176" *)
+  (* src = "vbits_to_cbits.py:176" *)
   reg \$next\valid_in_late ;
-  (* src = "./migen_src/vbits_to_cbits.py:183" *)
+  (* src = "vbits_to_cbits.py:183" *)
   reg \$next\valid_in_reg ;
-  (* src = "./migen_src/vbits_to_cbits.py:171" *)
+  (* src = "vbits_to_cbits.py:171" *)
   wire buff_change;
   (* init = 8'h00 *)
-  (* src = "./migen_src/vbits_to_cbits.py:146" *)
+  (* src = "vbits_to_cbits.py:146" *)
   output [7:0] buff_consum;
   reg [7:0] buff_consum = 8'h00;
   (* init = 8'h00 *)
-  (* src = "./migen_src/vbits_to_cbits.py:166" *)
+  (* src = "vbits_to_cbits.py:166" *)
   reg [7:0] buff_free = 8'h00;
-  (* src = "./migen_src/vbits_to_cbits.py:192" *)
+  (* src = "vbits_to_cbits.py:192" *)
   wire buff_reg;
   (* init = 144'h000000000000000000000000000000000000 *)
-  (* src = "./migen_src/vbits_to_cbits.py:145" *)
+  (* src = "vbits_to_cbits.py:145" *)
   output [143:0] buffer;
   reg [143:0] buffer = 144'h000000000000000000000000000000000000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/vbits_to_cbits.py:150" *)
+  (* src = "vbits_to_cbits.py:150" *)
   input dec_buff;
-  (* src = "./migen_src/vbits_to_cbits.py:139" *)
+  (* src = "vbits_to_cbits.py:139" *)
   input [47:0] enc_in;
   (* init = 48'h000000000000 *)
-  (* src = "./migen_src/vbits_to_cbits.py:186" *)
+  (* src = "vbits_to_cbits.py:186" *)
   reg [47:0] enc_in_buff = 48'h000000000000;
-  (* src = "./migen_src/vbits_to_cbits.py:140" *)
+  (* src = "vbits_to_cbits.py:140" *)
   input [5:0] enc_in_ctr;
   (* init = 6'h00 *)
-  (* src = "./migen_src/vbits_to_cbits.py:187" *)
+  (* src = "vbits_to_cbits.py:187" *)
   reg [5:0] enc_in_ctr_buff = 6'h00;
   (* init = 6'h00 *)
-  (* src = "./migen_src/vbits_to_cbits.py:181" *)
+  (* src = "vbits_to_cbits.py:181" *)
   reg [5:0] enc_in_ctr_reg = 6'h00;
   (* init = 48'h000000000000 *)
-  (* src = "./migen_src/vbits_to_cbits.py:180" *)
+  (* src = "vbits_to_cbits.py:180" *)
   reg [47:0] enc_in_reg = 48'h000000000000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:153" *)
+  (* src = "vbits_to_cbits.py:153" *)
   output end_out;
   reg end_out = 1'h0;
   (* init = 2'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
-  (* src = "./migen_src/vbits_to_cbits.py:141" *)
+  (* src = "vbits_to_cbits.py:141" *)
   input in_end;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:188" *)
+  (* src = "vbits_to_cbits.py:188" *)
   reg in_end_buff = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:182" *)
+  (* src = "vbits_to_cbits.py:182" *)
   reg in_end_reg = 1'h0;
-  (* src = "./migen_src/vbits_to_cbits.py:170" *)
+  (* src = "vbits_to_cbits.py:170" *)
   wire inc_buff;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:138" *)
+  (* src = "vbits_to_cbits.py:138" *)
   output latch_input;
   reg latch_input = 1'h0;
-  (* src = "./migen_src/vbits_to_cbits.py:147" *)
+  (* src = "vbits_to_cbits.py:147" *)
   output [7:0] new_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:167" *)
+  (* src = "vbits_to_cbits.py:167" *)
   wire [7:0] new_buff_free;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:165" *)
+  (* src = "vbits_to_cbits.py:165" *)
   reg start = 1'h0;
-  (* src = "./migen_src/vbits_to_cbits.py:142" *)
+  (* src = "vbits_to_cbits.py:142" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:189" *)
+  (* src = "vbits_to_cbits.py:189" *)
   reg valid_in_buff = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:176" *)
+  (* src = "vbits_to_cbits.py:176" *)
   reg valid_in_late = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:183" *)
+  (* src = "vbits_to_cbits.py:183" *)
   reg valid_in_reg = 1'h0;
-  assign \$9  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
-  assign \$11  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
-  assign \$13  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
-  assign \$15  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
-  assign \$17  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
-  assign \$1  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
-  assign \$19  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
-  assign \$21  = enc_in_ctr_buff <= (* src = "./migen_src/vbits_to_cbits.py:243" *) buff_free;
-  assign \$23  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
-  assign \$25  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
-  assign \$28  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:206" *) enc_in_ctr_reg;
-  assign \$30  = \$28  | (* src = "./migen_src/vbits_to_cbits.py:206" *) enc_in_reg;
-  assign \$32  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
-  assign \$35  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:206" *) enc_in_ctr_reg;
-  assign \$37  = \$35  | (* src = "./migen_src/vbits_to_cbits.py:206" *) enc_in_reg;
-  assign \$3  = inc_buff | (* src = "./migen_src/vbits_to_cbits.py:173" *) dec_buff;
-  assign \$39  = enc_in_ctr_reg <= (* src = "./migen_src/vbits_to_cbits.py:281" *) buff_free;
-  assign \$41  = inc_buff & (* src = "./migen_src/vbits_to_cbits.py:289" *) dec_buff;
-  assign \$44  = buff_free + (* src = "./migen_src/vbits_to_cbits.py:290" *) 6'h20;
-  assign \$46  = \$44  - (* src = "./migen_src/vbits_to_cbits.py:290" *) enc_in_ctr_reg;
-  assign \$49  = buff_free + (* src = "./migen_src/vbits_to_cbits.py:293" *) 6'h20;
-  assign \$52  = buff_free - (* src = "./migen_src/vbits_to_cbits.py:295" *) enc_in_ctr_reg;
-  assign \$54  = inc_buff & (* src = "./migen_src/vbits_to_cbits.py:298" *) dec_buff;
-  assign \$57  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:299" *) 6'h20;
-  assign \$5  = start == (* src = "./migen_src/vbits_to_cbits.py:232" *) 1'h0;
-  assign \$59  = \$57  + (* src = "./migen_src/vbits_to_cbits.py:299" *) enc_in_ctr_reg;
-  assign \$62  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:302" *) 6'h20;
-  assign \$65  = buff_consum + (* src = "./migen_src/vbits_to_cbits.py:304" *) enc_in_ctr_reg;
-  assign \$7  = start == (* src = "./migen_src/vbits_to_cbits.py:232" *) 1'h0;
+  assign \$9  = enc_in_ctr_buff <= (* src = "vbits_to_cbits.py:243" *) buff_free;
+  assign \$11  = enc_in_ctr_buff <= (* src = "vbits_to_cbits.py:243" *) buff_free;
+  assign \$13  = enc_in_ctr_buff <= (* src = "vbits_to_cbits.py:243" *) buff_free;
+  assign \$15  = enc_in_ctr_buff <= (* src = "vbits_to_cbits.py:243" *) buff_free;
+  assign \$17  = enc_in_ctr_buff <= (* src = "vbits_to_cbits.py:243" *) buff_free;
+  assign \$1  = enc_in_ctr_reg <= (* src = "vbits_to_cbits.py:281" *) buff_free;
+  assign \$19  = enc_in_ctr_buff <= (* src = "vbits_to_cbits.py:243" *) buff_free;
+  assign \$21  = enc_in_ctr_buff <= (* src = "vbits_to_cbits.py:243" *) buff_free;
+  assign \$23  = enc_in_ctr_reg <= (* src = "vbits_to_cbits.py:281" *) buff_free;
+  assign \$25  = enc_in_ctr_reg <= (* src = "vbits_to_cbits.py:281" *) buff_free;
+  assign \$28  = buffer <<< (* src = "vbits_to_cbits.py:206" *) enc_in_ctr_reg;
+  assign \$30  = \$28  | (* src = "vbits_to_cbits.py:206" *) enc_in_reg;
+  assign \$32  = enc_in_ctr_reg <= (* src = "vbits_to_cbits.py:281" *) buff_free;
+  assign \$35  = buffer <<< (* src = "vbits_to_cbits.py:206" *) enc_in_ctr_reg;
+  assign \$37  = \$35  | (* src = "vbits_to_cbits.py:206" *) enc_in_reg;
+  assign \$3  = inc_buff | (* src = "vbits_to_cbits.py:173" *) dec_buff;
+  assign \$39  = enc_in_ctr_reg <= (* src = "vbits_to_cbits.py:281" *) buff_free;
+  assign \$41  = inc_buff & (* src = "vbits_to_cbits.py:289" *) dec_buff;
+  assign \$44  = buff_free + (* src = "vbits_to_cbits.py:290" *) 6'h20;
+  assign \$46  = \$44  - (* src = "vbits_to_cbits.py:290" *) enc_in_ctr_reg;
+  assign \$49  = buff_free + (* src = "vbits_to_cbits.py:293" *) 6'h20;
+  assign \$52  = buff_free - (* src = "vbits_to_cbits.py:295" *) enc_in_ctr_reg;
+  assign \$54  = inc_buff & (* src = "vbits_to_cbits.py:298" *) dec_buff;
+  assign \$57  = buff_consum - (* src = "vbits_to_cbits.py:299" *) 6'h20;
+  assign \$5  = start == (* src = "vbits_to_cbits.py:232" *) 1'h0;
+  assign \$59  = \$57  + (* src = "vbits_to_cbits.py:299" *) enc_in_ctr_reg;
+  assign \$62  = buff_consum - (* src = "vbits_to_cbits.py:302" *) 6'h20;
+  assign \$65  = buff_consum + (* src = "vbits_to_cbits.py:304" *) enc_in_ctr_reg;
+  assign \$7  = start == (* src = "vbits_to_cbits.py:232" *) 1'h0;
   always @(posedge clk)
       latch_input <= \$next\latch_input ;
   always @(posedge clk)
@@ -654,98 +654,98 @@ module output_handler(end_in, buffer, busy_in, rst, clk, dec_buff_out, data_out,
   wire \$77 ;
   wire \$79 ;
   wire \$9 ;
-  (* src = "./migen_src/vbits_to_cbits.py:84" *)
+  (* src = "vbits_to_cbits.py:84" *)
   reg \$next\buff_consum_greater_eq ;
-  (* src = "./migen_src/vbits_to_cbits.py:83" *)
+  (* src = "vbits_to_cbits.py:83" *)
   reg \$next\buff_consum_less_eq ;
-  (* src = "./migen_src/vbits_to_cbits.py:52" *)
+  (* src = "vbits_to_cbits.py:52" *)
   reg [31:0] \$next\data_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:63" *)
+  (* src = "vbits_to_cbits.py:63" *)
   reg \$next\dec_buff_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:54" *)
+  (* src = "vbits_to_cbits.py:54" *)
   reg \$next\end_out ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "./migen_src/vbits_to_cbits.py:75" *)
+  (* src = "vbits_to_cbits.py:75" *)
   reg [4:0] \$next\shift_left ;
-  (* src = "./migen_src/vbits_to_cbits.py:74" *)
+  (* src = "vbits_to_cbits.py:74" *)
   reg [6:0] \$next\shift_right ;
-  (* src = "./migen_src/vbits_to_cbits.py:53" *)
+  (* src = "vbits_to_cbits.py:53" *)
   reg \$next\valid_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:59" *)
+  (* src = "vbits_to_cbits.py:59" *)
   input [7:0] buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:84" *)
+  (* src = "vbits_to_cbits.py:84" *)
   wire buff_consum_greater_eq;
-  (* src = "./migen_src/vbits_to_cbits.py:83" *)
+  (* src = "vbits_to_cbits.py:83" *)
   wire buff_consum_less_eq;
-  (* src = "./migen_src/vbits_to_cbits.py:58" *)
+  (* src = "vbits_to_cbits.py:58" *)
   input [143:0] buffer;
-  (* src = "./migen_src/vbits_to_cbits.py:55" *)
+  (* src = "vbits_to_cbits.py:55" *)
   input busy_in;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
   (* init = 32'd0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:52" *)
+  (* src = "vbits_to_cbits.py:52" *)
   output [31:0] data_out;
   reg [31:0] data_out = 32'd0;
-  (* src = "./migen_src/vbits_to_cbits.py:63" *)
+  (* src = "vbits_to_cbits.py:63" *)
   output dec_buff_out;
-  (* src = "./migen_src/vbits_to_cbits.py:66" *)
+  (* src = "vbits_to_cbits.py:66" *)
   input end_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:54" *)
+  (* src = "vbits_to_cbits.py:54" *)
   output end_out;
   reg end_out = 1'h0;
   (* init = 2'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/vbits_to_cbits.py:75" *)
+  (* src = "vbits_to_cbits.py:75" *)
   wire [4:0] shift_left;
-  (* src = "./migen_src/vbits_to_cbits.py:74" *)
+  (* src = "vbits_to_cbits.py:74" *)
   wire [6:0] shift_right;
   (* init = 1'h0 *)
-  (* src = "./migen_src/vbits_to_cbits.py:53" *)
+  (* src = "vbits_to_cbits.py:53" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$9  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$7 ;
-  assign \$11  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
-  assign \$13  = \$11  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
-  assign \$15  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
-  assign \$17  = buff_consum >= (* src = "./migen_src/vbits_to_cbits.py:87" *) 6'h20;
-  assign \$19  = buff_consum <= (* src = "./migen_src/vbits_to_cbits.py:88" *) 6'h20;
-  assign \$21  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
-  assign \$23  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$21 ;
-  assign \$25  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:97" *) end_in;
-  assign \$27  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
-  assign \$2  = buff_consum - (* src = "./migen_src/vbits_to_cbits.py:76" *) 6'h20;
-  assign \$29  = \$27  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
-  assign \$31  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
-  assign \$33  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:97" *) end_in;
-  assign \$35  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
-  assign \$37  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$35 ;
-  assign \$40  = buffer >>> (* src = "./migen_src/vbits_to_cbits.py:93" *) shift_right;
-  assign \$43  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:95" *) shift_left;
-  assign \$45  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
-  assign \$47  = \$45  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
-  assign \$49  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
-  assign \$52  = buffer >>> (* src = "./migen_src/vbits_to_cbits.py:93" *) shift_right;
-  assign \$55  = buffer <<< (* src = "./migen_src/vbits_to_cbits.py:95" *) shift_left;
-  assign \$57  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
-  assign \$5  = 6'h20 - (* src = "./migen_src/vbits_to_cbits.py:77" *) buff_consum;
-  assign \$59  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$57 ;
-  assign \$61  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:97" *) end_in;
-  assign \$63  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
-  assign \$65  = \$63  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
-  assign \$67  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
-  assign \$69  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:97" *) end_in;
-  assign \$71  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
-  assign \$73  = buff_consum_greater_eq | (* src = "./migen_src/vbits_to_cbits.py:108" *) \$71 ;
-  assign \$75  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:114" *) 1'h0;
-  assign \$77  = \$75  & (* src = "./migen_src/vbits_to_cbits.py:114" *) buff_consum_greater_eq;
-  assign \$7  = buff_consum_less_eq & (* src = "./migen_src/vbits_to_cbits.py:108" *) end_in;
-  assign \$79  = busy_in == (* src = "./migen_src/vbits_to_cbits.py:117" *) 1'h0;
+  assign \$9  = buff_consum_greater_eq | (* src = "vbits_to_cbits.py:108" *) \$7 ;
+  assign \$11  = busy_in == (* src = "vbits_to_cbits.py:114" *) 1'h0;
+  assign \$13  = \$11  & (* src = "vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$15  = busy_in == (* src = "vbits_to_cbits.py:117" *) 1'h0;
+  assign \$17  = buff_consum >= (* src = "vbits_to_cbits.py:87" *) 6'h20;
+  assign \$19  = buff_consum <= (* src = "vbits_to_cbits.py:88" *) 6'h20;
+  assign \$21  = buff_consum_less_eq & (* src = "vbits_to_cbits.py:108" *) end_in;
+  assign \$23  = buff_consum_greater_eq | (* src = "vbits_to_cbits.py:108" *) \$21 ;
+  assign \$25  = buff_consum_less_eq & (* src = "vbits_to_cbits.py:97" *) end_in;
+  assign \$27  = busy_in == (* src = "vbits_to_cbits.py:114" *) 1'h0;
+  assign \$2  = buff_consum - (* src = "vbits_to_cbits.py:76" *) 6'h20;
+  assign \$29  = \$27  & (* src = "vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$31  = busy_in == (* src = "vbits_to_cbits.py:117" *) 1'h0;
+  assign \$33  = buff_consum_less_eq & (* src = "vbits_to_cbits.py:97" *) end_in;
+  assign \$35  = buff_consum_less_eq & (* src = "vbits_to_cbits.py:108" *) end_in;
+  assign \$37  = buff_consum_greater_eq | (* src = "vbits_to_cbits.py:108" *) \$35 ;
+  assign \$40  = buffer >>> (* src = "vbits_to_cbits.py:93" *) shift_right;
+  assign \$43  = buffer <<< (* src = "vbits_to_cbits.py:95" *) shift_left;
+  assign \$45  = busy_in == (* src = "vbits_to_cbits.py:114" *) 1'h0;
+  assign \$47  = \$45  & (* src = "vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$49  = busy_in == (* src = "vbits_to_cbits.py:117" *) 1'h0;
+  assign \$52  = buffer >>> (* src = "vbits_to_cbits.py:93" *) shift_right;
+  assign \$55  = buffer <<< (* src = "vbits_to_cbits.py:95" *) shift_left;
+  assign \$57  = buff_consum_less_eq & (* src = "vbits_to_cbits.py:108" *) end_in;
+  assign \$5  = 6'h20 - (* src = "vbits_to_cbits.py:77" *) buff_consum;
+  assign \$59  = buff_consum_greater_eq | (* src = "vbits_to_cbits.py:108" *) \$57 ;
+  assign \$61  = buff_consum_less_eq & (* src = "vbits_to_cbits.py:97" *) end_in;
+  assign \$63  = busy_in == (* src = "vbits_to_cbits.py:114" *) 1'h0;
+  assign \$65  = \$63  & (* src = "vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$67  = busy_in == (* src = "vbits_to_cbits.py:117" *) 1'h0;
+  assign \$69  = buff_consum_less_eq & (* src = "vbits_to_cbits.py:97" *) end_in;
+  assign \$71  = buff_consum_less_eq & (* src = "vbits_to_cbits.py:108" *) end_in;
+  assign \$73  = buff_consum_greater_eq | (* src = "vbits_to_cbits.py:108" *) \$71 ;
+  assign \$75  = busy_in == (* src = "vbits_to_cbits.py:114" *) 1'h0;
+  assign \$77  = \$75  & (* src = "vbits_to_cbits.py:114" *) buff_consum_greater_eq;
+  assign \$7  = buff_consum_less_eq & (* src = "vbits_to_cbits.py:108" *) end_in;
+  assign \$79  = busy_in == (* src = "vbits_to_cbits.py:117" *) 1'h0;
   always @(posedge clk)
       valid_out <= \$next\valid_out ;
   always @(posedge clk)
@@ -908,93 +908,93 @@ endmodule
 (* top =  1  *)
 (* generator = "nMigen" *)
 module top(enc_in_ctr, in_end, valid_in, busy_in, rst, clk, data_out, valid_out, latch_input, end_out, enc_in);
-  (* src = "./migen_src/vbits_to_cbits.py:332" *)
+  (* src = "vbits_to_cbits.py:332" *)
   reg [31:0] \$next\data_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:334" *)
+  (* src = "vbits_to_cbits.py:334" *)
   reg \$next\end_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:150" *)
+  (* src = "vbits_to_cbits.py:150" *)
   reg \$next\input_handler_dec_buff ;
-  (* src = "./migen_src/vbits_to_cbits.py:139" *)
+  (* src = "vbits_to_cbits.py:139" *)
   reg [47:0] \$next\input_handler_enc_in ;
-  (* src = "./migen_src/vbits_to_cbits.py:140" *)
+  (* src = "vbits_to_cbits.py:140" *)
   reg [5:0] \$next\input_handler_enc_in_ctr ;
-  (* src = "./migen_src/vbits_to_cbits.py:141" *)
+  (* src = "vbits_to_cbits.py:141" *)
   reg \$next\input_handler_in_end ;
-  (* src = "./migen_src/vbits_to_cbits.py:142" *)
+  (* src = "vbits_to_cbits.py:142" *)
   reg \$next\input_handler_valid_in ;
-  (* src = "./migen_src/vbits_to_cbits.py:326" *)
+  (* src = "vbits_to_cbits.py:326" *)
   reg \$next\latch_input ;
-  (* src = "./migen_src/vbits_to_cbits.py:60" *)
+  (* src = "vbits_to_cbits.py:60" *)
   reg [7:0] \$next\new_buff_consum ;
-  (* src = "./migen_src/vbits_to_cbits.py:59" *)
+  (* src = "vbits_to_cbits.py:59" *)
   reg [7:0] \$next\output_handler_buff_consum ;
-  (* src = "./migen_src/vbits_to_cbits.py:58" *)
+  (* src = "vbits_to_cbits.py:58" *)
   reg [143:0] \$next\output_handler_buffer ;
-  (* src = "./migen_src/vbits_to_cbits.py:55" *)
+  (* src = "vbits_to_cbits.py:55" *)
   reg \$next\output_handler_busy_in ;
-  (* src = "./migen_src/vbits_to_cbits.py:66" *)
+  (* src = "vbits_to_cbits.py:66" *)
   reg \$next\output_handler_end_in ;
-  (* src = "./migen_src/vbits_to_cbits.py:333" *)
+  (* src = "vbits_to_cbits.py:333" *)
   reg \$next\valid_out ;
-  (* src = "./migen_src/vbits_to_cbits.py:335" *)
+  (* src = "vbits_to_cbits.py:335" *)
   input busy_in;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/vbits_to_cbits.py:332" *)
+  (* src = "vbits_to_cbits.py:332" *)
   output [31:0] data_out;
-  (* src = "./migen_src/vbits_to_cbits.py:327" *)
+  (* src = "vbits_to_cbits.py:327" *)
   input [47:0] enc_in;
-  (* src = "./migen_src/vbits_to_cbits.py:328" *)
+  (* src = "vbits_to_cbits.py:328" *)
   input [5:0] enc_in_ctr;
-  (* src = "./migen_src/vbits_to_cbits.py:334" *)
+  (* src = "vbits_to_cbits.py:334" *)
   output end_out;
-  (* src = "./migen_src/vbits_to_cbits.py:329" *)
+  (* src = "vbits_to_cbits.py:329" *)
   input in_end;
-  (* src = "./migen_src/vbits_to_cbits.py:146" *)
+  (* src = "vbits_to_cbits.py:146" *)
   wire [7:0] input_handler_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:145" *)
+  (* src = "vbits_to_cbits.py:145" *)
   wire [143:0] input_handler_buffer;
-  (* src = "./migen_src/vbits_to_cbits.py:150" *)
+  (* src = "vbits_to_cbits.py:150" *)
   wire input_handler_dec_buff;
-  (* src = "./migen_src/vbits_to_cbits.py:139" *)
+  (* src = "vbits_to_cbits.py:139" *)
   wire [47:0] input_handler_enc_in;
-  (* src = "./migen_src/vbits_to_cbits.py:140" *)
+  (* src = "vbits_to_cbits.py:140" *)
   wire [5:0] input_handler_enc_in_ctr;
-  (* src = "./migen_src/vbits_to_cbits.py:153" *)
+  (* src = "vbits_to_cbits.py:153" *)
   wire input_handler_end_out;
-  (* src = "./migen_src/vbits_to_cbits.py:141" *)
+  (* src = "vbits_to_cbits.py:141" *)
   wire input_handler_in_end;
-  (* src = "./migen_src/vbits_to_cbits.py:138" *)
+  (* src = "vbits_to_cbits.py:138" *)
   wire input_handler_latch_input;
-  (* src = "./migen_src/vbits_to_cbits.py:147" *)
+  (* src = "vbits_to_cbits.py:147" *)
   wire [7:0] input_handler_new_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:142" *)
+  (* src = "vbits_to_cbits.py:142" *)
   wire input_handler_valid_in;
-  (* src = "./migen_src/vbits_to_cbits.py:326" *)
+  (* src = "vbits_to_cbits.py:326" *)
   output latch_input;
-  (* src = "./migen_src/vbits_to_cbits.py:60" *)
+  (* src = "vbits_to_cbits.py:60" *)
   wire [7:0] new_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:59" *)
+  (* src = "vbits_to_cbits.py:59" *)
   wire [7:0] output_handler_buff_consum;
-  (* src = "./migen_src/vbits_to_cbits.py:58" *)
+  (* src = "vbits_to_cbits.py:58" *)
   wire [143:0] output_handler_buffer;
-  (* src = "./migen_src/vbits_to_cbits.py:55" *)
+  (* src = "vbits_to_cbits.py:55" *)
   wire output_handler_busy_in;
-  (* src = "./migen_src/vbits_to_cbits.py:52" *)
+  (* src = "vbits_to_cbits.py:52" *)
   wire [31:0] output_handler_data_out;
-  (* src = "./migen_src/vbits_to_cbits.py:63" *)
+  (* src = "vbits_to_cbits.py:63" *)
   wire output_handler_dec_buff_out;
-  (* src = "./migen_src/vbits_to_cbits.py:66" *)
+  (* src = "vbits_to_cbits.py:66" *)
   wire output_handler_end_in;
-  (* src = "./migen_src/vbits_to_cbits.py:54" *)
+  (* src = "vbits_to_cbits.py:54" *)
   wire output_handler_end_out;
-  (* src = "./migen_src/vbits_to_cbits.py:53" *)
+  (* src = "vbits_to_cbits.py:53" *)
   wire output_handler_valid_out;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/vbits_to_cbits.py:330" *)
+  (* src = "vbits_to_cbits.py:330" *)
   input valid_in;
-  (* src = "./migen_src/vbits_to_cbits.py:333" *)
+  (* src = "vbits_to_cbits.py:333" *)
   output valid_out;
   input_handler input_handler (
     .buff_consum(input_handler_buff_consum),

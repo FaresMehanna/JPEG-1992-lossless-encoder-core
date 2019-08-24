@@ -6,164 +6,164 @@
 module top(s_axi_wi___awvalid, s_axi_ri___araddr, in1, in2, in3, in4, in5, in6, in7, in8, in9, s_axi_ri___rready, s_axi_wi___awaddr, s_axi_wi___wvalid, s_axi_wi___wdata, s_axi_wi___wstrb, s_axi_wi___bready, rst, clk, read_addr, write_addr, start, s_axi_ro___arready, s_axi_ro___rdata, s_axi_ro___rresp, s_axi_ro___rvalid, s_axi_wo___awready, s_axi_wo___wready, s_axi_wo___bresp, s_axi_wo___bvalid, s_axi_ri___arvalid);
   wire [31:0] \$1 ;
   wire [31:0] \$3 ;
-  (* src = "./migen_src/dma_axi_lite.py:110" *)
+  (* src = "dma_axi_lite.py:110" *)
   reg [31:0] \$next\addr_v ;
-  (* src = "./migen_src/dma_axi_lite.py:112" *)
+  (* src = "dma_axi_lite.py:112" *)
   reg \$next\arready_v ;
-  (* src = "./migen_src/dma_axi_lite.py:115" *)
+  (* src = "dma_axi_lite.py:115" *)
   reg \$next\awready_v ;
-  (* src = "./migen_src/dma_axi_lite.py:134" *)
+  (* src = "dma_axi_lite.py:134" *)
   reg \$next\basic_enable ;
-  (* src = "./migen_src/dma_axi_lite.py:135" *)
+  (* src = "dma_axi_lite.py:135" *)
   reg [3:0] \$next\basic_index ;
-  (* src = "./migen_src/dma_axi_lite.py:122" *)
+  (* src = "dma_axi_lite.py:122" *)
   reg [1:0] \$next\bresp_v ;
-  (* src = "./migen_src/dma_axi_lite.py:117" *)
+  (* src = "dma_axi_lite.py:117" *)
   reg \$next\bvalid_v ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [2:0] \$next\fsm_state ;
-  (* src = "./migen_src/dma_axi_lite.py:119" *)
+  (* src = "dma_axi_lite.py:119" *)
   reg [31:0] \$next\rdata_v ;
-  (* src = "./migen_src/dma_axi_lite.py:59" *)
+  (* src = "dma_axi_lite.py:59" *)
   reg [31:0] \$next\read_addr ;
-  (* src = "./migen_src/dma_axi_lite.py:120" *)
+  (* src = "dma_axi_lite.py:120" *)
   reg [1:0] \$next\rresp_v ;
-  (* src = "./migen_src/dma_axi_lite.py:113" *)
+  (* src = "dma_axi_lite.py:113" *)
   reg \$next\rvalid_v ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_ro___arready ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [31:0] \$next\s_axi_ro___rdata ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [1:0] \$next\s_axi_ro___rresp ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_ro___rvalid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_wo___awready ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [1:0] \$next\s_axi_wo___bresp ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_wo___bvalid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_wo___wready ;
-  (* src = "./migen_src/dma_axi_lite.py:63" *)
+  (* src = "dma_axi_lite.py:63" *)
   reg [31:0] \$next\start ;
-  (* src = "./migen_src/dma_axi_lite.py:125" *)
+  (* src = "dma_axi_lite.py:125" *)
   reg [31:0] \$next\wdata_v ;
-  (* src = "./migen_src/dma_axi_lite.py:116" *)
+  (* src = "dma_axi_lite.py:116" *)
   reg \$next\wready_v ;
-  (* src = "./migen_src/dma_axi_lite.py:60" *)
+  (* src = "dma_axi_lite.py:60" *)
   reg [31:0] \$next\write_addr ;
-  (* src = "./migen_src/dma_axi_lite.py:126" *)
+  (* src = "dma_axi_lite.py:126" *)
   reg [3:0] \$next\wstrb_v ;
   (* init = 32'd0 *)
-  (* src = "./migen_src/dma_axi_lite.py:110" *)
+  (* src = "dma_axi_lite.py:110" *)
   reg [31:0] addr_v = 32'd0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/dma_axi_lite.py:112" *)
+  (* src = "dma_axi_lite.py:112" *)
   reg arready_v = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/dma_axi_lite.py:115" *)
+  (* src = "dma_axi_lite.py:115" *)
   reg awready_v = 1'h0;
-  (* src = "./migen_src/dma_axi_lite.py:134" *)
+  (* src = "dma_axi_lite.py:134" *)
   wire basic_enable;
-  (* src = "./migen_src/dma_axi_lite.py:135" *)
+  (* src = "dma_axi_lite.py:135" *)
   wire [3:0] basic_index;
   (* init = 2'h0 *)
-  (* src = "./migen_src/dma_axi_lite.py:122" *)
+  (* src = "dma_axi_lite.py:122" *)
   reg [1:0] bresp_v = 2'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/dma_axi_lite.py:117" *)
+  (* src = "dma_axi_lite.py:117" *)
   reg bvalid_v = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
   (* init = 3'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [2:0] fsm_state = 3'h0;
-  (* src = "./migen_src/dma_axi_lite.py:66" *)
+  (* src = "dma_axi_lite.py:66" *)
   input [31:0] in1;
-  (* src = "./migen_src/dma_axi_lite.py:67" *)
+  (* src = "dma_axi_lite.py:67" *)
   input [31:0] in2;
-  (* src = "./migen_src/dma_axi_lite.py:68" *)
+  (* src = "dma_axi_lite.py:68" *)
   input [31:0] in3;
-  (* src = "./migen_src/dma_axi_lite.py:69" *)
+  (* src = "dma_axi_lite.py:69" *)
   input [31:0] in4;
-  (* src = "./migen_src/dma_axi_lite.py:70" *)
+  (* src = "dma_axi_lite.py:70" *)
   input [31:0] in5;
-  (* src = "./migen_src/dma_axi_lite.py:71" *)
+  (* src = "dma_axi_lite.py:71" *)
   input [31:0] in6;
-  (* src = "./migen_src/dma_axi_lite.py:72" *)
+  (* src = "dma_axi_lite.py:72" *)
   input [31:0] in7;
-  (* src = "./migen_src/dma_axi_lite.py:73" *)
+  (* src = "dma_axi_lite.py:73" *)
   input [31:0] in8;
-  (* src = "./migen_src/dma_axi_lite.py:74" *)
+  (* src = "dma_axi_lite.py:74" *)
   input [31:0] in9;
   (* init = 32'd0 *)
-  (* src = "./migen_src/dma_axi_lite.py:119" *)
+  (* src = "dma_axi_lite.py:119" *)
   reg [31:0] rdata_v = 32'd0;
   (* init = 32'd0 *)
-  (* src = "./migen_src/dma_axi_lite.py:59" *)
+  (* src = "dma_axi_lite.py:59" *)
   output [31:0] read_addr;
   reg [31:0] read_addr = 32'd0;
   (* init = 2'h0 *)
-  (* src = "./migen_src/dma_axi_lite.py:120" *)
+  (* src = "dma_axi_lite.py:120" *)
   reg [1:0] rresp_v = 2'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 1'h0 *)
-  (* src = "./migen_src/dma_axi_lite.py:113" *)
+  (* src = "dma_axi_lite.py:113" *)
   reg rvalid_v = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [31:0] s_axi_ri___araddr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_ri___arvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_ri___rready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_ro___arready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [31:0] s_axi_ro___rdata;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [1:0] s_axi_ro___rresp;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_ro___rvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [31:0] s_axi_wi___awaddr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_wi___awvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_wi___bready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [31:0] s_axi_wi___wdata;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [3:0] s_axi_wi___wstrb;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_wi___wvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_wo___awready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [1:0] s_axi_wo___bresp;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_wo___bvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_wo___wready;
   (* init = 32'd0 *)
-  (* src = "./migen_src/dma_axi_lite.py:63" *)
+  (* src = "dma_axi_lite.py:63" *)
   output [31:0] start;
   reg [31:0] start = 32'd0;
-  (* src = "./migen_src/dma_axi_lite.py:125" *)
+  (* src = "dma_axi_lite.py:125" *)
   wire [31:0] wdata_v;
   (* init = 1'h0 *)
-  (* src = "./migen_src/dma_axi_lite.py:116" *)
+  (* src = "dma_axi_lite.py:116" *)
   reg wready_v = 1'h0;
   (* init = 32'd0 *)
-  (* src = "./migen_src/dma_axi_lite.py:60" *)
+  (* src = "dma_axi_lite.py:60" *)
   output [31:0] write_addr;
   reg [31:0] write_addr = 32'd0;
-  (* src = "./migen_src/dma_axi_lite.py:126" *)
+  (* src = "dma_axi_lite.py:126" *)
   wire [3:0] wstrb_v;
-  assign \$1  = s_axi_ri___araddr >>> (* src = "./migen_src/dma_axi_lite.py:225" *) 2'h2;
-  assign \$3  = s_axi_wi___awaddr >>> (* src = "./migen_src/dma_axi_lite.py:248" *) 2'h2;
+  assign \$1  = s_axi_ri___araddr >>> (* src = "dma_axi_lite.py:225" *) 2'h2;
+  assign \$3  = s_axi_wi___awaddr >>> (* src = "dma_axi_lite.py:248" *) 2'h2;
   always @(posedge clk)
       start <= \$next\start ;
   always @(posedge clk)

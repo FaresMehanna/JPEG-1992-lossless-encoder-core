@@ -47,128 +47,128 @@ module top(end_in, i_busy, data_in, rst, clk, valid_out, o_busy, data_out, end_o
   wire \$82 ;
   wire \$84 ;
   wire \$9 ;
-  (* src = "./migen_src/b16_b64.py:67" *)
+  (* src = "b16_b64.py:67" *)
   reg \$next\buff_chs ;
-  (* src = "./migen_src/b16_b64.py:59" *)
+  (* src = "b16_b64.py:59" *)
   reg [63:0] \$next\buffer1 ;
-  (* src = "./migen_src/b16_b64.py:60" *)
+  (* src = "b16_b64.py:60" *)
   reg \$next\buffer1_valid ;
-  (* src = "./migen_src/b16_b64.py:63" *)
+  (* src = "b16_b64.py:63" *)
   reg [63:0] \$next\buffer2 ;
-  (* src = "./migen_src/b16_b64.py:64" *)
+  (* src = "b16_b64.py:64" *)
   reg \$next\buffer2_valid ;
-  (* src = "./migen_src/b16_b64.py:80" *)
+  (* src = "b16_b64.py:80" *)
   reg [2:0] \$next\counter ;
-  (* src = "./migen_src/b16_b64.py:37" *)
+  (* src = "b16_b64.py:37" *)
   reg [63:0] \$next\data_out ;
-  (* src = "./migen_src/b16_b64.py:44" *)
+  (* src = "b16_b64.py:44" *)
   reg \$next\end_out ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [3:0] \$next\fsm_state ;
-  (* src = "./migen_src/b16_b64.py:70" *)
+  (* src = "b16_b64.py:70" *)
   reg \$next\is_valid ;
-  (* src = "./migen_src/b16_b64.py:46" *)
+  (* src = "b16_b64.py:46" *)
   reg \$next\o_busy ;
-  (* src = "./migen_src/b16_b64.py:74" *)
+  (* src = "b16_b64.py:74" *)
   reg \$next\reg_end ;
-  (* src = "./migen_src/b16_b64.py:41" *)
+  (* src = "b16_b64.py:41" *)
   reg \$next\valid_out ;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b16_b64.py:67" *)
+  (* src = "b16_b64.py:67" *)
   reg buff_chs = 1'h0;
   (* init = 64'h0000000000000000 *)
-  (* src = "./migen_src/b16_b64.py:59" *)
+  (* src = "b16_b64.py:59" *)
   reg [63:0] buffer1 = 64'h0000000000000000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b16_b64.py:60" *)
+  (* src = "b16_b64.py:60" *)
   reg buffer1_valid = 1'h0;
   (* init = 64'h0000000000000000 *)
-  (* src = "./migen_src/b16_b64.py:63" *)
+  (* src = "b16_b64.py:63" *)
   reg [63:0] buffer2 = 64'h0000000000000000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b16_b64.py:64" *)
+  (* src = "b16_b64.py:64" *)
   reg buffer2_valid = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
   (* init = 3'h0 *)
-  (* src = "./migen_src/b16_b64.py:80" *)
+  (* src = "b16_b64.py:80" *)
   reg [2:0] counter = 3'h0;
-  (* src = "./migen_src/b16_b64.py:34" *)
+  (* src = "b16_b64.py:34" *)
   input [15:0] data_in;
   (* init = 64'h0000000000000000 *)
-  (* src = "./migen_src/b16_b64.py:37" *)
+  (* src = "b16_b64.py:37" *)
   output [63:0] data_out;
   reg [63:0] data_out = 64'h0000000000000000;
-  (* src = "./migen_src/b16_b64.py:43" *)
+  (* src = "b16_b64.py:43" *)
   input end_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b16_b64.py:44" *)
+  (* src = "b16_b64.py:44" *)
   output end_out;
   reg end_out = 1'h0;
   (* init = 4'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [3:0] fsm_state = 4'h0;
-  (* src = "./migen_src/b16_b64.py:47" *)
+  (* src = "b16_b64.py:47" *)
   input i_busy;
-  (* src = "./migen_src/b16_b64.py:70" *)
+  (* src = "b16_b64.py:70" *)
   wire is_valid;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b16_b64.py:46" *)
+  (* src = "b16_b64.py:46" *)
   output o_busy;
   reg o_busy = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b16_b64.py:74" *)
+  (* src = "b16_b64.py:74" *)
   reg reg_end = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/b16_b64.py:40" *)
+  (* src = "b16_b64.py:40" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/b16_b64.py:41" *)
+  (* src = "b16_b64.py:41" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$9  = o_busy == (* src = "./migen_src/b16_b64.py:76" *) 1'h0;
-  assign \$11  = \$7  & (* src = "./migen_src/b16_b64.py:76" *) \$9 ;
-  assign \$13  = reg_end == (* src = "./migen_src/b16_b64.py:81" *) 1'h1;
-  assign \$15  = valid_out == (* src = "./migen_src/b16_b64.py:81" *) 1'h1;
-  assign \$17  = \$13  & (* src = "./migen_src/b16_b64.py:81" *) \$15 ;
-  assign \$1  = valid_out == (* src = "./migen_src/b16_b64.py:96" *) 1'h1;
-  assign \$19  = i_busy == (* src = "./migen_src/b16_b64.py:81" *) 1'h0;
-  assign \$21  = \$17  & (* src = "./migen_src/b16_b64.py:81" *) \$19 ;
-  assign \$24  = counter + (* src = "./migen_src/b16_b64.py:82" *) 1'h1;
-  assign \$26  = reg_end == (* src = "./migen_src/b16_b64.py:83" *) 1'h1;
-  assign \$28  = counter == (* src = "./migen_src/b16_b64.py:83" *) 3'h7;
-  assign \$30  = \$26  & (* src = "./migen_src/b16_b64.py:83" *) \$28 ;
-  assign \$32  = buff_chs == (* src = "./migen_src/b16_b64.py:87" *) 1'h0;
-  assign \$34  = buff_chs == (* src = "./migen_src/b16_b64.py:89" *) 1'h1;
-  assign \$36  = buffer1_valid == (* src = "./migen_src/b16_b64.py:93" *) 1'h1;
-  assign \$38  = buffer2_valid == (* src = "./migen_src/b16_b64.py:93" *) 1'h1;
-  assign \$3  = i_busy == (* src = "./migen_src/b16_b64.py:96" *) 1'h0;
-  assign \$40  = \$36  | (* src = "./migen_src/b16_b64.py:93" *) \$38 ;
-  assign \$42  = is_valid == (* src = "./migen_src/b16_b64.py:93" *) 1'h1;
-  assign \$44  = \$40  & (* src = "./migen_src/b16_b64.py:93" *) \$42 ;
-  assign \$46  = valid_out == (* src = "./migen_src/b16_b64.py:96" *) 1'h1;
-  assign \$48  = i_busy == (* src = "./migen_src/b16_b64.py:96" *) 1'h0;
-  assign \$50  = \$46  & (* src = "./migen_src/b16_b64.py:96" *) \$48 ;
-  assign \$52  = buff_chs == (* src = "./migen_src/b16_b64.py:98" *) 1'h0;
-  assign \$54  = valid_out == (* src = "./migen_src/b16_b64.py:96" *) 1'h1;
-  assign \$56  = i_busy == (* src = "./migen_src/b16_b64.py:96" *) 1'h0;
-  assign \$58  = \$54  & (* src = "./migen_src/b16_b64.py:96" *) \$56 ;
-  assign \$5  = \$1  & (* src = "./migen_src/b16_b64.py:96" *) \$3 ;
-  assign \$60  = buff_chs == (* src = "./migen_src/b16_b64.py:99" *) 1'h0;
-  assign \$62  = valid_out == (* src = "./migen_src/b16_b64.py:96" *) 1'h1;
-  assign \$64  = i_busy == (* src = "./migen_src/b16_b64.py:96" *) 1'h0;
-  assign \$66  = \$62  & (* src = "./migen_src/b16_b64.py:96" *) \$64 ;
-  assign \$68  = buff_chs == (* src = "./migen_src/b16_b64.py:101" *) 1'h1;
-  assign \$70  = buffer1_valid == (* src = "./migen_src/b16_b64.py:110" *) 1'h0;
-  assign \$72  = buffer2_valid == (* src = "./migen_src/b16_b64.py:137" *) 1'h0;
-  assign \$74  = buffer2_valid == (* src = "./migen_src/b16_b64.py:148" *) 1'h0;
-  assign \$76  = buffer1_valid == (* src = "./migen_src/b16_b64.py:175" *) 1'h0;
-  assign \$78  = buffer1_valid == (* src = "./migen_src/b16_b64.py:110" *) 1'h0;
-  assign \$7  = valid_in == (* src = "./migen_src/b16_b64.py:76" *) 1'h1;
-  assign \$80  = buffer2_valid == (* src = "./migen_src/b16_b64.py:137" *) 1'h0;
-  assign \$82  = buffer2_valid == (* src = "./migen_src/b16_b64.py:148" *) 1'h0;
-  assign \$84  = buffer1_valid == (* src = "./migen_src/b16_b64.py:175" *) 1'h0;
+  assign \$9  = o_busy == (* src = "b16_b64.py:76" *) 1'h0;
+  assign \$11  = \$7  & (* src = "b16_b64.py:76" *) \$9 ;
+  assign \$13  = reg_end == (* src = "b16_b64.py:81" *) 1'h1;
+  assign \$15  = valid_out == (* src = "b16_b64.py:81" *) 1'h1;
+  assign \$17  = \$13  & (* src = "b16_b64.py:81" *) \$15 ;
+  assign \$1  = valid_out == (* src = "b16_b64.py:96" *) 1'h1;
+  assign \$19  = i_busy == (* src = "b16_b64.py:81" *) 1'h0;
+  assign \$21  = \$17  & (* src = "b16_b64.py:81" *) \$19 ;
+  assign \$24  = counter + (* src = "b16_b64.py:82" *) 1'h1;
+  assign \$26  = reg_end == (* src = "b16_b64.py:83" *) 1'h1;
+  assign \$28  = counter == (* src = "b16_b64.py:83" *) 3'h7;
+  assign \$30  = \$26  & (* src = "b16_b64.py:83" *) \$28 ;
+  assign \$32  = buff_chs == (* src = "b16_b64.py:87" *) 1'h0;
+  assign \$34  = buff_chs == (* src = "b16_b64.py:89" *) 1'h1;
+  assign \$36  = buffer1_valid == (* src = "b16_b64.py:93" *) 1'h1;
+  assign \$38  = buffer2_valid == (* src = "b16_b64.py:93" *) 1'h1;
+  assign \$3  = i_busy == (* src = "b16_b64.py:96" *) 1'h0;
+  assign \$40  = \$36  | (* src = "b16_b64.py:93" *) \$38 ;
+  assign \$42  = is_valid == (* src = "b16_b64.py:93" *) 1'h1;
+  assign \$44  = \$40  & (* src = "b16_b64.py:93" *) \$42 ;
+  assign \$46  = valid_out == (* src = "b16_b64.py:96" *) 1'h1;
+  assign \$48  = i_busy == (* src = "b16_b64.py:96" *) 1'h0;
+  assign \$50  = \$46  & (* src = "b16_b64.py:96" *) \$48 ;
+  assign \$52  = buff_chs == (* src = "b16_b64.py:98" *) 1'h0;
+  assign \$54  = valid_out == (* src = "b16_b64.py:96" *) 1'h1;
+  assign \$56  = i_busy == (* src = "b16_b64.py:96" *) 1'h0;
+  assign \$58  = \$54  & (* src = "b16_b64.py:96" *) \$56 ;
+  assign \$5  = \$1  & (* src = "b16_b64.py:96" *) \$3 ;
+  assign \$60  = buff_chs == (* src = "b16_b64.py:99" *) 1'h0;
+  assign \$62  = valid_out == (* src = "b16_b64.py:96" *) 1'h1;
+  assign \$64  = i_busy == (* src = "b16_b64.py:96" *) 1'h0;
+  assign \$66  = \$62  & (* src = "b16_b64.py:96" *) \$64 ;
+  assign \$68  = buff_chs == (* src = "b16_b64.py:101" *) 1'h1;
+  assign \$70  = buffer1_valid == (* src = "b16_b64.py:110" *) 1'h0;
+  assign \$72  = buffer2_valid == (* src = "b16_b64.py:137" *) 1'h0;
+  assign \$74  = buffer2_valid == (* src = "b16_b64.py:148" *) 1'h0;
+  assign \$76  = buffer1_valid == (* src = "b16_b64.py:175" *) 1'h0;
+  assign \$78  = buffer1_valid == (* src = "b16_b64.py:110" *) 1'h0;
+  assign \$7  = valid_in == (* src = "b16_b64.py:76" *) 1'h1;
+  assign \$80  = buffer2_valid == (* src = "b16_b64.py:137" *) 1'h0;
+  assign \$82  = buffer2_valid == (* src = "b16_b64.py:148" *) 1'h0;
+  assign \$84  = buffer1_valid == (* src = "b16_b64.py:175" *) 1'h0;
   always @(posedge clk)
       buffer2 <= \$next\buffer2 ;
   always @(posedge clk)

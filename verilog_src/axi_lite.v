@@ -4,162 +4,162 @@
 (* top =  1  *)
 (* generator = "nMigen" *)
 module top(s_axi_ri__arid, s_axi_wi__awvalid, s_axi_wi__awid, s_axi_aclk, s_axi_areset_n, m_axi_ri__arready, m_axi_ri__rdata, m_axi_ri__rresp, m_axi_ri__rvalid, s_axi_ri__araddr, s_axi_ri__arprot, s_axi_ri__rready, m_axi_wi__awready, m_axi_wi__wready, m_axi_wi__bresp, m_axi_wi__bvalid, s_axi_wi__awaddr, s_axi_wi__awprot, s_axi_wi__wdata, s_axi_wi__wstrb, s_axi_wi__wvalid, s_axi_wi__bready, rst, clk, s_axi_ro__arready, s_axi_ro__rid, s_axi_ro__rdata, s_axi_ro__rlast, s_axi_ro__rresp, s_axi_ro__rvalid, s_axi_wo__awready, s_axi_wo__wready, s_axi_wo__bid, s_axi_wo__bresp, s_axi_wo__bvalid, m_axi_ro__araddr, m_axi_ro__arprot, m_axi_ro__arvalid, m_axi_ro__rready, m_axi_wo__awaddr, m_axi_wo__awprot, m_axi_wo__awvalid, m_axi_wo__wdata, m_axi_wo__wstrb, m_axi_wo__wvalid, m_axi_wo__bready, m_axi_aclk, m_axi_areset_n, s_axi_ri__arvalid);
-  (* src = "./migen_src/axi_lite.py:53" *)
+  (* src = "axi_lite.py:53" *)
   reg \$next\m_axi_aclk ;
-  (* src = "./migen_src/axi_lite.py:54" *)
+  (* src = "axi_lite.py:54" *)
   reg \$next\m_axi_areset_n ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [31:0] \$next\m_axi_ro__araddr ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [2:0] \$next\m_axi_ro__arprot ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_ro__arvalid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_ro__rready ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [31:0] \$next\m_axi_wo__awaddr ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [2:0] \$next\m_axi_wo__awprot ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_wo__awvalid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_wo__bready ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [31:0] \$next\m_axi_wo__wdata ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [3:0] \$next\m_axi_wo__wstrb ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_wo__wvalid ;
-  (* src = "./migen_src/axi_lite.py:97" *)
+  (* src = "axi_lite.py:97" *)
   reg [11:0] \$next\rwid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_ro__arready ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [31:0] \$next\s_axi_ro__rdata ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [11:0] \$next\s_axi_ro__rid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_ro__rlast ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [1:0] \$next\s_axi_ro__rresp ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_ro__rvalid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_wo__awready ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [11:0] \$next\s_axi_wo__bid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [1:0] \$next\s_axi_wo__bresp ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_wo__bvalid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\s_axi_wo__wready ;
   (* init = 1'h0 *)
   reg \$verilog_initial_trigger  = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/axi_lite.py:53" *)
+  (* src = "axi_lite.py:53" *)
   output m_axi_aclk;
-  (* src = "./migen_src/axi_lite.py:54" *)
+  (* src = "axi_lite.py:54" *)
   output m_axi_areset_n;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_ri__arready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [31:0] m_axi_ri__rdata;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [1:0] m_axi_ri__rresp;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_ri__rvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [31:0] m_axi_ro__araddr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [2:0] m_axi_ro__arprot;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_ro__arvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_ro__rready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_wi__awready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [1:0] m_axi_wi__bresp;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_wi__bvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_wi__wready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [31:0] m_axi_wo__awaddr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [2:0] m_axi_wo__awprot;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_wo__awvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_wo__bready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [31:0] m_axi_wo__wdata;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [3:0] m_axi_wo__wstrb;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_wo__wvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 12'h000 *)
-  (* src = "./migen_src/axi_lite.py:97" *)
+  (* src = "axi_lite.py:97" *)
   reg [11:0] rwid = 12'h000;
-  (* src = "./migen_src/axi_lite.py:43" *)
+  (* src = "axi_lite.py:43" *)
   input s_axi_aclk;
-  (* src = "./migen_src/axi_lite.py:44" *)
+  (* src = "axi_lite.py:44" *)
   input s_axi_areset_n;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [31:0] s_axi_ri__araddr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [11:0] s_axi_ri__arid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [2:0] s_axi_ri__arprot;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_ri__arvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_ri__rready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_ro__arready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [31:0] s_axi_ro__rdata;
   (* init = 12'h000 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [11:0] s_axi_ro__rid;
   reg [11:0] s_axi_ro__rid = 12'h000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_ro__rlast;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [1:0] s_axi_ro__rresp;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_ro__rvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [31:0] s_axi_wi__awaddr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [11:0] s_axi_wi__awid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [2:0] s_axi_wi__awprot;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_wi__awvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_wi__bready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [31:0] s_axi_wi__wdata;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [3:0] s_axi_wi__wstrb;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input s_axi_wi__wvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_wo__awready;
   (* init = 12'h000 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [11:0] s_axi_wo__bid;
   reg [11:0] s_axi_wo__bid = 12'h000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [1:0] s_axi_wo__bresp;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_wo__bvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output s_axi_wo__wready;
   always @(posedge clk)
       s_axi_wo__bid <= \$next\s_axi_wo__bid ;

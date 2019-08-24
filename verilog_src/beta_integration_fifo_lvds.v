@@ -732,14 +732,6 @@ module \anonymous$2 (end_in, ssss, val_in, rp_data, rst, clk, valid_out, end_out
   assign \$2  = rp_data | (* src = "encode.py:156" *) val_in_late;
   assign \$5  = rp_data[32:28] + (* src = "encode.py:157" *) ssss_late[3:0];
   always @(posedge clk)
-      end_out <= \$next\end_out ;
-  always @(posedge clk)
-      end_late <= \$next\end_late ;
-  always @(posedge clk)
-      valid_out <= \$next\valid_out ;
-  always @(posedge clk)
-      valid_late <= \$next\valid_late ;
-  always @(posedge clk)
       enc_ctr <= \$next\enc_ctr ;
   always @(posedge clk)
       enc_out <= \$next\enc_out ;
@@ -747,6 +739,14 @@ module \anonymous$2 (end_in, ssss, val_in, rp_data, rst, clk, valid_out, end_out
       val_in_late <= \$next\val_in_late ;
   always @(posedge clk)
       ssss_late <= \$next\ssss_late ;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
+  always @(posedge clk)
+      end_late <= \$next\end_late ;
+  always @(posedge clk)
+      valid_out <= \$next\valid_out ;
+  always @(posedge clk)
+      valid_late <= \$next\valid_late ;
   always @* begin
     \$next\valid_late  = valid_late;
     \$next\valid_late  = valid_in;
@@ -1041,13 +1041,13 @@ module \anonymous$4 (enc_in_ctr1, enc_in_ctr2, enc_in1, enc_in2, end_in, rst, cl
   assign \$4  = enc_in1 <<< (* src = "merge.py:75" *) enc_in_ctr2;
   assign \$6  = \$4  | (* src = "merge.py:75" *) enc_in2;
   always @(posedge clk)
-      end_out <= \$next\end_out ;
-  always @(posedge clk)
       valid_out <= \$next\valid_out ;
   always @(posedge clk)
       enc_out <= \$next\enc_out ;
   always @(posedge clk)
       enc_out_ctr <= \$next\enc_out_ctr ;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
   always @* begin
     \$next\enc_out_ctr  = enc_out_ctr;
     casez (valid_in)
@@ -1131,6 +1131,737 @@ module auto_reset(hs2_in, end_in, rst, clk, reset_out, hs1_in);
           \$next\reset_out  = 1'h0;
     endcase
   end
+endmodule
+
+(* \nmigen.hierarchy  = "top.b16_b40" *)
+(* generator = "nMigen" *)
+module b16_b40(valid_in, data_in, full_rst, rst, full_clk, clk, data_out, valid_out, o_busy, i_busy);
+  wire \$1 ;
+  wire \$11 ;
+  wire \$13 ;
+  wire \$15 ;
+  wire \$17 ;
+  wire \$19 ;
+  wire \$21 ;
+  wire \$23 ;
+  wire \$25 ;
+  wire \$27 ;
+  wire \$29 ;
+  wire \$3 ;
+  wire \$31 ;
+  wire \$33 ;
+  wire \$35 ;
+  wire \$37 ;
+  wire \$39 ;
+  wire \$41 ;
+  wire \$43 ;
+  wire \$45 ;
+  wire \$47 ;
+  wire \$49 ;
+  wire \$5 ;
+  wire \$51 ;
+  wire \$53 ;
+  wire \$55 ;
+  wire \$57 ;
+  wire \$59 ;
+  wire \$61 ;
+  wire [7:0] \$63 ;
+  wire \$65 ;
+  wire \$7 ;
+  wire \$9 ;
+  (* src = "b16_b40.py:66" *)
+  reg \$next\buff_chs ;
+  (* src = "b16_b40.py:58" *)
+  reg [39:0] \$next\buffer1 ;
+  (* src = "b16_b40.py:59" *)
+  reg \$next\buffer1_valid ;
+  (* src = "b16_b40.py:62" *)
+  reg [39:0] \$next\buffer2 ;
+  (* src = "b16_b40.py:63" *)
+  reg \$next\buffer2_valid ;
+  (* src = "b16_b40.py:38" *)
+  reg [39:0] \$next\data_out ;
+  (* src = "nmigen/hdl/dsl.py:244" *)
+  reg [2:0] \$next\fsm_state ;
+  (* src = "b16_b40.py:69" *)
+  reg \$next\is_valid ;
+  (* src = "b16_b40.py:44" *)
+  reg \$next\o_busy ;
+  (* src = "b16_b40.py:73" *)
+  reg \$next\temp_8 ;
+  (* src = "b16_b40.py:42" *)
+  reg \$next\valid_out ;
+  (* init = 1'h0 *)
+  (* src = "b16_b40.py:66" *)
+  reg buff_chs = 1'h0;
+  (* init = 40'h0000000000 *)
+  (* src = "b16_b40.py:58" *)
+  reg [39:0] buffer1 = 40'h0000000000;
+  (* init = 1'h0 *)
+  (* src = "b16_b40.py:59" *)
+  reg buffer1_valid = 1'h0;
+  (* init = 40'h0000000000 *)
+  (* src = "b16_b40.py:62" *)
+  reg [39:0] buffer2 = 40'h0000000000;
+  (* init = 1'h0 *)
+  (* src = "b16_b40.py:63" *)
+  reg buffer2_valid = 1'h0;
+  (* src = "nmigen/hdl/mem.py:97" *)
+  input clk;
+  (* src = "b16_b40.py:35" *)
+  input [15:0] data_in;
+  (* src = "b16_b40.py:38" *)
+  output [39:0] data_out;
+  (* init = 3'h0 *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
+  reg [2:0] fsm_state = 3'h0;
+  (* src = "clk_domains.py:4" *)
+  input full_clk;
+  (* src = "clk_domains.py:4" *)
+  input full_rst;
+  (* src = "b16_b40.py:45" *)
+  input i_busy;
+  (* src = "b16_b40.py:69" *)
+  wire is_valid;
+  (* init = 1'h0 *)
+  (* src = "b16_b40.py:44" *)
+  output o_busy;
+  reg o_busy = 1'h0;
+  (* src = "clk_domains.py:5" *)
+  input rst;
+  (* init = 1'h0 *)
+  (* src = "b16_b40.py:73" *)
+  reg temp_8 = 1'h0;
+  (* src = "b16_b40.py:41" *)
+  input valid_in;
+  (* init = 1'h0 *)
+  (* src = "b16_b40.py:42" *)
+  output valid_out;
+  reg valid_out = 1'h0;
+  assign \$9  = buffer1_valid == (* src = "b16_b40.py:82" *) 1'h1;
+  assign \$11  = buffer2_valid == (* src = "b16_b40.py:82" *) 1'h1;
+  assign \$13  = \$9  | (* src = "b16_b40.py:82" *) \$11 ;
+  assign \$15  = is_valid == (* src = "b16_b40.py:82" *) 1'h1;
+  assign \$17  = \$13  & (* src = "b16_b40.py:82" *) \$15 ;
+  assign \$1  = valid_out == (* src = "b16_b40.py:85" *) 1'h1;
+  assign \$19  = valid_out == (* src = "b16_b40.py:85" *) 1'h1;
+  assign \$21  = i_busy == (* src = "b16_b40.py:85" *) 1'h0;
+  assign \$23  = \$19  & (* src = "b16_b40.py:85" *) \$21 ;
+  assign \$25  = buff_chs == (* src = "b16_b40.py:87" *) 1'h0;
+  assign \$27  = valid_out == (* src = "b16_b40.py:85" *) 1'h1;
+  assign \$29  = i_busy == (* src = "b16_b40.py:85" *) 1'h0;
+  assign \$31  = \$27  & (* src = "b16_b40.py:85" *) \$29 ;
+  assign \$33  = buff_chs == (* src = "b16_b40.py:88" *) 1'h0;
+  assign \$35  = valid_out == (* src = "b16_b40.py:85" *) 1'h1;
+  assign \$37  = i_busy == (* src = "b16_b40.py:85" *) 1'h0;
+  assign \$3  = i_busy == (* src = "b16_b40.py:85" *) 1'h0;
+  assign \$39  = \$35  & (* src = "b16_b40.py:85" *) \$37 ;
+  assign \$41  = buff_chs == (* src = "b16_b40.py:90" *) 1'h1;
+  assign \$43  = buffer1_valid == (* src = "b16_b40.py:99" *) 1'h0;
+  assign \$45  = buffer2_valid == (* src = "b16_b40.py:121" *) 1'h0;
+  assign \$47  = buffer2_valid == (* src = "b16_b40.py:136" *) 1'h0;
+  assign \$49  = buffer1_valid == (* src = "b16_b40.py:154" *) 1'h0;
+  assign \$51  = buffer1_valid == (* src = "b16_b40.py:99" *) 1'h0;
+  assign \$53  = buffer2_valid == (* src = "b16_b40.py:121" *) 1'h0;
+  assign \$55  = buffer2_valid == (* src = "b16_b40.py:136" *) 1'h0;
+  assign \$57  = buffer1_valid == (* src = "b16_b40.py:154" *) 1'h0;
+  assign \$5  = \$1  & (* src = "b16_b40.py:85" *) \$3 ;
+  assign \$59  = buffer2_valid == (* src = "b16_b40.py:121" *) 1'h0;
+  assign \$61  = buffer2_valid == (* src = "b16_b40.py:136" *) 1'h0;
+  assign \$63  = + (* src = "b16_b40.py:73" *) temp_8;
+  assign \$65  = buffer2_valid == (* src = "b16_b40.py:121" *) 1'h0;
+  assign \$7  = buff_chs == (* src = "b16_b40.py:76" *) 1'h0;
+  always @(posedge full_clk)
+      temp_8 <= \$next\temp_8 ;
+  always @(posedge full_clk)
+      buffer2 <= \$next\buffer2 ;
+  always @(posedge full_clk)
+      buffer1 <= \$next\buffer1 ;
+  always @(posedge clk)
+      fsm_state <= \$next\fsm_state ;
+  always @(posedge full_clk)
+      o_busy <= \$next\o_busy ;
+  always @(posedge full_clk)
+      buffer2_valid <= \$next\buffer2_valid ;
+  always @(posedge full_clk)
+      buffer1_valid <= \$next\buffer1_valid ;
+  always @(posedge full_clk)
+      buff_chs <= \$next\buff_chs ;
+  always @(posedge full_clk)
+      valid_out <= \$next\valid_out ;
+  always @* begin
+    \$next\is_valid  = 1'h0;
+    \$next\is_valid  = 1'h1;
+    casez (\$5 )
+      1'h1:
+          \$next\is_valid  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\data_out  = 40'h0000000000;
+    casez (\$7 )
+      1'h1:
+          \$next\data_out  = buffer1;
+      1'hz:
+          \$next\data_out  = buffer2;
+    endcase
+  end
+  always @* begin
+    \$next\temp_8  = temp_8;
+    casez (fsm_state)
+      3'h3:
+          casez (valid_in)
+            1'h1:
+                casez (\$65 )
+                  1'h1:
+                      /* empty */;
+                  1'hz:
+                      \$next\temp_8  = data_in[0];
+                endcase
+          endcase
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\temp_8  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\valid_out  = valid_out;
+    \$next\valid_out  = \$17 ;
+    casez (full_rst)
+      1'h1:
+          \$next\valid_out  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\buff_chs  = buff_chs;
+    casez (\$23 )
+      1'h1:
+          \$next\buff_chs  = \$25 ;
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\buff_chs  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\buffer1_valid  = buffer1_valid;
+    casez (\$31 )
+      1'h1:
+          casez (\$33 )
+            1'h1:
+                \$next\buffer1_valid  = 1'h0;
+          endcase
+    endcase
+    casez (fsm_state)
+      3'h3:
+          casez (valid_in)
+            1'h1:
+                \$next\buffer1_valid  = 1'h1;
+          endcase
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\buffer1_valid  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\buffer2_valid  = buffer2_valid;
+    casez (\$39 )
+      1'h1:
+          casez (\$41 )
+            1'h1:
+                \$next\buffer2_valid  = 1'h0;
+          endcase
+    endcase
+    casez (fsm_state)
+      3'h6:
+          casez (valid_in)
+            1'h1:
+                \$next\buffer2_valid  = 1'h1;
+          endcase
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\buffer2_valid  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\o_busy  = o_busy;
+    casez (fsm_state)
+      3'h0:
+          casez (\$43 )
+            1'h1:
+                \$next\o_busy  = 1'h0;
+          endcase
+      3'h3:
+          casez (valid_in)
+            1'h1:
+                casez (\$45 )
+                  1'h1:
+                      /* empty */;
+                  1'hz:
+                      \$next\o_busy  = 1'h1;
+                endcase
+          endcase
+      3'h5:
+          casez (\$47 )
+            1'h1:
+                \$next\o_busy  = 1'h0;
+          endcase
+      3'h6:
+          casez (valid_in)
+            1'h1:
+                casez (\$49 )
+                  1'h1:
+                      /* empty */;
+                  1'hz:
+                      \$next\o_busy  = 1'h1;
+                endcase
+          endcase
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\o_busy  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\fsm_state  = fsm_state;
+    casez (fsm_state)
+      3'h0:
+          casez (\$51 )
+            1'h1:
+                \$next\fsm_state  = 3'h1;
+          endcase
+      3'h1:
+          casez (valid_in)
+            1'h1:
+                \$next\fsm_state  = 3'h2;
+          endcase
+      3'h2:
+          casez (valid_in)
+            1'h1:
+                \$next\fsm_state  = 3'h3;
+          endcase
+      3'h3:
+          casez (valid_in)
+            1'h1:
+                casez (\$53 )
+                  1'h1:
+                      \$next\fsm_state  = 3'h4;
+                  1'hz:
+                      \$next\fsm_state  = 3'h5;
+                endcase
+          endcase
+      3'h5:
+          casez (\$55 )
+            1'h1:
+                \$next\fsm_state  = 3'h4;
+          endcase
+      3'h4:
+          casez (valid_in)
+            1'h1:
+                \$next\fsm_state  = 3'h6;
+          endcase
+      3'h6:
+          casez (valid_in)
+            1'h1:
+                casez (\$57 )
+                  1'h1:
+                      \$next\fsm_state  = 3'h1;
+                  1'hz:
+                      \$next\fsm_state  = 3'h0;
+                endcase
+          endcase
+    endcase
+    casez (rst)
+      1'h1:
+          \$next\fsm_state  = 3'h0;
+    endcase
+  end
+  always @* begin
+    \$next\buffer1  = buffer1;
+    casez (fsm_state)
+      3'h1:
+          casez (valid_in)
+            1'h1:
+                \$next\buffer1 [39:24] = data_in;
+          endcase
+      3'h2:
+          casez (valid_in)
+            1'h1:
+                \$next\buffer1 [23:8] = data_in;
+          endcase
+      3'h3:
+          casez (valid_in)
+            1'h1:
+                \$next\buffer1 [7:0] = data_in[15:8];
+          endcase
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\buffer1  = 40'h0000000000;
+    endcase
+  end
+  always @* begin
+    \$next\buffer2  = buffer2;
+    casez (fsm_state)
+      3'h3:
+          casez (valid_in)
+            1'h1:
+                casez (\$59 )
+                  1'h1:
+                      \$next\buffer2 [39:32] = data_in[7:0];
+                endcase
+          endcase
+      3'h5:
+          casez (\$61 )
+            1'h1:
+                \$next\buffer2 [39:32] = \$63 ;
+          endcase
+      3'h4:
+          casez (valid_in)
+            1'h1:
+                \$next\buffer2 [31:16] = data_in;
+          endcase
+      3'h6:
+          casez (valid_in)
+            1'h1:
+                \$next\buffer2 [15:0] = data_in;
+          endcase
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\buffer2  = 40'h0000000000;
+    endcase
+  end
+  assign data_out = \$next\data_out ;
+  assign is_valid = \$next\is_valid ;
+endmodule
+
+(* \nmigen.hierarchy  = "top.b64_b32" *)
+(* generator = "nMigen" *)
+module b64_b32(data_in, i_busy, full_rst, full_clk, o_busy, data_out, valid_out, valid_in);
+  wire \$1 ;
+  wire \$101 ;
+  wire \$103 ;
+  wire \$105 ;
+  wire \$107 ;
+  wire \$109 ;
+  wire \$11 ;
+  wire \$111 ;
+  wire \$113 ;
+  wire \$115 ;
+  wire \$117 ;
+  wire \$119 ;
+  wire \$121 ;
+  wire \$123 ;
+  wire \$125 ;
+  wire \$127 ;
+  wire \$129 ;
+  wire \$13 ;
+  wire \$131 ;
+  wire \$15 ;
+  wire \$17 ;
+  wire \$19 ;
+  wire \$21 ;
+  wire \$23 ;
+  wire \$25 ;
+  wire \$27 ;
+  wire \$29 ;
+  wire \$3 ;
+  wire \$31 ;
+  wire \$33 ;
+  wire \$35 ;
+  wire \$37 ;
+  wire \$39 ;
+  wire \$41 ;
+  wire \$43 ;
+  wire \$45 ;
+  wire \$47 ;
+  wire \$49 ;
+  wire \$5 ;
+  wire \$51 ;
+  wire \$53 ;
+  wire \$55 ;
+  wire \$57 ;
+  wire \$59 ;
+  wire \$61 ;
+  wire \$63 ;
+  wire \$65 ;
+  wire \$67 ;
+  wire \$69 ;
+  wire \$7 ;
+  wire \$71 ;
+  wire \$73 ;
+  wire \$75 ;
+  wire \$77 ;
+  wire \$79 ;
+  wire \$81 ;
+  wire \$83 ;
+  wire \$85 ;
+  wire \$87 ;
+  wire \$89 ;
+  wire \$9 ;
+  wire \$91 ;
+  wire \$93 ;
+  wire \$95 ;
+  wire \$97 ;
+  wire \$99 ;
+  (* src = "b64_b32_2.py:42" *)
+  reg [23:0] \$next\data_out ;
+  (* src = "b64_b32_2.py:65" *)
+  reg \$next\half_latched ;
+  (* src = "b64_b32_2.py:48" *)
+  reg \$next\o_busy ;
+  (* src = "b64_b32_2.py:62" *)
+  reg [63:0] \$next\reg ;
+  (* src = "b64_b32_2.py:64" *)
+  reg \$next\reg_tobe_invalid ;
+  (* src = "b64_b32_2.py:63" *)
+  reg \$next\reg_valid ;
+  (* src = "b64_b32_2.py:46" *)
+  reg \$next\valid_out ;
+  (* src = "b64_b32_2.py:68" *)
+  reg \$next\wire_obusy ;
+  (* src = "b64_b32_2.py:39" *)
+  input [63:0] data_in;
+  (* init = 24'h000000 *)
+  (* src = "b64_b32_2.py:42" *)
+  output [23:0] data_out;
+  reg [23:0] data_out = 24'h000000;
+  (* src = "clk_domains.py:4" *)
+  input full_clk;
+  (* src = "clk_domains.py:4" *)
+  input full_rst;
+  (* init = 1'h0 *)
+  (* src = "b64_b32_2.py:65" *)
+  reg half_latched = 1'h0;
+  (* src = "b64_b32_2.py:49" *)
+  input i_busy;
+  (* init = 1'h1 *)
+  (* src = "b64_b32_2.py:48" *)
+  output o_busy;
+  reg o_busy = 1'h1;
+  (* init = 64'h0000000000000000 *)
+  (* src = "b64_b32_2.py:62" *)
+  reg [63:0] \reg  = 64'h0000000000000000;
+  (* src = "b64_b32_2.py:64" *)
+  wire reg_tobe_invalid;
+  (* init = 1'h0 *)
+  (* src = "b64_b32_2.py:63" *)
+  reg reg_valid = 1'h0;
+  (* src = "b64_b32_2.py:45" *)
+  input valid_in;
+  (* init = 1'h0 *)
+  (* src = "b64_b32_2.py:46" *)
+  output valid_out;
+  reg valid_out = 1'h0;
+  (* src = "b64_b32_2.py:68" *)
+  wire wire_obusy;
+  assign \$9  = \$5  & (* src = "b64_b32_2.py:100" *) \$7 ;
+  assign \$99  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$101  = reg_valid == (* src = "b64_b32_2.py:125" *) 1'h0;
+  assign \$103  = i_busy == (* src = "b64_b32_2.py:125" *) 1'h0;
+  assign \$105  = \$101  & (* src = "b64_b32_2.py:125" *) \$103 ;
+  assign \$107  = valid_out == (* src = "b64_b32_2.py:125" *) 1'h1;
+  assign \$109  = \$105  & (* src = "b64_b32_2.py:125" *) \$107 ;
+  assign \$111  = reg_valid == (* src = "b64_b32_2.py:91" *) 1'h1;
+  assign \$113  = valid_out == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$115  = \$111  & (* src = "b64_b32_2.py:91" *) \$113 ;
+  assign \$117  = half_latched == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$11  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$119  = \$115  & (* src = "b64_b32_2.py:91" *) \$117 ;
+  assign \$121  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$123  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$125  = \$121  & (* src = "b64_b32_2.py:100" *) \$123 ;
+  assign \$127  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$129  = \$125  & (* src = "b64_b32_2.py:100" *) \$127 ;
+  assign \$131  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$13  = valid_in == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$15  = reg_valid == (* src = "b64_b32_2.py:80" *) 1'h0;
+  assign \$17  = reg_tobe_invalid == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$1  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$19  = \$15  | (* src = "b64_b32_2.py:80" *) \$17 ;
+  assign \$21  = \$13  & (* src = "b64_b32_2.py:80" *) \$19 ;
+  assign \$23  = valid_in == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$25  = reg_valid == (* src = "b64_b32_2.py:80" *) 1'h0;
+  assign \$27  = reg_tobe_invalid == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$29  = \$25  | (* src = "b64_b32_2.py:80" *) \$27 ;
+  assign \$31  = \$23  & (* src = "b64_b32_2.py:80" *) \$29 ;
+  assign \$33  = valid_in == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$35  = reg_valid == (* src = "b64_b32_2.py:80" *) 1'h0;
+  assign \$37  = reg_tobe_invalid == (* src = "b64_b32_2.py:80" *) 1'h1;
+  assign \$3  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$39  = \$35  | (* src = "b64_b32_2.py:80" *) \$37 ;
+  assign \$41  = \$33  & (* src = "b64_b32_2.py:80" *) \$39 ;
+  assign \$43  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$45  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$47  = \$43  & (* src = "b64_b32_2.py:100" *) \$45 ;
+  assign \$49  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$51  = \$47  & (* src = "b64_b32_2.py:100" *) \$49 ;
+  assign \$53  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$55  = valid_in == (* src = "b64_b32_2.py:112" *) 1'h0;
+  assign \$57  = reg_valid == (* src = "b64_b32_2.py:91" *) 1'h1;
+  assign \$5  = \$1  & (* src = "b64_b32_2.py:100" *) \$3 ;
+  assign \$59  = valid_out == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$61  = \$57  & (* src = "b64_b32_2.py:91" *) \$59 ;
+  assign \$63  = half_latched == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$65  = \$61  & (* src = "b64_b32_2.py:91" *) \$63 ;
+  assign \$67  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$69  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$71  = \$67  & (* src = "b64_b32_2.py:100" *) \$69 ;
+  assign \$73  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$75  = \$71  & (* src = "b64_b32_2.py:100" *) \$73 ;
+  assign \$77  = half_latched == (* src = "b64_b32_2.py:101" *) 1'h1;
+  assign \$7  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$79  = reg_valid == (* src = "b64_b32_2.py:91" *) 1'h1;
+  assign \$81  = valid_out == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$83  = \$79  & (* src = "b64_b32_2.py:91" *) \$81 ;
+  assign \$85  = half_latched == (* src = "b64_b32_2.py:91" *) 1'h0;
+  assign \$87  = \$83  & (* src = "b64_b32_2.py:91" *) \$85 ;
+  assign \$89  = reg_valid == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$91  = i_busy == (* src = "b64_b32_2.py:100" *) 1'h0;
+  assign \$93  = \$89  & (* src = "b64_b32_2.py:100" *) \$91 ;
+  assign \$95  = valid_out == (* src = "b64_b32_2.py:100" *) 1'h1;
+  assign \$97  = \$93  & (* src = "b64_b32_2.py:100" *) \$95 ;
+  always @(posedge full_clk)
+      half_latched <= \$next\half_latched ;
+  always @(posedge full_clk)
+      valid_out <= \$next\valid_out ;
+  always @(posedge full_clk)
+      data_out <= \$next\data_out ;
+  always @(posedge full_clk)
+      reg_valid <= \$next\reg_valid ;
+  always @(posedge full_clk)
+      \reg  <= \$next\reg ;
+  always @(posedge full_clk)
+      o_busy <= \$next\o_busy ;
+  always @* begin
+    \$next\o_busy  = o_busy;
+    \$next\o_busy  = wire_obusy;
+    casez (full_rst)
+      1'h1:
+          \$next\o_busy  = 1'h1;
+    endcase
+  end
+  always @* begin
+    \$next\reg_tobe_invalid  = 1'h0;
+    \$next\reg_tobe_invalid  = 1'h0;
+    casez (\$9 )
+      1'h1:
+          casez (\$11 )
+            1'h1:
+                \$next\reg_tobe_invalid  = 1'h1;
+          endcase
+    endcase
+  end
+  always @* begin
+    \$next\wire_obusy  = 1'h0;
+    \$next\wire_obusy  = 1'h1;
+    casez (\$21 )
+      1'h1:
+          \$next\wire_obusy  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\reg  = \reg ;
+    casez (\$31 )
+      1'h1:
+          \$next\reg  = data_in;
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\reg  = 64'h0000000000000000;
+    endcase
+  end
+  always @* begin
+    \$next\reg_valid  = reg_valid;
+    casez (\$41 )
+      1'h1:
+          \$next\reg_valid  = 1'h1;
+    endcase
+    casez (\$51 )
+      1'h1:
+          casez (\$53 )
+            1'h1:
+                casez (\$55 )
+                  1'h1:
+                      \$next\reg_valid  = 1'h0;
+                endcase
+          endcase
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\reg_valid  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\data_out  = data_out;
+    casez (\$65 )
+      1'h1:
+          \$next\data_out  = \reg [63:40];
+    endcase
+    casez (\$75 )
+      1'h1:
+          casez (\$77 )
+            1'h1:
+                \$next\data_out  = \reg [39:16];
+            1'hz:
+                \$next\data_out  = \reg [63:40];
+          endcase
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\data_out  = 24'h000000;
+    endcase
+  end
+  always @* begin
+    \$next\valid_out  = valid_out;
+    casez (\$87 )
+      1'h1:
+          \$next\valid_out  = 1'h1;
+    endcase
+    casez (\$97 )
+      1'h1:
+          casez (\$99 )
+            1'h1:
+                \$next\valid_out  = 1'h1;
+            1'hz:
+                \$next\valid_out  = 1'h1;
+          endcase
+    endcase
+    casez (\$109 )
+      1'h1:
+          \$next\valid_out  = 1'h0;
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\valid_out  = 1'h0;
+    endcase
+  end
+  always @* begin
+    \$next\half_latched  = half_latched;
+    casez (\$119 )
+      1'h1:
+          \$next\half_latched  = 1'h1;
+    endcase
+    casez (\$129 )
+      1'h1:
+          casez (\$131 )
+            1'h1:
+                \$next\half_latched  = 1'h0;
+            1'hz:
+                \$next\half_latched  = 1'h1;
+          endcase
+    endcase
+    casez (full_rst)
+      1'h1:
+          \$next\half_latched  = 1'h0;
+    endcase
+  end
+  assign wire_obusy = \$next\wire_obusy ;
+  assign reg_tobe_invalid = \$next\reg_tobe_invalid ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.top_module.integration_3.integration_2.converter" *)
@@ -3159,6 +3890,16 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, end_in, rst, clk, valid_out, da
   assign \$95  = i_busy == (* src = "fix_0xff2.py:218" *) 1'h0;
   assign \$97  = data_out_valid == (* src = "fix_0xff2.py:219" *) 1'h0;
   always @(posedge clk)
+      end_out_reg <= \$next\end_out_reg ;
+  always @(posedge clk)
+      data_out_reg <= \$next\data_out_reg ;
+  always @(posedge clk)
+      data_out_valid <= \$next\data_out_valid ;
+  always @(posedge clk)
+      end_reg <= \$next\end_reg ;
+  always @(posedge clk)
+      end_out <= \$next\end_out ;
+  always @(posedge clk)
       fsm_state <= \$next\fsm_state ;
   always @(posedge clk)
       o_busy <= \$next\o_busy ;
@@ -3170,16 +3911,6 @@ module fix_0xff2(valid_in, data_in_ctr, data_in, end_in, rst, clk, valid_out, da
       data_out <= \$next\data_out ;
   always @(posedge clk)
       valid_out <= \$next\valid_out ;
-  always @(posedge clk)
-      end_out_reg <= \$next\end_out_reg ;
-  always @(posedge clk)
-      data_out_reg <= \$next\data_out_reg ;
-  always @(posedge clk)
-      data_out_valid <= \$next\data_out_valid ;
-  always @(posedge clk)
-      end_reg <= \$next\end_reg ;
-  always @(posedge clk)
-      end_out <= \$next\end_out ;
   always @* begin
     \$next\valid_out  = valid_out;
     casez (fsm_state)
@@ -7623,18 +8354,26 @@ endmodule
 (* \nmigen.hierarchy  = "top" *)
 (* top =  1  *)
 (* generator = "nMigen" *)
-module top(s_tdata, s_tlast, s_tvalid, full_clk, full_rst, m_tvalid, m_tlast, m_tdata, s_tready, m_tready);
+module top(s_tdata, s_tvalid, full_clk, full_rst, m_tvalid, m_tdata, s_tready, m_tready);
   wire \$1 ;
   wire \$3 ;
-  (* src = "beta_integration_axistream.py:15" *)
-  reg [15:0] \$next\m_tdata ;
-  (* src = "beta_integration_axistream.py:13" *)
-  reg \$next\m_tlast ;
-  (* src = "beta_integration_axistream.py:12" *)
+  (* src = "b16_b40.py:35" *)
+  reg [15:0] \$next\b16_b40_data_in ;
+  (* src = "b16_b40.py:45" *)
+  reg \$next\b16_b40_i_busy ;
+  (* src = "b16_b40.py:41" *)
+  reg \$next\b16_b40_valid_in ;
+  (* src = "b64_b32_2.py:39" *)
+  reg [63:0] \$next\b64_b32_data_in ;
+  (* src = "b64_b32_2.py:49" *)
+  reg \$next\b64_b32_i_busy ;
+  (* src = "b64_b32_2.py:45" *)
+  reg \$next\b64_b32_valid_in ;
+  (* src = "beta_integration_fifo_lvds.py:16" *)
+  reg [39:0] \$next\m_tdata ;
+  (* src = "beta_integration_fifo_lvds.py:14" *)
   reg \$next\m_tvalid ;
-  (* src = "beta_integration_axistream.py:38" *)
-  reg \$next\s_end ;
-  (* src = "beta_integration_axistream.py:20" *)
+  (* src = "beta_integration_fifo_lvds.py:20" *)
   reg \$next\s_tready ;
   (* src = "beta_integration.py:43" *)
   reg \$next\top_module_busy_in ;
@@ -7644,108 +8383,171 @@ module top(s_tdata, s_tlast, s_tvalid, full_clk, full_rst, m_tvalid, m_tlast, m_
   reg [11:0] \$next\top_module_pixel_in2 ;
   (* src = "beta_integration.py:39" *)
   reg \$next\top_module_valid_in ;
+  (* src = "b16_b40.py:35" *)
+  wire [15:0] b16_b40_data_in;
+  (* src = "b16_b40.py:38" *)
+  wire [39:0] b16_b40_data_out;
+  (* src = "b16_b40.py:45" *)
+  wire b16_b40_i_busy;
+  (* src = "b16_b40.py:44" *)
+  wire b16_b40_o_busy;
+  (* src = "b16_b40.py:41" *)
+  wire b16_b40_valid_in;
+  (* src = "b16_b40.py:42" *)
+  wire b16_b40_valid_out;
+  (* src = "b64_b32_2.py:39" *)
+  wire [63:0] b64_b32_data_in;
+  (* src = "b64_b32_2.py:42" *)
+  wire [23:0] b64_b32_data_out;
+  (* src = "b64_b32_2.py:49" *)
+  wire b64_b32_i_busy;
+  (* src = "b64_b32_2.py:48" *)
+  wire b64_b32_o_busy;
+  (* src = "b64_b32_2.py:45" *)
+  wire b64_b32_valid_in;
+  (* src = "b64_b32_2.py:46" *)
+  wire b64_b32_valid_out;
   (* src = "clk_domains.py:4" *)
   input full_clk;
   (* src = "clk_domains.py:4" *)
   input full_rst;
-  (* src = "beta_integration_axistream.py:15" *)
-  output [15:0] m_tdata;
-  (* src = "beta_integration_axistream.py:13" *)
-  output m_tlast;
-  (* src = "beta_integration_axistream.py:14" *)
+  (* src = "beta_integration_fifo_lvds.py:16" *)
+  output [39:0] m_tdata;
+  (* src = "beta_integration_fifo_lvds.py:15" *)
   input m_tready;
-  (* src = "beta_integration_axistream.py:12" *)
+  (* src = "beta_integration_fifo_lvds.py:14" *)
   output m_tvalid;
-  (* src = "beta_integration_axistream.py:38" *)
-  wire s_end;
-  (* src = "beta_integration_axistream.py:21" *)
-  input [31:0] s_tdata;
-  (* src = "beta_integration_axistream.py:19" *)
-  input s_tlast;
-  (* src = "beta_integration_axistream.py:20" *)
+  (* src = "beta_integration_fifo_lvds.py:21" *)
+  input [63:0] s_tdata;
+  (* src = "beta_integration_fifo_lvds.py:20" *)
   output s_tready;
-  (* src = "beta_integration_axistream.py:18" *)
+  (* src = "beta_integration_fifo_lvds.py:19" *)
   input s_tvalid;
   (* src = "beta_integration.py:43" *)
   wire top_module_busy_in;
+  (* src = "nmigen/hdl/mem.py:97" *)
+  wire top_module_clk;
   (* src = "beta_integration.py:36" *)
   wire [15:0] top_module_data_out;
-  (* src = "beta_integration.py:41" *)
-  wire top_module_end_out;
   (* src = "beta_integration.py:42" *)
   wire top_module_nready;
   (* src = "beta_integration.py:32" *)
   wire [11:0] top_module_pixel_in1;
   (* src = "beta_integration.py:33" *)
   wire [11:0] top_module_pixel_in2;
+  (* src = "clk_domains.py:5" *)
+  wire top_module_rst;
   (* src = "beta_integration.py:39" *)
   wire top_module_valid_in;
   (* src = "beta_integration.py:40" *)
   wire top_module_valid_out;
-  assign \$1  = m_tready == (* src = "beta_integration_axistream.py:44" *) 1'h0;
-  assign \$3  = top_module_nready == (* src = "beta_integration_axistream.py:52" *) 1'h0;
+  assign \$1  = m_tready == (* src = "beta_integration_fifo_lvds.py:45" *) 1'h0;
+  assign \$3  = b64_b32_o_busy == (* src = "beta_integration_fifo_lvds.py:59" *) 1'h0;
+  b16_b40 b16_b40 (
+    .clk(top_module_clk),
+    .data_in(b16_b40_data_in),
+    .data_out(b16_b40_data_out),
+    .full_clk(full_clk),
+    .full_rst(full_rst),
+    .i_busy(b16_b40_i_busy),
+    .o_busy(b16_b40_o_busy),
+    .rst(top_module_rst),
+    .valid_in(b16_b40_valid_in),
+    .valid_out(b16_b40_valid_out)
+  );
+  b64_b32 b64_b32 (
+    .data_in(b64_b32_data_in),
+    .data_out(b64_b32_data_out),
+    .full_clk(full_clk),
+    .full_rst(full_rst),
+    .i_busy(b64_b32_i_busy),
+    .o_busy(b64_b32_o_busy),
+    .valid_in(b64_b32_valid_in),
+    .valid_out(b64_b32_valid_out)
+  );
   top_module top_module (
     .busy_in(top_module_busy_in),
+    .clk(top_module_clk),
     .data_out(top_module_data_out),
-    .end_out(top_module_end_out),
     .full_clk(full_clk),
     .full_rst(full_rst),
     .nready(top_module_nready),
     .pixel_in1(top_module_pixel_in1),
     .pixel_in2(top_module_pixel_in2),
+    .rst(top_module_rst),
     .valid_in(top_module_valid_in),
     .valid_out(top_module_valid_out)
   );
   always @* begin
-    \$next\m_tdata  = 16'h0000;
-    \$next\m_tdata  = top_module_data_out;
+    \$next\m_tdata  = 40'h0000000000;
+    \$next\m_tdata  = b16_b40_data_out;
   end
   always @* begin
-    \$next\m_tlast  = 1'h0;
-    \$next\m_tlast  = top_module_end_out;
-  end
-  always @* begin
-    \$next\top_module_busy_in  = 1'h0;
-    \$next\top_module_busy_in  = \$1 ;
-  end
-  always @* begin
-    \$next\m_tvalid  = 1'h0;
-    \$next\m_tvalid  = top_module_valid_out;
-  end
-  always @* begin
-    \$next\top_module_pixel_in1  = 12'h000;
-    \$next\top_module_pixel_in1  = s_tdata[31:20];
+    \$next\b16_b40_i_busy  = 1'h0;
+    \$next\b16_b40_i_busy  = \$1 ;
   end
   always @* begin
     \$next\top_module_pixel_in2  = 12'h000;
-    \$next\top_module_pixel_in2  = s_tdata[19:8];
+    \$next\top_module_pixel_in2  = b64_b32_data_out[11:0];
+  end
+  always @* begin
+    \$next\b64_b32_i_busy  = 1'h0;
+    \$next\b64_b32_i_busy  = top_module_nready;
+  end
+  always @* begin
+    \$next\top_module_valid_in  = 1'h0;
+    \$next\top_module_valid_in  = b64_b32_valid_out;
+  end
+  always @* begin
+    \$next\m_tvalid  = 1'h0;
+    \$next\m_tvalid  = b16_b40_valid_out;
+  end
+  always @* begin
+    \$next\b16_b40_data_in  = 16'h0000;
+    \$next\b16_b40_data_in  = top_module_data_out;
+  end
+  always @* begin
+    \$next\top_module_busy_in  = 1'h0;
+    \$next\top_module_busy_in  = b16_b40_o_busy;
+  end
+  always @* begin
+    \$next\b16_b40_valid_in  = 1'h0;
+    \$next\b16_b40_valid_in  = top_module_valid_out;
+  end
+  always @* begin
+    \$next\b64_b32_data_in  = 64'h0000000000000000;
+    \$next\b64_b32_data_in  = s_tdata;
   end
   always @* begin
     \$next\s_tready  = 1'h0;
     \$next\s_tready  = \$3 ;
   end
   always @* begin
-    \$next\s_end  = 1'h0;
-    \$next\s_end  = s_tlast;
+    \$next\b64_b32_valid_in  = 1'h0;
+    \$next\b64_b32_valid_in  = s_tvalid;
   end
   always @* begin
-    \$next\top_module_valid_in  = 1'h0;
-    \$next\top_module_valid_in  = s_tvalid;
+    \$next\top_module_pixel_in1  = 12'h000;
+    \$next\top_module_pixel_in1  = b64_b32_data_out[23:12];
   end
   assign top_module_valid_in = \$next\top_module_valid_in ;
-  assign s_end = \$next\s_end ;
-  assign s_tready = \$next\s_tready ;
+  assign b64_b32_i_busy = \$next\b64_b32_i_busy ;
   assign top_module_pixel_in2 = \$next\top_module_pixel_in2 ;
   assign top_module_pixel_in1 = \$next\top_module_pixel_in1 ;
-  assign m_tvalid = \$next\m_tvalid ;
+  assign b64_b32_valid_in = \$next\b64_b32_valid_in ;
+  assign s_tready = \$next\s_tready ;
+  assign b64_b32_data_in = \$next\b64_b32_data_in ;
+  assign b16_b40_valid_in = \$next\b16_b40_valid_in ;
   assign top_module_busy_in = \$next\top_module_busy_in ;
-  assign m_tlast = \$next\m_tlast ;
+  assign b16_b40_data_in = \$next\b16_b40_data_in ;
+  assign m_tvalid = \$next\m_tvalid ;
+  assign b16_b40_i_busy = \$next\b16_b40_i_busy ;
   assign m_tdata = \$next\m_tdata ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.top_module" *)
 (* generator = "nMigen" *)
-module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, valid_out, end_out, nready, full_clk);
+module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, clk, rst, data_out, valid_out, nready, full_clk);
   wire \$2 ;
   wire \$4 ;
   wire \$6 ;
@@ -7756,6 +8558,8 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
   reg \$next\auto_reset_hs1_in ;
   (* src = "auto_reset.py:40" *)
   reg \$next\auto_reset_hs2_in ;
+  (* src = "nmigen/hdl/mem.py:97" *)
+  reg \$next\clk ;
   (* src = "beta_integration.py:36" *)
   reg [15:0] \$next\data_out ;
   (* src = "beta_integration.py:41" *)
@@ -7780,14 +8584,10 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
   reg \$next\fix_0xff_valid_in ;
   (* src = "integration_3.py:32" *)
   reg \$next\integration_3_busy_in ;
-  (* src = "nmigen/hdl/mem.py:97" *)
-  reg \$next\integration_3_clk ;
   (* src = "integration_3.py:22" *)
   reg [11:0] \$next\integration_3_pixel_in ;
   (* src = "integration_3.py:22" *)
   reg [11:0] \$next\integration_3_pixel_in$1 ;
-  (* src = "clk_domains.py:5" *)
-  reg \$next\integration_3_rst ;
   (* src = "integration_3.py:28" *)
   reg \$next\integration_3_valid_in ;
   (* src = "markers.py:35" *)
@@ -7802,6 +8602,8 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
   reg \$next\markers_valid_in ;
   (* src = "beta_integration.py:42" *)
   reg \$next\nready ;
+  (* src = "clk_domains.py:5" *)
+  reg \$next\rst ;
   (* src = "beta_integration.py:40" *)
   reg \$next\valid_out ;
   (* src = "auto_reset.py:34" *)
@@ -7814,10 +8616,12 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
   wire auto_reset_reset_out;
   (* src = "beta_integration.py:43" *)
   input busy_in;
+  (* src = "nmigen/hdl/mem.py:97" *)
+  output clk;
   (* src = "beta_integration.py:36" *)
   output [15:0] data_out;
   (* src = "beta_integration.py:41" *)
-  output end_out;
+  wire end_out;
   (* src = "fix_0xff2.py:149" *)
   wire [31:0] fix_0xff2_data_in;
   (* src = "fix_0xff2.py:150" *)
@@ -7860,8 +8664,6 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
   input full_rst;
   (* src = "integration_3.py:32" *)
   wire integration_3_busy_in;
-  (* src = "nmigen/hdl/mem.py:97" *)
-  wire integration_3_clk;
   (* src = "integration_3.py:25" *)
   wire [15:0] integration_3_data_out;
   (* src = "integration_3.py:30" *)
@@ -7874,8 +8676,6 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
   wire [11:0] integration_3_pixel_in;
   (* src = "integration_3.py:22" *)
   wire [11:0] \integration_3_pixel_in$1 ;
-  (* src = "clk_domains.py:5" *)
-  wire integration_3_rst;
   (* src = "integration_3.py:28" *)
   wire integration_3_valid_in;
   (* src = "integration_3.py:29" *)
@@ -7904,6 +8704,8 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
   input [11:0] pixel_in1;
   (* src = "beta_integration.py:33" *)
   input [11:0] pixel_in2;
+  (* src = "clk_domains.py:5" *)
+  output rst;
   (* src = "beta_integration.py:39" *)
   input valid_in;
   (* src = "beta_integration.py:40" *)
@@ -7913,15 +8715,15 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
   assign \$6  = \$2  | (* src = "beta_integration.py:69" *) \$4 ;
   assign \$8  = busy_in == (* src = "beta_integration.py:76" *) 1'h0;
   auto_reset auto_reset (
-    .clk(integration_3_clk),
+    .clk(clk),
     .end_in(auto_reset_end_in),
     .hs1_in(auto_reset_hs1_in),
     .hs2_in(auto_reset_hs2_in),
     .reset_out(auto_reset_reset_out),
-    .rst(integration_3_rst)
+    .rst(rst)
   );
   fix_0xff fix_0xff (
-    .clk(integration_3_clk),
+    .clk(clk),
     .data_in(fix_0xff_data_in),
     .data_out(fix_0xff_data_out),
     .data_out_ctr(fix_0xff_data_out_ctr),
@@ -7929,12 +8731,12 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
     .end_out(fix_0xff_end_out),
     .i_busy(fix_0xff_i_busy),
     .o_busy(fix_0xff_o_busy),
-    .rst(integration_3_rst),
+    .rst(rst),
     .valid_in(fix_0xff_valid_in),
     .valid_out(fix_0xff_valid_out)
   );
   fix_0xff2 fix_0xff2 (
-    .clk(integration_3_clk),
+    .clk(clk),
     .data_in(fix_0xff2_data_in),
     .data_in_ctr(fix_0xff2_data_in_ctr),
     .data_out(fix_0xff2_data_out),
@@ -7942,13 +8744,13 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
     .end_out(fix_0xff2_end_out),
     .i_busy(fix_0xff2_i_busy),
     .o_busy(fix_0xff2_o_busy),
-    .rst(integration_3_rst),
+    .rst(rst),
     .valid_in(fix_0xff2_valid_in),
     .valid_out(fix_0xff2_valid_out)
   );
   integration_3 integration_3 (
     .busy_in(integration_3_busy_in),
-    .clk(integration_3_clk),
+    .clk(clk),
     .data_out(integration_3_data_out),
     .end_out(integration_3_end_out),
     .fend_out(integration_3_fend_out),
@@ -7957,12 +8759,12 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
     .nready(integration_3_nready),
     .pixel_in(integration_3_pixel_in),
     .\pixel_in$1 (\integration_3_pixel_in$1 ),
-    .rst(integration_3_rst),
+    .rst(rst),
     .valid_in(integration_3_valid_in),
     .valid_out(integration_3_valid_out)
   );
   markers markers (
-    .clk(integration_3_clk),
+    .clk(clk),
     .data_in(markers_data_in),
     .data_out(markers_data_out),
     .end_in(markers_end_in),
@@ -7970,17 +8772,17 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
     .force_end_in(markers_force_end_in),
     .i_busy(markers_i_busy),
     .o_busy(markers_o_busy),
-    .rst(integration_3_rst),
+    .rst(rst),
     .valid_in(markers_valid_in),
     .valid_out(markers_valid_out)
   );
   always @* begin
-    \$next\integration_3_clk  = 1'h0;
-    \$next\integration_3_clk  = full_clk;
+    \$next\clk  = 1'h0;
+    \$next\clk  = full_clk;
   end
   always @* begin
-    \$next\integration_3_rst  = 1'h0;
-    \$next\integration_3_rst  = \$6 ;
+    \$next\rst  = 1'h0;
+    \$next\rst  = \$6 ;
   end
   always @* begin
     \$next\fix_0xff_valid_in  = 1'h0;
@@ -8107,8 +8909,8 @@ module top_module(full_rst, busy_in, pixel_in1, pixel_in2, valid_in, data_out, v
   assign auto_reset_hs2_in = \$next\auto_reset_hs2_in ;
   assign auto_reset_hs1_in = \$next\auto_reset_hs1_in ;
   assign auto_reset_end_in = \$next\auto_reset_end_in ;
-  assign integration_3_rst = \$next\integration_3_rst ;
-  assign integration_3_clk = \$next\integration_3_clk ;
+  assign rst = \$next\rst ;
+  assign clk = \$next\clk ;
 endmodule
 
 (* \nmigen.hierarchy  = "top.top_module.integration_3.integration_2.lj92_pipeline_fifo.fifo.unbuffered" *)

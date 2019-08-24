@@ -4,11 +4,11 @@
 (* top =  1  *)
 (* generator = "nMigen" *)
 module top(data_out, data_in);
-  (* src = "./migen_src/reverser.py:40" *)
+  (* src = "reverser.py:40" *)
   reg [31:0] \$next\data_out ;
-  (* src = "./migen_src/reverser.py:39" *)
+  (* src = "reverser.py:39" *)
   input [31:0] data_in;
-  (* src = "./migen_src/reverser.py:40" *)
+  (* src = "reverser.py:40" *)
   output [31:0] data_out;
   always @* begin
     \$next\data_out  = 32'd0;

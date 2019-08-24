@@ -7,32 +7,32 @@ module top(allowed_cycles, rst, clk, fend, valid_in);
   wire \$1 ;
   wire [25:0] \$3 ;
   wire [25:0] \$4 ;
-  (* src = "./migen_src/force_end.py:51" *)
+  (* src = "force_end.py:51" *)
   reg [24:0] \$next\counter ;
-  (* src = "./migen_src/force_end.py:41" *)
+  (* src = "force_end.py:41" *)
   reg \$next\fend ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "./migen_src/force_end.py:39" *)
+  (* src = "force_end.py:39" *)
   input [23:0] allowed_cycles;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
   (* init = 25'h0000000 *)
-  (* src = "./migen_src/force_end.py:51" *)
+  (* src = "force_end.py:51" *)
   reg [24:0] counter = 25'h0000000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/force_end.py:41" *)
+  (* src = "force_end.py:41" *)
   output fend;
   reg fend = 1'h0;
   (* init = 2'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/force_end.py:38" *)
+  (* src = "force_end.py:38" *)
   input valid_in;
-  assign \$1  = counter == (* src = "./migen_src/force_end.py:61" *) allowed_cycles;
-  assign \$4  = counter + (* src = "./migen_src/force_end.py:60" *) 1'h1;
+  assign \$1  = counter == (* src = "force_end.py:61" *) allowed_cycles;
+  assign \$4  = counter + (* src = "force_end.py:60" *) 1'h1;
   always @(posedge clk)
       fend <= \$next\fend ;
   always @(posedge clk)

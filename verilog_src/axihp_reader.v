@@ -34,151 +34,151 @@ module top(enable, addr_empty, addr_in, m_axi_ri__rvalid, data_full, m_axi_ri__r
   wire \$57 ;
   wire \$7 ;
   wire \$9 ;
-  (* src = "./migen_src/axihp_reader.py:69" *)
+  (* src = "axihp_reader.py:69" *)
   reg [3:0] \$next\active ;
-  (* src = "./migen_src/axihp_reader.py:25" *)
+  (* src = "axihp_reader.py:25" *)
   reg \$next\addr_clk ;
-  (* src = "./migen_src/axihp_reader.py:75" *)
+  (* src = "axihp_reader.py:75" *)
   reg \$next\addr_en ;
-  (* src = "./migen_src/axihp_reader.py:26" *)
+  (* src = "axihp_reader.py:26" *)
   reg \$next\addr_enable ;
-  (* src = "./migen_src/axihp_reader.py:66" *)
+  (* src = "axihp_reader.py:66" *)
   reg [3:0] \$next\arlen_c ;
-  (* src = "./migen_src/axihp_reader.py:70" *)
+  (* src = "axihp_reader.py:70" *)
   reg \$next\arvalid ;
-  (* src = "./migen_src/axihp_reader.py:20" *)
+  (* src = "axihp_reader.py:20" *)
   reg \$next\data_clk ;
-  (* src = "./migen_src/axihp_reader.py:74" *)
+  (* src = "axihp_reader.py:74" *)
   reg \$next\data_en ;
-  (* src = "./migen_src/axihp_reader.py:21" *)
+  (* src = "axihp_reader.py:21" *)
   reg \$next\data_enable ;
-  (* src = "./migen_src/axihp_reader.py:22" *)
+  (* src = "axihp_reader.py:22" *)
   reg [63:0] \$next\data_out ;
-  (* src = "./migen_src/axihp_reader.py:15" *)
+  (* src = "axihp_reader.py:15" *)
   reg \$next\inactive ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [31:0] \$next\m_axi_ro__araddr ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [1:0] \$next\m_axi_ro__arburst ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [5:0] \$next\m_axi_ro__arid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [3:0] \$next\m_axi_ro__arlen ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [2:0] \$next\m_axi_ro__arprot ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg [1:0] \$next\m_axi_ro__arsize ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_ro__arvalid ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   reg \$next\m_axi_ro__rready ;
-  (* src = "./migen_src/axihp_reader.py:31" *)
+  (* src = "axihp_reader.py:31" *)
   reg [3:0] \$next\reader_active ;
-  (* src = "./migen_src/axihp_reader.py:30" *)
+  (* src = "axihp_reader.py:30" *)
   reg \$next\reader_error ;
-  (* src = "./migen_src/axihp_reader.py:72" *)
+  (* src = "axihp_reader.py:72" *)
   reg \$next\rready ;
   (* init = 1'h0 *)
   reg \$verilog_initial_trigger  = 1'h0;
   (* init = 4'h0 *)
-  (* src = "./migen_src/axihp_reader.py:69" *)
+  (* src = "axihp_reader.py:69" *)
   reg [3:0] active = 4'h0;
-  (* src = "./migen_src/axihp_reader.py:25" *)
+  (* src = "axihp_reader.py:25" *)
   output addr_clk;
-  (* src = "./migen_src/axihp_reader.py:28" *)
+  (* src = "axihp_reader.py:28" *)
   input addr_empty;
-  (* src = "./migen_src/axihp_reader.py:75" *)
+  (* src = "axihp_reader.py:75" *)
   wire addr_en;
-  (* src = "./migen_src/axihp_reader.py:26" *)
+  (* src = "axihp_reader.py:26" *)
   output addr_enable;
-  (* src = "./migen_src/axihp_reader.py:27" *)
+  (* src = "axihp_reader.py:27" *)
   input [31:0] addr_in;
-  (* src = "./migen_src/axihp_reader.py:66" *)
+  (* src = "axihp_reader.py:66" *)
   wire [3:0] arlen_c;
   (* init = 1'h0 *)
-  (* src = "./migen_src/axihp_reader.py:70" *)
+  (* src = "axihp_reader.py:70" *)
   reg arvalid = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/axihp_reader.py:20" *)
+  (* src = "axihp_reader.py:20" *)
   output data_clk;
-  (* src = "./migen_src/axihp_reader.py:74" *)
+  (* src = "axihp_reader.py:74" *)
   wire data_en;
-  (* src = "./migen_src/axihp_reader.py:21" *)
+  (* src = "axihp_reader.py:21" *)
   output data_enable;
-  (* src = "./migen_src/axihp_reader.py:23" *)
+  (* src = "axihp_reader.py:23" *)
   input data_full;
-  (* src = "./migen_src/axihp_reader.py:22" *)
+  (* src = "axihp_reader.py:22" *)
   output [63:0] data_out;
-  (* src = "./migen_src/axihp_reader.py:14" *)
+  (* src = "axihp_reader.py:14" *)
   input enable;
-  (* src = "./migen_src/axihp_reader.py:15" *)
+  (* src = "axihp_reader.py:15" *)
   output inactive;
-  (* src = "./migen_src/axihp_reader.py:12" *)
+  (* src = "axihp_reader.py:12" *)
   input m_axi_aclk_;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_ri__arready;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [63:0] m_axi_ri__rdata;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_ri__rlast;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input [1:0] m_axi_ri__rresp;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   input m_axi_ri__rvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [31:0] m_axi_ro__araddr;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [1:0] m_axi_ro__arburst;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [5:0] m_axi_ro__arid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [3:0] m_axi_ro__arlen;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [2:0] m_axi_ro__arprot;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output [1:0] m_axi_ro__arsize;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_ro__arvalid;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/rec.py:84" *)
+  (* src = "nmigen/hdl/rec.py:84" *)
   output m_axi_ro__rready;
-  (* src = "./migen_src/axihp_reader.py:31" *)
+  (* src = "axihp_reader.py:31" *)
   output [3:0] reader_active;
-  (* src = "./migen_src/axihp_reader.py:30" *)
+  (* src = "axihp_reader.py:30" *)
   output reader_error;
   (* init = 1'h0 *)
-  (* src = "./migen_src/axihp_reader.py:72" *)
+  (* src = "axihp_reader.py:72" *)
   reg rready = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  assign \$9  = enable == (* src = "./migen_src/axihp_reader.py:88" *) 1'h1;
-  assign \$11  = addr_empty == (* src = "./migen_src/axihp_reader.py:88" *) 1'h0;
-  assign \$13  = \$9  & (* src = "./migen_src/axihp_reader.py:88" *) \$11 ;
-  assign \$15  = active[3] == (* src = "./migen_src/axihp_reader.py:88" *) 1'h0;
-  assign \$17  = \$13  & (* src = "./migen_src/axihp_reader.py:88" *) \$15 ;
-  assign \$1  = arvalid == (* src = "./migen_src/axihp_reader.py:83" *) 1'h1;
-  assign \$19  = rready == (* src = "./migen_src/axihp_reader.py:107" *) 1'h1;
-  assign \$21  = m_axi_ri__rvalid == (* src = "./migen_src/axihp_reader.py:107" *) 1'h1;
-  assign \$23  = \$19  & (* src = "./migen_src/axihp_reader.py:107" *) \$21 ;
-  assign \$25  = rready == (* src = "./migen_src/axihp_reader.py:110" *) 1'h0;
-  assign \$27  = data_full == (* src = "./migen_src/axihp_reader.py:112" *) 1'h0;
-  assign \$29  = active != (* src = "./migen_src/axihp_reader.py:112" *) 1'h0;
-  assign \$31  = \$27  & (* src = "./migen_src/axihp_reader.py:112" *) \$29 ;
-  assign \$33  = data_en == (* src = "./migen_src/axihp_reader.py:121" *) 1'h1;
-  assign \$35  = m_axi_ri__rresp != (* src = "./migen_src/axihp_reader.py:121" *) 1'h0;
-  assign \$37  = \$33  & (* src = "./migen_src/axihp_reader.py:121" *) \$35 ;
-  assign \$3  = m_axi_ri__arready == (* src = "./migen_src/axihp_reader.py:83" *) 1'h1;
-  assign \$39  = addr_en == (* src = "./migen_src/axihp_reader.py:133" *) 1'h1;
-  assign \$41  = m_axi_ri__rlast == (* src = "./migen_src/axihp_reader.py:133" *) 1'h0;
-  assign \$43  = \$39  & (* src = "./migen_src/axihp_reader.py:133" *) \$41 ;
-  assign \$45  = addr_en == (* src = "./migen_src/axihp_reader.py:137" *) 1'h0;
-  assign \$47  = m_axi_ri__rlast == (* src = "./migen_src/axihp_reader.py:137" *) 1'h1;
-  assign \$49  = \$45  & (* src = "./migen_src/axihp_reader.py:137" *) \$47 ;
-  assign \$52  = active + (* src = "./migen_src/axihp_reader.py:134" *) 1'h1;
-  assign \$55  = active - (* src = "./migen_src/axihp_reader.py:138" *) 1'h1;
-  assign \$57  = active == (* src = "./migen_src/axihp_reader.py:140" *) 1'h0;
-  assign \$5  = \$1  & (* src = "./migen_src/axihp_reader.py:83" *) \$3 ;
-  assign \$7  = arvalid == (* src = "./migen_src/axihp_reader.py:86" *) 1'h0;
+  assign \$9  = enable == (* src = "axihp_reader.py:88" *) 1'h1;
+  assign \$11  = addr_empty == (* src = "axihp_reader.py:88" *) 1'h0;
+  assign \$13  = \$9  & (* src = "axihp_reader.py:88" *) \$11 ;
+  assign \$15  = active[3] == (* src = "axihp_reader.py:88" *) 1'h0;
+  assign \$17  = \$13  & (* src = "axihp_reader.py:88" *) \$15 ;
+  assign \$1  = arvalid == (* src = "axihp_reader.py:83" *) 1'h1;
+  assign \$19  = rready == (* src = "axihp_reader.py:107" *) 1'h1;
+  assign \$21  = m_axi_ri__rvalid == (* src = "axihp_reader.py:107" *) 1'h1;
+  assign \$23  = \$19  & (* src = "axihp_reader.py:107" *) \$21 ;
+  assign \$25  = rready == (* src = "axihp_reader.py:110" *) 1'h0;
+  assign \$27  = data_full == (* src = "axihp_reader.py:112" *) 1'h0;
+  assign \$29  = active != (* src = "axihp_reader.py:112" *) 1'h0;
+  assign \$31  = \$27  & (* src = "axihp_reader.py:112" *) \$29 ;
+  assign \$33  = data_en == (* src = "axihp_reader.py:121" *) 1'h1;
+  assign \$35  = m_axi_ri__rresp != (* src = "axihp_reader.py:121" *) 1'h0;
+  assign \$37  = \$33  & (* src = "axihp_reader.py:121" *) \$35 ;
+  assign \$3  = m_axi_ri__arready == (* src = "axihp_reader.py:83" *) 1'h1;
+  assign \$39  = addr_en == (* src = "axihp_reader.py:133" *) 1'h1;
+  assign \$41  = m_axi_ri__rlast == (* src = "axihp_reader.py:133" *) 1'h0;
+  assign \$43  = \$39  & (* src = "axihp_reader.py:133" *) \$41 ;
+  assign \$45  = addr_en == (* src = "axihp_reader.py:137" *) 1'h0;
+  assign \$47  = m_axi_ri__rlast == (* src = "axihp_reader.py:137" *) 1'h1;
+  assign \$49  = \$45  & (* src = "axihp_reader.py:137" *) \$47 ;
+  assign \$52  = active + (* src = "axihp_reader.py:134" *) 1'h1;
+  assign \$55  = active - (* src = "axihp_reader.py:138" *) 1'h1;
+  assign \$57  = active == (* src = "axihp_reader.py:140" *) 1'h0;
+  assign \$5  = \$1  & (* src = "axihp_reader.py:83" *) \$3 ;
+  assign \$7  = arvalid == (* src = "axihp_reader.py:86" *) 1'h0;
   always @(posedge clk)
       active <= \$next\active ;
   always @(posedge clk)

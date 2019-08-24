@@ -17,131 +17,131 @@ module top(new_row, pixel_in, \pixel_in$1 , end_in, rst, clk, pixel_out, \pixel_
   wire \$4 ;
   wire \$6 ;
   wire \$8 ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  (* src = "predictor_p1_c4_pix1_2.py:100" *)
   reg [15:0] \$next\buff ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  (* src = "predictor_p1_c4_pix1_2.py:100" *)
   reg [15:0] \$next\buff$24 ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  (* src = "predictor_p1_c4_pix1_2.py:100" *)
   reg [15:0] \$next\buff$25 ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  (* src = "predictor_p1_c4_pix1_2.py:100" *)
   reg [15:0] \$next\buff$26 ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:108" *)
+  (* src = "predictor_p1_c4_pix1_2.py:108" *)
   reg \$next\buff_ctr ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:84" *)
+  (* src = "predictor_p1_c4_pix1_2.py:84" *)
   reg [31:0] \$next\debug_counter ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:81" *)
+  (* src = "predictor_p1_c4_pix1_2.py:81" *)
   reg \$next\end_out ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  (* src = "predictor_p1_c4_pix1_2.py:106" *)
   reg [15:0] \$next\lbuff ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  (* src = "predictor_p1_c4_pix1_2.py:106" *)
   reg [15:0] \$next\lbuff$30 ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  (* src = "predictor_p1_c4_pix1_2.py:106" *)
   reg [15:0] \$next\lbuff$31 ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  (* src = "predictor_p1_c4_pix1_2.py:106" *)
   reg [15:0] \$next\lbuff$32 ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:109" *)
+  (* src = "predictor_p1_c4_pix1_2.py:109" *)
   reg \$next\lbuff_ctr ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:112" *)
+  (* src = "predictor_p1_c4_pix1_2.py:112" *)
   reg \$next\new_row_latch ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:111" *)
+  (* src = "predictor_p1_c4_pix1_2.py:111" *)
   reg \$next\new_row_reg ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:67" *)
+  (* src = "predictor_p1_c4_pix1_2.py:67" *)
   reg [15:0] \$next\pixel_out ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:67" *)
+  (* src = "predictor_p1_c4_pix1_2.py:67" *)
   reg [15:0] \$next\pixel_out$2 ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:70" *)
+  (* src = "predictor_p1_c4_pix1_2.py:70" *)
   reg [15:0] \$next\predic_out ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:70" *)
+  (* src = "predictor_p1_c4_pix1_2.py:70" *)
   reg [15:0] \$next\predic_out$3 ;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:77" *)
+  (* src = "predictor_p1_c4_pix1_2.py:77" *)
   reg \$next\valid_out ;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  (* src = "predictor_p1_c4_pix1_2.py:100" *)
   reg [15:0] buff = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  (* src = "predictor_p1_c4_pix1_2.py:100" *)
   reg [15:0] \buff$24  = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  (* src = "predictor_p1_c4_pix1_2.py:100" *)
   reg [15:0] \buff$25  = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:100" *)
+  (* src = "predictor_p1_c4_pix1_2.py:100" *)
   reg [15:0] \buff$26  = 16'h8000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:108" *)
+  (* src = "predictor_p1_c4_pix1_2.py:108" *)
   reg buff_ctr = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
   (* init = 32'd0 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:84" *)
+  (* src = "predictor_p1_c4_pix1_2.py:84" *)
   output [31:0] debug_counter;
   reg [31:0] debug_counter = 32'd0;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:80" *)
+  (* src = "predictor_p1_c4_pix1_2.py:80" *)
   input end_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:81" *)
+  (* src = "predictor_p1_c4_pix1_2.py:81" *)
   output end_out;
   reg end_out = 1'h0;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  (* src = "predictor_p1_c4_pix1_2.py:106" *)
   reg [15:0] lbuff = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  (* src = "predictor_p1_c4_pix1_2.py:106" *)
   reg [15:0] \lbuff$30  = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  (* src = "predictor_p1_c4_pix1_2.py:106" *)
   reg [15:0] \lbuff$31  = 16'h8000;
   (* init = 16'h8000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:106" *)
+  (* src = "predictor_p1_c4_pix1_2.py:106" *)
   reg [15:0] \lbuff$32  = 16'h8000;
   (* init = 1'h0 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:109" *)
+  (* src = "predictor_p1_c4_pix1_2.py:109" *)
   reg lbuff_ctr = 1'h0;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:73" *)
+  (* src = "predictor_p1_c4_pix1_2.py:73" *)
   input new_row;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:112" *)
+  (* src = "predictor_p1_c4_pix1_2.py:112" *)
   wire new_row_latch;
   (* init = 1'h0 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:111" *)
+  (* src = "predictor_p1_c4_pix1_2.py:111" *)
   reg new_row_reg = 1'h0;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:64" *)
+  (* src = "predictor_p1_c4_pix1_2.py:64" *)
   input [15:0] pixel_in;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:64" *)
+  (* src = "predictor_p1_c4_pix1_2.py:64" *)
   input [15:0] \pixel_in$1 ;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:67" *)
+  (* src = "predictor_p1_c4_pix1_2.py:67" *)
   output [15:0] pixel_out;
   reg [15:0] pixel_out = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:67" *)
+  (* src = "predictor_p1_c4_pix1_2.py:67" *)
   output [15:0] \pixel_out$2 ;
   reg [15:0] \pixel_out$2  = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:70" *)
+  (* src = "predictor_p1_c4_pix1_2.py:70" *)
   output [15:0] predic_out;
   reg [15:0] predic_out = 16'h0000;
   (* init = 16'h0000 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:70" *)
+  (* src = "predictor_p1_c4_pix1_2.py:70" *)
   output [15:0] \predic_out$3 ;
   reg [15:0] \predic_out$3  = 16'h0000;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:76" *)
+  (* src = "predictor_p1_c4_pix1_2.py:76" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/predictor_p1_c4_pix1_2.py:77" *)
+  (* src = "predictor_p1_c4_pix1_2.py:77" *)
   output valid_out;
   reg valid_out = 1'h0;
-  assign \$10  = valid_in == (* src = "./migen_src/predictor_p1_c4_pix1_2.py:117" *) 1'h1;
-  assign \$12  = lbuff_ctr == (* src = "./migen_src/predictor_p1_c4_pix1_2.py:117" *) 1'h1;
-  assign \$14  = \$10  & (* src = "./migen_src/predictor_p1_c4_pix1_2.py:117" *) \$12 ;
-  assign \$16  = new_row | (* src = "./migen_src/predictor_p1_c4_pix1_2.py:119" *) new_row_reg;
-  assign \$19  = debug_counter + (* src = "./migen_src/predictor_p1_c4_pix1_2.py:124" *) 1'h1;
-  assign \$22  = buff_ctr + (* src = "./migen_src/predictor_p1_c4_pix1_2.py:130" *) 1'h1;
-  assign \$28  = lbuff_ctr + (* src = "./migen_src/predictor_p1_c4_pix1_2.py:138" *) 1'h1;
-  assign \$4  = valid_in == (* src = "./migen_src/predictor_p1_c4_pix1_2.py:115" *) 1'h1;
-  assign \$6  = new_row == (* src = "./migen_src/predictor_p1_c4_pix1_2.py:115" *) 1'h1;
-  assign \$8  = \$4  & (* src = "./migen_src/predictor_p1_c4_pix1_2.py:115" *) \$6 ;
+  assign \$10  = valid_in == (* src = "predictor_p1_c4_pix1_2.py:117" *) 1'h1;
+  assign \$12  = lbuff_ctr == (* src = "predictor_p1_c4_pix1_2.py:117" *) 1'h1;
+  assign \$14  = \$10  & (* src = "predictor_p1_c4_pix1_2.py:117" *) \$12 ;
+  assign \$16  = new_row | (* src = "predictor_p1_c4_pix1_2.py:119" *) new_row_reg;
+  assign \$19  = debug_counter + (* src = "predictor_p1_c4_pix1_2.py:124" *) 1'h1;
+  assign \$22  = buff_ctr + (* src = "predictor_p1_c4_pix1_2.py:130" *) 1'h1;
+  assign \$28  = lbuff_ctr + (* src = "predictor_p1_c4_pix1_2.py:138" *) 1'h1;
+  assign \$4  = valid_in == (* src = "predictor_p1_c4_pix1_2.py:115" *) 1'h1;
+  assign \$6  = new_row == (* src = "predictor_p1_c4_pix1_2.py:115" *) 1'h1;
+  assign \$8  = \$4  & (* src = "predictor_p1_c4_pix1_2.py:115" *) \$6 ;
   always @(posedge clk)
       end_out <= \$next\end_out ;
   always @(posedge clk)

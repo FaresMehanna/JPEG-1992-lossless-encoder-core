@@ -34,114 +34,114 @@ module top(valid_out, enc_out, enc_out_ctr, out_end, rst, clk, latch_output, enc
   wire \$58 ;
   wire \$7 ;
   wire \$9 ;
-  (* src = "./migen_src/converter.py:66" *)
+  (* src = "converter.py:66" *)
   reg [35:0] \$next\enc_in ;
-  (* src = "./migen_src/converter.py:67" *)
+  (* src = "converter.py:67" *)
   reg [5:0] \$next\enc_in_ctr ;
-  (* src = "./migen_src/converter.py:95" *)
+  (* src = "converter.py:95" *)
   reg [5:0] \$next\enc_out_ctr_reg ;
-  (* src = "./migen_src/converter.py:90" *)
+  (* src = "converter.py:90" *)
   reg [35:0] \$next\enc_out_latch ;
-  (* src = "./migen_src/converter.py:94" *)
+  (* src = "converter.py:94" *)
   reg [61:0] \$next\enc_out_reg ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] \$next\fsm_state ;
-  (* src = "./migen_src/converter.py:68" *)
+  (* src = "converter.py:68" *)
   reg \$next\in_end ;
-  (* src = "./migen_src/converter.py:59" *)
+  (* src = "converter.py:59" *)
   reg \$next\latch_output ;
-  (* src = "./migen_src/converter.py:91" *)
+  (* src = "converter.py:91" *)
   reg \$next\out_end_latch ;
-  (* src = "./migen_src/converter.py:96" *)
+  (* src = "converter.py:96" *)
   reg \$next\out_end_reg ;
-  (* src = "./migen_src/converter.py:69" *)
+  (* src = "converter.py:69" *)
   reg \$next\valid_in ;
-  (* src = "./migen_src/converter.py:97" *)
+  (* src = "converter.py:97" *)
   reg \$next\valid_out_reg ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/converter.py:70" *)
+  (* src = "converter.py:70" *)
   input close_full;
   (* init = 36'h000000000 *)
-  (* src = "./migen_src/converter.py:66" *)
+  (* src = "converter.py:66" *)
   output [35:0] enc_in;
   reg [35:0] enc_in = 36'h000000000;
   (* init = 6'h00 *)
-  (* src = "./migen_src/converter.py:67" *)
+  (* src = "converter.py:67" *)
   output [5:0] enc_in_ctr;
   reg [5:0] enc_in_ctr = 6'h00;
-  (* src = "./migen_src/converter.py:60" *)
+  (* src = "converter.py:60" *)
   input [61:0] enc_out;
-  (* src = "./migen_src/converter.py:61" *)
+  (* src = "converter.py:61" *)
   input [5:0] enc_out_ctr;
   (* init = 6'h00 *)
-  (* src = "./migen_src/converter.py:95" *)
+  (* src = "converter.py:95" *)
   reg [5:0] enc_out_ctr_reg = 6'h00;
   (* init = 36'h000000000 *)
-  (* src = "./migen_src/converter.py:90" *)
+  (* src = "converter.py:90" *)
   reg [35:0] enc_out_latch = 36'h000000000;
   (* init = 62'h0000000000000000 *)
-  (* src = "./migen_src/converter.py:94" *)
+  (* src = "converter.py:94" *)
   reg [61:0] enc_out_reg = 62'h0000000000000000;
   (* init = 2'h0 *)
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/dsl.py:244" *)
+  (* src = "nmigen/hdl/dsl.py:244" *)
   reg [1:0] fsm_state = 2'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:68" *)
+  (* src = "converter.py:68" *)
   output in_end;
   reg in_end = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:59" *)
+  (* src = "converter.py:59" *)
   output latch_output;
   reg latch_output = 1'h0;
-  (* src = "./migen_src/converter.py:62" *)
+  (* src = "converter.py:62" *)
   input out_end;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:91" *)
+  (* src = "converter.py:91" *)
   reg out_end_latch = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:96" *)
+  (* src = "converter.py:96" *)
   reg out_end_reg = 1'h0;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:69" *)
+  (* src = "converter.py:69" *)
   output valid_in;
   reg valid_in = 1'h0;
-  (* src = "./migen_src/converter.py:63" *)
+  (* src = "converter.py:63" *)
   input valid_out;
   (* init = 1'h0 *)
-  (* src = "./migen_src/converter.py:97" *)
+  (* src = "converter.py:97" *)
   reg valid_out_reg = 1'h0;
-  assign \$9  = valid_out & (* src = "./migen_src/converter.py:121" *) \$7 ;
-  assign \$11  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
-  assign \$13  = close_full == (* src = "./migen_src/converter.py:113" *) 1'h0;
-  assign \$15  = valid_out_reg & (* src = "./migen_src/converter.py:113" *) \$13 ;
-  assign \$17  = close_full == (* src = "./migen_src/converter.py:121" *) 1'h0;
-  assign \$1  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
-  assign \$19  = valid_out & (* src = "./migen_src/converter.py:121" *) \$17 ;
-  assign \$21  = close_full == (* src = "./migen_src/converter.py:113" *) 1'h0;
-  assign \$23  = valid_out_reg & (* src = "./migen_src/converter.py:113" *) \$21 ;
-  assign \$25  = close_full == (* src = "./migen_src/converter.py:121" *) 1'h0;
-  assign \$27  = valid_out & (* src = "./migen_src/converter.py:121" *) \$25 ;
-  assign \$29  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
-  assign \$31  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:192" *) 6'h3e;
-  assign \$33  = close_full == (* src = "./migen_src/converter.py:113" *) 1'h0;
-  assign \$35  = valid_out_reg & (* src = "./migen_src/converter.py:113" *) \$33 ;
-  assign \$37  = close_full == (* src = "./migen_src/converter.py:121" *) 1'h0;
-  assign \$3  = close_full == (* src = "./migen_src/converter.py:113" *) 1'h0;
-  assign \$39  = valid_out & (* src = "./migen_src/converter.py:121" *) \$37 ;
-  assign \$41  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
-  assign \$43  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:192" *) 6'h3e;
-  assign \$45  = + (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ast.py:123" *) enc_out_reg[61:36];
-  assign \$47  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
-  assign \$49  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:192" *) 6'h3e;
-  assign \$52  = enc_out_ctr_reg - (* src = "./migen_src/converter.py:195" *) 6'h24;
-  assign \$54  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
-  assign \$56  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
-  assign \$58  = enc_out_ctr_reg <= (* src = "./migen_src/converter.py:158" *) 6'h24;
-  assign \$5  = valid_out_reg & (* src = "./migen_src/converter.py:113" *) \$3 ;
-  assign \$7  = close_full == (* src = "./migen_src/converter.py:121" *) 1'h0;
+  assign \$9  = valid_out & (* src = "converter.py:121" *) \$7 ;
+  assign \$11  = enc_out_ctr_reg <= (* src = "converter.py:158" *) 6'h24;
+  assign \$13  = close_full == (* src = "converter.py:113" *) 1'h0;
+  assign \$15  = valid_out_reg & (* src = "converter.py:113" *) \$13 ;
+  assign \$17  = close_full == (* src = "converter.py:121" *) 1'h0;
+  assign \$1  = enc_out_ctr_reg <= (* src = "converter.py:158" *) 6'h24;
+  assign \$19  = valid_out & (* src = "converter.py:121" *) \$17 ;
+  assign \$21  = close_full == (* src = "converter.py:113" *) 1'h0;
+  assign \$23  = valid_out_reg & (* src = "converter.py:113" *) \$21 ;
+  assign \$25  = close_full == (* src = "converter.py:121" *) 1'h0;
+  assign \$27  = valid_out & (* src = "converter.py:121" *) \$25 ;
+  assign \$29  = enc_out_ctr_reg <= (* src = "converter.py:158" *) 6'h24;
+  assign \$31  = enc_out_ctr_reg <= (* src = "converter.py:192" *) 6'h3e;
+  assign \$33  = close_full == (* src = "converter.py:113" *) 1'h0;
+  assign \$35  = valid_out_reg & (* src = "converter.py:113" *) \$33 ;
+  assign \$37  = close_full == (* src = "converter.py:121" *) 1'h0;
+  assign \$3  = close_full == (* src = "converter.py:113" *) 1'h0;
+  assign \$39  = valid_out & (* src = "converter.py:121" *) \$37 ;
+  assign \$41  = enc_out_ctr_reg <= (* src = "converter.py:158" *) 6'h24;
+  assign \$43  = enc_out_ctr_reg <= (* src = "converter.py:192" *) 6'h3e;
+  assign \$45  = + (* src = "nmigen/hdl/ast.py:123" *) enc_out_reg[61:36];
+  assign \$47  = enc_out_ctr_reg <= (* src = "converter.py:158" *) 6'h24;
+  assign \$49  = enc_out_ctr_reg <= (* src = "converter.py:192" *) 6'h3e;
+  assign \$52  = enc_out_ctr_reg - (* src = "converter.py:195" *) 6'h24;
+  assign \$54  = enc_out_ctr_reg <= (* src = "converter.py:158" *) 6'h24;
+  assign \$56  = enc_out_ctr_reg <= (* src = "converter.py:158" *) 6'h24;
+  assign \$58  = enc_out_ctr_reg <= (* src = "converter.py:158" *) 6'h24;
+  assign \$5  = valid_out_reg & (* src = "converter.py:113" *) \$3 ;
+  assign \$7  = close_full == (* src = "converter.py:121" *) 1'h0;
   always @(posedge clk)
       out_end_latch <= \$next\out_end_latch ;
   always @(posedge clk)

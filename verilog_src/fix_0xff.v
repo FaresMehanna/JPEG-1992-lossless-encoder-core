@@ -74,148 +74,148 @@ module top(valid_in, end_in, data_in, rst, clk, valid_out, o_busy, data_out, dat
   wire \$95 ;
   wire \$97 ;
   wire \$99 ;
-  (* src = "./migen_src/fix_0xff.py:72" *)
+  (* src = "fix_0xff.py:72" *)
   reg [31:0] \$next\data_out ;
-  (* src = "./migen_src/fix_0xff.py:73" *)
+  (* src = "fix_0xff.py:73" *)
   reg [2:0] \$next\data_out_ctr ;
-  (* src = "./migen_src/fix_0xff.py:99" *)
+  (* src = "fix_0xff.py:99" *)
   reg [2:0] \$next\data_out_ctr_reg ;
-  (* src = "./migen_src/fix_0xff.py:97" *)
+  (* src = "fix_0xff.py:97" *)
   reg [31:0] \$next\data_out_reg ;
-  (* src = "./migen_src/fix_0xff.py:100" *)
+  (* src = "fix_0xff.py:100" *)
   reg \$next\data_out_valid ;
-  (* src = "./migen_src/fix_0xff.py:82" *)
+  (* src = "fix_0xff.py:82" *)
   reg \$next\end_out ;
-  (* src = "./migen_src/fix_0xff.py:98" *)
+  (* src = "fix_0xff.py:98" *)
   reg \$next\end_out_reg ;
-  (* src = "./migen_src/fix_0xff.py:78" *)
+  (* src = "fix_0xff.py:78" *)
   reg \$next\o_busy ;
-  (* src = "./migen_src/fix_0xff.py:93" *)
+  (* src = "fix_0xff.py:93" *)
   reg [7:0] \$next\ones ;
-  (* src = "./migen_src/fix_0xff.py:77" *)
+  (* src = "fix_0xff.py:77" *)
   reg \$next\valid_out ;
-  (* src = "./migen_src/fix_0xff.py:92" *)
+  (* src = "fix_0xff.py:92" *)
   reg [7:0] \$next\zeros ;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input clk;
-  (* src = "./migen_src/fix_0xff.py:69" *)
+  (* src = "fix_0xff.py:69" *)
   input [15:0] data_in;
   (* init = 32'd0 *)
-  (* src = "./migen_src/fix_0xff.py:72" *)
+  (* src = "fix_0xff.py:72" *)
   output [31:0] data_out;
   reg [31:0] data_out = 32'd0;
   (* init = 3'h0 *)
-  (* src = "./migen_src/fix_0xff.py:73" *)
+  (* src = "fix_0xff.py:73" *)
   output [2:0] data_out_ctr;
   reg [2:0] data_out_ctr = 3'h0;
   (* init = 3'h0 *)
-  (* src = "./migen_src/fix_0xff.py:99" *)
+  (* src = "fix_0xff.py:99" *)
   reg [2:0] data_out_ctr_reg = 3'h0;
   (* init = 32'd0 *)
-  (* src = "./migen_src/fix_0xff.py:97" *)
+  (* src = "fix_0xff.py:97" *)
   reg [31:0] data_out_reg = 32'd0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff.py:100" *)
+  (* src = "fix_0xff.py:100" *)
   reg data_out_valid = 1'h0;
-  (* src = "./migen_src/fix_0xff.py:81" *)
+  (* src = "fix_0xff.py:81" *)
   input end_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff.py:82" *)
+  (* src = "fix_0xff.py:82" *)
   output end_out;
   reg end_out = 1'h0;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff.py:98" *)
+  (* src = "fix_0xff.py:98" *)
   reg end_out_reg = 1'h0;
-  (* src = "./migen_src/fix_0xff.py:79" *)
+  (* src = "fix_0xff.py:79" *)
   input i_busy;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff.py:78" *)
+  (* src = "fix_0xff.py:78" *)
   output o_busy;
   reg o_busy = 1'h0;
   (* init = 8'hff *)
-  (* src = "./migen_src/fix_0xff.py:93" *)
+  (* src = "fix_0xff.py:93" *)
   reg [7:0] ones = 8'hff;
-  (* src = "/anaconda3/envs/py36/lib/python3.6/site-packages/nmigen/hdl/ir.py:329" *)
+  (* src = "nmigen/hdl/ir.py:329" *)
   input rst;
-  (* src = "./migen_src/fix_0xff.py:76" *)
+  (* src = "fix_0xff.py:76" *)
   input valid_in;
   (* init = 1'h0 *)
-  (* src = "./migen_src/fix_0xff.py:77" *)
+  (* src = "fix_0xff.py:77" *)
   output valid_out;
   reg valid_out = 1'h0;
   (* init = 8'h00 *)
-  (* src = "./migen_src/fix_0xff.py:92" *)
+  (* src = "fix_0xff.py:92" *)
   reg [7:0] zeros = 8'h00;
-  assign \$9  = \$5  & (* src = "./migen_src/fix_0xff.py:135" *) \$7 ;
-  assign \$99  = \$95  & (* src = "./migen_src/fix_0xff.py:138" *) \$97 ;
-  assign \$101  = i_busy == (* src = "./migen_src/fix_0xff.py:106" *) 1'h0;
-  assign \$103  = valid_out == (* src = "./migen_src/fix_0xff.py:125" *) 1'h0;
-  assign \$105  = valid_in == (* src = "./migen_src/fix_0xff.py:135" *) 1'h1;
-  assign \$107  = o_busy == (* src = "./migen_src/fix_0xff.py:135" *) 1'h0;
-  assign \$109  = \$105  & (* src = "./migen_src/fix_0xff.py:135" *) \$107 ;
-  assign \$111  = valid_in == (* src = "./migen_src/fix_0xff.py:137" *) 1'h1;
-  assign \$113  = valid_out == (* src = "./migen_src/fix_0xff.py:137" *) 1'h1;
-  assign \$115  = \$111  & (* src = "./migen_src/fix_0xff.py:137" *) \$113 ;
-  assign \$117  = o_busy == (* src = "./migen_src/fix_0xff.py:141" *) 1'h0;
-  assign \$11  = data_out_valid == (* src = "./migen_src/fix_0xff.py:107" *) 1'h0;
-  assign \$119  = data_in == (* src = "./migen_src/fix_0xff.py:41" *) 16'hffff;
-  assign \$121  = data_in[7:0] == (* src = "./migen_src/fix_0xff.py:47" *) 8'hff;
-  assign \$123  = data_in[15:8] == (* src = "./migen_src/fix_0xff.py:53" *) 8'hff;
-  assign \$125  = + (* src = "./migen_src/fix_0xff.py:49" *) { data_in[15:8], ones, zeros };
-  assign \$127  = + (* src = "./migen_src/fix_0xff.py:55" *) { ones, zeros, data_in[7:0] };
-  assign \$129  = + (* src = "./migen_src/fix_0xff.py:69" *) data_in;
-  assign \$131  = o_busy == (* src = "./migen_src/fix_0xff.py:141" *) 1'h0;
-  assign \$133  = data_in == (* src = "./migen_src/fix_0xff.py:41" *) 16'hffff;
-  assign \$135  = data_in[7:0] == (* src = "./migen_src/fix_0xff.py:47" *) 8'hff;
-  assign \$137  = data_in[15:8] == (* src = "./migen_src/fix_0xff.py:53" *) 8'hff;
-  assign \$13  = i_busy == (* src = "./migen_src/fix_0xff.py:106" *) 1'h0;
-  assign \$139  = o_busy == (* src = "./migen_src/fix_0xff.py:141" *) 1'h0;
-  assign \$15  = valid_out == (* src = "./migen_src/fix_0xff.py:125" *) 1'h0;
-  assign \$17  = valid_in == (* src = "./migen_src/fix_0xff.py:135" *) 1'h1;
-  assign \$1  = i_busy == (* src = "./migen_src/fix_0xff.py:106" *) 1'h0;
-  assign \$19  = o_busy == (* src = "./migen_src/fix_0xff.py:135" *) 1'h0;
-  assign \$21  = \$17  & (* src = "./migen_src/fix_0xff.py:135" *) \$19 ;
-  assign \$23  = data_out_valid == (* src = "./migen_src/fix_0xff.py:107" *) 1'h0;
-  assign \$25  = i_busy == (* src = "./migen_src/fix_0xff.py:106" *) 1'h0;
-  assign \$27  = valid_out == (* src = "./migen_src/fix_0xff.py:125" *) 1'h0;
-  assign \$29  = valid_in == (* src = "./migen_src/fix_0xff.py:135" *) 1'h1;
-  assign \$31  = o_busy == (* src = "./migen_src/fix_0xff.py:135" *) 1'h0;
-  assign \$33  = \$29  & (* src = "./migen_src/fix_0xff.py:135" *) \$31 ;
-  assign \$35  = data_out_valid == (* src = "./migen_src/fix_0xff.py:107" *) 1'h0;
-  assign \$37  = data_in == (* src = "./migen_src/fix_0xff.py:41" *) 16'hffff;
-  assign \$3  = valid_out == (* src = "./migen_src/fix_0xff.py:125" *) 1'h0;
-  assign \$39  = data_in[7:0] == (* src = "./migen_src/fix_0xff.py:47" *) 8'hff;
-  assign \$41  = data_in[15:8] == (* src = "./migen_src/fix_0xff.py:53" *) 8'hff;
-  assign \$43  = + (* src = "./migen_src/fix_0xff.py:49" *) { data_in[15:8], ones, zeros };
-  assign \$45  = + (* src = "./migen_src/fix_0xff.py:55" *) { ones, zeros, data_in[7:0] };
-  assign \$47  = + (* src = "./migen_src/fix_0xff.py:69" *) data_in;
-  assign \$49  = data_in == (* src = "./migen_src/fix_0xff.py:41" *) 16'hffff;
-  assign \$51  = data_in[7:0] == (* src = "./migen_src/fix_0xff.py:47" *) 8'hff;
-  assign \$53  = data_in[15:8] == (* src = "./migen_src/fix_0xff.py:53" *) 8'hff;
-  assign \$55  = + (* src = "./migen_src/fix_0xff.py:49" *) { data_in[15:8], ones, zeros };
-  assign \$57  = + (* src = "./migen_src/fix_0xff.py:55" *) { ones, zeros, data_in[7:0] };
-  assign \$5  = valid_in == (* src = "./migen_src/fix_0xff.py:135" *) 1'h1;
-  assign \$59  = + (* src = "./migen_src/fix_0xff.py:69" *) data_in;
-  assign \$61  = i_busy == (* src = "./migen_src/fix_0xff.py:106" *) 1'h0;
-  assign \$63  = valid_out == (* src = "./migen_src/fix_0xff.py:125" *) 1'h0;
-  assign \$65  = valid_in == (* src = "./migen_src/fix_0xff.py:135" *) 1'h1;
-  assign \$67  = o_busy == (* src = "./migen_src/fix_0xff.py:135" *) 1'h0;
-  assign \$69  = \$65  & (* src = "./migen_src/fix_0xff.py:135" *) \$67 ;
-  assign \$71  = data_out_valid == (* src = "./migen_src/fix_0xff.py:107" *) 1'h0;
-  assign \$73  = data_in == (* src = "./migen_src/fix_0xff.py:41" *) 16'hffff;
-  assign \$75  = data_in[7:0] == (* src = "./migen_src/fix_0xff.py:47" *) 8'hff;
-  assign \$77  = data_in[15:8] == (* src = "./migen_src/fix_0xff.py:53" *) 8'hff;
-  assign \$7  = o_busy == (* src = "./migen_src/fix_0xff.py:135" *) 1'h0;
-  assign \$79  = data_in == (* src = "./migen_src/fix_0xff.py:41" *) 16'hffff;
-  assign \$81  = data_in[7:0] == (* src = "./migen_src/fix_0xff.py:47" *) 8'hff;
-  assign \$83  = data_in[15:8] == (* src = "./migen_src/fix_0xff.py:53" *) 8'hff;
-  assign \$85  = i_busy == (* src = "./migen_src/fix_0xff.py:106" *) 1'h0;
-  assign \$87  = valid_out == (* src = "./migen_src/fix_0xff.py:125" *) 1'h0;
-  assign \$89  = valid_in == (* src = "./migen_src/fix_0xff.py:135" *) 1'h1;
-  assign \$91  = o_busy == (* src = "./migen_src/fix_0xff.py:135" *) 1'h0;
-  assign \$93  = \$89  & (* src = "./migen_src/fix_0xff.py:135" *) \$91 ;
-  assign \$95  = valid_in == (* src = "./migen_src/fix_0xff.py:138" *) 1'h1;
-  assign \$97  = valid_out == (* src = "./migen_src/fix_0xff.py:138" *) 1'h1;
+  assign \$9  = \$5  & (* src = "fix_0xff.py:135" *) \$7 ;
+  assign \$99  = \$95  & (* src = "fix_0xff.py:138" *) \$97 ;
+  assign \$101  = i_busy == (* src = "fix_0xff.py:106" *) 1'h0;
+  assign \$103  = valid_out == (* src = "fix_0xff.py:125" *) 1'h0;
+  assign \$105  = valid_in == (* src = "fix_0xff.py:135" *) 1'h1;
+  assign \$107  = o_busy == (* src = "fix_0xff.py:135" *) 1'h0;
+  assign \$109  = \$105  & (* src = "fix_0xff.py:135" *) \$107 ;
+  assign \$111  = valid_in == (* src = "fix_0xff.py:137" *) 1'h1;
+  assign \$113  = valid_out == (* src = "fix_0xff.py:137" *) 1'h1;
+  assign \$115  = \$111  & (* src = "fix_0xff.py:137" *) \$113 ;
+  assign \$117  = o_busy == (* src = "fix_0xff.py:141" *) 1'h0;
+  assign \$11  = data_out_valid == (* src = "fix_0xff.py:107" *) 1'h0;
+  assign \$119  = data_in == (* src = "fix_0xff.py:41" *) 16'hffff;
+  assign \$121  = data_in[7:0] == (* src = "fix_0xff.py:47" *) 8'hff;
+  assign \$123  = data_in[15:8] == (* src = "fix_0xff.py:53" *) 8'hff;
+  assign \$125  = + (* src = "fix_0xff.py:49" *) { data_in[15:8], ones, zeros };
+  assign \$127  = + (* src = "fix_0xff.py:55" *) { ones, zeros, data_in[7:0] };
+  assign \$129  = + (* src = "fix_0xff.py:69" *) data_in;
+  assign \$131  = o_busy == (* src = "fix_0xff.py:141" *) 1'h0;
+  assign \$133  = data_in == (* src = "fix_0xff.py:41" *) 16'hffff;
+  assign \$135  = data_in[7:0] == (* src = "fix_0xff.py:47" *) 8'hff;
+  assign \$137  = data_in[15:8] == (* src = "fix_0xff.py:53" *) 8'hff;
+  assign \$13  = i_busy == (* src = "fix_0xff.py:106" *) 1'h0;
+  assign \$139  = o_busy == (* src = "fix_0xff.py:141" *) 1'h0;
+  assign \$15  = valid_out == (* src = "fix_0xff.py:125" *) 1'h0;
+  assign \$17  = valid_in == (* src = "fix_0xff.py:135" *) 1'h1;
+  assign \$1  = i_busy == (* src = "fix_0xff.py:106" *) 1'h0;
+  assign \$19  = o_busy == (* src = "fix_0xff.py:135" *) 1'h0;
+  assign \$21  = \$17  & (* src = "fix_0xff.py:135" *) \$19 ;
+  assign \$23  = data_out_valid == (* src = "fix_0xff.py:107" *) 1'h0;
+  assign \$25  = i_busy == (* src = "fix_0xff.py:106" *) 1'h0;
+  assign \$27  = valid_out == (* src = "fix_0xff.py:125" *) 1'h0;
+  assign \$29  = valid_in == (* src = "fix_0xff.py:135" *) 1'h1;
+  assign \$31  = o_busy == (* src = "fix_0xff.py:135" *) 1'h0;
+  assign \$33  = \$29  & (* src = "fix_0xff.py:135" *) \$31 ;
+  assign \$35  = data_out_valid == (* src = "fix_0xff.py:107" *) 1'h0;
+  assign \$37  = data_in == (* src = "fix_0xff.py:41" *) 16'hffff;
+  assign \$3  = valid_out == (* src = "fix_0xff.py:125" *) 1'h0;
+  assign \$39  = data_in[7:0] == (* src = "fix_0xff.py:47" *) 8'hff;
+  assign \$41  = data_in[15:8] == (* src = "fix_0xff.py:53" *) 8'hff;
+  assign \$43  = + (* src = "fix_0xff.py:49" *) { data_in[15:8], ones, zeros };
+  assign \$45  = + (* src = "fix_0xff.py:55" *) { ones, zeros, data_in[7:0] };
+  assign \$47  = + (* src = "fix_0xff.py:69" *) data_in;
+  assign \$49  = data_in == (* src = "fix_0xff.py:41" *) 16'hffff;
+  assign \$51  = data_in[7:0] == (* src = "fix_0xff.py:47" *) 8'hff;
+  assign \$53  = data_in[15:8] == (* src = "fix_0xff.py:53" *) 8'hff;
+  assign \$55  = + (* src = "fix_0xff.py:49" *) { data_in[15:8], ones, zeros };
+  assign \$57  = + (* src = "fix_0xff.py:55" *) { ones, zeros, data_in[7:0] };
+  assign \$5  = valid_in == (* src = "fix_0xff.py:135" *) 1'h1;
+  assign \$59  = + (* src = "fix_0xff.py:69" *) data_in;
+  assign \$61  = i_busy == (* src = "fix_0xff.py:106" *) 1'h0;
+  assign \$63  = valid_out == (* src = "fix_0xff.py:125" *) 1'h0;
+  assign \$65  = valid_in == (* src = "fix_0xff.py:135" *) 1'h1;
+  assign \$67  = o_busy == (* src = "fix_0xff.py:135" *) 1'h0;
+  assign \$69  = \$65  & (* src = "fix_0xff.py:135" *) \$67 ;
+  assign \$71  = data_out_valid == (* src = "fix_0xff.py:107" *) 1'h0;
+  assign \$73  = data_in == (* src = "fix_0xff.py:41" *) 16'hffff;
+  assign \$75  = data_in[7:0] == (* src = "fix_0xff.py:47" *) 8'hff;
+  assign \$77  = data_in[15:8] == (* src = "fix_0xff.py:53" *) 8'hff;
+  assign \$7  = o_busy == (* src = "fix_0xff.py:135" *) 1'h0;
+  assign \$79  = data_in == (* src = "fix_0xff.py:41" *) 16'hffff;
+  assign \$81  = data_in[7:0] == (* src = "fix_0xff.py:47" *) 8'hff;
+  assign \$83  = data_in[15:8] == (* src = "fix_0xff.py:53" *) 8'hff;
+  assign \$85  = i_busy == (* src = "fix_0xff.py:106" *) 1'h0;
+  assign \$87  = valid_out == (* src = "fix_0xff.py:125" *) 1'h0;
+  assign \$89  = valid_in == (* src = "fix_0xff.py:135" *) 1'h1;
+  assign \$91  = o_busy == (* src = "fix_0xff.py:135" *) 1'h0;
+  assign \$93  = \$89  & (* src = "fix_0xff.py:135" *) \$91 ;
+  assign \$95  = valid_in == (* src = "fix_0xff.py:138" *) 1'h1;
+  assign \$97  = valid_out == (* src = "fix_0xff.py:138" *) 1'h1;
   always @(posedge clk)
       end_out_reg <= \$next\end_out_reg ;
   always @(posedge clk)
