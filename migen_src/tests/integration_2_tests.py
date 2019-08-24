@@ -95,7 +95,7 @@ def integration_2_test_1(m, test_file, test_number, stall_in, stall_out):
 
 					
 
-		sim.add_clock(1e-8)
+		sim.add_clock(1e-8, domain="full")
 		sim.add_sync_process(testbench())
 		sim.run()
 
@@ -130,11 +130,5 @@ if __name__ == "__main__":
 		"support_axi_lite": False,
 	}
 	cons = constraints.Constraints()
-	#object
 	m = Integration2(config, cons)
-	#tests
-	integration_2_test_1(m, "/../test_files/portrait-gainx2-offset2047-20ms-01.raw12", 1, 15, 5)
-	print("-----")
-	integration_2_test_1(m, "/../test_files/random.raw12", 2, 5, 15)
-	print("-----")
-	integration_2_test_1(m, "/../test_files/IT8Chart15ms.raw12", 3, 1, 1)
+	integration_2_test_1(m, "/../test_files/random.raw12", 1, 5, 15)

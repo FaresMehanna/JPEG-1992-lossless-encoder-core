@@ -23,20 +23,20 @@ def markers_test_1(m):
 			yield m.valid_in.eq(1)
 
 			for _ in range(20):
-				print((yield m.data_out))
-				print((yield m.valid_out))
-				print("")
+				# print((yield m.data_out))
+				# print((yield m.valid_out))
+				# print("")
 				yield
 
 			yield m.end_in.eq(1)
 
-			print(" ---------- ")
+			# print(" ---------- ")
 			
 			for _ in range(20):
-				print((yield m.data_out))
-				print((yield m.valid_out))
-				print((yield m.end_out))
-				print("")
+				# print((yield m.data_out))
+				# print((yield m.valid_out))
+				# print((yield m.end_out))
+				# print("")
 				yield
 
 			print("markers_test_1: succeeded.")

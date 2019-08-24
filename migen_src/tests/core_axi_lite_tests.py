@@ -28,7 +28,7 @@ def core_axi_lite_test_1(m):
 
 			print("core_axi_lite_test_1: succeeded.")
 
-		sim.add_clock(1e-8)
+		sim.add_clock(1e-8, domain="full")
 		sim.add_sync_process(testbench())
 		sim.run()
 

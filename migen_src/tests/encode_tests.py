@@ -143,6 +143,7 @@ if __name__ == "__main__":
 	config = {
 		"bit_depth" : 16,
 		"pixels_per_cycle": 4,
+		"support_axi_lite": False,
 	}
 	e = Encode(config, constraints.Constraints())
 	encode_test_1(e)
