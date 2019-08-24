@@ -21,8 +21,8 @@ class BetaIntegration(Elaboratable):
 			"converter" : 30,
 			"converter_fifo_depth": 512, #512 x 36 = RAM18
 			"vbits_to_cbits_buffer_size": 77,
-			"support_axi_lite": True,
-			"axi_lite_debug": True,
+			"support_axi_lite": False,
+			"axi_lite_debug": False,
 			"predictor_function": 1,
 			"num_of_components": 4,
 		}

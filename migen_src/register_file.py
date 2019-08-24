@@ -49,7 +49,7 @@ class RegisterFile(Elaboratable):
 
 		width_reg = Signal(16)
 		height_reg = Signal(16)
-		allowed_cycles_reg = Signal(16)
+		allowed_cycles_reg = Signal(24)
 
 		m.d.full += [
 			width_reg.eq(4096),

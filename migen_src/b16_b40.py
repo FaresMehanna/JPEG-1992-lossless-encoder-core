@@ -25,6 +25,7 @@ Notes :
 from nmigen import *
 from nmigen.cli import main
 from nmigen.back import *
+import clk_domains
 
 class B16B40(Elaboratable):
 
@@ -51,6 +52,8 @@ class B16B40(Elaboratable):
 
         m = Module()
 
+        clk_domains.load_clk(m)
+
         # buffer 1 data
         buffer1 = Signal(40)
         buffer1_valid = Signal(1)
@@ -76,16 +79,16 @@ class B16B40(Elaboratable):
             m.d.comb += self.data_out.eq(buffer2)
 
         # handle valid_out
-        m.d.sync += self.valid_out.eq(((buffer1_valid==1)|(buffer2_valid==1))&(is_valid==1))
+        m.d.full += self.valid_out.eq(((buffer1_valid==1)|(buffer2_valid==1))&(is_valid==1))
 
         # out transaction happened - switch buffers!
         with m.If((self.valid_out==1)&(self.i_busy==0)):
             m.d.comb += is_valid.eq(0)
-            m.d.sync += buff_chs.eq(buff_chs==0)
+            m.d.full += buff_chs.eq(buff_chs==0)
             with m.If(buff_chs==0):
-                m.d.sync += buffer1_valid.eq(0)
+                m.d.full += buffer1_valid.eq(0)
             with m.If(buff_chs==1):
-                m.d.sync += buffer2_valid.eq(0)
+                m.d.full += buffer2_valid.eq(0)
 
         # fsm
         with m.FSM() as fsm:
@@ -94,33 +97,33 @@ class B16B40(Elaboratable):
             with m.State("BUFF1_IDLE"):
                 # wait until buffer1 data become invalid
                 with m.If(buffer1_valid==0):
-                    m.d.sync += self.o_busy.eq(0)
+                    m.d.full += self.o_busy.eq(0)
                     m.next = "BUFF1_FILL_1"
 
             with m.State("BUFF1_FILL_1"):
                 with m.If(self.valid_in):
-                    m.d.sync += buffer1[24:40].eq(self.data_in)
+                    m.d.full += buffer1[24:40].eq(self.data_in)
                     m.next = "BUFF1_FILL_2"
 
             with m.State("BUFF1_FILL_2"):
                 with m.If(self.valid_in):
-                    m.d.sync += buffer1[8:24].eq(self.data_in)
+                    m.d.full += buffer1[8:24].eq(self.data_in)
                     m.next = "BUFF1_FILL_3"
 
             with m.State("BUFF1_FILL_3"):
                 with m.If(self.valid_in):
-                    m.d.sync += [
+                    m.d.full += [
                         buffer1[0:8].eq(self.data_in[8:16]),
                         buffer1_valid.eq(1),
                     ]
                     # is buffer2 data is invalid?
                     # if invalid then start filling
                     with m.If(buffer2_valid==0):
-                        m.d.sync += buffer2[32:40].eq(self.data_in[0:8])
+                        m.d.full += buffer2[32:40].eq(self.data_in[0:8])
                         m.next = "BUFF2_FILL_1"
                     # if data still valid to wait until invalid
                     with m.Else():
-                        m.d.sync += [
+                        m.d.full += [
                             temp_8.eq(self.data_in[0:8]),
                             self.o_busy.eq(1),
                         ]
@@ -131,18 +134,18 @@ class B16B40(Elaboratable):
             with m.State("BUFF2_IDLE"):
                 # wait until buffer2 data become invalid
                 with m.If(buffer2_valid==0):
-                    m.d.sync += buffer2[32:40].eq(temp_8)
-                    m.d.sync += self.o_busy.eq(0)
+                    m.d.full += buffer2[32:40].eq(temp_8)
+                    m.d.full += self.o_busy.eq(0)
                     m.next = "BUFF2_FILL_1"
 
             with m.State("BUFF2_FILL_1"):
                 with m.If(self.valid_in):
-                    m.d.sync += buffer2[16:32].eq(self.data_in)
+                    m.d.full += buffer2[16:32].eq(self.data_in)
                     m.next = "BUFF2_FILL_2"
 
             with m.State("BUFF2_FILL_2"):
                 with m.If(self.valid_in):
-                    m.d.sync += [
+                    m.d.full += [
                         buffer2[0:16].eq(self.data_in),
                         buffer2_valid.eq(1),
                     ]
@@ -152,7 +155,7 @@ class B16B40(Elaboratable):
                         m.next = "BUFF1_FILL_1"
                     # if data still valid to wait until invalid
                     with m.Else():
-                        m.d.sync += self.o_busy.eq(1)
+                        m.d.full += self.o_busy.eq(1)
                         m.next = "BUFF1_IDLE"
         return m
 

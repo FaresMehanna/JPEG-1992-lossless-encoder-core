@@ -4,16 +4,16 @@ from nmigen.back import *
 from math import log, ceil
 import beta_integration
 import b64_b32_2
+import b16_b40
 
-class BetaIntegrationFIFOAxiStream(Elaboratable):
+class BetaIntegrationFIFOLVDS(Elaboratable):
 
 	def __init__(self):
 
 		# axi stream master
 		self.m_tvalid = Signal(1)
-		self.m_tlast = Signal(1)
 		self.m_tready = Signal(1)
-		self.m_tdata = Signal(16)
+		self.m_tdata = Signal(40)
 
 		# axi steam slave - MUST BE FIFO
 		self.s_tvalid = Signal(1)
@@ -22,9 +22,10 @@ class BetaIntegrationFIFOAxiStream(Elaboratable):
 
 		self.top = beta_integration.BetaIntegration()
 		self.b64_b32 = b64_b32_2.B64B32_2()
+		self.b16_b40 = b16_b40.B16B40()
 
 		self.ios = \
-			[self.m_tvalid, self.m_tlast, self.m_tready, self.m_tdata] + \
+			[self.m_tvalid, self.m_tready, self.m_tdata] + \
 			[self.s_tvalid, self.s_tready, self.s_tdata]
 
 		if self.top.config['support_axi_lite']:
@@ -36,13 +37,20 @@ class BetaIntegrationFIFOAxiStream(Elaboratable):
 
 		m.submodules.top_module = top = self.top
 		m.submodules.b64_b32 = b64_b32 = self.b64_b32
+		m.submodules.b16_b40 = b16_b40 = self.b16_b40
 
-		# master interface
+		# master interface and b16_b40
 		m.d.comb += [
-			self.m_tdata.eq(top.data_out),
-			self.m_tlast.eq(top.end_out),
-			top.busy_in.eq(self.m_tready==0),
-			self.m_tvalid.eq(top.valid_out),
+			self.m_tdata.eq(b16_b40.data_out),
+			b16_b40.i_busy.eq(self.m_tready==0),
+			self.m_tvalid.eq(b16_b40.valid_out),
+		]
+
+		# b16_b40 and top
+		m.d.comb += [
+			b16_b40.data_in.eq(top.data_out),
+			top.busy_in.eq(b16_b40.o_busy),
+			b16_b40.valid_in.eq(top.valid_out),
 		]
 
 		# slave interface and b64_b32
@@ -63,5 +71,5 @@ class BetaIntegrationFIFOAxiStream(Elaboratable):
 		return m
 
 if __name__ == "__main__":
-	d = BetaIntegrationFIFOAxiStream()
+	d = BetaIntegrationFIFOLVDS()
 	main(d, ports=d.ios)
